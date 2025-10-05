@@ -26,7 +26,6 @@ import bp01mon from '../data/ihk/modules/bp-01-monitoring.json';
 import bp02cloud from '../data/ihk/modules/bp-02-cloud-models.json';
 import bp02data from '../data/ihk/modules/bp-02-data-formats.json';
 import bp02nas from '../data/ihk/modules/bp-02-nas-san.json';
-import bp02qa from '../data/ihk/modules/bp-02-quality-assurance.json';
 import bp03cps from '../data/ihk/modules/bp-03-cps.json';
 import bp03rest from '../data/ihk/modules/bp-03-rest-api.json';
 import bp03sq from '../data/ihk/modules/bp-03-software-quality.json';
@@ -44,14 +43,14 @@ import sqlDml from '../data/ihk/modules/sql-dml.json';
 import sqlDql from '../data/ihk/modules/sql-dql.json';
 
 // Import all IHK quizzes (including migrated ones)
-import arrayMethodsQuiz from '../data/ihk/quizzes/array-methods-quiz.json';
-import asyncJavascriptQuiz from '../data/ihk/quizzes/async-javascript-quiz.json';
+import bp01ConceptionQuiz from '../data/ihk/quizzes/bp-01-conception-quiz.json';
 import bp01DocumentationQuiz from '../data/ihk/quizzes/bp-01-documentation-quiz.json';
 import bp01MonitoringQuiz from '../data/ihk/quizzes/bp-01-monitoring-quiz.json';
 import bp01OdbcQuiz from '../data/ihk/quizzes/bp-01-odbc-quiz.json';
 import bp02CloudModelsQuiz from '../data/ihk/quizzes/bp-02-cloud-models-quiz.json';
 import bp02DataFormatsQuiz from '../data/ihk/quizzes/bp-02-data-formats-quiz.json';
 import bp02NasSanQuiz from '../data/ihk/quizzes/bp-02-nas-san-quiz.json';
+import bp02QualityAssuranceQuiz from '../data/ihk/quizzes/bp-02-quality-assurance-quiz.json';
 import bp03CpsQuiz from '../data/ihk/quizzes/bp-03-cps-quiz.json';
 import bp03RestApiQuiz from '../data/ihk/quizzes/bp-03-rest-api-quiz.json';
 import bp03SoftwareQualityQuiz from '../data/ihk/quizzes/bp-03-software-quality-quiz.json';
@@ -64,7 +63,6 @@ import bp05DataStructuresQuiz from '../data/ihk/quizzes/bp-05-data-structures-qu
 import bp05EncapsulationQuiz from '../data/ihk/quizzes/bp-05-encapsulation-quiz.json';
 import bp05SortingQuiz from '../data/ihk/quizzes/bp-05-sorting-quiz.json';
 import bp05SqlReferenceQuiz from '../data/ihk/quizzes/bp-05-sql-reference-quiz.json';
-import domManipulationQuiz from '../data/ihk/quizzes/dom-manipulation-quiz.json';
 import fue01PlanningQuiz from '../data/ihk/quizzes/fue-01-planning-quiz.json';
 import fue02AnomaliesRedundanciesQuiz from '../data/ihk/quizzes/fue-02-anomalies-redundancies-quiz.json';
 import fue02ControlStructuresQuiz from '../data/ihk/quizzes/fue-02-control-structures-quiz.json';
@@ -73,16 +71,13 @@ import fue03LoadPerformanceTestsQuiz from '../data/ihk/quizzes/fue-03-load-perfo
 import fue03QualityQuiz from '../data/ihk/quizzes/fue-03-quality-quiz.json';
 import fue04SecurityQuiz from '../data/ihk/quizzes/fue-04-security-quiz.json';
 import fue04SecurityThreatsQuiz from '../data/ihk/quizzes/fue-04-security-threats-quiz.json';
-import javascriptBasicsQuiz from '../data/ihk/quizzes/javascript-basics-quiz.json';
 import kerberosQuiz from '../data/ihk/quizzes/kerberos-quiz.json';
 import scrumQuiz from '../data/ihk/quizzes/scrum-quiz.json';
-import securityThreatsQuiz from '../data/ihk/quizzes/security-threats-quiz.json';
 import sortingAlgorithmsQuiz from '../data/ihk/quizzes/sorting-algorithms-quiz.json';
 import sqlComprehensiveQuiz from '../data/ihk/quizzes/sql-comprehensive-quiz.json';
 import sqlDdl2025Quiz from '../data/ihk/quizzes/sql-ddl-2025-quiz.json';
 import sqlDml2025Quiz from '../data/ihk/quizzes/sql-dml-2025-quiz.json';
 import tddQuiz from '../data/ihk/quizzes/tdd-quiz.json';
-import undefinedQuiz from '../data/ihk/quizzes/undefined-quiz.json';
 
 /**
  * IHKContentService - Manages IHK exam content (modules, quizzes, learning paths)
@@ -397,7 +392,6 @@ class IHKContentService {
         bp02cloud,
         bp02data,
         bp02nas,
-        bp02qa,
         bp03cps,
         bp03rest,
         bp03sq,
@@ -568,14 +562,14 @@ class IHKContentService {
    */
   async _loadAllQuizzes() {
     const allQuizzes = [
-      arrayMethodsQuiz,
-      asyncJavascriptQuiz,
+      bp01ConceptionQuiz,
       bp01DocumentationQuiz,
       bp01MonitoringQuiz,
       bp01OdbcQuiz,
       bp02CloudModelsQuiz,
       bp02DataFormatsQuiz,
       bp02NasSanQuiz,
+      bp02QualityAssuranceQuiz,
       bp03CpsQuiz,
       bp03RestApiQuiz,
       bp03SoftwareQualityQuiz,
@@ -588,7 +582,6 @@ class IHKContentService {
       bp05EncapsulationQuiz,
       bp05SortingQuiz,
       bp05SqlReferenceQuiz,
-      domManipulationQuiz,
       fue01PlanningQuiz,
       fue02AnomaliesRedundanciesQuiz,
       fue02ControlStructuresQuiz,
@@ -597,16 +590,13 @@ class IHKContentService {
       fue03QualityQuiz,
       fue04SecurityQuiz,
       fue04SecurityThreatsQuiz,
-      javascriptBasicsQuiz,
       kerberosQuiz,
       scrumQuiz,
-      securityThreatsQuiz,
       sortingAlgorithmsQuiz,
       sqlComprehensiveQuiz,
       sqlDdl2025Quiz,
       sqlDml2025Quiz,
       tddQuiz,
-      undefinedQuiz,
     ];
 
     allQuizzes.forEach(quiz => {
