@@ -2,90 +2,305 @@
   "id": "fue-01-planning-quiz",
   "moduleId": "fue-01-planning",
   "title": "FÜ-01: Planen eines Softwareproduktes Quiz",
-  "description": "Teste dein Wissen über FÜ-01: Planen eines Softwareproduktes",
+  "description": "Teste dein Wissen über Projektplanung, Anforderungsanalyse, Wirtschaftlichkeitsberechnung und Stakeholder-Management",
   "category": "FÜ-01",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist FÜ-01: Planen eines Softwareproduktes?",
+      "question": "Was ist der Hauptunterschied zwischen Lastenheft und Pflichtenheft?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Das Lastenheft beschreibt WAS der Kunde benötigt, das Pflichtenheft beschreibt WIE es umgesetzt wird",
+        "Das Lastenheft wird vom Auftragnehmer erstellt, das Pflichtenheft vom Auftraggeber",
+        "Das Lastenheft enthält technische Details, das Pflichtenheft die Kundenanforderungen",
+        "Das Lastenheft ist optional, das Pflichtenheft ist verpflichtend"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Das Lastenheft beschreibt WAS der Kunde benötigt, das Pflichtenheft beschreibt WIE es umgesetzt wird",
+      "explanation": "Das Lastenheft (Requirements Specification) wird vom Auftraggeber erstellt und beschreibt die Anforderungen aus Kundensicht (WAS). Das Pflichtenheft (Functional Specification) wird vom Auftragnehmer erstellt und beschreibt die technische Umsetzung (WIE). Dies ist ein fundamentaler Unterschied in der Projektdokumentation.",
       "points": 1,
-      "category": "Grundlagen"
+      "category": "Anforderungsanalyse"
     },
     {
       "id": "q2",
-      "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche der folgenden sind Methoden zur Anforderungserhebung? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Interviews mit Stakeholdern",
+        "Workshops mit allen Beteiligten",
+        "Prototyping zur Visualisierung",
+        "Gantt-Diagramme erstellen"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
-      "points": 1,
-      "category": "Konzepte"
+      "correctAnswer": [
+        "Interviews mit Stakeholdern",
+        "Workshops mit allen Beteiligten",
+        "Prototyping zur Visualisierung"
+      ],
+      "explanation": "Interviews, Workshops und Prototyping sind etablierte Methoden zur Anforderungserhebung. Gantt-Diagramme gehören zur Zeitplanung, nicht zur Anforderungserhebung. Weitere Methoden sind Fragebögen und Beobachtung bestehender Arbeitsabläufe.",
+      "points": 2,
+      "category": "Anforderungsanalyse"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "single-choice",
+      "question": "Welche Aussage beschreibt eine nicht-funktionale Anforderung?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Das System muss die Seitenladezeit unter 2 Sekunden halten",
+        "Das System muss Benutzer authentifizieren können",
+        "Das System muss Produkte in den Warenkorb legen können",
+        "Das System muss Bestellbestätigungen per E-Mail versenden"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
-      "points": 2,
-      "category": "Anwendung"
+      "correctAnswer": "Das System muss die Seitenladezeit unter 2 Sekunden halten",
+      "explanation": "Nicht-funktionale Anforderungen beschreiben WIE das System arbeiten soll (Performance, Sicherheit, Usability). Die Seitenladezeit ist eine Performance-Anforderung. Die anderen Optionen sind funktionale Anforderungen, die beschreiben WAS das System tun soll.",
+      "points": 1,
+      "category": "Anforderungsanalyse"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Ein Projekt hat eine Investition von 120.000 € und erzielt einen jährlichen Gewinn von 30.000 €. Wie lange ist die Amortisationszeit?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "4 Jahre",
+        "3 Jahre",
+        "5 Jahre",
+        "2,5 Jahre"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "4 Jahre",
+      "explanation": "Die Amortisationszeit berechnet sich als: Investition / Jährlicher Gewinn = 120.000 € / 30.000 € = 4 Jahre. Nach 4 Jahren hat sich die Investition vollständig amortisiert und das Projekt beginnt, Gewinn zu erwirtschaften.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Wirtschaftlichkeit"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Was ist der Zweck eines Projektstrukturplans (PSP)?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Das Projekt in überschaubare Arbeitspakete zu gliedern",
+        "Die Kosten des Projekts zu berechnen",
+        "Die Stakeholder zu identifizieren",
+        "Die Risiken des Projekts zu bewerten"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Das Projekt in überschaubare Arbeitspakete zu gliedern",
+      "explanation": "Der Projektstrukturplan (PSP) ist ein hierarchisches Werkzeug, das das Gesamtprojekt in kleinere, überschaubare Arbeitspakete unterteilt. Dies erleichtert die Planung, Steuerung und Kontrolle des Projekts. Kostenberechnung, Stakeholder-Identifikation und Risikobewertung sind separate Planungsaktivitäten.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Projektplanung"
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "question": "Welche Kategorien gehören zu nicht-funktionalen Anforderungen? (Mehrere Antworten möglich)",
+      "options": [
+        "Performance und Antwortzeiten",
+        "Sicherheit und Verschlüsselung",
+        "Benutzer-Registrierung",
+        "Usability und Barrierefreiheit"
+      ],
+      "correctAnswer": [
+        "Performance und Antwortzeiten",
+        "Sicherheit und Verschlüsselung",
+        "Usability und Barrierefreiheit"
+      ],
+      "explanation": "Nicht-funktionale Anforderungen umfassen Performance, Sicherheit, Usability, Zuverlässigkeit und Wartbarkeit. Sie beschreiben Qualitätsmerkmale des Systems. Die Benutzer-Registrierung ist eine funktionale Anforderung, da sie beschreibt WAS das System tun soll.",
+      "points": 2,
+      "category": "Anforderungsanalyse"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was sind Meilensteine in der Projektplanung?",
+      "options": [
+        "Wichtige Zwischenziele im Projekt ohne Dauer",
+        "Die längsten Arbeitspakete im Projekt",
+        "Die teuersten Phasen des Projekts",
+        "Regelmäßige Teammeetings"
+      ],
+      "correctAnswer": "Wichtige Zwischenziele im Projekt ohne Dauer",
+      "explanation": "Meilensteine sind wichtige Kontrollpunkte im Projekt, die den Abschluss einer Phase oder das Erreichen eines Zwischenziels markieren. Sie haben keine Dauer und dienen der Projektsteuerung. Beispiele: 'Anforderungen abgenommen', 'Design freigegeben', 'MVP fertiggestellt'.",
+      "points": 1,
+      "category": "Projektplanung"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Welche Formel beschreibt den Return on Investment (ROI)?",
+      "options": [
+        "(Gewinn - Investition) / Investition × 100%",
+        "Investition / Jährlicher Gewinn",
+        "Gewinn × Investition / 100",
+        "(Investition - Gewinn) / Gewinn × 100%"
+      ],
+      "correctAnswer": "(Gewinn - Investition) / Investition × 100%",
+      "explanation": "Der ROI berechnet sich als: (Gewinn - Investition) / Investition × 100%. Er gibt an, wie rentabel eine Investition ist. Ein positiver ROI bedeutet, dass die Investition profitabel ist. Die Formel 'Investition / Jährlicher Gewinn' beschreibt die Amortisationszeit.",
+      "points": 1,
+      "category": "Wirtschaftlichkeit"
+    },
+    {
+      "id": "q9",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile hat eine Eigenentwicklung (Make) gegenüber dem Kauf von Standardsoftware (Buy)? (Mehrere Antworten möglich)",
+      "options": [
+        "Volle Kontrolle über Funktionen und Anpassbarkeit",
+        "Schnelle Verfügbarkeit und kurze Time-to-Market",
+        "Keine laufenden Lizenzgebühren",
+        "Bewährte Lösung mit Support durch Anbieter"
+      ],
+      "correctAnswer": [
+        "Volle Kontrolle über Funktionen und Anpassbarkeit",
+        "Keine laufenden Lizenzgebühren"
+      ],
+      "explanation": "Eigenentwicklung bietet volle Kontrolle, Anpassbarkeit und keine Lizenzgebühren. Allerdings sind die Entwicklungskosten höher und die Time-to-Market länger. Schnelle Verfügbarkeit und bewährte Lösungen mit Support sind Vorteile von Standardsoftware (Buy).",
+      "points": 2,
+      "category": "Wirtschaftlichkeit"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was visualisiert ein Gantt-Diagramm in der Projektplanung?",
+      "options": [
+        "Projektphasen, Abhängigkeiten und den kritischen Pfad",
+        "Die Kostenverteilung über die Projektlaufzeit",
+        "Die Stakeholder und ihre Interessen",
+        "Die Risikowahrscheinlichkeiten"
+      ],
+      "correctAnswer": "Projektphasen, Abhängigkeiten und den kritischen Pfad",
+      "explanation": "Ein Gantt-Diagramm ist ein Balkendiagramm, das Projektphasen zeitlich darstellt, Abhängigkeiten zwischen Aufgaben zeigt und den kritischen Pfad visualisiert. Es ist ein zentrales Werkzeug der Zeitplanung und ermöglicht auch die Ressourcenplanung.",
+      "points": 1,
+      "category": "Projektplanung"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Wie wird die Risikoprioritätszahl in der Risikoanalyse berechnet?",
+      "options": [
+        "Eintrittswahrscheinlichkeit × Auswirkung",
+        "Eintrittswahrscheinlichkeit + Auswirkung",
+        "Auswirkung / Eintrittswahrscheinlichkeit",
+        "Eintrittswahrscheinlichkeit - Auswirkung"
+      ],
+      "correctAnswer": "Eintrittswahrscheinlichkeit × Auswirkung",
+      "explanation": "Die Risikoprioritätszahl (Risk Priority Number) wird als Produkt aus Eintrittswahrscheinlichkeit und Auswirkung berechnet. Dies ermöglicht eine Priorisierung der Risiken: Risiken mit hoher Wahrscheinlichkeit und hoher Auswirkung erhalten die höchste Priorität und müssen zuerst behandelt werden.",
+      "points": 1,
+      "category": "Risikoanalyse"
+    },
+    {
+      "id": "q12",
+      "type": "multiple-choice",
+      "question": "Welche gehören zu den einmaligen Kosten eines Softwareprojekts? (Mehrere Antworten möglich)",
+      "options": [
+        "Entwicklungskosten",
+        "Schulungskosten",
+        "Wartung und Support",
+        "Migrationskosten"
+      ],
+      "correctAnswer": [
+        "Entwicklungskosten",
+        "Schulungskosten",
+        "Migrationskosten"
+      ],
+      "explanation": "Einmalige Kosten fallen nur zu Projektbeginn an: Entwicklung, Hardware-Anschaffung, Schulung und Migration. Wartung und Support sind laufende Kosten, die kontinuierlich während des Betriebs anfallen. Diese Unterscheidung ist wichtig für die Wirtschaftlichkeitsberechnung.",
+      "points": 2,
+      "category": "Wirtschaftlichkeit"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "In der Macht-Interesse-Matrix des Stakeholder-Managements: Wie sollten Stakeholder mit hoher Macht und hohem Interesse behandelt werden?",
+      "options": [
+        "Eng einbinden und aktiv managen",
+        "Zufrieden stellen",
+        "Nur informiert halten",
+        "Beobachten"
+      ],
+      "correctAnswer": "Eng einbinden und aktiv managen",
+      "explanation": "Stakeholder mit hoher Macht und hohem Interesse sind die wichtigsten Projektbeteiligten. Sie müssen eng eingebunden und aktiv gemanagt werden, da sie großen Einfluss auf den Projekterfolg haben. Stakeholder mit hoher Macht aber niedrigem Interesse sollten zufrieden gestellt werden.",
+      "points": 1,
+      "category": "Stakeholder-Management"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Risikokategorien gibt es in der Projektplanung? (Mehrere Antworten möglich)",
+      "options": [
+        "Technische Risiken (neue Technologien, Integrationen)",
+        "Organisatorische Risiken (Ressourcenengpässe, Kommunikation)",
+        "Externe Risiken (Anforderungsänderungen, Abhängigkeiten)",
+        "Finanzielle Gewinne"
+      ],
+      "correctAnswer": [
+        "Technische Risiken (neue Technologien, Integrationen)",
+        "Organisatorische Risiken (Ressourcenengpässe, Kommunikation)",
+        "Externe Risiken (Anforderungsänderungen, Abhängigkeiten)"
+      ],
+      "explanation": "Die drei Hauptkategorien von Projektrisiken sind: technische Risiken (Technologie, Performance), organisatorische Risiken (Personal, Kommunikation) und externe Risiken (Kunde, Lieferanten, rechtliche Änderungen). Finanzielle Gewinne sind keine Risikokategorie, sondern ein positives Projektergebnis.",
+      "points": 2,
+      "category": "Risikoanalyse"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist der Hauptzweck eines Projektauftrags?",
+      "options": [
+        "Projektziele, Umfang, Budget und Stakeholder zu definieren",
+        "Den detaillierten Zeitplan festzulegen",
+        "Die technische Architektur zu beschreiben",
+        "Die Testfälle zu dokumentieren"
+      ],
+      "correctAnswer": "Projektziele, Umfang, Budget und Stakeholder zu definieren",
+      "explanation": "Der Projektauftrag ist das initiale Dokument, das die grundlegenden Rahmenbedingungen festlegt: Ziele, Umfang (Scope), Budget, Zeitrahmen und Stakeholder. Er autorisiert das Projekt und gibt dem Projektmanager die Befugnis, Ressourcen einzusetzen. Detaillierte Zeitpläne und technische Details folgen später.",
+      "points": 1,
+      "category": "Projektplanung"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Welche Ressourcenart umfasst Entwickler, Designer und Tester?",
+      "options": [
+        "Personalressourcen",
+        "Technische Ressourcen",
+        "Finanzielle Ressourcen",
+        "Materielle Ressourcen"
+      ],
+      "correctAnswer": "Personalressourcen",
+      "explanation": "Personalressourcen umfassen alle Mitarbeiter und ihre Rollen: Entwickler (Frontend, Backend, Full-Stack), Designer (UI/UX), Tester (QA), Projektmanager und Product Owner. Technische Ressourcen sind Server, Software-Lizenzen und Tools. Die richtige Ressourcenplanung ist entscheidend für den Projekterfolg.",
+      "points": 1,
+      "category": "Projektplanung"
+    },
+    {
+      "id": "q17",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über quantifizierbaren Nutzen sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "Kosteneinsparungen und Zeitersparnis sind quantifizierbar",
+        "Produktivitätssteigerung kann in Zahlen ausgedrückt werden",
+        "Verbesserte Kundenzufriedenheit ist leicht quantifizierbar",
+        "Umsatzsteigerung ist messbar"
+      ],
+      "correctAnswer": [
+        "Kosteneinsparungen und Zeitersparnis sind quantifizierbar",
+        "Produktivitätssteigerung kann in Zahlen ausgedrückt werden",
+        "Umsatzsteigerung ist messbar"
+      ],
+      "explanation": "Quantifizierbarer Nutzen kann in konkreten Zahlen ausgedrückt werden: Kosteneinsparungen, Zeitersparnis, Produktivitätssteigerung und Umsatzsteigerung. Kundenzufriedenheit, Imagegewinn und Wettbewerbsvorteile sind nicht-quantifizierbarer Nutzen, der schwer in Zahlen zu fassen ist, aber dennoch wichtig für die Projektbewertung.",
+      "points": 2,
+      "category": "Wirtschaftlichkeit"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was sollte ein Abschlussbericht am Ende eines Projekts enthalten?",
+      "options": [
+        "Zielerreichung, Lessons Learned und Empfehlungen",
+        "Nur die finalen Kosten des Projekts",
+        "Die Namen aller Projektmitarbeiter",
+        "Den vollständigen Quellcode"
+      ],
+      "correctAnswer": "Zielerreichung, Lessons Learned und Empfehlungen",
+      "explanation": "Ein Abschlussbericht dokumentiert den Projekterfolg und dient dem organisationalen Lernen. Er enthält: Zielerreichung (wurden die Projektziele erreicht?), Lessons Learned (was lief gut/schlecht?) und Empfehlungen für zukünftige Projekte. Dies ist wichtig für die kontinuierliche Verbesserung der Projektmanagement-Prozesse.",
+      "points": 1,
+      "category": "Projektplanung"
     }
   ],
   "tags": [
@@ -93,6 +308,15 @@
     "Anforderungsanalyse",
     "Wirtschaftlichkeit",
     "Kundenanforderungen",
-    "Projektmanagement"
-  ]
+    "Projektmanagement",
+    "Lastenheft",
+    "Pflichtenheft",
+    "ROI",
+    "Amortisation",
+    "Meilensteine",
+    "Stakeholder",
+    "Risikoanalyse",
+    "Make-or-Buy"
+  ],
+  "lastUpdated": "2025-01-15T10:30:00Z"
 }

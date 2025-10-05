@@ -1,91 +1,335 @@
 {
   "id": "fue-04-security-quiz",
   "moduleId": "fue-04-security",
-  "title": "FÃœ-04: Sicherstellen der Informationssicherheit Quiz",
-  "description": "Teste dein Wissen über FÃœ-04: Sicherstellen der Informationssicherheit",
-  "category": "FÃœ-04",
+  "title": "FÜ-04: Sicherstellen der Informationssicherheit Quiz",
+  "description": "Teste dein Wissen über Informationssicherheit, DSGVO, TOM, Verschlüsselung und Authentifizierung",
+  "category": "FÜ-04",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist FÃœ-04: Sicherstellen der Informationssicherheit?",
+      "question": "Was bedeutet das 'C' in der CIA-Triade der Informationssicherheit?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Confidentiality (Vertraulichkeit)",
+        "Consistency (Konsistenz)",
+        "Compliance (Konformität)",
+        "Control (Kontrolle)"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Confidentiality (Vertraulichkeit)",
+      "explanation": "Die CIA-Triade besteht aus Confidentiality (Vertraulichkeit), Integrity (Integrität) und Availability (Verfügbarkeit). Vertraulichkeit bedeutet, dass nur autorisierte Personen auf Informationen zugreifen dürfen.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
-      "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche Maßnahmen dienen der Sicherstellung der Verfügbarkeit (Availability)? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Redundante Systeme",
+        "Regelmäßige Backups",
+        "Verschlüsselung von Daten",
+        "DDoS-Schutz"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
-      "points": 1,
-      "category": "Konzepte"
+      "correctAnswer": [
+        "Redundante Systeme",
+        "Regelmäßige Backups",
+        "DDoS-Schutz"
+      ],
+      "explanation": "Verfügbarkeit bedeutet, dass Systeme und Daten bei Bedarf verfügbar sein müssen. Redundante Systeme, Backups und DDoS-Schutz tragen dazu bei. Verschlüsselung dient primär der Vertraulichkeit, nicht der Verfügbarkeit.",
+      "points": 2,
+      "category": "Schutzziele"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "single-choice",
+      "question": "Was ist das Hauptziel der Datenschutz-Grundverordnung (DSGVO)?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Schutz personenbezogener Daten und Rechte der Betroffenen",
+        "Schutz von Unternehmensdaten vor Hackern",
+        "Regulierung des internationalen Datenverkehrs",
+        "Verhinderung von Spam-E-Mails"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
-      "points": 2,
-      "category": "Anwendung"
+      "correctAnswer": "Schutz personenbezogener Daten und Rechte der Betroffenen",
+      "explanation": "Die DSGVO regelt den Umgang mit personenbezogenen Daten in der EU und stärkt die Rechte der Betroffenen (z.B. Auskunftsrecht, Recht auf Löschung). Sie schützt die Privatsphäre natürlicher Personen.",
+      "points": 1,
+      "category": "DSGVO"
     },
     {
       "id": "q4",
-      "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche Rechte haben Betroffene nach der DSGVO? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Auskunftsrecht über gespeicherte Daten",
+        "Recht auf Löschung (Recht auf Vergessenwerden)",
+        "Recht auf kostenlose IT-Sicherheitsberatung",
+        "Recht auf Datenübertragbarkeit"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
-      "points": 1,
-      "category": "Praxis"
+      "correctAnswer": [
+        "Auskunftsrecht über gespeicherte Daten",
+        "Recht auf Löschung (Recht auf Vergessenwerden)",
+        "Recht auf Datenübertragbarkeit"
+      ],
+      "explanation": "Die DSGVO gewährt Betroffenen mehrere Rechte: Auskunftsrecht (Art. 15), Recht auf Löschung (Art. 17), Recht auf Datenübertragbarkeit (Art. 20), Recht auf Berichtigung (Art. 16) und Widerspruchsrecht (Art. 21). Ein Recht auf kostenlose IT-Beratung ist nicht Teil der DSGVO.",
+      "points": 2,
+      "category": "DSGVO"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Was bedeutet das DSGVO-Prinzip der 'Datenminimierung'?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Es sollen nur die für den Zweck notwendigen Daten erhoben werden",
+        "Daten sollen auf möglichst kleinen Speichermedien gespeichert werden",
+        "Daten sollen komprimiert werden, um Speicherplatz zu sparen",
+        "Es sollen möglichst wenige Mitarbeiter Zugriff auf Daten haben"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Es sollen nur die für den Zweck notwendigen Daten erhoben werden",
+      "explanation": "Datenminimierung bedeutet, dass nur die Daten erhoben und verarbeitet werden dürfen, die für den festgelegten Zweck tatsächlich erforderlich sind. Dies minimiert das Risiko bei Datenschutzverletzungen.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "DSGVO"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist der Zweck der Zutrittskontrolle als Teil der TOM (Technisch-Organisatorische Maßnahmen)?",
+      "options": [
+        "Verhinderung des unbefugten physischen Zugangs zu Räumen und Gebäuden",
+        "Verhinderung der unbefugten Nutzung von IT-Systemen",
+        "Kontrolle, wer auf welche Daten zugreifen darf",
+        "Nachvollziehbarkeit von Datenänderungen"
+      ],
+      "correctAnswer": "Verhinderung des unbefugten physischen Zugangs zu Räumen und Gebäuden",
+      "explanation": "Zutrittskontrolle verhindert den unbefugten physischen Zugang zu Räumen (z.B. Serverräumen) durch Maßnahmen wie Zugangskontrollen, Chipkarten oder Alarmanlagen. Zugangskontrolle bezieht sich auf IT-Systeme, Zugriffskontrolle auf Daten.",
+      "points": 1,
+      "category": "TOM"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Welche TOM-Maßnahme stellt sicher, dass nur autorisierte Benutzer auf bestimmte Daten zugreifen können?",
+      "options": [
+        "Zugriffskontrolle",
+        "Zutrittskontrolle",
+        "Weitergabekontrolle",
+        "Eingabekontrolle"
+      ],
+      "correctAnswer": "Zugriffskontrolle",
+      "explanation": "Zugriffskontrolle regelt, wer auf welche Daten zugreifen darf (z.B. durch RBAC, Least-Privilege-Prinzip). Zutrittskontrolle bezieht sich auf physischen Zugang, Weitergabekontrolle auf Datenübertragung, Eingabekontrolle auf Nachvollziehbarkeit von Änderungen.",
+      "points": 1,
+      "category": "TOM"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was besagt die 3-2-1-Backup-Regel?",
+      "options": [
+        "3 Kopien der Daten, 2 verschiedene Medientypen, 1 Kopie extern",
+        "3 Backups pro Tag, 2 Backups pro Woche, 1 Backup pro Monat",
+        "3 Mitarbeiter für Backups, 2 Backup-Systeme, 1 Notfallplan",
+        "3 Stunden maximale Wiederherstellungszeit, 2 Stunden Datenverlust, 1 Backup-Server"
+      ],
+      "correctAnswer": "3 Kopien der Daten, 2 verschiedene Medientypen, 1 Kopie extern",
+      "explanation": "Die 3-2-1-Regel ist eine bewährte Backup-Strategie: 3 Kopien der Daten (Original + 2 Backups), auf 2 verschiedenen Medientypen (z.B. Festplatte und Cloud), mit 1 Kopie an einem externen Standort (Schutz vor lokalen Katastrophen).",
+      "points": 1,
+      "category": "Backup"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen symmetrischer und asymmetrischer Verschlüsselung?",
+      "options": [
+        "Symmetrisch verwendet einen Schlüssel, asymmetrisch ein Schlüsselpaar (öffentlich/privat)",
+        "Symmetrisch ist unsicher, asymmetrisch ist sicher",
+        "Symmetrisch ist langsam, asymmetrisch ist schnell",
+        "Symmetrisch wird für E-Mails verwendet, asymmetrisch für Dateien"
+      ],
+      "correctAnswer": "Symmetrisch verwendet einen Schlüssel, asymmetrisch ein Schlüsselpaar (öffentlich/privat)",
+      "explanation": "Bei symmetrischer Verschlüsselung wird derselbe Schlüssel für Ver- und Entschlüsselung verwendet (z.B. AES). Bei asymmetrischer Verschlüsselung gibt es ein Schlüsselpaar: öffentlicher Schlüssel zum Verschlüsseln, privater Schlüssel zum Entschlüsseln (z.B. RSA). Symmetrisch ist schneller, asymmetrisch löst das Schlüsselaustausch-Problem.",
+      "points": 1,
+      "category": "Verschlüsselung"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Welcher Algorithmus eignet sich am besten für die sichere Speicherung von Passwörtern?",
+      "options": [
+        "bcrypt oder Argon2 (Hashing mit Salt)",
+        "AES (symmetrische Verschlüsselung)",
+        "RSA (asymmetrische Verschlüsselung)",
+        "Base64 (Kodierung)"
+      ],
+      "correctAnswer": "bcrypt oder Argon2 (Hashing mit Salt)",
+      "explanation": "Passwörter sollten niemals im Klartext oder verschlüsselt gespeichert werden, sondern gehasht. bcrypt und Argon2 sind speziell für Passwort-Hashing entwickelte Algorithmen mit automatischem Salt und einstellbarer Rechenzeit. AES und RSA sind Verschlüsselungsverfahren (umkehrbar), Base64 ist nur eine Kodierung ohne Sicherheit.",
+      "points": 1,
+      "category": "Verschlüsselung"
+    },
+    {
+      "id": "q11",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über Hashing sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "Hashing ist eine Einweg-Funktion und nicht umkehrbar",
+        "Hashing wird für Integritätsprüfungen verwendet",
+        "Hashing ist dasselbe wie Verschlüsselung",
+        "SHA-256 ist ein Hashing-Algorithmus"
+      ],
+      "correctAnswer": [
+        "Hashing ist eine Einweg-Funktion und nicht umkehrbar",
+        "Hashing wird für Integritätsprüfungen verwendet",
+        "SHA-256 ist ein Hashing-Algorithmus"
+      ],
+      "explanation": "Hashing ist eine Einweg-Funktion, die aus beliebigen Daten einen Hashwert fester Länge erzeugt. Der Prozess ist nicht umkehrbar. Hashing wird für Integritätsprüfungen, Passwort-Speicherung und digitale Signaturen verwendet. SHA-256 ist ein weit verbreiteter Hashing-Algorithmus. Verschlüsselung ist umkehrbar, Hashing nicht.",
+      "points": 2,
+      "category": "Verschlüsselung"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist Multi-Faktor-Authentifizierung (MFA)?",
+      "options": [
+        "Kombination aus mindestens zwei verschiedenen Authentifizierungsfaktoren",
+        "Verwendung mehrerer Passwörter gleichzeitig",
+        "Authentifizierung durch mehrere Personen",
+        "Mehrfache Eingabe desselben Passworts"
+      ],
+      "correctAnswer": "Kombination aus mindestens zwei verschiedenen Authentifizierungsfaktoren",
+      "explanation": "MFA kombiniert mindestens zwei verschiedene Faktoren: Wissen (Passwort), Besitz (Smartphone, Token) und/oder Biometrie (Fingerabdruck). Dies erhöht die Sicherheit erheblich, da ein Angreifer mehrere Faktoren kompromittieren müsste.",
+      "points": 1,
+      "category": "Authentifizierung"
+    },
+    {
+      "id": "q13",
+      "type": "multiple-choice",
+      "question": "Welche der folgenden sind Authentifizierungsfaktoren? (Mehrere Antworten möglich)",
+      "options": [
+        "Wissen (z.B. Passwort, PIN)",
+        "Besitz (z.B. Smartphone, Hardware-Token)",
+        "Biometrie (z.B. Fingerabdruck, Gesichtserkennung)",
+        "Standort (z.B. IP-Adresse)"
+      ],
+      "correctAnswer": [
+        "Wissen (z.B. Passwort, PIN)",
+        "Besitz (z.B. Smartphone, Hardware-Token)",
+        "Biometrie (z.B. Fingerabdruck, Gesichtserkennung)"
+      ],
+      "explanation": "Die drei klassischen Authentifizierungsfaktoren sind: Wissen (Something you know), Besitz (Something you have) und Biometrie (Something you are). Standort kann als zusätzlicher Kontext verwendet werden, ist aber kein klassischer Authentifizierungsfaktor.",
+      "points": 2,
+      "category": "Authentifizierung"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was bedeutet RBAC (Role-Based Access Control)?",
+      "options": [
+        "Benutzer werden Rollen zugewiesen, die bestimmte Berechtigungen haben",
+        "Jeder Benutzer hat individuelle Berechtigungen ohne Rollen",
+        "Berechtigungen werden basierend auf dem Standort vergeben",
+        "Alle Benutzer haben dieselben Berechtigungen"
+      ],
+      "correctAnswer": "Benutzer werden Rollen zugewiesen, die bestimmte Berechtigungen haben",
+      "explanation": "Bei RBAC werden Benutzer Rollen zugewiesen (z.B. Admin, Editor, Viewer), und diese Rollen haben definierte Berechtigungen. Dies vereinfacht die Verwaltung von Zugriffsrechten erheblich, da nicht für jeden Benutzer einzeln Berechtigungen vergeben werden müssen.",
+      "points": 1,
+      "category": "Autorisierung"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was bedeutet das Least-Privilege-Prinzip?",
+      "options": [
+        "Benutzer erhalten nur die minimal notwendigen Berechtigungen für ihre Aufgaben",
+        "Benutzer erhalten möglichst viele Berechtigungen für maximale Flexibilität",
+        "Nur privilegierte Benutzer dürfen auf das System zugreifen",
+        "Berechtigungen werden nach dem Zufallsprinzip vergeben"
+      ],
+      "correctAnswer": "Benutzer erhalten nur die minimal notwendigen Berechtigungen für ihre Aufgaben",
+      "explanation": "Das Least-Privilege-Prinzip (Prinzip der minimalen Rechtevergabe) besagt, dass Benutzer und Prozesse nur die Berechtigungen erhalten sollten, die sie für ihre Aufgaben unbedingt benötigen. Dies minimiert das Risiko bei Sicherheitsvorfällen.",
+      "points": 1,
+      "category": "Autorisierung"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen RTO (Recovery Time Objective) und RPO (Recovery Point Objective)?",
+      "options": [
+        "RTO ist die maximale Ausfallzeit, RPO ist der maximale Datenverlust",
+        "RTO ist der maximale Datenverlust, RPO ist die maximale Ausfallzeit",
+        "RTO und RPO bedeuten dasselbe",
+        "RTO bezieht sich auf Backups, RPO auf Verschlüsselung"
+      ],
+      "correctAnswer": "RTO ist die maximale Ausfallzeit, RPO ist der maximale Datenverlust",
+      "explanation": "RTO (Recovery Time Objective) definiert die maximale akzeptable Ausfallzeit eines Systems. RPO (Recovery Point Objective) definiert den maximalen akzeptablen Datenverlust (z.B. 1 Stunde bedeutet, dass maximal die Daten der letzten Stunde verloren gehen dürfen). Beide Werte sind wichtig für Disaster Recovery Planung.",
+      "points": 1,
+      "category": "Disaster Recovery"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Welche Backup-Strategie sichert nur die Änderungen seit dem letzten Backup (egal ob Voll- oder Inkrementell)?",
+      "options": [
+        "Inkrementelles Backup",
+        "Vollbackup",
+        "Differentielles Backup",
+        "Snapshot-Backup"
+      ],
+      "correctAnswer": "Inkrementelles Backup",
+      "explanation": "Inkrementelles Backup sichert nur die Änderungen seit dem letzten Backup (egal welcher Art). Differentielles Backup sichert alle Änderungen seit dem letzten Vollbackup. Vollbackup sichert alle Daten. Inkrementell ist am schnellsten, erfordert aber bei Wiederherstellung alle inkrementellen Backups seit dem letzten Vollbackup.",
+      "points": 1,
+      "category": "Backup"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Welche Maßnahmen gehören zur Weitergabekontrolle (TOM)? (Mehrere Antworten möglich)",
+      "options": [
+        "Verschlüsselung bei der Datenübertragung (TLS/SSL)",
+        "VPN für Remote-Zugriff",
+        "Starke Passwörter für Benutzerkonten",
+        "E-Mail-Verschlüsselung"
+      ],
+      "correctAnswer": [
+        "Verschlüsselung bei der Datenübertragung (TLS/SSL)",
+        "VPN für Remote-Zugriff",
+        "E-Mail-Verschlüsselung"
+      ],
+      "explanation": "Weitergabekontrolle schützt Daten bei der Übertragung und beim Transport. Dazu gehören TLS/SSL für verschlüsselte Verbindungen, VPN für sicheren Remote-Zugriff und E-Mail-Verschlüsselung. Starke Passwörter gehören zur Zugangskontrolle, nicht zur Weitergabekontrolle.",
+      "points": 2,
+      "category": "TOM"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist der Zweck der Eingabekontrolle als Teil der TOM?",
+      "options": [
+        "Nachvollziehbarkeit von Datenänderungen durch Logging und Audit-Trails",
+        "Kontrolle der Tastatureingaben von Benutzern",
+        "Verhinderung von SQL-Injection-Angriffen",
+        "Validierung von Benutzereingaben in Formularen"
+      ],
+      "correctAnswer": "Nachvollziehbarkeit von Datenänderungen durch Logging und Audit-Trails",
+      "explanation": "Eingabekontrolle stellt sicher, dass nachvollziehbar ist, wer wann welche Daten eingegeben, geändert oder gelöscht hat. Dies wird durch Logging, Audit-Trails, Versionierung und Zeitstempel erreicht. Es geht um die Nachvollziehbarkeit von Änderungen, nicht um die Validierung von Eingaben.",
+      "points": 1,
+      "category": "TOM"
+    },
+    {
+      "id": "q20",
+      "type": "code",
+      "question": "Was macht der folgende Code?\n\nString hash = BCrypt.hashpw(password, BCrypt.gensalt(12));",
+      "code": "String hash = BCrypt.hashpw(password, BCrypt.gensalt(12));",
+      "language": "java",
+      "options": [
+        "Erstellt einen sicheren Hash des Passworts mit bcrypt und einem Salt",
+        "Verschlüsselt das Passwort mit AES-256",
+        "Kodiert das Passwort in Base64",
+        "Generiert ein zufälliges Passwort mit 12 Zeichen"
+      ],
+      "correctAnswer": "Erstellt einen sicheren Hash des Passworts mit bcrypt und einem Salt",
+      "explanation": "BCrypt.hashpw() erstellt einen sicheren Hash des Passworts. BCrypt.gensalt(12) generiert einen Salt mit Kostenfaktor 12 (höher = sicherer, aber langsamer). Der Hash enthält Salt und Kostenfaktor, sodass bei der Verifikation kein separater Salt gespeichert werden muss. Dies ist die empfohlene Methode zur Passwort-Speicherung.",
+      "points": 2,
+      "category": "Praxis"
     }
   ],
   "tags": [
@@ -93,7 +337,11 @@
     "TOM",
     "Datenschutz",
     "DSGVO",
-    "Datensicherheit",
-    "IT-Sicherheit"
-  ]
+    "Verschlüsselung",
+    "Authentifizierung",
+    "Autorisierung",
+    "Backup",
+    "CIA-Triade"
+  ],
+  "lastUpdated": "2025-01-15T00:00:00Z"
 }

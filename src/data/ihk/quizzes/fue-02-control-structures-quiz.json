@@ -2,90 +2,343 @@
   "id": "fue-02-control-structures-quiz",
   "moduleId": "fue-02-control-structures",
   "title": "Kontrollstrukturen: Aktivitätsdiagramme und Pseudocode Quiz",
-  "description": "Teste dein Wissen über Kontrollstrukturen: Aktivitätsdiagramme und Pseudocode",
+  "description": "Teste dein Wissen über Kontrollstrukturen, Aktivitätsdiagramme und Pseudocode. Prüfungsrelevant ab 2025!",
   "category": "FÜ-02",
-  "difficulty": "beginner",
+  "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "newIn2025": true,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Kontrollstrukturen: Aktivitätsdiagramme und Pseudocode?",
+      "question": "Welche Darstellungsformen für Algorithmen sind ab 2025 in der IHK-Prüfung relevant?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Aktivitätsdiagramme und Pseudocode",
+        "Struktogramme und Programmablaufpläne",
+        "Nur Programmablaufpläne (PAP)",
+        "Nur Struktogramme (Nassi-Shneiderman)"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Aktivitätsdiagramme und Pseudocode",
+      "explanation": "Ab 2025 sind Aktivitätsdiagramme (UML) und Pseudocode prüfungsrelevant. Struktogramme und Programmablaufpläne (PAP) sind veraltet und nicht mehr Teil der Prüfung.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
-      "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche der folgenden Aussagen über die drei Grundstrukturen von Algorithmen sind korrekt?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Sequenz bedeutet, dass Befehle nacheinander ausgeführt werden",
+        "Verzweigung ermöglicht bedingte Ausführung von Code",
+        "Wiederholung wird auch Iteration genannt",
+        "Rekursion ist eine der drei Grundstrukturen"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
-      "points": 1,
-      "category": "Konzepte"
+      "correctAnswer": [
+        "Sequenz bedeutet, dass Befehle nacheinander ausgeführt werden",
+        "Verzweigung ermöglicht bedingte Ausführung von Code",
+        "Wiederholung wird auch Iteration genannt"
+      ],
+      "explanation": "Die drei Grundstrukturen sind: Sequenz (nacheinander), Verzweigung/Selektion (bedingt) und Wiederholung/Iteration (Schleifen). Rekursion ist eine Technik, aber keine Grundstruktur.",
+      "points": 2,
+      "category": "Grundlagen"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "single-choice",
+      "question": "Welches Symbol wird in Aktivitätsdiagrammen für eine Entscheidung verwendet?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Raute (◆)",
+        "Rechteck mit abgerundeten Ecken",
+        "Gefüllter Kreis (●)",
+        "Gefüllter Kreis mit Ring (◉)"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
-      "points": 2,
-      "category": "Anwendung"
+      "correctAnswer": "Raute (◆)",
+      "explanation": "In Aktivitätsdiagrammen wird eine Raute (◆) für Entscheidungsknoten verwendet. Rechtecke mit abgerundeten Ecken sind Aktivitäten, gefüllte Kreise sind Start-/Endknoten.",
+      "points": 1,
+      "category": "Aktivitätsdiagramme"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Was ist der Hauptunterschied zwischen einer while-Schleife und einer do-while-Schleife?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Die do-while-Schleife wird mindestens einmal ausgeführt (fußgesteuert)",
+        "Die while-Schleife wird mindestens einmal ausgeführt",
+        "Die do-while-Schleife kann keine Bedingung haben",
+        "Es gibt keinen Unterschied"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Die do-while-Schleife wird mindestens einmal ausgeführt (fußgesteuert)",
+      "explanation": "Die do-while-Schleife ist fußgesteuert und prüft die Bedingung am Ende, daher wird sie mindestens einmal ausgeführt. Die while-Schleife ist kopfgesteuert und prüft die Bedingung am Anfang.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Schleifen"
     },
     {
       "id": "q5",
-      "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "type": "code",
+      "question": "Was gibt dieser Pseudocode aus?\n\nBEGIN\n    counter = 0\n    WHILE counter < 3 DO\n        OUTPUT counter\n        counter = counter + 1\n    END WHILE\nEND",
+      "code": "BEGIN\n    counter = 0\n    WHILE counter < 3 DO\n        OUTPUT counter\n        counter = counter + 1\n    END WHILE\nEND",
+      "language": "pseudocode",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "0 1 2",
+        "1 2 3",
+        "0 1 2 3",
+        "1 2"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "0 1 2",
+      "explanation": "Die Schleife startet bei counter = 0 und läuft, solange counter < 3 ist. Es werden also 0, 1 und 2 ausgegeben. Bei counter = 3 wird die Bedingung false und die Schleife endet.",
+      "points": 2,
+      "category": "Pseudocode"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Welche Schlüsselwörter werden in Pseudocode typischerweise für eine Verzweigung verwendet?",
+      "options": [
+        "IF / THEN / ELSE",
+        "WHEN / DO / OTHERWISE",
+        "CHECK / TRUE / FALSE",
+        "DECIDE / YES / NO"
+      ],
+      "correctAnswer": "IF / THEN / ELSE",
+      "explanation": "In Pseudocode werden die Schlüsselwörter IF / THEN / ELSE für Verzweigungen verwendet. Diese sind standardisiert und werden in Großbuchstaben geschrieben.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Pseudocode"
+    },
+    {
+      "id": "q7",
+      "type": "code",
+      "question": "Was ist das Ergebnis dieses Java-Codes?",
+      "code": "int ergebnis = 1;\nfor (int i = 1; i <= 4; i++) {\n    ergebnis = ergebnis * i;\n}\nSystem.out.println(ergebnis);",
+      "language": "java",
+      "options": [
+        "24",
+        "10",
+        "4",
+        "120"
+      ],
+      "correctAnswer": "24",
+      "explanation": "Der Code berechnet die Fakultät von 4: 1 * 1 * 2 * 3 * 4 = 24. Die for-Schleife multipliziert ergebnis nacheinander mit 1, 2, 3 und 4.",
+      "points": 2,
+      "category": "Code-Analyse"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Wann sollte eine for-Schleife gegenüber einer while-Schleife bevorzugt werden?",
+      "options": [
+        "Wenn die Anzahl der Iterationen im Voraus bekannt ist",
+        "Wenn die Bedingung komplex ist",
+        "Wenn die Schleife mindestens einmal ausgeführt werden muss",
+        "For-Schleifen sind immer besser als while-Schleifen"
+      ],
+      "correctAnswer": "Wenn die Anzahl der Iterationen im Voraus bekannt ist",
+      "explanation": "For-Schleifen (Zählschleifen) sind ideal, wenn die Anzahl der Iterationen bekannt ist. While-Schleifen werden verwendet, wenn die Anzahl unbekannt ist und von einer Bedingung abhängt.",
+      "points": 1,
+      "category": "Best Practices"
+    },
+    {
+      "id": "q9",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über Rekursion sind korrekt?",
+      "options": [
+        "Eine rekursive Funktion ruft sich selbst auf",
+        "Rekursion benötigt immer eine Abbruchbedingung",
+        "Rekursion ist immer effizienter als Iteration",
+        "Fakultät und Fibonacci sind klassische Beispiele für Rekursion"
+      ],
+      "correctAnswer": [
+        "Eine rekursive Funktion ruft sich selbst auf",
+        "Rekursion benötigt immer eine Abbruchbedingung",
+        "Fakultät und Fibonacci sind klassische Beispiele für Rekursion"
+      ],
+      "explanation": "Rekursion bedeutet Selbstaufruf und benötigt eine Abbruchbedingung, um Endlosschleifen zu vermeiden. Rekursion ist nicht immer effizienter als Iteration (oft langsamer wegen Stack-Overhead), aber manchmal eleganter.",
+      "points": 2,
+      "category": "Rekursion"
+    },
+    {
+      "id": "q10",
+      "type": "code",
+      "question": "Was gibt diese rekursive Funktion für fibonacci(5) zurück?",
+      "code": "FUNCTION fibonacci(n)\nBEGIN\n    IF n <= 1 THEN\n        RETURN n\n    ELSE\n        RETURN fibonacci(n-1) + fibonacci(n-2)\n    END IF\nEND",
+      "language": "pseudocode",
+      "options": [
+        "5",
+        "8",
+        "3",
+        "13"
+      ],
+      "correctAnswer": "5",
+      "explanation": "fibonacci(5) = fibonacci(4) + fibonacci(3) = 3 + 2 = 5. Die Fibonacci-Folge ist: 0, 1, 1, 2, 3, 5, 8, 13... Der 5. Wert (bei Index 5) ist 5.",
+      "points": 3,
+      "category": "Rekursion"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Welche Aussage über switch/case-Anweisungen ist korrekt?",
+      "options": [
+        "Switch/case ist eine Mehrfachverzweigung für mehrere mögliche Werte",
+        "Switch/case kann nur mit Strings verwendet werden",
+        "Switch/case ist langsamer als mehrere if-else-Anweisungen",
+        "Switch/case benötigt keine break-Anweisungen"
+      ],
+      "correctAnswer": "Switch/case ist eine Mehrfachverzweigung für mehrere mögliche Werte",
+      "explanation": "Switch/case ist eine elegante Mehrfachverzweigung, wenn eine Variable mit mehreren konstanten Werten verglichen werden soll. Break-Anweisungen sind wichtig, um Fall-Through zu vermeiden.",
+      "points": 1,
+      "category": "Verzweigung"
+    },
+    {
+      "id": "q12",
+      "type": "code",
+      "question": "Was ist der Fehler in diesem Pseudocode?",
+      "code": "BEGIN\n    i = 0\n    WHILE i < 10\n        OUTPUT i\n    END WHILE\nEND",
+      "language": "pseudocode",
+      "options": [
+        "Die Variable i wird nie erhöht - Endlosschleife",
+        "Die Bedingung ist falsch",
+        "Es fehlt das DO-Schlüsselwort",
+        "Es gibt keinen Fehler"
+      ],
+      "correctAnswer": "Die Variable i wird nie erhöht - Endlosschleife",
+      "explanation": "Die Variable i wird in der Schleife nie erhöht, daher bleibt die Bedingung i < 10 immer true und es entsteht eine Endlosschleife. Es sollte 'i = i + 1' in der Schleife stehen.",
+      "points": 2,
+      "category": "Fehleranalyse"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Warum sind Struktogramme und Programmablaufpläne (PAP) ab 2025 nicht mehr prüfungsrelevant?",
+      "options": [
+        "Sie sind veraltet und nicht standardisiert (kein UML)",
+        "Sie sind zu einfach",
+        "Sie werden in der Praxis häufiger verwendet",
+        "Sie sind nur für Anfänger geeignet"
+      ],
+      "correctAnswer": "Sie sind veraltet und nicht standardisiert (kein UML)",
+      "explanation": "Struktogramme und PAP sind veraltet (aus den 1960er Jahren), nicht standardisiert und werden in der modernen Softwareentwicklung kaum noch verwendet. Aktivitätsdiagramme (UML) sind der moderne Standard.",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Best Practices gelten für das Schreiben von Pseudocode?",
+      "options": [
+        "Konsistente Verwendung von Schlüsselwörtern in GROSSBUCHSTABEN",
+        "Einrückungen zur Darstellung der Hierarchie verwenden",
+        "Sprachunabhängig formulieren, keine spezifische Syntax",
+        "Möglichst viele technische Details einbauen"
+      ],
+      "correctAnswer": [
+        "Konsistente Verwendung von Schlüsselwörtern in GROSSBUCHSTABEN",
+        "Einrückungen zur Darstellung der Hierarchie verwenden",
+        "Sprachunabhängig formulieren, keine spezifische Syntax"
+      ],
+      "explanation": "Guter Pseudocode verwendet konsistente Schlüsselwörter in Großbuchstaben, Einrückungen für Struktur und ist sprachunabhängig. Er sollte verständlich sein, ohne zu viele technische Details.",
+      "points": 2,
+      "category": "Best Practices"
+    },
+    {
+      "id": "q15",
+      "type": "code",
+      "question": "Was macht dieser Java-Code?",
+      "code": "public int summe(int n) {\n    if (n <= 0) {\n        return 0;\n    }\n    return n + summe(n - 1);\n}",
+      "language": "java",
+      "options": [
+        "Berechnet die Summe aller Zahlen von 1 bis n rekursiv",
+        "Berechnet die Fakultät von n",
+        "Berechnet die Fibonacci-Zahl für n",
+        "Gibt immer 0 zurück"
+      ],
+      "correctAnswer": "Berechnet die Summe aller Zahlen von 1 bis n rekursiv",
+      "explanation": "Die Funktion berechnet rekursiv die Summe: summe(5) = 5 + summe(4) = 5 + 4 + summe(3) = ... = 5 + 4 + 3 + 2 + 1 + 0 = 15. Die Abbruchbedingung ist n <= 0.",
+      "points": 2,
+      "category": "Rekursion"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Welches Aktivitätsdiagramm-Symbol markiert den Start eines Ablaufs?",
+      "options": [
+        "Gefüllter Kreis (●)",
+        "Gefüllter Kreis mit Ring (◉)",
+        "Raute (◆)",
+        "Rechteck mit abgerundeten Ecken"
+      ],
+      "correctAnswer": "Gefüllter Kreis (●)",
+      "explanation": "Der Startknoten wird als gefüllter Kreis (●) dargestellt. Der Endknoten ist ein gefüllter Kreis mit Ring (◉), Rauten sind Entscheidungen und Rechtecke sind Aktivitäten.",
+      "points": 1,
+      "category": "Aktivitätsdiagramme"
+    },
+    {
+      "id": "q17",
+      "type": "code",
+      "question": "Wie viele Iterationen führt diese Schleife aus?",
+      "code": "for (int i = 5; i > 0; i--) {\n    System.out.println(i);\n}",
+      "language": "java",
+      "options": [
+        "5",
+        "4",
+        "6",
+        "Endlosschleife"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Die Schleife startet bei i = 5 und läuft, solange i > 0 ist. Sie gibt 5, 4, 3, 2, 1 aus - also 5 Iterationen. Bei i = 0 wird die Bedingung false.",
+      "points": 2,
+      "category": "Schleifen"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was ist der Vorteil von Aktivitätsdiagrammen gegenüber Pseudocode?",
+      "options": [
+        "Grafische Darstellung ist übersichtlicher bei einfachen Abläufen",
+        "Aktivitätsdiagramme sind schneller zu erstellen",
+        "Aktivitätsdiagramme enthalten mehr Details",
+        "Aktivitätsdiagramme sind besser für komplexe Algorithmen"
+      ],
+      "correctAnswer": "Grafische Darstellung ist übersichtlicher bei einfachen Abläufen",
+      "explanation": "Aktivitätsdiagramme sind grafisch und daher übersichtlicher bei einfachen Abläufen. Pseudocode ist besser für komplexe Algorithmen mit vielen Details und schneller zu erstellen.",
+      "points": 1,
+      "category": "Vergleich"
+    },
+    {
+      "id": "q19",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über for-Schleifen sind korrekt?",
+      "options": [
+        "For-Schleifen werden auch Zählschleifen genannt",
+        "For-Schleifen haben Initialisierung, Bedingung und Inkrement",
+        "For-Schleifen können nicht vorzeitig mit break beendet werden",
+        "For-Schleifen sind ideal, wenn die Anzahl der Iterationen bekannt ist"
+      ],
+      "correctAnswer": [
+        "For-Schleifen werden auch Zählschleifen genannt",
+        "For-Schleifen haben Initialisierung, Bedingung und Inkrement",
+        "For-Schleifen sind ideal, wenn die Anzahl der Iterationen bekannt ist"
+      ],
+      "explanation": "For-Schleifen sind Zählschleifen mit drei Teilen: Initialisierung, Bedingung und Inkrement. Sie sind ideal für bekannte Iterationszahlen und können mit break vorzeitig beendet werden.",
+      "points": 2,
+      "category": "Schleifen"
+    },
+    {
+      "id": "q20",
+      "type": "code",
+      "question": "Was ist das Problem mit dieser rekursiven Funktion?",
+      "code": "FUNCTION fakultaet(n)\nBEGIN\n    RETURN n * fakultaet(n - 1)\nEND",
+      "language": "pseudocode",
+      "options": [
+        "Es fehlt die Abbruchbedingung - führt zu Endlosrekursion",
+        "Die Berechnung ist falsch",
+        "Rekursion kann nicht für Fakultät verwendet werden",
+        "Es gibt kein Problem"
+      ],
+      "correctAnswer": "Es fehlt die Abbruchbedingung - führt zu Endlosrekursion",
+      "explanation": "Die Funktion hat keine Abbruchbedingung (z.B. IF n <= 1 THEN RETURN 1). Ohne diese läuft die Rekursion endlos und führt zu einem Stack Overflow. Jede Rekursion braucht eine Abbruchbedingung!",
+      "points": 2,
+      "category": "Fehleranalyse"
     }
   ],
   "tags": [
@@ -96,6 +349,13 @@
     "uml",
     "sequenz",
     "verzweigung",
-    "schleife"
-  ]
+    "schleife",
+    "rekursion",
+    "if-else",
+    "switch-case",
+    "while",
+    "for",
+    "do-while"
+  ],
+  "lastUpdated": "2025-01-05T12:00:00Z"
 }

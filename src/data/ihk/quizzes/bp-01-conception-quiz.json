@@ -1,0 +1,316 @@
+{
+  "id": "bp-01-conception-quiz",
+  "moduleId": "bp-01-conception",
+  "title": "Netzwerktopologien und Protokolle",
+  "description": "Umfassendes Quiz zu Netzwerkgrundlagen, Topologien, OSI-Modell, TCP/IP-Protokollen und wichtigen Netzwerkdiensten",
+  "category": "BP-01",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 30,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welche Netzwerktopologie bietet die höchste Ausfallsicherheit durch redundante Verbindungen?",
+      "options": [
+        "Stern-Topologie",
+        "Bus-Topologie",
+        "Ring-Topologie",
+        "Vermaschte Topologie (Mesh)"
+      ],
+      "correctAnswer": "Vermaschte Topologie (Mesh)",
+      "explanation": "Die vermaschte Topologie (Mesh) bietet die höchste Ausfallsicherheit, da jedes Gerät mit mehreren anderen Geräten verbunden ist. Bei Ausfall einer Verbindung existieren alternative Übertragungswege. Vollvermaschte Netzwerke haben Verbindungen zwischen allen Geräten, teilvermaschte nur zwischen kritischen Komponenten. Stern-, Bus- und Ring-Topologien haben jeweils Single Points of Failure.",
+      "points": 1,
+      "category": "Netzwerktopologien"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Was ist der Hauptnachteil einer Stern-Topologie?",
+      "options": [
+        "Hoher Kabelaufwand und zentraler Switch als Single Point of Failure",
+        "Ausfall eines Endgeräts betrifft das gesamte Netzwerk",
+        "Schwierige Erweiterung des Netzwerks",
+        "Keine zentrale Verwaltung möglich"
+      ],
+      "correctAnswer": "Hoher Kabelaufwand und zentraler Switch als Single Point of Failure",
+      "explanation": "Der Hauptnachteil der Stern-Topologie ist der höhere Kabelaufwand (jedes Gerät benötigt ein eigenes Kabel zum Switch) und dass der zentrale Switch einen Single Point of Failure darstellt. Fällt der Switch aus, ist das gesamte Netzwerk betroffen. Die anderen Aussagen sind falsch: Ausfall eines Endgeräts betrifft nur dieses Gerät, Erweiterung ist einfach, und zentrale Verwaltung ist ein Vorteil.",
+      "points": 1,
+      "category": "Netzwerktopologien"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Welcher Netzwerktyp beschreibt ein lokales Netzwerk innerhalb eines Gebäudes oder Campus?",
+      "options": [
+        "WAN (Wide Area Network)",
+        "MAN (Metropolitan Area Network)",
+        "LAN (Local Area Network)",
+        "WLAN (Wireless LAN)"
+      ],
+      "correctAnswer": "LAN (Local Area Network)",
+      "explanation": "Ein LAN (Local Area Network) ist ein lokales Netzwerk, das sich auf ein Gebäude oder einen Campus beschränkt. Es bietet hohe Übertragungsraten (1-100 Gbps) und geringe Latenz. WAN verbindet Städte/Länder, MAN ist ein städtisches Netzwerk, und WLAN ist die drahtlose Variante eines LAN.",
+      "points": 1,
+      "category": "Netzwerktypen"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Wie viele Schichten hat das OSI-Modell?",
+      "options": [
+        "4 Schichten",
+        "5 Schichten",
+        "7 Schichten",
+        "9 Schichten"
+      ],
+      "correctAnswer": "7 Schichten",
+      "explanation": "Das OSI-Modell (Open Systems Interconnection) hat 7 Schichten: Anwendungsschicht, Darstellungsschicht, Sitzungsschicht, Transportschicht, Vermittlungsschicht, Sicherungsschicht und Bitübertragungsschicht. Das TCP/IP-Modell hat dagegen nur 4 Schichten.",
+      "points": 1,
+      "category": "OSI-Modell"
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "question": "Welche Protokolle gehören zur Transportschicht des OSI-Modells?",
+      "options": [
+        "TCP (Transmission Control Protocol)",
+        "UDP (User Datagram Protocol)",
+        "IP (Internet Protocol)",
+        "HTTP (Hypertext Transfer Protocol)"
+      ],
+      "correctAnswer": ["TCP (Transmission Control Protocol)", "UDP (User Datagram Protocol)"],
+      "explanation": "TCP und UDP sind Transportschicht-Protokolle (Schicht 4). TCP ist verbindungsorientiert und zuverlässig, UDP ist verbindungslos und schneller. IP gehört zur Vermittlungsschicht (Schicht 3) und HTTP zur Anwendungsschicht (Schicht 7).",
+      "points": 2,
+      "category": "OSI-Modell"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen TCP und UDP?",
+      "options": [
+        "TCP ist verbindungsorientiert und zuverlässig, UDP ist verbindungslos und unzuverlässig",
+        "TCP ist schneller als UDP",
+        "UDP garantiert die Reihenfolge der Pakete, TCP nicht",
+        "TCP wird für Streaming verwendet, UDP für Webseiten"
+      ],
+      "correctAnswer": "TCP ist verbindungsorientiert und zuverlässig, UDP ist verbindungslos und unzuverlässig",
+      "explanation": "TCP (Transmission Control Protocol) ist verbindungsorientiert, zuverlässig (mit Bestätigung und Neuübertragung) und garantiert die Reihenfolge. UDP (User Datagram Protocol) ist verbindungslos, unzuverlässig (keine Bestätigung) und schneller durch geringeren Overhead. UDP wird für Streaming und Gaming verwendet, TCP für HTTP, FTP und E-Mail.",
+      "points": 1,
+      "category": "Protokolle"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Welche drei Schritte umfasst der TCP Three-Way-Handshake?",
+      "options": [
+        "SYN, SYN-ACK, ACK",
+        "CONNECT, ACCEPT, CONFIRM",
+        "REQUEST, RESPONSE, ACKNOWLEDGE",
+        "HELLO, WELCOME, READY"
+      ],
+      "correctAnswer": "SYN, SYN-ACK, ACK",
+      "explanation": "Der TCP Three-Way-Handshake besteht aus drei Schritten: 1) Client sendet SYN (Synchronize), 2) Server antwortet mit SYN-ACK (Synchronize-Acknowledge), 3) Client bestätigt mit ACK (Acknowledge). Danach ist die Verbindung aufgebaut und Daten können übertragen werden.",
+      "points": 1,
+      "category": "Protokolle"
+    },
+    {
+      "id": "q8",
+      "type": "multiple-choice",
+      "question": "Für welche Anwendungen ist UDP besonders geeignet?",
+      "options": [
+        "Video- und Audio-Streaming",
+        "Online-Gaming",
+        "E-Mail-Versand (SMTP)",
+        "DNS-Abfragen"
+      ],
+      "correctAnswer": ["Video- und Audio-Streaming", "Online-Gaming", "DNS-Abfragen"],
+      "explanation": "UDP ist ideal für zeitkritische Anwendungen, bei denen geringe Latenz wichtiger ist als Zuverlässigkeit: Streaming (verlorene Pakete sind akzeptabel), Gaming (schnelle Reaktion wichtig) und DNS (kurze Abfragen, Wiederholung bei Timeout). SMTP verwendet TCP, da E-Mails zuverlässig übertragen werden müssen.",
+      "points": 2,
+      "category": "Protokolle"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Welche HTTP-Methode wird verwendet, um Daten vom Server abzurufen?",
+      "options": [
+        "POST",
+        "GET",
+        "PUT",
+        "DELETE"
+      ],
+      "correctAnswer": "GET",
+      "explanation": "GET wird verwendet, um Daten vom Server abzurufen (z.B. Webseiten, Bilder). POST sendet Daten an den Server, PUT aktualisiert bestehende Ressourcen, und DELETE löscht Ressourcen. GET-Anfragen sollten keine Seiteneffekte haben (idempotent).",
+      "points": 1,
+      "category": "HTTP"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was bedeutet der HTTP-Status-Code 404?",
+      "options": [
+        "Server-Fehler",
+        "Erfolgreiche Anfrage",
+        "Ressource nicht gefunden",
+        "Umleitung"
+      ],
+      "correctAnswer": "Ressource nicht gefunden",
+      "explanation": "HTTP-Status-Code 404 bedeutet 'Not Found' - die angeforderte Ressource wurde auf dem Server nicht gefunden. Status-Codes beginnen mit 2xx für Erfolg (200 OK), 3xx für Umleitung, 4xx für Client-Fehler und 5xx für Server-Fehler (z.B. 500 Internal Server Error).",
+      "points": 1,
+      "category": "HTTP"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen HTTP und HTTPS?",
+      "options": [
+        "HTTPS ist schneller als HTTP",
+        "HTTPS verwendet verschlüsselte Übertragung über TLS/SSL",
+        "HTTP unterstützt mehr Methoden als HTTPS",
+        "HTTPS funktioniert nur mit IPv6"
+      ],
+      "correctAnswer": "HTTPS verwendet verschlüsselte Übertragung über TLS/SSL",
+      "explanation": "HTTPS (HTTP Secure) ist HTTP über TLS/SSL und bietet verschlüsselte Übertragung sowie Authentifizierung des Servers. Dies schützt vor Abhören und Man-in-the-Middle-Angriffen. HTTPS ist etwas langsamer durch Verschlüsselung, unterstützt dieselben Methoden wie HTTP und funktioniert mit IPv4 und IPv6.",
+      "points": 1,
+      "category": "HTTP"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Welche Hauptfunktion hat das DNS (Domain Name System)?",
+      "options": [
+        "Automatische IP-Adressvergabe an Clients",
+        "Verschlüsselung von Netzwerkverkehr",
+        "Auflösung von Domainnamen zu IP-Adressen",
+        "Routing von Datenpaketen"
+      ],
+      "correctAnswer": "Auflösung von Domainnamen zu IP-Adressen",
+      "explanation": "DNS (Domain Name System) löst Domainnamen (z.B. www.example.com) in IP-Adressen (z.B. 192.0.2.1) auf. Es ist ein hierarchisches System mit Root-Servern, TLD-Servern und autoritativen Servern. Automatische IP-Vergabe ist DHCP, Verschlüsselung ist TLS/SSL, und Routing ist Aufgabe von Routern.",
+      "points": 1,
+      "category": "DNS"
+    },
+    {
+      "id": "q13",
+      "type": "multiple-choice",
+      "question": "Welche DNS-Record-Typen existieren?",
+      "options": [
+        "A-Record (IPv4-Adresse)",
+        "AAAA-Record (IPv6-Adresse)",
+        "MX-Record (Mail-Server)",
+        "TCP-Record (Transportprotokoll)"
+      ],
+      "correctAnswer": ["A-Record (IPv4-Adresse)", "AAAA-Record (IPv6-Adresse)", "MX-Record (Mail-Server)"],
+      "explanation": "A-Records speichern IPv4-Adressen, AAAA-Records IPv6-Adressen, und MX-Records definieren Mail-Server für eine Domain. Weitere wichtige Record-Typen sind CNAME (Alias), TXT (Textinformationen) und NS (Nameserver). TCP-Record existiert nicht - TCP ist ein Transportprotokoll, kein DNS-Record-Typ.",
+      "points": 2,
+      "category": "DNS"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Welche vier Schritte umfasst der DHCP-Prozess zur automatischen IP-Adressvergabe?",
+      "options": [
+        "Connect, Request, Assign, Confirm",
+        "Discover, Offer, Request, Acknowledge",
+        "Hello, Welcome, Accept, Ready",
+        "SYN, SYN-ACK, ACK, FIN"
+      ],
+      "correctAnswer": "Discover, Offer, Request, Acknowledge",
+      "explanation": "Der DHCP-Prozess (DORA) besteht aus vier Schritten: 1) DHCP Discover (Client sucht Server per Broadcast), 2) DHCP Offer (Server bietet IP-Konfiguration), 3) DHCP Request (Client akzeptiert Angebot), 4) DHCP Acknowledge (Server bestätigt Zuweisung). Danach hat der Client eine gültige IP-Adresse, Subnetzmaske, Gateway und DNS-Server.",
+      "points": 1,
+      "category": "DHCP"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Welcher Port wird standardmäßig für HTTPS verwendet?",
+      "options": [
+        "Port 80",
+        "Port 443",
+        "Port 8080",
+        "Port 22"
+      ],
+      "correctAnswer": "Port 443",
+      "explanation": "HTTPS verwendet standardmäßig Port 443. HTTP verwendet Port 80, SSH Port 22, und Port 8080 wird oft als alternativer HTTP-Port für Entwicklung oder Proxy-Server verwendet. Well-Known Ports (0-1023) sind für Standarddienste reserviert.",
+      "points": 1,
+      "category": "Ports"
+    },
+    {
+      "id": "q16",
+      "type": "multiple-choice",
+      "question": "Welche Ports gehören zu den Well-Known Ports für Datenbankdienste?",
+      "options": [
+        "Port 3306 (MySQL)",
+        "Port 5432 (PostgreSQL)",
+        "Port 80 (HTTP)",
+        "Port 1433 (Microsoft SQL Server)"
+      ],
+      "correctAnswer": ["Port 3306 (MySQL)", "Port 5432 (PostgreSQL)", "Port 1433 (Microsoft SQL Server)"],
+      "explanation": "MySQL verwendet Port 3306, PostgreSQL Port 5432, und Microsoft SQL Server Port 1433. Diese Ports sind standardmäßig für Datenbankverbindungen konfiguriert. Port 80 ist für HTTP und gehört nicht zu Datenbankdiensten. Weitere wichtige Datenbank-Ports: MongoDB (27017), Redis (6379).",
+      "points": 2,
+      "category": "Ports"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Welcher Port wird für DNS-Abfragen verwendet?",
+      "options": [
+        "Port 25",
+        "Port 53",
+        "Port 67",
+        "Port 110"
+      ],
+      "correctAnswer": "Port 53",
+      "explanation": "DNS verwendet Port 53 für Namensauflösungen, sowohl über UDP (für normale Abfragen) als auch TCP (für Zonentransfers). Port 25 ist SMTP (E-Mail), Port 67 ist DHCP-Server, und Port 110 ist POP3 (E-Mail-Abruf).",
+      "points": 1,
+      "category": "Ports"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was ist ein Vorteil von IPv6 gegenüber IPv4?",
+      "options": [
+        "IPv6 ist schneller als IPv4",
+        "IPv6 hat praktisch unbegrenzte Adressen durch 128-Bit-Adressierung",
+        "IPv6 benötigt keine Router",
+        "IPv6 ist einfacher zu konfigurieren als IPv4"
+      ],
+      "correctAnswer": "IPv6 hat praktisch unbegrenzte Adressen durch 128-Bit-Adressierung",
+      "explanation": "IPv6 verwendet 128-Bit-Adressen (statt 32-Bit bei IPv4) und bietet damit praktisch unbegrenzte Adressen (ca. 340 Sextillionen). Dies löst das Problem der IPv4-Adressknappheit. IPv6 hat auch einen vereinfachten Header und integrierte Sicherheitsfunktionen (IPsec), ist aber nicht grundsätzlich schneller und benötigt weiterhin Router.",
+      "points": 1,
+      "category": "IP-Protokoll"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Welche Netzwerktopologie wurde früher bei Ethernet (10Base2, 10Base5) verwendet?",
+      "options": [
+        "Stern-Topologie",
+        "Bus-Topologie",
+        "Ring-Topologie",
+        "Mesh-Topologie"
+      ],
+      "correctAnswer": "Bus-Topologie",
+      "explanation": "Frühe Ethernet-Standards (10Base2 'Thin Ethernet' und 10Base5 'Thick Ethernet') verwendeten die Bus-Topologie mit einem gemeinsamen Koaxialkabel. Alle Geräte waren an dieses Kabel angeschlossen. Moderne Ethernet-Netzwerke (100Base-TX, 1000Base-T) verwenden die Stern-Topologie mit Switches.",
+      "points": 1,
+      "category": "Netzwerktopologien"
+    },
+    {
+      "id": "q20",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über die Ring-Topologie sind korrekt?",
+      "options": [
+        "Daten fließen in eine Richtung oder bidirektional",
+        "Es gibt keine Kollisionen durch Token-basierte Zugriffskontrolle",
+        "Ausfall eines Geräts kann das gesamte Netzwerk unterbrechen",
+        "Sie ist die häufigste Topologie in modernen LANs"
+      ],
+      "correctAnswer": ["Daten fließen in eine Richtung oder bidirektional", "Es gibt keine Kollisionen durch Token-basierte Zugriffskontrolle", "Ausfall eines Geräts kann das gesamte Netzwerk unterbrechen"],
+      "explanation": "In der Ring-Topologie fließen Daten in eine Richtung (oder bidirektional bei doppeltem Ring). Token-basierte Verfahren (Token Ring, FDDI) verhindern Kollisionen. Der Ausfall eines Geräts kann den Ring unterbrechen, außer bei redundanten Ringen. Die Stern-Topologie ist heute die häufigste in LANs, nicht die Ring-Topologie.",
+      "points": 2,
+      "category": "Netzwerktopologien"
+    }
+  ],
+  "tags": ["Netzwerk", "Topologie", "OSI-Modell", "TCP/IP", "HTTP", "DNS", "DHCP", "Ports", "Protokolle"],
+  "lastUpdated": "2025-01-10T00:00:00Z"
+}

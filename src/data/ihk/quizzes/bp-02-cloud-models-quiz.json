@@ -1,99 +1,350 @@
 {
   "id": "bp-02-cloud-models-quiz",
   "moduleId": "bp-02-cloud-models",
-  "title": "Cloud-Modelle (SaaS, IaaS, PaaS) Quiz",
-  "description": "Teste dein Wissen über Cloud-Modelle (SaaS, IaaS, PaaS)",
+  "title": "Cloud-Modelle und Deployment-Typen Quiz",
+  "description": "Teste dein Wissen über Cloud-Service-Modelle (IaaS, PaaS, SaaS), Deployment-Modelle (Public, Private, Hybrid Cloud) und Cloud-Provider",
   "category": "BP-02",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 20,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Cloud-Modelle (SaaS, IaaS, PaaS)?",
+      "question": "Was ist Cloud Computing?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Die Bereitstellung von IT-Ressourcen über das Internet nach Bedarf",
+        "Ein lokaler Server im Unternehmen",
+        "Eine Software für Datenbanken",
+        "Ein Netzwerkprotokoll"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Die Bereitstellung von IT-Ressourcen über das Internet nach Bedarf",
+      "explanation": "Cloud Computing ist die bedarfsgerechte Bereitstellung von IT-Ressourcen (Rechenleistung, Speicher, Anwendungen) über das Internet mit nutzungsbasierter Abrechnung (Pay-as-you-go).",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Was bedeutet IaaS (Infrastructure as a Service)?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Bereitstellung von virtualisierter Hardware-Infrastruktur (Server, Speicher, Netzwerk)",
+        "Bereitstellung von fertigen Anwendungen über das Internet",
+        "Bereitstellung von Entwicklungsplattformen",
+        "Bereitstellung von Datenbanken"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Bereitstellung von virtualisierter Hardware-Infrastruktur (Server, Speicher, Netzwerk)",
+      "explanation": "IaaS stellt virtualisierte Hardware-Ressourcen bereit: virtuelle Maschinen, Speicher, Netzwerke. Der Kunde verwaltet Betriebssystem, Middleware und Anwendungen. Beispiele: AWS EC2, Azure Virtual Machines.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "Service-Modelle"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "single-choice",
+      "question": "Was bedeutet PaaS (Platform as a Service)?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Bereitstellung einer Entwicklungs- und Laufzeitumgebung für Anwendungen",
+        "Bereitstellung von virtuellen Servern",
+        "Bereitstellung von fertigen Anwendungen",
+        "Bereitstellung von Netzwerk-Hardware"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
-      "points": 2,
-      "category": "Anwendung"
+      "correctAnswer": "Bereitstellung einer Entwicklungs- und Laufzeitumgebung für Anwendungen",
+      "explanation": "PaaS stellt eine komplette Plattform für Entwicklung, Test und Deployment von Anwendungen bereit. Der Provider verwaltet Infrastruktur und Plattform. Beispiele: Google App Engine, Azure App Service, Heroku.",
+      "points": 1,
+      "category": "Service-Modelle"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Was bedeutet SaaS (Software as a Service)?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Bereitstellung von fertigen Anwendungen über das Internet",
+        "Bereitstellung von virtuellen Servern",
+        "Bereitstellung von Entwicklungstools",
+        "Bereitstellung von Datenbanken"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Bereitstellung von fertigen Anwendungen über das Internet",
+      "explanation": "SaaS stellt fertige Anwendungen über das Internet bereit, die über einen Browser genutzt werden. Der Provider verwaltet alles. Beispiele: Microsoft 365, Google Workspace, Salesforce, Dropbox.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Service-Modelle"
     },
     {
       "id": "q5",
-      "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über die Cloud-Service-Modelle sind korrekt? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Bei IaaS hat der Kunde die meiste Kontrolle",
+        "Bei SaaS hat der Kunde die wenigste Verwaltungsarbeit",
+        "PaaS liegt zwischen IaaS und SaaS",
+        "SaaS erfordert Installation auf lokalen Rechnern"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": [
+        "Bei IaaS hat der Kunde die meiste Kontrolle",
+        "Bei SaaS hat der Kunde die wenigste Verwaltungsarbeit",
+        "PaaS liegt zwischen IaaS und SaaS"
+      ],
+      "explanation": "IaaS bietet maximale Kontrolle (aber auch Verwaltungsaufwand), SaaS minimale Verwaltung (aber wenig Kontrolle), PaaS liegt dazwischen. SaaS wird über Browser genutzt, keine lokale Installation nötig.",
+      "points": 2,
+      "category": "Service-Modelle"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist eine Public Cloud?",
+      "options": [
+        "Cloud-Infrastruktur, die öffentlich über das Internet verfügbar ist",
+        "Eine Cloud nur für Regierungsbehörden",
+        "Eine Cloud im eigenen Rechenzentrum",
+        "Eine kostenlose Cloud"
+      ],
+      "correctAnswer": "Cloud-Infrastruktur, die öffentlich über das Internet verfügbar ist",
+      "explanation": "Public Cloud ist eine Cloud-Infrastruktur, die von einem Provider betrieben wird und öffentlich über das Internet für jeden Kunden verfügbar ist. Ressourcen werden mit anderen Kunden geteilt (Multi-Tenancy). Beispiele: AWS, Azure, Google Cloud.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Deployment-Modelle"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist eine Private Cloud?",
+      "options": [
+        "Cloud-Infrastruktur, die exklusiv für eine Organisation betrieben wird",
+        "Eine Cloud ohne Internetverbindung",
+        "Eine Cloud für Privatpersonen",
+        "Eine kostenlose Cloud"
+      ],
+      "correctAnswer": "Cloud-Infrastruktur, die exklusiv für eine Organisation betrieben wird",
+      "explanation": "Private Cloud ist eine Cloud-Infrastruktur, die exklusiv für eine Organisation betrieben wird, entweder im eigenen Rechenzentrum (On-Premises) oder von einem Provider gehostet. Sie bietet mehr Kontrolle und Sicherheit.",
+      "points": 1,
+      "category": "Deployment-Modelle"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was ist eine Hybrid Cloud?",
+      "options": [
+        "Kombination aus Public und Private Cloud mit Datenintegration",
+        "Eine Cloud mit zwei Providern",
+        "Eine Cloud für mobile Geräte",
+        "Eine Cloud mit verschiedenen Service-Modellen"
+      ],
+      "correctAnswer": "Kombination aus Public und Private Cloud mit Datenintegration",
+      "explanation": "Hybrid Cloud kombiniert Public und Private Cloud, wobei Daten und Anwendungen zwischen beiden ausgetauscht werden können. Dies ermöglicht Flexibilität: sensible Daten in Private Cloud, skalierbare Workloads in Public Cloud.",
+      "points": 1,
+      "category": "Deployment-Modelle"
+    },
+    {
+      "id": "q9",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet Cloud Computing? (Mehrere Antworten möglich)",
+      "options": [
+        "Skalierbarkeit nach Bedarf",
+        "Nutzungsbasierte Abrechnung (Pay-as-you-go)",
+        "Keine Vorabinvestitionen in Hardware",
+        "Vollständige Kontrolle über physische Server"
+      ],
+      "correctAnswer": [
+        "Skalierbarkeit nach Bedarf",
+        "Nutzungsbasierte Abrechnung (Pay-as-you-go)",
+        "Keine Vorabinvestitionen in Hardware"
+      ],
+      "explanation": "Cloud bietet flexible Skalierung, nutzungsbasierte Kosten und keine Vorabinvestitionen. Vollständige Kontrolle über physische Server hat man nur bei On-Premises-Lösungen, nicht in der Cloud.",
+      "points": 2,
+      "category": "Vorteile"
+    },
+    {
+      "id": "q10",
+      "type": "multiple-choice",
+      "question": "Welche Nachteile oder Risiken hat Cloud Computing? (Mehrere Antworten möglich)",
+      "options": [
+        "Abhängigkeit vom Cloud-Provider (Vendor Lock-in)",
+        "Datenschutz- und Compliance-Herausforderungen",
+        "Internetverbindung erforderlich",
+        "Unbegrenzte kostenlose Ressourcen"
+      ],
+      "correctAnswer": [
+        "Abhängigkeit vom Cloud-Provider (Vendor Lock-in)",
+        "Datenschutz- und Compliance-Herausforderungen",
+        "Internetverbindung erforderlich"
+      ],
+      "explanation": "Cloud-Risiken umfassen Vendor Lock-in, Datenschutz-Compliance (DSGVO), Abhängigkeit von Internetverbindung und potenzielle Sicherheitsbedenken. Ressourcen sind nicht kostenlos, sondern werden nach Nutzung abgerechnet.",
+      "points": 2,
+      "category": "Nachteile"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Welches Service-Modell eignet sich am besten für ein Startup, das schnell eine Webanwendung entwickeln möchte?",
+      "options": [
+        "PaaS",
+        "IaaS",
+        "SaaS",
+        "On-Premises"
+      ],
+      "correctAnswer": "PaaS",
+      "explanation": "PaaS ist ideal für schnelle Anwendungsentwicklung, da die Plattform (Server, Datenbanken, Entwicklungstools) bereits bereitgestellt ist. Das Team kann sich auf die Anwendung konzentrieren, ohne Infrastruktur zu verwalten.",
+      "points": 1,
+      "category": "Anwendungsfälle"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Welches Service-Modell eignet sich am besten für ein Unternehmen, das vollständige Kontrolle über Betriebssystem und Netzwerk benötigt?",
+      "options": [
+        "IaaS",
+        "PaaS",
+        "SaaS",
+        "FaaS"
+      ],
+      "correctAnswer": "IaaS",
+      "explanation": "IaaS bietet maximale Kontrolle über virtuelle Maschinen, Betriebssysteme, Netzwerkkonfiguration und Speicher. Dies ist ideal für Unternehmen mit spezifischen Anforderungen oder Legacy-Anwendungen.",
+      "points": 1,
+      "category": "Anwendungsfälle"
+    },
+    {
+      "id": "q13",
+      "type": "multiple-choice",
+      "question": "Welche sind bekannte Public-Cloud-Provider? (Mehrere Antworten möglich)",
+      "options": [
+        "Amazon Web Services (AWS)",
+        "Microsoft Azure",
+        "Google Cloud Platform (GCP)",
+        "VMware vSphere"
+      ],
+      "correctAnswer": [
+        "Amazon Web Services (AWS)",
+        "Microsoft Azure",
+        "Google Cloud Platform (GCP)"
+      ],
+      "explanation": "AWS, Azure und Google Cloud sind die drei größten Public-Cloud-Provider. VMware vSphere ist eine Virtualisierungsplattform für Private Cloud oder On-Premises, kein Public-Cloud-Provider.",
+      "points": 2,
+      "category": "Cloud-Provider"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist Elastizität (Elasticity) in der Cloud?",
+      "options": [
+        "Die Fähigkeit, Ressourcen automatisch nach Bedarf zu skalieren",
+        "Die Flexibilität bei der Wahl des Providers",
+        "Die Geschwindigkeit der Netzwerkverbindung",
+        "Die Anzahl der verfügbaren Rechenzentren"
+      ],
+      "correctAnswer": "Die Fähigkeit, Ressourcen automatisch nach Bedarf zu skalieren",
+      "explanation": "Elastizität bedeutet, dass Cloud-Ressourcen automatisch nach Bedarf hoch- oder herunterskaliert werden können. Bei hoher Last werden mehr Ressourcen bereitgestellt, bei niedriger Last reduziert, um Kosten zu sparen.",
+      "points": 1,
+      "category": "Konzepte"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was bedeutet Multi-Tenancy in der Cloud?",
+      "options": [
+        "Mehrere Kunden teilen sich dieselbe physische Infrastruktur",
+        "Ein Kunde nutzt mehrere Cloud-Provider",
+        "Eine Anwendung läuft auf mehreren Servern",
+        "Mehrere Benutzer eines Unternehmens nutzen die Cloud"
+      ],
+      "correctAnswer": "Mehrere Kunden teilen sich dieselbe physische Infrastruktur",
+      "explanation": "Multi-Tenancy bedeutet, dass mehrere Kunden (Tenants) sich dieselbe physische Infrastruktur teilen, aber logisch voneinander isoliert sind. Dies ermöglicht Kosteneffizienz in Public Clouds.",
+      "points": 1,
+      "category": "Konzepte"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen Skalierung (Scaling) und Elastizität (Elasticity)?",
+      "options": [
+        "Elastizität erfolgt automatisch, Skalierung kann manuell sein",
+        "Skalierung ist schneller als Elastizität",
+        "Elastizität ist nur für IaaS verfügbar",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Elastizität erfolgt automatisch, Skalierung kann manuell sein",
+      "explanation": "Skalierung ist die Fähigkeit, Ressourcen zu erhöhen oder zu reduzieren (manuell oder automatisch). Elastizität ist die automatische Skalierung basierend auf aktueller Last, ohne menschliches Eingreifen.",
+      "points": 1,
+      "category": "Konzepte"
+    },
+    {
+      "id": "q17",
+      "type": "multiple-choice",
+      "question": "Welche Beispiele gehören zu SaaS? (Mehrere Antworten möglich)",
+      "options": [
+        "Microsoft 365 (Word, Excel, Outlook)",
+        "Google Workspace (Gmail, Docs, Drive)",
+        "Amazon EC2",
+        "Salesforce CRM"
+      ],
+      "correctAnswer": [
+        "Microsoft 365 (Word, Excel, Outlook)",
+        "Google Workspace (Gmail, Docs, Drive)",
+        "Salesforce CRM"
+      ],
+      "explanation": "Microsoft 365, Google Workspace und Salesforce sind SaaS-Anwendungen, die über Browser genutzt werden. Amazon EC2 ist IaaS (virtuelle Server).",
+      "points": 2,
+      "category": "Service-Modelle"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was ist ein Vorteil von Private Cloud gegenüber Public Cloud?",
+      "options": [
+        "Mehr Kontrolle über Sicherheit und Compliance",
+        "Geringere Kosten",
+        "Bessere Skalierbarkeit",
+        "Keine Wartung erforderlich"
+      ],
+      "correctAnswer": "Mehr Kontrolle über Sicherheit und Compliance",
+      "explanation": "Private Cloud bietet mehr Kontrolle über Sicherheit, Datenschutz und Compliance, da die Infrastruktur exklusiv für eine Organisation ist. Public Cloud ist jedoch meist kostengünstiger und skalierbarer.",
+      "points": 1,
+      "category": "Deployment-Modelle"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Welches Abrechnungsmodell ist typisch für Cloud Computing?",
+      "options": [
+        "Pay-as-you-go (nutzungsbasiert)",
+        "Einmalige Lizenzgebühr",
+        "Kostenlos mit Werbung",
+        "Jährliche Pauschalgebühr"
+      ],
+      "correctAnswer": "Pay-as-you-go (nutzungsbasiert)",
+      "explanation": "Cloud Computing verwendet typischerweise Pay-as-you-go: Man zahlt nur für die tatsächlich genutzten Ressourcen (Rechenzeit, Speicher, Datenübertragung). Dies ermöglicht Kosteneffizienz und Flexibilität.",
+      "points": 1,
+      "category": "Konzepte"
+    },
+    {
+      "id": "q20",
+      "type": "multiple-choice",
+      "question": "Für welche Szenarien ist Hybrid Cloud besonders geeignet? (Mehrere Antworten möglich)",
+      "options": [
+        "Sensible Daten in Private Cloud, skalierbare Workloads in Public Cloud",
+        "Schrittweise Migration von On-Premises zu Cloud",
+        "Disaster Recovery und Backup",
+        "Ausschließlich für kleine Unternehmen"
+      ],
+      "correctAnswer": [
+        "Sensible Daten in Private Cloud, skalierbare Workloads in Public Cloud",
+        "Schrittweise Migration von On-Premises zu Cloud",
+        "Disaster Recovery und Backup"
+      ],
+      "explanation": "Hybrid Cloud eignet sich für Datentrennung (sensibel vs. öffentlich), schrittweise Cloud-Migration und Disaster Recovery. Sie ist für Unternehmen jeder Größe geeignet, nicht nur für kleine.",
+      "points": 2,
+      "category": "Deployment-Modelle"
     }
   ],
   "tags": [
-    "Cloud",
-    "SaaS",
+    "Cloud Computing",
     "IaaS",
     "PaaS",
+    "SaaS",
+    "Public Cloud",
+    "Private Cloud",
+    "Hybrid Cloud",
     "AWS",
-    "Azure"
-  ]
+    "Azure",
+    "Google Cloud"
+  ],
+  "lastUpdated": "2025-10-05T00:00:00Z"
 }

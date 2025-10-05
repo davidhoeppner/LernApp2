@@ -2,100 +2,345 @@
   "id": "bp-02-nas-san-quiz",
   "moduleId": "bp-02-nas-san",
   "title": "Network Attached Storage (NAS) und Storage Area Network (SAN) Quiz",
-  "description": "Teste dein Wissen über Network Attached Storage (NAS) und Storage Area Network (SAN)",
+  "description": "Teste dein Wissen über NAS, SAN, Speicherprotokolle (NFS, SMB, iSCSI, FC), RAID-Level und Backup-Strategien",
   "category": "BP-02",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 20,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Network Attached Storage (NAS) und Storage Area Network (SAN)?",
+      "question": "Was ist Network Attached Storage (NAS)?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Ein dedizierter Dateiserver, der über das Netzwerk Speicher auf Dateiebene bereitstellt",
+        "Ein Speichernetzwerk, das Blockspeicher über Fibre Channel bereitstellt",
+        "Eine Cloud-Speicherlösung für Unternehmen",
+        "Ein lokaler Festplattenspeicher im Server"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Ein dedizierter Dateiserver, der über das Netzwerk Speicher auf Dateiebene bereitstellt",
+      "explanation": "NAS ist ein dedizierter Dateiserver, der Speicher auf Dateiebene über Standard-Netzwerkprotokolle (NFS, SMB/CIFS) bereitstellt. Clients greifen auf Dateien und Ordner zu, nicht auf Blöcke.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Was ist ein Storage Area Network (SAN)?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Ein dediziertes Hochgeschwindigkeitsnetzwerk für Blockspeicher",
+        "Ein Dateiserver im lokalen Netzwerk",
+        "Eine Cloud-Backup-Lösung",
+        "Ein RAID-Controller für Festplatten"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Ein dediziertes Hochgeschwindigkeitsnetzwerk für Blockspeicher",
+      "explanation": "Ein SAN ist ein dediziertes Hochgeschwindigkeitsnetzwerk, das Blockspeicher bereitstellt. Server greifen auf Speicher-Blöcke zu, als wären es lokale Festplatten. Typische Protokolle sind Fibre Channel und iSCSI.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "Grundlagen"
     },
     {
       "id": "q3",
       "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "question": "Was sind die Hauptunterschiede zwischen NAS und SAN? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "NAS arbeitet auf Dateiebene, SAN auf Blockebene",
+        "NAS nutzt Standard-Ethernet, SAN oft Fibre Channel",
+        "SAN ist typischerweise schneller als NAS",
+        "NAS ist teurer als SAN"
       ],
       "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
+        "NAS arbeitet auf Dateiebene, SAN auf Blockebene",
+        "NAS nutzt Standard-Ethernet, SAN oft Fibre Channel",
+        "SAN ist typischerweise schneller als NAS"
       ],
-      "explanation": "Erklärung hier einfügen",
+      "explanation": "NAS arbeitet auf Dateiebene über Ethernet (NFS/SMB), während SAN Blockspeicher über Fibre Channel oder iSCSI bereitstellt. SAN ist schneller aber auch komplexer und teurer als NAS.",
       "points": 2,
-      "category": "Anwendung"
+      "category": "Vergleich"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Welches Protokoll wird typischerweise für NAS in Linux/Unix-Umgebungen verwendet?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "NFS (Network File System)",
+        "SMB (Server Message Block)",
+        "iSCSI",
+        "Fibre Channel"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "NFS (Network File System)",
+      "explanation": "NFS (Network File System) ist das Standard-Protokoll für Dateifreigaben in Linux/Unix-Umgebungen. SMB/CIFS wird hauptsächlich in Windows-Umgebungen verwendet, während iSCSI und Fibre Channel für SAN genutzt werden.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Protokolle"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Welches Protokoll wird typischerweise für NAS in Windows-Umgebungen verwendet?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "SMB/CIFS (Server Message Block/Common Internet File System)",
+        "NFS (Network File System)",
+        "iSCSI",
+        "FTP"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "SMB/CIFS (Server Message Block/Common Internet File System)",
+      "explanation": "SMB/CIFS ist das Standard-Protokoll für Dateifreigaben in Windows-Umgebungen. Moderne Versionen heißen SMB2 und SMB3 und bieten verbesserte Performance und Sicherheit.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Protokolle"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist iSCSI?",
+      "options": [
+        "Ein Protokoll zur Übertragung von SCSI-Befehlen über IP-Netzwerke",
+        "Ein Dateisystem für Linux",
+        "Ein RAID-Level für Festplatten",
+        "Ein Backup-Protokoll"
+      ],
+      "correctAnswer": "Ein Protokoll zur Übertragung von SCSI-Befehlen über IP-Netzwerke",
+      "explanation": "iSCSI (Internet Small Computer System Interface) überträgt SCSI-Befehle über IP-Netzwerke und ermöglicht SAN über Standard-Ethernet. Es ist eine kostengünstigere Alternative zu Fibre Channel.",
+      "points": 1,
+      "category": "Protokolle"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist Fibre Channel?",
+      "options": [
+        "Ein Hochgeschwindigkeits-Netzwerkprotokoll für SANs",
+        "Ein Glasfaserkabel für Internet-Verbindungen",
+        "Ein RAID-Controller",
+        "Ein Backup-System"
+      ],
+      "correctAnswer": "Ein Hochgeschwindigkeits-Netzwerkprotokoll für SANs",
+      "explanation": "Fibre Channel ist ein Hochgeschwindigkeits-Netzwerkprotokoll speziell für SANs, das sehr niedrige Latenz und hohe Bandbreite bietet. Es verwendet spezielle Hardware (HBAs, Switches) und ist teurer als iSCSI.",
+      "points": 1,
+      "category": "Protokolle"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was bedeutet RAID?",
+      "options": [
+        "Redundant Array of Independent Disks",
+        "Rapid Access Internet Database",
+        "Remote Array Interface Device",
+        "Reliable Automated Information Delivery"
+      ],
+      "correctAnswer": "Redundant Array of Independent Disks",
+      "explanation": "RAID steht für Redundant Array of Independent Disks. Es kombiniert mehrere Festplatten zu einem logischen Laufwerk für verbesserte Performance, Redundanz oder beides.",
+      "points": 1,
+      "category": "RAID"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was ist RAID 0?",
+      "options": [
+        "Striping ohne Redundanz für maximale Performance",
+        "Spiegelung für maximale Redundanz",
+        "Striping mit Parität",
+        "Spiegelung mit Striping"
+      ],
+      "correctAnswer": "Striping ohne Redundanz für maximale Performance",
+      "explanation": "RAID 0 verteilt Daten über mehrere Festplatten (Striping) für maximale Performance, bietet aber keine Redundanz. Bei Ausfall einer Festplatte sind alle Daten verloren.",
+      "points": 1,
+      "category": "RAID"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was ist RAID 1?",
+      "options": [
+        "Spiegelung (Mirroring) für Redundanz",
+        "Striping für Performance",
+        "Striping mit Parität",
+        "Verteilte Parität"
+      ],
+      "correctAnswer": "Spiegelung (Mirroring) für Redundanz",
+      "explanation": "RAID 1 spiegelt Daten auf zwei oder mehr Festplatten. Bei Ausfall einer Festplatte sind die Daten weiterhin verfügbar. Es bietet Redundanz, aber keine Performance-Verbesserung beim Schreiben.",
+      "points": 1,
+      "category": "RAID"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist RAID 5?",
+      "options": [
+        "Striping mit verteilter Parität (mindestens 3 Festplatten)",
+        "Spiegelung mit Striping",
+        "Doppelte Parität",
+        "Einfaches Striping ohne Redundanz"
+      ],
+      "correctAnswer": "Striping mit verteilter Parität (mindestens 3 Festplatten)",
+      "explanation": "RAID 5 verteilt Daten und Paritätsinformationen über mindestens 3 Festplatten. Es bietet gute Performance und kann den Ausfall einer Festplatte verkraften. Die nutzbare Kapazität ist n-1 Festplatten.",
+      "points": 1,
+      "category": "RAID"
+    },
+    {
+      "id": "q12",
+      "type": "multiple-choice",
+      "question": "Welche RAID-Level bieten Redundanz? (Mehrere Antworten möglich)",
+      "options": [
+        "RAID 1",
+        "RAID 5",
+        "RAID 6",
+        "RAID 0"
+      ],
+      "correctAnswer": [
+        "RAID 1",
+        "RAID 5",
+        "RAID 6"
+      ],
+      "explanation": "RAID 1 (Spiegelung), RAID 5 (Parität) und RAID 6 (doppelte Parität) bieten Redundanz. RAID 0 bietet keine Redundanz und ist bei Festplattenausfall komplett verloren.",
+      "points": 2,
+      "category": "RAID"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ist der Hauptvorteil von RAID 6 gegenüber RAID 5?",
+      "options": [
+        "Kann zwei gleichzeitige Festplattenausfälle verkraften",
+        "Ist schneller beim Lesen",
+        "Benötigt weniger Festplatten",
+        "Hat mehr nutzbare Kapazität"
+      ],
+      "correctAnswer": "Kann zwei gleichzeitige Festplattenausfälle verkraften",
+      "explanation": "RAID 6 verwendet doppelte Parität und kann daher zwei gleichzeitige Festplattenausfälle verkraften. Es benötigt mindestens 4 Festplatten und hat eine nutzbare Kapazität von n-2 Festplatten.",
+      "points": 1,
+      "category": "RAID"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist ein Snapshot im Kontext von Storage?",
+      "options": [
+        "Eine zeitpunktbezogene Kopie des Dateisystems oder Volumes",
+        "Ein Backup auf Band",
+        "Eine Komprimierung von Daten",
+        "Ein RAID-Level"
+      ],
+      "correctAnswer": "Eine zeitpunktbezogene Kopie des Dateisystems oder Volumes",
+      "explanation": "Ein Snapshot ist eine zeitpunktbezogene, schreibgeschützte Kopie eines Dateisystems oder Volumes. Snapshots ermöglichen schnelle Backups und Wiederherstellung ohne vollständige Kopien zu erstellen.",
+      "points": 1,
+      "category": "Backup"
+    },
+    {
+      "id": "q15",
+      "type": "multiple-choice",
+      "question": "Welche Backup-Strategien gibt es? (Mehrere Antworten möglich)",
+      "options": [
+        "Vollbackup (Full Backup)",
+        "Inkrementelles Backup",
+        "Differenzielles Backup",
+        "RAID-Backup"
+      ],
+      "correctAnswer": [
+        "Vollbackup (Full Backup)",
+        "Inkrementelles Backup",
+        "Differenzielles Backup"
+      ],
+      "explanation": "Die drei Hauptstrategien sind: Vollbackup (alle Daten), Inkrementelles Backup (nur Änderungen seit letztem Backup) und Differenzielles Backup (Änderungen seit letztem Vollbackup). RAID ist keine Backup-Strategie.",
+      "points": 2,
+      "category": "Backup"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen inkrementellem und differenziellem Backup?",
+      "options": [
+        "Inkrementell sichert Änderungen seit letztem Backup, differenziell seit letztem Vollbackup",
+        "Differenziell ist schneller als inkrementell",
+        "Inkrementell benötigt mehr Speicherplatz",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Inkrementell sichert Änderungen seit letztem Backup, differenziell seit letztem Vollbackup",
+      "explanation": "Inkrementelles Backup sichert nur Änderungen seit dem letzten Backup (schneller, weniger Speicher, aber komplexere Wiederherstellung). Differenzielles Backup sichert alle Änderungen seit dem letzten Vollbackup (größer, aber einfachere Wiederherstellung).",
+      "points": 1,
+      "category": "Backup"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was bedeutet die 3-2-1-Backup-Regel?",
+      "options": [
+        "3 Kopien, 2 verschiedene Medien, 1 Kopie extern",
+        "3 Vollbackups, 2 inkrementelle, 1 differenzielles",
+        "3 Festplatten, 2 RAID-Level, 1 Snapshot",
+        "3 Server, 2 Standorte, 1 Cloud"
+      ],
+      "correctAnswer": "3 Kopien, 2 verschiedene Medien, 1 Kopie extern",
+      "explanation": "Die 3-2-1-Regel besagt: Halte 3 Kopien deiner Daten (Original + 2 Backups), auf 2 verschiedenen Medientypen (z.B. Festplatte + Band), mit 1 Kopie extern (Offsite-Backup für Katastrophenschutz).",
+      "points": 1,
+      "category": "Backup"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Für welche Anwendungsfälle ist NAS besonders geeignet? (Mehrere Antworten möglich)",
+      "options": [
+        "Dateifreigaben für Benutzer",
+        "Zentrale Datenspeicherung für kleine bis mittlere Unternehmen",
+        "Multimedia-Streaming",
+        "Hochperformante Datenbank-Server"
+      ],
+      "correctAnswer": [
+        "Dateifreigaben für Benutzer",
+        "Zentrale Datenspeicherung für kleine bis mittlere Unternehmen",
+        "Multimedia-Streaming"
+      ],
+      "explanation": "NAS eignet sich gut für Dateifreigaben, zentrale Datenspeicherung und Multimedia-Streaming. Für hochperformante Datenbank-Server ist SAN besser geeignet, da es Blockspeicher mit niedrigerer Latenz bietet.",
+      "points": 2,
+      "category": "Anwendungsfälle"
+    },
+    {
+      "id": "q19",
+      "type": "multiple-choice",
+      "question": "Für welche Anwendungsfälle ist SAN besonders geeignet? (Mehrere Antworten möglich)",
+      "options": [
+        "Datenbank-Server mit hohen Performance-Anforderungen",
+        "Virtualisierungsumgebungen (VMware, Hyper-V)",
+        "E-Mail-Server mit vielen Benutzern",
+        "Einfache Dateifreigaben für Endbenutzer"
+      ],
+      "correctAnswer": [
+        "Datenbank-Server mit hohen Performance-Anforderungen",
+        "Virtualisierungsumgebungen (VMware, Hyper-V)",
+        "E-Mail-Server mit vielen Benutzern"
+      ],
+      "explanation": "SAN eignet sich für Anwendungen mit hohen Performance-Anforderungen wie Datenbanken, Virtualisierung und E-Mail-Server. Für einfache Dateifreigaben ist NAS kostengünstiger und einfacher zu verwalten.",
+      "points": 2,
+      "category": "Anwendungsfälle"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist der Hauptnachteil von RAID als Backup-Lösung?",
+      "options": [
+        "RAID schützt nicht vor versehentlichem Löschen, Viren oder Katastrophen",
+        "RAID ist zu langsam für Backups",
+        "RAID benötigt zu viel Speicherplatz",
+        "RAID funktioniert nur mit SAN"
+      ],
+      "correctAnswer": "RAID schützt nicht vor versehentlichem Löschen, Viren oder Katastrophen",
+      "explanation": "RAID schützt nur vor Hardwareausfällen einzelner Festplatten, nicht aber vor versehentlichem Löschen, Malware, Ransomware oder Katastrophen (Brand, Diebstahl). Daher ist RAID kein Ersatz für echte Backups.",
+      "points": 1,
+      "category": "RAID"
     }
   ],
   "tags": [
-    "nas",
-    "san",
-    "storage",
-    "netzwerkspeicher",
-    "iscsi",
-    "nfs",
-    "smb",
-    "fibre channel"
-  ]
+    "NAS",
+    "SAN",
+    "Storage",
+    "Netzwerkspeicher",
+    "iSCSI",
+    "NFS",
+    "SMB",
+    "Fibre Channel",
+    "RAID",
+    "Backup"
+  ],
+  "lastUpdated": "2025-10-05T00:00:00Z"
 }

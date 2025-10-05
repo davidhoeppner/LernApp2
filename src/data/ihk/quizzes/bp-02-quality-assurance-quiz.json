@@ -1,0 +1,354 @@
+{
+  "id": "bp-02-quality-assurance-quiz",
+  "moduleId": "fue-03-quality",
+  "title": "Qualitätssicherung und Testing-Strategien Quiz",
+  "description": "Teste dein Wissen über Qualitätssicherung, Software-Tests (Black Box, White Box, Review), Extremwertetests und Last-/Performancetests",
+  "category": "BP-02",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 25,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen Black Box und White Box Testing?",
+      "options": [
+        "Black Box testet ohne Kenntnis der internen Struktur, White Box mit Kenntnis des Codes",
+        "Black Box ist automatisiert, White Box ist manuell",
+        "Black Box testet nur die Oberfläche, White Box nur die Datenbank",
+        "Black Box ist schneller als White Box Testing"
+      ],
+      "correctAnswer": "Black Box testet ohne Kenntnis der internen Struktur, White Box mit Kenntnis des Codes",
+      "explanation": "Beim Black Box Testing wird die Software ohne Kenntnis der internen Struktur getestet (nur Eingaben und erwartete Ausgaben). Beim White Box Testing kennt der Tester den Quellcode und die Architektur und kann gezielt alle Codepfade testen.",
+      "points": 1,
+      "category": "Testarten"
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet Black Box Testing? (Mehrere Antworten möglich)",
+      "options": [
+        "Unabhängig von der Implementierung",
+        "Tester benötigen keine Programmierkenntnisse",
+        "Alle Codepfade werden getestet",
+        "Fokus auf Benutzerperspektive"
+      ],
+      "correctAnswer": [
+        "Unabhängig von der Implementierung",
+        "Tester benötigen keine Programmierkenntnisse",
+        "Fokus auf Benutzerperspektive"
+      ],
+      "explanation": "Black Box Testing ist unabhängig von der Implementierung, erfordert keine Programmierkenntnisse und fokussiert sich auf die Benutzerperspektive. Der Nachteil ist, dass nicht alle Codepfade getestet werden können - das ist ein Vorteil von White Box Testing.",
+      "points": 2,
+      "category": "Black Box Testing"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Was ist Äquivalenzklassenbildung?",
+      "options": [
+        "Gruppierung von Eingabewerten, die ähnlich behandelt werden",
+        "Aufteilung von Testfällen nach Priorität",
+        "Klassifizierung von Bugs nach Schweregrad",
+        "Einteilung von Testern in Teams"
+      ],
+      "correctAnswer": "Gruppierung von Eingabewerten, die ähnlich behandelt werden",
+      "explanation": "Bei der Äquivalenzklassenbildung werden Eingabewerte in Klassen gruppiert, die vom System ähnlich behandelt werden. Aus jeder Klasse wird ein repräsentativer Testwert gewählt. Beispiel: Für Altersvalidierung (18-65) gibt es gültige Klasse (18-65) und ungültige Klassen (<18, >65).",
+      "points": 1,
+      "category": "Black Box Testing"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Was ist das Ziel der Grenzwertanalyse?",
+      "options": [
+        "Tests auf die Grenzen von Äquivalenzklassen konzentrieren, da dort häufig Fehler auftreten",
+        "Die maximale Anzahl von Testfällen bestimmen",
+        "Die Grenzen des Testbudgets festlegen",
+        "Die zeitlichen Grenzen für Tests definieren"
+      ],
+      "correctAnswer": "Tests auf die Grenzen von Äquivalenzklassen konzentrieren, da dort häufig Fehler auftreten",
+      "explanation": "Die Grenzwertanalyse konzentriert sich auf die Grenzen von Äquivalenzklassen, da dort erfahrungsgemäß die meisten Fehler auftreten. Für Altersvalidierung (18-65) werden Werte wie 17, 18, 19, 64, 65, 66 getestet - also die Grenzen und direkt angrenzende Werte.",
+      "points": 1,
+      "category": "Black Box Testing"
+    },
+    {
+      "id": "q5",
+      "type": "code",
+      "question": "Welche Testfälle sind für diese Altersvalidierung nach Grenzwertanalyse sinnvoll?",
+      "code": "function validateAge(age) {\n  return age >= 18 && age <= 65;\n}",
+      "language": "javascript",
+      "options": [
+        "17, 18, 19, 64, 65, 66",
+        "1, 50, 100",
+        "18, 65",
+        "0, 18, 65, 999"
+      ],
+      "correctAnswer": "17, 18, 19, 64, 65, 66",
+      "explanation": "Nach Grenzwertanalyse testet man die Grenzen (18, 65) sowie Werte direkt darunter (17, 64) und darüber (19, 66). Dies deckt die kritischen Bereiche ab, wo Off-by-One-Fehler auftreten können. Die anderen Optionen testen nicht systematisch die Grenzbereiche.",
+      "points": 2,
+      "category": "Black Box Testing"
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "question": "Was sind typische Extremwerte, die getestet werden sollten? (Mehrere Antworten möglich)",
+      "options": [
+        "Leerer String \"\"",
+        "Integer.MAX_VALUE und Integer.MIN_VALUE",
+        "Durchschnittswerte",
+        "Null-Werte und negative Zahlen"
+      ],
+      "correctAnswer": [
+        "Leerer String \"\"",
+        "Integer.MAX_VALUE und Integer.MIN_VALUE",
+        "Null-Werte und negative Zahlen"
+      ],
+      "explanation": "Extremwertetests prüfen das Verhalten bei extremen Eingaben: leere Strings, sehr lange Strings, minimale/maximale Zahlenwerte, Null, negative Zahlen, leere Listen, sehr große Listen. Durchschnittswerte sind normale Testfälle, keine Extremwerte.",
+      "points": 2,
+      "category": "Extremwertetests"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was bedeutet Anweisungsüberdeckung (Statement Coverage) beim White Box Testing?",
+      "options": [
+        "Jede Anweisung im Code wird mindestens einmal ausgeführt",
+        "Alle Variablen werden getestet",
+        "Alle Kommentare werden überprüft",
+        "Alle Funktionen werden dokumentiert"
+      ],
+      "correctAnswer": "Jede Anweisung im Code wird mindestens einmal ausgeführt",
+      "explanation": "Anweisungsüberdeckung (Statement Coverage) bedeutet, dass jede Codezeile mindestens einmal während der Tests ausgeführt wird. Dies ist die einfachste Form der Code-Coverage, garantiert aber nicht, dass alle Zweige (if/else) getestet wurden.",
+      "points": 1,
+      "category": "White Box Testing"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen Zweigüberdeckung (Branch Coverage) und Anweisungsüberdeckung?",
+      "options": [
+        "Zweigüberdeckung testet alle if/else-Zweige, Anweisungsüberdeckung nur alle Zeilen",
+        "Zweigüberdeckung ist schneller als Anweisungsüberdeckung",
+        "Zweigüberdeckung testet nur Schleifen",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Zweigüberdeckung testet alle if/else-Zweige, Anweisungsüberdeckung nur alle Zeilen",
+      "explanation": "Zweigüberdeckung (Branch Coverage) stellt sicher, dass jeder Zweig (true/false bei if-Statements) durchlaufen wird. Anweisungsüberdeckung kann 100% erreichen, ohne alle Zweige zu testen. Zweigüberdeckung ist strenger und findet mehr Fehler.",
+      "points": 1,
+      "category": "White Box Testing"
+    },
+    {
+      "id": "q9",
+      "type": "code",
+      "question": "Wie viele Testfälle sind mindestens nötig für 100% Zweigüberdeckung?",
+      "code": "function checkDiscount(isMember, isStudent) {\n  let discount = 0;\n  if (isMember) {\n    discount += 10;\n  }\n  if (isStudent) {\n    discount += 20;\n  }\n  return discount;\n}",
+      "language": "javascript",
+      "options": [
+        "4 Testfälle (alle Kombinationen)",
+        "2 Testfälle",
+        "1 Testfall",
+        "8 Testfälle"
+      ],
+      "correctAnswer": "4 Testfälle (alle Kombinationen)",
+      "explanation": "Für 100% Zweigüberdeckung müssen alle Zweige getestet werden: (false, false), (true, false), (false, true), (true, true). Das sind 4 Testfälle für 2 unabhängige if-Statements. Jede Kombination testet einen anderen Pfad durch den Code.",
+      "points": 2,
+      "category": "White Box Testing"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was ist der Hauptzweck von Code Reviews?",
+      "options": [
+        "Qualitätssicherung und Wissensaustausch im Team",
+        "Kontrolle der Arbeitszeit",
+        "Automatische Fehlererkennung",
+        "Erstellung von Dokumentation"
+      ],
+      "correctAnswer": "Qualitätssicherung und Wissensaustausch im Team",
+      "explanation": "Code Reviews dienen der Qualitätssicherung (Fehler finden, Best Practices durchsetzen) und dem Wissensaustausch im Team. Sie fördern gemeinsames Code-Verständnis, verbessern die Code-Qualität und helfen, Fehler früh zu erkennen. Sie sind kein Kontrollmechanismus.",
+      "points": 1,
+      "category": "Code Review"
+    },
+    {
+      "id": "q11",
+      "type": "multiple-choice",
+      "question": "Welche Arten von Code Reviews gibt es? (Mehrere Antworten möglich)",
+      "options": [
+        "Informelles Review (spontane Durchsicht)",
+        "Walkthrough (Autor führt durch)",
+        "Inspektion (formaler Prozess mit Rollen)",
+        "Automatisches Review (nur Tools)"
+      ],
+      "correctAnswer": [
+        "Informelles Review (spontane Durchsicht)",
+        "Walkthrough (Autor führt durch)",
+        "Inspektion (formaler Prozess mit Rollen)"
+      ],
+      "explanation": "Es gibt verschiedene Review-Arten mit unterschiedlichem Formalitätsgrad: Informelles Review (spontan), Walkthrough (Autor präsentiert), Technisches Review (formal), Inspektion (sehr formal mit Rollen und Checklisten). Rein automatische Reviews durch Tools ersetzen keine menschlichen Reviews.",
+      "points": 2,
+      "category": "Code Review"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist ein Performancetest?",
+      "options": [
+        "Messung der Systemleistung unter normalen Bedingungen",
+        "Test der Benutzeroberfläche",
+        "Sicherheitstest",
+        "Test der Datenbank-Integrität"
+      ],
+      "correctAnswer": "Messung der Systemleistung unter normalen Bedingungen",
+      "explanation": "Ein Performancetest misst die Systemleistung unter normalen Bedingungen. Gemessen werden Antwortzeiten, Durchsatz und Ressourcennutzung (CPU, RAM). Ziel ist zu prüfen, ob das System die Performance-Anforderungen erfüllt (z.B. Antwortzeit < 2 Sekunden).",
+      "points": 1,
+      "category": "Last- und Performancetests"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen Lasttest und Stresstest?",
+      "options": [
+        "Lasttest prüft erwartete Last, Stresstest findet die Grenzen des Systems",
+        "Lasttest ist schneller als Stresstest",
+        "Lasttest testet nur die Datenbank",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Lasttest prüft erwartete Last, Stresstest findet die Grenzen des Systems",
+      "explanation": "Lasttest (Load Test) prüft das Verhalten unter erwarteter, realistischer Last (z.B. 10.000 gleichzeitige Benutzer). Stresstest erhöht die Last kontinuierlich bis zum Systemausfall oder Leistungseinbruch, um den Breaking Point zu finden. Stresstests gehen über normale Lastszenarien hinaus.",
+      "points": 1,
+      "category": "Last- und Performancetests"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist ein Spike Test?",
+      "options": [
+        "Test des Verhaltens bei plötzlichen Lastspitzen",
+        "Test mit sehr langer Laufzeit",
+        "Test der Datenbankperformance",
+        "Test der Netzwerkgeschwindigkeit"
+      ],
+      "correctAnswer": "Test des Verhaltens bei plötzlichen Lastspitzen",
+      "explanation": "Ein Spike Test prüft das Verhalten bei plötzlichen, extremen Lastspitzen. Beispiel: Normale Last 100 Benutzer, plötzlich 5.000 Benutzer innerhalb 1 Minute (z.B. nach Newsletter-Versand). Ziel ist zu prüfen, ob das System die Spitze bewältigt und sich danach wieder erholt.",
+      "points": 1,
+      "category": "Last- und Performancetests"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist ein Ausdauertest (Soak Test)?",
+      "options": [
+        "Test der Stabilität über längeren Zeitraum (z.B. 24 Stunden)",
+        "Test mit maximaler Last",
+        "Test der Benutzeroberfläche",
+        "Test der Datensicherung"
+      ],
+      "correctAnswer": "Test der Stabilität über längeren Zeitraum (z.B. 24 Stunden)",
+      "explanation": "Ein Ausdauertest (Soak Test) prüft die Stabilität über einen längeren Zeitraum (z.B. 24 Stunden) unter konstanter Last. Ziel ist es, Memory Leaks, Ressourcen-Lecks und Stabilitätsprobleme zu finden, die erst nach längerer Laufzeit auftreten.",
+      "points": 1,
+      "category": "Last- und Performancetests"
+    },
+    {
+      "id": "q16",
+      "type": "multiple-choice",
+      "question": "Welche Metriken werden bei Performancetests gemessen? (Mehrere Antworten möglich)",
+      "options": [
+        "Antwortzeit (Response Time)",
+        "Durchsatz (Throughput)",
+        "Ressourcennutzung (CPU, RAM)",
+        "Anzahl der Codezeilen"
+      ],
+      "correctAnswer": [
+        "Antwortzeit (Response Time)",
+        "Durchsatz (Throughput)",
+        "Ressourcennutzung (CPU, RAM)"
+      ],
+      "explanation": "Bei Performancetests werden Antwortzeit (Zeit von Anfrage bis Antwort), Durchsatz (Transaktionen pro Zeiteinheit) und Ressourcennutzung (CPU, RAM, Netzwerk, Disk I/O) gemessen. Die Anzahl der Codezeilen ist keine Performance-Metrik.",
+      "points": 2,
+      "category": "Last- und Performancetests"
+    },
+    {
+      "id": "q17",
+      "type": "multiple-choice",
+      "question": "Welche Tools werden häufig für Last- und Performancetests verwendet? (Mehrere Antworten möglich)",
+      "options": [
+        "Apache JMeter",
+        "Gatling",
+        "Microsoft Word",
+        "K6"
+      ],
+      "correctAnswer": [
+        "Apache JMeter",
+        "Gatling",
+        "K6"
+      ],
+      "explanation": "Apache JMeter (Open Source, Java), Gatling (Scala), K6 (JavaScript) und Locust (Python) sind beliebte Tools für Last- und Performancetests. Sie simulieren viele gleichzeitige Benutzer und messen Performance-Metriken. Microsoft Word ist kein Testing-Tool.",
+      "points": 2,
+      "category": "Last- und Performancetests"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was besagt die Testpyramide?",
+      "options": [
+        "Viele Unit Tests, weniger Integrationstests, noch weniger E2E-Tests",
+        "Gleich viele Tests auf allen Ebenen",
+        "Nur E2E-Tests sind wichtig",
+        "Nur Unit Tests sind notwendig"
+      ],
+      "correctAnswer": "Viele Unit Tests, weniger Integrationstests, noch weniger E2E-Tests",
+      "explanation": "Die Testpyramide empfiehlt: 70% Unit Tests (schnell, günstig), 20% Integrationstests (mittel), 10% E2E-Tests (langsam, teuer). Unit Tests sind die Basis, da sie schnell und isoliert sind. E2E-Tests sind wichtig, aber aufwendig und sollten sparsam eingesetzt werden.",
+      "points": 1,
+      "category": "Teststrategien"
+    },
+    {
+      "id": "q19",
+      "type": "multiple-choice",
+      "question": "Welche Testprinzipien sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "Testen zeigt Anwesenheit von Fehlern, nicht deren Abwesenheit",
+        "Vollständiges Testen ist unmöglich",
+        "Frühes Testen spart Kosten",
+        "Dieselben Tests finden immer neue Fehler"
+      ],
+      "correctAnswer": [
+        "Testen zeigt Anwesenheit von Fehlern, nicht deren Abwesenheit",
+        "Vollständiges Testen ist unmöglich",
+        "Frühes Testen spart Kosten"
+      ],
+      "explanation": "Wichtige Testprinzipien: Tests können Fehler finden, aber nicht beweisen, dass keine vorhanden sind. Vollständiges Testen aller Kombinationen ist unmöglich. Frühes Testen ist günstiger (Fehler früh finden). Das Pestizid-Paradoxon besagt, dass dieselben Tests irgendwann keine neuen Fehler mehr finden.",
+      "points": 2,
+      "category": "Teststrategien"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist das Ziel von Qualitätssicherung (QA)?",
+      "options": [
+        "Sicherstellen, dass Software Anforderungen erfüllt, fehlerfrei funktioniert und wartbar ist",
+        "Nur Fehler finden",
+        "Nur Tests durchführen",
+        "Nur Dokumentation erstellen"
+      ],
+      "correctAnswer": "Sicherstellen, dass Software Anforderungen erfüllt, fehlerfrei funktioniert und wartbar ist",
+      "explanation": "Qualitätssicherung (QA) ist umfassender als nur Testen. Ziele sind: Anforderungen erfüllen, Fehler finden und beheben, Qualität sichern, Vertrauen schaffen, Risiken minimieren und Wartbarkeit gewährleisten. QA umfasst Tests, Reviews, Prozesse, Standards und kontinuierliche Verbesserung.",
+      "points": 1,
+      "category": "Grundlagen"
+    }
+  ],
+  "tags": [
+    "Qualitätssicherung",
+    "Black Box Testing",
+    "White Box Testing",
+    "Code Review",
+    "Extremwertetests",
+    "Last-Tests",
+    "Performance-Tests",
+    "Teststrategien",
+    "QA-Prozesse"
+  ],
+  "lastUpdated": "2025-01-10T00:00:00Z"
+}

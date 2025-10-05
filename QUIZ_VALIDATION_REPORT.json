@@ -1,0 +1,257 @@
+{
+  "timestamp": "2025-10-05T20:07:38.246Z",
+  "summary": {
+    "totalQuizzes": 35,
+    "validQuizzes": 35,
+    "invalidQuizzes": 0,
+    "totalErrors": 0,
+    "totalWarnings": 0
+  },
+  "results": [
+    {
+      "file": "bp-01-conception-quiz.json",
+      "quiz": "Netzwerktopologien und Protokolle",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-01-documentation-quiz.json",
+      "quiz": "Programm- und Konfigurationsdokumentation Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-01-monitoring-quiz.json",
+      "quiz": "System-Monitoring und Überwachung Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-01-odbc-quiz.json",
+      "quiz": "ODBC - Datenbankzugriff über offene Schnittstellen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-cloud-models-quiz.json",
+      "quiz": "Cloud-Modelle und Deployment-Typen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-data-formats-quiz.json",
+      "quiz": "Datenaustauschformate (JSON, XML, YAML) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-nas-san-quiz.json",
+      "quiz": "Network Attached Storage (NAS) und Storage Area Network (SAN) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-quality-assurance-quiz.json",
+      "quiz": "Qualitätssicherung und Testing-Strategien Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-cps-quiz.json",
+      "quiz": "Cyber-physische Systeme (CPS) und IoT Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-rest-api-quiz.json",
+      "quiz": "REST API-Entwicklung Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-software-quality-quiz.json",
+      "quiz": "Softwarequalität und Clean Code Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-tdd-quiz.json",
+      "quiz": "Test Driven Development (TDD) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-architecture-patterns-quiz.json",
+      "quiz": "Architektur-Pattern Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-design-patterns-quiz.json",
+      "quiz": "Design Patterns (Entwurfsmuster) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-programming-paradigms-quiz.json",
+      "quiz": "Programmierparadigmen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-scrum-quiz.json",
+      "quiz": "Scrum - Agiles Projektmanagement Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-data-structures-quiz.json",
+      "quiz": "Datenstrukturen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-encapsulation-quiz.json",
+      "quiz": "Kapselung (Encapsulation) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-sorting-quiz.json",
+      "quiz": "Sortierverfahren - Bubble, Selection und Insertion Sort Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-sql-reference-quiz.json",
+      "quiz": "SQL-Referenz mit Verweis auf Beiblatt Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-01-planning-quiz.json",
+      "quiz": "FÜ-01: Planen eines Softwareproduktes Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-02-anomalies-redundancies-quiz.json",
+      "quiz": "Datenbank-Anomalien und Redundanzen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-02-control-structures-quiz.json",
+      "quiz": "Kontrollstrukturen: Aktivitätsdiagramme und Pseudocode Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-02-development-quiz.json",
+      "quiz": "FÜ-02: Entwickeln und Bereitstellen von Softwareanwendungen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-03-load-performance-tests-quiz.json",
+      "quiz": "Last-, Performance- und Stresstests Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-03-quality-quiz.json",
+      "quiz": "FÜ-03: Durchführen von qualitätssichernden Maßnahmen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-04-security-quiz.json",
+      "quiz": "FÜ-04: Sicherstellen der Informationssicherheit Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-04-security-threats-quiz.json",
+      "quiz": "IT-Sicherheitsbedrohungen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "kerberos-quiz.json",
+      "quiz": "Kerberos-Authentifizierung Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "scrum-quiz.json",
+      "quiz": "Scrum Quiz - Agile Projektmanagement",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "sorting-algorithms-quiz.json",
+      "quiz": "Sortierverfahren Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "sql-comprehensive-quiz.json",
+      "quiz": "SQL Komplett-Quiz - IHK Prüfungsvorbereitung",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "sql-ddl-2025-quiz.json",
+      "quiz": "SQL DDL - Datenstrukturen definieren Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "sql-dml-2025-quiz.json",
+      "quiz": "SQL DML - Daten manipulieren Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "tdd-quiz.json",
+      "quiz": "Test Driven Development (TDD) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    }
+  ]
+}

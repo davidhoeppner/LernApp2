@@ -2,96 +2,358 @@
   "id": "bp-05-sql-reference-quiz",
   "moduleId": "bp-05-sql-reference",
   "title": "SQL-Referenz mit Verweis auf Beiblatt Quiz",
-  "description": "Teste dein Wissen über SQL-Referenz mit Verweis auf Beiblatt",
+  "description": "Teste dein Wissen über SQL-Syntax, Constraints, Indizes, Views und Stored Procedures - mit Fokus auf das Prüfungsbeiblatt",
   "category": "BP-05",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist SQL-Referenz mit Verweis auf Beiblatt?",
+      "question": "Welcher SQL-Befehl gehört zur DDL (Data Definition Language)?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "CREATE TABLE",
+        "SELECT",
+        "INSERT",
+        "UPDATE"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "CREATE TABLE",
+      "explanation": "CREATE TABLE ist ein DDL-Befehl, der die Struktur der Datenbank definiert. SELECT ist DQL, INSERT und UPDATE sind DML-Befehle zur Datenmanipulation.",
       "points": 1,
-      "category": "Grundlagen"
+      "category": "SQL-Grundlagen"
     },
     {
       "id": "q2",
-      "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche Constraints können in SQL verwendet werden, um Datenintegrität zu gewährleisten? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "PRIMARY KEY",
+        "FOREIGN KEY",
+        "UNIQUE",
+        "SELECT"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
-      "points": 1,
-      "category": "Konzepte"
+      "correctAnswer": [
+        "PRIMARY KEY",
+        "FOREIGN KEY",
+        "UNIQUE"
+      ],
+      "explanation": "PRIMARY KEY, FOREIGN KEY und UNIQUE sind Constraints zur Sicherstellung der Datenintegrität. SELECT ist ein Abfragebefehl und kein Constraint.",
+      "points": 2,
+      "category": "Constraints"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "code",
+      "question": "Was bewirkt folgende SQL-Anweisung?",
+      "code": "CREATE INDEX idx_lastname ON employees(lastname);",
+      "language": "sql",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Erstellt einen Index auf der Spalte lastname zur Beschleunigung von Abfragen",
+        "Erstellt eine neue Tabelle namens idx_lastname",
+        "Löscht alle Einträge in der Spalte lastname",
+        "Erstellt einen Foreign Key auf lastname"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Erstellt einen Index auf der Spalte lastname zur Beschleunigung von Abfragen",
+      "explanation": "CREATE INDEX erstellt einen Index auf einer Spalte, um Suchvorgänge zu beschleunigen. Indizes verbessern die Performance von SELECT-Abfragen, die diese Spalte verwenden.",
       "points": 2,
-      "category": "Anwendung"
+      "category": "Indizes"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Was ist der Hauptzweck eines PRIMARY KEY Constraints?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Eindeutige Identifikation jeder Zeile in einer Tabelle",
+        "Beschleunigung von Abfragen",
+        "Verknüpfung mit anderen Tabellen",
+        "Sortierung der Daten"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Eindeutige Identifikation jeder Zeile in einer Tabelle",
+      "explanation": "Ein PRIMARY KEY identifiziert jede Zeile eindeutig und erlaubt keine NULL-Werte oder Duplikate. Er ist die Grundlage für Referenzen durch Foreign Keys.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Constraints"
     },
     {
       "id": "q5",
-      "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "type": "code",
+      "question": "Welche Ausgabe liefert diese Abfrage bei einer Tabelle mit 5 Mitarbeitern in der IT-Abteilung?",
+      "code": "SELECT COUNT(*) FROM employees WHERE department = 'IT';",
+      "language": "sql",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "5",
+        "Die Namen aller IT-Mitarbeiter",
+        "Die Anzahl aller Mitarbeiter",
+        "NULL"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "5",
+      "explanation": "COUNT(*) zählt die Anzahl der Zeilen, die die WHERE-Bedingung erfüllen. Bei 5 IT-Mitarbeitern wird die Zahl 5 zurückgegeben.",
+      "points": 2,
+      "category": "Aggregatfunktionen"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist eine View in SQL?",
+      "options": [
+        "Eine virtuelle Tabelle basierend auf einer SELECT-Abfrage",
+        "Ein Index zur Beschleunigung von Abfragen",
+        "Eine Stored Procedure",
+        "Ein Constraint zur Datenvalidierung"
+      ],
+      "correctAnswer": "Eine virtuelle Tabelle basierend auf einer SELECT-Abfrage",
+      "explanation": "Eine View ist eine gespeicherte SELECT-Abfrage, die wie eine Tabelle verwendet werden kann. Sie speichert keine Daten selbst, sondern zeigt Daten aus anderen Tabellen an.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Views"
+    },
+    {
+      "id": "q7",
+      "type": "code",
+      "question": "Was macht dieser SQL-Befehl?",
+      "code": "ALTER TABLE products ADD COLUMN price DECIMAL(10,2);",
+      "language": "sql",
+      "options": [
+        "Fügt eine neue Spalte 'price' zur Tabelle products hinzu",
+        "Ändert den Datentyp der Spalte price",
+        "Löscht die Spalte price",
+        "Erstellt eine neue Tabelle products"
+      ],
+      "correctAnswer": "Fügt eine neue Spalte 'price' zur Tabelle products hinzu",
+      "explanation": "ALTER TABLE mit ADD COLUMN fügt eine neue Spalte zu einer bestehenden Tabelle hinzu. DECIMAL(10,2) bedeutet maximal 10 Stellen, davon 2 Nachkommastellen.",
+      "points": 2,
+      "category": "DDL"
+    },
+    {
+      "id": "q8",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über FOREIGN KEY Constraints sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "Sie stellen referenzielle Integrität sicher",
+        "Sie verweisen auf einen PRIMARY KEY in einer anderen Tabelle",
+        "Sie verhindern das Löschen von referenzierten Datensätzen",
+        "Sie beschleunigen alle Abfragen automatisch"
+      ],
+      "correctAnswer": [
+        "Sie stellen referenzielle Integrität sicher",
+        "Sie verweisen auf einen PRIMARY KEY in einer anderen Tabelle",
+        "Sie verhindern das Löschen von referenzierten Datensätzen"
+      ],
+      "explanation": "FOREIGN KEYs sichern referenzielle Integrität, verweisen auf PRIMARY KEYs und verhindern inkonsistente Löschungen. Sie beschleunigen Abfragen nicht automatisch.",
+      "points": 2,
+      "category": "Constraints"
+    },
+    {
+      "id": "q9",
+      "type": "code",
+      "question": "Was bewirkt diese Abfrage?",
+      "code": "SELECT department, AVG(salary) AS avg_salary\nFROM employees\nGROUP BY department\nHAVING AVG(salary) > 50000;",
+      "language": "sql",
+      "options": [
+        "Zeigt Abteilungen mit durchschnittlichem Gehalt über 50.000€",
+        "Zeigt alle Mitarbeiter mit Gehalt über 50.000€",
+        "Zeigt die Anzahl der Mitarbeiter pro Abteilung",
+        "Zeigt nur die IT-Abteilung"
+      ],
+      "correctAnswer": "Zeigt Abteilungen mit durchschnittlichem Gehalt über 50.000€",
+      "explanation": "GROUP BY gruppiert nach Abteilung, AVG berechnet den Durchschnitt, und HAVING filtert Gruppen (hier: nur Abteilungen mit Durchschnittsgehalt > 50.000€).",
+      "points": 3,
+      "category": "Aggregatfunktionen"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Welcher Constraint verhindert NULL-Werte in einer Spalte?",
+      "options": [
+        "NOT NULL",
+        "UNIQUE",
+        "CHECK",
+        "DEFAULT"
+      ],
+      "correctAnswer": "NOT NULL",
+      "explanation": "NOT NULL stellt sicher, dass eine Spalte immer einen Wert enthalten muss. UNIQUE erlaubt NULL-Werte, CHECK prüft Bedingungen, und DEFAULT setzt Standardwerte.",
+      "points": 1,
+      "category": "Constraints"
+    },
+    {
+      "id": "q11",
+      "type": "code",
+      "question": "Was ist das Ergebnis dieser Abfrage?",
+      "code": "SELECT * FROM orders o\nINNER JOIN customers c ON o.customer_id = c.id\nWHERE c.country = 'Germany';",
+      "language": "sql",
+      "options": [
+        "Alle Bestellungen von Kunden aus Deutschland",
+        "Alle Kunden aus Deutschland",
+        "Alle Bestellungen unabhängig vom Land",
+        "Nur die Anzahl der deutschen Kunden"
+      ],
+      "correctAnswer": "Alle Bestellungen von Kunden aus Deutschland",
+      "explanation": "INNER JOIN verknüpft orders und customers. Die WHERE-Klausel filtert nach deutschen Kunden. Das Ergebnis enthält alle Bestellungen dieser Kunden.",
+      "points": 2,
+      "category": "JOINs"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen WHERE und HAVING?",
+      "options": [
+        "WHERE filtert Zeilen vor der Gruppierung, HAVING filtert Gruppen nach der Aggregation",
+        "WHERE und HAVING sind identisch",
+        "HAVING ist schneller als WHERE",
+        "WHERE kann nur mit SELECT verwendet werden"
+      ],
+      "correctAnswer": "WHERE filtert Zeilen vor der Gruppierung, HAVING filtert Gruppen nach der Aggregation",
+      "explanation": "WHERE filtert einzelne Zeilen vor GROUP BY, HAVING filtert aggregierte Gruppen nach GROUP BY. HAVING wird mit Aggregatfunktionen verwendet.",
+      "points": 1,
+      "category": "SQL-Syntax"
+    },
+    {
+      "id": "q13",
+      "type": "code",
+      "question": "Was erstellt dieser Befehl?",
+      "code": "CREATE VIEW active_employees AS\nSELECT id, name, department\nFROM employees\nWHERE status = 'active';",
+      "language": "sql",
+      "options": [
+        "Eine View, die nur aktive Mitarbeiter anzeigt",
+        "Eine neue Tabelle mit aktiven Mitarbeitern",
+        "Einen Index auf der Spalte status",
+        "Eine Stored Procedure"
+      ],
+      "correctAnswer": "Eine View, die nur aktive Mitarbeiter anzeigt",
+      "explanation": "CREATE VIEW erstellt eine virtuelle Tabelle. Diese View zeigt nur Mitarbeiter mit status='active' und kann wie eine normale Tabelle abgefragt werden.",
+      "points": 2,
+      "category": "Views"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bieten Indizes in SQL? (Mehrere Antworten möglich)",
+      "options": [
+        "Beschleunigung von SELECT-Abfragen",
+        "Beschleunigung von Suchvorgängen mit WHERE",
+        "Automatische Datensicherung",
+        "Verbesserung der JOIN-Performance"
+      ],
+      "correctAnswer": [
+        "Beschleunigung von SELECT-Abfragen",
+        "Beschleunigung von Suchvorgängen mit WHERE",
+        "Verbesserung der JOIN-Performance"
+      ],
+      "explanation": "Indizes beschleunigen Abfragen, Suchvorgänge und JOINs erheblich. Sie haben nichts mit Datensicherung zu tun, können aber INSERT/UPDATE verlangsamen.",
+      "points": 2,
+      "category": "Indizes"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist eine Stored Procedure?",
+      "options": [
+        "Eine gespeicherte SQL-Prozedur, die wiederverwendbare Logik enthält",
+        "Ein Index zur Beschleunigung von Abfragen",
+        "Eine View auf mehrere Tabellen",
+        "Ein Constraint zur Datenvalidierung"
+      ],
+      "correctAnswer": "Eine gespeicherte SQL-Prozedur, die wiederverwendbare Logik enthält",
+      "explanation": "Stored Procedures sind gespeicherte SQL-Programme mit Parametern und Logik. Sie können mehrfach aufgerufen werden und kapseln komplexe Operationen.",
+      "points": 1,
+      "category": "Stored Procedures"
+    },
+    {
+      "id": "q16",
+      "type": "code",
+      "question": "Was bewirkt dieser Befehl?",
+      "code": "DELETE FROM orders WHERE order_date < '2020-01-01';",
+      "language": "sql",
+      "options": [
+        "Löscht alle Bestellungen vor dem 1. Januar 2020",
+        "Löscht die Tabelle orders",
+        "Löscht nur die Spalte order_date",
+        "Archiviert alte Bestellungen"
+      ],
+      "correctAnswer": "Löscht alle Bestellungen vor dem 1. Januar 2020",
+      "explanation": "DELETE FROM mit WHERE-Klausel löscht alle Zeilen, die die Bedingung erfüllen. Ohne WHERE würden ALLE Zeilen gelöscht - daher immer vorsichtig sein!",
+      "points": 2,
+      "category": "DML"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Welcher JOIN-Typ gibt alle Zeilen der linken Tabelle zurück, auch wenn keine Übereinstimmung in der rechten Tabelle existiert?",
+      "options": [
+        "LEFT JOIN",
+        "INNER JOIN",
+        "RIGHT JOIN",
+        "CROSS JOIN"
+      ],
+      "correctAnswer": "LEFT JOIN",
+      "explanation": "LEFT JOIN (oder LEFT OUTER JOIN) gibt alle Zeilen der linken Tabelle zurück. Fehlende Werte aus der rechten Tabelle werden als NULL dargestellt.",
+      "points": 1,
+      "category": "JOINs"
+    },
+    {
+      "id": "q18",
+      "type": "code",
+      "question": "Was macht diese Transaktion?",
+      "code": "BEGIN TRANSACTION;\nUPDATE accounts SET balance = balance - 100 WHERE id = 1;\nUPDATE accounts SET balance = balance + 100 WHERE id = 2;\nCOMMIT;",
+      "language": "sql",
+      "options": [
+        "Überweist 100€ von Konto 1 zu Konto 2 als atomare Operation",
+        "Löscht beide Konten",
+        "Erstellt zwei neue Konten",
+        "Zeigt den Kontostand an"
+      ],
+      "correctAnswer": "Überweist 100€ von Konto 1 zu Konto 2 als atomare Operation",
+      "explanation": "Eine Transaktion gruppiert mehrere Operationen. Entweder werden alle ausgeführt (COMMIT) oder keine (ROLLBACK). Dies sichert Konsistenz bei Überweisungen.",
+      "points": 3,
+      "category": "Transaktionen"
+    },
+    {
+      "id": "q19",
+      "type": "multiple-choice",
+      "question": "Welche Aggregatfunktionen sind in SQL verfügbar? (Mehrere Antworten möglich)",
+      "options": [
+        "COUNT()",
+        "SUM()",
+        "AVG()",
+        "JOIN()"
+      ],
+      "correctAnswer": [
+        "COUNT()",
+        "SUM()",
+        "AVG()"
+      ],
+      "explanation": "COUNT, SUM, AVG, MIN und MAX sind Standard-Aggregatfunktionen. JOIN ist kein Aggregat, sondern eine Verknüpfungsoperation zwischen Tabellen.",
+      "points": 2,
+      "category": "Aggregatfunktionen"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist der Hauptvorteil des SQL-Beiblatts in der IHK-Prüfung?",
+      "options": [
+        "Man muss die SQL-Syntax nicht auswendig lernen",
+        "Es enthält die Lösungen aller Aufgaben",
+        "Es ersetzt das Lernen komplett",
+        "Es ist nur für Fortgeschrittene gedacht"
+      ],
+      "correctAnswer": "Man muss die SQL-Syntax nicht auswendig lernen",
+      "explanation": "Das Beiblatt enthält alle wichtigen SQL-Befehle und Syntax. Man muss die Konzepte verstehen und anwenden können, aber nicht die exakte Syntax auswendig wissen.",
+      "points": 1,
+      "category": "Prüfungsstrategie"
     }
   ],
   "tags": [
     "SQL",
     "Datenbank",
     "Beiblatt",
-    "PrÃ¼fung"
-  ]
+    "Prüfung",
+    "DDL",
+    "DML",
+    "DQL",
+    "Constraints",
+    "Indizes",
+    "Views",
+    "Stored Procedures"
+  ],
+  "lastUpdated": "2025-01-15T00:00:00Z"
 }

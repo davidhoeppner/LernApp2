@@ -2,98 +2,344 @@
   "id": "fue-02-development-quiz",
   "moduleId": "fue-02-development",
   "title": "FÜ-02: Entwickeln und Bereitstellen von Softwareanwendungen Quiz",
-  "description": "Teste dein Wissen über FÜ-02: Entwickeln und Bereitstellen von Softwareanwendungen",
+  "description": "Teste dein Wissen über Entwicklungsprozesse, Versionskontrolle, CI/CD, Code-Reviews und Softwarebereitstellung",
   "category": "FÜ-02",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist FÜ-02: Entwickeln und Bereitstellen von Softwareanwendungen?",
+      "question": "Was ist der Hauptvorteil von Continuous Integration (CI)?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Frühzeitige Erkennung von Integrationsproblemen durch automatisierte Builds und Tests",
+        "Automatische Bereitstellung in die Produktionsumgebung ohne manuelle Prüfung",
+        "Vermeidung von Code-Reviews durch automatische Qualitätsprüfung",
+        "Reduzierung der Entwicklungszeit durch Verzicht auf Tests"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Frühzeitige Erkennung von Integrationsproblemen durch automatisierte Builds und Tests",
+      "explanation": "Continuous Integration bedeutet, dass Code-Änderungen regelmäßig in das Hauptrepository integriert werden und automatisch gebaut und getestet werden. Dadurch werden Integrationsprobleme frühzeitig erkannt, bevor sie sich zu größeren Problemen entwickeln. CI ersetzt keine Code-Reviews und bedeutet nicht automatisch Deployment in Produktion.",
       "points": 1,
-      "category": "Grundlagen"
+      "category": "CI/CD"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Welches Versionskontrollsystem-Konzept beschreibt Git?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Verteiltes Versionskontrollsystem (DVCS)",
+        "Zentrales Versionskontrollsystem (CVCS)",
+        "Lokales Versionskontrollsystem",
+        "Cloud-basiertes Versionskontrollsystem"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Verteiltes Versionskontrollsystem (DVCS)",
+      "explanation": "Git ist ein verteiltes Versionskontrollsystem (Distributed Version Control System, DVCS). Jeder Entwickler hat eine vollständige Kopie des Repositories mit der gesamten Historie. Im Gegensatz zu zentralen Systemen wie SVN ist kein ständiger Server-Zugriff erforderlich, und Operationen wie Commits und Branches sind lokal möglich.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "Versionskontrolle"
     },
     {
       "id": "q3",
       "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "question": "Welche Aspekte sollten bei einem Code-Review geprüft werden? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Einhaltung von Coding-Standards und Best Practices",
+        "Korrektheit der Implementierung und Logik",
+        "Persönliche Vorlieben des Reviewers bezüglich Variablennamen",
+        "Sicherheitslücken und potenzielle Bugs"
       ],
       "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
+        "Einhaltung von Coding-Standards und Best Practices",
+        "Korrektheit der Implementierung und Logik",
+        "Sicherheitslücken und potenzielle Bugs"
       ],
-      "explanation": "Erklärung hier einfügen",
+      "explanation": "Code-Reviews sollten sich auf objektive Qualitätskriterien konzentrieren: Coding-Standards, korrekte Implementierung, Sicherheit, Performance und Wartbarkeit. Persönliche Vorlieben sollten keine Rolle spielen, es sei denn, sie sind in Team-Standards definiert. Code-Reviews dienen der Qualitätssicherung und dem Wissensaustausch im Team.",
       "points": 2,
-      "category": "Anwendung"
+      "category": "Code-Reviews"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Was ist der Unterschied zwischen Continuous Delivery (CD) und Continuous Deployment?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Continuous Delivery ermöglicht jederzeit ein Deployment, Continuous Deployment deployed automatisch",
+        "Continuous Delivery ist schneller als Continuous Deployment",
+        "Continuous Deployment erfordert manuelle Tests, Continuous Delivery nicht",
+        "Es gibt keinen Unterschied, die Begriffe sind synonym"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Continuous Delivery ermöglicht jederzeit ein Deployment, Continuous Deployment deployed automatisch",
+      "explanation": "Bei Continuous Delivery ist die Software jederzeit in einem deploybaren Zustand, aber das Deployment in Produktion erfolgt manuell durch eine Freigabe-Entscheidung. Bei Continuous Deployment wird jede erfolgreiche Änderung automatisch in Produktion deployed, ohne manuelle Intervention. Beide setzen umfangreiche automatisierte Tests voraus.",
       "points": 1,
-      "category": "Praxis"
+      "category": "CI/CD"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Welcher Git-Befehl wird verwendet, um Änderungen aus einem Remote-Repository zu holen und mit dem lokalen Branch zu mergen?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "git pull",
+        "git fetch",
+        "git clone",
+        "git merge"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "git pull",
+      "explanation": "Der Befehl 'git pull' holt Änderungen vom Remote-Repository und merged sie automatisch in den aktuellen lokalen Branch. Er ist eine Kombination aus 'git fetch' (Änderungen holen) und 'git merge' (Änderungen zusammenführen). 'git clone' wird nur einmalig zum Klonen eines Repositories verwendet.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Versionskontrolle"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist ein Feature-Branch in der Versionskontrolle?",
+      "options": [
+        "Ein separater Branch zur Entwicklung einer neuen Funktion, der später in den Hauptbranch gemergt wird",
+        "Der Hauptbranch, in dem alle Features entwickelt werden",
+        "Ein Branch, der nur für Bugfixes verwendet wird",
+        "Ein temporärer Branch, der nach jedem Commit gelöscht wird"
+      ],
+      "correctAnswer": "Ein separater Branch zur Entwicklung einer neuen Funktion, der später in den Hauptbranch gemergt wird",
+      "explanation": "Ein Feature-Branch ist ein separater Entwicklungszweig, in dem eine neue Funktion isoliert entwickelt wird, ohne den Hauptbranch (main/master) zu beeinflussen. Nach Fertigstellung und erfolgreichen Tests wird der Feature-Branch in den Hauptbranch gemergt. Dies ermöglicht parallele Entwicklung und einfaches Rollback bei Problemen.",
+      "points": 1,
+      "category": "Versionskontrolle"
+    },
+    {
+      "id": "q7",
+      "type": "multiple-choice",
+      "question": "Welche Komponenten gehören typischerweise zu einer CI/CD-Pipeline? (Mehrere Antworten möglich)",
+      "options": [
+        "Automatisierte Build-Prozesse",
+        "Automatisierte Tests (Unit, Integration, E2E)",
+        "Manuelle Code-Formatierung",
+        "Automatisches Deployment in verschiedene Umgebungen"
+      ],
+      "correctAnswer": [
+        "Automatisierte Build-Prozesse",
+        "Automatisierte Tests (Unit, Integration, E2E)",
+        "Automatisches Deployment in verschiedene Umgebungen"
+      ],
+      "explanation": "Eine CI/CD-Pipeline automatisiert den gesamten Prozess von Code-Änderung bis Deployment: Build, automatisierte Tests auf verschiedenen Ebenen, Code-Qualitätsprüfung, Security-Scans und Deployment. Manuelle Schritte wie Code-Formatierung sollten durch automatische Tools (Linter, Formatter) ersetzt werden, um Konsistenz zu gewährleisten.",
+      "points": 2,
+      "category": "CI/CD"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was ist der Zweck eines Pull Requests (oder Merge Requests)?",
+      "options": [
+        "Code-Änderungen zur Review vorlegen, bevor sie in den Hauptbranch gemergt werden",
+        "Änderungen vom Remote-Repository in das lokale Repository ziehen",
+        "Einen neuen Branch vom Hauptbranch erstellen",
+        "Konflikte zwischen Branches automatisch auflösen"
+      ],
+      "correctAnswer": "Code-Änderungen zur Review vorlegen, bevor sie in den Hauptbranch gemergt werden",
+      "explanation": "Ein Pull Request (GitHub) oder Merge Request (GitLab) ist ein Mechanismus, um Code-Änderungen zur Review vorzulegen. Andere Entwickler können den Code prüfen, kommentieren und Verbesserungen vorschlagen, bevor die Änderungen in den Hauptbranch gemergt werden. Dies ist ein wichtiger Teil des Code-Review-Prozesses und der Qualitätssicherung.",
+      "points": 1,
+      "category": "Versionskontrolle"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Welche Entwicklungsmethodik beschreibt das Wasserfallmodell?",
+      "options": [
+        "Sequenzielle Phasen: Anforderungen → Design → Implementierung → Test → Wartung",
+        "Iterative Entwicklung in kurzen Sprints mit regelmäßigem Feedback",
+        "Parallele Entwicklung mehrerer Features ohne feste Reihenfolge",
+        "Kontinuierliche Entwicklung ohne definierte Phasen"
+      ],
+      "correctAnswer": "Sequenzielle Phasen: Anforderungen → Design → Implementierung → Test → Wartung",
+      "explanation": "Das Wasserfallmodell ist ein sequenzielles Vorgehensmodell, bei dem jede Phase vollständig abgeschlossen sein muss, bevor die nächste beginnt. Es ist wenig flexibel bei Änderungen. Im Gegensatz dazu stehen agile Methoden wie Scrum, die iterativ und inkrementell arbeiten und Änderungen während der Entwicklung ermöglichen.",
+      "points": 1,
+      "category": "Entwicklungsprozesse"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was bedeutet 'git commit'?",
+      "options": [
+        "Änderungen im lokalen Repository dauerhaft speichern mit einer Beschreibung",
+        "Änderungen zum Remote-Repository hochladen",
+        "Änderungen aus dem Remote-Repository herunterladen",
+        "Einen neuen Branch erstellen"
+      ],
+      "correctAnswer": "Änderungen im lokalen Repository dauerhaft speichern mit einer Beschreibung",
+      "explanation": "'git commit' speichert die im Staging-Bereich (nach 'git add') vorbereiteten Änderungen dauerhaft im lokalen Repository mit einer Commit-Message. Der Commit bleibt zunächst lokal und wird erst mit 'git push' zum Remote-Repository hochgeladen. Jeder Commit erhält einen eindeutigen Hash und ist Teil der Versionshistorie.",
+      "points": 1,
+      "category": "Versionskontrolle"
+    },
+    {
+      "id": "q11",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet Versionskontrolle? (Mehrere Antworten möglich)",
+      "options": [
+        "Nachvollziehbarkeit von Änderungen durch Historie",
+        "Parallele Entwicklung durch Branches",
+        "Automatische Behebung aller Merge-Konflikte",
+        "Möglichkeit zum Rollback auf frühere Versionen"
+      ],
+      "correctAnswer": [
+        "Nachvollziehbarkeit von Änderungen durch Historie",
+        "Parallele Entwicklung durch Branches",
+        "Möglichkeit zum Rollback auf frühere Versionen"
+      ],
+      "explanation": "Versionskontrollsysteme bieten viele Vorteile: vollständige Historie aller Änderungen, parallele Entwicklung durch Branches, Rollback-Möglichkeiten, Zusammenarbeit im Team und Backup. Merge-Konflikte müssen jedoch manuell aufgelöst werden, da das System nicht automatisch entscheiden kann, welche Änderung korrekt ist.",
+      "points": 2,
+      "category": "Versionskontrolle"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist ein Build-Artefakt in einer CI/CD-Pipeline?",
+      "options": [
+        "Das kompilierte, deploybare Ergebnis des Build-Prozesses (z.B. JAR, WAR, Docker-Image)",
+        "Der Quellcode vor der Kompilierung",
+        "Die Konfigurationsdateien für den Build-Server",
+        "Die Logdateien des Build-Prozesses"
+      ],
+      "correctAnswer": "Das kompilierte, deploybare Ergebnis des Build-Prozesses (z.B. JAR, WAR, Docker-Image)",
+      "explanation": "Ein Build-Artefakt ist das Endprodukt des Build-Prozesses – eine deploybare Version der Anwendung. Bei Java sind das z.B. JAR- oder WAR-Dateien, bei containerisierten Anwendungen Docker-Images. Diese Artefakte werden in einem Artefakt-Repository gespeichert und können in verschiedene Umgebungen deployed werden.",
+      "points": 1,
+      "category": "CI/CD"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Welche Aussage über agile Entwicklung ist korrekt?",
+      "options": [
+        "Agile Entwicklung bevorzugt funktionierende Software über umfassende Dokumentation",
+        "Agile Entwicklung erfordert vollständige Planung vor Entwicklungsbeginn",
+        "Agile Entwicklung verzichtet komplett auf Dokumentation",
+        "Agile Entwicklung erlaubt keine Änderungen nach Sprint-Beginn"
+      ],
+      "correctAnswer": "Agile Entwicklung bevorzugt funktionierende Software über umfassende Dokumentation",
+      "explanation": "Das Agile Manifest besagt: 'Funktionierende Software über umfassende Dokumentation'. Das bedeutet nicht, dass Dokumentation unwichtig ist, sondern dass der Fokus auf lauffähiger Software liegt. Agile Methoden sind flexibel, erlauben Änderungen und arbeiten iterativ statt mit vollständiger Vorausplanung.",
+      "points": 1,
+      "category": "Entwicklungsprozesse"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist der Zweck von Semantic Versioning (z.B. 2.4.1)?",
+      "options": [
+        "Strukturierte Versionsnummern: Major.Minor.Patch zur Kommunikation von Änderungstypen",
+        "Automatische Versionierung durch das Build-System",
+        "Verschlüsselung der Versionsnummer für Sicherheit",
+        "Zufällige Nummerierung zur Vermeidung von Konflikten"
+      ],
+      "correctAnswer": "Strukturierte Versionsnummern: Major.Minor.Patch zur Kommunikation von Änderungstypen",
+      "explanation": "Semantic Versioning (SemVer) verwendet das Format MAJOR.MINOR.PATCH: MAJOR wird bei inkompatiblen API-Änderungen erhöht, MINOR bei abwärtskompatiblen neuen Features, PATCH bei abwärtskompatiblen Bugfixes. Dies ermöglicht Entwicklern, die Art der Änderungen auf einen Blick zu erkennen und Abhängigkeiten sicher zu verwalten.",
+      "points": 1,
+      "category": "Entwicklungsprozesse"
+    },
+    {
+      "id": "q15",
+      "type": "multiple-choice",
+      "question": "Welche Deployment-Strategien minimieren Ausfallzeiten? (Mehrere Antworten möglich)",
+      "options": [
+        "Blue-Green Deployment",
+        "Rolling Deployment",
+        "Big Bang Deployment",
+        "Canary Deployment"
+      ],
+      "correctAnswer": [
+        "Blue-Green Deployment",
+        "Rolling Deployment",
+        "Canary Deployment"
+      ],
+      "explanation": "Blue-Green Deployment (zwei identische Umgebungen, Umschalten), Rolling Deployment (schrittweises Update) und Canary Deployment (schrittweise Ausrollung an Teilmenge der Nutzer) minimieren Ausfallzeiten. Big Bang Deployment bedeutet, alle Instanzen gleichzeitig zu aktualisieren, was zu Ausfallzeiten führt und bei Problemen schwer rückgängig zu machen ist.",
+      "points": 2,
+      "category": "CI/CD"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist der Hauptzweck von Branching-Strategien wie Git Flow?",
+      "options": [
+        "Strukturierte Organisation der Entwicklung mit definierten Branch-Typen und Merge-Regeln",
+        "Automatische Erstellung von Branches für jeden Commit",
+        "Vermeidung von Merge-Konflikten durch separate Repositories",
+        "Beschleunigung des Build-Prozesses"
+      ],
+      "correctAnswer": "Strukturierte Organisation der Entwicklung mit definierten Branch-Typen und Merge-Regeln",
+      "explanation": "Git Flow und ähnliche Branching-Strategien definieren klare Regeln für Branch-Typen (main, develop, feature, release, hotfix) und deren Verwendung. Dies strukturiert die Zusammenarbeit im Team, macht den Entwicklungsprozess nachvollziehbar und reduziert Konflikte. Es geht um Organisation, nicht um technische Automatisierung.",
+      "points": 1,
+      "category": "Versionskontrolle"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was ist Infrastructure as Code (IaC)?",
+      "options": [
+        "Verwaltung und Bereitstellung von Infrastruktur durch maschinenlesbare Definitionsdateien",
+        "Programmierung von Netzwerk-Hardware in Assembler",
+        "Manuelle Konfiguration von Servern durch Skripte",
+        "Entwicklung von Anwendungen direkt auf Produktionsservern"
+      ],
+      "correctAnswer": "Verwaltung und Bereitstellung von Infrastruktur durch maschinenlesbare Definitionsdateien",
+      "explanation": "Infrastructure as Code (IaC) bedeutet, dass Infrastruktur (Server, Netzwerke, Datenbanken) durch Code-Dateien definiert wird, die versioniert und automatisiert ausgeführt werden können. Tools wie Terraform, Ansible oder CloudFormation ermöglichen reproduzierbare, konsistente Infrastruktur-Deployments und behandeln Infrastruktur wie Anwendungscode.",
+      "points": 1,
+      "category": "CI/CD"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was ist ein Merge-Konflikt in Git?",
+      "options": [
+        "Situation, in der Git nicht automatisch entscheiden kann, welche Änderungen übernommen werden sollen",
+        "Ein Fehler beim Kompilieren des Codes nach einem Merge",
+        "Ein Problem mit der Netzwerkverbindung zum Remote-Repository",
+        "Ein Konflikt zwischen verschiedenen Git-Versionen"
+      ],
+      "correctAnswer": "Situation, in der Git nicht automatisch entscheiden kann, welche Änderungen übernommen werden sollen",
+      "explanation": "Ein Merge-Konflikt tritt auf, wenn dieselben Zeilen in verschiedenen Branches unterschiedlich geändert wurden und Git nicht automatisch entscheiden kann, welche Version korrekt ist. Der Entwickler muss den Konflikt manuell auflösen, indem er entscheidet, welche Änderungen übernommen werden sollen. Dies ist ein normaler Teil der Zusammenarbeit im Team.",
+      "points": 1,
+      "category": "Versionskontrolle"
+    },
+    {
+      "id": "q19",
+      "type": "multiple-choice",
+      "question": "Welche Aspekte gehören zu DevOps-Praktiken? (Mehrere Antworten möglich)",
+      "options": [
+        "Automatisierung von Build, Test und Deployment",
+        "Enge Zusammenarbeit zwischen Entwicklung und Operations",
+        "Strikte Trennung von Entwicklungs- und Betriebsteams",
+        "Monitoring und kontinuierliches Feedback"
+      ],
+      "correctAnswer": [
+        "Automatisierung von Build, Test und Deployment",
+        "Enge Zusammenarbeit zwischen Entwicklung und Operations",
+        "Monitoring und kontinuierliches Feedback"
+      ],
+      "explanation": "DevOps vereint Entwicklung (Development) und Betrieb (Operations) durch Automatisierung, Zusammenarbeit und kontinuierliches Feedback. Ziel ist schnellere, zuverlässigere Software-Auslieferung. Die strikte Trennung von Teams widerspricht dem DevOps-Gedanken – stattdessen arbeiten cross-funktionale Teams zusammen.",
+      "points": 2,
+      "category": "Entwicklungsprozesse"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist der Zweck von Code-Linting in einer CI-Pipeline?",
+      "options": [
+        "Automatische Prüfung des Codes auf Stil-Verstöße, potenzielle Fehler und Best Practices",
+        "Kompilierung des Quellcodes in ausführbare Dateien",
+        "Ausführung von Unit-Tests",
+        "Deployment der Anwendung in die Produktionsumgebung"
+      ],
+      "correctAnswer": "Automatische Prüfung des Codes auf Stil-Verstöße, potenzielle Fehler und Best Practices",
+      "explanation": "Linting-Tools (wie ESLint, Pylint, Checkstyle) analysieren den Quellcode statisch auf Stil-Verstöße, potenzielle Bugs, Code-Smells und Abweichungen von Best Practices. In einer CI-Pipeline sorgt Linting für konsistente Code-Qualität und verhindert, dass problematischer Code in das Repository gelangt. Es ist Teil der automatischen Qualitätssicherung.",
+      "points": 1,
+      "category": "CI/CD"
     }
   ],
   "tags": [
-    "Kontrollstrukturen",
-    "Aktivitätsdiagramm",
-    "Pseudocode",
-    "Datenbank-Anomalien",
-    "Normalisierung",
-    "Redundanzen"
-  ]
+    "Entwicklungsprozesse",
+    "Versionskontrolle",
+    "Git",
+    "CI/CD",
+    "Code-Reviews",
+    "Deployment",
+    "DevOps",
+    "Agile",
+    "Branching"
+  ],
+  "lastUpdated": "2025-01-15T10:30:00Z"
 }

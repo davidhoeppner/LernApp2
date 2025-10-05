@@ -2,90 +2,317 @@
   "id": "bp-01-documentation-quiz",
   "moduleId": "bp-01-documentation",
   "title": "Programm- und Konfigurationsdokumentation Quiz",
-  "description": "Teste dein Wissen über Programm- und Konfigurationsdokumentation",
+  "description": "Umfassendes Quiz zu technischer Dokumentation, Code-Kommentaren, API-Dokumentation und Best Practices",
   "category": "BP-01",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "newIn2025": true,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Programm- und Konfigurationsdokumentation?",
+      "question": "Was ist der Hauptzweck von Programmdokumentation?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Wartbarkeit, Zusammenarbeit und Wissenstransfer zu verbessern",
+        "Den Code länger zu machen",
+        "Compilerfehler zu vermeiden",
+        "Die Ausführungsgeschwindigkeit zu erhöhen"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Wartbarkeit, Zusammenarbeit und Wissenstransfer zu verbessern",
+      "explanation": "Gute Dokumentation ist essentiell für Wartbarkeit (Code verstehen und ändern), Zusammenarbeit (andere Entwickler einarbeiten) und Wissenstransfer (Know-how bewahren). Sie macht Code nicht länger oder schneller und hat keinen Einfluss auf Compilerfehler.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Welche Best Practice gilt für Code-Kommentare?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Erkläre das 'Warum', nicht das 'Was'",
+        "Kommentiere jede einzelne Zeile Code",
+        "Verwende nur englische Kommentare",
+        "Kommentare sind überflüssig bei gutem Code"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Erkläre das 'Warum', nicht das 'Was'",
+      "explanation": "Gute Kommentare erklären die Intention und Entscheidungen (Warum), nicht die offensichtliche Funktionsweise (Was). Beispiel: 'Verwende Binary Search für bessere Performance' statt 'Inkrementiere i um 1'. Nicht jede Zeile braucht Kommentare, aber komplexe Logik sollte erklärt werden. Sprache und Notwendigkeit hängen vom Kontext ab.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "Best Practices"
     },
     {
       "id": "q3",
       "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "question": "Welche JavaDoc-Tags werden für Methodendokumentation verwendet?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "@param für Parameter-Beschreibungen",
+        "@return für Rückgabewerte",
+        "@throws für Exceptions",
+        "@import für Abhängigkeiten"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": ["@param für Parameter-Beschreibungen", "@return für Rückgabewerte", "@throws für Exceptions"],
+      "explanation": "@param beschreibt Methodenparameter, @return den Rückgabewert, und @throws dokumentiert geworfene Exceptions. Weitere wichtige Tags sind @deprecated, @see, @since und @author. @import existiert nicht als JavaDoc-Tag - Imports werden mit der import-Anweisung gemacht.",
       "points": 2,
-      "category": "Anwendung"
+      "category": "JavaDoc"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Was ist selbstdokumentierender Code?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Code mit aussagekräftigen Variablen- und Methodennamen, der ohne Kommentare verständlich ist",
+        "Code, der automatisch Dokumentation generiert",
+        "Code mit sehr vielen Kommentaren",
+        "Code, der sich selbst testet"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Code mit aussagekräftigen Variablen- und Methodennamen, der ohne Kommentare verständlich ist",
+      "explanation": "Selbstdokumentierender Code verwendet aussagekräftige Namen (z.B. 'daysUntilDeadline' statt 'd'), klare Strukturen und verständliche Logik. Er minimiert den Bedarf an Kommentaren, da die Intention aus dem Code selbst ersichtlich ist. Dies ist ein wichtiges Prinzip von Clean Code.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Best Practices"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Welches Format wird häufig für REST-API-Dokumentation verwendet?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Swagger/OpenAPI",
+        "JavaDoc",
+        "Markdown",
+        "UML"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Swagger/OpenAPI",
+      "explanation": "Swagger/OpenAPI ist der Standard für REST-API-Dokumentation. Es definiert Endpoints, Parameter, Request/Response-Formate und generiert interaktive Dokumentation. JavaDoc ist für Java-Code, Markdown für allgemeine Dokumentation, und UML für Diagramme.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "API-Dokumentation"
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "question": "Welche Abschnitte sollte eine gute README-Datei enthalten?",
+      "options": [
+        "Projektbeschreibung und Features",
+        "Installation und Verwendung",
+        "Konfiguration und Tests",
+        "Persönliche Tagebucheinträge"
+      ],
+      "correctAnswer": ["Projektbeschreibung und Features", "Installation und Verwendung", "Konfiguration und Tests"],
+      "explanation": "Eine gute README enthält: Projektbeschreibung, Features, Installation, Verwendung, Konfiguration, Tests, Lizenz und ggf. Contributing-Guidelines. Sie ist oft der erste Kontaktpunkt für neue Nutzer und Entwickler. Persönliche Inhalte gehören nicht in eine README.",
+      "points": 2,
+      "category": "README"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was beschreibt ein Changelog?",
+      "options": [
+        "Änderungen zwischen Versionen (Added, Changed, Fixed, Deprecated)",
+        "Die Konfiguration der Anwendung",
+        "Die Architektur des Systems",
+        "Die Testabdeckung"
+      ],
+      "correctAnswer": "Änderungen zwischen Versionen (Added, Changed, Fixed, Deprecated)",
+      "explanation": "Ein Changelog dokumentiert Änderungen zwischen Versionen chronologisch. Typische Kategorien sind: Added (neue Features), Changed (Änderungen), Fixed (Bugfixes), Deprecated (veraltete Features) und Removed (entfernte Features). Format: Keep a Changelog (keepachangelog.com).",
+      "points": 1,
+      "category": "Versionierung"
+    },
+    {
+      "id": "q8",
+      "type": "code",
+      "question": "Welcher JavaDoc-Kommentar ist korrekt formatiert?",
+      "code": "// Option A\n/* Berechnet die Summe */\nint sum(int a, int b) { return a + b; }\n\n// Option B\n/** \n * Berechnet die Summe zweier Zahlen.\n * @param a Erste Zahl\n * @param b Zweite Zahl\n * @return Die Summe von a und b\n */\nint sum(int a, int b) { return a + b; }\n\n// Option C\n// Berechnet die Summe\nint sum(int a, int b) { return a + b; }",
+      "language": "java",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Alle sind korrekt"
+      ],
+      "correctAnswer": "Option B",
+      "explanation": "Option B ist korrekt: JavaDoc verwendet /** */ (nicht /* */ oder //), beschreibt die Methode und dokumentiert Parameter mit @param und Rückgabewert mit @return. Option A verwendet falsches Kommentarformat, Option C ist ein einfacher Kommentar ohne JavaDoc-Tags.",
+      "points": 2,
+      "category": "JavaDoc"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was ist JSDoc?",
+      "options": [
+        "Dokumentations-Standard für JavaScript mit @param, @returns, @example Tags",
+        "Ein JavaScript-Framework",
+        "Eine JavaScript-Testbibliothek",
+        "Ein JavaScript-Compiler"
+      ],
+      "correctAnswer": "Dokumentations-Standard für JavaScript mit @param, @returns, @example Tags",
+      "explanation": "JSDoc ist der Dokumentations-Standard für JavaScript, ähnlich wie JavaDoc für Java. Es verwendet spezielle Kommentare mit Tags wie @param (Parameter), @returns (Rückgabewert), @example (Beispiele) und @type (Typen). Tools können daraus Dokumentation generieren.",
+      "points": 1,
+      "category": "JSDoc"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Welches Tool wird für Python-Dokumentation aus Docstrings verwendet?",
+      "options": [
+        "Sphinx",
+        "JavaDoc",
+        "Swagger",
+        "Doxygen"
+      ],
+      "correctAnswer": "Sphinx",
+      "explanation": "Sphinx ist das Standard-Tool für Python-Dokumentation. Es generiert HTML-Dokumentation aus Docstrings und unterstützt reStructuredText und Markdown. JavaDoc ist für Java, Swagger für REST-APIs, und Doxygen hauptsächlich für C/C++.",
+      "points": 1,
+      "category": "Dokumentations-Tools"
+    },
+    {
+      "id": "q11",
+      "type": "multiple-choice",
+      "question": "Welche Informationen sollten in Konfigurationsdokumentation enthalten sein?",
+      "options": [
+        "Beschreibung jeder Konfigurationsoption",
+        "Standardwerte und erlaubte Wertebereiche",
+        "Beispiele für typische Konfigurationen",
+        "Quellcode der Anwendung"
+      ],
+      "correctAnswer": ["Beschreibung jeder Konfigurationsoption", "Standardwerte und erlaubte Wertebereiche", "Beispiele für typische Konfigurationen"],
+      "explanation": "Gute Konfigurationsdokumentation erklärt jede Option, gibt Standardwerte und Wertebereiche an, und zeigt Beispiele. Inline-Kommentare in Konfigurationsdateien (YAML, JSON, Properties) sind hilfreich. Der Quellcode gehört nicht in die Konfigurationsdokumentation.",
+      "points": 2,
+      "category": "Konfiguration"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen technischer und Endnutzer-Dokumentation?",
+      "options": [
+        "Technische Dokumentation enthält Code-Details, Endnutzer-Dokumentation ist einfacher mit Screenshots",
+        "Es gibt keinen Unterschied",
+        "Technische Dokumentation ist immer auf Englisch",
+        "Endnutzer-Dokumentation enthält mehr Code-Beispiele"
+      ],
+      "correctAnswer": "Technische Dokumentation enthält Code-Details, Endnutzer-Dokumentation ist einfacher mit Screenshots",
+      "explanation": "Technische Dokumentation richtet sich an Entwickler (Code-Beispiele, Architektur, APIs). Endnutzer-Dokumentation ist für Anwender (einfache Sprache, Screenshots, Schritt-für-Schritt-Anleitungen). Beide sind wichtig, aber für unterschiedliche Zielgruppen.",
+      "points": 1,
+      "category": "Zielgruppen"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Welches UML-Diagramm eignet sich am besten zur Dokumentation von Klassenstrukturen?",
+      "options": [
+        "Klassendiagramm",
+        "Sequenzdiagramm",
+        "Use-Case-Diagramm",
+        "Aktivitätsdiagramm"
+      ],
+      "correctAnswer": "Klassendiagramm",
+      "explanation": "Klassendiagramme zeigen Klassen, Attribute, Methoden und Beziehungen (Vererbung, Assoziation, Komposition). Sequenzdiagramme zeigen Abläufe, Use-Case-Diagramme Anwendungsfälle, und Aktivitätsdiagramme Prozesse. Für Strukturdokumentation sind Klassendiagramme ideal.",
+      "points": 1,
+      "category": "UML"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über API-Dokumentation sind korrekt?",
+      "options": [
+        "Sie sollte alle Endpoints mit Parametern und Responses dokumentieren",
+        "Beispiel-Requests und -Responses sind hilfreich",
+        "Status-Codes und Fehlerbehandlung sollten erklärt werden",
+        "API-Dokumentation ist nur für externe APIs notwendig"
+      ],
+      "correctAnswer": ["Sie sollte alle Endpoints mit Parametern und Responses dokumentieren", "Beispiel-Requests und -Responses sind hilfreich", "Status-Codes und Fehlerbehandlung sollten erklärt werden"],
+      "explanation": "Gute API-Dokumentation enthält: Endpoints, Parameter (Typ, Pflicht/Optional), Request/Response-Formate, Status-Codes, Fehler, Authentifizierung und Beispiele. Dies gilt für externe UND interne APIs - auch interne Teams profitieren von guter Dokumentation.",
+      "points": 2,
+      "category": "API-Dokumentation"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist das C4-Modell in der Architektur-Dokumentation?",
+      "options": [
+        "Ein hierarchisches Modell mit 4 Ebenen: Context, Container, Component, Code",
+        "Ein Programmiersprachen-Standard",
+        "Ein Testframework",
+        "Ein Datenbank-Modell"
+      ],
+      "correctAnswer": "Ein hierarchisches Modell mit 4 Ebenen: Context, Container, Component, Code",
+      "explanation": "Das C4-Modell dokumentiert Software-Architektur in 4 Abstraktionsebenen: System Context (Systemumgebung), Container (Anwendungen/Services), Component (Komponenten innerhalb Container) und Code (Klassen/Funktionen). Es bietet verschiedene Detailstufen für unterschiedliche Zielgruppen.",
+      "points": 1,
+      "category": "Architektur"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Warum sollte Dokumentation bei Code-Änderungen aktualisiert werden?",
+      "options": [
+        "Um Inkonsistenzen zu vermeiden und Verwirrung zu verhindern",
+        "Weil es gesetzlich vorgeschrieben ist",
+        "Um mehr Zeilen Code zu haben",
+        "Dokumentation muss nie aktualisiert werden"
+      ],
+      "correctAnswer": "Um Inkonsistenzen zu vermeiden und Verwirrung zu verhindern",
+      "explanation": "Veraltete Dokumentation ist schlimmer als keine Dokumentation, da sie zu falschen Annahmen und Fehlern führt. Bei Code-Änderungen müssen Kommentare, API-Docs und README aktualisiert werden. Dies ist eine Best Practice, keine gesetzliche Pflicht.",
+      "points": 1,
+      "category": "Best Practices"
+    },
+    {
+      "id": "q17",
+      "type": "code",
+      "question": "Welcher Python-Docstring folgt dem korrekten Format?",
+      "code": "# Option A\ndef add(a, b):\n    # Addiert zwei Zahlen\n    return a + b\n\n# Option B\ndef add(a, b):\n    \"\"\"\n    Addiert zwei Zahlen.\n    \n    Args:\n        a: Erste Zahl\n        b: Zweite Zahl\n    \n    Returns:\n        Die Summe von a und b\n    \"\"\"\n    return a + b\n\n# Option C\ndef add(a, b):\n    /* Addiert zwei Zahlen */\n    return a + b",
+      "language": "python",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C",
+        "Alle sind korrekt"
+      ],
+      "correctAnswer": "Option B",
+      "explanation": "Option B ist korrekt: Python-Docstrings verwenden dreifache Anführungszeichen (\"\"\" \"\"\") direkt nach der Funktionsdefinition. Sie dokumentieren Args (Parameter) und Returns (Rückgabewert). Option A ist ein normaler Kommentar, Option C verwendet C-Syntax (/* */) die in Python nicht funktioniert.",
+      "points": 2,
+      "category": "Python Docstrings"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Welches Tool generiert interaktive API-Dokumentation aus OpenAPI/Swagger-Spezifikationen?",
+      "options": [
+        "Swagger UI",
+        "JavaDoc",
+        "Git",
+        "npm"
+      ],
+      "correctAnswer": "Swagger UI",
+      "explanation": "Swagger UI generiert interaktive, browserbasierte API-Dokumentation aus OpenAPI/Swagger-Spezifikationen. Entwickler können APIs direkt in der Dokumentation testen. JavaDoc ist für Java-Code, Git für Versionskontrolle, und npm ist ein Paketmanager.",
+      "points": 1,
+      "category": "Dokumentations-Tools"
+    },
+    {
+      "id": "q19",
+      "type": "multiple-choice",
+      "question": "Welche Informationen gehören in eine Deployment-Dokumentation?",
+      "options": [
+        "Voraussetzungen (Node.js, Datenbank-Versionen)",
+        "Umgebungsvariablen und Konfiguration",
+        "Installations- und Start-Befehle",
+        "Persönliche Meinungen über das Projekt"
+      ],
+      "correctAnswer": ["Voraussetzungen (Node.js, Datenbank-Versionen)", "Umgebungsvariablen und Konfiguration", "Installations- und Start-Befehle"],
+      "explanation": "Deployment-Dokumentation enthält: Voraussetzungen (Software-Versionen), Umgebungsvariablen, Installations-Schritte, Build-Prozess, Start-Befehle, Monitoring und Health-Checks. Sie ermöglicht reproduzierbare Deployments. Persönliche Meinungen gehören nicht hinein.",
+      "points": 2,
+      "category": "Deployment"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist Markdown und wofür wird es verwendet?",
+      "options": [
+        "Eine leichtgewichtige Markup-Sprache für formatierte Textdokumente (README, Wikis)",
+        "Eine Programmiersprache",
+        "Ein Datenbank-System",
+        "Ein Testing-Framework"
+      ],
+      "correctAnswer": "Eine leichtgewichtige Markup-Sprache für formatierte Textdokumente (README, Wikis)",
+      "explanation": "Markdown ist eine einfache Markup-Sprache für formatierte Texte mit Syntax für Überschriften (#), Listen (-), Links ([text](url)), Code-Blöcke (```), etc. Es wird für README-Dateien, Wikis, Dokumentation und Blogs verwendet. Es ist keine Programmiersprache.",
+      "points": 1,
+      "category": "Markdown"
     }
   ],
   "tags": [
@@ -93,6 +320,11 @@
     "Code-Kommentare",
     "API-Docs",
     "README",
+    "JavaDoc",
+    "JSDoc",
+    "Markdown",
+    "UML",
     "Neu 2025"
-  ]
+  ],
+  "lastUpdated": "2025-01-10T00:00:00Z"
 }

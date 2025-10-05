@@ -2,96 +2,346 @@
   "id": "bp-04-design-patterns-quiz",
   "moduleId": "bp-04-design-patterns",
   "title": "Design Patterns (Entwurfsmuster) Quiz",
-  "description": "Teste dein Wissen über Design Patterns (Entwurfsmuster)",
+  "description": "Teste dein Wissen über Design Patterns wie Singleton, Factory, Observer, Strategy, Decorator und MVC",
   "category": "BP-04",
   "difficulty": "advanced",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Design Patterns (Entwurfsmuster)?",
+      "question": "Was sind Design Patterns (Entwurfsmuster)?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Bewährte Lösungsschablonen für wiederkehrende Entwurfsprobleme in der Softwareentwicklung",
+        "Konkrete Code-Bibliotheken, die direkt in Projekte eingebunden werden",
+        "Programmiersprachen-spezifische Syntax-Regeln",
+        "Automatisch generierte Code-Templates durch IDEs"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Bewährte Lösungsschablonen für wiederkehrende Entwurfsprobleme in der Softwareentwicklung",
+      "explanation": "Design Patterns sind bewährte, wiederverwendbare Lösungsschablonen für häufig auftretende Probleme im Software-Design. Sie sind sprachunabhängig und beschreiben die Struktur und Interaktion von Klassen und Objekten. Die Gang of Four (GoF) haben 23 klassische Patterns dokumentiert.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Welches Problem löst das Singleton-Pattern?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Es stellt sicher, dass von einer Klasse nur genau eine Instanz existiert und bietet einen globalen Zugriffspunkt",
+        "Es ermöglicht die Erstellung mehrerer unabhängiger Instanzen einer Klasse",
+        "Es teilt eine Klasse in mehrere kleinere Klassen auf",
+        "Es erstellt Kopien von bestehenden Objekten"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Es stellt sicher, dass von einer Klasse nur genau eine Instanz existiert und bietet einen globalen Zugriffspunkt",
+      "explanation": "Das Singleton-Pattern garantiert, dass eine Klasse nur eine einzige Instanz hat und stellt einen globalen Zugriffspunkt darauf bereit. Typische Anwendungsfälle sind Konfigurationsmanager, Logger oder Datenbankverbindungen. Der Konstruktor ist privat, und die Instanz wird über eine statische Methode bereitgestellt.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "Creational Patterns"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "code",
+      "question": "Welches Design Pattern wird in diesem Java-Code verwendet?",
+      "code": "public class DatabaseConnection {\n    private static DatabaseConnection instance;\n    \n    private DatabaseConnection() {}\n    \n    public static DatabaseConnection getInstance() {\n        if (instance == null) {\n            instance = new DatabaseConnection();\n        }\n        return instance;\n    }\n}",
+      "language": "java",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Singleton Pattern",
+        "Factory Pattern",
+        "Builder Pattern",
+        "Prototype Pattern"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Singleton Pattern",
+      "explanation": "Der Code zeigt ein klassisches Singleton Pattern: privater Konstruktor, statische Instanzvariable und eine getInstance()-Methode, die sicherstellt, dass nur eine Instanz existiert. Dies ist die Lazy-Initialization-Variante des Singleton Patterns.",
       "points": 2,
-      "category": "Anwendung"
+      "category": "Creational Patterns"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Was ist der Hauptzweck des Factory-Patterns?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Die Objekterzeugung von der konkreten Implementierung zu entkoppeln",
+        "Objekte zu kopieren und zu klonen",
+        "Mehrere Objekte zu einer Einheit zusammenzufassen",
+        "Die Schnittstelle eines Objekts zu ändern"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Die Objekterzeugung von der konkreten Implementierung zu entkoppeln",
+      "explanation": "Das Factory Pattern (Factory Method oder Abstract Factory) entkoppelt die Objekterzeugung vom Client-Code. Der Client ruft eine Factory-Methode auf, ohne die konkrete Klasse zu kennen. Dies erhöht die Flexibilität und ermöglicht es, neue Typen hinzuzufügen, ohne bestehenden Code zu ändern (Open-Closed-Principle).",
       "points": 1,
-      "category": "Praxis"
+      "category": "Creational Patterns"
     },
     {
       "id": "q5",
-      "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über das Observer-Pattern sind korrekt? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Es definiert eine 1-zu-n-Abhängigkeit zwischen Objekten",
+        "Wenn sich der Zustand des Subject ändert, werden alle Observer automatisch benachrichtigt",
+        "Observer müssen die konkrete Klasse des Subject kennen",
+        "Es wird auch als Publish-Subscribe-Pattern bezeichnet"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": [
+        "Es definiert eine 1-zu-n-Abhängigkeit zwischen Objekten",
+        "Wenn sich der Zustand des Subject ändert, werden alle Observer automatisch benachrichtigt",
+        "Es wird auch als Publish-Subscribe-Pattern bezeichnet"
+      ],
+      "explanation": "Das Observer Pattern definiert eine 1-zu-n-Beziehung: Ein Subject (Observable) benachrichtigt automatisch alle registrierten Observer über Zustandsänderungen. Observer arbeiten über Interfaces und müssen die konkrete Subject-Klasse nicht kennen. Das Pattern wird auch Publish-Subscribe genannt und ist die Basis für Event-Systeme.",
+      "points": 2,
+      "category": "Behavioral Patterns"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "In welcher Situation ist das Strategy-Pattern besonders nützlich?",
+      "options": [
+        "Wenn verschiedene Algorithmen austauschbar sein sollen, ohne den Client-Code zu ändern",
+        "Wenn ein Objekt nur einmal erstellt werden soll",
+        "Wenn die Schnittstelle eines Objekts angepasst werden muss",
+        "Wenn komplexe Objekte schrittweise aufgebaut werden sollen"
+      ],
+      "correctAnswer": "Wenn verschiedene Algorithmen austauschbar sein sollen, ohne den Client-Code zu ändern",
+      "explanation": "Das Strategy Pattern kapselt verschiedene Algorithmen in separate Klassen und macht sie austauschbar. Der Client kann zur Laufzeit zwischen verschiedenen Strategien wechseln, ohne seinen Code zu ändern. Beispiel: Verschiedene Sortieralgorithmen oder Zahlungsmethoden in einem E-Commerce-System.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Behavioral Patterns"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen dem Decorator- und dem Adapter-Pattern?",
+      "options": [
+        "Decorator erweitert die Funktionalität eines Objekts, Adapter passt eine Schnittstelle an",
+        "Decorator passt Schnittstellen an, Adapter erweitert Funktionalität",
+        "Beide Patterns sind identisch in ihrer Funktionsweise",
+        "Decorator erstellt neue Objekte, Adapter modifiziert bestehende"
+      ],
+      "correctAnswer": "Decorator erweitert die Funktionalität eines Objekts, Adapter passt eine Schnittstelle an",
+      "explanation": "Das Decorator Pattern fügt einem Objekt dynamisch zusätzliche Verantwortlichkeiten hinzu, ohne die Schnittstelle zu ändern. Das Adapter Pattern hingegen wandelt die Schnittstelle einer Klasse in eine andere um, die der Client erwartet. Decorator erweitert, Adapter übersetzt.",
+      "points": 1,
+      "category": "Structural Patterns"
+    },
+    {
+      "id": "q8",
+      "type": "code",
+      "question": "Welches Pattern wird hier implementiert?",
+      "code": "interface PaymentStrategy {\n    void pay(double amount);\n}\n\nclass CreditCardPayment implements PaymentStrategy {\n    public void pay(double amount) {\n        System.out.println(\"Paid \" + amount + \" with credit card\");\n    }\n}\n\nclass PayPalPayment implements PaymentStrategy {\n    public void pay(double amount) {\n        System.out.println(\"Paid \" + amount + \" with PayPal\");\n    }\n}",
+      "language": "java",
+      "options": [
+        "Strategy Pattern",
+        "Factory Pattern",
+        "Observer Pattern",
+        "Template Method Pattern"
+      ],
+      "correctAnswer": "Strategy Pattern",
+      "explanation": "Der Code zeigt das Strategy Pattern: Ein Interface (PaymentStrategy) definiert die Strategie, und verschiedene konkrete Klassen implementieren unterschiedliche Algorithmen (Zahlungsmethoden). Der Client kann zur Laufzeit zwischen den Strategien wechseln.",
+      "points": 2,
+      "category": "Behavioral Patterns"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was beschreibt das MVC-Pattern (Model-View-Controller)?",
+      "options": [
+        "Ein Architekturmuster zur Trennung von Daten, Präsentation und Steuerungslogik",
+        "Ein Pattern zur Erstellung von Datenbankobjekten",
+        "Ein Pattern zur Verwaltung von Netzwerkverbindungen",
+        "Ein Pattern zur Optimierung von Algorithmen"
+      ],
+      "correctAnswer": "Ein Architekturmuster zur Trennung von Daten, Präsentation und Steuerungslogik",
+      "explanation": "MVC trennt eine Anwendung in drei Komponenten: Model (Daten und Geschäftslogik), View (Präsentation) und Controller (Steuerung und Vermittlung). Diese Trennung erhöht die Wartbarkeit und ermöglicht es, verschiedene Views für dasselbe Model zu verwenden. MVC ist die Basis vieler Web-Frameworks.",
+      "points": 1,
+      "category": "Architectural Patterns"
+    },
+    {
+      "id": "q10",
+      "type": "multiple-choice",
+      "question": "Welche Patterns gehören zu den Creational Patterns (Erzeugungsmustern)? (Mehrere Antworten möglich)",
+      "options": [
+        "Singleton",
+        "Factory Method",
+        "Observer",
+        "Decorator"
+      ],
+      "correctAnswer": [
+        "Singleton",
+        "Factory Method"
+      ],
+      "explanation": "Creational Patterns befassen sich mit der Objekterzeugung: Singleton (eine Instanz), Factory Method (flexible Objekterzeugung), Abstract Factory, Builder und Prototype. Observer ist ein Behavioral Pattern, Decorator ein Structural Pattern.",
+      "points": 2,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Welches Problem löst das Adapter-Pattern?",
+      "options": [
+        "Es ermöglicht die Zusammenarbeit von Klassen mit inkompatiblen Schnittstellen",
+        "Es erstellt Kopien von Objekten",
+        "Es fügt Objekten dynamisch neue Funktionalität hinzu",
+        "Es verwaltet den Zugriff auf ein Objekt"
+      ],
+      "correctAnswer": "Es ermöglicht die Zusammenarbeit von Klassen mit inkompatiblen Schnittstellen",
+      "explanation": "Das Adapter Pattern (auch Wrapper genannt) wandelt die Schnittstelle einer Klasse in eine andere um, die der Client erwartet. Es ermöglicht die Zusammenarbeit von Klassen, die sonst aufgrund inkompatibler Schnittstellen nicht zusammenarbeiten könnten. Beispiel: Integration von Legacy-Code in neue Systeme.",
+      "points": 1,
+      "category": "Structural Patterns"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist der Hauptvorteil des Dependency Injection Patterns?",
+      "options": [
+        "Reduzierung der Kopplung zwischen Klassen und bessere Testbarkeit",
+        "Schnellere Ausführungsgeschwindigkeit des Codes",
+        "Automatische Speicherverwaltung",
+        "Vereinfachung der Benutzeroberfläche"
+      ],
+      "correctAnswer": "Reduzierung der Kopplung zwischen Klassen und bessere Testbarkeit",
+      "explanation": "Dependency Injection (DI) ist ein Pattern, bei dem Abhängigkeiten von außen injiziert werden, statt sie intern zu erzeugen. Dies reduziert die Kopplung, erhöht die Flexibilität und verbessert die Testbarkeit, da Abhängigkeiten leicht durch Mock-Objekte ersetzt werden können. DI ist ein Kernprinzip moderner Frameworks.",
+      "points": 1,
+      "category": "Architectural Patterns"
+    },
+    {
+      "id": "q13",
+      "type": "code",
+      "question": "Was macht dieser Decorator-Code?",
+      "code": "interface Coffee {\n    double getCost();\n    String getDescription();\n}\n\nclass SimpleCoffee implements Coffee {\n    public double getCost() { return 2.0; }\n    public String getDescription() { return \"Simple coffee\"; }\n}\n\nclass MilkDecorator implements Coffee {\n    private Coffee coffee;\n    public MilkDecorator(Coffee c) { this.coffee = c; }\n    public double getCost() { return coffee.getCost() + 0.5; }\n    public String getDescription() { return coffee.getDescription() + \", milk\"; }\n}",
+      "language": "java",
+      "options": [
+        "Erweitert ein Coffee-Objekt dynamisch um zusätzliche Eigenschaften (Milch)",
+        "Erstellt eine neue Kaffeesorte",
+        "Passt die Schnittstelle von Coffee an",
+        "Verwaltet mehrere Coffee-Instanzen"
+      ],
+      "correctAnswer": "Erweitert ein Coffee-Objekt dynamisch um zusätzliche Eigenschaften (Milch)",
+      "explanation": "Der Code zeigt das Decorator Pattern: MilkDecorator umhüllt ein Coffee-Objekt und fügt zusätzliche Funktionalität hinzu (Milch, höherer Preis). Mehrere Decorators können verschachtelt werden (z.B. Milch + Zucker). Dies ist flexibler als Vererbung, da Kombinationen zur Laufzeit erstellt werden können.",
+      "points": 3,
+      "category": "Structural Patterns"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Welches Pattern verwendet eine Schnittstelle, um eine Familie von Algorithmen zu definieren, wobei jeder Algorithmus in einer eigenen Klasse gekapselt ist?",
+      "options": [
+        "Strategy Pattern",
+        "Template Method Pattern",
+        "Command Pattern",
+        "State Pattern"
+      ],
+      "correctAnswer": "Strategy Pattern",
+      "explanation": "Das Strategy Pattern definiert eine Familie von Algorithmen, kapselt jeden in einer eigenen Klasse und macht sie austauschbar. Das Template Method Pattern hingegen definiert das Skelett eines Algorithmus in einer Basisklasse. Command kapselt Anfragen als Objekte, State kapselt zustandsabhängiges Verhalten.",
+      "points": 1,
+      "category": "Behavioral Patterns"
+    },
+    {
+      "id": "q15",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über das Facade-Pattern sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "Es bietet eine vereinfachte Schnittstelle zu einem komplexen Subsystem",
+        "Es reduziert die Kopplung zwischen Client und Subsystem",
+        "Es ersetzt alle Klassen des Subsystems durch eine einzige Klasse",
+        "Es macht komplexe Systeme einfacher nutzbar"
+      ],
+      "correctAnswer": [
+        "Es bietet eine vereinfachte Schnittstelle zu einem komplexen Subsystem",
+        "Es reduziert die Kopplung zwischen Client und Subsystem",
+        "Es macht komplexe Systeme einfacher nutzbar"
+      ],
+      "explanation": "Das Facade Pattern bietet eine einheitliche, vereinfachte Schnittstelle zu einem komplexen Subsystem. Es reduziert die Kopplung und macht das System einfacher nutzbar, ersetzt aber nicht die Subsystem-Klassen. Clients können weiterhin direkt auf das Subsystem zugreifen, wenn nötig.",
+      "points": 2,
+      "category": "Structural Patterns"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen dem Factory Method Pattern und dem Abstract Factory Pattern?",
+      "options": [
+        "Factory Method erstellt ein Produkt, Abstract Factory erstellt Familien verwandter Produkte",
+        "Factory Method ist komplexer als Abstract Factory",
+        "Abstract Factory verwendet keine Vererbung",
+        "Factory Method kann nur Singleton-Objekte erstellen"
+      ],
+      "correctAnswer": "Factory Method erstellt ein Produkt, Abstract Factory erstellt Familien verwandter Produkte",
+      "explanation": "Factory Method definiert eine Schnittstelle zum Erstellen eines Objekts, lässt aber Unterklassen entscheiden, welche Klasse instanziiert wird. Abstract Factory bietet eine Schnittstelle zum Erstellen von Familien verwandter oder abhängiger Objekte, ohne deren konkrete Klassen zu spezifizieren. Abstract Factory ist umfassender.",
+      "points": 1,
+      "category": "Creational Patterns"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Welches Pattern wird typischerweise verwendet, um Undo/Redo-Funktionalität zu implementieren?",
+      "options": [
+        "Command Pattern",
+        "Observer Pattern",
+        "Strategy Pattern",
+        "Decorator Pattern"
+      ],
+      "correctAnswer": "Command Pattern",
+      "explanation": "Das Command Pattern kapselt Anfragen als Objekte und ermöglicht es, Operationen zu parametrisieren, in Warteschlangen zu stellen und zu protokollieren. Durch Speicherung der Command-Objekte kann eine Undo/Redo-Funktionalität implementiert werden. Jedes Command-Objekt kennt seine execute()- und undo()-Methoden.",
+      "points": 1,
+      "category": "Behavioral Patterns"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bieten Design Patterns? (Mehrere Antworten möglich)",
+      "options": [
+        "Wiederverwendbare Lösungen für häufige Probleme",
+        "Verbesserte Kommunikation zwischen Entwicklern durch gemeinsames Vokabular",
+        "Automatische Code-Generierung",
+        "Bewährte Best Practices und erhöhte Wartbarkeit"
+      ],
+      "correctAnswer": [
+        "Wiederverwendbare Lösungen für häufige Probleme",
+        "Verbesserte Kommunikation zwischen Entwicklern durch gemeinsames Vokabular",
+        "Bewährte Best Practices und erhöhte Wartbarkeit"
+      ],
+      "explanation": "Design Patterns bieten bewährte, wiederverwendbare Lösungen, verbessern die Kommunikation (gemeinsame Sprache), fördern Best Practices und erhöhen die Wartbarkeit. Sie generieren keinen Code automatisch, sondern sind konzeptuelle Vorlagen, die manuell implementiert werden müssen.",
+      "points": 2,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Welches Pattern beschreibt die Gang of Four (GoF) NICHT?",
+      "options": [
+        "Dependency Injection",
+        "Singleton",
+        "Observer",
+        "Factory Method"
+      ],
+      "correctAnswer": "Dependency Injection",
+      "explanation": "Die Gang of Four (Gamma, Helm, Johnson, Vlissides) beschrieben 1994 in ihrem Buch 23 klassische Design Patterns, darunter Singleton, Observer und Factory Method. Dependency Injection wurde später populär und ist kein GoF-Pattern, obwohl es auf ähnlichen Prinzipien basiert.",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "In welcher Kategorie wird das Template Method Pattern eingeordnet?",
+      "options": [
+        "Behavioral Patterns (Verhaltensmuster)",
+        "Creational Patterns (Erzeugungsmuster)",
+        "Structural Patterns (Strukturmuster)",
+        "Architectural Patterns (Architekturmuster)"
+      ],
+      "correctAnswer": "Behavioral Patterns (Verhaltensmuster)",
+      "explanation": "Das Template Method Pattern gehört zu den Behavioral Patterns. Es definiert das Skelett eines Algorithmus in einer Methode und delegiert einige Schritte an Unterklassen. Unterklassen können bestimmte Schritte überschreiben, ohne die Struktur des Algorithmus zu ändern. Dies ist ein Verhaltensmuster, da es die Interaktion zwischen Objekten regelt.",
+      "points": 1,
+      "category": "Behavioral Patterns"
     }
   ],
   "tags": [
     "Design Patterns",
     "OOP",
     "Software-Design",
-    "Gang of Four"
-  ]
+    "Gang of Four",
+    "Singleton",
+    "Factory",
+    "Observer",
+    "Strategy",
+    "Decorator",
+    "MVC"
+  ],
+  "lastUpdated": "2025-01-10"
 }

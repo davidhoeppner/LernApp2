@@ -6,7 +6,7 @@
   "category": "BP-01",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 15,
   "passingScore": 70,
   "questions": [
     {
@@ -159,7 +159,114 @@
       "explanation": "Das KDC ist ein Single Point of Failure. Wenn es ausfällt, können sich keine Benutzer mehr authentifizieren. Deshalb werden in der Praxis mehrere KDCs für Redundanz eingesetzt.",
       "points": 1,
       "category": "Nachteile"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist ein Realm in Kerberos?",
+      "options": [
+        "Eine administrative Domäne, die den Gültigkeitsbereich von Principals definiert",
+        "Ein verschlüsselter Bereich im Ticket",
+        "Eine Gruppe von Benutzern mit gleichen Rechten",
+        "Ein Backup-Server für das KDC"
+      ],
+      "correctAnswer": "Eine administrative Domäne, die den Gültigkeitsbereich von Principals definiert",
+      "explanation": "Ein Realm ist eine administrative Domäne in Kerberos (z.B. COMPANY.COM). Jeder Principal gehört zu einem Realm, und Realms können Vertrauensbeziehungen untereinander haben. Realms werden konventionell in Großbuchstaben geschrieben.",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Welcher Befehl zeigt aktive Kerberos-Tickets unter Linux an?",
+      "options": [
+        "klist",
+        "kinit",
+        "kdestroy",
+        "kshow"
+      ],
+      "correctAnswer": "klist",
+      "explanation": "Der Befehl 'klist' zeigt alle aktiven Kerberos-Tickets mit ihren Gültigkeitszeiträumen an. 'kinit' fordert neue Tickets an, 'kdestroy' löscht alle Tickets, und 'kshow' existiert nicht.",
+      "points": 1,
+      "category": "Praxis"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ermöglicht Cross-Realm Authentication in Kerberos?",
+      "options": [
+        "Authentifizierung über verschiedene Kerberos-Realms hinweg durch Vertrauensbeziehungen",
+        "Verwendung mehrerer Passwörter gleichzeitig",
+        "Zugriff auf Services ohne Tickets",
+        "Automatische Synchronisation von Benutzerdatenbanken"
+      ],
+      "correctAnswer": "Authentifizierung über verschiedene Kerberos-Realms hinweg durch Vertrauensbeziehungen",
+      "explanation": "Cross-Realm Authentication ermöglicht es Benutzern aus einem Realm, auf Services in einem anderen Realm zuzugreifen. Dies erfordert Vertrauensbeziehungen zwischen den Realms und spezielle Cross-Realm TGTs.",
+      "points": 2,
+      "category": "Erweitert"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Informationen sind in einem Service Principal Name (SPN) enthalten? (Mehrere Antworten möglich)",
+      "options": [
+        "Service-Typ (z.B. HTTP, LDAP)",
+        "Hostname des Servers",
+        "Realm",
+        "Benutzerpasswort"
+      ],
+      "correctAnswer": ["Service-Typ (z.B. HTTP, LDAP)", "Hostname des Servers", "Realm"],
+      "explanation": "Ein Service Principal Name hat das Format service/hostname@REALM (z.B. HTTP/webserver.company.com@COMPANY.COM). Er enthält den Service-Typ, den Hostname und den Realm, aber niemals Passwörter.",
+      "points": 2,
+      "category": "Principals"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist der Zweck einer Keytab-Datei in Kerberos?",
+      "options": [
+        "Speicherung von Service-Credentials für automatische Authentifizierung ohne Passwort-Eingabe",
+        "Verschlüsselung aller Netzwerkpakete",
+        "Backup der Kerberos-Datenbank",
+        "Verwaltung von Benutzer-Passwörtern"
+      ],
+      "correctAnswer": "Speicherung von Service-Credentials für automatische Authentifizierung ohne Passwort-Eingabe",
+      "explanation": "Eine Keytab-Datei enthält verschlüsselte Service-Credentials (Keys), die es Services ermöglichen, sich automatisch beim KDC zu authentifizieren, ohne dass ein Administrator ein Passwort eingeben muss. Typisch für Server-Dienste.",
+      "points": 1,
+      "category": "Praxis"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Welches Zeitfenster ist typisch für die Toleranz bei Zeitstempel-Validierung in Kerberos?",
+      "options": [
+        "5 Minuten",
+        "30 Sekunden",
+        "1 Stunde",
+        "24 Stunden"
+      ],
+      "correctAnswer": "5 Minuten",
+      "explanation": "Kerberos verwendet typischerweise ein Zeitfenster von 5 Minuten für die Zeitstempel-Validierung. Wenn die Zeitdifferenz zwischen Client und Server größer ist, wird die Authentifizierung mit einem 'Clock Skew'-Fehler abgelehnt.",
+      "points": 1,
+      "category": "Sicherheit"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was bedeutet der Fehler 'Clock skew too great' in Kerberos?",
+      "options": [
+        "Die Zeitdifferenz zwischen Client und KDC ist zu groß (> 5 Minuten)",
+        "Das Ticket ist abgelaufen",
+        "Der Service ist nicht erreichbar",
+        "Das Passwort ist falsch"
+      ],
+      "correctAnswer": "Die Zeitdifferenz zwischen Client und KDC ist zu groß (> 5 Minuten)",
+      "explanation": "Der 'Clock skew too great'-Fehler tritt auf, wenn die Systemuhren von Client und KDC nicht synchronisiert sind und die Differenz das erlaubte Zeitfenster (typisch 5 Minuten) überschreitet. Lösung: NTP zur Zeitsynchronisation verwenden.",
+      "points": 1,
+      "category": "Troubleshooting"
     }
   ],
-  "tags": ["kerberos", "authentifizierung", "tickets", "kdc", "sicherheit", "principals"]
+  "tags": ["kerberos", "authentifizierung", "tickets", "kdc", "sicherheit", "principals"],
+  "newIn2025": true,
+  "lastUpdated": "2025-01-05T12:00:00Z"
 }

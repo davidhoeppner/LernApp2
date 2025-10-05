@@ -1,98 +1,352 @@
 {
   "id": "bp-02-data-formats-quiz",
   "moduleId": "bp-02-data-formats",
-  "title": "Datenaustauschformate (XML, JSON, CSV) Quiz",
-  "description": "Teste dein Wissen über Datenaustauschformate (XML, JSON, CSV)",
+  "title": "Datenaustauschformate (JSON, XML, YAML) Quiz",
+  "description": "Teste dein Wissen über Datenaustauschformate JSON, XML und YAML sowie deren Syntax, Struktur und Anwendungsfälle",
   "category": "BP-02",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 20,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Datenaustauschformate (XML, JSON, CSV)?",
+      "question": "Was ist JSON (JavaScript Object Notation)?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Ein textbasiertes Datenaustauschformat, das auf JavaScript-Objekten basiert",
+        "Eine Programmiersprache für Webentwicklung",
+        "Ein Datenbank-Management-System",
+        "Ein Komprimierungsformat für Dateien"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Ein textbasiertes Datenaustauschformat, das auf JavaScript-Objekten basiert",
+      "explanation": "JSON ist ein leichtgewichtiges, textbasiertes Datenaustauschformat, das auf einer Teilmenge der JavaScript-Syntax basiert. Es ist sprachunabhängig und wird häufig für APIs und Konfigurationsdateien verwendet.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Welches Zeichen wird in JSON verwendet, um ein Objekt zu definieren?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Geschweifte Klammern { }",
+        "Eckige Klammern [ ]",
+        "Spitze Klammern < >",
+        "Runde Klammern ( )"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Geschweifte Klammern { }",
+      "explanation": "In JSON werden Objekte mit geschweiften Klammern { } definiert, während Arrays mit eckigen Klammern [ ] definiert werden. Objekte enthalten Key-Value-Paare.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "JSON-Syntax"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "code",
+      "question": "Ist dieser JSON-Code syntaktisch korrekt?",
+      "code": "{\n  \"name\": \"Max Mustermann\",\n  \"alter\": 25,\n  \"aktiv\": true,\n  \"hobbys\": [\"Lesen\", \"Sport\"]\n}",
+      "language": "json",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Ja, der Code ist korrekt",
+        "Nein, Strings müssen mit einfachen Anführungszeichen definiert werden",
+        "Nein, Arrays sind in JSON nicht erlaubt",
+        "Nein, Boolesche Werte müssen in Anführungszeichen stehen"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Ja, der Code ist korrekt",
+      "explanation": "Der JSON-Code ist syntaktisch korrekt. JSON verwendet doppelte Anführungszeichen für Strings und Keys, unterstützt Arrays, Zahlen, Booleans (true/false) und null als Datentypen.",
       "points": 2,
-      "category": "Anwendung"
+      "category": "JSON-Syntax"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Was ist XML (Extensible Markup Language)?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Eine erweiterbare Auszeichnungssprache zur Darstellung hierarchischer Daten",
+        "Eine Programmiersprache für Datenbanken",
+        "Ein Bildformat für Webseiten",
+        "Ein Verschlüsselungsprotokoll"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Eine erweiterbare Auszeichnungssprache zur Darstellung hierarchischer Daten",
+      "explanation": "XML ist eine erweiterbare Auszeichnungssprache, die zur Darstellung hierarchisch strukturierter Daten verwendet wird. Sie ist selbstbeschreibend und sowohl menschen- als auch maschinenlesbar.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Grundlagen"
     },
     {
       "id": "q5",
-      "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über XML sind korrekt? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "XML-Dokumente müssen ein Root-Element haben",
+        "XML-Tags sind case-sensitive (Groß-/Kleinschreibung wird beachtet)",
+        "XML erlaubt keine Attribute in Tags",
+        "Jedes öffnende Tag muss ein schließendes Tag haben"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": [
+        "XML-Dokumente müssen ein Root-Element haben",
+        "XML-Tags sind case-sensitive (Groß-/Kleinschreibung wird beachtet)",
+        "Jedes öffnende Tag muss ein schließendes Tag haben"
+      ],
+      "explanation": "XML-Dokumente müssen genau ein Root-Element haben, Tags sind case-sensitive (<Name> ≠ <name>), und jedes öffnende Tag benötigt ein schließendes Tag. XML erlaubt sehr wohl Attribute in Tags (z.B. <person id='1'>).",
+      "points": 2,
+      "category": "XML-Struktur"
+    },
+    {
+      "id": "q6",
+      "type": "code",
+      "question": "Welches XML-Dokument ist wohlgeformt (well-formed)?",
+      "code": "",
+      "language": "xml",
+      "options": [
+        "<person><name>Anna</name><alter>30</alter></person>",
+        "<person><name>Anna<alter>30</alter></name></person>",
+        "<Person><name>Anna</name><alter>30</alter></Person>",
+        "<person><name>Anna</name><alter>30</person></alter>"
+      ],
+      "correctAnswer": "<person><name>Anna</name><alter>30</alter></person>",
+      "explanation": "Die erste Option ist korrekt wohlgeformt: Es gibt ein Root-Element, alle Tags sind korrekt geschachtelt und geschlossen. Option 2 hat falsche Verschachtelung, Option 3 ist zwar wohlgeformt aber zeigt nur case-sensitivity, Option 4 hat falsch geschlossene Tags.",
+      "points": 2,
+      "category": "XML-Struktur"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist YAML (YAML Ain't Markup Language)?",
+      "options": [
+        "Ein menschenfreundliches Daten-Serialisierungsformat",
+        "Eine Markup-Sprache wie HTML",
+        "Ein Datenbank-Abfragesprache",
+        "Ein Komprimierungsalgorithmus"
+      ],
+      "correctAnswer": "Ein menschenfreundliches Daten-Serialisierungsformat",
+      "explanation": "YAML ist ein menschenfreundliches Daten-Serialisierungsformat, das häufig für Konfigurationsdateien verwendet wird. Es verwendet Einrückungen zur Strukturierung und ist leichter lesbar als JSON oder XML.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Grundlagen"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Wie werden in YAML hierarchische Strukturen dargestellt?",
+      "options": [
+        "Durch Einrückungen (Indentation)",
+        "Durch geschweifte Klammern",
+        "Durch XML-Tags",
+        "Durch Semikolons"
+      ],
+      "correctAnswer": "Durch Einrückungen (Indentation)",
+      "explanation": "YAML verwendet Einrückungen (typischerweise 2 Leerzeichen) zur Darstellung hierarchischer Strukturen. Dies macht YAML sehr lesbar, erfordert aber präzise Formatierung.",
+      "points": 1,
+      "category": "YAML-Syntax"
+    },
+    {
+      "id": "q9",
+      "type": "code",
+      "question": "Welche YAML-Syntax ist korrekt für eine Liste von Werten?",
+      "code": "",
+      "language": "yaml",
+      "options": [
+        "hobbys:\n  - Lesen\n  - Sport\n  - Musik",
+        "hobbys: [Lesen, Sport, Musik]",
+        "hobbys:\n  * Lesen\n  * Sport\n  * Musik",
+        "Beide ersten Optionen sind korrekt"
+      ],
+      "correctAnswer": "Beide ersten Optionen sind korrekt",
+      "explanation": "YAML unterstützt zwei Syntaxen für Listen: Die Block-Syntax mit Bindestrichen (- Item) und die Flow-Syntax mit eckigen Klammern [Item1, Item2]. Beide sind gültig. Die Asterisk-Syntax (*) ist nicht korrekt.",
+      "points": 2,
+      "category": "YAML-Syntax"
+    },
+    {
+      "id": "q10",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile hat JSON gegenüber XML? (Mehrere Antworten möglich)",
+      "options": [
+        "Kompaktere Syntax mit weniger Overhead",
+        "Einfacher zu parsen in JavaScript",
+        "Bessere Lesbarkeit durch weniger Tags",
+        "Unterstützt mehr Datentypen als XML"
+      ],
+      "correctAnswer": [
+        "Kompaktere Syntax mit weniger Overhead",
+        "Einfacher zu parsen in JavaScript",
+        "Bessere Lesbarkeit durch weniger Tags"
+      ],
+      "explanation": "JSON hat eine kompaktere Syntax ohne schließende Tags, ist nativ in JavaScript integrierbar und durch die reduzierte Syntax oft lesbarer. Beide Formate unterstützen ähnliche Datentypen, wobei XML durch Schemas erweiterbar ist.",
+      "points": 2,
+      "category": "Vergleich"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Welches Format eignet sich am besten für Konfigurationsdateien, die von Menschen häufig bearbeitet werden?",
+      "options": [
+        "YAML",
+        "JSON",
+        "XML",
+        "CSV"
+      ],
+      "correctAnswer": "YAML",
+      "explanation": "YAML eignet sich am besten für Konfigurationsdateien, da es durch Einrückungen statt Klammern sehr lesbar ist, Kommentare unterstützt und weniger Syntax-Overhead hat. Deshalb wird es oft in Docker, Kubernetes und CI/CD-Tools verwendet.",
+      "points": 1,
+      "category": "Anwendungsfälle"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Welches Format wird typischerweise für REST-APIs verwendet?",
+      "options": [
+        "JSON",
+        "XML",
+        "YAML",
+        "CSV"
+      ],
+      "correctAnswer": "JSON",
+      "explanation": "JSON ist das Standard-Format für moderne REST-APIs, da es kompakt ist, nativ von JavaScript unterstützt wird und von allen Programmiersprachen einfach geparst werden kann. XML wird seltener verwendet, hauptsächlich in Legacy-Systemen.",
+      "points": 1,
+      "category": "Anwendungsfälle"
+    },
+    {
+      "id": "q13",
+      "type": "code",
+      "question": "Was ist das Äquivalent dieses JSON-Objekts in YAML?",
+      "code": "{\n  \"name\": \"Server1\",\n  \"port\": 8080,\n  \"ssl\": true\n}",
+      "language": "json",
+      "options": [
+        "name: Server1\nport: 8080\nssl: true",
+        "name = Server1\nport = 8080\nssl = true",
+        "<name>Server1</name>\n<port>8080</port>\n<ssl>true</ssl>",
+        "name: 'Server1'; port: 8080; ssl: true"
+      ],
+      "correctAnswer": "name: Server1\nport: 8080\nssl: true",
+      "explanation": "In YAML werden Key-Value-Paare mit Doppelpunkt und Leerzeichen getrennt (key: value). Strings benötigen keine Anführungszeichen, Zahlen und Booleans werden direkt geschrieben. Die Syntax ist deutlich kompakter als JSON.",
+      "points": 2,
+      "category": "Vergleich"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Datentypen werden von JSON nativ unterstützt? (Mehrere Antworten möglich)",
+      "options": [
+        "String, Number, Boolean",
+        "Object, Array",
+        "null",
+        "Date, RegExp, Function"
+      ],
+      "correctAnswer": [
+        "String, Number, Boolean",
+        "Object, Array",
+        "null"
+      ],
+      "explanation": "JSON unterstützt nativ: String, Number, Boolean, Object, Array und null. Komplexe Typen wie Date, RegExp oder Function werden nicht unterstützt und müssen als Strings serialisiert werden.",
+      "points": 2,
+      "category": "JSON-Syntax"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist ein XML-Namespace?",
+      "options": [
+        "Ein Mechanismus zur Vermeidung von Namenskonflikten bei Tags",
+        "Ein Speicherbereich für XML-Variablen",
+        "Eine Datenbank für XML-Dokumente",
+        "Ein Komprimierungsverfahren für XML"
+      ],
+      "correctAnswer": "Ein Mechanismus zur Vermeidung von Namenskonflikten bei Tags",
+      "explanation": "XML-Namespaces verhindern Namenskonflikte, wenn XML-Dokumente aus verschiedenen Quellen kombiniert werden. Sie werden mit xmlns-Attributen definiert (z.B. xmlns:prefix='URI') und ermöglichen eindeutige Tag-Namen.",
+      "points": 1,
+      "category": "XML-Struktur"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Welches Format hat die geringste Dateigröße für dieselben Daten?",
+      "options": [
+        "JSON",
+        "XML",
+        "YAML",
+        "Alle haben die gleiche Größe"
+      ],
+      "correctAnswer": "JSON",
+      "explanation": "JSON hat typischerweise die geringste Dateigröße, da es keine schließenden Tags wie XML benötigt und kompakter als YAML ist. XML hat durch öffnende und schließende Tags den größten Overhead.",
+      "points": 1,
+      "category": "Vergleich"
+    },
+    {
+      "id": "q17",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über YAML-Kommentare sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "Kommentare beginnen mit dem #-Zeichen",
+        "YAML unterstützt mehrzeilige Kommentare mit /* */",
+        "Kommentare können am Ende einer Zeile stehen",
+        "YAML unterstützt keine Kommentare"
+      ],
+      "correctAnswer": [
+        "Kommentare beginnen mit dem #-Zeichen",
+        "Kommentare können am Ende einer Zeile stehen"
+      ],
+      "explanation": "YAML-Kommentare beginnen mit # und können sowohl als eigene Zeile als auch am Ende einer Zeile stehen. Mehrzeilige Kommentare wie in C (/* */) werden nicht unterstützt. JSON unterstützt übrigens gar keine Kommentare.",
+      "points": 2,
+      "category": "YAML-Syntax"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was ist ein XML-Schema (XSD)?",
+      "options": [
+        "Eine Definition der Struktur und Datentypen eines XML-Dokuments",
+        "Ein Komprimierungsformat für XML-Dateien",
+        "Eine Programmiersprache für XML-Verarbeitung",
+        "Ein Verschlüsselungsstandard für XML"
+      ],
+      "correctAnswer": "Eine Definition der Struktur und Datentypen eines XML-Dokuments",
+      "explanation": "Ein XML-Schema (XSD - XML Schema Definition) definiert die erlaubte Struktur, Elemente, Attribute und Datentypen eines XML-Dokuments. Es dient zur Validierung und Dokumentation von XML-Formaten.",
+      "points": 1,
+      "category": "XML-Struktur"
+    },
+    {
+      "id": "q19",
+      "type": "code",
+      "question": "Welcher JSON-Code enthält einen Syntaxfehler?",
+      "code": "",
+      "language": "json",
+      "options": [
+        "{\"name\": \"Test\", \"wert\": 42,}",
+        "{\"name\": \"Test\", \"wert\": 42}",
+        "{\"name\": \"Test\", \"liste\": [1, 2, 3]}",
+        "{\"name\": \"Test\", \"aktiv\": false}"
+      ],
+      "correctAnswer": "{\"name\": \"Test\", \"wert\": 42,}",
+      "explanation": "Die erste Option enthält ein trailing comma (Komma nach dem letzten Element), was in JSON nicht erlaubt ist. Alle anderen Optionen sind syntaktisch korrekt.",
+      "points": 2,
+      "category": "JSON-Syntax"
+    },
+    {
+      "id": "q20",
+      "type": "multiple-choice",
+      "question": "Für welche Anwendungsfälle ist XML besonders geeignet? (Mehrere Antworten möglich)",
+      "options": [
+        "Dokumente mit komplexer Struktur und Metadaten",
+        "Systeme, die XML-Schema-Validierung benötigen",
+        "Legacy-Systeme und SOAP-Webservices",
+        "Moderne REST-APIs mit hoher Performance-Anforderung"
+      ],
+      "correctAnswer": [
+        "Dokumente mit komplexer Struktur und Metadaten",
+        "Systeme, die XML-Schema-Validierung benötigen",
+        "Legacy-Systeme und SOAP-Webservices"
+      ],
+      "explanation": "XML eignet sich für komplexe Dokumente (z.B. Office-Formate), Systeme mit strikter Schema-Validierung und Legacy-Systeme wie SOAP. Für moderne REST-APIs wird JSON bevorzugt, da es kompakter und performanter ist.",
+      "points": 2,
+      "category": "Anwendungsfälle"
     }
   ],
   "tags": [
-    "XML",
     "JSON",
-    "CSV",
+    "XML",
+    "YAML",
     "Datenaustausch",
-    "API"
-  ]
+    "API",
+    "Konfiguration",
+    "Serialisierung"
+  ],
+  "lastUpdated": "2025-10-05T00:00:00Z"
 }

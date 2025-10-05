@@ -2,12 +2,12 @@
   "id": "sql-comprehensive-quiz-2025",
   "moduleId": "sql-dql-2025",
   "title": "SQL Komplett-Quiz - IHK Prüfungsvorbereitung",
-  "description": "Umfassendes Quiz zu allen SQL-Themen aus dem Prüfungsbeiblatt: DDL, DML und DQL. 35 Fragen mit ausführlichen Erklärungen.",
+  "description": "Umfassendes Quiz zu allen SQL-Themen aus dem Prüfungsbeiblatt: DDL, DML und DQL. 20 Fragen mit ausführlichen Erklärungen.",
   "category": "FÜ-02",
   "difficulty": "intermediate",
   "examRelevance": "high",
   "newIn2025": true,
-  "timeLimit": 60,
+  "timeLimit": 35,
   "passingScore": 70,
   "questions": [
     {
@@ -206,21 +206,6 @@
     },
     {
       "id": "sql-q13",
-      "type": "single-choice",
-      "question": "Was bedeutet das Prozentzeichen (%) im LIKE-Operator?",
-      "options": [
-        "Genau ein beliebiges Zeichen",
-        "Beliebig viele Zeichen (auch null)",
-        "Ein Prozentzeichen",
-        "Eine Zahl"
-      ],
-      "correctAnswer": "Beliebig viele Zeichen (auch null)",
-      "explanation": "% steht für beliebig viele Zeichen. Beispiel: 'M%' findet 'Müller', 'Meyer', 'M'. Der Unterstrich _ steht für genau ein Zeichen.",
-      "points": 1,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q14",
       "type": "code",
       "question": "Wie prüft man auf NULL-Werte in SQL?",
       "code": "",
@@ -237,7 +222,7 @@
       "category": "DQL"
     },
     {
-      "id": "sql-q15",
+      "id": "sql-q14",
       "type": "code",
       "question": "Wie sortiert man Mitarbeiter nach Gehalt absteigend?",
       "code": "",
@@ -254,39 +239,7 @@
       "category": "DQL"
     },
     {
-      "id": "sql-q16",
-      "type": "single-choice",
-      "question": "Welche Aggregatfunktion zählt die Anzahl der Zeilen?",
-      "options": [
-        "COUNT(*)",
-        "SUM(*)",
-        "TOTAL(*)",
-        "NUMBER(*)"
-      ],
-      "correctAnswer": "COUNT(*)",
-      "explanation": "COUNT(*) zählt alle Zeilen. COUNT(spalte) zählt nur Nicht-NULL-Werte. COUNT(DISTINCT spalte) zählt eindeutige Werte.",
-      "points": 1,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q17",
-      "type": "code",
-      "question": "Wie berechnet man das durchschnittliche Gehalt aller Mitarbeiter?",
-      "code": "",
-      "language": "sql",
-      "options": [
-        "SELECT AVG(gehalt) FROM mitarbeiter;",
-        "SELECT AVERAGE(gehalt) FROM mitarbeiter;",
-        "SELECT MEAN(gehalt) FROM mitarbeiter;",
-        "SELECT SUM(gehalt) / COUNT(*) FROM mitarbeiter;"
-      ],
-      "correctAnswer": "SELECT AVG(gehalt) FROM mitarbeiter;",
-      "explanation": "AVG() berechnet den Durchschnitt. Andere Aggregatfunktionen: SUM(), MIN(), MAX(), COUNT(). Option 4 würde auch funktionieren, ist aber umständlich.",
-      "points": 1,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q18",
+      "id": "sql-q15",
       "type": "code",
       "question": "Wie zählt man die Anzahl Mitarbeiter pro Abteilung?",
       "code": "",
@@ -303,7 +256,7 @@
       "category": "DQL"
     },
     {
-      "id": "sql-q19",
+      "id": "sql-q16",
       "type": "single-choice",
       "question": "Was ist der Unterschied zwischen WHERE und HAVING?",
       "options": [
@@ -318,24 +271,7 @@
       "category": "DQL"
     },
     {
-      "id": "sql-q20",
-      "type": "code",
-      "question": "Wie findet man Abteilungen mit mehr als 5 Mitarbeitern?",
-      "code": "",
-      "language": "sql",
-      "options": [
-        "SELECT abteilung_id, COUNT(*) FROM mitarbeiter GROUP BY abteilung_id HAVING COUNT(*) > 5;",
-        "SELECT abteilung_id, COUNT(*) FROM mitarbeiter WHERE COUNT(*) > 5 GROUP BY abteilung_id;",
-        "SELECT abteilung_id FROM mitarbeiter WHERE COUNT(*) > 5;",
-        "SELECT abteilung_id, COUNT(*) FROM mitarbeiter GROUP BY abteilung_id WHERE COUNT(*) > 5;"
-      ],
-      "correctAnswer": "SELECT abteilung_id, COUNT(*) FROM mitarbeiter GROUP BY abteilung_id HAVING COUNT(*) > 5;",
-      "explanation": "HAVING wird verwendet, um Gruppen zu filtern. WHERE kann keine Aggregatfunktionen verwenden. Die Reihenfolge ist: WHERE → GROUP BY → HAVING.",
-      "points": 2,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q21",
+      "id": "sql-q17",
       "type": "single-choice",
       "question": "Was macht ein INNER JOIN?",
       "options": [
@@ -350,24 +286,7 @@
       "category": "DQL"
     },
     {
-      "id": "sql-q22",
-      "type": "code",
-      "question": "Wie verknüpft man Mitarbeiter mit ihren Abteilungen?",
-      "code": "",
-      "language": "sql",
-      "options": [
-        "SELECT m.*, a.name FROM mitarbeiter m INNER JOIN abteilung a ON m.abteilung_id = a.abteilung_id;",
-        "SELECT m.*, a.name FROM mitarbeiter m, abteilung a WHERE m.abteilung_id = a.abteilung_id;",
-        "SELECT m.*, a.name FROM mitarbeiter m JOIN abteilung a USING (abteilung_id);",
-        "Alle Antworten sind korrekt"
-      ],
-      "correctAnswer": "Alle Antworten sind korrekt",
-      "explanation": "Alle drei Syntaxen funktionieren. Die erste (INNER JOIN ... ON) ist am gebräuchlichsten und klarsten. Die zweite ist alte Syntax. Die dritte (USING) funktioniert nur, wenn die Spalten gleich heißen.",
-      "points": 2,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q23",
+      "id": "sql-q18",
       "type": "single-choice",
       "question": "Was ist der Unterschied zwischen INNER JOIN und LEFT JOIN?",
       "options": [
@@ -382,107 +301,7 @@
       "category": "DQL"
     },
     {
-      "id": "sql-q24",
-      "type": "code",
-      "question": "Was macht diese Abfrage?\n\nSELECT * FROM mitarbeiter WHERE gehalt > (SELECT AVG(gehalt) FROM mitarbeiter);",
-      "code": "SELECT * FROM mitarbeiter WHERE gehalt > (SELECT AVG(gehalt) FROM mitarbeiter);",
-      "language": "sql",
-      "options": [
-        "Findet Mitarbeiter mit überdurchschnittlichem Gehalt",
-        "Findet Mitarbeiter mit dem höchsten Gehalt",
-        "Berechnet das Durchschnittsgehalt",
-        "Gibt einen Fehler aus"
-      ],
-      "correctAnswer": "Findet Mitarbeiter mit überdurchschnittlichem Gehalt",
-      "explanation": "Die Subquery (SELECT AVG(gehalt) FROM mitarbeiter) berechnet zuerst den Durchschnitt. Dann werden alle Mitarbeiter gefunden, deren Gehalt größer ist.",
-      "points": 2,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q25",
-      "type": "code",
-      "question": "Wie findet man Mitarbeiter aus Abteilungen in Berlin?",
-      "code": "",
-      "language": "sql",
-      "options": [
-        "SELECT * FROM mitarbeiter WHERE abteilung_id IN (SELECT abteilung_id FROM abteilung WHERE standort = 'Berlin');",
-        "SELECT * FROM mitarbeiter WHERE standort = 'Berlin';",
-        "SELECT * FROM mitarbeiter, abteilung WHERE standort = 'Berlin';",
-        "SELECT * FROM mitarbeiter HAVING standort = 'Berlin';"
-      ],
-      "correctAnswer": "SELECT * FROM mitarbeiter WHERE abteilung_id IN (SELECT abteilung_id FROM abteilung WHERE standort = 'Berlin');",
-      "explanation": "Die Subquery findet zuerst alle Abteilungs-IDs in Berlin. Dann werden Mitarbeiter mit diesen IDs gefunden. Alternative: JOIN verwenden.",
-      "points": 2,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q26",
-      "type": "single-choice",
-      "question": "Was macht DISTINCT?",
-      "options": [
-        "Sortiert das Ergebnis",
-        "Entfernt Duplikate aus dem Ergebnis",
-        "Zählt die Zeilen",
-        "Gruppiert die Zeilen"
-      ],
-      "correctAnswer": "Entfernt Duplikate aus dem Ergebnis",
-      "explanation": "DISTINCT entfernt doppelte Zeilen aus dem Ergebnis. Beispiel: SELECT DISTINCT abteilung_id FROM mitarbeiter; gibt jede Abteilungs-ID nur einmal zurück.",
-      "points": 1,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q27",
-      "type": "code",
-      "question": "Wie begrenzt man das Ergebnis auf die ersten 10 Zeilen?",
-      "code": "",
-      "language": "sql",
-      "options": [
-        "SELECT * FROM mitarbeiter LIMIT 10;",
-        "SELECT TOP 10 * FROM mitarbeiter;",
-        "SELECT * FROM mitarbeiter WHERE ROWNUM <= 10;",
-        "Alle Antworten können je nach DBMS korrekt sein"
-      ],
-      "correctAnswer": "Alle Antworten können je nach DBMS korrekt sein",
-      "explanation": "LIMIT 10 (MySQL, PostgreSQL), TOP 10 (SQL Server), ROWNUM <= 10 (Oracle). Im IHK-Beiblatt steht LIMIT, also ist das die bevorzugte Antwort.",
-      "points": 2,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q28",
-      "type": "code",
-      "question": "Was ist falsch an dieser Abfrage?\n\nSELECT abteilung_id, vorname, COUNT(*) FROM mitarbeiter GROUP BY abteilung_id;",
-      "code": "SELECT abteilung_id, vorname, COUNT(*) FROM mitarbeiter GROUP BY abteilung_id;",
-      "language": "sql",
-      "options": [
-        "vorname muss auch in GROUP BY stehen oder eine Aggregatfunktion sein",
-        "COUNT(*) ist falsch",
-        "GROUP BY ist falsch platziert",
-        "Die Abfrage ist korrekt"
-      ],
-      "correctAnswer": "vorname muss auch in GROUP BY stehen oder eine Aggregatfunktion sein",
-      "explanation": "Alle Spalten im SELECT (außer Aggregatfunktionen) müssen auch in GROUP BY stehen. Sonst ist unklar, welcher Vorname pro Gruppe angezeigt werden soll.",
-      "points": 2,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q29",
-      "type": "code",
-      "question": "Wie findet man die 3 bestbezahlten Mitarbeiter?",
-      "code": "",
-      "language": "sql",
-      "options": [
-        "SELECT * FROM mitarbeiter ORDER BY gehalt DESC LIMIT 3;",
-        "SELECT TOP 3 * FROM mitarbeiter ORDER BY gehalt DESC;",
-        "SELECT * FROM mitarbeiter WHERE gehalt IN (SELECT TOP 3 gehalt FROM mitarbeiter);",
-        "Option 1 und 2 sind korrekt (je nach DBMS)"
-      ],
-      "correctAnswer": "Option 1 und 2 sind korrekt (je nach DBMS)",
-      "explanation": "Erst nach Gehalt absteigend sortieren, dann auf 3 Zeilen begrenzen. LIMIT (MySQL/PostgreSQL) oder TOP (SQL Server).",
-      "points": 2,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q30",
+      "id": "sql-q19",
       "type": "single-choice",
       "question": "In welcher Reihenfolge werden SQL-Befehle ausgeführt?",
       "options": [
@@ -497,58 +316,7 @@
       "category": "DQL"
     },
     {
-      "id": "sql-q31",
-      "type": "code",
-      "question": "Was gibt diese Abfrage zurück?\n\nSELECT COUNT(DISTINCT abteilung_id) FROM mitarbeiter;",
-      "code": "SELECT COUNT(DISTINCT abteilung_id) FROM mitarbeiter;",
-      "language": "sql",
-      "options": [
-        "Die Anzahl verschiedener Abteilungen",
-        "Die Anzahl aller Mitarbeiter",
-        "Die Anzahl der Abteilungen mit Mitarbeitern",
-        "Option 1 und 3 sind beide korrekt"
-      ],
-      "correctAnswer": "Option 1 und 3 sind beide korrekt",
-      "explanation": "COUNT(DISTINCT spalte) zählt die Anzahl eindeutiger Nicht-NULL-Werte. Dies entspricht der Anzahl verschiedener Abteilungen, die mindestens einen Mitarbeiter haben.",
-      "points": 2,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q32",
-      "type": "code",
-      "question": "Welche Abfrage findet Mitarbeiter ohne Abteilung?",
-      "code": "",
-      "language": "sql",
-      "options": [
-        "SELECT * FROM mitarbeiter WHERE abteilung_id IS NULL;",
-        "SELECT * FROM mitarbeiter WHERE abteilung_id = NULL;",
-        "SELECT * FROM mitarbeiter WHERE NOT abteilung_id;",
-        "SELECT * FROM mitarbeiter WHERE abteilung_id = '';"
-      ],
-      "correctAnswer": "SELECT * FROM mitarbeiter WHERE abteilung_id IS NULL;",
-      "explanation": "Verwende immer IS NULL für NULL-Prüfungen. Der Vergleich mit = NULL funktioniert nicht. Option 4 prüft auf leeren String, nicht auf NULL.",
-      "points": 2,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q33",
-      "type": "code",
-      "question": "Wie berechnet man das Jahresgehalt (Monatsgehalt * 12) in einer Abfrage?",
-      "code": "",
-      "language": "sql",
-      "options": [
-        "SELECT vorname, nachname, gehalt * 12 AS jahresgehalt FROM mitarbeiter;",
-        "SELECT vorname, nachname, SUM(gehalt * 12) FROM mitarbeiter;",
-        "SELECT vorname, nachname, gehalt + 12 AS jahresgehalt FROM mitarbeiter;",
-        "SELECT vorname, nachname, MULTIPLY(gehalt, 12) FROM mitarbeiter;"
-      ],
-      "correctAnswer": "SELECT vorname, nachname, gehalt * 12 AS jahresgehalt FROM mitarbeiter;",
-      "explanation": "Berechnungen können direkt im SELECT durchgeführt werden. AS gibt der berechneten Spalte einen Alias-Namen.",
-      "points": 1,
-      "category": "DQL"
-    },
-    {
-      "id": "sql-q34",
+      "id": "sql-q20",
       "type": "code",
       "question": "Wie findet man alle Mitarbeiter, deren Nachname mit 'M' beginnt?",
       "code": "",
@@ -563,25 +331,8 @@
       "explanation": "LIKE mit % für Mustersuche. 'M%' = beginnt mit M, '%M' = endet mit M, '%M%' = enthält M. Der Unterstrich _ steht für genau ein Zeichen.",
       "points": 1,
       "category": "DQL"
-    },
-    {
-      "id": "sql-q35",
-      "type": "code",
-      "question": "Was macht diese komplexe Abfrage?\n\nSELECT a.name, COUNT(m.mitarbeiter_id) AS anzahl\nFROM abteilung a\nLEFT JOIN mitarbeiter m ON a.abteilung_id = m.abteilung_id\nGROUP BY a.abteilung_id, a.name\nHAVING COUNT(m.mitarbeiter_id) > 0\nORDER BY anzahl DESC;",
-      "code": "SELECT a.name, COUNT(m.mitarbeiter_id) AS anzahl\nFROM abteilung a\nLEFT JOIN mitarbeiter m ON a.abteilung_id = m.abteilung_id\nGROUP BY a.abteilung_id, a.name\nHAVING COUNT(m.mitarbeiter_id) > 0\nORDER BY anzahl DESC;",
-      "language": "sql",
-      "options": [
-        "Zeigt alle Abteilungen mit Mitarbeiteranzahl, sortiert nach Anzahl absteigend",
-        "Zeigt nur Abteilungen mit mindestens einem Mitarbeiter, sortiert nach Anzahl absteigend",
-        "Zeigt alle Mitarbeiter gruppiert nach Abteilung",
-        "Gibt einen Fehler aus"
-      ],
-      "correctAnswer": "Zeigt nur Abteilungen mit mindestens einem Mitarbeiter, sortiert nach Anzahl absteigend",
-      "explanation": "LEFT JOIN würde alle Abteilungen zeigen, aber HAVING COUNT(m.mitarbeiter_id) > 0 filtert Abteilungen ohne Mitarbeiter heraus. ORDER BY anzahl DESC sortiert absteigend.",
-      "points": 3,
-      "category": "DQL"
     }
   ],
   "tags": ["SQL", "DDL", "DML", "DQL", "IHK", "Prüfung", "Datenbank"],
-  "lastUpdated": "2025-01-10T00:00:00Z"
+  "lastUpdated": "2025-01-05T12:00:00Z"
 }

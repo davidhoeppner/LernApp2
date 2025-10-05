@@ -1,97 +1,351 @@
 {
   "id": "bp-04-programming-paradigms-quiz",
   "moduleId": "bp-04-programming-paradigms",
-  "title": "Programmierparadigmen (Veraltet ab 2025) Quiz",
-  "description": "Teste dein Wissen über Programmierparadigmen (Veraltet ab 2025)",
+  "title": "Programmierparadigmen Quiz",
+  "description": "Teste dein Wissen über Programmierparadigmen wie OOP, Funktionale Programmierung, Imperative und Deklarative Programmierung",
   "category": "BP-04",
   "difficulty": "intermediate",
-  "examRelevance": "low",
-  "timeLimit": 10,
+  "examRelevance": "high",
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Programmierparadigmen (Veraltet ab 2025)?",
+      "question": "Was ist das Hauptmerkmal der objektorientierten Programmierung (OOP)?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Daten und Funktionen werden in Objekten zusammengefasst (Encapsulation)",
+        "Alle Funktionen sind global verfügbar",
+        "Daten werden immer in Arrays gespeichert",
+        "Es gibt keine Variablen"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Daten und Funktionen werden in Objekten zusammengefasst (Encapsulation)",
+      "explanation": "OOP basiert auf dem Konzept der Kapselung (Encapsulation), bei dem Daten und die darauf operierenden Methoden in Objekten zusammengefasst werden. Dies fördert Modularität und Wiederverwendbarkeit.",
       "points": 1,
-      "category": "Grundlagen"
+      "category": "OOP-Grundlagen"
     },
     {
       "id": "q2",
-      "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche Prinzipien gehören zur objektorientierten Programmierung? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Encapsulation (Kapselung)",
+        "Inheritance (Vererbung)",
+        "Polymorphism (Polymorphie)",
+        "Immutability (Unveränderlichkeit)"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
-      "points": 1,
-      "category": "Konzepte"
+      "correctAnswer": [
+        "Encapsulation (Kapselung)",
+        "Inheritance (Vererbung)",
+        "Polymorphism (Polymorphie)"
+      ],
+      "explanation": "Die vier Grundprinzipien der OOP sind Encapsulation, Inheritance, Polymorphism und Abstraction. Immutability ist ein Konzept der funktionalen Programmierung, nicht der OOP.",
+      "points": 2,
+      "category": "OOP-Grundlagen"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "single-choice",
+      "question": "Was ist funktionale Programmierung?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Ein Paradigma, das auf der Auswertung mathematischer Funktionen basiert und veränderbare Zustände vermeidet",
+        "Programmierung mit vielen Funktionen",
+        "Programmierung ohne Klassen",
+        "Programmierung nur mit Arrays"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
-      "points": 2,
-      "category": "Anwendung"
+      "correctAnswer": "Ein Paradigma, das auf der Auswertung mathematischer Funktionen basiert und veränderbare Zustände vermeidet",
+      "explanation": "Funktionale Programmierung behandelt Berechnungen als Auswertung mathematischer Funktionen. Sie vermeidet veränderbare Zustände und Seiteneffekte. Funktionen sind First-Class Citizens und können als Parameter übergeben werden.",
+      "points": 1,
+      "category": "Funktionale Programmierung"
     },
     {
       "id": "q4",
-      "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "type": "code",
+      "question": "Welches Paradigma wird in diesem Code-Beispiel verwendet?",
+      "code": "const numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(n => n * 2);",
+      "language": "javascript",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Funktionale Programmierung",
+        "Objektorientierte Programmierung",
+        "Imperative Programmierung",
+        "Prozedurale Programmierung"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
-      "points": 1,
-      "category": "Praxis"
+      "correctAnswer": "Funktionale Programmierung",
+      "explanation": "Dieser Code verwendet map(), eine Higher-Order Function, die typisch für funktionale Programmierung ist. Die Transformation erfolgt ohne Seiteneffekte und das Original-Array bleibt unverändert (Immutability).",
+      "points": 2,
+      "category": "Funktionale Programmierung"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Was ist der Unterschied zwischen imperativer und deklarativer Programmierung?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Imperativ beschreibt WIE etwas gemacht wird, deklarativ beschreibt WAS gemacht werden soll",
+        "Imperativ ist schneller als deklarativ",
+        "Deklarativ verwendet keine Variablen",
+        "Imperativ ist nur für Datenbanken geeignet"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Imperativ beschreibt WIE etwas gemacht wird, deklarativ beschreibt WAS gemacht werden soll",
+      "explanation": "Imperative Programmierung beschreibt Schritt für Schritt, wie ein Problem gelöst wird (z.B. for-Schleifen). Deklarative Programmierung beschreibt, was erreicht werden soll, ohne die Details zu spezifizieren (z.B. SQL-Queries, map/filter).",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Paradigmen-Vergleich"
+    },
+    {
+      "id": "q6",
+      "type": "code",
+      "question": "Welches Paradigma wird in diesem Code-Beispiel verwendet?",
+      "code": "int sum = 0;\nfor (int i = 0; i < numbers.length; i++) {\n    sum += numbers[i];\n}",
+      "language": "java",
+      "options": [
+        "Imperative Programmierung",
+        "Funktionale Programmierung",
+        "Deklarative Programmierung",
+        "Logische Programmierung"
+      ],
+      "correctAnswer": "Imperative Programmierung",
+      "explanation": "Dieser Code ist imperativ: Er beschreibt Schritt für Schritt, wie die Summe berechnet wird (Initialisierung, Schleife, Akkumulation). Der Zustand (sum) wird während der Ausführung verändert.",
+      "points": 2,
+      "category": "Imperative Programmierung"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist eine Pure Function in der funktionalen Programmierung?",
+      "options": [
+        "Eine Funktion ohne Seiteneffekte, die bei gleichen Eingaben immer das gleiche Ergebnis liefert",
+        "Eine Funktion, die nur einmal aufgerufen werden kann",
+        "Eine Funktion ohne Parameter",
+        "Eine Funktion, die nur Zahlen verarbeitet"
+      ],
+      "correctAnswer": "Eine Funktion ohne Seiteneffekte, die bei gleichen Eingaben immer das gleiche Ergebnis liefert",
+      "explanation": "Pure Functions haben zwei Eigenschaften: 1) Sie haben keine Seiteneffekte (ändern keinen externen Zustand), 2) Sie sind deterministisch (gleiche Eingabe → gleiche Ausgabe). Dies macht sie vorhersagbar und einfach zu testen.",
+      "points": 1,
+      "category": "Funktionale Programmierung"
+    },
+    {
+      "id": "q8",
+      "type": "multiple-choice",
+      "question": "Welche Konzepte gehören zur funktionalen Programmierung? (Mehrere Antworten möglich)",
+      "options": [
+        "Immutability (Unveränderlichkeit)",
+        "Higher-Order Functions",
+        "Vererbung",
+        "First-Class Functions"
+      ],
+      "correctAnswer": [
+        "Immutability (Unveränderlichkeit)",
+        "Higher-Order Functions",
+        "First-Class Functions"
+      ],
+      "explanation": "Funktionale Programmierung nutzt Immutability (Daten werden nicht verändert), Higher-Order Functions (Funktionen als Parameter/Rückgabewerte) und First-Class Functions (Funktionen als Werte). Vererbung ist ein OOP-Konzept.",
+      "points": 2,
+      "category": "Funktionale Programmierung"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was ist Polymorphism (Polymorphie) in der OOP?",
+      "options": [
+        "Die Fähigkeit, dass Objekte verschiedener Klassen über eine gemeinsame Schnittstelle angesprochen werden können",
+        "Die Möglichkeit, mehrere Klassen zu erstellen",
+        "Das Erstellen von vielen Objekten",
+        "Die Verwendung von mehreren Programmiersprachen"
+      ],
+      "correctAnswer": "Die Fähigkeit, dass Objekte verschiedener Klassen über eine gemeinsame Schnittstelle angesprochen werden können",
+      "explanation": "Polymorphie ermöglicht es, Objekte verschiedener Klassen über eine gemeinsame Schnittstelle zu verwenden. Beispiel: Verschiedene Tier-Klassen können alle eine makeSound()-Methode haben, die unterschiedlich implementiert ist.",
+      "points": 1,
+      "category": "OOP-Konzepte"
+    },
+    {
+      "id": "q10",
+      "type": "code",
+      "question": "Welches OOP-Prinzip wird hier demonstriert?",
+      "code": "class Animal {\n    makeSound() { }\n}\nclass Dog extends Animal {\n    makeSound() { return 'Wuff'; }\n}\nclass Cat extends Animal {\n    makeSound() { return 'Miau'; }\n}",
+      "language": "javascript",
+      "options": [
+        "Polymorphism und Inheritance",
+        "Nur Encapsulation",
+        "Nur Abstraction",
+        "Composition"
+      ],
+      "correctAnswer": "Polymorphism und Inheritance",
+      "explanation": "Dieser Code zeigt Inheritance (Dog und Cat erben von Animal) und Polymorphism (beide überschreiben makeSound() mit eigener Implementierung). Verschiedene Objekte können über die gemeinsame Animal-Schnittstelle verwendet werden.",
+      "points": 2,
+      "category": "OOP-Konzepte"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist eine Higher-Order Function?",
+      "options": [
+        "Eine Funktion, die andere Funktionen als Parameter nimmt oder als Ergebnis zurückgibt",
+        "Eine Funktion mit vielen Parametern",
+        "Eine Funktion, die sehr komplex ist",
+        "Eine Funktion, die nur Zahlen verarbeitet"
+      ],
+      "correctAnswer": "Eine Funktion, die andere Funktionen als Parameter nimmt oder als Ergebnis zurückgibt",
+      "explanation": "Higher-Order Functions sind Funktionen, die andere Funktionen als Argumente nehmen oder zurückgeben. Beispiele: map(), filter(), reduce(). Sie sind ein zentrales Konzept der funktionalen Programmierung.",
+      "points": 1,
+      "category": "Funktionale Programmierung"
+    },
+    {
+      "id": "q12",
+      "type": "code",
+      "question": "Ist diese Funktion eine Pure Function?",
+      "code": "let counter = 0;\nfunction increment() {\n    counter++;\n    return counter;\n}",
+      "language": "javascript",
+      "options": [
+        "Nein, sie hat Seiteneffekte (verändert externe Variable)",
+        "Ja, sie ist eine Pure Function",
+        "Ja, weil sie einen Wert zurückgibt",
+        "Nein, weil sie zu einfach ist"
+      ],
+      "correctAnswer": "Nein, sie hat Seiteneffekte (verändert externe Variable)",
+      "explanation": "Diese Funktion ist KEINE Pure Function, weil sie die externe Variable 'counter' verändert (Seiteneffekt) und bei jedem Aufruf ein anderes Ergebnis liefert (nicht deterministisch). Pure Functions dürfen keinen externen Zustand ändern.",
+      "points": 2,
+      "category": "Funktionale Programmierung"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ist Encapsulation (Kapselung) in der OOP?",
+      "options": [
+        "Das Verbergen interner Implementierungsdetails und Bereitstellen einer öffentlichen Schnittstelle",
+        "Das Erstellen vieler kleiner Klassen",
+        "Das Verwenden von Schleifen",
+        "Das Speichern von Daten in Arrays"
+      ],
+      "correctAnswer": "Das Verbergen interner Implementierungsdetails und Bereitstellen einer öffentlichen Schnittstelle",
+      "explanation": "Encapsulation bedeutet, dass interne Details einer Klasse verborgen werden (private) und nur über eine definierte Schnittstelle (public methods) zugänglich sind. Dies schützt die Datenintegrität und ermöglicht Änderungen der Implementierung ohne externe Auswirkungen.",
+      "points": 1,
+      "category": "OOP-Konzepte"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über deklarative Programmierung sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "SQL ist ein Beispiel für deklarative Programmierung",
+        "HTML/CSS sind deklarativ",
+        "Man beschreibt das gewünschte Ergebnis, nicht den Weg dorthin",
+        "Deklarative Programmierung ist immer langsamer als imperative"
+      ],
+      "correctAnswer": [
+        "SQL ist ein Beispiel für deklarative Programmierung",
+        "HTML/CSS sind deklarativ",
+        "Man beschreibt das gewünschte Ergebnis, nicht den Weg dorthin"
+      ],
+      "explanation": "SQL, HTML und CSS sind deklarativ: Man beschreibt WAS man will (SELECT * FROM users WHERE age > 18), nicht WIE es gemacht wird. Performance hängt von der Implementierung ab, nicht vom Paradigma.",
+      "points": 2,
+      "category": "Deklarative Programmierung"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist Inheritance (Vererbung) in der OOP?",
+      "options": [
+        "Ein Mechanismus, bei dem eine Klasse Eigenschaften und Methoden von einer anderen Klasse übernimmt",
+        "Das Kopieren von Code zwischen Dateien",
+        "Das Teilen von Variablen zwischen Funktionen",
+        "Das Erstellen von Backup-Kopien"
+      ],
+      "correctAnswer": "Ein Mechanismus, bei dem eine Klasse Eigenschaften und Methoden von einer anderen Klasse übernimmt",
+      "explanation": "Inheritance ermöglicht es, dass eine Klasse (Subclass/Child) Eigenschaften und Methoden von einer anderen Klasse (Superclass/Parent) erbt. Dies fördert Code-Wiederverwendung und ermöglicht hierarchische Klassenstrukturen.",
+      "points": 1,
+      "category": "OOP-Konzepte"
+    },
+    {
+      "id": "q16",
+      "type": "code",
+      "question": "Welcher Ansatz ist funktionaler?",
+      "code": "// Ansatz A:\nconst result = numbers.filter(n => n > 5).map(n => n * 2);\n\n// Ansatz B:\nconst result = [];\nfor (let n of numbers) {\n    if (n > 5) result.push(n * 2);\n}",
+      "language": "javascript",
+      "options": [
+        "Ansatz A ist funktionaler",
+        "Ansatz B ist funktionaler",
+        "Beide sind gleich funktional",
+        "Keiner ist funktional"
+      ],
+      "correctAnswer": "Ansatz A ist funktionaler",
+      "explanation": "Ansatz A ist funktionaler: Er verwendet Higher-Order Functions (filter, map), vermeidet Mutation (kein push) und ist deklarativ. Ansatz B ist imperativ: Er beschreibt Schritt für Schritt, wie das Ergebnis erstellt wird, und mutiert das Array.",
+      "points": 2,
+      "category": "Paradigmen-Vergleich"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was ist Abstraction (Abstraktion) in der OOP?",
+      "options": [
+        "Das Hervorheben wesentlicher Eigenschaften und Verbergen unwichtiger Details",
+        "Das Erstellen abstrakter Kunstwerke",
+        "Das Verwenden von vielen Variablen",
+        "Das Schreiben von langem Code"
+      ],
+      "correctAnswer": "Das Hervorheben wesentlicher Eigenschaften und Verbergen unwichtiger Details",
+      "explanation": "Abstraction bedeutet, komplexe Realität auf wesentliche Eigenschaften zu reduzieren. In der OOP werden abstrakte Klassen und Interfaces verwendet, um gemeinsame Eigenschaften zu definieren, während Implementierungsdetails verborgen bleiben.",
+      "points": 1,
+      "category": "OOP-Konzepte"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet funktionale Programmierung? (Mehrere Antworten möglich)",
+      "options": [
+        "Einfachere Testbarkeit durch Pure Functions",
+        "Bessere Parallelisierbarkeit durch Immutability",
+        "Automatische Fehlerkorrektur",
+        "Weniger Bugs durch Vermeidung von Seiteneffekten"
+      ],
+      "correctAnswer": [
+        "Einfachere Testbarkeit durch Pure Functions",
+        "Bessere Parallelisierbarkeit durch Immutability",
+        "Weniger Bugs durch Vermeidung von Seiteneffekten"
+      ],
+      "explanation": "Funktionale Programmierung bietet einfachere Tests (Pure Functions sind deterministisch), bessere Parallelisierung (keine Race Conditions bei Immutability) und weniger Bugs (keine unerwarteten Seiteneffekte). Automatische Fehlerkorrektur gibt es nicht.",
+      "points": 2,
+      "category": "Funktionale Programmierung"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen Composition und Inheritance?",
+      "options": [
+        "Composition verwendet 'has-a' Beziehungen, Inheritance verwendet 'is-a' Beziehungen",
+        "Composition ist langsamer als Inheritance",
+        "Inheritance ist moderner als Composition",
+        "Composition funktioniert nur in funktionalen Sprachen"
+      ],
+      "correctAnswer": "Composition verwendet 'has-a' Beziehungen, Inheritance verwendet 'is-a' Beziehungen",
+      "explanation": "Inheritance modelliert 'is-a' Beziehungen (Ein Hund IST ein Tier). Composition modelliert 'has-a' Beziehungen (Ein Auto HAT einen Motor). Composition wird oft bevorzugt, da sie flexibler ist und lose Kopplung fördert ('Favor composition over inheritance').",
+      "points": 1,
+      "category": "OOP-Konzepte"
+    },
+    {
+      "id": "q20",
+      "type": "multiple-choice",
+      "question": "Welche Programmiersprachen unterstützen mehrere Paradigmen? (Mehrere Antworten möglich)",
+      "options": [
+        "JavaScript (OOP und funktional)",
+        "Python (OOP, funktional und imperativ)",
+        "Java (OOP und funktional ab Java 8)",
+        "SQL (nur deklarativ)"
+      ],
+      "correctAnswer": [
+        "JavaScript (OOP und funktional)",
+        "Python (OOP, funktional und imperativ)",
+        "Java (OOP und funktional ab Java 8)"
+      ],
+      "explanation": "JavaScript, Python und Java sind Multi-Paradigmen-Sprachen, die verschiedene Programmierstile unterstützen. SQL ist primär deklarativ, obwohl moderne SQL-Dialekte auch prozedurale Elemente haben. Die Wahl des Paradigmas hängt vom Problem ab.",
+      "points": 2,
+      "category": "Paradigmen-Vergleich"
     }
   ],
   "tags": [
     "Programmierparadigmen",
     "OOP",
-    "Funktional",
-    "Veraltet"
-  ]
+    "Funktionale Programmierung",
+    "Imperative Programmierung",
+    "Deklarative Programmierung"
+  ],
+  "lastUpdated": "2025-01-10"
 }

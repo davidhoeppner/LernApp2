@@ -2,96 +2,317 @@
   "id": "bp-05-encapsulation-quiz",
   "moduleId": "bp-05-encapsulation",
   "title": "Kapselung (Encapsulation) Quiz",
-  "description": "Teste dein Wissen über Kapselung (Encapsulation)",
+  "description": "Teste dein Wissen über Kapselung, Information Hiding, Getter/Setter und Access Modifiers in der objektorientierten Programmierung",
   "category": "BP-05",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Kapselung (Encapsulation)?",
+      "question": "Was ist das Hauptziel der Kapselung (Encapsulation) in der objektorientierten Programmierung?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Daten und Methoden in einer Klasse zusammenfassen und den Zugriff kontrollieren",
+        "Code schneller ausführen durch Optimierung",
+        "Mehrere Klassen in einer Datei speichern",
+        "Vererbung zwischen Klassen ermöglichen"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Daten und Methoden in einer Klasse zusammenfassen und den Zugriff kontrollieren",
+      "explanation": "Kapselung bedeutet, dass Daten (Attribute) und die darauf operierenden Methoden in einer Klasse zusammengefasst werden. Gleichzeitig wird der Zugriff auf diese Daten durch Access Modifiers kontrolliert, um die interne Implementierung zu schützen und eine klare Schnittstelle bereitzustellen.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Was versteht man unter Information Hiding?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Das Verbergen der internen Implementierungsdetails einer Klasse vor externem Zugriff",
+        "Das Verschlüsseln von Daten in einer Datenbank",
+        "Das Löschen von Logdateien nach der Ausführung",
+        "Das Verstecken von Klassen in privaten Packages"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Das Verbergen der internen Implementierungsdetails einer Klasse vor externem Zugriff",
+      "explanation": "Information Hiding ist ein Kernprinzip der Kapselung. Es bedeutet, dass die interne Implementierung einer Klasse (wie Attribute und private Methoden) vor externem Zugriff verborgen wird. Nur die öffentliche Schnittstelle (public methods) ist von außen zugänglich, was die Wartbarkeit und Änderbarkeit des Codes verbessert.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "Grundlagen"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "single-choice",
+      "question": "Welcher Access Modifier in Java macht ein Attribut nur innerhalb der eigenen Klasse zugänglich?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "private",
+        "public",
+        "protected",
+        "default (package-private)"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
-      "points": 2,
-      "category": "Anwendung"
+      "correctAnswer": "private",
+      "explanation": "Der Access Modifier 'private' macht ein Attribut oder eine Methode nur innerhalb der eigenen Klasse zugänglich. Dies ist der restriktivste Modifier und wird für Attribute empfohlen, um Kapselung zu gewährleisten. Der Zugriff von außen erfolgt dann über öffentliche Getter- und Setter-Methoden.",
+      "points": 1,
+      "category": "Access Modifiers"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Was ist der Zweck von Getter-Methoden?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Kontrollierten Lesezugriff auf private Attribute ermöglichen",
+        "Attribute direkt verändern ohne Validierung",
+        "Klassen initialisieren",
+        "Vererbung implementieren"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Kontrollierten Lesezugriff auf private Attribute ermöglichen",
+      "explanation": "Getter-Methoden (auch Accessors genannt) ermöglichen den kontrollierten Lesezugriff auf private Attribute. Sie folgen der Namenskonvention 'getAttributName()' und geben den Wert des Attributs zurück. Dadurch kann die Klasse kontrollieren, wie und wann auf ihre Daten zugegriffen wird, ohne die Attribute direkt öffentlich zu machen.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Getter/Setter"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Was ist der Vorteil von Setter-Methoden gegenüber direktem Attributzugriff?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Validierung und Kontrolle der gesetzten Werte",
+        "Schnellere Ausführungsgeschwindigkeit",
+        "Weniger Code schreiben",
+        "Automatische Typkonvertierung"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Validierung und Kontrolle der gesetzten Werte",
+      "explanation": "Setter-Methoden (auch Mutators genannt) ermöglichen die Validierung und Kontrolle von Werten, bevor sie einem Attribut zugewiesen werden. Man kann z.B. prüfen, ob ein Alter positiv ist oder ob ein String nicht leer ist. Dies verhindert ungültige Zustände und erhöht die Datenintegrität.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Getter/Setter"
+    },
+    {
+      "id": "q6",
+      "type": "code",
+      "question": "Was ist an folgendem Code problematisch in Bezug auf Kapselung?",
+      "code": "public class Person {\n    public String name;\n    public int age;\n}",
+      "language": "java",
+      "options": [
+        "Attribute sind public und können ohne Kontrolle verändert werden",
+        "Die Klasse hat keinen Konstruktor",
+        "Die Attribute haben keine Kommentare",
+        "Der Klassenname ist zu kurz"
+      ],
+      "correctAnswer": "Attribute sind public und können ohne Kontrolle verändert werden",
+      "explanation": "Die Attribute sind als 'public' deklariert, was gegen das Prinzip der Kapselung verstößt. Externe Klassen können direkt auf die Attribute zugreifen und sie ohne jegliche Validierung ändern (z.B. age = -5). Besser wäre es, die Attribute als 'private' zu deklarieren und Getter/Setter-Methoden bereitzustellen.",
+      "points": 2,
+      "category": "Code-Analyse"
+    },
+    {
+      "id": "q7",
+      "type": "code",
+      "question": "Welche Implementierung zeigt korrekte Kapselung?",
+      "code": "// Option A\npublic class BankAccount {\n    public double balance;\n}\n\n// Option B\npublic class BankAccount {\n    private double balance;\n    public double getBalance() { return balance; }\n    public void setBalance(double b) { balance = b; }\n}\n\n// Option C\npublic class BankAccount {\n    private double balance;\n    public double getBalance() { return balance; }\n    public void deposit(double amount) {\n        if (amount > 0) balance += amount;\n    }\n}",
+      "language": "java",
+      "options": [
+        "Option C - private Attribut mit kontrolliertem Zugriff",
+        "Option A - direkter Zugriff ist am einfachsten",
+        "Option B - Setter ohne Validierung ist ausreichend",
+        "Alle Optionen sind gleichwertig"
+      ],
+      "correctAnswer": "Option C - private Attribut mit kontrolliertem Zugriff",
+      "explanation": "Option C zeigt die beste Kapselung: Das Attribut ist private, es gibt einen Getter für Lesezugriff, und statt eines einfachen Setters gibt es eine deposit()-Methode mit Validierung (amount > 0). Dies verhindert ungültige Zustände wie negative Einzahlungen. Option A verletzt Kapselung komplett, Option B hat zwar Getter/Setter, aber keine Validierung.",
+      "points": 3,
+      "category": "Code-Analyse"
+    },
+    {
+      "id": "q8",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet Kapselung? (Mehrere Antworten möglich)",
+      "options": [
+        "Bessere Wartbarkeit durch klare Schnittstellen",
+        "Schutz vor ungültigen Zuständen durch Validierung",
+        "Flexibilität bei Änderungen der internen Implementierung",
+        "Automatische Performance-Optimierung"
+      ],
+      "correctAnswer": [
+        "Bessere Wartbarkeit durch klare Schnittstellen",
+        "Schutz vor ungültigen Zuständen durch Validierung",
+        "Flexibilität bei Änderungen der internen Implementierung"
+      ],
+      "explanation": "Kapselung bietet mehrere Vorteile: 1) Wartbarkeit - klare Schnittstellen erleichtern das Verständnis und die Nutzung. 2) Datenintegrität - Validierung in Settern verhindert ungültige Zustände. 3) Flexibilität - die interne Implementierung kann geändert werden, ohne externe Klassen zu beeinflussen. Performance-Optimierung ist kein direkter Vorteil der Kapselung.",
+      "points": 2,
+      "category": "Konzepte"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was bedeutet der Access Modifier 'protected' in Java?",
+      "options": [
+        "Zugriff innerhalb der Klasse, Subklassen und im selben Package",
+        "Zugriff nur innerhalb der Klasse",
+        "Zugriff von überall",
+        "Zugriff nur innerhalb des selben Packages"
+      ],
+      "correctAnswer": "Zugriff innerhalb der Klasse, Subklassen und im selben Package",
+      "explanation": "'protected' erlaubt den Zugriff auf ein Attribut oder eine Methode innerhalb der eigenen Klasse, in allen Subklassen (auch in anderen Packages) und in allen Klassen des selben Packages. Es ist weniger restriktiv als 'private', aber restriktiver als 'public'.",
+      "points": 1,
+      "category": "Access Modifiers"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Wann sollte man ein Attribut als 'public' deklarieren?",
+      "options": [
+        "Nur bei Konstanten (final static), fast nie bei veränderbaren Attributen",
+        "Immer, um den Zugriff zu vereinfachen",
+        "Bei allen Attributen, die von außen gelesen werden sollen",
+        "Nur in abstrakten Klassen"
+      ],
+      "correctAnswer": "Nur bei Konstanten (final static), fast nie bei veränderbaren Attributen",
+      "explanation": "Public-Attribute sollten fast nie verwendet werden, da sie die Kapselung verletzen. Eine Ausnahme sind Konstanten (public static final), da diese unveränderlich sind und keine Validierung benötigen. Für alle anderen Fälle sollten private Attribute mit Getter/Setter-Methoden verwendet werden.",
+      "points": 1,
+      "category": "Access Modifiers"
+    },
+    {
+      "id": "q11",
+      "type": "code",
+      "question": "Was gibt dieser Code aus?",
+      "code": "public class Counter {\n    private int count = 0;\n    public void increment() { count++; }\n    public int getCount() { return count; }\n}\n\nCounter c = new Counter();\nc.increment();\nc.increment();\nSystem.out.println(c.getCount());",
+      "language": "java",
+      "options": [
+        "2",
+        "0",
+        "1",
+        "Compilerfehler"
+      ],
+      "correctAnswer": "2",
+      "explanation": "Der Code gibt '2' aus. Das private Attribut 'count' wird durch die public Methode increment() zweimal erhöht (0 → 1 → 2). Der Zugriff erfolgt über die public Methode getCount(). Dies ist ein gutes Beispiel für Kapselung: Das Attribut ist private, aber kontrollierter Zugriff ist über public Methoden möglich.",
+      "points": 2,
+      "category": "Code-Analyse"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist ein 'Read-Only' Attribut?",
+      "options": [
+        "Ein Attribut mit Getter, aber ohne Setter",
+        "Ein Attribut mit Setter, aber ohne Getter",
+        "Ein Attribut, das nur einmal gesetzt werden kann",
+        "Ein Attribut mit dem Modifier 'readonly'"
+      ],
+      "correctAnswer": "Ein Attribut mit Getter, aber ohne Setter",
+      "explanation": "Ein Read-Only Attribut hat einen Getter für Lesezugriff, aber keinen Setter. Dadurch kann der Wert von außen gelesen, aber nicht verändert werden. Dies ist nützlich für Attribute, die nur intern oder im Konstruktor gesetzt werden sollen, z.B. eine ID oder ein Erstellungsdatum.",
+      "points": 1,
+      "category": "Getter/Setter"
+    },
+    {
+      "id": "q13",
+      "type": "code",
+      "question": "Welcher Code zeigt eine korrekte Validierung in einem Setter?",
+      "code": "// Option A\npublic void setAge(int age) {\n    this.age = age;\n}\n\n// Option B\npublic void setAge(int age) {\n    if (age >= 0 && age <= 150) {\n        this.age = age;\n    } else {\n        throw new IllegalArgumentException(\"Ungültiges Alter\");\n    }\n}\n\n// Option C\npublic void setAge(int age) {\n    if (age > 0) this.age = age;\n}",
+      "language": "java",
+      "options": [
+        "Option B - Validierung mit Exception bei ungültigen Werten",
+        "Option A - keine Validierung nötig",
+        "Option C - einfache Prüfung ist ausreichend",
+        "Alle Optionen sind korrekt"
+      ],
+      "correctAnswer": "Option B - Validierung mit Exception bei ungültigen Werten",
+      "explanation": "Option B zeigt die beste Implementierung: Sie validiert den Wert (0-150 ist ein realistischer Bereich für Alter) und wirft eine aussagekräftige Exception bei ungültigen Werten. Option A hat keine Validierung. Option C ist besser als A, aber ignoriert ungültige Werte stillschweigend, was zu schwer auffindbaren Bugs führen kann.",
+      "points": 2,
+      "category": "Getter/Setter"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über Access Modifiers sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "private ist der restriktivste Access Modifier",
+        "public ermöglicht Zugriff von überall",
+        "protected erlaubt Zugriff in Subklassen",
+        "default (package-private) ist dasselbe wie public"
+      ],
+      "correctAnswer": [
+        "private ist der restriktivste Access Modifier",
+        "public ermöglicht Zugriff von überall",
+        "protected erlaubt Zugriff in Subklassen"
+      ],
+      "explanation": "Die ersten drei Aussagen sind korrekt: 'private' ist am restriktivsten (nur eigene Klasse), 'public' erlaubt Zugriff von überall, 'protected' erlaubt Zugriff in Subklassen und im selben Package. Default (package-private) ist NICHT dasselbe wie public - es erlaubt nur Zugriff innerhalb des selben Packages.",
+      "points": 2,
+      "category": "Access Modifiers"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen Kapselung und Abstraktion?",
+      "options": [
+        "Kapselung verbirgt Implementierungsdetails, Abstraktion zeigt nur wesentliche Eigenschaften",
+        "Kapselung und Abstraktion sind identisch",
+        "Kapselung ist nur für Attribute, Abstraktion nur für Methoden",
+        "Abstraktion ist veraltet, Kapselung ist modern"
+      ],
+      "correctAnswer": "Kapselung verbirgt Implementierungsdetails, Abstraktion zeigt nur wesentliche Eigenschaften",
+      "explanation": "Kapselung und Abstraktion sind verwandte, aber unterschiedliche Konzepte. Kapselung verbirgt die interne Implementierung (wie etwas gemacht wird) durch Access Modifiers. Abstraktion konzentriert sich darauf, nur die wesentlichen Eigenschaften zu zeigen (was gemacht wird) und unwichtige Details wegzulassen. Beide arbeiten zusammen für besseres Design.",
+      "points": 1,
+      "category": "Konzepte"
+    },
+    {
+      "id": "q16",
+      "type": "code",
+      "question": "Was ist der Vorteil dieser Implementierung?",
+      "code": "public class Email {\n    private String address;\n    \n    public void setAddress(String address) {\n        if (address != null && address.contains(\"@\")) {\n            this.address = address;\n        } else {\n            throw new IllegalArgumentException(\"Ungültige E-Mail\");\n        }\n    }\n}",
+      "language": "java",
+      "options": [
+        "Validierung stellt sicher, dass nur gültige E-Mail-Adressen gespeichert werden",
+        "Der Code ist kürzer als ohne Validierung",
+        "Die Performance ist besser",
+        "Es werden keine Exceptions geworfen"
+      ],
+      "correctAnswer": "Validierung stellt sicher, dass nur gültige E-Mail-Adressen gespeichert werden",
+      "explanation": "Der Setter validiert die E-Mail-Adresse vor dem Speichern (prüft auf null und @-Zeichen). Dies ist ein Kernvorteil der Kapselung: Die Klasse kann ihre Datenintegrität selbst sicherstellen. Ohne diese Validierung könnten ungültige E-Mail-Adressen gespeichert werden, was später zu Problemen führen würde.",
+      "points": 2,
+      "category": "Code-Analyse"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Warum sollte man Getter nicht für Collections direkt zurückgeben?",
+      "options": [
+        "Externe Klassen könnten die Collection direkt verändern und die Kapselung umgehen",
+        "Collections können nicht zurückgegeben werden",
+        "Es ist zu langsam",
+        "Der Compiler erlaubt es nicht"
+      ],
+      "correctAnswer": "Externe Klassen könnten die Collection direkt verändern und die Kapselung umgehen",
+      "explanation": "Wenn ein Getter eine Collection direkt zurückgibt (z.B. List), kann die aufrufende Klasse Elemente hinzufügen oder entfernen, ohne dass die besitzende Klasse dies kontrollieren kann. Besser ist es, eine Kopie zurückzugeben (new ArrayList<>(list)) oder eine unmodifiable Collection (Collections.unmodifiableList(list)).",
+      "points": 2,
+      "category": "Fortgeschritten"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Welche Best Practices sollten bei Kapselung beachtet werden? (Mehrere Antworten möglich)",
+      "options": [
+        "Attribute standardmäßig als private deklarieren",
+        "Getter/Setter nur bei Bedarf bereitstellen, nicht automatisch für alle Attribute",
+        "Validierung in Setter-Methoden implementieren",
+        "Alle Attribute als public deklarieren für einfachen Zugriff"
+      ],
+      "correctAnswer": [
+        "Attribute standardmäßig als private deklarieren",
+        "Getter/Setter nur bei Bedarf bereitstellen, nicht automatisch für alle Attribute",
+        "Validierung in Setter-Methoden implementieren"
+      ],
+      "explanation": "Best Practices für Kapselung: 1) Attribute immer private machen (Principle of Least Privilege). 2) Getter/Setter nur erstellen, wenn sie wirklich benötigt werden - nicht automatisch für alle Attribute. 3) Validierung in Settern implementieren, um Datenintegrität zu gewährleisten. Public-Attribute sollten vermieden werden, da sie die Kapselung verletzen.",
+      "points": 2,
+      "category": "Best Practices"
     }
   ],
   "tags": [
     "OOP",
     "Kapselung",
     "Encapsulation",
-    "Information Hiding"
-  ]
+    "Information Hiding",
+    "Getter",
+    "Setter",
+    "Access Modifiers",
+    "private",
+    "public",
+    "protected"
+  ],
+  "lastUpdated": "2025-01-15T00:00:00Z"
 }

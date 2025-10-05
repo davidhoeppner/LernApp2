@@ -2,96 +2,345 @@
   "id": "bp-03-rest-api-quiz",
   "moduleId": "bp-03-rest-api",
   "title": "REST API-Entwicklung Quiz",
-  "description": "Teste dein Wissen über REST API-Entwicklung",
+  "description": "Teste dein Wissen über REST API-Entwicklung, HTTP-Methoden, Status-Codes und API-Design",
   "category": "BP-03",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist REST API-Entwicklung?",
+      "question": "Was bedeutet REST in REST API?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Representational State Transfer",
+        "Remote Execution State Transfer",
+        "Resource Execution Service Technology",
+        "Representational Service Technology"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Representational State Transfer",
+      "explanation": "REST steht für Representational State Transfer. Es ist ein Architekturstil für verteilte Systeme, der auf dem HTTP-Protokoll basiert und zustandslose Kommunikation zwischen Client und Server ermöglicht.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Welche HTTP-Methode wird verwendet, um eine neue Ressource zu erstellen?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "POST",
+        "GET",
+        "PUT",
+        "DELETE"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "POST",
+      "explanation": "POST wird verwendet, um neue Ressourcen zu erstellen. GET liest Ressourcen, PUT aktualisiert bestehende Ressourcen vollständig, und DELETE löscht Ressourcen.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "HTTP-Methoden"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen PUT und PATCH?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "PUT ersetzt die gesamte Ressource, PATCH aktualisiert nur Teile",
+        "PUT erstellt neue Ressourcen, PATCH löscht sie",
+        "PUT ist idempotent, PATCH nicht",
+        "PUT verwendet JSON, PATCH verwendet XML"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
-      "points": 2,
-      "category": "Anwendung"
+      "correctAnswer": "PUT ersetzt die gesamte Ressource, PATCH aktualisiert nur Teile",
+      "explanation": "PUT ersetzt die gesamte Ressource mit den gesendeten Daten, während PATCH nur die angegebenen Felder aktualisiert. Beide Methoden sind idempotent, d.h. mehrfache identische Anfragen haben denselben Effekt wie eine einzelne Anfrage.",
+      "points": 1,
+      "category": "HTTP-Methoden"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Welcher HTTP-Status-Code bedeutet 'Erfolgreich erstellt'?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "201 Created",
+        "200 OK",
+        "204 No Content",
+        "202 Accepted"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "201 Created",
+      "explanation": "201 Created wird zurückgegeben, wenn eine neue Ressource erfolgreich erstellt wurde. 200 OK ist eine allgemeine Erfolgsantwort, 204 No Content bedeutet Erfolg ohne Rückgabewert, und 202 Accepted bedeutet, dass die Anfrage akzeptiert wurde, aber noch nicht verarbeitet ist.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Status-Codes"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Welcher Status-Code wird bei einem nicht gefundenen Endpunkt zurückgegeben?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "404 Not Found",
+        "400 Bad Request",
+        "401 Unauthorized",
+        "500 Internal Server Error"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "404 Not Found",
+      "explanation": "404 Not Found wird zurückgegeben, wenn die angeforderte Ressource nicht existiert. 400 Bad Request bedeutet fehlerhafte Anfrage, 401 Unauthorized fehlende Authentifizierung, und 500 Internal Server Error einen Serverfehler.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Status-Codes"
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "question": "Welche HTTP-Methoden sind idempotent? (Mehrere Antworten möglich)",
+      "options": [
+        "GET",
+        "PUT",
+        "DELETE",
+        "POST"
+      ],
+      "correctAnswer": [
+        "GET",
+        "PUT",
+        "DELETE"
+      ],
+      "explanation": "GET, PUT und DELETE sind idempotent, d.h. mehrfache identische Anfragen haben denselben Effekt wie eine einzelne Anfrage. POST ist nicht idempotent, da jede POST-Anfrage eine neue Ressource erstellen kann.",
+      "points": 2,
+      "category": "HTTP-Methoden"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist HATEOAS in REST APIs?",
+      "options": [
+        "Hypermedia As The Engine Of Application State",
+        "HTTP Authentication Through External OAuth Services",
+        "Hypertext Application Transfer Over Secure Sockets",
+        "High Availability Through Elastic Orchestration And Scaling"
+      ],
+      "correctAnswer": "Hypermedia As The Engine Of Application State",
+      "explanation": "HATEOAS (Hypermedia As The Engine Of Application State) ist ein REST-Prinzip, bei dem die API-Antworten Links zu verwandten Ressourcen enthalten, sodass Clients die API dynamisch erkunden können, ohne vorher alle Endpunkte kennen zu müssen.",
+      "points": 1,
+      "category": "REST-Prinzipien"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Welcher Status-Code wird bei fehlender Authentifizierung zurückgegeben?",
+      "options": [
+        "401 Unauthorized",
+        "403 Forbidden",
+        "400 Bad Request",
+        "404 Not Found"
+      ],
+      "correctAnswer": "401 Unauthorized",
+      "explanation": "401 Unauthorized wird zurückgegeben, wenn keine oder ungültige Authentifizierungsinformationen vorliegen. 403 Forbidden bedeutet, dass der authentifizierte Benutzer keine Berechtigung hat, 400 Bad Request eine fehlerhafte Anfrage, und 404 Not Found eine nicht existierende Ressource.",
+      "points": 1,
+      "category": "Status-Codes"
+    },
+    {
+      "id": "q9",
+      "type": "code",
+      "question": "Welcher HTTP-Status-Code sollte bei dieser erfolgreichen GET-Anfrage zurückgegeben werden?",
+      "code": "GET /api/users/123\nResponse: { \"id\": 123, \"name\": \"Max Müller\" }",
+      "language": "http",
+      "options": [
+        "200 OK",
+        "201 Created",
+        "204 No Content",
+        "202 Accepted"
+      ],
+      "correctAnswer": "200 OK",
+      "explanation": "200 OK ist der Standard-Status-Code für erfolgreiche GET-Anfragen, die Daten zurückgeben. 201 Created wird für POST verwendet, 204 No Content für erfolgreiche Anfragen ohne Rückgabewert, und 202 Accepted für asynchrone Verarbeitung.",
+      "points": 2,
+      "category": "Status-Codes"
+    },
+    {
+      "id": "q10",
+      "type": "multiple-choice",
+      "question": "Welche Prinzipien gehören zu RESTful API-Design? (Mehrere Antworten möglich)",
+      "options": [
+        "Zustandslosigkeit (Statelessness)",
+        "Einheitliche Schnittstelle (Uniform Interface)",
+        "Client-Server-Architektur",
+        "Zustandsbehaftete Sessions"
+      ],
+      "correctAnswer": [
+        "Zustandslosigkeit (Statelessness)",
+        "Einheitliche Schnittstelle (Uniform Interface)",
+        "Client-Server-Architektur"
+      ],
+      "explanation": "REST basiert auf Zustandslosigkeit (jede Anfrage enthält alle nötigen Informationen), einheitlicher Schnittstelle (standardisierte Kommunikation) und Client-Server-Architektur (Trennung von Zuständigkeiten). Zustandsbehaftete Sessions widersprechen dem REST-Prinzip der Zustandslosigkeit.",
+      "points": 2,
+      "category": "REST-Prinzipien"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist der empfohlene Content-Type für JSON-Daten in REST APIs?",
+      "options": [
+        "application/json",
+        "text/json",
+        "application/xml",
+        "text/plain"
+      ],
+      "correctAnswer": "application/json",
+      "explanation": "application/json ist der Standard-MIME-Type für JSON-Daten in HTTP-Anfragen und -Antworten. Er sollte im Content-Type-Header gesetzt werden, um dem Client mitzuteilen, dass die Daten im JSON-Format vorliegen.",
+      "points": 1,
+      "category": "API-Design"
+    },
+    {
+      "id": "q12",
+      "type": "code",
+      "question": "Welche HTTP-Methode wird in diesem API-Aufruf verwendet, um einen Benutzer zu aktualisieren?",
+      "code": "PUT /api/users/123\nContent-Type: application/json\n\n{\n  \"name\": \"Max Mustermann\",\n  \"email\": \"max@example.com\"\n}",
+      "language": "http",
+      "options": [
+        "PUT",
+        "POST",
+        "PATCH",
+        "UPDATE"
+      ],
+      "correctAnswer": "PUT",
+      "explanation": "PUT wird verwendet, um eine bestehende Ressource vollständig zu ersetzen. Die Anfrage sendet alle Daten der Ressource. PATCH würde nur einzelne Felder aktualisieren, POST neue Ressourcen erstellen, und UPDATE ist keine HTTP-Methode.",
+      "points": 2,
+      "category": "HTTP-Methoden"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Welcher Status-Code wird bei einer erfolgreichen DELETE-Operation ohne Rückgabewert verwendet?",
+      "options": [
+        "204 No Content",
+        "200 OK",
+        "201 Created",
+        "202 Accepted"
+      ],
+      "correctAnswer": "204 No Content",
+      "explanation": "204 No Content wird verwendet, wenn eine Operation erfolgreich war, aber keine Daten zurückgegeben werden. Dies ist typisch für DELETE-Operationen. 200 OK würde verwendet, wenn Daten zurückgegeben werden, 201 Created für neue Ressourcen, und 202 Accepted für asynchrone Verarbeitung.",
+      "points": 1,
+      "category": "Status-Codes"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist die beste Praxis für die Benennung von REST API-Endpunkten?",
+      "options": [
+        "Substantive im Plural verwenden (z.B. /users, /products)",
+        "Verben verwenden (z.B. /getUser, /createProduct)",
+        "Gemischte Groß- und Kleinschreibung (z.B. /GetUsers)",
+        "Unterstriche verwenden (z.B. /get_users)"
+      ],
+      "correctAnswer": "Substantive im Plural verwenden (z.B. /users, /products)",
+      "explanation": "REST API-Endpunkte sollten Substantive im Plural verwenden, um Ressourcen zu repräsentieren. Die HTTP-Methoden (GET, POST, PUT, DELETE) definieren die Aktion. Verben in URLs sind nicht RESTful, da die Methode bereits die Aktion beschreibt.",
+      "points": 1,
+      "category": "API-Design"
+    },
+    {
+      "id": "q15",
+      "type": "multiple-choice",
+      "question": "Welche Status-Codes gehören zur Kategorie 'Client-Fehler'? (Mehrere Antworten möglich)",
+      "options": [
+        "400 Bad Request",
+        "404 Not Found",
+        "500 Internal Server Error",
+        "503 Service Unavailable"
+      ],
+      "correctAnswer": [
+        "400 Bad Request",
+        "404 Not Found"
+      ],
+      "explanation": "Status-Codes im 4xx-Bereich sind Client-Fehler (400 Bad Request, 404 Not Found). Status-Codes im 5xx-Bereich sind Server-Fehler (500 Internal Server Error, 503 Service Unavailable). Client-Fehler bedeuten, dass der Client etwas falsch gemacht hat, Server-Fehler bedeuten ein Problem auf der Server-Seite.",
+      "points": 2,
+      "category": "Status-Codes"
+    },
+    {
+      "id": "q16",
+      "type": "code",
+      "question": "Was ist das Problem mit dieser API-Response-Struktur?",
+      "code": "{\n  \"success\": true,\n  \"data\": {\n    \"user_id\": 123,\n    \"user_name\": \"Max\"\n  }\n}",
+      "language": "json",
+      "options": [
+        "Inkonsistente Namenskonvention (snake_case statt camelCase)",
+        "Fehlende HTTP-Status-Codes",
+        "Zu viele verschachtelte Objekte",
+        "Keine Fehler, die Struktur ist korrekt"
+      ],
+      "correctAnswer": "Inkonsistente Namenskonvention (snake_case statt camelCase)",
+      "explanation": "In JSON-APIs sollte eine konsistente Namenskonvention verwendet werden. Entweder durchgehend camelCase (userId, userName) oder snake_case (user_id, user_name). Die Mischung verschiedener Konventionen erschwert die Verwendung der API. Das 'success'-Feld ist redundant, da der HTTP-Status-Code bereits den Erfolg anzeigt.",
+      "points": 2,
+      "category": "API-Design"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Welcher HTTP-Header wird verwendet, um die API-Version anzugeben?",
+      "options": [
+        "Accept oder Custom-Header (z.B. X-API-Version)",
+        "Content-Type",
+        "Authorization",
+        "User-Agent"
+      ],
+      "correctAnswer": "Accept oder Custom-Header (z.B. X-API-Version)",
+      "explanation": "API-Versionierung kann über verschiedene Methoden erfolgen: Accept-Header (z.B. Accept: application/vnd.api.v2+json), Custom-Header (X-API-Version: 2), URL-Pfad (/v2/users) oder Query-Parameter (?version=2). Content-Type beschreibt das Datenformat, Authorization die Authentifizierung, und User-Agent den Client.",
+      "points": 1,
+      "category": "API-Design"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was bedeutet der Status-Code 429?",
+      "options": [
+        "Too Many Requests (Rate Limit überschritten)",
+        "Request Timeout",
+        "Payload Too Large",
+        "Method Not Allowed"
+      ],
+      "correctAnswer": "Too Many Requests (Rate Limit überschritten)",
+      "explanation": "429 Too Many Requests wird zurückgegeben, wenn ein Client zu viele Anfragen in einem bestimmten Zeitraum sendet (Rate Limiting). Der Server kann im Retry-After-Header angeben, wann der Client es erneut versuchen kann. Dies schützt die API vor Überlastung.",
+      "points": 1,
+      "category": "Status-Codes"
+    },
+    {
+      "id": "q19",
+      "type": "multiple-choice",
+      "question": "Welche Informationen sollten in einer guten API-Fehlerantwort enthalten sein? (Mehrere Antworten möglich)",
+      "options": [
+        "Fehlermeldung für Entwickler",
+        "HTTP-Status-Code",
+        "Eindeutiger Fehlercode",
+        "Vollständiger Stack-Trace"
+      ],
+      "correctAnswer": [
+        "Fehlermeldung für Entwickler",
+        "HTTP-Status-Code",
+        "Eindeutiger Fehlercode"
+      ],
+      "explanation": "Eine gute API-Fehlerantwort sollte einen HTTP-Status-Code, eine verständliche Fehlermeldung und einen eindeutigen Fehlercode enthalten. Stack-Traces sollten nicht in Produktionsumgebungen zurückgegeben werden, da sie Sicherheitsrisiken darstellen und interne Implementierungsdetails offenlegen.",
+      "points": 2,
+      "category": "API-Design"
+    },
+    {
+      "id": "q20",
+      "type": "code",
+      "question": "Welche HTTP-Methode sollte für diesen Anwendungsfall verwendet werden: 'Aktiviere einen Benutzer-Account'?",
+      "code": "// Anwendungsfall: Benutzer-Account aktivieren\n// Endpunkt: /api/users/123/activate",
+      "language": "javascript",
+      "options": [
+        "POST oder PATCH",
+        "GET",
+        "DELETE",
+        "PUT"
+      ],
+      "correctAnswer": "POST oder PATCH",
+      "explanation": "Für Aktionen wie 'aktivieren' eignet sich POST (für nicht-idempotente Aktionen) oder PATCH (für Teilaktualisierung des Status-Feldes). GET sollte keine Änderungen vornehmen, DELETE würde löschen, und PUT würde die gesamte Ressource ersetzen. POST /users/123/activate oder PATCH /users/123 mit {\"status\": \"active\"} sind beide valide Ansätze.",
+      "points": 2,
+      "category": "HTTP-Methoden"
     }
   ],
   "tags": [
     "REST",
     "API",
     "HTTP",
-    "Web Services"
-  ]
+    "Web Services",
+    "Status-Codes",
+    "HATEOAS",
+    "API-Design"
+  ],
+  "lastUpdated": "2025-01-10"
 }

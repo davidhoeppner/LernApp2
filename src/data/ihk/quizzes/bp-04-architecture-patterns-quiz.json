@@ -2,99 +2,345 @@
   "id": "bp-04-architecture-patterns-quiz",
   "moduleId": "bp-04-architecture-patterns",
   "title": "Architektur-Pattern Quiz",
-  "description": "Teste dein Wissen über Architektur-Pattern",
+  "description": "Teste dein Wissen über Architektur-Pattern wie Layered Architecture, Microservices, Monolith, Event-Driven Architecture und CQRS",
   "category": "BP-04",
   "difficulty": "advanced",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Architektur-Pattern?",
+      "question": "Was ist das Hauptmerkmal einer Layered Architecture (Schichtenarchitektur)?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Die Anwendung ist in horizontale Schichten unterteilt, wobei jede Schicht nur mit der direkt darunterliegenden kommuniziert",
+        "Alle Komponenten können direkt miteinander kommunizieren ohne Einschränkungen",
+        "Die Anwendung besteht aus vielen kleinen, unabhängigen Services",
+        "Daten werden in verschiedenen Datenbanken gespeichert"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Die Anwendung ist in horizontale Schichten unterteilt, wobei jede Schicht nur mit der direkt darunterliegenden kommuniziert",
+      "explanation": "Bei der Layered Architecture wird die Anwendung in Schichten (z.B. Presentation, Business Logic, Data Access) unterteilt. Jede Schicht hat eine spezifische Verantwortung und kommuniziert nur mit der direkt darunterliegenden Schicht, was die Wartbarkeit und Testbarkeit verbessert.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Welche Schichten gehören typischerweise zu einer klassischen 3-Tier-Architektur?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Presentation Layer, Business Logic Layer, Data Access Layer",
+        "Frontend, Backend, Database, Cache",
+        "Controller, Service, Repository, Entity",
+        "View, Model, ViewModel"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Presentation Layer, Business Logic Layer, Data Access Layer",
+      "explanation": "Die klassische 3-Tier-Architektur besteht aus Presentation Layer (UI), Business Logic Layer (Geschäftslogik) und Data Access Layer (Datenzugriff). Diese Trennung ermöglicht eine klare Separation of Concerns.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "Grundlagen"
     },
     {
       "id": "q3",
       "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "question": "Welche Vorteile bietet eine Microservices-Architektur? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Unabhängige Skalierbarkeit einzelner Services",
+        "Technologie-Unabhängigkeit für jeden Service",
+        "Einfachere Entwicklung als Monolith",
+        "Geringere Komplexität im Deployment"
       ],
       "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
+        "Unabhängige Skalierbarkeit einzelner Services",
+        "Technologie-Unabhängigkeit für jeden Service"
       ],
-      "explanation": "Erklärung hier einfügen",
+      "explanation": "Microservices ermöglichen unabhängige Skalierung und Technologiewahl pro Service. Allerdings sind sie komplexer in Entwicklung und Deployment als Monolithen. Die erhöhte Flexibilität geht mit erhöhter Komplexität einher.",
       "points": 2,
-      "category": "Anwendung"
+      "category": "Microservices"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Was ist ein Monolith in der Softwarearchitektur?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Eine Anwendung, bei der alle Komponenten in einem einzigen, zusammenhängenden Codebase und Deployment-Einheit existieren",
+        "Eine Anwendung, die nur eine einzige Funktion erfüllt",
+        "Eine Anwendung, die auf einem einzigen Server läuft",
+        "Eine Anwendung ohne Datenbank"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Eine Anwendung, bei der alle Komponenten in einem einzigen, zusammenhängenden Codebase und Deployment-Einheit existieren",
+      "explanation": "Ein Monolith ist eine Anwendung, bei der alle Funktionalitäten in einer einzigen Codebase zusammengefasst sind und als eine Einheit deployed werden. Dies vereinfacht die Entwicklung für kleinere Projekte, kann aber bei Wachstum zu Problemen führen.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Grundlagen"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Was ist das Hauptprinzip einer Event-Driven Architecture?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Komponenten kommunizieren asynchron über Events, die Zustandsänderungen repräsentieren",
+        "Alle Anfragen werden synchron verarbeitet",
+        "Events werden in einer relationalen Datenbank gespeichert",
+        "Jeder Service hat seine eigene Event-Loop"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Komponenten kommunizieren asynchron über Events, die Zustandsänderungen repräsentieren",
+      "explanation": "Bei Event-Driven Architecture kommunizieren Komponenten durch das Senden und Empfangen von Events. Dies ermöglicht lose Kopplung und asynchrone Verarbeitung. Producer erzeugen Events, Consumer reagieren darauf.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Event-Driven"
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "question": "Welche Nachteile hat eine Microservices-Architektur? (Mehrere Antworten möglich)",
+      "options": [
+        "Erhöhte Komplexität in der Kommunikation zwischen Services",
+        "Schwierigere Fehlersuche über Service-Grenzen hinweg",
+        "Geringere Performance als Monolithen",
+        "Höherer Overhead durch Netzwerkkommunikation"
+      ],
+      "correctAnswer": [
+        "Erhöhte Komplexität in der Kommunikation zwischen Services",
+        "Schwierigere Fehlersuche über Service-Grenzen hinweg",
+        "Höherer Overhead durch Netzwerkkommunikation"
+      ],
+      "explanation": "Microservices bringen erhöhte Komplexität mit sich: Service-Kommunikation, verteiltes Debugging und Netzwerk-Overhead sind Herausforderungen. Performance ist nicht generell schlechter, hängt aber von der Implementierung ab.",
+      "points": 2,
+      "category": "Microservices"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was bedeutet CQRS (Command Query Responsibility Segregation)?",
+      "options": [
+        "Trennung von Schreib- (Command) und Lese-Operationen (Query) in separate Modelle",
+        "Verwendung von SQL-Queries für alle Datenbankoperationen",
+        "Caching von Query-Ergebnissen",
+        "Verwendung von Command-Line-Tools für Deployment"
+      ],
+      "correctAnswer": "Trennung von Schreib- (Command) und Lese-Operationen (Query) in separate Modelle",
+      "explanation": "CQRS trennt Schreib- und Leseoperationen in separate Modelle. Commands ändern den Zustand, Queries lesen Daten. Dies ermöglicht unterschiedliche Optimierungen für Lese- und Schreibvorgänge und kann die Performance verbessern.",
+      "points": 1,
+      "category": "CQRS"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Welches Pattern wird häufig mit CQRS kombiniert?",
+      "options": [
+        "Event Sourcing",
+        "Singleton Pattern",
+        "Factory Pattern",
+        "Observer Pattern"
+      ],
+      "correctAnswer": "Event Sourcing",
+      "explanation": "CQRS wird häufig mit Event Sourcing kombiniert. Dabei werden alle Zustandsänderungen als Events gespeichert. Commands erzeugen Events, die den Schreib-Zustand ändern, während Queries auf optimierte Read-Models zugreifen.",
+      "points": 1,
+      "category": "CQRS"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was ist ein API Gateway in einer Microservices-Architektur?",
+      "options": [
+        "Ein zentraler Einstiegspunkt, der Anfragen an die entsprechenden Microservices weiterleitet",
+        "Eine Datenbank für API-Dokumentation",
+        "Ein Tool zum Testen von APIs",
+        "Eine Firewall für Microservices"
+      ],
+      "correctAnswer": "Ein zentraler Einstiegspunkt, der Anfragen an die entsprechenden Microservices weiterleitet",
+      "explanation": "Ein API Gateway ist ein zentraler Einstiegspunkt für Client-Anfragen. Es leitet Requests an die entsprechenden Microservices weiter, kann Authentifizierung, Rate Limiting und Request-Aggregation übernehmen und vereinfacht die Client-Kommunikation.",
+      "points": 1,
+      "category": "Microservices"
+    },
+    {
+      "id": "q10",
+      "type": "multiple-choice",
+      "question": "Welche Kommunikationsmuster werden in Microservices verwendet? (Mehrere Antworten möglich)",
+      "options": [
+        "Synchrone REST-API-Aufrufe",
+        "Asynchrone Message Queues",
+        "Event Streaming",
+        "Direkte Datenbank-Zugriffe zwischen Services"
+      ],
+      "correctAnswer": [
+        "Synchrone REST-API-Aufrufe",
+        "Asynchrone Message Queues",
+        "Event Streaming"
+      ],
+      "explanation": "Microservices kommunizieren über REST-APIs (synchron), Message Queues wie RabbitMQ (asynchron) oder Event Streaming wie Kafka. Direkte Datenbank-Zugriffe zwischen Services sollten vermieden werden, da sie zu enger Kopplung führen.",
+      "points": 2,
+      "category": "Microservices"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist der Hauptvorteil einer Hexagonal Architecture (Ports and Adapters)?",
+      "options": [
+        "Die Geschäftslogik ist unabhängig von externen Frameworks und Technologien",
+        "Die Anwendung hat sechs Schichten",
+        "Alle Komponenten sind hexagonal angeordnet",
+        "Die Datenbank ist im Zentrum der Architektur"
+      ],
+      "correctAnswer": "Die Geschäftslogik ist unabhängig von externen Frameworks und Technologien",
+      "explanation": "Hexagonal Architecture (auch Ports and Adapters genannt) platziert die Geschäftslogik im Zentrum und isoliert sie von externen Abhängigkeiten. Ports definieren Schnittstellen, Adapters implementieren diese für konkrete Technologien. Dies erhöht Testbarkeit und Flexibilität.",
+      "points": 1,
+      "category": "Architektur-Patterns"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Wann sollte man einen Monolithen einer Microservices-Architektur vorziehen?",
+      "options": [
+        "Bei kleinen Teams und einfachen Anwendungen mit überschaubarer Komplexität",
+        "Bei sehr großen, komplexen Anwendungen",
+        "Wenn viele verschiedene Technologien verwendet werden sollen",
+        "Wenn unabhängige Skalierung einzelner Komponenten erforderlich ist"
+      ],
+      "correctAnswer": "Bei kleinen Teams und einfachen Anwendungen mit überschaubarer Komplexität",
+      "explanation": "Monolithen sind für kleine Teams und einfache Anwendungen oft die bessere Wahl. Sie sind einfacher zu entwickeln, zu testen und zu deployen. Microservices lohnen sich erst bei größerer Komplexität, wenn die Vorteile die erhöhte Komplexität rechtfertigen.",
+      "points": 1,
+      "category": "Architektur-Entscheidungen"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ist Service Discovery in einer Microservices-Architektur?",
+      "options": [
+        "Ein Mechanismus, mit dem Services dynamisch die Netzwerkadressen anderer Services finden können",
+        "Ein Tool zum Entdecken von Sicherheitslücken in Services",
+        "Eine Methode zum Testen von Services",
+        "Ein Pattern für Datenbank-Zugriffe"
+      ],
+      "correctAnswer": "Ein Mechanismus, mit dem Services dynamisch die Netzwerkadressen anderer Services finden können",
+      "explanation": "Service Discovery ermöglicht es Services, dynamisch die Adressen anderer Services zu finden. Tools wie Consul, Eureka oder Kubernetes-DNS registrieren Services und ermöglichen deren Auffindbarkeit, was besonders wichtig ist, wenn Services dynamisch skaliert werden.",
+      "points": 1,
+      "category": "Microservices"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Eigenschaften hat eine Event-Driven Architecture? (Mehrere Antworten möglich)",
+      "options": [
+        "Lose Kopplung zwischen Komponenten",
+        "Asynchrone Kommunikation",
+        "Synchrone Request-Response-Muster",
+        "Hohe Skalierbarkeit"
+      ],
+      "correctAnswer": [
+        "Lose Kopplung zwischen Komponenten",
+        "Asynchrone Kommunikation",
+        "Hohe Skalierbarkeit"
+      ],
+      "explanation": "Event-Driven Architecture zeichnet sich durch lose Kopplung, asynchrone Kommunikation und hohe Skalierbarkeit aus. Producer und Consumer kennen sich nicht direkt. Synchrone Request-Response-Muster sind nicht typisch für Event-Driven Architecture.",
+      "points": 2,
+      "category": "Event-Driven"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist ein Bounded Context im Domain-Driven Design (DDD)?",
+      "options": [
+        "Eine explizite Grenze, innerhalb derer ein bestimmtes Domain-Modell gültig ist",
+        "Eine Begrenzung der Anzahl von Klassen in einem Modul",
+        "Ein zeitliches Limit für Transaktionen",
+        "Eine Sicherheitsgrenze zwischen Services"
+      ],
+      "correctAnswer": "Eine explizite Grenze, innerhalb derer ein bestimmtes Domain-Modell gültig ist",
+      "explanation": "Ein Bounded Context definiert eine klare Grenze, innerhalb derer ein Domain-Modell konsistent ist. Verschiedene Bounded Contexts können unterschiedliche Modelle für dieselben Konzepte haben. Dies ist wichtig für die Strukturierung von Microservices.",
+      "points": 1,
+      "category": "DDD"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist der Zweck eines Circuit Breaker Patterns in Microservices?",
+      "options": [
+        "Verhinderung von Kaskadenausfällen durch Unterbrechung von Aufrufen zu fehlerhaften Services",
+        "Absicherung der Stromversorgung",
+        "Verschlüsselung der Kommunikation",
+        "Load Balancing zwischen Services"
+      ],
+      "correctAnswer": "Verhinderung von Kaskadenausfällen durch Unterbrechung von Aufrufen zu fehlerhaften Services",
+      "explanation": "Das Circuit Breaker Pattern verhindert, dass ein fehlerhafter Service das gesamte System lahmlegt. Wenn ein Service wiederholt fehlschlägt, wird der 'Circuit' geöffnet und weitere Aufrufe werden sofort abgelehnt, bis der Service wieder verfügbar ist.",
+      "points": 1,
+      "category": "Resilience"
+    },
+    {
+      "id": "q17",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet eine Layered Architecture? (Mehrere Antworten möglich)",
+      "options": [
+        "Klare Separation of Concerns",
+        "Einfachere Testbarkeit einzelner Schichten",
+        "Automatische Skalierung",
+        "Bessere Wartbarkeit durch strukturierte Organisation"
+      ],
+      "correctAnswer": [
+        "Klare Separation of Concerns",
+        "Einfachere Testbarkeit einzelner Schichten",
+        "Bessere Wartbarkeit durch strukturierte Organisation"
+      ],
+      "explanation": "Layered Architecture bietet klare Trennung von Verantwortlichkeiten, einfachere Testbarkeit (Schichten können isoliert getestet werden) und bessere Wartbarkeit. Automatische Skalierung ist kein direkter Vorteil der Schichtenarchitektur.",
+      "points": 2,
+      "category": "Layered Architecture"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was ist Eventual Consistency in verteilten Systemen?",
+      "options": [
+        "Das System erreicht einen konsistenten Zustand, aber nicht sofort nach einer Änderung",
+        "Das System ist immer sofort konsistent",
+        "Das System ist niemals konsistent",
+        "Konsistenz wird nur einmal pro Tag hergestellt"
+      ],
+      "correctAnswer": "Das System erreicht einen konsistenten Zustand, aber nicht sofort nach einer Änderung",
+      "explanation": "Eventual Consistency bedeutet, dass das System nach einer Änderung nicht sofort, aber letztendlich einen konsistenten Zustand erreicht. Dies ist typisch für verteilte Systeme und Event-Driven Architectures, wo Änderungen asynchron propagiert werden.",
+      "points": 1,
+      "category": "Verteilte Systeme"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen Orchestration und Choreography in Microservices?",
+      "options": [
+        "Orchestration hat einen zentralen Koordinator, Choreography basiert auf dezentraler Event-basierter Kommunikation",
+        "Orchestration ist schneller als Choreography",
+        "Choreography verwendet immer REST-APIs",
+        "Orchestration ist nur für kleine Systeme geeignet"
+      ],
+      "correctAnswer": "Orchestration hat einen zentralen Koordinator, Choreography basiert auf dezentraler Event-basierter Kommunikation",
+      "explanation": "Bei Orchestration koordiniert ein zentraler Service (Orchestrator) die Interaktionen zwischen Services. Bei Choreography kommunizieren Services dezentral über Events ohne zentralen Koordinator. Beide Ansätze haben Vor- und Nachteile.",
+      "points": 1,
+      "category": "Microservices"
+    },
+    {
+      "id": "q20",
+      "type": "multiple-choice",
+      "question": "Welche Faktoren sollten bei der Wahl zwischen Monolith und Microservices berücksichtigt werden? (Mehrere Antworten möglich)",
+      "options": [
+        "Teamgröße und -struktur",
+        "Komplexität der Anwendung",
+        "Skalierungsanforderungen",
+        "Farbe des Firmenlogos"
+      ],
+      "correctAnswer": [
+        "Teamgröße und -struktur",
+        "Komplexität der Anwendung",
+        "Skalierungsanforderungen"
+      ],
+      "explanation": "Die Architektur-Entscheidung sollte auf Teamgröße (große Teams profitieren von Microservices), Anwendungskomplexität (komplexe Domänen rechtfertigen Microservices) und Skalierungsanforderungen (unterschiedliche Skalierung einzelner Komponenten) basieren. Das Firmenlogo ist irrelevant.",
+      "points": 2,
+      "category": "Architektur-Entscheidungen"
     }
   ],
   "tags": [
     "Architektur",
-    "MVC",
     "Layered Architecture",
     "Microservices",
-    "Design Patterns",
-    "Software-Design",
-    "Neu 2025"
-  ]
+    "Monolith",
+    "Event-Driven",
+    "CQRS",
+    "Software-Design"
+  ],
+  "lastUpdated": "2025-01-10"
 }

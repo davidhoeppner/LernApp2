@@ -1,91 +1,301 @@
 {
   "id": "bp-05-data-structures-quiz",
   "moduleId": "bp-05-data-structures",
-  "title": "Datenstrukturen (Arrays, Listen, Stacks, Queues, Trees) Quiz",
-  "description": "Teste dein Wissen über Datenstrukturen (Arrays, Listen, Stacks, Queues, Trees)",
+  "title": "Datenstrukturen Quiz",
+  "description": "Teste dein Wissen über grundlegende Datenstrukturen wie Arrays, Listen, Stacks, Queues, Trees, Graphs und Hash-Tables",
   "category": "BP-05",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Datenstrukturen (Arrays, Listen, Stacks, Queues, Trees)?",
+      "question": "Was ist der Hauptvorteil eines Arrays gegenüber einer verketteten Liste?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Direkter Zugriff auf Elemente über den Index in O(1)",
+        "Dynamische Größenanpassung ohne Speicher-Reallokation",
+        "Effizientes Einfügen am Anfang in O(1)",
+        "Geringerer Speicherverbrauch durch fehlende Pointer"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Direkter Zugriff auf Elemente über den Index in O(1)",
+      "explanation": "Arrays bieten konstanten Zugriff O(1) auf Elemente über den Index, da die Speicheradressen berechenbar sind. Verkettete Listen benötigen O(n) für den Zugriff, da sie sequenziell durchlaufen werden müssen. Dynamische Größenanpassung und effizientes Einfügen am Anfang sind Vorteile von Listen.",
       "points": 1,
-      "category": "Grundlagen"
+      "category": "Arrays"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Welche Zeitkomplexität hat das Einfügen eines Elements am Anfang einer einfach verketteten Liste?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "O(1)",
+        "O(log n)",
+        "O(n)",
+        "O(n²)"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "O(1)",
+      "explanation": "Das Einfügen am Anfang einer einfach verketteten Liste ist O(1), da nur der Head-Pointer angepasst werden muss. Das neue Element zeigt auf den alten Head, und der Head-Pointer zeigt auf das neue Element. Es ist keine Iteration durch die Liste erforderlich.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "Listen"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "single-choice",
+      "question": "Was ist das LIFO-Prinzip bei einem Stack?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Last In, First Out - das zuletzt eingefügte Element wird zuerst entfernt",
+        "Last In, Final Out - das letzte Element bleibt am längsten",
+        "Linear Input, Fast Output - schneller Zugriff auf alle Elemente",
+        "Limited Input, Fixed Output - begrenzte Anzahl von Operationen"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
-      "points": 2,
-      "category": "Anwendung"
+      "correctAnswer": "Last In, First Out - das zuletzt eingefügte Element wird zuerst entfernt",
+      "explanation": "LIFO (Last In, First Out) bedeutet, dass das zuletzt auf den Stack gelegte Element als erstes wieder entfernt wird. Dies entspricht einem Stapel von Tellern: Der oberste Teller (zuletzt hinzugefügt) wird zuerst genommen. Die Operationen push() und pop() arbeiten beide am oberen Ende des Stacks.",
+      "points": 1,
+      "category": "Stack"
     },
     {
       "id": "q4",
-      "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "type": "code",
+      "question": "Was gibt dieser Stack-Code aus?",
+      "code": "Stack<Integer> stack = new Stack<>();\nstack.push(10);\nstack.push(20);\nstack.push(30);\nstack.pop();\nSystem.out.println(stack.peek());",
+      "language": "java",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "20",
+        "30",
+        "10",
+        "Fehler: Stack ist leer"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
-      "points": 1,
-      "category": "Praxis"
+      "correctAnswer": "20",
+      "explanation": "Der Stack enthält nach den push-Operationen [10, 20, 30] (30 oben). pop() entfernt 30, sodass [10, 20] übrig bleibt. peek() gibt das oberste Element zurück, ohne es zu entfernen, also 20. Die Ausgabe ist daher 20.",
+      "points": 2,
+      "category": "Stack"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Was ist das FIFO-Prinzip bei einer Queue?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "First In, First Out - das zuerst eingefügte Element wird zuerst entfernt",
+        "Fast In, Fast Out - schnelle Ein- und Ausgabe",
+        "Fixed Input, Flexible Output - feste Eingabe, variable Ausgabe",
+        "Forward Input, Forward Output - vorwärts gerichtete Verarbeitung"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "First In, First Out - das zuerst eingefügte Element wird zuerst entfernt",
+      "explanation": "FIFO (First In, First Out) bedeutet, dass das zuerst eingefügte Element auch zuerst wieder entfernt wird. Dies entspricht einer Warteschlange: Wer zuerst kommt, wird zuerst bedient. Die Operationen enqueue() fügt am Ende hinzu, dequeue() entfernt vom Anfang.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Queue"
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über verkettete Listen sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "Einfügen und Löschen am Anfang ist O(1)",
+        "Zugriff auf ein Element über Index ist O(1)",
+        "Dynamische Größenanpassung ohne Reallokation möglich",
+        "Benötigen zusätzlichen Speicher für Pointer/Referenzen"
+      ],
+      "correctAnswer": [
+        "Einfügen und Löschen am Anfang ist O(1)",
+        "Dynamische Größenanpassung ohne Reallokation möglich",
+        "Benötigen zusätzlichen Speicher für Pointer/Referenzen"
+      ],
+      "explanation": "Verkettete Listen ermöglichen O(1) Einfügen/Löschen am Anfang durch Anpassung des Head-Pointers. Sie wachsen dynamisch ohne Reallokation, da neue Knoten einzeln allokiert werden. Jeder Knoten benötigt zusätzlichen Speicher für Pointer. Der Zugriff über Index ist jedoch O(n), da die Liste durchlaufen werden muss.",
+      "points": 2,
+      "category": "Listen"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist ein binärer Suchbaum (Binary Search Tree)?",
+      "options": [
+        "Ein Baum, bei dem jeder Knoten maximal zwei Kinder hat und linke Kinder kleiner, rechte größer sind",
+        "Ein Baum mit genau zwei Ebenen für schnelle Suche",
+        "Ein Baum, der nur binäre Werte (0 und 1) speichert",
+        "Ein Baum, bei dem jeder Knoten genau zwei Kinder haben muss"
+      ],
+      "correctAnswer": "Ein Baum, bei dem jeder Knoten maximal zwei Kinder hat und linke Kinder kleiner, rechte größer sind",
+      "explanation": "Ein binärer Suchbaum (BST) ist ein binärer Baum mit der Eigenschaft, dass für jeden Knoten gilt: Alle Werte im linken Teilbaum sind kleiner, alle im rechten Teilbaum sind größer. Dies ermöglicht effiziente Suche in O(log n) bei balancierten Bäumen. Knoten können 0, 1 oder 2 Kinder haben.",
+      "points": 1,
+      "category": "Trees"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Welche Traversierungsart besucht bei einem binären Baum zuerst den linken Teilbaum, dann die Wurzel, dann den rechten Teilbaum?",
+      "options": [
+        "Inorder (LWR)",
+        "Preorder (WLR)",
+        "Postorder (LRW)",
+        "Level-Order (Breitensuche)"
+      ],
+      "correctAnswer": "Inorder (LWR)",
+      "explanation": "Inorder-Traversierung besucht die Knoten in der Reihenfolge: Linker Teilbaum (L), Wurzel (W), Rechter Teilbaum (R). Bei einem binären Suchbaum liefert Inorder die Elemente in sortierter Reihenfolge. Preorder ist WLR, Postorder ist LRW, Level-Order besucht ebenenweise.",
+      "points": 1,
+      "category": "Trees"
+    },
+    {
+      "id": "q9",
+      "type": "code",
+      "question": "Welche Ausgabe erzeugt diese Inorder-Traversierung?",
+      "code": "     5\n    / \\\n   3   7\n  / \\ / \\\n 2  4 6  8\n\nvoid inorder(Node node) {\n  if (node != null) {\n    inorder(node.left);\n    System.out.print(node.value + \" \");\n    inorder(node.right);\n  }\n}",
+      "language": "java",
+      "options": [
+        "2 3 4 5 6 7 8",
+        "5 3 2 4 7 6 8",
+        "2 4 3 6 8 7 5",
+        "5 3 7 2 4 6 8"
+      ],
+      "correctAnswer": "2 3 4 5 6 7 8",
+      "explanation": "Inorder-Traversierung (LWR) besucht zuerst den linken Teilbaum, dann die Wurzel, dann den rechten Teilbaum. Für diesen BST: Linker Teilbaum von 5 ergibt 2,3,4 (Inorder von 3), dann 5, dann rechter Teilbaum ergibt 6,7,8 (Inorder von 7). Ergebnis: 2 3 4 5 6 7 8 - die sortierte Reihenfolge.",
+      "points": 2,
+      "category": "Trees"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was ist eine Hash-Tabelle (Hash Table)?",
+      "options": [
+        "Eine Datenstruktur, die Schlüssel über eine Hash-Funktion auf Array-Indizes abbildet für O(1) Zugriff",
+        "Eine Tabelle, die Daten verschlüsselt speichert",
+        "Eine sortierte Tabelle für schnelle binäre Suche",
+        "Eine Tabelle, die nur eindeutige Werte speichern kann"
+      ],
+      "correctAnswer": "Eine Datenstruktur, die Schlüssel über eine Hash-Funktion auf Array-Indizes abbildet für O(1) Zugriff",
+      "explanation": "Eine Hash-Tabelle verwendet eine Hash-Funktion, um Schlüssel in Array-Indizes umzuwandeln. Dies ermöglicht durchschnittlich O(1) Zugriff, Einfügen und Löschen. Kollisionen (mehrere Schlüssel mit gleichem Hash) werden durch Verkettung oder offene Adressierung behandelt. Hash-Tabellen sind nicht sortiert und verschlüsseln keine Daten.",
+      "points": 1,
+      "category": "Hash-Tables"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist eine Kollision bei Hash-Tabellen?",
+      "options": [
+        "Wenn zwei verschiedene Schlüssel denselben Hash-Wert erzeugen",
+        "Wenn die Hash-Tabelle voll ist",
+        "Wenn ein Schlüssel nicht gefunden wird",
+        "Wenn die Hash-Funktion einen Fehler produziert"
+      ],
+      "correctAnswer": "Wenn zwei verschiedene Schlüssel denselben Hash-Wert erzeugen",
+      "explanation": "Eine Kollision tritt auf, wenn die Hash-Funktion für zwei verschiedene Schlüssel denselben Index berechnet. Dies ist unvermeidbar bei endlichen Hash-Tabellen (Schubfachprinzip). Kollisionen werden durch Verkettung (Chaining) oder offene Adressierung (Open Addressing) gelöst. Eine gute Hash-Funktion minimiert Kollisionen.",
+      "points": 1,
+      "category": "Hash-Tables"
+    },
+    {
+      "id": "q12",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über Graphen sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "Ein Graph besteht aus Knoten (Vertices) und Kanten (Edges)",
+        "Ein gerichteter Graph hat Kanten mit Richtung",
+        "Ein gewichteter Graph hat Kosten/Gewichte an den Kanten",
+        "Jeder Graph muss zusammenhängend sein"
+      ],
+      "correctAnswer": [
+        "Ein Graph besteht aus Knoten (Vertices) und Kanten (Edges)",
+        "Ein gerichteter Graph hat Kanten mit Richtung",
+        "Ein gewichteter Graph hat Kosten/Gewichte an den Kanten"
+      ],
+      "explanation": "Graphen bestehen aus Knoten (Vertices) und Kanten (Edges). Gerichtete Graphen haben Kanten mit Richtung (A→B ≠ B→A), ungerichtete nicht. Gewichtete Graphen haben Kosten an Kanten (z.B. Entfernungen). Graphen müssen nicht zusammenhängend sein - sie können aus mehreren unverbundenen Komponenten bestehen.",
+      "points": 2,
+      "category": "Graphs"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Welche Datenstruktur wird typischerweise für die Breitensuche (BFS) in Graphen verwendet?",
+      "options": [
+        "Queue",
+        "Stack",
+        "Priority Queue",
+        "Hash-Tabelle"
+      ],
+      "correctAnswer": "Queue",
+      "explanation": "Breitensuche (BFS) verwendet eine Queue, um Knoten ebenenweise zu besuchen. Startknoten wird in Queue eingefügt, dann werden alle Nachbarn besucht und zur Queue hinzugefügt, bevor zur nächsten Ebene übergegangen wird. Das FIFO-Prinzip der Queue garantiert die ebenenweise Verarbeitung. Tiefensuche (DFS) verwendet einen Stack.",
+      "points": 1,
+      "category": "Graphs"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen einer doppelt verketteten Liste und einer einfach verketteten Liste?",
+      "options": [
+        "Doppelt verkettete Listen haben Pointer zum nächsten und vorherigen Knoten",
+        "Doppelt verkettete Listen können doppelt so viele Elemente speichern",
+        "Doppelt verkettete Listen sind immer sortiert",
+        "Doppelt verkettete Listen haben zwei Head-Pointer"
+      ],
+      "correctAnswer": "Doppelt verkettete Listen haben Pointer zum nächsten und vorherigen Knoten",
+      "explanation": "Bei doppelt verketteten Listen hat jeder Knoten zwei Pointer: einen zum nächsten (next) und einen zum vorherigen Knoten (prev). Dies ermöglicht bidirektionale Traversierung und O(1) Löschen eines Knotens, wenn man eine Referenz darauf hat. Der Nachteil ist höherer Speicherverbrauch durch zusätzliche Pointer.",
+      "points": 1,
+      "category": "Listen"
+    },
+    {
+      "id": "q15",
+      "type": "code",
+      "question": "Was ist die Zeitkomplexität dieser Operation?",
+      "code": "// Suche nach einem Element in einem Array\nint[] arr = new int[n];\nfor (int i = 0; i < arr.length; i++) {\n  if (arr[i] == target) {\n    return i;\n  }\n}\nreturn -1;",
+      "language": "java",
+      "options": [
+        "O(n)",
+        "O(1)",
+        "O(log n)",
+        "O(n²)"
+      ],
+      "correctAnswer": "O(n)",
+      "explanation": "Die lineare Suche durchläuft das Array sequenziell und vergleicht jedes Element mit dem Zielwert. Im schlimmsten Fall (Element nicht vorhanden oder am Ende) werden alle n Elemente durchlaufen. Die Zeitkomplexität ist daher O(n). Bei einem sortierten Array könnte binäre Suche O(log n) erreichen.",
+      "points": 2,
+      "category": "Arrays"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Welche Datenstruktur eignet sich am besten für die Implementierung eines Undo/Redo-Mechanismus?",
+      "options": [
+        "Stack",
+        "Queue",
+        "Hash-Tabelle",
+        "Binärer Baum"
+      ],
+      "correctAnswer": "Stack",
+      "explanation": "Ein Stack eignet sich perfekt für Undo/Redo, da die letzte Aktion zuerst rückgängig gemacht werden soll (LIFO). Für Undo wird ein Stack mit durchgeführten Aktionen verwendet, für Redo ein Stack mit rückgängig gemachten Aktionen. push() fügt neue Aktionen hinzu, pop() macht sie rückgängig.",
+      "points": 1,
+      "category": "Stack"
+    },
+    {
+      "id": "q17",
+      "type": "multiple-choice",
+      "question": "Welche Operationen haben bei einer balancierten Hash-Tabelle durchschnittlich O(1) Zeitkomplexität? (Mehrere Antworten möglich)",
+      "options": [
+        "Einfügen (Insert)",
+        "Suchen (Search)",
+        "Löschen (Delete)",
+        "Sortieren aller Elemente"
+      ],
+      "correctAnswer": [
+        "Einfügen (Insert)",
+        "Suchen (Search)",
+        "Löschen (Delete)"
+      ],
+      "explanation": "Hash-Tabellen bieten durchschnittlich O(1) für Insert, Search und Delete, da die Hash-Funktion direkt den Index berechnet. Im schlimmsten Fall (viele Kollisionen) kann dies zu O(n) degradieren. Sortieren ist nicht in O(1) möglich, da alle n Elemente betrachtet werden müssen - Hash-Tabellen sind nicht sortiert.",
+      "points": 2,
+      "category": "Hash-Tables"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was ist ein Heap?",
+      "options": [
+        "Ein spezieller binärer Baum, bei dem jeder Elternknoten größer (Max-Heap) oder kleiner (Min-Heap) als seine Kinder ist",
+        "Ein Speicherbereich für dynamisch allokierte Objekte",
+        "Eine sortierte Liste mit logarithmischem Zugriff",
+        "Ein Graph ohne Zyklen"
+      ],
+      "correctAnswer": "Ein spezieller binärer Baum, bei dem jeder Elternknoten größer (Max-Heap) oder kleiner (Min-Heap) als seine Kinder ist",
+      "explanation": "Ein Heap ist ein vollständiger binärer Baum mit der Heap-Eigenschaft: Bei einem Max-Heap ist jeder Elternknoten größer oder gleich seinen Kindern, bei einem Min-Heap kleiner oder gleich. Heaps werden für Priority Queues und Heap-Sort verwendet. Einfügen und Löschen des Maximums/Minimums sind O(log n). Nicht zu verwechseln mit dem Heap-Speicherbereich.",
+      "points": 1,
+      "category": "Trees"
     }
   ],
   "tags": [
@@ -94,6 +304,11 @@
     "Listen",
     "Stack",
     "Queue",
-    "Tree"
-  ]
+    "Trees",
+    "Graphs",
+    "Hash-Tables",
+    "Algorithmen",
+    "Komplexität"
+  ],
+  "lastUpdated": "2025-01-10"
 }

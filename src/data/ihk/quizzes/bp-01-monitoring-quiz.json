@@ -2,90 +2,315 @@
   "id": "bp-01-monitoring-quiz",
   "moduleId": "bp-01-monitoring",
   "title": "System-Monitoring und Überwachung Quiz",
-  "description": "Teste dein Wissen über System-Monitoring und Überwachung",
+  "description": "Umfassendes Quiz zu Monitoring-Tools, Metriken, Logging, Alerting und APM",
   "category": "BP-01",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "newIn2025": true,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist System-Monitoring und Überwachung?",
+      "question": "Was ist der Hauptzweck von System-Monitoring?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Kontinuierliche Überwachung von IT-Systemen zur Sicherstellung von Verfügbarkeit, Performance und Sicherheit",
+        "Automatisches Beheben von Fehlern",
+        "Erstellung von Backups",
+        "Entwicklung neuer Features"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Kontinuierliche Überwachung von IT-Systemen zur Sicherstellung von Verfügbarkeit, Performance und Sicherheit",
+      "explanation": "Monitoring überwacht kontinuierlich IT-Systeme, Anwendungen und Infrastruktur, um Verfügbarkeit, Performance und Sicherheit sicherzustellen. Es erkennt Probleme frühzeitig, ermöglicht proaktive Maßnahmen und hilft bei der Kapazitätsplanung. Automatisches Beheben ist Aufgabe von Auto-Remediation, Backups sind separate Systeme.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
-      "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche Bereiche gehören zum Infrastruktur-Monitoring?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "CPU-Auslastung und RAM-Nutzung",
+        "Festplattenspeicher und Netzwerkbandbreite",
+        "Quellcode-Qualität",
+        "Temperatur und Verbindungsstatus"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
-      "points": 1,
-      "category": "Konzepte"
+      "correctAnswer": ["CPU-Auslastung und RAM-Nutzung", "Festplattenspeicher und Netzwerkbandbreite", "Temperatur und Verbindungsstatus"],
+      "explanation": "Infrastruktur-Monitoring überwacht Hardware (CPU, RAM, Festplatte, Temperatur) und Netzwerk (Bandbreite, Latenz, Paketverlust, Verbindungen). Quellcode-Qualität gehört zu Code-Analyse-Tools wie SonarQube, nicht zum Infrastruktur-Monitoring.",
+      "points": 2,
+      "category": "Monitoring-Bereiche"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "single-choice",
+      "question": "Was sind die 'Golden Signals' nach Google SRE?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Latency, Traffic, Errors, Saturation",
+        "CPU, RAM, Disk, Network",
+        "Availability, Performance, Security",
+        "Requests, Responses, Timeouts, Failures"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
-      "points": 2,
-      "category": "Anwendung"
+      "correctAnswer": "Latency, Traffic, Errors, Saturation",
+      "explanation": "Die Golden Signals sind vier Schlüsselmetriken für Service-Monitoring: Latency (Antwortzeit), Traffic (Anfragen/Sekunde), Errors (Fehlerrate) und Saturation (Ressourcenauslastung). Sie wurden von Google SRE definiert und sind essentiell für effektives Monitoring.",
+      "points": 1,
+      "category": "Metriken"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Wofür steht die RED-Methode im Service-Monitoring?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Rate, Errors, Duration",
+        "Request, Error, Data",
+        "Response, Execution, Debug",
+        "Reliability, Efficiency, Deployment"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Rate, Errors, Duration",
+      "explanation": "Die RED-Methode fokussiert auf drei Metriken für Services: Rate (Anfragen pro Sekunde), Errors (Fehlerrate) und Duration (Antwortzeit). Sie ist ähnlich zu den Golden Signals, aber speziell für Request-basierte Services optimiert.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Metriken"
     },
     {
       "id": "q5",
       "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "question": "Welches Tool ist eine Time-Series-Datenbank für Metriken und verwendet PromQL?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Prometheus",
+        "Grafana",
+        "Nagios",
+        "Kibana"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Prometheus",
+      "explanation": "Prometheus ist eine Open-Source Time-Series-Datenbank für Monitoring-Metriken. Es verwendet Pull-basiertes Scraping und die PromQL Query Language. Grafana ist für Visualisierung, Nagios für klassisches Monitoring, und Kibana für Log-Visualisierung (Teil des ELK-Stacks).",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Monitoring-Tools"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Welches Tool wird typischerweise für die Visualisierung von Prometheus-Metriken verwendet?",
+      "options": [
+        "Grafana",
+        "Nagios",
+        "Zabbix",
+        "Logstash"
+      ],
+      "correctAnswer": "Grafana",
+      "explanation": "Grafana ist das Standard-Tool für Visualisierung von Monitoring-Daten. Es erstellt Dashboards, unterstützt viele Datenquellen (Prometheus, InfluxDB, Elasticsearch) und bietet Alerting. Nagios und Zabbix sind eigenständige Monitoring-Systeme, Logstash ist für Log-Verarbeitung.",
+      "points": 1,
+      "category": "Monitoring-Tools"
+    },
+    {
+      "id": "q7",
+      "type": "multiple-choice",
+      "question": "Welche Komponenten gehören zum ELK-Stack?",
+      "options": [
+        "Elasticsearch (Speicherung und Suche)",
+        "Logstash (Log-Verarbeitung)",
+        "Kibana (Visualisierung)",
+        "Prometheus (Metriken)"
+      ],
+      "correctAnswer": ["Elasticsearch (Speicherung und Suche)", "Logstash (Log-Verarbeitung)", "Kibana (Visualisierung)"],
+      "explanation": "Der ELK-Stack besteht aus Elasticsearch (Speicherung und Suche), Logstash (Log-Aggregation und -Verarbeitung) und Kibana (Visualisierung und Dashboards). Die Pipeline: Anwendung → Logstash → Elasticsearch → Kibana. Prometheus gehört nicht zum ELK-Stack.",
+      "points": 2,
+      "category": "Monitoring-Tools"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was sind die Standard-Log-Levels in aufsteigender Schwere?",
+      "options": [
+        "DEBUG, INFO, WARN, ERROR",
+        "INFO, DEBUG, WARN, ERROR",
+        "ERROR, WARN, INFO, DEBUG",
+        "TRACE, DEBUG, INFO, CRITICAL"
+      ],
+      "correctAnswer": "DEBUG, INFO, WARN, ERROR",
+      "explanation": "Die Standard-Log-Levels in aufsteigender Schwere sind: DEBUG (detaillierte Debug-Informationen), INFO (allgemeine Informationen), WARN (Warnungen, keine Fehler), ERROR (Fehler). Manche Systeme haben zusätzlich TRACE (noch detaillierter) und FATAL/CRITICAL (kritische Fehler).",
+      "points": 1,
+      "category": "Logging"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen Liveness und Readiness Probes?",
+      "options": [
+        "Liveness prüft ob die Anwendung läuft, Readiness ob sie bereit ist Anfragen zu verarbeiten",
+        "Liveness ist für Datenbanken, Readiness für Webserver",
+        "Liveness prüft die Performance, Readiness die Sicherheit",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Liveness prüft ob die Anwendung läuft, Readiness ob sie bereit ist Anfragen zu verarbeiten",
+      "explanation": "Liveness Probe prüft, ob die Anwendung am Leben ist (z.B. /health/live). Bei Fehlschlag wird Container neu gestartet. Readiness Probe prüft, ob die Anwendung bereit ist (z.B. Datenbankverbindung OK). Bei Fehlschlag wird kein Traffic weitergeleitet, aber kein Neustart. Wichtig für Kubernetes und Load Balancer.",
+      "points": 1,
+      "category": "Health Checks"
+    },
+    {
+      "id": "q10",
+      "type": "multiple-choice",
+      "question": "Welche Alert-Kanäle werden typischerweise für Monitoring-Alerts verwendet?",
+      "options": [
+        "E-Mail für Standard-Benachrichtigungen",
+        "Slack/Teams für Team-Kommunikation",
+        "PagerDuty für On-Call-Management",
+        "FTP für Dateiübertragung"
+      ],
+      "correctAnswer": ["E-Mail für Standard-Benachrichtigungen", "Slack/Teams für Team-Kommunikation", "PagerDuty für On-Call-Management"],
+      "explanation": "Typische Alert-Kanäle sind: E-Mail (Standard), SMS (kritisch), Slack/Teams (Team-Benachrichtigungen), PagerDuty (On-Call-Rotation) und Webhooks (Integration). FTP ist ein Dateiübertragungsprotokoll und kein Alert-Kanal.",
+      "points": 2,
+      "category": "Alerting"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was bedeutet eine SLA (Service Level Agreement) von 99.9% Verfügbarkeit?",
+      "options": [
+        "Maximal 43.2 Minuten Ausfall pro Monat",
+        "Maximal 1 Stunde Ausfall pro Monat",
+        "Maximal 1 Tag Ausfall pro Jahr",
+        "Keine Ausfälle erlaubt"
+      ],
+      "correctAnswer": "Maximal 43.2 Minuten Ausfall pro Monat",
+      "explanation": "99.9% Verfügbarkeit bedeutet 0.1% Ausfallzeit: 30 Tage × 24 Stunden × 60 Minuten × 0.001 = 43.2 Minuten pro Monat. Weitere Beispiele: 99.99% = 4.32 Minuten/Monat, 99.999% = 26 Sekunden/Monat. SLAs sind vertragliche Vereinbarungen zwischen Anbieter und Kunde.",
+      "points": 1,
+      "category": "SLA/SLO"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen SLA, SLO und SLI?",
+      "options": [
+        "SLA ist vertragliche Vereinbarung, SLO ist internes Ziel, SLI ist messbare Metrik",
+        "SLA ist für Kunden, SLO für Manager, SLI für Entwickler",
+        "SLA ist monatlich, SLO ist jährlich, SLI ist täglich",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "SLA ist vertragliche Vereinbarung, SLO ist internes Ziel, SLI ist messbare Metrik",
+      "explanation": "SLA (Service Level Agreement) ist die vertragliche Vereinbarung mit Kunden (z.B. 99.9% Uptime). SLO (Service Level Objective) ist das interne Ziel, oft strenger als SLA (z.B. 99.95%). SLI (Service Level Indicator) ist die messbare Metrik (z.B. Uptime, Response Time).",
+      "points": 1,
+      "category": "SLA/SLO"
+    },
+    {
+      "id": "q13",
+      "type": "code",
+      "question": "Welcher Prometheus-Metrik-Typ ist für das Zählen von HTTP-Requests geeignet?",
+      "code": "# Option A: Counter\nrequest_count = Counter(\n    'http_requests_total',\n    'Total HTTP Requests',\n    ['method', 'endpoint']\n)\n\n# Option B: Gauge\nrequest_count = Gauge(\n    'http_requests_total',\n    'Total HTTP Requests'\n)\n\n# Option C: Histogram\nrequest_count = Histogram(\n    'http_requests_total',\n    'Total HTTP Requests'\n)",
+      "language": "python",
+      "options": [
+        "Option A: Counter",
+        "Option B: Gauge",
+        "Option C: Histogram",
+        "Alle sind geeignet"
+      ],
+      "correctAnswer": "Option A: Counter",
+      "explanation": "Counter ist richtig für HTTP-Requests, da sie nur steigen (monoton wachsend). Counter eignen sich für Ereignisse, die gezählt werden. Gauge ist für Werte, die steigen und fallen (z.B. aktive Verbindungen). Histogram ist für Verteilungen (z.B. Response Times). Labels (method, endpoint) ermöglichen Filterung.",
+      "points": 2,
+      "category": "Metriken"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist strukturiertes Logging?",
+      "options": [
+        "Logs im JSON-Format mit strukturierten Feldern statt Freitext",
+        "Logs in alphabetischer Reihenfolge",
+        "Logs mit vielen Zeilen",
+        "Logs ohne Zeitstempel"
+      ],
+      "correctAnswer": "Logs im JSON-Format mit strukturierten Feldern statt Freitext",
+      "explanation": "Strukturiertes Logging verwendet strukturierte Formate (meist JSON) mit definierten Feldern (event, user_id, timestamp, etc.) statt Freitext. Vorteile: Einfaches Parsen, Filtern und Analysieren. Beispiel: {'event': 'user_login', 'user_id': 123, 'success': true}. Tools wie ELK können strukturierte Logs besser verarbeiten.",
+      "points": 1,
+      "category": "Logging"
+    },
+    {
+      "id": "q15",
+      "type": "multiple-choice",
+      "question": "Welche Metriken sollten in einem Anwendungs-Dashboard enthalten sein?",
+      "options": [
+        "Requests pro Sekunde",
+        "Response Time (Antwortzeit)",
+        "Error Rate (Fehlerrate)",
+        "Quellcode-Zeilen"
+      ],
+      "correctAnswer": ["Requests pro Sekunde", "Response Time (Antwortzeit)", "Error Rate (Fehlerrate)"],
+      "explanation": "Ein gutes Anwendungs-Dashboard zeigt: Requests/Sekunde (Traffic), Response Time (Performance), Error Rate (Zuverlässigkeit) und Active Users. Diese Metriken entsprechen den RED-Signalen. Quellcode-Zeilen sind keine Runtime-Metrik und gehören nicht ins Monitoring-Dashboard.",
+      "points": 2,
+      "category": "Dashboards"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist APM (Application Performance Monitoring)?",
+      "options": [
+        "Überwachung von Anwendungsperformance mit Tracing, Profiling und Fehleranalyse",
+        "Automatisches Patchen von Anwendungen",
+        "Anwendungs-Paketmanager",
+        "API-Dokumentation"
+      ],
+      "correctAnswer": "Überwachung von Anwendungsperformance mit Tracing, Profiling und Fehleranalyse",
+      "explanation": "APM (Application Performance Monitoring) überwacht Anwendungsperformance im Detail: Distributed Tracing (Request-Verfolgung über Services), Profiling (Code-Performance), Fehleranalyse und Transaktions-Monitoring. Tools: New Relic, Dynatrace, AppDynamics, Elastic APM. Es geht über einfaches Monitoring hinaus.",
+      "points": 1,
+      "category": "APM"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Welche Alert-Severity erfordert sofortige Aktion?",
+      "options": [
+        "Critical",
+        "Warning",
+        "Info",
+        "Debug"
+      ],
+      "correctAnswer": "Critical",
+      "explanation": "Alert-Severities: Critical (sofortige Aktion erforderlich, z.B. Service down), Warning (Beobachtung erforderlich, z.B. hohe CPU), Info (informativ, keine Aktion). Debug ist ein Log-Level, keine Alert-Severity. Critical-Alerts sollten zu Pager/SMS führen, Warnings zu E-Mail/Slack.",
+      "points": 1,
+      "category": "Alerting"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über Prometheus sind korrekt?",
+      "options": [
+        "Prometheus verwendet Pull-basiertes Scraping von Metriken",
+        "PromQL ist die Query Language für Prometheus",
+        "Prometheus ist eine Time-Series-Datenbank",
+        "Prometheus ist nur für Java-Anwendungen geeignet"
+      ],
+      "correctAnswer": ["Prometheus verwendet Pull-basiertes Scraping von Metriken", "PromQL ist die Query Language für Prometheus", "Prometheus ist eine Time-Series-Datenbank"],
+      "explanation": "Prometheus ist eine Time-Series-Datenbank, die Metriken per Pull (HTTP-Scraping) sammelt. PromQL ist die Query Language für Aggregationen und Berechnungen. Prometheus ist sprachunabhängig - es gibt Exporters für alle Sprachen (Python, Java, Go, Node.js, etc.).",
+      "points": 2,
+      "category": "Monitoring-Tools"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist der Zweck von Log-Aggregation?",
+      "options": [
+        "Zentrale Sammlung und Analyse von Logs aus mehreren Quellen",
+        "Löschen alter Logs",
+        "Verschlüsselung von Logs",
+        "Komprimierung von Logs"
+      ],
+      "correctAnswer": "Zentrale Sammlung und Analyse von Logs aus mehreren Quellen",
+      "explanation": "Log-Aggregation sammelt Logs von mehreren Servern/Services zentral (z.B. mit ELK-Stack, Splunk, Graylog). Vorteile: Zentrale Suche, Korrelation von Events über Services hinweg, einfachere Analyse. Ohne Aggregation müsste man jeden Server einzeln durchsuchen.",
+      "points": 1,
+      "category": "Logging"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Welche USE-Methode wird für Ressourcen-Monitoring verwendet?",
+      "options": [
+        "Utilization (Auslastung), Saturation (Warteschlange), Errors (Fehler)",
+        "User, System, Error",
+        "Upload, Storage, Execution",
+        "Uptime, Speed, Efficiency"
+      ],
+      "correctAnswer": "Utilization (Auslastung), Saturation (Warteschlange), Errors (Fehler)",
+      "explanation": "Die USE-Methode für Ressourcen-Monitoring fokussiert auf: Utilization (Auslastung in %), Saturation (Warteschlangenlänge, z.B. Load Average), Errors (Fehleranzahl). Sie eignet sich für Hardware-Ressourcen wie CPU, RAM, Disk, Network. Entwickelt von Brendan Gregg.",
+      "points": 1,
+      "category": "Metriken"
     }
   ],
   "tags": [
@@ -93,6 +318,12 @@
     "Logging",
     "Metriken",
     "Alerting",
+    "Prometheus",
+    "Grafana",
+    "ELK-Stack",
+    "APM",
+    "SLA",
     "Neu 2025"
-  ]
+  ],
+  "lastUpdated": "2025-01-10T00:00:00Z"
 }

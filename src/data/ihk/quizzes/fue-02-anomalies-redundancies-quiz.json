@@ -2,90 +2,331 @@
   "id": "fue-02-anomalies-redundancies-quiz",
   "moduleId": "fue-02-anomalies-redundancies",
   "title": "Datenbank-Anomalien und Redundanzen Quiz",
-  "description": "Teste dein Wissen über Datenbank-Anomalien und Redundanzen",
+  "description": "Teste dein Wissen über Datenbank-Anomalien, Redundanzen und Normalisierung. Verstehe Einfüge-, Änderungs- und Lösch-Anomalien sowie die ersten drei Normalformen.",
   "category": "FÜ-02",
   "difficulty": "intermediate",
   "examRelevance": "high",
-  "timeLimit": 10,
+  "newIn2025": true,
+  "timeLimit": 25,
   "passingScore": 70,
   "questions": [
     {
       "id": "q1",
       "type": "single-choice",
-      "question": "Was ist Datenbank-Anomalien und Redundanzen?",
+      "question": "Was versteht man unter Redundanz in einer Datenbank?",
       "options": [
-        "Richtige Antwort hier einfügen",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Dieselben Daten werden mehrfach in der Datenbank gespeichert",
+        "Die Datenbank enthält zu viele Tabellen",
+        "Die Datenbank hat zu viele Indizes",
+        "Die Datenbank verwendet zu viele Foreign Keys"
       ],
-      "correctAnswer": "Richtige Antwort hier einfügen",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Dieselben Daten werden mehrfach in der Datenbank gespeichert",
+      "explanation": "Redundanz bedeutet, dass identische Daten mehrfach gespeichert werden, z.B. wenn der Name eines Kunden in mehreren Zeilen wiederholt wird. Dies führt zu Speicherverschwendung und Inkonsistenzgefahr bei Änderungen.",
       "points": 1,
       "category": "Grundlagen"
     },
     {
       "id": "q2",
       "type": "single-choice",
-      "question": "Frage 2 hier einfügen",
+      "question": "Was ist eine Einfüge-Anomalie (Insert Anomaly)?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Daten können nicht eingefügt werden, ohne andere nicht verfügbare Daten einzufügen",
+        "Beim Einfügen werden automatisch Duplikate erstellt",
+        "Das Einfügen von Daten dauert zu lange",
+        "Foreign Key Constraints verhindern das Einfügen"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Daten können nicht eingefügt werden, ohne andere nicht verfügbare Daten einzufügen",
+      "explanation": "Eine Einfüge-Anomalie tritt auf, wenn man z.B. einen neuen Mitarbeiter nicht speichern kann, ohne ihm gleichzeitig ein Projekt zuzuweisen, auch wenn er noch keinem Projekt zugeordnet ist. Dies ist ein Problem unnormalisierter Datenbanken.",
       "points": 1,
-      "category": "Konzepte"
+      "category": "Anomalien"
     },
     {
       "id": "q3",
-      "type": "multiple-choice",
-      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "type": "single-choice",
+      "question": "Was ist eine Änderungs-Anomalie (Update Anomaly)?",
       "options": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2",
-        "Falsche Aussage 1",
-        "Falsche Aussage 2"
+        "Änderungen müssen an mehreren Stellen durchgeführt werden, sonst entstehen Inkonsistenzen",
+        "Änderungen werden automatisch rückgängig gemacht",
+        "Änderungen sind nicht erlaubt",
+        "Änderungen werden nicht in der Datenbank gespeichert"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
-      "explanation": "Erklärung hier einfügen",
-      "points": 2,
-      "category": "Anwendung"
+      "correctAnswer": "Änderungen müssen an mehreren Stellen durchgeführt werden, sonst entstehen Inkonsistenzen",
+      "explanation": "Eine Änderungs-Anomalie entsteht durch Redundanz: Wenn z.B. die Adresse eines Kunden in 5 Zeilen gespeichert ist, muss sie bei einem Umzug in allen 5 Zeilen geändert werden. Vergisst man eine Zeile, entstehen Inkonsistenzen.",
+      "points": 1,
+      "category": "Anomalien"
     },
     {
       "id": "q4",
       "type": "single-choice",
-      "question": "Frage 4 hier einfügen",
+      "question": "Was ist eine Lösch-Anomalie (Delete Anomaly)?",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Beim Löschen von Daten gehen ungewollt andere wichtige Informationen verloren",
+        "Daten können nicht gelöscht werden",
+        "Das Löschen dauert zu lange",
+        "Gelöschte Daten werden automatisch wiederhergestellt"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": "Beim Löschen von Daten gehen ungewollt andere wichtige Informationen verloren",
+      "explanation": "Eine Lösch-Anomalie tritt auf, wenn z.B. beim Löschen des letzten Mitarbeiters eines Projekts auch alle Informationen über das Projekt selbst verloren gehen, obwohl das Projekt weiterhin existiert. Dies passiert in unnormalisierten Strukturen.",
       "points": 1,
-      "category": "Praxis"
+      "category": "Anomalien"
     },
     {
       "id": "q5",
-      "type": "single-choice",
-      "question": "Frage 5 hier einfügen",
+      "type": "multiple-choice",
+      "question": "Welche Probleme entstehen durch Redundanzen in Datenbanken? (Mehrere Antworten möglich)",
       "options": [
-        "Richtige Antwort",
-        "Falsche Option 1",
-        "Falsche Option 2",
-        "Falsche Option 3"
+        "Speicherverschwendung durch mehrfache Datenspeicherung",
+        "Inkonsistenzen bei unvollständigen Updates",
+        "Höherer Wartungsaufwand",
+        "Verbesserte Performance bei Abfragen"
       ],
-      "correctAnswer": "Richtige Antwort",
-      "explanation": "Erklärung hier einfügen",
+      "correctAnswer": [
+        "Speicherverschwendung durch mehrfache Datenspeicherung",
+        "Inkonsistenzen bei unvollständigen Updates",
+        "Höherer Wartungsaufwand"
+      ],
+      "explanation": "Redundanzen führen zu Speicherverschwendung (Daten mehrfach gespeichert), Inkonsistenzen (wenn Updates nicht überall durchgeführt werden) und höherem Wartungsaufwand. Performance wird durch Redundanzen nicht verbessert, sondern eher verschlechtert.",
+      "points": 2,
+      "category": "Redundanzen"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist das Hauptziel der Normalisierung?",
+      "options": [
+        "Redundanzen und Anomalien minimieren",
+        "Die Datenbank schneller machen",
+        "Weniger Tabellen verwenden",
+        "Mehr Indizes erstellen"
+      ],
+      "correctAnswer": "Redundanzen und Anomalien minimieren",
+      "explanation": "Das Hauptziel der Normalisierung ist es, Redundanzen zu eliminieren und Anomalien (Einfüge-, Änderungs-, Lösch-Anomalien) zu vermeiden. Dies führt zu konsistenten, wartbaren Datenbanken, auch wenn mehr Tabellen und JOINs erforderlich sind.",
       "points": 1,
-      "category": "Vertiefung"
+      "category": "Normalisierung"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was fordert die 1. Normalform (1NF)?",
+      "options": [
+        "Alle Attribute müssen atomar sein (keine Listen oder zusammengesetzten Werte)",
+        "Alle Tabellen müssen einen Primärschlüssel haben",
+        "Keine Redundanzen dürfen existieren",
+        "Alle Fremdschlüssel müssen definiert sein"
+      ],
+      "correctAnswer": "Alle Attribute müssen atomar sein (keine Listen oder zusammengesetzten Werte)",
+      "explanation": "Die 1NF fordert atomare Werte: Jedes Attribut darf nur einen einzelnen Wert enthalten, keine Listen wie 'Java, Python, SQL' oder zusammengesetzte Werte. Beispiel: Telefonnummern müssen in separate Zeilen aufgeteilt werden.",
+      "points": 1,
+      "category": "Normalformen"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Eine Tabelle enthält das Feld 'Telefonnummern' mit Werten wie '030-123, 0170-456'. Welche Normalform ist verletzt?",
+      "options": [
+        "1. Normalform (1NF) - Werte sind nicht atomar",
+        "2. Normalform (2NF) - Partielle Abhängigkeit",
+        "3. Normalform (3NF) - Transitive Abhängigkeit",
+        "Keine Normalform ist verletzt"
+      ],
+      "correctAnswer": "1. Normalform (1NF) - Werte sind nicht atomar",
+      "explanation": "Die 1NF ist verletzt, weil das Feld mehrere Telefonnummern als Liste enthält. Lösung: Separate Tabelle 'Telefonnummern' mit einer Zeile pro Nummer. Erst wenn alle Werte atomar sind, ist die 1NF erfüllt.",
+      "points": 1,
+      "category": "Normalformen"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was fordert die 2. Normalform (2NF)?",
+      "options": [
+        "Muss in 1NF sein + Alle Nicht-Schlüssel-Attribute müssen voll funktional abhängig vom gesamten Primärschlüssel sein",
+        "Alle Tabellen müssen mindestens zwei Spalten haben",
+        "Keine NULL-Werte dürfen existieren",
+        "Alle Attribute müssen eindeutig sein"
+      ],
+      "correctAnswer": "Muss in 1NF sein + Alle Nicht-Schlüssel-Attribute müssen voll funktional abhängig vom gesamten Primärschlüssel sein",
+      "explanation": "Die 2NF gilt nur für zusammengesetzte Primärschlüssel und fordert, dass alle Nicht-Schlüssel-Attribute vom gesamten Schlüssel abhängen, nicht nur von Teilen davon. Beispiel: Bei Primärschlüssel (Best_ID, Produkt_ID) darf Produkt_Name nicht nur von Produkt_ID abhängen.",
+      "points": 1,
+      "category": "Normalformen"
+    },
+    {
+      "id": "q10",
+      "type": "code",
+      "question": "Gegeben ist folgende Tabelle mit zusammengesetztem Primärschlüssel (Best_ID, Produkt_ID):\n\nBestellpositionen(Best_ID, Produkt_ID, Produkt_Name, Menge, Preis)\n\nWarum ist diese Tabelle nicht in 2NF?",
+      "code": "Bestellpositionen\n┌────────┬──────────┬──────────────┬─────────┬──────────┐\n│ Best_ID│ Produkt_ID│ Produkt_Name │ Menge   │ Preis    │\n├────────┼──────────┼──────────────┼─────────┼──────────┤\n│ 1      │ 101      │ Laptop       │ 1       │ 999.00   │\n│ 1      │ 102      │ Maus         │ 2       │ 19.99    │\n│ 2      │ 101      │ Laptop       │ 1       │ 999.00   │\n└────────┴──────────┴──────────────┴─────────┴──────────┘",
+      "language": "text",
+      "options": [
+        "Produkt_Name und Preis hängen nur von Produkt_ID ab, nicht vom gesamten Schlüssel (Best_ID, Produkt_ID)",
+        "Die Tabelle hat zu viele Spalten",
+        "Best_ID und Produkt_ID sollten nicht zusammen Primärschlüssel sein",
+        "Menge sollte nicht in dieser Tabelle sein"
+      ],
+      "correctAnswer": "Produkt_Name und Preis hängen nur von Produkt_ID ab, nicht vom gesamten Schlüssel (Best_ID, Produkt_ID)",
+      "explanation": "Partielle Abhängigkeit: Produkt_Name und Preis sind nur von Produkt_ID abhängig, nicht von Best_ID. Lösung: Produkte in separate Tabelle auslagern. Nur Menge hängt vom gesamten Schlüssel ab (welches Produkt in welcher Bestellung).",
+      "points": 2,
+      "category": "Normalformen"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was fordert die 3. Normalform (3NF)?",
+      "options": [
+        "Muss in 2NF sein + Keine transitiven Abhängigkeiten (Nicht-Schlüssel-Attribute dürfen nicht von anderen Nicht-Schlüssel-Attributen abhängen)",
+        "Alle Tabellen müssen genau drei Spalten haben",
+        "Maximal drei Foreign Keys pro Tabelle",
+        "Alle Attribute müssen vom Typ VARCHAR sein"
+      ],
+      "correctAnswer": "Muss in 2NF sein + Keine transitiven Abhängigkeiten (Nicht-Schlüssel-Attribute dürfen nicht von anderen Nicht-Schlüssel-Attributen abhängen)",
+      "explanation": "Die 3NF verbietet transitive Abhängigkeiten: Wenn A → B und B → C, dann ist C transitiv von A abhängig. Beispiel: MA_ID → Abt_ID → Abt_Name ist transitiv. Lösung: Abteilungen in separate Tabelle auslagern.",
+      "points": 1,
+      "category": "Normalformen"
+    },
+    {
+      "id": "q12",
+      "type": "code",
+      "question": "Gegeben ist folgende Tabelle:\n\nMitarbeiter(MA_ID, Name, Abt_ID, Abt_Name, Abt_Standort)\n\nWarum ist diese Tabelle nicht in 3NF?",
+      "code": "Mitarbeiter\n┌──────┬────────┬────────┬──────────┬──────────────┐\n│ MA_ID│ Name   │ Abt_ID │ Abt_Name │ Abt_Standort │\n├──────┼────────┼────────┼──────────┼──────────────┤\n│ 1    │ Alice  │ 10     │ IT       │ Berlin       │\n│ 2    │ Bob    │ 10     │ IT       │ Berlin       │\n│ 3    │ Charlie│ 20     │ HR       │ München      │\n└──────┴────────┴────────┴──────────┴──────────────┘",
+      "language": "text",
+      "options": [
+        "Abt_Name und Abt_Standort hängen von Abt_ID ab, nicht direkt von MA_ID (transitive Abhängigkeit)",
+        "Die Tabelle hat zu viele Spalten",
+        "MA_ID sollte nicht Primärschlüssel sein",
+        "Abt_ID sollte nicht in dieser Tabelle sein"
+      ],
+      "correctAnswer": "Abt_Name und Abt_Standort hängen von Abt_ID ab, nicht direkt von MA_ID (transitive Abhängigkeit)",
+      "explanation": "Transitive Abhängigkeit: MA_ID → Abt_ID → Abt_Name/Abt_Standort. Abteilungsdaten hängen von Abt_ID ab, nicht direkt vom Mitarbeiter. Lösung: Separate Tabelle 'Abteilungen(Abt_ID, Abt_Name, Abt_Standort)' erstellen.",
+      "points": 2,
+      "category": "Normalformen"
+    },
+    {
+      "id": "q13",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet die Normalisierung? (Mehrere Antworten möglich)",
+      "options": [
+        "Eliminierung von Redundanzen",
+        "Vermeidung von Anomalien",
+        "Verbesserte Datenintegrität und Konsistenz",
+        "Einfachere Queries ohne JOINs"
+      ],
+      "correctAnswer": [
+        "Eliminierung von Redundanzen",
+        "Vermeidung von Anomalien",
+        "Verbesserte Datenintegrität und Konsistenz"
+      ],
+      "explanation": "Normalisierung eliminiert Redundanzen, vermeidet Anomalien und verbessert die Datenintegrität. Allerdings werden Queries komplexer (mehr JOINs erforderlich), was ein Nachteil ist. Der Trade-off: Bessere Datenqualität vs. komplexere Abfragen.",
+      "points": 2,
+      "category": "Normalisierung"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Welcher Nachteil entsteht durch Normalisierung?",
+      "options": [
+        "Komplexere Queries mit mehr JOINs, die Performance beeinträchtigen können",
+        "Mehr Redundanzen in der Datenbank",
+        "Höhere Wahrscheinlichkeit von Anomalien",
+        "Schlechtere Datenintegrität"
+      ],
+      "correctAnswer": "Komplexere Queries mit mehr JOINs, die Performance beeinträchtigen können",
+      "explanation": "Der Hauptnachteil der Normalisierung ist, dass Daten auf viele Tabellen verteilt sind und Queries viele JOINs benötigen, was die Performance beeinträchtigen kann. Deshalb wird in manchen Fällen bewusst denormalisiert (z.B. Data Warehouses).",
+      "points": 1,
+      "category": "Normalisierung"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist Denormalisierung?",
+      "options": [
+        "Bewusstes Einführen von Redundanzen zur Verbesserung der Performance",
+        "Das Entfernen aller Primärschlüssel",
+        "Das Löschen von Tabellen",
+        "Ein Fehler im Datenbankdesign"
+      ],
+      "correctAnswer": "Bewusstes Einführen von Redundanzen zur Verbesserung der Performance",
+      "explanation": "Denormalisierung bedeutet, bewusst Redundanzen einzuführen, um Performance zu verbessern (weniger JOINs). Dies wird oft in Read-Heavy Systemen oder Data Warehouses gemacht. Trade-off: Schnellere Queries, aber Anomalien und Inkonsistenzen möglich.",
+      "points": 1,
+      "category": "Denormalisierung"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "In welchem Szenario ist Denormalisierung sinnvoll?",
+      "options": [
+        "Read-Heavy Anwendungen mit vielen Lesezugriffen und wenigen Schreibzugriffen",
+        "Transaktionale Systeme mit vielen Updates",
+        "Systeme mit hohen Konsistenzanforderungen",
+        "Kleine Datenbanken mit wenigen Tabellen"
+      ],
+      "correctAnswer": "Read-Heavy Anwendungen mit vielen Lesezugriffen und wenigen Schreibzugriffen",
+      "explanation": "Denormalisierung ist sinnvoll bei Read-Heavy Systemen (z.B. Reporting, Analytics), wo Performance wichtiger ist als perfekte Normalisierung. Bei vielen Updates würden Anomalien zu Problemen führen, daher ist Normalisierung dort wichtiger.",
+      "points": 1,
+      "category": "Denormalisierung"
+    },
+    {
+      "id": "q17",
+      "type": "multiple-choice",
+      "question": "Eine Tabelle 'Bestellungen' enthält redundant Kundendaten (Name, Adresse) in jeder Zeile. Welche Anomalien können auftreten? (Mehrere Antworten möglich)",
+      "options": [
+        "Änderungs-Anomalie: Adressänderung muss in allen Bestellungen aktualisiert werden",
+        "Einfüge-Anomalie: Neuer Kunde kann nicht ohne Bestellung gespeichert werden",
+        "Lösch-Anomalie: Beim Löschen der letzten Bestellung gehen Kundendaten verloren",
+        "Keine Anomalien, da Primärschlüssel vorhanden ist"
+      ],
+      "correctAnswer": [
+        "Änderungs-Anomalie: Adressänderung muss in allen Bestellungen aktualisiert werden",
+        "Einfüge-Anomalie: Neuer Kunde kann nicht ohne Bestellung gespeichert werden",
+        "Lösch-Anomalie: Beim Löschen der letzten Bestellung gehen Kundendaten verloren"
+      ],
+      "explanation": "Alle drei Anomalien treten auf: Änderungen müssen überall durchgeführt werden, neue Kunden brauchen eine Bestellung, und beim Löschen der letzten Bestellung gehen Kundendaten verloren. Lösung: Separate Kunden-Tabelle erstellen.",
+      "points": 2,
+      "category": "Praxisbeispiel"
+    },
+    {
+      "id": "q18",
+      "type": "code",
+      "question": "Welche SQL-Struktur löst die Anomalien der unnormalisierten Bestellungen-Tabelle?",
+      "code": "-- Unnormalisiert:\nBestellungen(Best_ID, Kunde_Name, Kunde_Adresse, Produkt_Name, Menge, Preis)\n\n-- Welche Struktur ist korrekt normalisiert?",
+      "language": "sql",
+      "options": [
+        "Kunden(Kunde_ID, Name, Adresse), Produkte(Produkt_ID, Name, Preis), Bestellungen(Best_ID, Kunde_ID), Bestellpositionen(Best_ID, Produkt_ID, Menge)",
+        "Bestellungen(Best_ID, Kunde_ID, Produkt_ID, Menge)",
+        "Kunden(Kunde_ID, Name), Bestellungen(Best_ID, Kunde_ID, Produkt_Name, Menge, Preis)",
+        "Bestellungen(Best_ID, Kunde_Name, Produkt_Name, Menge)"
+      ],
+      "correctAnswer": "Kunden(Kunde_ID, Name, Adresse), Produkte(Produkt_ID, Name, Preis), Bestellungen(Best_ID, Kunde_ID), Bestellpositionen(Best_ID, Produkt_ID, Menge)",
+      "explanation": "Die korrekte Lösung trennt Kunden, Produkte, Bestellungen und Bestellpositionen in separate Tabellen. Dies eliminiert alle Redundanzen und Anomalien. Bestellpositionen verbindet Bestellungen mit Produkten (m:n-Beziehung).",
+      "points": 2,
+      "category": "Praxisbeispiel"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Eine Tabelle ist in 2NF. Was muss zusätzlich erfüllt sein, damit sie in 3NF ist?",
+      "options": [
+        "Keine transitiven Abhängigkeiten zwischen Nicht-Schlüssel-Attributen",
+        "Alle Attribute müssen atomar sein",
+        "Keine partiellen Abhängigkeiten vom Primärschlüssel",
+        "Mindestens drei Tabellen müssen existieren"
+      ],
+      "correctAnswer": "Keine transitiven Abhängigkeiten zwischen Nicht-Schlüssel-Attributen",
+      "explanation": "Von 2NF zu 3NF müssen transitive Abhängigkeiten eliminiert werden. Atomare Werte (1NF) und keine partiellen Abhängigkeiten (2NF) sind bereits erfüllt. 3NF fordert zusätzlich, dass Nicht-Schlüssel-Attribute nur vom Primärschlüssel abhängen, nicht voneinander.",
+      "points": 1,
+      "category": "Normalformen"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Welche Aussage über Normalisierung ist korrekt?",
+      "options": [
+        "Normalisierung verbessert Datenintegrität, kann aber Performance bei komplexen Queries verschlechtern",
+        "Normalisierung verbessert immer die Performance",
+        "Normalisierung ist nur für große Datenbanken wichtig",
+        "Normalisierung sollte immer bis zur 5. Normalform durchgeführt werden"
+      ],
+      "correctAnswer": "Normalisierung verbessert Datenintegrität, kann aber Performance bei komplexen Queries verschlechtern",
+      "explanation": "Normalisierung ist ein Trade-off: Sie verbessert Datenintegrität und eliminiert Anomalien, aber komplexe JOINs können Performance beeinträchtigen. In der Praxis wird meist bis 3NF normalisiert, höhere Normalformen sind selten nötig. Bei Performance-Problemen wird gezielt denormalisiert.",
+      "points": 1,
+      "category": "Zusammenfassung"
     }
   ],
   "tags": [
@@ -94,6 +335,11 @@
     "redundanzen",
     "normalisierung",
     "normalformen",
-    "datenbankdesign"
-  ]
+    "datenbankdesign",
+    "1nf",
+    "2nf",
+    "3nf",
+    "denormalisierung"
+  ],
+  "lastUpdated": "2025-01-10T14:30:00Z"
 }
