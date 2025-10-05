@@ -1,0 +1,44 @@
+{
+  "id": "bp-05-sql-reference",
+  "title": "SQL-Referenz mit Verweis auf Beiblatt",
+  "description": "Ãœbersicht Ã¼ber SQL-Themen mit Verweis auf das offizielle PrÃ¼fungsbeiblatt",
+  "category": "BP-05",
+  "subcategory": "Datenbanken",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 15,
+  "prerequisites": [],
+  "tags": ["SQL", "Datenbank", "Beiblatt", "PrÃ¼fung"],
+  "content": "# SQL-Referenz mit Verweis auf Beiblatt\n\n## Wichtiger Hinweis zur PrÃ¼fung\n\n**In der IHK AbschlussprÃ¼fung Teil 2 wird ein 2-seitiges SQL-Beiblatt bereitgestellt**, das alle wichtigen SQL-Befehle und Syntax enthÃ¤lt. Sie mÃ¼ssen die SQL-Syntax nicht auswendig lernen!\n\n## Was Sie kÃ¶nnen sollten\n\n### 1. SQL-Befehle verstehen und anwenden\n\n- **DDL (Data Definition Language)**: Tabellenstruktur erstellen und Ã¤ndern\n- **DML (Data Manipulation Language)**: Daten einfÃ¼gen, Ã¤ndern, lÃ¶schen\n- **DQL (Data Query Language)**: Daten abfragen\n\n### 2. Abfragen lesen und interpretieren\n\n- SELECT-Statements verstehen\n- WHERE-Bedingungen interpretieren\n- JOINs nachvollziehen\n- Aggregatfunktionen anwenden\n\n### 3. Abfragen schreiben\n\n- Einfache SELECT-Abfragen\n- Filterung mit WHERE\n- Sortierung mit ORDER BY\n- Gruppierung mit GROUP BY\n- VerknÃ¼pfung mit JOINs\n\n## VerfÃ¼gbare SQL-Module\n\nFÃ¼r detailliertes Lernen stehen folgende Module zur VerfÃ¼gung:\n\n### 1. SQL DDL (Data Definition Language)\n**Modul-ID**: `sql-ddl`\n\n**Inhalte:**\n- CREATE TABLE\n- ALTER TABLE\n- DROP TABLE\n- CREATE INDEX\n- Datentypen\n- Constraints (PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL)\n\n### 2. SQL DML (Data Manipulation Language)\n**Modul-ID**: `sql-dml`\n\n**Inhalte:**\n- INSERT INTO\n- UPDATE\n- DELETE\n- Transaktionen (BEGIN, COMMIT, ROLLBACK)\n\n### 3. SQL DQL (Data Query Language)\n**Modul-ID**: `sql-dql`\n\n**Inhalte:**\n- SELECT\n- WHERE\n- ORDER BY\n- GROUP BY\n- HAVING\n- JOINs (INNER, LEFT, RIGHT, FULL)\n- Subqueries\n- Aggregatfunktionen (COUNT, SUM, AVG, MIN, MAX)\n\n## PrÃ¼fungsstrategie\n\n### Vor der PrÃ¼fung\n\n1. **Konzepte verstehen**: Wann verwendet man welchen Befehl?\n2. **Beispiele Ã¼ben**: Verschiedene Abfragen schreiben\n3. **Beiblatt kennenlernen**: Struktur und Inhalt vertraut machen\n\n### In der PrÃ¼fung\n\n1. **Beiblatt nutzen**: Syntax nachschlagen\n2. **Schritt fÃ¼r Schritt**: Komplexe Abfragen in Teile zerlegen\n3. **Testen**: Abfrage gedanklich durchgehen\n\n## Typische PrÃ¼fungsaufgaben\n\n### Aufgabe 1: Einfache Abfrage\n\n**Gegeben**: Tabelle `employees` mit Spalten `id`, `name`, `department`, `salary`\n\n**Aufgabe**: Alle Mitarbeiter aus der IT-Abteilung mit Gehalt Ã¼ber 50.000â‚¬\n\n**LÃ¶sung**:\n```sql\nSELECT name, salary\nFROM employees\nWHERE department = 'IT' AND salary > 50000;\n```\n\n### Aufgabe 2: JOIN\n\n**Gegeben**: \n- Tabelle `orders` mit `id`, `customer_id`, `total`\n- Tabelle `customers` mit `id`, `name`, `email`\n\n**Aufgabe**: Alle Bestellungen mit Kundennamen\n\n**LÃ¶sung**:\n```sql\nSELECT o.id, c.name, o.total\nFROM orders o\nINNER JOIN customers c ON o.customer_id = c.id;\n```\n\n### Aufgabe 3: Aggregation\n\n**Gegeben**: Tabelle `sales` mit `product_id`, `quantity`, `price`\n\n**Aufgabe**: Gesamtumsatz pro Produkt\n\n**LÃ¶sung**:\n```sql\nSELECT product_id, SUM(quantity * price) AS total_revenue\nFROM sales\nGROUP BY product_id;\n```\n\n## HÃ¤ufige Fehler vermeiden\n\n### 1. Vergessene WHERE-Klausel\n```sql\n-- Falsch: LÃ¶scht ALLE DatensÃ¤tze!\nDELETE FROM users;\n\n-- Richtig: LÃ¶scht nur bestimmte DatensÃ¤tze\nDELETE FROM users WHERE id = 123;\n```\n\n### 2. Falsche JOIN-Syntax\n```sql\n-- Falsch: Kartesisches Produkt\nSELECT * FROM orders, customers;\n\n-- Richtig: Expliziter JOIN\nSELECT * FROM orders o\nINNER JOIN customers c ON o.customer_id = c.id;\n```\n\n### 3. GROUP BY ohne Aggregatfunktion\n```sql\n-- Falsch: name nicht in GROUP BY\nSELECT department, name, COUNT(*)\nFROM employees\nGROUP BY department;\n\n-- Richtig: Nur aggregierte Spalten\nSELECT department, COUNT(*) AS employee_count\nFROM employees\nGROUP BY department;\n```\n\n## Checkliste fÃ¼r die PrÃ¼fung\n\n- [ ] SQL-Module durchgearbeitet\n- [ ] Verschiedene Abfragen geÃ¼bt\n- [ ] JOINs verstanden\n- [ ] Aggregatfunktionen angewendet\n- [ ] Subqueries geÃ¼bt\n- [ ] HÃ¤ufige Fehler bekannt\n- [ ] Beiblatt-Struktur vertraut\n\n## WeiterfÃ¼hrende Module\n\nFÃ¼r tieferes VerstÃ¤ndnis:\n\n1. **SQL DDL Modul**: Detaillierte ErklÃ¤rungen zu Tabellenstrukturen\n2. **SQL DML Modul**: Datenmanipulation mit Beispielen\n3. **SQL DQL Modul**: Komplexe Abfragen und Optimierung\n4. **SQL Quiz**: PrÃ¼fungssimulation mit 30+ Fragen\n\n## PrÃ¼fungsrelevante Aspekte\n\n- SQL-Befehle kennen und anwenden\n- Beiblatt effektiv nutzen\n- Abfragen lesen und verstehen\n- Einfache bis mittlere Abfragen schreiben\n- JOINs korrekt verwenden\n- Aggregatfunktionen anwenden\n- HÃ¤ufige Fehler vermeiden",
+  "codeExamples": [
+    {
+      "language": "sql",
+      "code": "-- Beispiel: Komplexe Abfrage mit mehreren Konzepten\n\n-- Gegeben: E-Commerce-Datenbank\n-- Aufgabe: Top 5 Kunden nach Umsatz im Jahr 2024\n\nSELECT \n    c.name,\n    c.email,\n    COUNT(o.id) AS order_count,\n    SUM(o.total) AS total_revenue\nFROM customers c\nINNER JOIN orders o ON c.id = o.customer_id\nWHERE o.order_date >= '2024-01-01' \n  AND o.order_date < '2025-01-01'\nGROUP BY c.id, c.name, c.email\nHAVING SUM(o.total) > 1000\nORDER BY total_revenue DESC\nLIMIT 5;\n\n-- Diese Abfrage kombiniert:\n-- - JOIN (VerknÃ¼pfung)\n-- - WHERE (Filterung)\n-- - GROUP BY (Gruppierung)\n-- - HAVING (Filterung nach Aggregation)\n-- - ORDER BY (Sortierung)\n-- - LIMIT (Begrenzung)",
+      "explanation": "Komplexe SQL-Abfrage, die mehrere Konzepte kombiniert - typisch fÃ¼r PrÃ¼fungsaufgaben",
+      "title": "PrÃ¼fungsbeispiel: Komplexe Abfrage"
+    }
+  ],
+  "relatedQuizzes": ["sql-comprehensive-quiz"],
+  "resources": [
+    {
+      "title": "SQL DDL Modul",
+      "url": "#/module/sql-ddl",
+      "type": "article"
+    },
+    {
+      "title": "SQL DML Modul",
+      "url": "#/module/sql-dml",
+      "type": "article"
+    },
+    {
+      "title": "SQL DQL Modul",
+      "url": "#/module/sql-dql",
+      "type": "article"
+    }
+  ],
+  "lastUpdated": "2025-01-10T00:00:00Z",
+  "version": "1.0"
+}

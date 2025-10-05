@@ -1,0 +1,279 @@
+{
+  "id": "sorting-algorithms-quiz-2025",
+  "moduleId": "bp-05-sorting-2025",
+  "title": "Sortierverfahren Quiz",
+  "description": "Umfassendes Quiz zu Sortieralgorithmen mit 17 Fragen zu Bubble Sort, Selection Sort, Insertion Sort, Komplexität und Code-Lücken.",
+  "category": "BP-05",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "timeLimit": 30,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "sort-q1",
+      "type": "single-choice",
+      "question": "Was ist ein Sortieralgorithmus?",
+      "options": [
+        "Ein Algorithmus, der Elemente in eine bestimmte Reihenfolge bringt",
+        "Ein Algorithmus zum Suchen",
+        "Ein Algorithmus zum Löschen",
+        "Ein Algorithmus zum Kopieren"
+      ],
+      "correctAnswer": "Ein Algorithmus, der Elemente in eine bestimmte Reihenfolge bringt",
+      "explanation": "Sortieralgorithmen ordnen Elemente nach einem Kriterium (z.B. aufsteigend, absteigend). Sie sind fundamental in der Informatik.",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "sort-q2",
+      "type": "single-choice",
+      "question": "Welche drei Sortierverfahren sind für die IHK-Prüfung 2025 relevant?",
+      "options": [
+        "Bubble Sort, Selection Sort, Insertion Sort",
+        "Quick Sort, Merge Sort, Heap Sort",
+        "Radix Sort, Bucket Sort, Counting Sort",
+        "Shell Sort, Comb Sort, Gnome Sort"
+      ],
+      "correctAnswer": "Bubble Sort, Selection Sort, Insertion Sort",
+      "explanation": "Für die IHK-Prüfung 2025 sind explizit Bubble Sort, Selection Sort und Insertion Sort relevant. Diese sind einfache, aber wichtige Sortierverfahren.",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "sort-q3",
+      "type": "single-choice",
+      "question": "Wie funktioniert Bubble Sort?",
+      "options": [
+        "Benachbarte Elemente werden verglichen und bei Bedarf getauscht",
+        "Das kleinste Element wird gesucht und an den Anfang gesetzt",
+        "Elemente werden einzeln in eine sortierte Liste eingefügt",
+        "Die Liste wird rekursiv geteilt und zusammengeführt"
+      ],
+      "correctAnswer": "Benachbarte Elemente werden verglichen und bei Bedarf getauscht",
+      "explanation": "Bubble Sort vergleicht benachbarte Elemente und tauscht sie, wenn sie in falscher Reihenfolge sind. Große Werte 'blubbern' nach oben wie Blasen.",
+      "points": 1,
+      "category": "Bubble Sort"
+    },
+    {
+      "id": "sort-q4",
+      "type": "code",
+      "question": "Welcher Code zeigt einen Schritt von Bubble Sort?\n\nArray: [5, 2, 8, 1]",
+      "code": "",
+      "language": "java",
+      "options": [
+        "if (arr[i] > arr[i+1]) { swap(arr, i, i+1); }",
+        "int min = findMin(arr); swap(arr, 0, min);",
+        "insert(arr[i], sortedList);",
+        "merge(left, right);"
+      ],
+      "correctAnswer": "if (arr[i] > arr[i+1]) { swap(arr, i, i+1); }",
+      "explanation": "Bubble Sort vergleicht benachbarte Elemente (arr[i] und arr[i+1]) und tauscht sie, wenn sie in falscher Reihenfolge sind.",
+      "points": 2,
+      "category": "Bubble Sort"
+    },
+    {
+      "id": "sort-q5",
+      "type": "single-choice",
+      "question": "Was ist die Zeitkomplexität von Bubble Sort im schlechtesten Fall?",
+      "options": [
+        "O(n²)",
+        "O(n)",
+        "O(log n)",
+        "O(n log n)"
+      ],
+      "correctAnswer": "O(n²)",
+      "explanation": "Bubble Sort hat im schlechtesten Fall (umgekehrt sortierte Liste) eine Zeitkomplexität von O(n²), da jedes Element mit jedem verglichen werden muss.",
+      "points": 2,
+      "category": "Komplexität"
+    },
+    {
+      "id": "sort-q6",
+      "type": "single-choice",
+      "question": "Wie funktioniert Selection Sort?",
+      "options": [
+        "Das kleinste Element wird gesucht und an die richtige Position gesetzt",
+        "Benachbarte Elemente werden verglichen und getauscht",
+        "Elemente werden in eine sortierte Liste eingefügt",
+        "Die Liste wird rekursiv geteilt"
+      ],
+      "correctAnswer": "Das kleinste Element wird gesucht und an die richtige Position gesetzt",
+      "explanation": "Selection Sort sucht in jedem Durchlauf das kleinste unsortiertElement und setzt es an die nächste Position der sortierten Teilliste.",
+      "points": 1,
+      "category": "Selection Sort"
+    },
+    {
+      "id": "sort-q7",
+      "type": "code",
+      "question": "Welcher Code zeigt Selection Sort?\n\nArray: [64, 25, 12, 22, 11]",
+      "code": "",
+      "language": "java",
+      "options": [
+        "int minIndex = findMinIndex(arr, i, n);\nswap(arr, i, minIndex);",
+        "if (arr[i] > arr[i+1]) swap(arr, i, i+1);",
+        "insert(arr[i], sortedList);",
+        "partition(arr, low, high);"
+      ],
+      "correctAnswer": "int minIndex = findMinIndex(arr, i, n);\nswap(arr, i, minIndex);",
+      "explanation": "Selection Sort findet den Index des kleinsten Elements im unsortierten Teil und tauscht es mit dem ersten unsortierten Element.",
+      "points": 2,
+      "category": "Selection Sort"
+    },
+    {
+      "id": "sort-q8",
+      "type": "single-choice",
+      "question": "Was ist die Zeitkomplexität von Selection Sort?",
+      "options": [
+        "O(n²) in allen Fällen",
+        "O(n) im besten Fall",
+        "O(n log n)",
+        "O(log n)"
+      ],
+      "correctAnswer": "O(n²) in allen Fällen",
+      "explanation": "Selection Sort hat immer O(n²), auch im besten Fall, da es immer das gesamte unsortierte Array durchsuchen muss, um das Minimum zu finden.",
+      "points": 2,
+      "category": "Komplexität"
+    },
+    {
+      "id": "sort-q9",
+      "type": "single-choice",
+      "question": "Wie funktioniert Insertion Sort?",
+      "options": [
+        "Elemente werden einzeln in eine sortierte Teilliste eingefügt",
+        "Benachbarte Elemente werden verglichen und getauscht",
+        "Das kleinste Element wird gesucht",
+        "Die Liste wird rekursiv geteilt"
+      ],
+      "correctAnswer": "Elemente werden einzeln in eine sortierte Teilliste eingefügt",
+      "explanation": "Insertion Sort baut eine sortierte Teilliste auf, indem jedes Element an der richtigen Position eingefügt wird - ähnlich wie beim Sortieren von Spielkarten.",
+      "points": 1,
+      "category": "Insertion Sort"
+    },
+    {
+      "id": "sort-q10",
+      "type": "code",
+      "question": "Welcher Code zeigt Insertion Sort?",
+      "code": "",
+      "language": "java",
+      "options": [
+        "int key = arr[i];\nint j = i - 1;\nwhile (j >= 0 && arr[j] > key) {\n    arr[j+1] = arr[j];\n    j--;\n}\narr[j+1] = key;",
+        "if (arr[i] > arr[i+1]) swap(arr, i, i+1);",
+        "int minIndex = findMin(arr, i);\nswap(arr, i, minIndex);",
+        "merge(left, right);"
+      ],
+      "correctAnswer": "int key = arr[i];\nint j = i - 1;\nwhile (j >= 0 && arr[j] > key) {\n    arr[j+1] = arr[j];\n    j--;\n}\narr[j+1] = key;",
+      "explanation": "Insertion Sort nimmt ein Element (key) und schiebt alle größeren Elemente nach rechts, bis die richtige Position gefunden ist.",
+      "points": 2,
+      "category": "Insertion Sort"
+    },
+    {
+      "id": "sort-q11",
+      "type": "single-choice",
+      "question": "Was ist die Zeitkomplexität von Insertion Sort im besten Fall?",
+      "options": [
+        "O(n) - wenn die Liste bereits sortiert ist",
+        "O(n²)",
+        "O(log n)",
+        "O(n log n)"
+      ],
+      "correctAnswer": "O(n) - wenn die Liste bereits sortiert ist",
+      "explanation": "Insertion Sort hat im besten Fall (bereits sortierte Liste) O(n), da jedes Element nur einmal betrachtet wird. Im schlechtesten Fall O(n²).",
+      "points": 2,
+      "category": "Komplexität"
+    },
+    {
+      "id": "sort-q12",
+      "type": "single-choice",
+      "question": "Welcher Sortieralgorithmus ist am effizientesten für fast sortierte Listen?",
+      "options": [
+        "Insertion Sort",
+        "Bubble Sort",
+        "Selection Sort",
+        "Alle gleich effizient"
+      ],
+      "correctAnswer": "Insertion Sort",
+      "explanation": "Insertion Sort ist am effizientesten für fast sortierte Listen (O(n) im besten Fall). Bubble Sort kann auch optimiert werden, aber Selection Sort bleibt bei O(n²).",
+      "points": 2,
+      "category": "Vergleich"
+    },
+    {
+      "id": "sort-q13",
+      "type": "single-choice",
+      "question": "Welcher Algorithmus macht die wenigsten Vertauschungen?",
+      "options": [
+        "Selection Sort",
+        "Bubble Sort",
+        "Insertion Sort",
+        "Alle gleich viele"
+      ],
+      "correctAnswer": "Selection Sort",
+      "explanation": "Selection Sort macht maximal n-1 Vertauschungen (eine pro Durchlauf), während Bubble Sort und Insertion Sort deutlich mehr machen können.",
+      "points": 2,
+      "category": "Vergleich"
+    },
+    {
+      "id": "sort-q14",
+      "type": "code",
+      "question": "Fülle die Lücke für Bubble Sort:\n\nfor (int i = 0; i < n-1; i++) {\n    for (int j = 0; j < n-i-1; j++) {\n        if (arr[j] ___ arr[j+1]) {\n            swap(arr, j, j+1);\n        }\n    }\n}",
+      "code": "for (int i = 0; i < n-1; i++) {\n    for (int j = 0; j < n-i-1; j++) {\n        if (arr[j] ___ arr[j+1]) {\n            swap(arr, j, j+1);\n        }\n    }\n}",
+      "language": "java",
+      "options": [
+        ">",
+        "<",
+        "==",
+        "!="
+      ],
+      "correctAnswer": ">",
+      "explanation": "Für aufsteigende Sortierung: if (arr[j] > arr[j+1]) - wenn das linke Element größer ist, tauschen. Für absteigende Sortierung würde man < verwenden.",
+      "points": 2,
+      "category": "Code-Lücken"
+    },
+    {
+      "id": "sort-q15",
+      "type": "single-choice",
+      "question": "Was bedeutet 'stabil' bei Sortieralgorithmen?",
+      "options": [
+        "Elemente mit gleichem Wert behalten ihre relative Reihenfolge",
+        "Der Algorithmus stürzt nicht ab",
+        "Die Laufzeit ist konstant",
+        "Der Speicherverbrauch ist gering"
+      ],
+      "correctAnswer": "Elemente mit gleichem Wert behalten ihre relative Reihenfolge",
+      "explanation": "Ein stabiler Sortieralgorithmus erhält die relative Reihenfolge von Elementen mit gleichem Sortierschlüssel. Bubble Sort und Insertion Sort sind stabil, Selection Sort nicht.",
+      "points": 2,
+      "category": "Eigenschaften"
+    },
+    {
+      "id": "sort-q16",
+      "type": "single-choice",
+      "question": "Welche Sortieralgorithmen sind 'in-place' (benötigen keinen zusätzlichen Speicher)?",
+      "options": [
+        "Alle drei: Bubble Sort, Selection Sort, Insertion Sort",
+        "Nur Bubble Sort",
+        "Nur Selection Sort",
+        "Keiner"
+      ],
+      "correctAnswer": "Alle drei: Bubble Sort, Selection Sort, Insertion Sort",
+      "explanation": "Alle drei Algorithmen sind in-place, da sie nur konstanten zusätzlichen Speicher O(1) benötigen. Sie sortieren direkt im ursprünglichen Array.",
+      "points": 2,
+      "category": "Eigenschaften"
+    },
+    {
+      "id": "sort-q17",
+      "type": "single-choice",
+      "question": "Szenario: Du musst ein Array mit 1 Million Elementen sortieren. Welcher Algorithmus ist am besten?",
+      "options": [
+        "Keiner der drei - Quick Sort oder Merge Sort wären besser",
+        "Bubble Sort",
+        "Selection Sort",
+        "Insertion Sort"
+      ],
+      "correctAnswer": "Keiner der drei - Quick Sort oder Merge Sort wären besser",
+      "explanation": "Für große Datenmengen sind Bubble Sort, Selection Sort und Insertion Sort (alle O(n²)) zu langsam. Quick Sort oder Merge Sort (O(n log n)) wären deutlich effizienter. Die drei einfachen Algorithmen sind gut für kleine Listen oder Lehrzwecke.",
+      "points": 2,
+      "category": "Anwendung"
+    }
+  ],
+  "tags": ["Sortieralgorithmen", "Bubble Sort", "Selection Sort", "Insertion Sort", "Komplexität", "IHK", "Neu 2025"],
+  "lastUpdated": "2025-01-10T00:00:00Z"
+}

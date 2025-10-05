@@ -1,0 +1,80 @@
+{
+  "id": "oop-fundamentals-2025",
+  "title": "OOP-Fundamentals: Objektorientierte Programmierung meistern",
+  "description": "Umfassender Lernpfad zur objektorientierten Programmierung. Dieser Pfad führt dich durch alle wichtigen OOP-Konzepte - von Kapselung über Vererbung bis zu Polymorphie - und bereitet dich optimal auf OOP-Aufgaben in der AP2 vor.",
+  "targetExam": "AP2-2025",
+  "difficulty": "beginner",
+  "estimatedDuration": 35,
+  "tags": ["OOP", "Objektorientierung", "Kapselung", "Vererbung", "Polymorphie", "Design Patterns"],
+  "modules": [
+    {
+      "moduleId": "bp-05-encapsulation",
+      "order": 1,
+      "required": true
+    },
+    {
+      "moduleId": "bp-05-data-structures",
+      "order": 2,
+      "required": true
+    },
+    {
+      "moduleId": "bp-04-design-patterns",
+      "order": 3,
+      "required": true
+    },
+    {
+      "moduleId": "bp-04-architecture-patterns",
+      "order": 4,
+      "required": true
+    },
+    {
+      "moduleId": "bp-03-software-quality",
+      "order": 5,
+      "required": false
+    },
+    {
+      "moduleId": "bp-03-tdd",
+      "order": 6,
+      "required": false
+    }
+  ],
+  "quizzes": [
+    {
+      "quizId": "tdd-quiz",
+      "order": 1,
+      "unlockAfterModules": ["bp-05-encapsulation", "bp-03-tdd"]
+    }
+  ],
+  "milestones": [
+    {
+      "title": "Kapselung verstanden",
+      "description": "Du verstehst das Konzept der Kapselung und kannst Zugriffsmodifikatoren (private, protected, public) korrekt einsetzen.",
+      "requiredModules": ["bp-05-encapsulation"],
+      "requiredQuizzes": []
+    },
+    {
+      "title": "Datenstrukturen beherrscht",
+      "description": "Du kennst wichtige Datenstrukturen und kannst sie in objektorientierten Programmen einsetzen.",
+      "requiredModules": ["bp-05-encapsulation", "bp-05-data-structures"],
+      "requiredQuizzes": []
+    },
+    {
+      "title": "Design Patterns anwenden",
+      "description": "Du kennst wichtige Design Patterns und verstehst, wann und wie sie eingesetzt werden.",
+      "requiredModules": ["bp-05-encapsulation", "bp-05-data-structures", "bp-04-design-patterns"],
+      "requiredQuizzes": []
+    },
+    {
+      "title": "Architektur verstehen",
+      "description": "Du verstehst verschiedene Architektur-Pattern wie MVC, Layered Architecture und Microservices.",
+      "requiredModules": ["bp-05-encapsulation", "bp-05-data-structures", "bp-04-design-patterns", "bp-04-architecture-patterns"],
+      "requiredQuizzes": []
+    },
+    {
+      "title": "OOP-Experte",
+      "description": "Herzlichen Glückwunsch! Du beherrschst die Grundlagen der objektorientierten Programmierung und bist bereit für komplexe OOP-Aufgaben.",
+      "requiredModules": ["bp-05-encapsulation", "bp-05-data-structures", "bp-04-design-patterns", "bp-04-architecture-patterns"],
+      "requiredQuizzes": []
+    }
+  ]
+}

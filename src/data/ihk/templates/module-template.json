@@ -1,0 +1,45 @@
+{
+  "_comment": "Template für IHK-Module - Kopiere und fülle dieses Template für neue Module aus",
+  "id": "unique-module-id",
+  "title": "Modulname",
+  "description": "Kurze Beschreibung des Moduls (1-2 Sätze)",
+  "category": "FÜ-01 | FÜ-02 | FÜ-03 | FÜ-04 | BP-01 | BP-02 | BP-03 | BP-04 | BP-05",
+  "subcategory": "Detaillierte Unterkategorie",
+  "difficulty": "beginner | intermediate | advanced",
+  "examRelevance": "high | medium | low",
+  "newIn2025": false,
+  "removedIn2025": false,
+  "important": false,
+  "estimatedTime": 30,
+  "prerequisites": [],
+  "tags": ["tag1", "tag2", "tag3"],
+  "content": "# Modulinhalt in Markdown\n\n## Einführung\n\nText...\n\n## Hauptteil\n\nText...\n\n## Zusammenfassung\n\nText...",
+  "codeExamples": [
+    {
+      "language": "java",
+      "code": "public class Example {\n    public static void main(String[] args) {\n        System.out.println(\"Hello World\");\n    }\n}",
+      "explanation": "Erklärung des Code-Beispiels",
+      "title": "Titel des Beispiels"
+    }
+  ],
+  "relatedQuizzes": ["quiz-id-1", "quiz-id-2"],
+  "resources": [
+    {
+      "title": "Ressourcen-Titel",
+      "url": "https://example.com",
+      "type": "video | article | documentation"
+    }
+  ],
+  "learningObjectives": [
+    "Lernziel 1",
+    "Lernziel 2",
+    "Lernziel 3"
+  ],
+  "keyTakeaways": [
+    "Wichtigster Punkt 1",
+    "Wichtigster Punkt 2",
+    "Wichtigster Punkt 3"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z",
+  "version": "1.0"
+}

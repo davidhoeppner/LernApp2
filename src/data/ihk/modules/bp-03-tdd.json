@@ -1,0 +1,56 @@
+{
+  "id": "bp-03-tdd",
+  "title": "Test Driven Development (TDD)",
+  "description": "Lerne das TDD-Konzept, den Red-Green-Refactor Zyklus und wie du qualitativ hochwertigen Code durch testgetriebene Entwicklung schreibst.",
+  "category": "BP-03",
+  "subcategory": "Entwickeln von Softwareanwendungen",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 45,
+  "prerequisites": [],
+  "tags": ["TDD", "Testing", "Unit Tests", "Red-Green-Refactor", "Softwarequalität", "Neu 2025"],
+  "content": "# Test Driven Development (TDD)\n\n## Was ist Test Driven Development?\n\nTest Driven Development (TDD) ist eine Softwareentwicklungsmethode, bei der **Tests vor dem eigentlichen Code** geschrieben werden. Dieser Ansatz führt zu besser strukturiertem, wartbarem und fehlerfreiem Code.\n\n### Kernprinzipien von TDD\n\n1. **Test First**: Schreibe zuerst einen Test für die gewünschte Funktionalität\n2. **Minimal Implementation**: Implementiere nur so viel Code, wie nötig ist, um den Test zu bestehen\n3. **Refactoring**: Verbessere den Code, während alle Tests weiterhin bestehen\n\n## Der Red-Green-Refactor Zyklus\n\nTDD folgt einem iterativen Zyklus mit drei Phasen:\n\n### 🔴 Red (Rot) - Test schreiben, der fehlschlägt\n\n- Schreibe einen Test für eine neue Funktionalität\n- Der Test schlägt fehl, weil die Funktionalität noch nicht existiert\n- Dies bestätigt, dass der Test tatsächlich etwas prüft\n\n### 🟢 Green (Grün) - Minimalen Code schreiben\n\n- Implementiere gerade genug Code, um den Test zu bestehen\n- Fokus liegt auf Funktionalität, nicht auf Perfektion\n- Der Test sollte nun erfolgreich durchlaufen\n\n### 🔵 Refactor (Refaktorieren) - Code verbessern\n\n- Verbessere die Code-Qualität ohne das Verhalten zu ändern\n- Entferne Duplikate und optimiere die Struktur\n- Alle Tests müssen weiterhin bestehen\n\n**Dann beginnt der Zyklus von vorne für die nächste Funktionalität!**\n\n## Vorteile von TDD\n\n✅ **Bessere Code-Qualität**: Code ist testbar und modular aufgebaut\n\n✅ **Weniger Bugs**: Fehler werden früh erkannt und behoben\n\n✅ **Lebende Dokumentation**: Tests dokumentieren das erwartete Verhalten\n\n✅ **Refactoring-Sicherheit**: Änderungen können sicher durchgeführt werden\n\n✅ **Klares Design**: Zwingt zu durchdachtem API-Design\n\n## Nachteile von TDD\n\n❌ **Zeitaufwand**: Initial mehr Zeit für Test-Erstellung\n\n❌ **Lernkurve**: Erfordert Umdenken und Übung\n\n❌ **Overhead**: Nicht für alle Projekte gleich sinnvoll\n\n## TDD in der Praxis\n\n### Wann sollte TDD eingesetzt werden?\n\n- Bei komplexer Business-Logik\n- Bei kritischen Systemkomponenten\n- Bei langlebigen Projekten\n- Wenn hohe Code-Qualität gefordert ist\n\n### Wann ist TDD weniger geeignet?\n\n- Bei Prototypen und Proof-of-Concepts\n- Bei UI-Design und Experimenten\n- Bei sehr einfachen CRUD-Operationen\n\n## Best Practices\n\n1. **Kleine Schritte**: Schreibe kleine, fokussierte Tests\n2. **Ein Test, eine Assertion**: Halte Tests einfach und klar\n3. **Aussagekräftige Namen**: Test-Namen sollten das Verhalten beschreiben\n4. **Unabhängige Tests**: Tests sollten isoliert und in beliebiger Reihenfolge laufen\n5. **Schnelle Tests**: Tests sollten schnell ausführbar sein\n\n## Übungsaufgaben\n\n### Aufgabe 1: TDD-Zyklus verstehen\n\nOrdne die folgenden Schritte dem richtigen TDD-Zyklus zu:\n- Code optimieren und Duplikate entfernen\n- Test schreiben, der fehlschlägt\n- Minimalen Code implementieren, um Test zu bestehen\n\n### Aufgabe 2: TDD anwenden\n\nImplementiere eine `Calculator`-Klasse mit TDD:\n1. Schreibe einen Test für Addition\n2. Implementiere die Addition\n3. Refaktoriere wenn nötig\n4. Wiederhole für Subtraktion\n\n### Aufgabe 3: Vorteile erkennen\n\nNenne drei konkrete Vorteile, die TDD für die Wartbarkeit von Software bietet.\n\n## Zusammenfassung\n\nTDD ist eine bewährte Methode zur Entwicklung qualitativ hochwertiger Software. Der Red-Green-Refactor Zyklus stellt sicher, dass Code testbar, wartbar und fehlerfrei ist. Obwohl TDD initial mehr Zeit erfordert, zahlt sich die Investition durch weniger Bugs und bessere Wartbarkeit aus.",
+  "codeExamples": [
+    {
+      "language": "java",
+      "title": "TDD Beispiel: Calculator-Klasse (Java mit JUnit)",
+      "code": "// 1. RED: Test schreiben (schlägt fehl)\nimport org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass CalculatorTest {\n    @Test\n    void testAddition() {\n        Calculator calc = new Calculator();\n        int result = calc.add(2, 3);\n        assertEquals(5, result, \"2 + 3 sollte 5 ergeben\");\n    }\n}\n\n// 2. GREEN: Minimale Implementierung\nclass Calculator {\n    public int add(int a, int b) {\n        return a + b;\n    }\n}\n\n// 3. REFACTOR: Code ist bereits sauber, kein Refactoring nötig\n\n// Nächster Zyklus: Subtraktion\n@Test\nvoid testSubtraction() {\n    Calculator calc = new Calculator();\n    int result = calc.subtract(5, 3);\n    assertEquals(2, result, \"5 - 3 sollte 2 ergeben\");\n}\n\n// Implementierung\npublic int subtract(int a, int b) {\n    return a - b;\n}",
+      "explanation": "Dieses Beispiel zeigt den kompletten TDD-Zyklus: Zuerst wird ein Test geschrieben, der fehlschlägt (RED), dann wird die minimale Implementierung hinzugefügt (GREEN), und schließlich wird der Code bei Bedarf refaktoriert (REFACTOR)."
+    },
+    {
+      "language": "python",
+      "title": "TDD Beispiel: String-Validator (Python mit pytest)",
+      "code": "# 1. RED: Test schreiben\nimport pytest\n\ndef test_email_validator_valid_email():\n    validator = EmailValidator()\n    assert validator.is_valid(\"test@example.com\") == True\n\ndef test_email_validator_invalid_email():\n    validator = EmailValidator()\n    assert validator.is_valid(\"invalid-email\") == False\n\n# 2. GREEN: Minimale Implementierung\nimport re\n\nclass EmailValidator:\n    def is_valid(self, email):\n        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\n        return bool(re.match(pattern, email))\n\n# 3. REFACTOR: Regex-Pattern als Konstante auslagern\nclass EmailValidator:\n    EMAIL_PATTERN = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\n    \n    def is_valid(self, email):\n        if not email or not isinstance(email, str):\n            return False\n        return bool(re.match(self.EMAIL_PATTERN, email))",
+      "explanation": "Dieses Python-Beispiel demonstriert TDD mit pytest. Nach der minimalen Implementierung wird der Code refaktoriert, um die Regex als Konstante zu definieren und zusätzliche Validierung hinzuzufügen."
+    },
+    {
+      "language": "java",
+      "title": "TDD Beispiel: BankAccount mit Geschäftslogik",
+      "code": "// RED: Test für Kontostand-Abfrage\n@Test\nvoid testInitialBalance() {\n    BankAccount account = new BankAccount(100.0);\n    assertEquals(100.0, account.getBalance());\n}\n\n// GREEN: Implementierung\nclass BankAccount {\n    private double balance;\n    \n    public BankAccount(double initialBalance) {\n        this.balance = initialBalance;\n    }\n    \n    public double getBalance() {\n        return balance;\n    }\n}\n\n// RED: Test für Einzahlung\n@Test\nvoid testDeposit() {\n    BankAccount account = new BankAccount(100.0);\n    account.deposit(50.0);\n    assertEquals(150.0, account.getBalance());\n}\n\n// GREEN: Implementierung\npublic void deposit(double amount) {\n    balance += amount;\n}\n\n// RED: Test für ungültige Einzahlung\n@Test\nvoid testDepositNegativeAmount() {\n    BankAccount account = new BankAccount(100.0);\n    assertThrows(IllegalArgumentException.class, () -> {\n        account.deposit(-50.0);\n    });\n}\n\n// REFACTOR: Validierung hinzufügen\npublic void deposit(double amount) {\n    if (amount <= 0) {\n        throw new IllegalArgumentException(\"Betrag muss positiv sein\");\n    }\n    balance += amount;\n}",
+      "explanation": "Dieses erweiterte Beispiel zeigt, wie TDD bei komplexerer Geschäftslogik angewendet wird. Jede neue Anforderung (Einzahlung, Validierung) wird durch einen Test definiert, bevor der Code implementiert wird."
+    }
+  ],
+  "relatedQuizzes": ["tdd-quiz"],
+  "resources": [
+    {
+      "title": "Test Driven Development by Example (Kent Beck)",
+      "url": "https://www.oreilly.com/library/view/test-driven-development/0321146530/",
+      "type": "article"
+    },
+    {
+      "title": "JUnit 5 Dokumentation",
+      "url": "https://junit.org/junit5/docs/current/user-guide/",
+      "type": "documentation"
+    },
+    {
+      "title": "pytest Dokumentation",
+      "url": "https://docs.pytest.org/",
+      "type": "documentation"
+    }
+  ],
+  "lastUpdated": "2025-01-10T00:00:00Z",
+  "version": "1.0"
+}

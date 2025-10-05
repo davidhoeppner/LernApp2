@@ -1,0 +1,21 @@
+{
+  "id": "bp-04-architecture-patterns",
+  "title": "Architektur-Pattern",
+  "description": "Verstehe wichtige Software-Architektur-Pattern wie MVC, Layered Architecture und Microservices für strukturierte Softwareentwicklung.",
+  "category": "BP-04",
+  "subcategory": "Projektmanagement und Softwareentwicklungsmethoden",
+  "difficulty": "advanced",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 55,
+  "prerequisites": ["bp-05-oop"],
+  "tags": ["Architektur", "MVC", "Layered Architecture", "Microservices", "Design Patterns", "Software-Design", "Neu 2025"],
+  "content": "# Architektur-Pattern\n\n## Einführung\n\nArchitektur-Pattern sind bewährte Lösungen für die Strukturierung von Software-Systemen.\n\n## 1. Model-View-Controller (MVC)\n\nMVC trennt eine Anwendung in drei Hauptkomponenten: Model, View und Controller.\n\n## 2. Layered Architecture\n\nDie Anwendung wird in horizontale Schichten aufgeteilt.\n\n## 3. Microservices Architecture\n\nDie Anwendung wird in kleine, unabhängige Services aufgeteilt.",
+  "codeExamples": [],
+  "relatedQuizzes": [],
+  "resources": [],
+  "lastUpdated": "2025-01-10T00:00:00Z",
+  "version": "1.0"
+}

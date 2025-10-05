@@ -1,0 +1,64 @@
+{
+  "id": "sql-mastery-2025",
+  "title": "SQL-Mastery: Von Grundlagen bis Experte",
+  "description": "Fokussierter Lernpfad zur vollständigen Beherrschung von SQL basierend auf dem IHK Prüfungsbeiblatt 2025. Dieser Pfad führt dich systematisch von den Grundlagen bis zu komplexen Datenbankabfragen und bereitet dich optimal auf SQL-Aufgaben in der AP2 vor.",
+  "targetExam": "AP2-2025",
+  "difficulty": "beginner",
+  "estimatedDuration": 40,
+  "tags": ["SQL", "Datenbanken", "Beiblatt", "DDL", "DML", "DQL"],
+  "modules": [
+    {
+      "moduleId": "sql-ddl",
+      "order": 1,
+      "required": true
+    },
+    {
+      "moduleId": "sql-dml",
+      "order": 2,
+      "required": true
+    },
+    {
+      "moduleId": "sql-dql",
+      "order": 3,
+      "required": true
+    },
+    {
+      "moduleId": "bp-05-sql-reference",
+      "order": 4,
+      "required": true
+    }
+  ],
+  "quizzes": [
+    {
+      "quizId": "sql-comprehensive-quiz",
+      "order": 1,
+      "unlockAfterModules": ["sql-ddl", "sql-dml", "sql-dql"]
+    }
+  ],
+  "milestones": [
+    {
+      "title": "DDL gemeistert",
+      "description": "Du kannst Tabellen erstellen, ändern und Indizes anlegen. Die Grundlagen der Datenbankstruktur sind dir vertraut.",
+      "requiredModules": ["sql-ddl"],
+      "requiredQuizzes": []
+    },
+    {
+      "title": "DML beherrscht",
+      "description": "Du kannst Daten einfügen, aktualisieren und löschen. Die Manipulation von Datenbankdaten ist für dich kein Problem mehr.",
+      "requiredModules": ["sql-ddl", "sql-dml"],
+      "requiredQuizzes": []
+    },
+    {
+      "title": "DQL Experte",
+      "description": "Du beherrschst komplexe SELECT-Abfragen mit JOINs, Subqueries, Aggregatfunktionen und Gruppierungen.",
+      "requiredModules": ["sql-ddl", "sql-dml", "sql-dql"],
+      "requiredQuizzes": []
+    },
+    {
+      "title": "SQL-Master",
+      "description": "Herzlichen Glückwunsch! Du beherrschst alle SQL-Befehle aus dem Prüfungsbeiblatt und bist bereit für jede SQL-Aufgabe in der AP2.",
+      "requiredModules": ["sql-ddl", "sql-dml", "sql-dql", "bp-05-sql-reference"],
+      "requiredQuizzes": ["sql-comprehensive-quiz"]
+    }
+  ]
+}

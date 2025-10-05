@@ -1,0 +1,352 @@
+{
+  "id": "security-threats-quiz-2025",
+  "moduleId": "fue-04-security-threats-2025",
+  "title": "IT-Sicherheitsbedrohungen Quiz",
+  "description": "Umfassendes Quiz zu IT-Sicherheitsbedrohungen mit 22 Fragen zu Man-in-the-Middle, SQL-Injection, DDoS und Gegenmaßnahmen.",
+  "category": "FÜ-04",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "timeLimit": 35,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "sec-q1",
+      "type": "single-choice",
+      "question": "Was ist ein Man-in-the-Middle (MitM) Angriff?",
+      "options": [
+        "Ein Angreifer fängt Kommunikation zwischen zwei Parteien ab",
+        "Ein Angreifer löscht Daten",
+        "Ein Angreifer überlastet einen Server",
+        "Ein Angreifer errät Passwörter"
+      ],
+      "correctAnswer": "Ein Angreifer fängt Kommunikation zwischen zwei Parteien ab",
+      "explanation": "Bei einem Man-in-the-Middle Angriff positioniert sich der Angreifer zwischen zwei kommunizierenden Parteien und kann Daten abfangen, mitlesen oder manipulieren.",
+      "points": 1,
+      "category": "Man-in-the-Middle"
+    },
+    {
+      "id": "sec-q2",
+      "type": "single-choice",
+      "question": "Welches Protokoll schützt vor Man-in-the-Middle Angriffen?",
+      "options": [
+        "HTTPS/TLS",
+        "HTTP",
+        "FTP",
+        "Telnet"
+      ],
+      "correctAnswer": "HTTPS/TLS",
+      "explanation": "HTTPS mit TLS (Transport Layer Security) verschlüsselt die Kommunikation und authentifiziert den Server, wodurch MitM-Angriffe verhindert werden. HTTP, FTP und Telnet sind unverschlüsselt.",
+      "points": 1,
+      "category": "Man-in-the-Middle"
+    },
+    {
+      "id": "sec-q3",
+      "type": "single-choice",
+      "question": "Wie kann ein Angreifer einen MitM-Angriff in einem WLAN durchführen?",
+      "options": [
+        "Durch Einrichten eines gefälschten Access Points (Evil Twin)",
+        "Durch Löschen von Dateien",
+        "Durch Senden von Spam",
+        "Durch Raten von Passwörtern"
+      ],
+      "correctAnswer": "Durch Einrichten eines gefälschten Access Points (Evil Twin)",
+      "explanation": "Ein 'Evil Twin' ist ein gefälschter Access Point mit gleichem Namen wie ein legitimes WLAN. Nutzer verbinden sich unwissentlich und der Angreifer kann den Traffic abfangen.",
+      "points": 2,
+      "category": "Man-in-the-Middle"
+    },
+    {
+      "id": "sec-q4",
+      "type": "single-choice",
+      "question": "Was ist ARP-Spoofing?",
+      "options": [
+        "Eine MitM-Technik, bei der ARP-Tabellen manipuliert werden",
+        "Ein Virus",
+        "Eine Firewall-Technik",
+        "Ein Verschlüsselungsverfahren"
+      ],
+      "correctAnswer": "Eine MitM-Technik, bei der ARP-Tabellen manipuliert werden",
+      "explanation": "Bei ARP-Spoofing sendet der Angreifer gefälschte ARP-Nachrichten, um sich als Gateway auszugeben. So kann er den Netzwerkverkehr umleiten und abfangen.",
+      "points": 2,
+      "category": "Man-in-the-Middle"
+    },
+    {
+      "id": "sec-q5",
+      "type": "single-choice",
+      "question": "Was ist SQL-Injection?",
+      "options": [
+        "Das Einschleusen von schädlichem SQL-Code in Eingabefelder",
+        "Das Löschen einer Datenbank",
+        "Das Verschlüsseln von Daten",
+        "Das Sichern einer Datenbank"
+      ],
+      "correctAnswer": "Das Einschleusen von schädlichem SQL-Code in Eingabefelder",
+      "explanation": "SQL-Injection ist eine Angriffstechnik, bei der schädlicher SQL-Code über Eingabefelder eingeschleust wird, um unbefugten Zugriff auf die Datenbank zu erhalten.",
+      "points": 1,
+      "category": "SQL-Injection"
+    },
+    {
+      "id": "sec-q6",
+      "type": "code",
+      "question": "Welcher Code ist anfällig für SQL-Injection?",
+      "code": "",
+      "language": "java",
+      "options": [
+        "String query = \"SELECT * FROM users WHERE username='\" + username + \"'\";",
+        "PreparedStatement stmt = conn.prepareStatement(\"SELECT * FROM users WHERE username=?\");\nstmt.setString(1, username);",
+        "String query = \"SELECT * FROM users WHERE username=:username\";",
+        "Alle sind sicher"
+      ],
+      "correctAnswer": "String query = \"SELECT * FROM users WHERE username='\" + username + \"'\";",
+      "explanation": "String-Konkatenation ist unsicher! Ein Angreifer könnte username=\"admin' OR '1'='1\" eingeben. Verwende immer Prepared Statements oder Parameterized Queries.",
+      "points": 2,
+      "category": "SQL-Injection"
+    },
+    {
+      "id": "sec-q7",
+      "type": "code",
+      "question": "Was bewirkt diese SQL-Injection?\n\nusername: admin' OR '1'='1\npassword: beliebig",
+      "code": "SELECT * FROM users WHERE username='admin' OR '1'='1' AND password='beliebig'",
+      "language": "sql",
+      "options": [
+        "Umgeht die Authentifizierung, da '1'='1' immer wahr ist",
+        "Löscht die Datenbank",
+        "Gibt einen Fehler aus",
+        "Macht nichts"
+      ],
+      "correctAnswer": "Umgeht die Authentifizierung, da '1'='1' immer wahr ist",
+      "explanation": "Die Bedingung OR '1'='1' ist immer wahr, wodurch die Authentifizierung umgangen wird. Der Angreifer erhält Zugriff ohne gültiges Passwort.",
+      "points": 2,
+      "category": "SQL-Injection"
+    },
+    {
+      "id": "sec-q8",
+      "type": "single-choice",
+      "question": "Wie schützt man sich vor SQL-Injection?",
+      "options": [
+        "Prepared Statements und Input-Validierung verwenden",
+        "Längere Passwörter verwenden",
+        "Firewall installieren",
+        "Antivirus-Software installieren"
+      ],
+      "correctAnswer": "Prepared Statements und Input-Validierung verwenden",
+      "explanation": "Prepared Statements trennen Code von Daten. Zusätzlich sollte man Eingaben validieren, Least Privilege Prinzip anwenden und Fehlermeldungen nicht zu detailliert machen.",
+      "points": 2,
+      "category": "SQL-Injection"
+    },
+    {
+      "id": "sec-q9",
+      "type": "code",
+      "question": "Welche SQL-Injection könnte eine Datenbank löschen?",
+      "code": "",
+      "language": "sql",
+      "options": [
+        "username: admin'; DROP TABLE users; --",
+        "username: admin OR 1=1",
+        "username: admin' AND '1'='1",
+        "username: SELECT * FROM users"
+      ],
+      "correctAnswer": "username: admin'; DROP TABLE users; --",
+      "explanation": "Das Semikolon beendet die erste Query, DROP TABLE löscht die Tabelle, und -- kommentiert den Rest aus. Deshalb sind Prepared Statements so wichtig!",
+      "points": 2,
+      "category": "SQL-Injection"
+    },
+    {
+      "id": "sec-q10",
+      "type": "single-choice",
+      "question": "Was bedeutet DDoS?",
+      "options": [
+        "Distributed Denial of Service",
+        "Direct Denial of Service",
+        "Data Denial of Service",
+        "Database Denial of Service"
+      ],
+      "correctAnswer": "Distributed Denial of Service",
+      "explanation": "DDoS steht für Distributed Denial of Service - ein Angriff von vielen verteilten Systemen (oft Botnet), um einen Dienst durch Überlastung lahmzulegen.",
+      "points": 1,
+      "category": "DDoS"
+    },
+    {
+      "id": "sec-q11",
+      "type": "single-choice",
+      "question": "Was ist das Ziel eines DDoS-Angriffs?",
+      "options": [
+        "Einen Dienst durch Überlastung unverfügbar machen",
+        "Daten stehlen",
+        "Passwörter erraten",
+        "Viren verbreiten"
+      ],
+      "correctAnswer": "Einen Dienst durch Überlastung unverfügbar machen",
+      "explanation": "DDoS-Angriffe zielen darauf ab, einen Server oder Dienst durch massive Anfragen zu überlasten, sodass legitime Nutzer nicht mehr darauf zugreifen können.",
+      "points": 1,
+      "category": "DDoS"
+    },
+    {
+      "id": "sec-q12",
+      "type": "single-choice",
+      "question": "Was ist ein Botnet?",
+      "options": [
+        "Ein Netzwerk kompromittierter Computer, die für Angriffe genutzt werden",
+        "Ein Antivirenprogramm",
+        "Ein Verschlüsselungsverfahren",
+        "Ein Backup-System"
+      ],
+      "correctAnswer": "Ein Netzwerk kompromittierter Computer, die für Angriffe genutzt werden",
+      "explanation": "Ein Botnet besteht aus vielen infizierten Computern (Bots/Zombies), die vom Angreifer ferngesteuert werden können, z.B. für DDoS-Angriffe oder Spam-Versand.",
+      "points": 1,
+      "category": "DDoS"
+    },
+    {
+      "id": "sec-q13",
+      "type": "single-choice",
+      "question": "Welche DDoS-Angriffstechnik überlastet die Bandbreite?",
+      "options": [
+        "Volumetrischer Angriff (z.B. UDP Flood)",
+        "SQL-Injection",
+        "Phishing",
+        "Keylogger"
+      ],
+      "correctAnswer": "Volumetrischer Angriff (z.B. UDP Flood)",
+      "explanation": "Volumetrische Angriffe senden massive Datenmengen, um die Bandbreite zu überlasten. Beispiele: UDP Flood, ICMP Flood, DNS Amplification.",
+      "points": 2,
+      "category": "DDoS"
+    },
+    {
+      "id": "sec-q14",
+      "type": "single-choice",
+      "question": "Was ist ein SYN-Flood-Angriff?",
+      "options": [
+        "Ein DDoS-Angriff, der den TCP-Handshake ausnutzt",
+        "Ein SQL-Injection-Angriff",
+        "Ein Virus",
+        "Ein Verschlüsselungsverfahren"
+      ],
+      "correctAnswer": "Ein DDoS-Angriff, der den TCP-Handshake ausnutzt",
+      "explanation": "Bei einem SYN-Flood sendet der Angreifer viele SYN-Pakete, ohne den TCP-Handshake abzuschließen. Der Server wartet auf ACK-Pakete und erschöpft seine Ressourcen.",
+      "points": 2,
+      "category": "DDoS"
+    },
+    {
+      "id": "sec-q15",
+      "type": "single-choice",
+      "question": "Wie kann man sich vor DDoS-Angriffen schützen?",
+      "options": [
+        "Rate Limiting, Firewall, CDN und DDoS-Schutzdienste",
+        "Längere Passwörter",
+        "Prepared Statements",
+        "Antivirus-Software"
+      ],
+      "correctAnswer": "Rate Limiting, Firewall, CDN und DDoS-Schutzdienste",
+      "explanation": "Schutzmaßnahmen: Rate Limiting (Anfragen begrenzen), Firewall-Regeln, Content Delivery Networks (CDN), DDoS-Schutzdienste (z.B. Cloudflare), Redundanz und Skalierung.",
+      "points": 2,
+      "category": "DDoS"
+    },
+    {
+      "id": "sec-q16",
+      "type": "single-choice",
+      "question": "Was ist Cross-Site Scripting (XSS)?",
+      "options": [
+        "Das Einschleusen von schädlichem JavaScript-Code in Webseiten",
+        "Ein DDoS-Angriff",
+        "Ein SQL-Injection-Angriff",
+        "Ein Verschlüsselungsverfahren"
+      ],
+      "correctAnswer": "Das Einschleusen von schädlichem JavaScript-Code in Webseiten",
+      "explanation": "Bei XSS schleust der Angreifer JavaScript-Code ein, der im Browser des Opfers ausgeführt wird. Dies kann Cookies stehlen, Sitzungen übernehmen oder Phishing-Angriffe durchführen.",
+      "points": 1,
+      "category": "Weitere Bedrohungen"
+    },
+    {
+      "id": "sec-q17",
+      "type": "single-choice",
+      "question": "Was ist Phishing?",
+      "options": [
+        "Betrügerische E-Mails oder Webseiten, um sensible Daten zu stehlen",
+        "Ein DDoS-Angriff",
+        "Ein Virus",
+        "Eine Firewall-Technik"
+      ],
+      "correctAnswer": "Betrügerische E-Mails oder Webseiten, um sensible Daten zu stehlen",
+      "explanation": "Phishing-Angriffe täuschen legitime Organisationen vor (z.B. Banken), um Nutzer zur Preisgabe von Passwörtern, Kreditkartendaten oder anderen sensiblen Informationen zu verleiten.",
+      "points": 1,
+      "category": "Weitere Bedrohungen"
+    },
+    {
+      "id": "sec-q18",
+      "type": "single-choice",
+      "question": "Was ist Ransomware?",
+      "options": [
+        "Malware, die Daten verschlüsselt und Lösegeld fordert",
+        "Ein DDoS-Angriff",
+        "Eine Firewall",
+        "Ein Backup-System"
+      ],
+      "correctAnswer": "Malware, die Daten verschlüsselt und Lösegeld fordert",
+      "explanation": "Ransomware verschlüsselt Dateien des Opfers und fordert Lösegeld (meist in Kryptowährung) für die Entschlüsselung. Schutz: Backups, Updates, Vorsicht bei E-Mail-Anhängen.",
+      "points": 1,
+      "category": "Weitere Bedrohungen"
+    },
+    {
+      "id": "sec-q19",
+      "type": "single-choice",
+      "question": "Was ist das Prinzip der 'Defense in Depth'?",
+      "options": [
+        "Mehrere Sicherheitsschichten verwenden",
+        "Nur eine starke Firewall verwenden",
+        "Nur Passwörter verwenden",
+        "Keine Sicherheitsmaßnahmen"
+      ],
+      "correctAnswer": "Mehrere Sicherheitsschichten verwenden",
+      "explanation": "Defense in Depth bedeutet, mehrere Sicherheitsschichten zu verwenden (Firewall, IDS, Verschlüsselung, Zugriffskontrollen, etc.), sodass ein Angreifer mehrere Barrieren überwinden muss.",
+      "points": 2,
+      "category": "Sicherheitsprinzipien"
+    },
+    {
+      "id": "sec-q20",
+      "type": "single-choice",
+      "question": "Was bedeutet 'Least Privilege'?",
+      "options": [
+        "Nutzer erhalten nur die minimal notwendigen Rechte",
+        "Alle Nutzer haben Admin-Rechte",
+        "Keine Zugriffskontrollen",
+        "Nur der CEO hat Rechte"
+      ],
+      "correctAnswer": "Nutzer erhalten nur die minimal notwendigen Rechte",
+      "explanation": "Das Least Privilege Prinzip besagt, dass Nutzer und Prozesse nur die minimal notwendigen Rechte erhalten sollten. Dies begrenzt den Schaden bei Kompromittierung.",
+      "points": 1,
+      "category": "Sicherheitsprinzipien"
+    },
+    {
+      "id": "sec-q21",
+      "type": "single-choice",
+      "question": "Szenario: Ein Nutzer erhält eine E-Mail von 'seiner Bank' mit Link zum 'Passwort zurücksetzen'. Was sollte er tun?",
+      "options": [
+        "Nicht auf den Link klicken, direkt die Bank-Webseite aufrufen",
+        "Sofort auf den Link klicken",
+        "Das Passwort in der E-Mail eingeben",
+        "Die E-Mail weiterleiten"
+      ],
+      "correctAnswer": "Nicht auf den Link klicken, direkt die Bank-Webseite aufrufen",
+      "explanation": "Dies ist ein klassischer Phishing-Versuch. Niemals auf Links in verdächtigen E-Mails klicken. Stattdessen die offizielle Webseite direkt im Browser aufrufen oder die Bank anrufen.",
+      "points": 2,
+      "category": "Szenarien"
+    },
+    {
+      "id": "sec-q22",
+      "type": "single-choice",
+      "question": "Szenario: Eine Webanwendung zeigt detaillierte Datenbankfehler an. Welches Sicherheitsrisiko besteht?",
+      "options": [
+        "Angreifer erhalten Informationen über die Datenbankstruktur für SQL-Injection",
+        "Kein Risiko",
+        "Die Anwendung wird schneller",
+        "Die Datenbank wird gelöscht"
+      ],
+      "correctAnswer": "Angreifer erhalten Informationen über die Datenbankstruktur für SQL-Injection",
+      "explanation": "Detaillierte Fehlermeldungen verraten Angreifern wertvolle Informationen (Tabellennamen, Spalten, SQL-Syntax). In Produktion sollten nur generische Fehlermeldungen angezeigt werden.",
+      "points": 2,
+      "category": "Szenarien"
+    }
+  ],
+  "tags": ["Sicherheit", "Man-in-the-Middle", "SQL-Injection", "DDoS", "IHK", "Neu 2025", "Cyber Security"],
+  "lastUpdated": "2025-01-10T00:00:00Z"
+}

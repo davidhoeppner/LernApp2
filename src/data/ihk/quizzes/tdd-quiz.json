@@ -1,0 +1,298 @@
+{
+  "id": "tdd-quiz-2025",
+  "moduleId": "bp-03-tdd-2025",
+  "title": "Test Driven Development (TDD) Quiz",
+  "description": "Umfassendes Quiz zu Test Driven Development mit 18 Fragen zu TDD-Konzepten, Red-Green-Refactor Zyklus und praktischen Code-Beispielen.",
+  "category": "BP-03",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "timeLimit": 30,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "tdd-q1",
+      "type": "single-choice",
+      "question": "Was bedeutet TDD?",
+      "options": [
+        "Test Driven Development",
+        "Test Data Design",
+        "Technical Development Documentation",
+        "Test Deployment Design"
+      ],
+      "correctAnswer": "Test Driven Development",
+      "explanation": "TDD steht für Test Driven Development - eine Entwicklungsmethode, bei der Tests vor dem eigentlichen Code geschrieben werden.",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "tdd-q2",
+      "type": "single-choice",
+      "question": "Welche drei Phasen hat der TDD-Zyklus?",
+      "options": [
+        "Red - Green - Refactor",
+        "Write - Test - Deploy",
+        "Plan - Code - Test",
+        "Design - Implement - Verify"
+      ],
+      "correctAnswer": "Red - Green - Refactor",
+      "explanation": "Der TDD-Zyklus besteht aus drei Phasen: Red (fehlschlagender Test), Green (minimale Implementierung), Refactor (Code verbessern).",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "tdd-q3",
+      "type": "single-choice",
+      "question": "Was bedeutet die 'Red'-Phase im TDD-Zyklus?",
+      "options": [
+        "Einen fehlschlagenden Test schreiben",
+        "Fehler im Code markieren",
+        "Die Anwendung stoppen",
+        "Code löschen"
+      ],
+      "correctAnswer": "Einen fehlschlagenden Test schreiben",
+      "explanation": "In der Red-Phase schreibt man zuerst einen Test, der fehlschlägt, weil die Funktionalität noch nicht implementiert ist. Dies stellt sicher, dass der Test tatsächlich etwas prüft.",
+      "points": 1,
+      "category": "Red-Green-Refactor"
+    },
+    {
+      "id": "tdd-q4",
+      "type": "single-choice",
+      "question": "Was ist das Ziel der 'Green'-Phase?",
+      "options": [
+        "Den Test mit minimalem Code zum Laufen bringen",
+        "Den Code perfekt und sauber machen",
+        "Alle Tests grün färben",
+        "Die Anwendung deployen"
+      ],
+      "correctAnswer": "Den Test mit minimalem Code zum Laufen bringen",
+      "explanation": "In der Green-Phase schreibt man gerade genug Code, um den Test zu bestehen. Perfektion kommt später in der Refactor-Phase.",
+      "points": 1,
+      "category": "Red-Green-Refactor"
+    },
+    {
+      "id": "tdd-q5",
+      "type": "single-choice",
+      "question": "Was macht man in der 'Refactor'-Phase?",
+      "options": [
+        "Code verbessern ohne Funktionalität zu ändern",
+        "Neue Features hinzufügen",
+        "Tests umschreiben",
+        "Code dokumentieren"
+      ],
+      "correctAnswer": "Code verbessern ohne Funktionalität zu ändern",
+      "explanation": "In der Refactor-Phase verbessert man die Code-Qualität (Lesbarkeit, Struktur, Performance) ohne das Verhalten zu ändern. Die Tests müssen weiterhin grün bleiben.",
+      "points": 1,
+      "category": "Red-Green-Refactor"
+    },
+    {
+      "id": "tdd-q6",
+      "type": "single-choice",
+      "question": "Welcher Vorteil von TDD ist am wichtigsten?",
+      "options": [
+        "Bessere Code-Qualität und weniger Bugs",
+        "Schnellere Entwicklung",
+        "Weniger Dokumentation nötig",
+        "Keine Code-Reviews mehr nötig"
+      ],
+      "correctAnswer": "Bessere Code-Qualität und weniger Bugs",
+      "explanation": "TDD führt zu besserem Design, höherer Testabdeckung und weniger Bugs. Die Entwicklung kann anfangs langsamer sein, spart aber langfristig Zeit durch weniger Debugging.",
+      "points": 1,
+      "category": "Vorteile"
+    },
+    {
+      "id": "tdd-q7",
+      "type": "single-choice",
+      "question": "Was ist ein Nachteil von TDD?",
+      "options": [
+        "Höherer initialer Zeitaufwand",
+        "Schlechtere Code-Qualität",
+        "Mehr Bugs",
+        "Keine Testabdeckung"
+      ],
+      "correctAnswer": "Höherer initialer Zeitaufwand",
+      "explanation": "TDD erfordert anfangs mehr Zeit, da Tests vor dem Code geschrieben werden. Langfristig spart es aber Zeit durch weniger Bugs und einfacheres Refactoring.",
+      "points": 1,
+      "category": "Nachteile"
+    },
+    {
+      "id": "tdd-q8",
+      "type": "code",
+      "question": "Welcher Test folgt dem TDD-Prinzip für eine add()-Methode?",
+      "code": "",
+      "language": "java",
+      "options": [
+        "@Test\nvoid testAdd() {\n    Calculator calc = new Calculator();\n    assertEquals(5, calc.add(2, 3));\n}",
+        "public int add(int a, int b) {\n    return a + b;\n}",
+        "@Test\nvoid testAdd() {\n    // Test später schreiben\n}",
+        "Calculator calc = new Calculator();\ncalc.add(2, 3);"
+      ],
+      "correctAnswer": "@Test\nvoid testAdd() {\n    Calculator calc = new Calculator();\n    assertEquals(5, calc.add(2, 3));\n}",
+      "explanation": "Bei TDD schreibt man zuerst den Test. Der Test definiert das erwartete Verhalten: add(2, 3) soll 5 zurückgeben. Erst danach implementiert man die Methode.",
+      "points": 2,
+      "category": "Praxis"
+    },
+    {
+      "id": "tdd-q9",
+      "type": "single-choice",
+      "question": "Was ist ein Unit-Test?",
+      "options": [
+        "Ein Test für eine einzelne Funktionseinheit",
+        "Ein Test für die gesamte Anwendung",
+        "Ein Test für die Benutzeroberfläche",
+        "Ein Test für die Datenbank"
+      ],
+      "correctAnswer": "Ein Test für eine einzelne Funktionseinheit",
+      "explanation": "Unit-Tests testen einzelne Funktionen, Methoden oder Klassen isoliert. Sie sind schnell, unabhängig und bilden die Basis der Test-Pyramide.",
+      "points": 1,
+      "category": "Unit-Tests"
+    },
+    {
+      "id": "tdd-q10",
+      "type": "single-choice",
+      "question": "Welches Test-Framework wird häufig für Java verwendet?",
+      "options": [
+        "JUnit",
+        "PyTest",
+        "Mocha",
+        "NUnit"
+      ],
+      "correctAnswer": "JUnit",
+      "explanation": "JUnit ist das Standard-Test-Framework für Java. Andere: PyTest (Python), Mocha (JavaScript), NUnit (C#).",
+      "points": 1,
+      "category": "Frameworks"
+    },
+    {
+      "id": "tdd-q11",
+      "type": "code",
+      "question": "Was ist falsch an diesem TDD-Ansatz?\n\n1. Implementierung schreiben\n2. Test schreiben\n3. Test ausführen",
+      "code": "",
+      "language": "",
+      "options": [
+        "Die Reihenfolge ist falsch - Test muss zuerst kommen",
+        "Es fehlt die Refactor-Phase",
+        "Tests sollten nicht ausgeführt werden",
+        "Nichts ist falsch"
+      ],
+      "correctAnswer": "Die Reihenfolge ist falsch - Test muss zuerst kommen",
+      "explanation": "Bei TDD schreibt man ZUERST den Test (Red), DANN die Implementierung (Green), DANN refactored man (Refactor). Test-First ist das Kernprinzip von TDD.",
+      "points": 2,
+      "category": "Red-Green-Refactor"
+    },
+    {
+      "id": "tdd-q12",
+      "type": "code",
+      "question": "Welche Assertion prüft, ob eine Liste leer ist?",
+      "code": "",
+      "language": "java",
+      "options": [
+        "assertTrue(list.isEmpty());",
+        "assertEquals(0, list);",
+        "assertNull(list);",
+        "assertEmpty(list);"
+      ],
+      "correctAnswer": "assertTrue(list.isEmpty());",
+      "explanation": "assertTrue(list.isEmpty()) prüft, ob die isEmpty()-Methode true zurückgibt. Alternative: assertEquals(0, list.size()). assertNull würde prüfen, ob list null ist, nicht ob sie leer ist.",
+      "points": 2,
+      "category": "Assertions"
+    },
+    {
+      "id": "tdd-q13",
+      "type": "single-choice",
+      "question": "Was bedeutet 'Test Coverage' (Testabdeckung)?",
+      "options": [
+        "Der Prozentsatz des Codes, der durch Tests abgedeckt ist",
+        "Die Anzahl der Tests",
+        "Die Zeit, die Tests benötigen",
+        "Die Anzahl der Fehler"
+      ],
+      "correctAnswer": "Der Prozentsatz des Codes, der durch Tests abgedeckt ist",
+      "explanation": "Test Coverage misst, wie viel Prozent des Codes durch Tests ausgeführt wird. 100% Coverage bedeutet nicht fehlerfreien Code, ist aber ein guter Indikator.",
+      "points": 1,
+      "category": "Metriken"
+    },
+    {
+      "id": "tdd-q14",
+      "type": "code",
+      "question": "Was testet dieser Code?\n\n@Test\nvoid testDivideByZero() {\n    Calculator calc = new Calculator();\n    assertThrows(ArithmeticException.class, () -> calc.divide(10, 0));\n}",
+      "code": "@Test\nvoid testDivideByZero() {\n    Calculator calc = new Calculator();\n    assertThrows(ArithmeticException.class, () -> calc.divide(10, 0));\n}",
+      "language": "java",
+      "options": [
+        "Ob eine Exception geworfen wird bei Division durch Null",
+        "Ob das Ergebnis 0 ist",
+        "Ob die Methode existiert",
+        "Ob der Calculator null ist"
+      ],
+      "correctAnswer": "Ob eine Exception geworfen wird bei Division durch Null",
+      "explanation": "assertThrows prüft, ob eine bestimmte Exception geworfen wird. Dies ist wichtig für Fehlerbehandlung und Edge Cases.",
+      "points": 2,
+      "category": "Exception-Tests"
+    },
+    {
+      "id": "tdd-q15",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen TDD und Test-Last?",
+      "options": [
+        "Bei TDD schreibt man Tests vor dem Code, bei Test-Last danach",
+        "TDD ist schneller",
+        "Test-Last ist besser",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Bei TDD schreibt man Tests vor dem Code, bei Test-Last danach",
+      "explanation": "TDD = Test-First (Tests vor Code). Test-Last = Tests nach Code. TDD führt zu besserem Design, da man über die API nachdenkt, bevor man implementiert.",
+      "points": 1,
+      "category": "Vergleich"
+    },
+    {
+      "id": "tdd-q16",
+      "type": "code",
+      "question": "Welcher Code folgt dem TDD-Prinzip 'Simplest Thing That Could Possibly Work'?",
+      "code": "",
+      "language": "java",
+      "options": [
+        "public boolean isEven(int n) { return n % 2 == 0; }",
+        "public boolean isEven(int n) {\n    if (n == 0) return true;\n    if (n == 1) return false;\n    if (n == 2) return true;\n    // ... für alle Zahlen\n}",
+        "public boolean isEven(int n) {\n    // Komplexer Algorithmus mit Optimierungen\n}",
+        "public boolean isEven(int n) { return true; }"
+      ],
+      "correctAnswer": "public boolean isEven(int n) { return n % 2 == 0; }",
+      "explanation": "Die einfachste Lösung, die funktioniert: Modulo 2. Option 2 ist zu komplex, Option 4 ist zu simpel (funktioniert nicht korrekt). Bei TDD: erst einfach, dann bei Bedarf optimieren.",
+      "points": 2,
+      "category": "Best Practices"
+    },
+    {
+      "id": "tdd-q17",
+      "type": "single-choice",
+      "question": "Wann sollte man Tests ausführen?",
+      "options": [
+        "Nach jeder kleinen Änderung",
+        "Nur einmal am Tag",
+        "Nur vor dem Deployment",
+        "Nur wenn ein Bug gefunden wird"
+      ],
+      "correctAnswer": "Nach jeder kleinen Änderung",
+      "explanation": "Bei TDD führt man Tests sehr häufig aus - nach jeder kleinen Änderung. Dies gibt sofortiges Feedback und verhindert, dass Fehler sich anhäufen.",
+      "points": 1,
+      "category": "Best Practices"
+    },
+    {
+      "id": "tdd-q18",
+      "type": "code",
+      "question": "Was ist ein guter Testname?",
+      "code": "",
+      "language": "java",
+      "options": [
+        "testAddReturnsCorrectSumForPositiveNumbers()",
+        "test1()",
+        "testAdd()",
+        "myTest()"
+      ],
+      "correctAnswer": "testAddReturnsCorrectSumForPositiveNumbers()",
+      "explanation": "Gute Testnamen beschreiben, WAS getestet wird und WAS erwartet wird. Sie dienen als Dokumentation. Schlechte Namen wie test1() sagen nichts aus.",
+      "points": 1,
+      "category": "Best Practices"
+    }
+  ],
+  "tags": ["TDD", "Test Driven Development", "Unit-Tests", "IHK", "Neu 2025", "Softwareentwicklung"],
+  "lastUpdated": "2025-01-10T00:00:00Z"
+}

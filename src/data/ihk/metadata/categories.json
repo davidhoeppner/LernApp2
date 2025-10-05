@@ -1,0 +1,306 @@
+{
+  "version": "2025.1",
+  "lastUpdated": "2025-01-20",
+  "examType": "AP2",
+  "profession": "Fachinformatiker Anwendungsentwicklung",
+  "categories": [
+    {
+      "id": "FUE",
+      "code": "FÜ",
+      "name": "Fachrichtungsübergreifende berufsprofilgebende Fertigkeiten, Kenntnisse und Fähigkeiten",
+      "description": "Inhalte, die für alle IT-Berufe relevant sind",
+      "color": "#3b82f6",
+      "subcategories": [
+        {
+          "id": "FUE-01",
+          "code": "FÜ-01",
+          "name": "Planen eines Softwareproduktes",
+          "examRelevance": "high",
+          "topics": [
+            "Kundenanforderungen analysieren",
+            "Projektplanung",
+            "Wirtschaftlichkeitsberechnung",
+            "Lasten-/Pflichtenheft"
+          ]
+        },
+        {
+          "id": "FUE-02",
+          "code": "FÜ-02",
+          "name": "Entwickeln und Bereitstellen von Softwareanwendungen",
+          "examRelevance": "high",
+          "topics": [
+            "Kontrollstrukturen (Aktivitätsdiagramm, Pseudocode)",
+            "Anomalien/Redundanzen in Datenbanken",
+            "SQL (siehe Beiblatt)",
+            "Komponententest, Integrationstest, Systemtest"
+          ],
+          "changes2025": [
+            {
+              "type": "added",
+              "description": "Anomalien/Redundanzen in Datenbanken erkennen",
+              "important": true
+            },
+            {
+              "type": "added",
+              "description": "SQL mit detailliertem Beiblatt",
+              "important": true
+            },
+            {
+              "type": "removed",
+              "description": "Struktogramm und PAP entfernt",
+              "replacement": "Aktivitätsdiagramm"
+            }
+          ]
+        },
+        {
+          "id": "FUE-03",
+          "code": "FÜ-03",
+          "name": "Durchführen von qualitätssichernden Maßnahmen",
+          "examRelevance": "high",
+          "topics": [
+            "Software-Test (Black Box, White Box, Review)",
+            "Last- und Performancetests",
+            "Testdaten und Extremwertetests"
+          ],
+          "changes2025": [
+            {
+              "type": "added",
+              "description": "Last- und Performancetests",
+              "important": false
+            }
+          ]
+        },
+        {
+          "id": "FUE-04",
+          "code": "FÜ-04",
+          "name": "Sicherstellen der Informationssicherheit",
+          "examRelevance": "high",
+          "topics": [
+            "Technisch Organisatorische Maßnahmen (TOM)",
+            "Bedrohungsszenarien (Man-in-the-Middle, SQL-Injection, DDoS)",
+            "Datenschutz und Datensicherheit"
+          ],
+          "changes2025": [
+            {
+              "type": "added",
+              "description": "Bedrohungsszenarien: Man-in-the-Middle, SQL-Injection, DDoS-Attack",
+              "important": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BP",
+      "code": "BP",
+      "name": "Berufsprofilgebende Fertigkeiten, Kenntnisse und Fähigkeiten in der Fachrichtung Anwendungsentwicklung",
+      "description": "Spezifische Inhalte für Fachinformatiker Anwendungsentwicklung",
+      "color": "#10b981",
+      "subcategories": [
+        {
+          "id": "BP-01",
+          "code": "BP-01",
+          "name": "Konzipieren und Umsetzen von kundenspezifischen Softwareanwendungen",
+          "examRelevance": "high",
+          "topics": [
+            "Netzwerktopologien und Protokolle",
+            "Zugriffskontrolle (RADIUS, Kerberos)",
+            "Datenabruf (HTTP, ODBC)",
+            "Monitoring von Systemen",
+            "Programm- und Konfigurationsdokumentation"
+          ],
+          "changes2025": [
+            {
+              "type": "added",
+              "description": "Kerberos für Zugriffskontrolle",
+              "important": true
+            },
+            {
+              "type": "added",
+              "description": "ODBC für Datenabruf",
+              "important": true
+            },
+            {
+              "type": "added",
+              "description": "Monitoring von Systemen (Schwellwerte, Monitoringdaten)",
+              "important": false
+            },
+            {
+              "type": "added",
+              "description": "Programm- und Konfigurationsdokumentation",
+              "important": true
+            },
+            {
+              "type": "removed",
+              "description": "Load Balancing entfernt"
+            }
+          ]
+        },
+        {
+          "id": "BP-02",
+          "code": "BP-02",
+          "name": "Sicherstellen der Qualität von Softwareanwendungen",
+          "examRelevance": "medium",
+          "topics": [
+            "NAS und SAN",
+            "Datenaustauschformate (XML, JSON, CSV)",
+            "Cloud-Modelle (SaaS, IaaS, PaaS)",
+            "Verschlüsselung (z.B. Bitlocker)"
+          ],
+          "changes2025": [
+            {
+              "type": "added",
+              "description": "NAS und SAN",
+              "important": false
+            },
+            {
+              "type": "removed",
+              "description": "Data Warehouse entfernt"
+            }
+          ]
+        },
+        {
+          "id": "BP-03",
+          "code": "BP-03",
+          "name": "Entwickeln von Softwareanwendungen",
+          "examRelevance": "high",
+          "topics": [
+            "Softwarequalitätsmerkmale (ISO 25001)",
+            "Cyber-physische Systeme",
+            "Test Driven Development (TDD)",
+            "API-Entwicklung (REST)",
+            "Unit-Tests und E2E-Tests"
+          ],
+          "changes2025": [
+            {
+              "type": "added",
+              "description": "Softwarequalitätsmerkmale nach ISO 25001 (Änderbarkeit/Erweiterbarkeit, Wartbarkeit)",
+              "important": true
+            },
+            {
+              "type": "added",
+              "description": "Cyber-physische Systeme (CPS-Software, Sensoren/Aktoren, Bibliotheken)",
+              "important": true
+            },
+            {
+              "type": "added",
+              "description": "Test Driven Development (TDD)",
+              "important": true
+            }
+          ]
+        },
+        {
+          "id": "BP-04",
+          "code": "BP-04",
+          "name": "Projektmanagement und Softwareentwicklungsmethoden",
+          "examRelevance": "high",
+          "topics": [
+            "Scrum (Rollen, Events, Artefakte)",
+            "Architektur-Pattern (MVC, Layered, Microservices)",
+            "Design-Pattern",
+            "Software-Entwicklungswerkzeuge"
+          ],
+          "changes2025": [
+            {
+              "type": "added",
+              "description": "Scrum explizit genannt",
+              "important": true
+            },
+            {
+              "type": "added",
+              "description": "Architektur-Pattern zusätzlich zu Design-Pattern",
+              "important": true
+            },
+            {
+              "type": "removed",
+              "description": "Struktogramm und PAP entfernt",
+              "important": true
+            },
+            {
+              "type": "removed",
+              "description": "Programmierparadigmen entfernt"
+            }
+          ]
+        },
+        {
+          "id": "BP-05",
+          "code": "BP-05",
+          "name": "Objektorientierte Programmierung und Algorithmen",
+          "examRelevance": "high",
+          "topics": [
+            "Objektorientierte Konzepte (Kapselung, Vererbung, Polymorphie)",
+            "Sortierverfahren (Bubble, Selection, Insertion Sort)",
+            "Datenstrukturen",
+            "SQL (mit Verweis auf Beiblatt)"
+          ],
+          "changes2025": [
+            {
+              "type": "added",
+              "description": "Kapselung in OOP explizit genannt",
+              "important": true
+            },
+            {
+              "type": "added",
+              "description": "Elementares Sortieren: Bubble Sort, Selection Sort, Insertion Sort",
+              "important": true
+            },
+            {
+              "type": "modified",
+              "description": "SQL mit Verweis auf Beiblatt (detaillierter)",
+              "important": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "removedTopics": [
+    {
+      "topic": "Struktogramm (Nassi-Shneiderman)",
+      "category": "FÜ-02, BP-04",
+      "replacement": "Aktivitätsdiagramm",
+      "reason": "Modernisierung der Darstellungsmethoden"
+    },
+    {
+      "topic": "Programmablaufplan (PAP)",
+      "category": "FÜ-02, BP-04",
+      "replacement": "Aktivitätsdiagramm oder Pseudocode",
+      "reason": "Modernisierung der Darstellungsmethoden"
+    },
+    {
+      "topic": "Trend-Themen (Smart Grid, IoT, Industrie 4.0, KI, Blockchain, Big Data, Augmented Reality)",
+      "category": "FÜ-02",
+      "replacement": null,
+      "reason": "Trends von gestern sind Normalzustand heute, teilweise in andere Berufe verschoben"
+    },
+    {
+      "topic": "Load Balancing",
+      "category": "BP-01",
+      "replacement": null,
+      "reason": "Nicht mehr explizit gefordert"
+    },
+    {
+      "topic": "Data Warehouse",
+      "category": "BP-02",
+      "replacement": null,
+      "reason": "Nicht mehr explizit gefordert"
+    },
+    {
+      "topic": "Programmierparadigmen",
+      "category": "BP-04",
+      "replacement": null,
+      "reason": "Nicht mehr explizit gefordert"
+    }
+  ],
+  "importantChanges2025": [
+    "SQL mit detailliertem 2-seitigem Beiblatt",
+    "Test Driven Development (TDD) neu",
+    "Scrum explizit genannt",
+    "Sortierverfahren (Bubble, Selection, Insertion Sort)",
+    "Cyber-physische Systeme",
+    "Architektur-Pattern zusätzlich zu Design-Pattern",
+    "Sicherheitsbedrohungen (Man-in-the-Middle, SQL-Injection, DDoS)",
+    "Kapselung in OOP explizit",
+    "Struktogramm und PAP entfernt"
+  ]
+}

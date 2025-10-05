@@ -1,0 +1,140 @@
+{
+  "id": "new-topics-2025",
+  "title": "Neue Themen 2025: Prüfungsänderungen meistern",
+  "description": "Fokussierter Lernpfad für alle neuen und geänderten Themen im Prüfungskatalog 2025. Dieser Pfad hilft dir, dich gezielt auf die wichtigsten Neuerungen vorzubereiten und sicherzustellen, dass du keine prüfungsrelevanten Änderungen verpasst.",
+  "targetExam": "AP2-2025",
+  "difficulty": "intermediate",
+  "estimatedDuration": 50,
+  "tags": ["Neu 2025", "Prüfungsänderungen", "TDD", "Scrum", "Sortierverfahren", "CPS", "Sicherheit"],
+  "modules": [
+    {
+      "moduleId": "bp-03-tdd",
+      "order": 1,
+      "required": true
+    },
+    {
+      "moduleId": "bp-04-scrum",
+      "order": 2,
+      "required": true
+    },
+    {
+      "moduleId": "bp-05-sorting",
+      "order": 3,
+      "required": true
+    },
+    {
+      "moduleId": "bp-03-cps",
+      "order": 4,
+      "required": true
+    },
+    {
+      "moduleId": "bp-04-architecture-patterns",
+      "order": 5,
+      "required": true
+    },
+    {
+      "moduleId": "fue-04-security-threats",
+      "order": 6,
+      "required": true
+    },
+    {
+      "moduleId": "bp-05-encapsulation",
+      "order": 7,
+      "required": true
+    },
+    {
+      "moduleId": "sql-ddl",
+      "order": 8,
+      "required": true
+    },
+    {
+      "moduleId": "sql-dml",
+      "order": 9,
+      "required": true
+    },
+    {
+      "moduleId": "sql-dql",
+      "order": 10,
+      "required": true
+    },
+    {
+      "moduleId": "bp-01-monitoring",
+      "order": 11,
+      "required": true
+    },
+    {
+      "moduleId": "bp-01-documentation",
+      "order": 12,
+      "required": true
+    },
+    {
+      "moduleId": "bp-02-quality-assurance",
+      "order": 13,
+      "required": false
+    },
+    {
+      "moduleId": "bp-03-software-quality",
+      "order": 14,
+      "required": false
+    }
+  ],
+  "quizzes": [
+    {
+      "quizId": "tdd-quiz",
+      "order": 1,
+      "unlockAfterModules": ["bp-03-tdd"]
+    },
+    {
+      "quizId": "scrum-quiz",
+      "order": 2,
+      "unlockAfterModules": ["bp-04-scrum"]
+    },
+    {
+      "quizId": "sorting-algorithms-quiz",
+      "order": 3,
+      "unlockAfterModules": ["bp-05-sorting"]
+    },
+    {
+      "quizId": "security-threats-quiz",
+      "order": 4,
+      "unlockAfterModules": ["fue-04-security-threats"]
+    },
+    {
+      "quizId": "sql-comprehensive-quiz",
+      "order": 5,
+      "unlockAfterModules": ["sql-ddl", "sql-dml", "sql-dql"]
+    }
+  ],
+  "milestones": [
+    {
+      "title": "Agile Methoden verstanden",
+      "description": "Du beherrschst Test Driven Development und Scrum - zwei zentrale neue Themen für 2025.",
+      "requiredModules": ["bp-03-tdd", "bp-04-scrum"],
+      "requiredQuizzes": ["tdd-quiz", "scrum-quiz"]
+    },
+    {
+      "title": "Algorithmen und OOP vertieft",
+      "description": "Du verstehst Sortierverfahren und Kapselung in der objektorientierten Programmierung.",
+      "requiredModules": ["bp-05-sorting", "bp-05-encapsulation"],
+      "requiredQuizzes": ["sorting-algorithms-quiz"]
+    },
+    {
+      "title": "Moderne Technologien kennengelernt",
+      "description": "Du kennst Cyber-physische Systeme, Architektur-Pattern und moderne Sicherheitsbedrohungen.",
+      "requiredModules": ["bp-03-cps", "bp-04-architecture-patterns", "fue-04-security-threats"],
+      "requiredQuizzes": ["security-threats-quiz"]
+    },
+    {
+      "title": "SQL-Beiblatt gemeistert",
+      "description": "Du beherrschst alle SQL-Befehle aus dem neuen detaillierten Prüfungsbeiblatt.",
+      "requiredModules": ["sql-ddl", "sql-dml", "sql-dql"],
+      "requiredQuizzes": ["sql-comprehensive-quiz"]
+    },
+    {
+      "title": "Bereit für 2025",
+      "description": "Herzlichen Glückwunsch! Du bist mit allen wichtigen Änderungen im Prüfungskatalog 2025 vertraut und optimal vorbereitet.",
+      "requiredModules": ["bp-03-tdd", "bp-04-scrum", "bp-05-sorting", "bp-03-cps", "bp-04-architecture-patterns", "fue-04-security-threats", "bp-05-encapsulation", "sql-ddl", "sql-dml", "sql-dql", "bp-01-monitoring", "bp-01-documentation"],
+      "requiredQuizzes": ["tdd-quiz", "scrum-quiz", "sorting-algorithms-quiz", "security-threats-quiz", "sql-comprehensive-quiz"]
+    }
+  ]
+}

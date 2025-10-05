@@ -1,0 +1,201 @@
+{
+  "id": "ap2-complete-2025",
+  "title": "AP2 Komplett-Vorbereitung 2025",
+  "description": "Vollständiger Lernpfad zur Vorbereitung auf die IHK Abschlussprüfung Teil 2 für Fachinformatiker Anwendungsentwicklung. Dieser Pfad deckt alle Themen des Prüfungskatalogs 2025 systematisch ab und berücksichtigt alle neuen und geänderten Inhalte.",
+  "targetExam": "AP2-2025",
+  "difficulty": "intermediate",
+  "estimatedDuration": 180,
+  "tags": ["AP2", "Komplett", "Prüfungsvorbereitung", "2025"],
+  "modules": [
+    {
+      "moduleId": "fue-01-planning",
+      "order": 1,
+      "required": true
+    },
+    {
+      "moduleId": "fue-02-development",
+      "order": 2,
+      "required": true
+    },
+    {
+      "moduleId": "sql-ddl",
+      "order": 3,
+      "required": true
+    },
+    {
+      "moduleId": "sql-dml",
+      "order": 4,
+      "required": true
+    },
+    {
+      "moduleId": "sql-dql",
+      "order": 5,
+      "required": true
+    },
+    {
+      "moduleId": "fue-03-quality",
+      "order": 6,
+      "required": true
+    },
+    {
+      "moduleId": "bp-03-tdd",
+      "order": 7,
+      "required": true
+    },
+    {
+      "moduleId": "fue-04-security",
+      "order": 8,
+      "required": true
+    },
+    {
+      "moduleId": "fue-04-security-threats",
+      "order": 9,
+      "required": true
+    },
+    {
+      "moduleId": "bp-01-conception",
+      "order": 10,
+      "required": true
+    },
+    {
+      "moduleId": "bp-01-monitoring",
+      "order": 11,
+      "required": true
+    },
+    {
+      "moduleId": "bp-01-documentation",
+      "order": 12,
+      "required": true
+    },
+    {
+      "moduleId": "bp-02-quality-assurance",
+      "order": 13,
+      "required": true
+    },
+    {
+      "moduleId": "bp-02-data-formats",
+      "order": 14,
+      "required": true
+    },
+    {
+      "moduleId": "bp-02-cloud-models",
+      "order": 15,
+      "required": true
+    },
+    {
+      "moduleId": "bp-03-software-quality",
+      "order": 16,
+      "required": true
+    },
+    {
+      "moduleId": "bp-03-cps",
+      "order": 17,
+      "required": true
+    },
+    {
+      "moduleId": "bp-03-rest-api",
+      "order": 18,
+      "required": true
+    },
+    {
+      "moduleId": "bp-04-scrum",
+      "order": 19,
+      "required": true
+    },
+    {
+      "moduleId": "bp-04-architecture-patterns",
+      "order": 20,
+      "required": true
+    },
+    {
+      "moduleId": "bp-04-design-patterns",
+      "order": 21,
+      "required": true
+    },
+    {
+      "moduleId": "bp-05-encapsulation",
+      "order": 22,
+      "required": true
+    },
+    {
+      "moduleId": "bp-05-sorting",
+      "order": 23,
+      "required": true
+    },
+    {
+      "moduleId": "bp-05-data-structures",
+      "order": 24,
+      "required": true
+    },
+    {
+      "moduleId": "bp-05-sql-reference",
+      "order": 25,
+      "required": true
+    }
+  ],
+  "quizzes": [
+    {
+      "quizId": "sql-comprehensive-quiz",
+      "order": 1,
+      "unlockAfterModules": ["sql-ddl", "sql-dml", "sql-dql"]
+    },
+    {
+      "quizId": "tdd-quiz",
+      "order": 2,
+      "unlockAfterModules": ["bp-03-tdd"]
+    },
+    {
+      "quizId": "scrum-quiz",
+      "order": 3,
+      "unlockAfterModules": ["bp-04-scrum"]
+    },
+    {
+      "quizId": "sorting-algorithms-quiz",
+      "order": 4,
+      "unlockAfterModules": ["bp-05-sorting"]
+    },
+    {
+      "quizId": "security-threats-quiz",
+      "order": 5,
+      "unlockAfterModules": ["fue-04-security", "fue-04-security-threats"]
+    }
+  ],
+  "milestones": [
+    {
+      "title": "Grundlagen abgeschlossen",
+      "description": "Du hast die fachrichtungsübergreifenden Grundlagen erfolgreich abgeschlossen und bist bereit für die berufsprofilgebenden Themen.",
+      "requiredModules": ["fue-01-planning", "fue-02-development", "fue-03-quality", "fue-04-security"],
+      "requiredQuizzes": []
+    },
+    {
+      "title": "SQL-Kompetenz erreicht",
+      "description": "Du beherrschst alle SQL-Befehle aus dem Prüfungsbeiblatt und kannst komplexe Datenbankabfragen durchführen.",
+      "requiredModules": ["sql-ddl", "sql-dml", "sql-dql", "bp-05-sql-reference"],
+      "requiredQuizzes": ["sql-comprehensive-quiz"]
+    },
+    {
+      "title": "Neue Themen 2025 gemeistert",
+      "description": "Du hast alle neuen Themen ab 2025 erfolgreich gelernt und bist auf dem aktuellen Stand der Prüfungsanforderungen.",
+      "requiredModules": ["bp-03-tdd", "bp-04-scrum", "bp-05-sorting", "bp-03-cps", "bp-04-architecture-patterns", "fue-04-security-threats", "bp-05-encapsulation"],
+      "requiredQuizzes": ["tdd-quiz", "scrum-quiz", "sorting-algorithms-quiz", "security-threats-quiz"]
+    },
+    {
+      "title": "Softwareentwicklung vertieft",
+      "description": "Du hast fundierte Kenntnisse in Softwareentwicklung, Architektur und Best Practices erworben.",
+      "requiredModules": ["bp-03-software-quality", "bp-03-rest-api", "bp-04-architecture-patterns", "bp-04-design-patterns"],
+      "requiredQuizzes": []
+    },
+    {
+      "title": "OOP und Algorithmen beherrscht",
+      "description": "Du verstehst objektorientierte Programmierung und wichtige Algorithmen vollständig.",
+      "requiredModules": ["bp-05-encapsulation", "bp-05-sorting", "bp-05-data-structures"],
+      "requiredQuizzes": ["sorting-algorithms-quiz"]
+    },
+    {
+      "title": "Prüfungsbereit",
+      "description": "Herzlichen Glückwunsch! Du hast alle Themen durchgearbeitet und bist bereit für die AP2-Prüfung 2025.",
+      "requiredModules": ["fue-01-planning", "fue-02-development", "fue-03-quality", "fue-04-security", "fue-04-security-threats", "bp-01-conception", "bp-01-monitoring", "bp-01-documentation", "bp-02-quality-assurance", "bp-02-data-formats", "bp-02-cloud-models", "bp-03-software-quality", "bp-03-cps", "bp-03-tdd", "bp-03-rest-api", "bp-04-scrum", "bp-04-architecture-patterns", "bp-04-design-patterns", "bp-05-encapsulation", "bp-05-sorting", "bp-05-data-structures", "bp-05-sql-reference", "sql-ddl", "sql-dml", "sql-dql"],
+      "requiredQuizzes": ["sql-comprehensive-quiz", "tdd-quiz", "scrum-quiz", "sorting-algorithms-quiz", "security-threats-quiz"]
+    }
+  ]
+}

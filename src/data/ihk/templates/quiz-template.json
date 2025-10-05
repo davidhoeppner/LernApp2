@@ -1,0 +1,58 @@
+{
+  "_comment": "Template für IHK-Quizzes - Kopiere und fülle dieses Template für neue Quizzes aus",
+  "id": "unique-quiz-id",
+  "moduleId": "related-module-id",
+  "title": "Quiz-Titel",
+  "description": "Kurze Beschreibung des Quiz",
+  "category": "FÜ-01 | FÜ-02 | FÜ-03 | FÜ-04 | BP-01 | BP-02 | BP-03 | BP-04 | BP-05",
+  "difficulty": "beginner | intermediate | advanced",
+  "examRelevance": "high | medium | low",
+  "newIn2025": false,
+  "timeLimit": 30,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Fragetext in Markdown",
+      "options": ["Antwort A", "Antwort B", "Antwort C", "Antwort D"],
+      "correctAnswer": "Antwort B",
+      "explanation": "Erklärung warum B richtig ist und die anderen falsch sind",
+      "points": 1,
+      "category": "Unterkategorie für Statistiken"
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "question": "Fragetext (mehrere Antworten möglich)",
+      "options": ["Antwort A", "Antwort B", "Antwort C", "Antwort D"],
+      "correctAnswer": ["Antwort A", "Antwort C"],
+      "explanation": "Erklärung warum A und C richtig sind",
+      "points": 2,
+      "category": "Unterkategorie"
+    },
+    {
+      "id": "q3",
+      "type": "code",
+      "question": "Was gibt dieser Code aus?",
+      "code": "public class Test {\n    public static void main(String[] args) {\n        int x = 5;\n        System.out.println(x++);\n    }\n}",
+      "language": "java",
+      "options": ["4", "5", "6", "Compiler-Fehler"],
+      "correctAnswer": "5",
+      "explanation": "x++ ist Post-Inkrement, daher wird erst der Wert ausgegeben, dann erhöht",
+      "points": 2,
+      "category": "Java-Grundlagen"
+    },
+    {
+      "id": "q4",
+      "type": "true-false",
+      "question": "TDD steht für Test Driven Development",
+      "correctAnswer": "true",
+      "explanation": "TDD bedeutet Test Driven Development - Tests werden vor dem Code geschrieben",
+      "points": 1,
+      "category": "TDD"
+    }
+  ],
+  "tags": ["tag1", "tag2"],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

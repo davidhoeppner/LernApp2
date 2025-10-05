@@ -1,0 +1,90 @@
+{
+  "id": "sql-dml-2025",
+  "title": "SQL DML - Daten manipulieren",
+  "description": "Lerne die Data Manipulation Language (DML) Befehle INSERT, UPDATE und DELETE aus dem IHK Prüfungsbeiblatt. Diese Befehle werden verwendet, um Daten in Tabellen einzufügen, zu ändern und zu löschen.",
+  "category": "FÜ-02",
+  "subcategory": "SQL - Data Manipulation Language",
+  "difficulty": "beginner",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 40,
+  "prerequisites": ["sql-ddl-2025"],
+  "tags": ["SQL", "DML", "INSERT", "UPDATE", "DELETE", "Datenbank", "Prüfungsbeiblatt"],
+  "content": "# SQL DML - Data Manipulation Language\n\n## Einführung\n\nDie **Data Manipulation Language (DML)** ist der Teil von SQL, mit dem du Daten in Tabellen einfügen, ändern und löschen kannst. Im Gegensatz zu DDL (das die Struktur ändert) arbeitet DML mit den eigentlichen Daten.\n\n**Wichtig für die Prüfung:** Diese Befehle sind im SQL-Beiblatt enthalten!\n\n## INSERT - Daten einfügen\n\n### Syntax\n\n```sql\nINSERT INTO table_name (column1, column2, ...)\nVALUES (value1, value2, ...);\n```\n\n### Grundlegendes Beispiel\n\n```sql\nINSERT INTO mitarbeiter (mitarbeiter_id, vorname, nachname, email)\nVALUES (1, 'Max', 'Mustermann', 'max.mustermann@firma.de');\n```\n\n### Alle Spalten einfügen\n\nWenn du Werte für alle Spalten in der richtigen Reihenfolge angibst, kannst du die Spaltennamen weglassen:\n\n```sql\nINSERT INTO mitarbeiter\nVALUES (2, 'Anna', 'Schmidt', 'anna.schmidt@firma.de', 45000.00, '2024-01-15', 1);\n```\n\n**Achtung:** Diese Methode ist fehleranfällig! Besser ist es, die Spalten explizit anzugeben.\n\n### Mehrere Zeilen gleichzeitig einfügen\n\n```sql\nINSERT INTO mitarbeiter (mitarbeiter_id, vorname, nachname, email)\nVALUES \n    (3, 'Tom', 'Weber', 'tom.weber@firma.de'),\n    (4, 'Lisa', 'Meyer', 'lisa.meyer@firma.de'),\n    (5, 'Paul', 'Fischer', 'paul.fischer@firma.de');\n```\n\n### Daten aus anderer Tabelle einfügen\n\n```sql\nINSERT INTO mitarbeiter_archiv (mitarbeiter_id, vorname, nachname)\nSELECT mitarbeiter_id, vorname, nachname\nFROM mitarbeiter\nWHERE einstellungsdatum < '2020-01-01';\n```\n\n### NULL-Werte und Standardwerte\n\n```sql\n-- NULL explizit einfügen\nINSERT INTO mitarbeiter (mitarbeiter_id, vorname, nachname, email, telefon)\nVALUES (6, 'Julia', 'Becker', 'julia.becker@firma.de', NULL);\n\n-- Spalte weglassen (verwendet DEFAULT oder NULL)\nINSERT INTO mitarbeiter (mitarbeiter_id, vorname, nachname, email)\nVALUES (7, 'Tim', 'Schulz', 'tim.schulz@firma.de');\n-- einstellungsdatum erhält automatisch CURRENT_DATE (wenn als DEFAULT definiert)\n```\n\n## UPDATE - Daten ändern\n\n### Syntax\n\n```sql\nUPDATE table_name\nSET column1 = value1, column2 = value2, ...\nWHERE condition;\n```\n\n**WICHTIG:** Vergiss niemals die WHERE-Klausel! Ohne WHERE werden ALLE Zeilen geändert!\n\n### Einzelne Zeile ändern\n\n```sql\nUPDATE mitarbeiter\nSET gehalt = 50000.00\nWHERE mitarbeiter_id = 1;\n```\n\n### Mehrere Spalten ändern\n\n```sql\nUPDATE mitarbeiter\nSET gehalt = 52000.00,\n    abteilung_id = 2,\n    email = 'max.mustermann@neue-email.de'\nWHERE mitarbeiter_id = 1;\n```\n\n### Mehrere Zeilen ändern\n\n```sql\n-- Gehaltserhöhung für alle in Abteilung 1\nUPDATE mitarbeiter\nSET gehalt = gehalt * 1.05\nWHERE abteilung_id = 1;\n```\n\n### Berechnungen im UPDATE\n\n```sql\n-- 10% Gehaltserhöhung für alle\nUPDATE mitarbeiter\nSET gehalt = gehalt * 1.10;\n\n-- Gehalt um festen Betrag erhöhen\nUPDATE mitarbeiter\nSET gehalt = gehalt + 2000\nWHERE einstellungsdatum < '2020-01-01';\n```\n\n### UPDATE mit Subquery\n\n```sql\n-- Setze Abteilung auf die Abteilung mit den meisten Mitarbeitern\nUPDATE mitarbeiter\nSET abteilung_id = (\n    SELECT abteilung_id\n    FROM mitarbeiter\n    GROUP BY abteilung_id\n    ORDER BY COUNT(*) DESC\n    LIMIT 1\n)\nWHERE abteilung_id IS NULL;\n```\n\n## DELETE - Daten löschen\n\n### Syntax\n\n```sql\nDELETE FROM table_name\nWHERE condition;\n```\n\n**WICHTIG:** Ohne WHERE-Klausel werden ALLE Zeilen gelöscht!\n\n### Einzelne Zeile löschen\n\n```sql\nDELETE FROM mitarbeiter\nWHERE mitarbeiter_id = 1;\n```\n\n### Mehrere Zeilen löschen\n\n```sql\n-- Alle Mitarbeiter aus Abteilung 3 löschen\nDELETE FROM mitarbeiter\nWHERE abteilung_id = 3;\n\n-- Alle Mitarbeiter mit Gehalt unter 30000 löschen\nDELETE FROM mitarbeiter\nWHERE gehalt < 30000;\n```\n\n### DELETE mit komplexen Bedingungen\n\n```sql\n-- Mitarbeiter löschen, die vor 2015 eingestellt wurden UND in Abteilung 2 sind\nDELETE FROM mitarbeiter\nWHERE einstellungsdatum < '2015-01-01'\n  AND abteilung_id = 2;\n```\n\n### DELETE mit Subquery\n\n```sql\n-- Lösche alle Mitarbeiter aus Abteilungen, die in Berlin sind\nDELETE FROM mitarbeiter\nWHERE abteilung_id IN (\n    SELECT abteilung_id\n    FROM abteilung\n    WHERE standort = 'Berlin'\n);\n```\n\n### Alle Zeilen löschen\n\n```sql\n-- Löscht alle Zeilen (Struktur bleibt erhalten)\nDELETE FROM mitarbeiter;\n\n-- Alternative: TRUNCATE (schneller, aber nicht überall verfügbar)\nTRUNCATE TABLE mitarbeiter;\n```\n\n## Praxisbeispiel: Online-Shop\n\nLass uns ein vollständiges Beispiel mit INSERT, UPDATE und DELETE durchgehen:\n\n```sql\n-- 1. Neue Kunden anlegen\nINSERT INTO kunde (kunde_id, name, email, registriert_am)\nVALUES \n    (1, 'Max Müller', 'max@example.com', '2024-01-15'),\n    (2, 'Anna Schmidt', 'anna@example.com', '2024-01-16'),\n    (3, 'Tom Weber', 'tom@example.com', '2024-01-17');\n\n-- 2. Produkte anlegen\nINSERT INTO produkt (produkt_id, name, preis, lagerbestand)\nVALUES\n    (101, 'Laptop', 899.99, 15),\n    (102, 'Maus', 29.99, 50),\n    (103, 'Tastatur', 79.99, 30);\n\n-- 3. Bestellungen erstellen\nINSERT INTO bestellung (bestellung_id, kunde_id, bestelldatum, gesamtbetrag)\nVALUES\n    (1001, 1, '2024-02-01', 929.98),\n    (1002, 2, '2024-02-02', 29.99);\n\n-- 4. Lagerbestand nach Verkauf aktualisieren\nUPDATE produkt\nSET lagerbestand = lagerbestand - 1\nWHERE produkt_id = 101;\n\nUPDATE produkt\nSET lagerbestand = lagerbestand - 1\nWHERE produkt_id = 102;\n\n-- 5. Preis ändern (Rabattaktion)\nUPDATE produkt\nSET preis = preis * 0.9\nWHERE produkt_id IN (102, 103);\n\n-- 6. Kunde ändert E-Mail\nUPDATE kunde\nSET email = 'max.mueller@newmail.com'\nWHERE kunde_id = 1;\n\n-- 7. Alte Bestellungen löschen (älter als 2 Jahre)\nDELETE FROM bestellung\nWHERE bestelldatum < '2022-01-01';\n\n-- 8. Produkte ohne Lagerbestand löschen\nDELETE FROM produkt\nWHERE lagerbestand = 0;\n```\n\n## Wichtige Hinweise für die Prüfung\n\n### 1. WHERE-Klausel nicht vergessen!\n\n```sql\n-- FALSCH: Ändert ALLE Mitarbeiter!\nUPDATE mitarbeiter\nSET gehalt = 100000;\n\n-- RICHTIG: Ändert nur einen Mitarbeiter\nUPDATE mitarbeiter\nSET gehalt = 100000\nWHERE mitarbeiter_id = 1;\n```\n\n### 2. Datentypen beachten\n\n```sql\n-- Strings in Anführungszeichen\nINSERT INTO kunde (name) VALUES ('Max Müller');\n\n-- Zahlen ohne Anführungszeichen\nINSERT INTO produkt (preis) VALUES (29.99);\n\n-- Datum in Anführungszeichen (Format: YYYY-MM-DD)\nINSERT INTO bestellung (bestelldatum) VALUES ('2024-01-15');\n```\n\n### 3. Fremdschlüssel-Constraints\n\n```sql\n-- FEHLER: kunde_id 999 existiert nicht\nINSERT INTO bestellung (bestellung_id, kunde_id)\nVALUES (1, 999);\n\n-- FEHLER: Kann Kunde nicht löschen, wenn Bestellungen existieren\nDELETE FROM kunde WHERE kunde_id = 1;\n-- Lösung: Erst Bestellungen löschen, dann Kunde\n```\n\n### 4. NULL-Werte\n\n```sql\n-- NULL einfügen\nINSERT INTO mitarbeiter (mitarbeiter_id, vorname, nachname, telefon)\nVALUES (1, 'Max', 'Müller', NULL);\n\n-- NULL in UPDATE\nUPDATE mitarbeiter\nSET telefon = NULL\nWHERE mitarbeiter_id = 1;\n\n-- Prüfen auf NULL\nDELETE FROM mitarbeiter\nWHERE telefon IS NULL;\n```\n\n## Transaktionen (Bonus-Wissen)\n\nIn der Praxis werden DML-Befehle oft in Transaktionen verwendet:\n\n```sql\nBEGIN TRANSACTION;\n\n-- Geld von Konto A abbuchen\nUPDATE konto\nSET saldo = saldo - 100\nWHERE konto_id = 1;\n\n-- Geld auf Konto B einzahlen\nUPDATE konto\nSET saldo = saldo + 100\nWHERE konto_id = 2;\n\nCOMMIT; -- Änderungen speichern\n-- oder ROLLBACK; -- Änderungen rückgängig machen\n```\n\n## Zusammenfassung\n\n- **INSERT INTO**: Fügt neue Zeilen in eine Tabelle ein\n- **UPDATE SET WHERE**: Ändert bestehende Zeilen (WHERE nicht vergessen!)\n- **DELETE FROM WHERE**: Löscht Zeilen (WHERE nicht vergessen!)\n- **Mehrere Zeilen**: Alle Befehle können mehrere Zeilen gleichzeitig bearbeiten\n- **Subqueries**: Können in INSERT, UPDATE und DELETE verwendet werden\n- **Constraints**: Fremdschlüssel und andere Constraints müssen beachtet werden\n- **NULL**: Kann explizit eingefügt oder gesetzt werden",
+  "codeExamples": [
+    {
+      "language": "sql",
+      "title": "Einfaches INSERT",
+      "code": "INSERT INTO kunde (kunde_id, name, email)\nVALUES (1, 'Max Müller', 'max@example.com');",
+      "explanation": "Fügt einen neuen Kunden in die Tabelle ein"
+    },
+    {
+      "language": "sql",
+      "title": "Mehrere Zeilen einfügen",
+      "code": "INSERT INTO produkt (produkt_id, name, preis)\nVALUES \n    (1, 'Laptop', 899.99),\n    (2, 'Maus', 29.99),\n    (3, 'Tastatur', 79.99);",
+      "explanation": "Fügt mehrere Produkte gleichzeitig ein"
+    },
+    {
+      "language": "sql",
+      "title": "UPDATE mit Berechnung",
+      "code": "UPDATE produkt\nSET preis = preis * 0.9\nWHERE kategorie = 'Elektronik';",
+      "explanation": "Reduziert alle Elektronik-Preise um 10%"
+    },
+    {
+      "language": "sql",
+      "title": "DELETE mit Bedingung",
+      "code": "DELETE FROM bestellung\nWHERE bestelldatum < '2022-01-01'\n  AND status = 'abgeschlossen';",
+      "explanation": "Löscht alte, abgeschlossene Bestellungen"
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Übung 1: Kunden einfügen",
+      "description": "Füge drei neue Kunden in die 'kunde' Tabelle ein:\n- ID: 10, Name: 'Sarah Klein', Email: 'sarah@test.de'\n- ID: 11, Name: 'Peter Groß', Email: 'peter@test.de'\n- ID: 12, Name: 'Maria Lang', Email: 'maria@test.de'",
+      "difficulty": "beginner",
+      "solution": "INSERT INTO kunde (kunde_id, name, email)\nVALUES \n    (10, 'Sarah Klein', 'sarah@test.de'),\n    (11, 'Peter Groß', 'peter@test.de'),\n    (12, 'Maria Lang', 'maria@test.de');"
+    },
+    {
+      "title": "Übung 2: Preis aktualisieren",
+      "description": "Erhöhe den Preis aller Produkte in der Kategorie 'Bücher' um 5%.",
+      "difficulty": "beginner",
+      "solution": "UPDATE produkt\nSET preis = preis * 1.05\nWHERE kategorie = 'Bücher';"
+    },
+    {
+      "title": "Übung 3: Lagerbestand reduzieren",
+      "description": "Ein Kunde kauft 3 Stück von Produkt mit ID 101. Reduziere den Lagerbestand entsprechend.",
+      "difficulty": "beginner",
+      "solution": "UPDATE produkt\nSET lagerbestand = lagerbestand - 3\nWHERE produkt_id = 101;"
+    },
+    {
+      "title": "Übung 4: Alte Daten löschen",
+      "description": "Lösche alle Bestellungen, die vor dem 1. Januar 2020 erstellt wurden UND den Status 'storniert' haben.",
+      "difficulty": "intermediate",
+      "solution": "DELETE FROM bestellung\nWHERE bestelldatum < '2020-01-01'\n  AND status = 'storniert';"
+    },
+    {
+      "title": "Übung 5: Komplexe Datenmanipulation",
+      "description": "Führe folgende Operationen durch:\n1. Füge ein neues Produkt ein (ID: 200, Name: 'Monitor', Preis: 299.99, Lagerbestand: 10)\n2. Erstelle eine Bestellung für Kunde 1 (Bestellung-ID: 5000, Datum: heute, Betrag: 299.99)\n3. Reduziere den Lagerbestand des Monitors um 1\n4. Ändere den Status der Bestellung auf 'versendet'",
+      "difficulty": "advanced",
+      "solution": "-- 1. Produkt einfügen\nINSERT INTO produkt (produkt_id, name, preis, lagerbestand)\nVALUES (200, 'Monitor', 299.99, 10);\n\n-- 2. Bestellung erstellen\nINSERT INTO bestellung (bestellung_id, kunde_id, bestelldatum, gesamtbetrag, status)\nVALUES (5000, 1, CURRENT_DATE, 299.99, 'neu');\n\n-- 3. Lagerbestand reduzieren\nUPDATE produkt\nSET lagerbestand = lagerbestand - 1\nWHERE produkt_id = 200;\n\n-- 4. Status ändern\nUPDATE bestellung\nSET status = 'versendet'\nWHERE bestellung_id = 5000;"
+    },
+    {
+      "title": "Übung 6: Daten aus Subquery einfügen",
+      "description": "Erstelle eine Tabelle 'top_kunden' und füge alle Kunden ein, die mehr als 5 Bestellungen haben. (Tipp: Verwende INSERT INTO ... SELECT ...)",
+      "difficulty": "advanced",
+      "solution": "INSERT INTO top_kunden (kunde_id, name, email, anzahl_bestellungen)\nSELECT k.kunde_id, k.name, k.email, COUNT(b.bestellung_id)\nFROM kunde k\nJOIN bestellung b ON k.kunde_id = b.kunde_id\nGROUP BY k.kunde_id, k.name, k.email\nHAVING COUNT(b.bestellung_id) > 5;"
+    }
+  ],
+  "relatedQuizzes": ["sql-comprehensive-quiz-2025"],
+  "resources": [
+    {
+      "title": "SQL Tutorial - DML",
+      "url": "https://www.w3schools.com/sql/sql_insert.asp",
+      "type": "documentation"
+    }
+  ],
+  "lastUpdated": "2025-01-10T00:00:00Z",
+  "version": "1.0"
+}

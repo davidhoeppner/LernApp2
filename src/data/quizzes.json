@@ -1,0 +1,233 @@
+[
+  {
+    "id": "quiz-1",
+    "moduleId": "module-1",
+    "title": "JavaScript Basics Quiz",
+    "description": "Test your understanding of JavaScript fundamentals including variables, functions, and data types.",
+    "timeLimit": null,
+    "questions": [
+      {
+        "id": "q1-1",
+        "type": "multiple-choice",
+        "question": "Which keyword is used to declare a constant variable in JavaScript?",
+        "options": ["var", "let", "const", "constant"],
+        "correctAnswer": "const",
+        "explanation": "The 'const' keyword is used to declare constants in JavaScript. Variables declared with 'const' cannot be reassigned after initialization."
+      },
+      {
+        "id": "q1-2",
+        "type": "multiple-choice",
+        "question": "What will be the output of: console.log(typeof null)?",
+        "options": ["null", "undefined", "object", "number"],
+        "correctAnswer": "object",
+        "explanation": "This is a known quirk in JavaScript. typeof null returns 'object', which is considered a bug in the language but has been kept for backward compatibility."
+      },
+      {
+        "id": "q1-3",
+        "type": "true-false",
+        "question": "JavaScript is a statically typed language.",
+        "options": ["True", "False"],
+        "correctAnswer": "False",
+        "explanation": "JavaScript is a dynamically typed language, meaning variable types are determined at runtime and can change during execution."
+      },
+      {
+        "id": "q1-4",
+        "type": "multiple-choice",
+        "question": "Which of the following is NOT a primitive data type in JavaScript?",
+        "options": ["String", "Boolean", "Array", "Number"],
+        "correctAnswer": "Array",
+        "explanation": "Array is not a primitive data type. It's an object type. The primitive types in JavaScript are: String, Number, Boolean, Undefined, Null, Symbol, and BigInt."
+      },
+      {
+        "id": "q1-5",
+        "type": "multiple-choice",
+        "question": "What is the correct way to create a function in JavaScript?",
+        "options": [
+          "function myFunction() {}",
+          "def myFunction() {}",
+          "func myFunction() {}",
+          "create function myFunction() {}"
+        ],
+        "correctAnswer": "function myFunction() {}",
+        "explanation": "In JavaScript, functions are declared using the 'function' keyword followed by the function name and parentheses."
+      }
+    ]
+  },
+  {
+    "id": "quiz-2",
+    "moduleId": "module-2",
+    "title": "Array Methods Quiz",
+    "description": "Challenge yourself on JavaScript array methods like map, filter, and reduce.",
+    "timeLimit": null,
+    "questions": [
+      {
+        "id": "q2-1",
+        "type": "multiple-choice",
+        "question": "Which array method creates a new array with all elements that pass a test?",
+        "options": ["map()", "filter()", "reduce()", "find()"],
+        "correctAnswer": "filter()",
+        "explanation": "The filter() method creates a new array with all elements that pass the test implemented by the provided function."
+      },
+      {
+        "id": "q2-2",
+        "type": "multiple-choice",
+        "question": "What does [1, 2, 3].map(x => x * 2) return?",
+        "options": ["[1, 2, 3]", "[2, 4, 6]", "[1, 4, 9]", "6"],
+        "correctAnswer": "[2, 4, 6]",
+        "explanation": "The map() method transforms each element by multiplying it by 2, resulting in [2, 4, 6]."
+      },
+      {
+        "id": "q2-3",
+        "type": "true-false",
+        "question": "The reduce() method always returns an array.",
+        "options": ["True", "False"],
+        "correctAnswer": "False",
+        "explanation": "The reduce() method can return any type of value (number, string, object, array, etc.) depending on the accumulator and reducer function."
+      },
+      {
+        "id": "q2-4",
+        "type": "multiple-choice",
+        "question": "Which method would you use to find the first element that matches a condition?",
+        "options": ["filter()", "find()", "map()", "some()"],
+        "correctAnswer": "find()",
+        "explanation": "The find() method returns the first element in the array that satisfies the provided testing function. If no element matches, it returns undefined."
+      },
+      {
+        "id": "q2-5",
+        "type": "multiple-choice",
+        "question": "What is the result of [1, 2, 3, 4].reduce((acc, num) => acc + num, 0)?",
+        "options": ["0", "4", "10", "[1, 2, 3, 4]"],
+        "correctAnswer": "10",
+        "explanation": "The reduce() method sums all numbers in the array: 0 + 1 + 2 + 3 + 4 = 10."
+      }
+    ]
+  },
+  {
+    "id": "quiz-3",
+    "moduleId": "module-3",
+    "title": "Async JavaScript Quiz",
+    "description": "Test your knowledge of promises, async/await, and asynchronous programming patterns.",
+    "timeLimit": null,
+    "questions": [
+      {
+        "id": "q3-1",
+        "type": "multiple-choice",
+        "question": "What does the 'await' keyword do?",
+        "options": [
+          "Pauses execution until a promise is resolved",
+          "Creates a new promise",
+          "Catches errors in async code",
+          "Runs code in parallel"
+        ],
+        "correctAnswer": "Pauses execution until a promise is resolved",
+        "explanation": "The 'await' keyword pauses the execution of an async function until the promise is resolved or rejected."
+      },
+      {
+        "id": "q3-2",
+        "type": "true-false",
+        "question": "Promises can only be in one of three states: pending, fulfilled, or rejected.",
+        "options": ["True", "False"],
+        "correctAnswer": "True",
+        "explanation": "A Promise is always in one of three states: pending (initial state), fulfilled (operation completed successfully), or rejected (operation failed)."
+      },
+      {
+        "id": "q3-3",
+        "type": "multiple-choice",
+        "question": "Which method runs multiple promises in parallel and waits for all to complete?",
+        "options": [
+          "Promise.race()",
+          "Promise.all()",
+          "Promise.any()",
+          "Promise.then()"
+        ],
+        "correctAnswer": "Promise.all()",
+        "explanation": "Promise.all() takes an array of promises and returns a single promise that resolves when all input promises have resolved."
+      },
+      {
+        "id": "q3-4",
+        "type": "multiple-choice",
+        "question": "How do you handle errors in async/await?",
+        "options": [
+          "Using .catch()",
+          "Using try/catch blocks",
+          "Using .error()",
+          "Errors cannot be handled"
+        ],
+        "correctAnswer": "Using try/catch blocks",
+        "explanation": "In async/await syntax, errors are handled using traditional try/catch blocks, making error handling more intuitive."
+      },
+      {
+        "id": "q3-5",
+        "type": "true-false",
+        "question": "The 'async' keyword automatically makes a function return a Promise.",
+        "options": ["True", "False"],
+        "correctAnswer": "True",
+        "explanation": "When you declare a function as async, it automatically returns a Promise. If the function returns a value, the Promise will be resolved with that value."
+      }
+    ]
+  },
+  {
+    "id": "quiz-4",
+    "moduleId": "module-4",
+    "title": "DOM Manipulation Quiz",
+    "description": "Assess your understanding of DOM manipulation, element selection, and event handling.",
+    "timeLimit": null,
+    "questions": [
+      {
+        "id": "q4-1",
+        "type": "multiple-choice",
+        "question": "Which method selects ALL elements matching a CSS selector?",
+        "options": [
+          "getElementById()",
+          "querySelector()",
+          "querySelectorAll()",
+          "getElementsByClassName()"
+        ],
+        "correctAnswer": "querySelectorAll()",
+        "explanation": "querySelectorAll() returns a NodeList containing all elements that match the specified CSS selector."
+      },
+      {
+        "id": "q4-2",
+        "type": "true-false",
+        "question": "innerHTML is always safer to use than textContent.",
+        "options": ["True", "False"],
+        "correctAnswer": "False",
+        "explanation": "textContent is safer than innerHTML because it doesn't parse HTML, preventing potential XSS (Cross-Site Scripting) attacks."
+      },
+      {
+        "id": "q4-3",
+        "type": "multiple-choice",
+        "question": "Which method adds a CSS class to an element?",
+        "options": [
+          "element.addClass('active')",
+          "element.classList.add('active')",
+          "element.class.add('active')",
+          "element.addClassName('active')"
+        ],
+        "correctAnswer": "element.classList.add('active')",
+        "explanation": "The classList.add() method is used to add one or more CSS classes to an element."
+      },
+      {
+        "id": "q4-4",
+        "type": "multiple-choice",
+        "question": "What is event delegation?",
+        "options": [
+          "Removing event listeners",
+          "Adding events to parent elements to handle child events",
+          "Preventing default behavior",
+          "Stopping event propagation"
+        ],
+        "correctAnswer": "Adding events to parent elements to handle child events",
+        "explanation": "Event delegation is a technique where you add an event listener to a parent element to handle events from its children, leveraging event bubbling."
+      },
+      {
+        "id": "q4-5",
+        "type": "true-false",
+        "question": "document.createElement() automatically adds the element to the DOM.",
+        "options": ["True", "False"],
+        "correctAnswer": "False",
+        "explanation": "document.createElement() only creates the element in memory. You must explicitly add it to the DOM using methods like appendChild() or append()."
+      }
+    ]
+  }
+]
