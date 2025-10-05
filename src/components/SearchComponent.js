@@ -349,7 +349,7 @@ class SearchComponent {
    */
   _handleResultClick(module) {
     // Navigate to module detail view
-    window.location.hash = `#/ihk/modules/${module.id}`;
+    window.location.hash = `#/modules/${module.id}`;
   }
 
   /**

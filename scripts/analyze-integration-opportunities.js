@@ -185,9 +185,6 @@ class IntegrationAnalyzer {
       this.services.has('QuizService') &&
       this.services.has('IHKContentService')
     ) {
-      const quizService = this.services.get('QuizService');
-      const ihkService = this.services.get('IHKContentService');
-
       opportunities.push({
         type: 'service-overlap',
         name: 'QuizService + IHKContentService',
@@ -418,4 +415,3 @@ console.log(
 console.log(
   `   - Service overlaps: ${opportunities.filter(o => o.type === 'service-overlap').length}`
 );
-console.log(`   - Total opportunities: ${opportunities.length}`);

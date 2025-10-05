@@ -261,7 +261,7 @@ class IHKModuleListView {
       <div class="module-card-footer">
         <button 
           class="btn btn-primary"
-          onclick="window.location.hash = '#/ihk/modules/${module.id}'"
+          onclick="window.location.hash = '#/modules/${module.id}'"
           aria-label="View module: ${module.title}"
         >
           Modul öffnen

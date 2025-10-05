@@ -29,6 +29,7 @@ import ModuleDetailView from './components/ModuleDetailView.js';
 import IHKQuizListView from './components/IHKQuizListView.js';
 import IHKQuizView from './components/IHKQuizView.js';
 import ProgressView from './components/ProgressView.js';
+import WheelView from './components/WheelView.js';
 import NotFoundView from './components/NotFoundView.js';
 
 // Note: Using IHK quiz components for all quizzes (superior UI/UX)
@@ -265,6 +266,15 @@ class App {
       '/progress',
       ErrorBoundary.wrap(async () => {
         const view = new ProgressView(this.services);
+        return await view.render();
+      })
+    );
+
+    // Wheel route - random module selector
+    router.register(
+      '/wheel',
+      ErrorBoundary.wrap(async () => {
+        const view = new WheelView(this.services);
         return await view.render();
       })
     );

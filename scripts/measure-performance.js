@@ -234,7 +234,7 @@ class PerformanceAnalyzer {
       try {
         const content = fs.readFileSync(reportPath, 'utf-8');
         return JSON.parse(content);
-      } catch (e) {
+      } catch {
         return null;
       }
     }
@@ -354,7 +354,6 @@ class PerformanceAnalyzer {
     this.generateReport();
 
     console.log('='.repeat(60));
-    console.log('✅ Performance analysis complete!\n');
   }
 }
 

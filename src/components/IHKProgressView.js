@@ -621,7 +621,7 @@ class IHKProgressView {
     moduleButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const moduleId = btn.dataset.moduleId;
-        this.router.navigate(`/ihk/modules/${moduleId}`);
+        this.router.navigate(`/modules/${moduleId}`);
       });
     });
   }

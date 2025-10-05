@@ -38,7 +38,7 @@ class IHKModuleView {
             message: 'The requested module could not be found.',
             action: {
               label: 'Back to Overview',
-              onClick: () => this.router.navigate('/ihk'),
+              onClick: () => this.router.navigate('/'),
             },
           });
           container.innerHTML = '';
@@ -115,8 +115,8 @@ class IHKModuleView {
 
     nav.innerHTML = `
       <ol>
-        <li><a href="#/ihk">IHK AP2</a></li>
-        <li><a href="#/ihk/modules">Module</a></li>
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/modules">Modules</a></li>
         <li><span aria-current="page">${this.module.title}</span></li>
       </ol>
     `;
@@ -301,7 +301,7 @@ class IHKModuleView {
               .map(
                 module => `
               <li>
-                <a href="#/ihk/modules/${module.id}" class="related-link">
+                <a href="#/modules/${module.id}" class="related-link">
                   <span class="link-icon">📚</span>
                   <span class="link-text">${module.title}</span>
                   <span class="link-meta">${module.estimatedTime} Min.</span>
@@ -389,26 +389,87 @@ class IHKModuleView {
    * Simple markdown to HTML converter
    */
   markdownToHtml(markdown) {
+    if (!markdown) return '';
+
     let html = markdown;
 
-    // Headers
+    // First, convert escaped newlines to actual newlines
+    html = html.replace(/\\n/g, '\n');
+
+    // Code blocks (must be processed before other formatting)
+    html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
+      return `<pre><code class="language-${lang || 'text'}">${this.escapeHtml(code.trim())}</code></pre>`;
+    });
+
+    // Inline code
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    // Headers (must be processed before bold/italic)
+    html = html.replace(/^#### (.*$)/gim, '<h4>$1</h4>');
     html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
     html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
     html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
 
-    // Bold
+    // Bold (must be before italic)
     html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
 
     // Italic
     html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
 
-    // Lists
-    html = html.replace(/^- (.*$)/gim, '<li>$1</li>');
-    html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+    // Links
+    html = html.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+    );
 
-    // Paragraphs
-    html = html.replace(/\n\n/g, '</p><p>');
-    html = '<p>' + html + '</p>';
+    // Unordered lists
+    const lines = html.split('\n');
+    let inList = false;
+    let processedLines = [];
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const isListItem = /^- (.+)/.test(line);
+
+      if (isListItem) {
+        if (!inList) {
+          processedLines.push('<ul>');
+          inList = true;
+        }
+        processedLines.push(line.replace(/^- (.+)/, '<li>$1</li>'));
+      } else {
+        if (inList) {
+          processedLines.push('</ul>');
+          inList = false;
+        }
+        processedLines.push(line);
+      }
+    }
+
+    if (inList) {
+      processedLines.push('</ul>');
+    }
+
+    html = processedLines.join('\n');
+
+    // Paragraphs (split by double newlines)
+    const blocks = html.split('\n\n');
+    html = blocks
+      .map(block => {
+        block = block.trim();
+        // Don't wrap if already wrapped in HTML tags
+        if (
+          block.startsWith('<h') ||
+          block.startsWith('<ul') ||
+          block.startsWith('<pre') ||
+          block.startsWith('<code') ||
+          block === ''
+        ) {
+          return block;
+        }
+        return `<p>${block.replace(/\n/g, '<br>')}</p>`;
+      })
+      .join('\n');
 
     return html;
   }

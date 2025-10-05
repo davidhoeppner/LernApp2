@@ -136,7 +136,7 @@ class DuplicateCodeDetector {
   findExactDuplicates() {
     const duplicates = [];
 
-    for (const [hash, blocks] of this.codeBlocks.entries()) {
+    for (const [, blocks] of this.codeBlocks.entries()) {
       if (blocks.length > 1) {
         duplicates.push({
           type: 'exact',
@@ -308,9 +308,6 @@ console.log(`   - Files analyzed: ${results.totalFiles}`);
 console.log(`   - Exact duplicates: ${results.exactDuplicates.length}`);
 console.log(
   `   - Structural duplicates: ${results.structuralDuplicates.length}`
-);
-console.log(
-  `   - Functional duplicates: ${results.functionalDuplicates.length}`
 );
 
 // Export for report generation

@@ -124,7 +124,7 @@ class DuplicateCodeDetector {
   findExactDuplicates() {
     const duplicates = [];
 
-    for (const [hash, blocks] of this.codeBlocks.entries()) {
+    for (const [, blocks] of this.codeBlocks.entries()) {
       if (blocks.length > 1) {
         duplicates.push({
           type: 'exact',
@@ -363,7 +363,7 @@ function generateReport(results) {
     report += `## 🔵 Functional Duplicates\n\n`;
     report += `These code blocks perform similar operations and could share common utilities.\n\n`;
 
-    results.functionalDuplicates.forEach((dup, index) => {
+    results.functionalDuplicates.forEach(dup => {
       report += `### ${dup.pattern.replace(/-/g, ' ').toUpperCase()}\n`;
       report += `- **Instances**: ${dup.instances}\n`;
       report += `- **Pattern**: ${dup.pattern}\n\n`;
@@ -443,7 +443,4 @@ console.log(`   - Files analyzed: ${results.totalFiles}`);
 console.log(`   - Exact duplicates: ${results.exactDuplicates.length}`);
 console.log(
   `   - Structural duplicates: ${results.structuralDuplicates.length}`
-);
-console.log(
-  `   - Functional duplicates: ${results.functionalDuplicates.length}`
 );

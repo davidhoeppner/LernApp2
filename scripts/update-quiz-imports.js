@@ -1,4 +1,3 @@
-/* eslint-disable no-console, no-undef */
 /**
  * Update IHKContentService with all quiz imports
  * Automatically adds import statements for all quizzes

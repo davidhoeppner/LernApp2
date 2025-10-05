@@ -253,7 +253,7 @@ class CodeQualityVerifier {
 
       this.results.diagnostics.buildStatus = 'passed';
       console.log('✅ Build completed successfully\n');
-    } catch (error) {
+    } catch {
       this.results.diagnostics.buildStatus = 'failed';
       console.log('❌ Build failed\n');
       this.issues.push('Build: Build process failed');
@@ -333,7 +333,6 @@ class CodeQualityVerifier {
   async verify() {
     console.log('🔍 Code Quality Verification\n');
     console.log('='.repeat(60));
-    console.log('');
 
     this.runLinter();
     this.checkImports();
@@ -345,7 +344,6 @@ class CodeQualityVerifier {
 
     // Exit with error code if issues found
     if (this.issues.length > 0) {
-      // eslint-disable-next-line no-undef
       process.exit(1);
     }
   }

@@ -41,6 +41,7 @@ class Navigation {
             <li><a href="#/" data-nav-link="/" class="nav-link" aria-label="Go to home page">Home</a></li>
             <li><a href="#/modules" data-nav-link="/modules" class="nav-link" aria-label="Browse all learning modules including IHK content">Modules</a></li>
             <li><a href="#/quizzes" data-nav-link="/quizzes" class="nav-link" aria-label="View all available quizzes including IHK quizzes">Quizzes</a></li>
+            <li><a href="#/wheel" data-nav-link="/wheel" class="nav-link" aria-label="Spin the wheel to discover a random learning module">🎯 Lern-Modul</a></li>
             <li><a href="#/progress" data-nav-link="/progress" class="nav-link" aria-label="View your progress">Progress</a></li>
           </ul>
 

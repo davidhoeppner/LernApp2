@@ -11,7 +11,17 @@
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
     "format": "prettier --write \"src/**/*.{js,css,html}\"",
-    "audit:styles": "node scripts/audit-styles.js"
+    "audit:styles": "node scripts/audit-styles.js",
+    "backup:create": "node scripts/backup-and-analyze.js",
+    "validate": "node scripts/validate-comprehensive.js",
+    "validate:final": "node scripts/generate-final-validation-report.js",
+    "validate:json": "node scripts/validate-json-structure.js",
+    "validate:markdown": "node scripts/validate-markdown-content.js",
+    "validate:encoding": "node scripts/check-utf8-encoding.js",
+    "validate:routes": "node scripts/audit-routes.js",
+    "validate:all": "node scripts/validate-all-modules.js",
+    "test:pre-manual": "node scripts/pre-manual-test-check.js",
+    "verify:markdown-fix": "node scripts/verify-markdown-fix.js"
   },
   "devDependencies": {
     "eslint": "^9.37.0",

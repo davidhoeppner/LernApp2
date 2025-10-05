@@ -40,7 +40,7 @@ class IHKLearningPathView {
             message: 'The requested learning path could not be found.',
             action: {
               label: 'Back to Overview',
-              onClick: () => this.router.navigate('/ihk'),
+              onClick: () => this.router.navigate('/'),
             },
           });
           container.innerHTML = '';
@@ -120,8 +120,8 @@ class IHKLearningPathView {
 
     nav.innerHTML = `
       <ol>
-        <li><a href="#/ihk">IHK AP2</a></li>
-        <li><a href="#/ihk">Lernpfade</a></li>
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/">Lernpfade</a></li>
         <li><span aria-current="page">${this.learningPath.title}</span></li>
       </ol>
     `;
@@ -303,7 +303,7 @@ class IHKLearningPathView {
     const isLocked = this.isItemLocked(item);
     const icon = isModule ? '📚' : '📝';
     const url = isModule
-      ? `#/ihk/modules/${item.moduleId}`
+      ? `#/modules/${item.moduleId}`
       : `#/quizzes/${item.quizId}`;
 
     return `

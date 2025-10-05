@@ -4,17 +4,6 @@
  */
 
 /**
- * Get CSS custom property value from root
- * @param {string} propertyName - CSS custom property name (e.g., '--color-success')
- * @returns {string} Color value
- */
-function getCSSVariable(propertyName) {
-  return getComputedStyle(document.documentElement)
-    .getPropertyValue(propertyName)
-    .trim();
-}
-
-/**
  * Get color based on percentage value
  * @param {number} percentage - Percentage value (0-100)
  * @param {Object} thresholds - Custom color thresholds (optional)

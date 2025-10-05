@@ -3,7 +3,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Design tokens from style.css
 const DESIGN_TOKENS = {
@@ -283,7 +282,6 @@ function checkInteractiveStates(content, filePath) {
  */
 function checkResponsiveDesign(content, filePath) {
   // Check if component has media queries
-  const hasMediaQueries = /@media/.test(content);
 
   // Check if component has fixed widths
   const fixedWidthRegex = /width:\s*\d+px/g;

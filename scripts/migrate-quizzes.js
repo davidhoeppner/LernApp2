@@ -1,4 +1,3 @@
-/* eslint-disable no-console, no-undef */
 /**
  * Quiz Migration Script
  * Migrates regular quizzes to IHK format

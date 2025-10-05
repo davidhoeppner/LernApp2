@@ -228,8 +228,7 @@ class DependencyAuditor {
     ];
 
     if (allUnused.length > 0) {
-      console.log('\n🗑️  To remove unused dependencies, run:');
-      const packageNames = allUnused.map(dep => dep.package).join(' ');
+      // Unused dependencies found (already reported above)
     } else {
       // All dependencies are in use
     }

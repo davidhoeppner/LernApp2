@@ -43,7 +43,7 @@ class IHKQuizView {
             message: 'The requested quiz could not be found.',
             action: {
               label: 'Back to Overview',
-              onClick: () => this.router.navigate('/ihk'),
+              onClick: () => this.router.navigate('/'),
             },
           });
           container.innerHTML = '';
@@ -119,7 +119,7 @@ class IHKQuizView {
 
     nav.innerHTML = `
       <ol>
-        <li><a href="#/ihk">IHK AP2</a></li>
+        <li><a href="#/">Home</a></li>
         <li><a href="#/quizzes">Quizzes</a></li>
         <li><span aria-current="page">${this.quiz.title}</span></li>
       </ol>

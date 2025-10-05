@@ -1,4 +1,3 @@
-/* eslint-disable no-console, no-undef */
 /**
  * Data Validation Script
  * Validates all IHK quiz, module, and learning path data

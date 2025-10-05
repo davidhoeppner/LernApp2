@@ -1,4 +1,4 @@
-/* eslint-disable no-console, no-undef, no-unused-vars */
+/* eslint-disable no-unused-vars */
 /**
  * End-to-End Test Script for Quiz Integration
  * Tests all migrated quiz functionality, progress tracking, and verifies no regressions

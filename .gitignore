@@ -38,6 +38,9 @@ coverage/
 *.temp
 .cache/
 
+# Backups
+.backup/
+
 # OS
 Thumbs.db
 .DS_Store
