@@ -1,45 +1,43 @@
-import quizzesData from '../data/quizzes.json';
 import StorageService from './StorageService.js';
 
-// Import IHK quizzes
-import scrumQuiz from '../data/ihk/quizzes/scrum-quiz.json';
-import securityQuiz from '../data/ihk/quizzes/security-threats-quiz.json';
-import sortingQuiz from '../data/ihk/quizzes/sorting-algorithms-quiz.json';
-import sqlQuiz from '../data/ihk/quizzes/sql-comprehensive-quiz.json';
-import tddQuiz from '../data/ihk/quizzes/tdd-quiz.json';
-
 /**
- * QuizService - Manages quiz data and scoring
- * Now includes both regular and IHK quizzes
+ * QuizService - Quiz Business Logic Facade
+ *
+ * This service acts as a facade that delegates quiz data loading to IHKContentService
+ * while providing quiz-specific business logic for:
+ * - Answer validation and submission
+ * - Score calculation
+ * - Quiz attempt tracking and persistence
+ *
+ * This separation maintains clean architecture by keeping content loading
+ * (handled by IHKContentService) separate from quiz-specific operations
+ * (handled by this service).
+ *
+ * Architecture Pattern: Facade + Delegation
+ * - Quiz data loading → Delegates to IHKContentService
+ * - Quiz business logic → Implemented here
  */
 class QuizService {
   constructor(stateManager, storageService, ihkContentService) {
     this.stateManager = stateManager;
     this.storage = storageService || new StorageService();
     this.ihkContentService = ihkContentService;
-    this.quizzes = quizzesData;
   }
 
   /**
-   * Get all quizzes (IHK quizzes only - the actual content you want)
+   * Get all quizzes (delegates to IHKContentService)
    */
   async getQuizzes() {
-    // Simple: return all imported IHK quizzes
-    return [
-      { ...scrumQuiz, source: 'ihk' },
-      { ...securityQuiz, source: 'ihk' },
-      { ...sortingQuiz, source: 'ihk' },
-      { ...sqlQuiz, source: 'ihk' },
-      { ...tddQuiz, source: 'ihk' },
-    ];
+    // Delegate to IHKContentService for unified quiz loading
+    return await this.ihkContentService.getAllQuizzes();
   }
 
   /**
-   * Get quiz by ID with error handling (IHK quizzes only)
+   * Get quiz by ID (delegates to IHKContentService)
    */
   async getQuizById(id) {
-    const quizzes = await this.getQuizzes();
-    const quiz = quizzes.find(q => q.id === id);
+    // Delegate to IHKContentService
+    const quiz = await this.ihkContentService.getQuizById(id);
 
     if (!quiz) {
       throw new Error(`Quiz with ID "${id}" not found`);

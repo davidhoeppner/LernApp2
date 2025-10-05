@@ -108,6 +108,9 @@ class StateManager {
 
   /**
    * Notify all listeners for a key
+   * Notifies both exact key matches and wildcard (*) listeners
+   * Errors in callbacks are caught and logged to prevent propagation
+   * @private
    */
   _notifyListeners(key, newValue, oldValue) {
     // Notify exact key listeners
@@ -163,6 +166,9 @@ class StateManager {
 
   /**
    * Save state to localStorage
+   * If quota is exceeded, attempts to save minimal state (progress only)
+   * Dispatches custom events for quota warnings/errors
+   * @returns {boolean} True if save successful, false otherwise
    */
   saveToStorage() {
     try {

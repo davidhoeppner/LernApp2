@@ -1,6 +1,8 @@
 /* global Blob, URL */
 import modulesData from '../data/modules.json';
+
 import StorageService from './StorageService.js';
+import { EXAM, PROGRESS_WEIGHTS, PROGRESS_STATUS } from '../utils/constants.js';
 
 /**
  * ProgressService - Tracks and calculates user progress
@@ -39,7 +41,8 @@ class ProgressService {
 
       // Overall progress is weighted: 70% modules, 30% quizzes
       const overallPercentage = Math.round(
-        moduleCompletionPercentage * 0.7 + averageQuizScore * 0.3
+        moduleCompletionPercentage * PROGRESS_WEIGHTS.MODULE_COMPLETION +
+          averageQuizScore * PROGRESS_WEIGHTS.QUIZ_AVERAGE
       );
 
       return {
@@ -78,10 +81,10 @@ class ProgressService {
         completed: isCompleted,
         inProgress: isInProgress,
         status: isCompleted
-          ? 'completed'
+          ? PROGRESS_STATUS.COMPLETED
           : isInProgress
-            ? 'in-progress'
-            : 'not-started',
+            ? PROGRESS_STATUS.IN_PROGRESS
+            : PROGRESS_STATUS.NOT_STARTED,
       };
     } catch (error) {
       console.error(`Error getting module progress for ${moduleId}:`, error);
@@ -108,7 +111,7 @@ class ProgressService {
         totalQuestions: attempt.totalQuestions,
         correctAnswers: attempt.correctAnswers,
         date: attempt.date,
-        passed: attempt.score >= 70, // Consider 70% as passing
+        passed: attempt.score >= EXAM.PASSING_SCORE_PERCENTAGE,
       }));
     } catch (error) {
       console.error('Error getting quiz history:', error);

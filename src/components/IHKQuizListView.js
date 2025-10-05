@@ -3,12 +3,11 @@
  * Displays all IHK quizzes with filtering
  */
 
-/* global setTimeout, fetch */
-
-import LoadingSpinner from './LoadingSpinner.js';
-import EmptyState from './EmptyState.js';
-import toastNotification from './ToastNotification.js';
 import accessibilityHelper from '../utils/AccessibilityHelper.js';
+
+import EmptyState from './EmptyState.js';
+import LoadingSpinner from './LoadingSpinner.js';
+import toastNotification from './ToastNotification.js';
 
 class IHKQuizListView {
   constructor(services) {
@@ -28,7 +27,7 @@ class IHKQuizListView {
     container.innerHTML = LoadingSpinner.render('Loading IHK quizzes...');
 
     // Load quizzes asynchronously
-    setTimeout(async () => {
+    window.setTimeout(async () => {
       try {
         await this.loadQuizzes();
         container.innerHTML = '';
@@ -60,28 +59,8 @@ class IHKQuizListView {
    * Load all quizzes
    */
   async loadQuizzes() {
-    const quizFiles = [
-      'scrum-quiz',
-      'security-threats-quiz',
-      'sorting-algorithms-quiz',
-      'sql-comprehensive-quiz',
-      'tdd-quiz',
-    ];
-
-    const loadPromises = quizFiles.map(async file => {
-      try {
-        const response = await fetch(`/src/data/ihk/quizzes/${file}.json`);
-        if (response.ok) {
-          return await response.json();
-        }
-      } catch (error) {
-        console.warn(`Failed to load quiz ${file}:`, error);
-        return null;
-      }
-    });
-
-    const results = await Promise.all(loadPromises);
-    this.quizzes = results.filter(q => q !== null);
+    // Get all quizzes from IHKContentService
+    this.quizzes = await this.ihkContentService.getAllQuizzes();
 
     // Enrich with progress data
     this.enrichQuizzesWithProgress();
@@ -231,7 +210,7 @@ class IHKQuizListView {
       <div class="quiz-card-footer">
         <button 
           class="btn btn-primary"
-          onclick="window.location.hash = '#/ihk/quizzes/${quiz.id}'"
+          onclick="window.location.hash = '#/quizzes/${quiz.id}'"
           aria-label="Start quiz: ${quiz.title}"
         >
           ${quiz.attempts > 0 ? 'Quiz wiederholen' : 'Quiz starten'}

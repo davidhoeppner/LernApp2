@@ -1,0 +1,64 @@
+{
+  "summary": {
+    "filesScanned": 43,
+    "filesModified": 14
+  },
+  "details": [
+    {
+      "file": "app.js",
+      "importCount": 9
+    },
+    {
+      "file": "components\\IHKLearningPathView.js",
+      "importCount": 4
+    },
+    {
+      "file": "components\\IHKModuleListView.js",
+      "importCount": 4
+    },
+    {
+      "file": "components\\IHKModuleView.js",
+      "importCount": 4
+    },
+    {
+      "file": "components\\IHKOverviewView.js",
+      "importCount": 7
+    },
+    {
+      "file": "components\\IHKProgressView.js",
+      "importCount": 4
+    },
+    {
+      "file": "components\\IHKQuizListView.js",
+      "importCount": 4
+    },
+    {
+      "file": "components\\IHKQuizView.js",
+      "importCount": 4
+    },
+    {
+      "file": "components\\LearningPathView.js",
+      "importCount": 3
+    },
+    {
+      "file": "components\\ModuleListView.js",
+      "importCount": 3
+    },
+    {
+      "file": "components\\ProgressView.js",
+      "importCount": 3
+    },
+    {
+      "file": "main.js",
+      "importCount": 2
+    },
+    {
+      "file": "services\\ModuleService.js",
+      "importCount": 2
+    },
+    {
+      "file": "services\\ProgressService.js",
+      "importCount": 2
+    }
+  ]
+}

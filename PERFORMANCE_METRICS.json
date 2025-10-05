@@ -1,0 +1,51 @@
+{
+  "timestamp": "2025-10-05T17:54:00.861Z",
+  "bundleSize": {
+    "total": 4262009,
+    "totalFormatted": "4.06 MB",
+    "fileCount": 11,
+    "assets": {
+      "index-CEzfWJqv.css": {
+        "size": 85424,
+        "formatted": "83.42 KB"
+      },
+      "js": {
+        "size": 0,
+        "formatted": "0 Bytes"
+      }
+    }
+  },
+  "fileCount": {
+    "source": {
+      "total": 119,
+      "size": 1071778,
+      "sizeFormatted": "1.02 MB"
+    },
+    "byType": {
+      "javascript": {
+        "count": 38,
+        "size": 322701,
+        "sizeFormatted": "315.14 KB"
+      },
+      "css": {
+        "count": 1,
+        "size": 113181,
+        "sizeFormatted": "110.53 KB"
+      },
+      "json": {
+        "count": 80,
+        "size": 635896,
+        "sizeFormatted": "620.99 KB"
+      }
+    }
+  },
+  "codeMetrics": {
+    "javascript": {
+      "totalLines": 11279,
+      "codeLines": 8206,
+      "commentLines": 1734,
+      "blankLines": 1339
+    }
+  },
+  "comparison": {}
+}

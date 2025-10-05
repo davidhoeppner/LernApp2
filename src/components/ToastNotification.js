@@ -1,4 +1,6 @@
 /* global setTimeout, requestAnimationFrame */
+import { TIME, UI } from '../utils/constants.js';
+
 /**
  * ToastNotification - System for displaying user feedback messages
  * Provides toast notifications for success, error, warning, and info messages
@@ -31,7 +33,7 @@ class ToastNotification {
     const {
       type = 'info',
       message = '',
-      duration = 5000,
+      duration = TIME.FIVE_SECONDS,
       dismissible = true,
       action = null,
     } = options;
@@ -75,7 +77,7 @@ class ToastNotification {
     return this.show({
       type: 'error',
       message,
-      duration: 7000, // Errors stay longer
+      duration: TIME.SEVEN_SECONDS, // Errors stay longer
       ...options,
     });
   }
@@ -117,7 +119,7 @@ class ToastNotification {
           toast.parentNode.removeChild(toast);
         }
         this.toasts.delete(id);
-      }, 300);
+      }, UI.ANIMATION_DURATION_MS);
     }
   }
 
@@ -199,7 +201,7 @@ class ToastNotification {
     this.error(
       'Storage is full. Please export your progress or clear some data.',
       {
-        duration: 10000,
+        duration: TIME.TEN_SECONDS,
         action: {
           label: 'Go to Progress',
           onClick: () => {
@@ -215,7 +217,7 @@ class ToastNotification {
    */
   handleNetworkError() {
     this.error('Unable to load data. Please check your connection.', {
-      duration: 7000,
+      duration: TIME.SEVEN_SECONDS,
       action: {
         label: 'Retry',
         onClick: () => {

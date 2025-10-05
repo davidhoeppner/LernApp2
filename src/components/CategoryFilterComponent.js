@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 /**
  * CategoryFilterComponent - Filter IHK content by categories, relevance, and difficulty
  */

@@ -6,7 +6,7 @@ Eine moderne, interaktive Lern-App zur Vorbereitung auf die IHK-Abschlussprüfun
 
 ### 📖 Umfangreiche Lerninhalte
 - **31 IHK-Module** mit detaillierten Erklärungen
-- **5 Prüfungsquizze** zum Testen des Wissens
+- **9 interaktive Quizze** zum Testen des Wissens
 - **4 Lernpfade** für strukturiertes Lernen
 - Alle Inhalte basieren auf dem **IHK-Prüfungskatalog 2025**
 
@@ -18,12 +18,19 @@ Eine moderne, interaktive Lern-App zur Vorbereitung auf die IHK-Abschlussprüfun
 - ✅ Last- und Performancetests
 
 ### 💡 Intelligente Features
-- **Fortschrittsverfolgung**: Behalte den Überblick über abgeschlossene Module
+- **Fortschrittsverfolgung**: Behalte den Überblick über abgeschlossene Module und Quiz-Versuche
+- **Prüfungsbereitschaft**: Detaillierte Analyse deiner Prüfungsvorbereitung mit Schwachstellenerkennung
+- **Personalisierte Empfehlungen**: Intelligente Vorschläge basierend auf deinem Lernfortschritt
+- **Einheitliches Quiz-System**: Alle 9 Quizze nutzen das fortschrittliche IHK-Quiz-Interface
+- **Code-Highlighting**: Syntax-Highlighting in Quizfragen und Modulen
+- **Detaillierte Erklärungen**: Jede Quiz-Antwort enthält ausführliche Erklärungen
+- **Erweiterte Suche**: Volltextsuche mit Kategorie- und Schwierigkeitsfiltern
 - **Markdown-Rendering**: Schön formatierte Inhalte mit Syntax-Highlighting
 - **Responsive Design**: Funktioniert auf Desktop, Tablet und Smartphone
 - **Dark/Light Mode**: Automatische Theme-Anpassung
 - **Offline-fähig**: Alle Daten lokal gespeichert
 - **Barrierefreiheit**: WCAG 2.1 AA konform
+- **Export-Funktion**: Exportiere deinen Lernfortschritt als JSON
 
 ## 🚀 Quick Start
 
@@ -62,24 +69,39 @@ npm run preview
 ```
 ├── src/
 │   ├── components/          # UI-Komponenten
-│   │   ├── ModuleListView.js
-│   │   ├── ModuleDetailView.js
-│   │   ├── QuizView.js
+│   │   ├── IHKModuleListView.js
+│   │   ├── IHKModuleView.js
+│   │   ├── IHKQuizView.js
+│   │   ├── IHKQuizListView.js
+│   │   ├── IHKProgressView.js
+│   │   ├── SearchComponent.js
+│   │   ├── CategoryFilterComponent.js
+│   │   ├── ExamChanges2025Component.js
+│   │   ├── ErrorBoundary.js
+│   │   ├── LoadingSpinner.js
+│   │   ├── EmptyState.js
 │   │   └── ...
 │   ├── services/            # Business Logic
-│   │   ├── ModuleService.js
-│   │   ├── QuizService.js
-│   │   ├── IHKContentService.js
-│   │   └── ...
+│   │   ├── IHKContentService.js     # Zentrale Datenverwaltung
+│   │   ├── ExamProgressService.js   # Fortschrittsanalyse & Empfehlungen
+│   │   ├── QuizService.js           # Quiz-Logik
+│   │   ├── StateManager.js          # Zentrales State Management
+│   │   ├── StorageService.js        # LocalStorage-Wrapper
+│   │   ├── Router.js                # Client-side Routing
+│   │   └── ThemeManager.js          # Dark/Light Mode
 │   ├── data/
 │   │   └── ihk/             # IHK-Lerninhalte
 │   │       ├── modules/     # 31 Module
-│   │       ├── quizzes/     # 5 Quizze
-│   │       ├── learning-paths/
-│   │       └── metadata/
-│   ├── utils/               # Hilfsfunktionen
+│   │       ├── quizzes/     # 9 Quizze (einheitliches Format)
+│   │       ├── learning-paths/  # 4 Lernpfade
+│   │       └── metadata/    # Kategorien & Prüfungsänderungen
+│   ├── utils/               # Hilfsfunktionen & Validatoren
+│   │   ├── AccessibilityHelper.js
+│   │   ├── constants.js
+│   │   └── validators/      # JSON-Schema-Validatoren
 │   ├── app.js               # App-Initialisierung
 │   └── style.css            # Styling
+├── scripts/                 # Build & Analyse-Scripts
 ├── index.html
 ├── vite.config.js
 └── package.json
@@ -125,8 +147,36 @@ npm run preview
 - **Markdown**: marked.js
 - **Syntax Highlighting**: highlight.js
 - **Styling**: Custom CSS mit CSS Variables
-- **State Management**: Custom StateManager
+- **State Management**: Custom StateManager mit Pub/Sub-Pattern
 - **Routing**: Custom Router mit Hash-Navigation
+- **Storage**: LocalStorage mit In-Memory-Fallback
+- **Architecture**: Service-oriented mit klarer Trennung von Concerns
+
+## 🏗️ Architektur
+
+Die App folgt einer klaren Service-orientierten Architektur:
+
+### Services
+- **IHKContentService**: Zentrale Verwaltung aller IHK-Inhalte (Module, Quizze, Lernpfade)
+- **ExamProgressService**: Fortschrittsanalyse, Schwachstellenerkennung, Prüfungsbereitschaft
+- **StateManager**: Zentrales State Management mit Pub/Sub für reaktive Updates
+- **StorageService**: Abstraktionsschicht für LocalStorage mit automatischem Fallback
+- **QuizService**: Quiz-Logik und Auswertung
+- **Router**: Client-side Routing mit Hash-Navigation
+- **ThemeManager**: Dark/Light Mode Management
+
+### Components
+- Alle UI-Komponenten sind eigenständige Klassen
+- Klare Trennung von Darstellung und Logik
+- Wiederverwendbare Komponenten (LoadingSpinner, EmptyState, ErrorBoundary)
+
+### Data Flow
+1. Services laden Daten aus JSON-Dateien (statische Imports für optimales Bundling)
+2. StateManager verwaltet den globalen App-State
+3. Components subscriben zu State-Änderungen
+4. User-Interaktionen triggern Service-Methoden
+5. Services aktualisieren den State
+6. Components re-rendern automatisch
 
 ## 📱 Browser-Unterstützung
 
@@ -149,6 +199,8 @@ Contributions sind willkommen! Bitte beachte:
 
 Module und Quizze können einfach als JSON-Dateien hinzugefügt werden:
 
+#### Modul hinzufügen
+
 ```javascript
 // src/data/ihk/modules/neues-modul.json
 {
@@ -165,6 +217,44 @@ Module und Quizze können einfach als JSON-Dateien hinzugefügt werden:
   "resources": []
 }
 ```
+
+#### Quiz hinzufügen
+
+Alle Quizze verwenden das **einheitliche IHK-Quiz-Format** mit erweiterten Features:
+
+```javascript
+// src/data/ihk/quizzes/neues-quiz.json
+{
+  "id": "neues-quiz",
+  "moduleId": "modul-id",
+  "title": "Quiz-Titel",
+  "description": "Kurzbeschreibung",
+  "category": "FÜ-02",
+  "difficulty": "beginner",
+  "examRelevance": "high",
+  "timeLimit": 15,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Frage-Text",
+      "options": ["Option A", "Option B", "Option C"],
+      "correctAnswer": "Option A",
+      "explanation": "Erklärung der richtigen Antwort",
+      "points": 1,
+      "category": "Kategorie"
+    }
+  ],
+  "tags": ["Tag1", "Tag2"]
+}
+```
+
+**Unterstützte Fragetypen:**
+- `single-choice` - Eine richtige Antwort
+- `multiple-choice` - Mehrere richtige Antworten
+- `true-false` - Wahr/Falsch-Fragen
+- `code` - Code-basierte Fragen mit Syntax-Highlighting
 
 ## 📄 Lizenz
 

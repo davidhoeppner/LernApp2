@@ -1,5 +1,5 @@
-import LoadingSpinner from './LoadingSpinner.js';
 import EmptyState from './EmptyState.js';
+import LoadingSpinner from './LoadingSpinner.js';
 import toastNotification from './ToastNotification.js';
 
 /**

@@ -1,4 +1,6 @@
 /* global setTimeout */
+import { HTTP_STATUS, RETRY } from '../utils/constants.js';
+
 /**
  * ErrorBoundary - Component for graceful error display
  * Provides a fallback UI when errors occur in views
@@ -39,7 +41,8 @@ class ErrorBoundary {
     const isNetworkError =
       error.message?.includes('network') || error.message?.includes('fetch');
     const isNotFoundError =
-      error.message?.includes('not found') || error.message?.includes('404');
+      error.message?.includes('not found') ||
+      error.message?.includes(String(HTTP_STATUS.NOT_FOUND));
 
     let userMessage = errorMessage;
     let actionButton = '';
@@ -101,13 +104,41 @@ class ErrorBoundary {
   }
 
   /**
+   * Check if an error should not be retried
+   */
+  static isNonRetryableError(error) {
+    const nonRetryablePatterns = [
+      'not found',
+      String(HTTP_STATUS.NOT_FOUND),
+      'validation',
+    ];
+    return nonRetryablePatterns.some(pattern =>
+      error.message?.includes(pattern)
+    );
+  }
+
+  /**
+   * Calculate wait time for retry with exponential backoff
+   */
+  static calculateBackoffDelay(attempt, baseDelay, backoffMultiplier) {
+    return baseDelay * Math.pow(backoffMultiplier, attempt);
+  }
+
+  /**
+   * Wait for specified milliseconds
+   */
+  static async wait(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds));
+  }
+
+  /**
    * Create a retry wrapper for async functions
    */
   static withRetry(fn, options = {}) {
     const {
-      maxRetries = 3,
-      delay = 1000,
-      backoff = 2,
+      maxRetries = RETRY.MAX_ATTEMPTS,
+      delay = RETRY.INITIAL_DELAY_MS,
+      backoff = RETRY.BACKOFF_MULTIPLIER,
       onRetry = null,
     } = options;
 
@@ -121,22 +152,21 @@ class ErrorBoundary {
           lastError = error;
 
           if (attempt < maxRetries) {
-            // Don't retry on certain errors
-            if (
-              error.message?.includes('not found') ||
-              error.message?.includes('404') ||
-              error.message?.includes('validation')
-            ) {
+            if (ErrorBoundary.isNonRetryableError(error)) {
               throw error;
             }
 
-            const waitTime = delay * Math.pow(backoff, attempt);
+            const waitTime = ErrorBoundary.calculateBackoffDelay(
+              attempt,
+              delay,
+              backoff
+            );
 
             if (onRetry) {
               onRetry(attempt + 1, maxRetries, waitTime, error);
             }
 
-            await new Promise(resolve => setTimeout(resolve, waitTime));
+            await ErrorBoundary.wait(waitTime);
           }
         }
       }

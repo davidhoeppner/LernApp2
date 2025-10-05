@@ -1,0 +1,91 @@
+{
+  "id": "async-javascript-quiz",
+  "moduleId": "module-3",
+  "title": "Async JavaScript Quiz",
+  "description": "Test your knowledge of promises, async/await, and asynchronous programming patterns.",
+  "category": "FÜ-02",
+  "difficulty": "beginner",
+  "examRelevance": "medium",
+  "newIn2025": false,
+  "timeLimit": 8,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "What does the 'await' keyword do?",
+      "options": [
+        "Pauses execution until a promise is resolved",
+        "Creates a new promise",
+        "Catches errors in async code",
+        "Runs code in parallel"
+      ],
+      "correctAnswer": "Pauses execution until a promise is resolved",
+      "explanation": "The 'await' keyword pauses the execution of an async function until the promise is resolved or rejected.",
+      "points": 1,
+      "category": "General"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Promises can only be in one of three states: pending, fulfilled, or rejected.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "A Promise is always in one of three states: pending (initial state), fulfilled (operation completed successfully), or rejected (operation failed).",
+      "points": 1,
+      "category": "Async"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Which method runs multiple promises in parallel and waits for all to complete?",
+      "options": [
+        "Promise.race()",
+        "Promise.all()",
+        "Promise.any()",
+        "Promise.then()"
+      ],
+      "correctAnswer": "Promise.all()",
+      "explanation": "Promise.all() takes an array of promises and returns a single promise that resolves when all input promises have resolved.",
+      "points": 1,
+      "category": "Async"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "How do you handle errors in async/await?",
+      "options": [
+        "Using .catch()",
+        "Using try/catch blocks",
+        "Using .error()",
+        "Errors cannot be handled"
+      ],
+      "correctAnswer": "Using try/catch blocks",
+      "explanation": "In async/await syntax, errors are handled using traditional try/catch blocks, making error handling more intuitive.",
+      "points": 1,
+      "category": "Async"
+    },
+    {
+      "id": "q5",
+      "type": "true-false",
+      "question": "The 'async' keyword automatically makes a function return a Promise.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "True",
+      "explanation": "When you declare a function as async, it automatically returns a Promise. If the function returns a value, the Promise will be resolved with that value.",
+      "points": 1,
+      "category": "Functions"
+    }
+  ],
+  "tags": [
+    "JavaScript",
+    "Async",
+    "Promise"
+  ],
+  "lastUpdated": "2025-10-05T16:03:52.365Z"
+}

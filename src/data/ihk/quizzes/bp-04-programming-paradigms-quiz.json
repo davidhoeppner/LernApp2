@@ -1,0 +1,97 @@
+{
+  "id": "bp-04-programming-paradigms-quiz",
+  "moduleId": "bp-04-programming-paradigms",
+  "title": "Programmierparadigmen (Veraltet ab 2025) Quiz",
+  "description": "Teste dein Wissen über Programmierparadigmen (Veraltet ab 2025)",
+  "category": "BP-04",
+  "difficulty": "intermediate",
+  "examRelevance": "low",
+  "timeLimit": 10,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist Programmierparadigmen (Veraltet ab 2025)?",
+      "options": [
+        "Richtige Antwort hier einfügen",
+        "Falsche Option 1",
+        "Falsche Option 2",
+        "Falsche Option 3"
+      ],
+      "correctAnswer": "Richtige Antwort hier einfügen",
+      "explanation": "Erklärung hier einfügen",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Frage 2 hier einfügen",
+      "options": [
+        "Richtige Antwort",
+        "Falsche Option 1",
+        "Falsche Option 2",
+        "Falsche Option 3"
+      ],
+      "correctAnswer": "Richtige Antwort",
+      "explanation": "Erklärung hier einfügen",
+      "points": 1,
+      "category": "Konzepte"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "Richtige Aussage 1",
+        "Richtige Aussage 2",
+        "Falsche Aussage 1",
+        "Falsche Aussage 2"
+      ],
+      "correctAnswer": [
+        "Richtige Aussage 1",
+        "Richtige Aussage 2"
+      ],
+      "explanation": "Erklärung hier einfügen",
+      "points": 2,
+      "category": "Anwendung"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Frage 4 hier einfügen",
+      "options": [
+        "Richtige Antwort",
+        "Falsche Option 1",
+        "Falsche Option 2",
+        "Falsche Option 3"
+      ],
+      "correctAnswer": "Richtige Antwort",
+      "explanation": "Erklärung hier einfügen",
+      "points": 1,
+      "category": "Praxis"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Frage 5 hier einfügen",
+      "options": [
+        "Richtige Antwort",
+        "Falsche Option 1",
+        "Falsche Option 2",
+        "Falsche Option 3"
+      ],
+      "correctAnswer": "Richtige Antwort",
+      "explanation": "Erklärung hier einfügen",
+      "points": 1,
+      "category": "Vertiefung"
+    }
+  ],
+  "tags": [
+    "Programmierparadigmen",
+    "OOP",
+    "Funktional",
+    "Veraltet"
+  ]
+}

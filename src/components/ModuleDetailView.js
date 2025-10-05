@@ -365,7 +365,7 @@ class ModuleDetailView {
           const relatedQuiz = quizzes.find(q => q.moduleId === this.moduleId);
 
           if (relatedQuiz) {
-            window.location.hash = `#/quiz/${relatedQuiz.id}`;
+            window.location.hash = `#/quizzes/${relatedQuiz.id}`;
           } else {
             this._showNotification(
               'No quiz available for this module',

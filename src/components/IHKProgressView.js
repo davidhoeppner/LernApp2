@@ -5,10 +5,11 @@
  * weak areas analysis, exam readiness score, and personalized recommendations
  */
 
-import LoadingSpinner from './LoadingSpinner.js';
-import EmptyState from './EmptyState.js';
-import toastNotification from './ToastNotification.js';
 import accessibilityHelper from '../utils/AccessibilityHelper.js';
+
+import EmptyState from './EmptyState.js';
+import LoadingSpinner from './LoadingSpinner.js';
+import toastNotification from './ToastNotification.js';
 
 class IHKProgressView {
   constructor(services) {
@@ -109,15 +110,23 @@ class IHKProgressView {
     } = readiness;
 
     const levelConfig = {
-      excellent: { color: '#10b981', icon: '🎯', label: 'Hervorragend' },
-      good: { color: '#3b82f6', icon: '👍', label: 'Gut' },
-      moderate: { color: '#f59e0b', icon: '📈', label: 'Solide' },
+      excellent: {
+        color: 'var(--color-success)',
+        icon: '🎯',
+        label: 'Hervorragend',
+      },
+      good: { color: 'var(--color-primary)', icon: '👍', label: 'Gut' },
+      moderate: { color: 'var(--color-warning)', icon: '📈', label: 'Solide' },
       'needs-improvement': {
-        color: '#ef4444',
+        color: 'var(--color-error)',
         icon: '⚠️',
         label: 'Verbesserungsbedarf',
       },
-      insufficient: { color: '#dc2626', icon: '🚨', label: 'Unzureichend' },
+      insufficient: {
+        color: 'var(--color-error)',
+        icon: '🚨',
+        label: 'Unzureichend',
+      },
     };
 
     const config = levelConfig[readinessLevel] || levelConfig.moderate;
@@ -136,7 +145,7 @@ class IHKProgressView {
                   cy="100"
                   r="85"
                   fill="none"
-                  stroke="#e5e7eb"
+                  stroke="var(--color-bg-tertiary)"
                   stroke-width="12"
                 />
                 <circle
@@ -210,12 +219,12 @@ class IHKProgressView {
   renderProgressBar(label, percentage, icon) {
     const color =
       percentage >= 80
-        ? '#10b981'
+        ? 'var(--color-success)'
         : percentage >= 60
-          ? '#3b82f6'
+          ? 'var(--color-primary)'
           : percentage >= 40
-            ? '#f59e0b'
-            : '#ef4444';
+            ? 'var(--color-warning)'
+            : 'var(--color-error)';
 
     return `
       <div class="progress-bar-item">
@@ -376,9 +385,21 @@ class IHKProgressView {
    */
   renderWeakAreaCard(area) {
     const severityConfig = {
-      high: { color: '#ef4444', icon: '🚨', label: 'Hohe Priorität' },
-      medium: { color: '#f59e0b', icon: '⚠️', label: 'Mittlere Priorität' },
-      low: { color: '#3b82f6', icon: 'ℹ️', label: 'Niedrige Priorität' },
+      high: {
+        color: 'var(--color-error)',
+        icon: '🚨',
+        label: 'Hohe Priorität',
+      },
+      medium: {
+        color: 'var(--color-warning)',
+        icon: '⚠️',
+        label: 'Mittlere Priorität',
+      },
+      low: {
+        color: 'var(--color-primary)',
+        icon: 'ℹ️',
+        label: 'Niedrige Priorität',
+      },
     };
 
     const config = severityConfig[area.severity] || severityConfig.medium;
@@ -451,9 +472,21 @@ class IHKProgressView {
    */
   renderRecommendationGroup(recommendation) {
     const priorityConfig = {
-      high: { color: '#ef4444', icon: '🔥', label: 'Hohe Priorität' },
-      medium: { color: '#f59e0b', icon: '⭐', label: 'Mittlere Priorität' },
-      low: { color: '#3b82f6', icon: '💡', label: 'Niedrige Priorität' },
+      high: {
+        color: 'var(--color-error)',
+        icon: '🔥',
+        label: 'Hohe Priorität',
+      },
+      medium: {
+        color: 'var(--color-warning)',
+        icon: '⭐',
+        label: 'Mittlere Priorität',
+      },
+      low: {
+        color: 'var(--color-primary)',
+        icon: '💡',
+        label: 'Niedrige Priorität',
+      },
     };
 
     const config =

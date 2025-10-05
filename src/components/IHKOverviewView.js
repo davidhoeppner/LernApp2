@@ -5,13 +5,14 @@
 
 /* global setTimeout */
 
-import CategoryFilterComponent from './CategoryFilterComponent.js';
-import ExamChanges2025Component from './ExamChanges2025Component.js';
-import SearchComponent from './SearchComponent.js';
-import LoadingSpinner from './LoadingSpinner.js';
-import EmptyState from './EmptyState.js';
-import toastNotification from './ToastNotification.js';
 import accessibilityHelper from '../utils/AccessibilityHelper.js';
+
+import CategoryFilterComponent from './CategoryFilterComponent.js';
+import EmptyState from './EmptyState.js';
+import ExamChanges2025Component from './ExamChanges2025Component.js';
+import LoadingSpinner from './LoadingSpinner.js';
+import SearchComponent from './SearchComponent.js';
+import toastNotification from './ToastNotification.js';
 
 class IHKOverviewView {
   constructor(services) {

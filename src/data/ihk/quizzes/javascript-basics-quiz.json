@@ -1,0 +1,92 @@
+{
+  "id": "javascript-basics-quiz",
+  "moduleId": "module-1",
+  "title": "JavaScript Basics Quiz",
+  "description": "Test your understanding of JavaScript fundamentals including variables, functions, and data types.",
+  "category": "FÜ-02",
+  "difficulty": "beginner",
+  "examRelevance": "medium",
+  "newIn2025": false,
+  "timeLimit": 8,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Which keyword is used to declare a constant variable in JavaScript?",
+      "options": [
+        "var",
+        "let",
+        "const",
+        "constant"
+      ],
+      "correctAnswer": "const",
+      "explanation": "The 'const' keyword is used to declare constants in JavaScript. Variables declared with 'const' cannot be reassigned after initialization.",
+      "points": 1,
+      "category": "Variables"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "What will be the output of: console.log(typeof null)?",
+      "options": [
+        "null",
+        "undefined",
+        "object",
+        "number"
+      ],
+      "correctAnswer": "object",
+      "explanation": "This is a known quirk in JavaScript. typeof null returns 'object', which is considered a bug in the language but has been kept for backward compatibility.",
+      "points": 1,
+      "category": "General"
+    },
+    {
+      "id": "q3",
+      "type": "true-false",
+      "question": "JavaScript is a statically typed language.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "JavaScript is a dynamically typed language, meaning variable types are determined at runtime and can change during execution.",
+      "points": 1,
+      "category": "General"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Which of the following is NOT a primitive data type in JavaScript?",
+      "options": [
+        "String",
+        "Boolean",
+        "Array",
+        "Number"
+      ],
+      "correctAnswer": "Array",
+      "explanation": "Array is not a primitive data type. It's an object type. The primitive types in JavaScript are: String, Number, Boolean, Undefined, Null, Symbol, and BigInt.",
+      "points": 1,
+      "category": "General"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "What is the correct way to create a function in JavaScript?",
+      "options": [
+        "function myFunction() {}",
+        "def myFunction() {}",
+        "func myFunction() {}",
+        "create function myFunction() {}"
+      ],
+      "correctAnswer": "function myFunction() {}",
+      "explanation": "In JavaScript, functions are declared using the 'function' keyword followed by the function name and parentheses.",
+      "points": 1,
+      "category": "Functions"
+    }
+  ],
+  "tags": [
+    "JavaScript",
+    "Function"
+  ],
+  "lastUpdated": "2025-10-05T16:03:52.360Z"
+}

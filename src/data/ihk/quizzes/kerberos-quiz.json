@@ -1,0 +1,165 @@
+{
+  "id": "kerberos-quiz",
+  "moduleId": "bp-01-kerberos",
+  "title": "Kerberos-Authentifizierung Quiz",
+  "description": "Teste dein Wissen über Kerberos-Authentifizierung, Tickets, KDC und Principals",
+  "category": "BP-01",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "timeLimit": 10,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist die Hauptfunktion des Key Distribution Center (KDC) in Kerberos?",
+      "options": [
+        "Zentrale Authentifizierung und Ticket-Ausgabe",
+        "Verschlüsselung aller Netzwerkpakete",
+        "Speicherung von Benutzerpasswörtern",
+        "Verwaltung von SSL-Zertifikaten"
+      ],
+      "correctAnswer": "Zentrale Authentifizierung und Ticket-Ausgabe",
+      "explanation": "Das KDC ist die zentrale Vertrauensinstanz in Kerberos und besteht aus dem Authentication Server (AS) und dem Ticket Granting Server (TGS). Es authentifiziert Benutzer und stellt Tickets aus.",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Welche zwei Komponenten bilden das KDC?",
+      "options": [
+        "Authentication Server (AS) und Ticket Granting Server (TGS)",
+        "Client Server und Application Server",
+        "Primary Server und Secondary Server",
+        "Login Server und Access Server"
+      ],
+      "correctAnswer": "Authentication Server (AS) und Ticket Granting Server (TGS)",
+      "explanation": "Das KDC besteht aus dem AS (verifiziert Identität und stellt TGTs aus) und dem TGS (stellt Service Tickets aus).",
+      "points": 1,
+      "category": "Architektur"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Was ist ein Ticket Granting Ticket (TGT)?",
+      "options": [
+        "Ein Ticket, das nach erfolgreicher Anmeldung ausgestellt wird und zum Anfordern von Service Tickets dient",
+        "Ein Ticket, das direkten Zugriff auf alle Services gewährt",
+        "Ein Ticket, das nur für einen spezifischen Service gültig ist",
+        "Ein Ticket, das Passwörter verschlüsselt überträgt"
+      ],
+      "correctAnswer": "Ein Ticket, das nach erfolgreicher Anmeldung ausgestellt wird und zum Anfordern von Service Tickets dient",
+      "explanation": "Das TGT wird nach erfolgreicher Authentifizierung vom AS ausgestellt und ermöglicht es dem Client, Service Tickets vom TGS anzufordern, ohne das Passwort erneut eingeben zu müssen.",
+      "points": 1,
+      "category": "Tickets"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Wie lange ist ein TGT typischerweise gültig?",
+      "options": [
+        "8-10 Stunden",
+        "5 Minuten",
+        "24 Stunden",
+        "1 Stunde"
+      ],
+      "correctAnswer": "8-10 Stunden",
+      "explanation": "TGTs haben typischerweise eine Gültigkeitsdauer von 8-10 Stunden (eine Arbeitssession), während Service Tickets kürzer gültig sind (5-60 Minuten).",
+      "points": 1,
+      "category": "Tickets"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Was ist ein Principal in Kerberos?",
+      "options": [
+        "Eine eindeutige Identität (Benutzer oder Service) im Format username@REALM",
+        "Der Hauptserver im Kerberos-Netzwerk",
+        "Das Hauptpasswort für alle Services",
+        "Die primäre Verschlüsselungsmethode"
+      ],
+      "correctAnswer": "Eine eindeutige Identität (Benutzer oder Service) im Format username@REALM",
+      "explanation": "Ein Principal ist eine eindeutige Identität in Kerberos, z.B. alice@COMPANY.COM für Benutzer oder HTTP/webserver.company.com@COMPANY.COM für Services.",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet Kerberos? (Mehrere Antworten möglich)",
+      "options": [
+        "Single Sign-On (SSO)",
+        "Mutual Authentication",
+        "Keine Passwort-Übertragung über Netzwerk",
+        "Automatische Passwort-Generierung",
+        "Dezentrale Verwaltung"
+      ],
+      "correctAnswer": ["Single Sign-On (SSO)", "Mutual Authentication", "Keine Passwort-Übertragung über Netzwerk"],
+      "explanation": "Kerberos bietet SSO (einmalige Anmeldung), Mutual Authentication (beide Seiten authentifizieren sich) und überträgt nie Passwörter über das Netzwerk. Die Verwaltung ist zentral (nicht dezentral) und Passwörter werden nicht automatisch generiert.",
+      "points": 2,
+      "category": "Vorteile"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Welcher Befehl fordert ein Kerberos-Ticket unter Linux an?",
+      "options": [
+        "kinit",
+        "klist",
+        "kdestroy",
+        "kerberos-login"
+      ],
+      "correctAnswer": "kinit",
+      "explanation": "kinit fordert ein TGT an (Login), klist zeigt aktive Tickets an, und kdestroy löscht alle Tickets (Logout).",
+      "points": 1,
+      "category": "Praxis"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Warum ist Zeitsynchronisation in Kerberos wichtig?",
+      "options": [
+        "Zum Schutz vor Replay-Attacken durch Zeitstempel-Validierung",
+        "Zur Optimierung der Netzwerkgeschwindigkeit",
+        "Zur Synchronisation von Passwörtern",
+        "Zur Koordination von Backup-Prozessen"
+      ],
+      "correctAnswer": "Zum Schutz vor Replay-Attacken durch Zeitstempel-Validierung",
+      "explanation": "Kerberos verwendet Zeitstempel in allen Nachrichten. Ein Zeitfenster (typisch 5 Minuten) verhindert Replay-Attacken. Deshalb müssen alle Systeme synchronisierte Uhren haben (NTP).",
+      "points": 1,
+      "category": "Sicherheit"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "In welcher Reihenfolge erfolgt die Kerberos-Authentifizierung?",
+      "options": [
+        "1. AS Exchange (TGT anfordern), 2. TGS Exchange (Service Ticket anfordern), 3. Client-Server Exchange (Service zugreifen)",
+        "1. Service Ticket anfordern, 2. TGT anfordern, 3. Service zugreifen",
+        "1. Passwort senden, 2. Service zugreifen, 3. Ticket anfordern",
+        "1. TGT anfordern, 2. Service zugreifen, 3. Service Ticket anfordern"
+      ],
+      "correctAnswer": "1. AS Exchange (TGT anfordern), 2. TGS Exchange (Service Ticket anfordern), 3. Client-Server Exchange (Service zugreifen)",
+      "explanation": "Der Kerberos-Prozess läuft in drei Schritten: 1. Client authentifiziert sich beim AS und erhält TGT, 2. Client fordert mit TGT ein Service Ticket vom TGS an, 3. Client greift mit Service Ticket auf den Service zu.",
+      "points": 2,
+      "category": "Prozess"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was ist ein Nachteil von Kerberos?",
+      "options": [
+        "Single Point of Failure - KDC muss hochverfügbar sein",
+        "Keine Verschlüsselung möglich",
+        "Funktioniert nur in kleinen Netzwerken",
+        "Keine Unterstützung für Windows"
+      ],
+      "correctAnswer": "Single Point of Failure - KDC muss hochverfügbar sein",
+      "explanation": "Das KDC ist ein Single Point of Failure. Wenn es ausfällt, können sich keine Benutzer mehr authentifizieren. Deshalb werden in der Praxis mehrere KDCs für Redundanz eingesetzt.",
+      "points": 1,
+      "category": "Nachteile"
+    }
+  ],
+  "tags": ["kerberos", "authentifizierung", "tickets", "kdc", "sicherheit", "principals"]
+}

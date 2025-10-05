@@ -4,15 +4,15 @@
  */
 
 // Import services
-import StorageService from './services/StorageService.js';
-import StateManager from './services/StateManager.js';
-import ThemeManager from './services/ThemeManager.js';
-import Router from './services/Router.js';
-import ModuleService from './services/ModuleService.js';
-import QuizService from './services/QuizService.js';
-import ProgressService from './services/ProgressService.js';
-import IHKContentService from './services/IHKContentService.js';
 import ExamProgressService from './services/ExamProgressService.js';
+import IHKContentService from './services/IHKContentService.js';
+import ModuleService from './services/ModuleService.js';
+import ProgressService from './services/ProgressService.js';
+import QuizService from './services/QuizService.js';
+import Router from './services/Router.js';
+import StateManager from './services/StateManager.js';
+import StorageService from './services/StorageService.js';
+import ThemeManager from './services/ThemeManager.js';
 
 // Import utilities
 import accessibilityHelper from './utils/AccessibilityHelper.js';
@@ -26,16 +26,15 @@ import Navigation from './components/Navigation.js';
 import HomeView from './components/HomeView.js';
 import ModuleListView from './components/ModuleListView.js';
 import ModuleDetailView from './components/ModuleDetailView.js';
-import QuizListView from './components/QuizListView.js';
-import QuizView from './components/QuizView.js';
+import IHKQuizListView from './components/IHKQuizListView.js';
+import IHKQuizView from './components/IHKQuizView.js';
 import ProgressView from './components/ProgressView.js';
 import NotFoundView from './components/NotFoundView.js';
 
-// Note: IHK content is now integrated into regular views, no separate IHK views needed
+// Note: Using IHK quiz components for all quizzes (superior UI/UX)
 
 // Import sample data
 import modulesData from './data/modules.json';
-import quizzesData from './data/quizzes.json';
 
 /**
  * Main Application Class
@@ -158,12 +157,8 @@ class App {
       this.services.stateManager.setState('modules', modulesData);
     }
 
-    // Check if we have quizzes data
-    let quizzes = this.services.stateManager.getState('quizzes');
-    if (!quizzes || quizzes.length === 0) {
-      // Load default quizzes
-      this.services.stateManager.setState('quizzes', quizzesData);
-    }
+    // Note: Quizzes are now loaded from IHK system via IHKContentService
+    // No need to initialize quiz data here
 
     // Initialize progress if not exists
     let progress = this.services.stateManager.getState('progress');
@@ -247,21 +242,21 @@ class App {
       })
     );
 
-    // Quizzes list route
+    // Quizzes list route (using IHK component for all quizzes)
     router.register(
       '/quizzes',
       ErrorBoundary.wrap(async () => {
-        const view = new QuizListView(this.services);
+        const view = new IHKQuizListView(this.services);
         return await view.render();
       })
     );
 
-    // Quiz detail route
+    // Quiz detail route (using IHK component for all quizzes)
     router.register(
       '/quizzes/:id',
       ErrorBoundary.wrap(async params => {
-        const view = new QuizView(this.services, params);
-        return await view.render();
+        const view = new IHKQuizView(this.services);
+        return await view.render(params.id);
       })
     );
 

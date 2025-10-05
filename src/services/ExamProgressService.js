@@ -90,6 +90,11 @@ class ExamProgressService {
 
   /**
    * Identify weak areas based on quiz performance and incomplete modules
+   * Analyzes three types of weaknesses:
+   * 1. Low quiz performance (< 70% average score)
+   * 2. Incomplete high-relevance categories
+   * 3. Uncompleted new 2025 topics
+   * @returns {Promise<Array>} Array of weak areas with severity and recommendations
    */
   async getWeakAreas() {
     try {
@@ -187,7 +192,10 @@ class ExamProgressService {
   }
 
   /**
-   * Calculate overall exam readiness score
+   * Calculate overall exam readiness score (0-100)
+   * Uses weighted formula: 50% module completion + 30% quiz performance + 20% new topics coverage
+   * Module completion is weighted by exam relevance (high=3, medium=2, low=1)
+   * @returns {Promise<Object>} Readiness object with score, level, recommendation, and breakdown
    */
   async getExamReadiness() {
     try {
@@ -426,7 +434,10 @@ class ExamProgressService {
   }
 
   /**
-   * Export comprehensive exam progress report
+   * Export comprehensive exam progress report as JSON file
+   * Includes readiness score, category progress, weak areas, and recommendations
+   * Automatically triggers browser download of the JSON file
+   * @returns {Promise<Object>} The exported data object
    */
   async exportProgress() {
     try {

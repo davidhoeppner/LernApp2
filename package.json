@@ -10,7 +10,8 @@
     "deploy": "npm run build && gh-pages -d dist",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix",
-    "format": "prettier --write \"src/**/*.{js,css,html}\""
+    "format": "prettier --write \"src/**/*.{js,css,html}\"",
+    "audit:styles": "node scripts/audit-styles.js"
   },
   "devDependencies": {
     "eslint": "^9.37.0",

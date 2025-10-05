@@ -52,7 +52,12 @@ class StorageService {
   }
 
   /**
-   * Set value in localStorage
+   * Set value in localStorage with automatic fallback to in-memory storage
+   * Throws QuotaExceededError if localStorage is full
+   * @param {string} key - Storage key
+   * @param {*} value - Value to store (will be JSON serialized)
+   * @returns {boolean} True if successful
+   * @throws {Error} QuotaExceededError if storage quota exceeded
    */
   set(key, value) {
     const prefixedKey = this._getKey(key);
@@ -153,6 +158,8 @@ class StorageService {
 
   /**
    * Get storage usage information
+   * Calculates used space and percentage based on estimated 5MB limit
+   * @returns {Object} Storage info with available, used, total, and percentage
    */
   getStorageInfo() {
     if (!this.isAvailable) {

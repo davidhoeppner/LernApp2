@@ -4,6 +4,25 @@
  */
 class LoadingSpinner {
   /**
+   * Render loading spinner as HTML string
+   * @param {string} message - Loading message
+   * @returns {string} HTML string
+   */
+  static render(message = 'Loading...') {
+    return `
+      <div class="loading-spinner loading-spinner-medium" role="status" aria-live="polite" aria-busy="true">
+        <div class="spinner-content">
+          <div class="spinner" aria-hidden="true">
+            <div class="spinner-circle"></div>
+          </div>
+          <p class="spinner-message">${message}</p>
+          <span class="sr-only">${message}</span>
+        </div>
+      </div>
+    `;
+  }
+
+  /**
    * Create a loading spinner element
    */
   static create(options = {}) {

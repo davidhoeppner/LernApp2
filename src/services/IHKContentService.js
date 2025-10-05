@@ -43,6 +43,47 @@ import sqlDdl from '../data/ihk/modules/sql-ddl.json';
 import sqlDml from '../data/ihk/modules/sql-dml.json';
 import sqlDql from '../data/ihk/modules/sql-dql.json';
 
+// Import all IHK quizzes (including migrated ones)
+import arrayMethodsQuiz from '../data/ihk/quizzes/array-methods-quiz.json';
+import asyncJavascriptQuiz from '../data/ihk/quizzes/async-javascript-quiz.json';
+import bp01DocumentationQuiz from '../data/ihk/quizzes/bp-01-documentation-quiz.json';
+import bp01MonitoringQuiz from '../data/ihk/quizzes/bp-01-monitoring-quiz.json';
+import bp01OdbcQuiz from '../data/ihk/quizzes/bp-01-odbc-quiz.json';
+import bp02CloudModelsQuiz from '../data/ihk/quizzes/bp-02-cloud-models-quiz.json';
+import bp02DataFormatsQuiz from '../data/ihk/quizzes/bp-02-data-formats-quiz.json';
+import bp02NasSanQuiz from '../data/ihk/quizzes/bp-02-nas-san-quiz.json';
+import bp03CpsQuiz from '../data/ihk/quizzes/bp-03-cps-quiz.json';
+import bp03RestApiQuiz from '../data/ihk/quizzes/bp-03-rest-api-quiz.json';
+import bp03SoftwareQualityQuiz from '../data/ihk/quizzes/bp-03-software-quality-quiz.json';
+import bp03TddQuiz from '../data/ihk/quizzes/bp-03-tdd-quiz.json';
+import bp04ArchitecturePatternsQuiz from '../data/ihk/quizzes/bp-04-architecture-patterns-quiz.json';
+import bp04DesignPatternsQuiz from '../data/ihk/quizzes/bp-04-design-patterns-quiz.json';
+import bp04ProgrammingParadigmsQuiz from '../data/ihk/quizzes/bp-04-programming-paradigms-quiz.json';
+import bp04ScrumQuiz from '../data/ihk/quizzes/bp-04-scrum-quiz.json';
+import bp05DataStructuresQuiz from '../data/ihk/quizzes/bp-05-data-structures-quiz.json';
+import bp05EncapsulationQuiz from '../data/ihk/quizzes/bp-05-encapsulation-quiz.json';
+import bp05SortingQuiz from '../data/ihk/quizzes/bp-05-sorting-quiz.json';
+import bp05SqlReferenceQuiz from '../data/ihk/quizzes/bp-05-sql-reference-quiz.json';
+import domManipulationQuiz from '../data/ihk/quizzes/dom-manipulation-quiz.json';
+import fue01PlanningQuiz from '../data/ihk/quizzes/fue-01-planning-quiz.json';
+import fue02AnomaliesRedundanciesQuiz from '../data/ihk/quizzes/fue-02-anomalies-redundancies-quiz.json';
+import fue02ControlStructuresQuiz from '../data/ihk/quizzes/fue-02-control-structures-quiz.json';
+import fue02DevelopmentQuiz from '../data/ihk/quizzes/fue-02-development-quiz.json';
+import fue03LoadPerformanceTestsQuiz from '../data/ihk/quizzes/fue-03-load-performance-tests-quiz.json';
+import fue03QualityQuiz from '../data/ihk/quizzes/fue-03-quality-quiz.json';
+import fue04SecurityQuiz from '../data/ihk/quizzes/fue-04-security-quiz.json';
+import fue04SecurityThreatsQuiz from '../data/ihk/quizzes/fue-04-security-threats-quiz.json';
+import javascriptBasicsQuiz from '../data/ihk/quizzes/javascript-basics-quiz.json';
+import kerberosQuiz from '../data/ihk/quizzes/kerberos-quiz.json';
+import scrumQuiz from '../data/ihk/quizzes/scrum-quiz.json';
+import securityThreatsQuiz from '../data/ihk/quizzes/security-threats-quiz.json';
+import sortingAlgorithmsQuiz from '../data/ihk/quizzes/sorting-algorithms-quiz.json';
+import sqlComprehensiveQuiz from '../data/ihk/quizzes/sql-comprehensive-quiz.json';
+import sqlDdl2025Quiz from '../data/ihk/quizzes/sql-ddl-2025-quiz.json';
+import sqlDml2025Quiz from '../data/ihk/quizzes/sql-dml-2025-quiz.json';
+import tddQuiz from '../data/ihk/quizzes/tdd-quiz.json';
+import undefinedQuiz from '../data/ihk/quizzes/undefined-quiz.json';
+
 /**
  * IHKContentService - Manages IHK exam content (modules, quizzes, learning paths)
  * Handles loading, filtering, and searching of IHK-specific content
@@ -257,7 +298,12 @@ class IHKContentService {
   }
 
   /**
-   * Get personalized recommendations based on user progress
+   * Get personalized module recommendations based on user progress
+   * Returns up to 3 recommendation groups:
+   * 1. Continue in-progress modules
+   * 2. New topics introduced in 2025
+   * 3. High exam relevance modules not yet started
+   * @returns {Promise<Array>} Array of recommendation groups with type, title, and modules
    */
   async getRecommendations() {
     try {
@@ -323,17 +369,18 @@ class IHKContentService {
   }
 
   /**
-   * Load all modules from the modules directory
+   * Load all IHK modules into memory cache
+   * Modules are statically imported at the top of this file for optimal bundling
    * @private
    */
   async _loadAllModules() {
-    // If already loaded, return
+    // If already loaded, return cached modules
     if (this.modules.size > 0) {
       return;
     }
 
     try {
-      // Simple: just add all imported modules
+      // Add all statically imported modules to the cache
       const allModules = [
         fue01,
         fue02dev,
@@ -378,8 +425,11 @@ class IHKContentService {
   }
 
   /**
-   * Enrich modules with progress data
+   * Enrich modules with user progress data (completion status)
+   * Adds completed, inProgress, and status fields to each module
    * @private
+   * @param {Array} modules - Array of module objects to enrich
+   * @returns {Array} Enriched modules with progress information
    */
   _enrichModulesWithProgress(modules) {
     const progress = this.stateManager.getState('progress') || {};
@@ -465,16 +515,33 @@ class IHKContentService {
   }
 
   /**
+   * Get all quizzes
+   */
+  async getAllQuizzes() {
+    // Load all quizzes if not already loaded
+    if (this.quizzes.size === 0) {
+      await this._loadAllQuizzes();
+    }
+
+    return Array.from(this.quizzes.values());
+  }
+
+  /**
    * Get a single quiz by ID
    */
   async getQuizById(quizId) {
     try {
-      // Check cache first
+      // Load all quizzes if not already loaded
+      if (this.quizzes.size === 0) {
+        await this._loadAllQuizzes();
+      }
+
+      // Check cache
       if (this.quizzes.has(quizId)) {
         return this.quizzes.get(quizId);
       }
 
-      // Try to load from file using dynamic import
+      // Try dynamic import as fallback
       const quizData = await import(`../data/ihk/quizzes/${quizId}.json`);
       const quiz = quizData.default;
       this.quizzes.set(quiz.id, quiz);
@@ -487,6 +554,67 @@ class IHKContentService {
   }
 
   /**
+   * Get quizzes related to a module
+   */
+  getRelatedQuizzes(moduleId) {
+    const allQuizzes = Array.from(this.quizzes.values());
+    return allQuizzes.filter(quiz => quiz.moduleId === moduleId);
+  }
+
+  /**
+   * Load all IHK quizzes into memory cache
+   * Quizzes are statically imported at the top of this file for optimal bundling
+   * @private
+   */
+  async _loadAllQuizzes() {
+    const allQuizzes = [
+      arrayMethodsQuiz,
+      asyncJavascriptQuiz,
+      bp01DocumentationQuiz,
+      bp01MonitoringQuiz,
+      bp01OdbcQuiz,
+      bp02CloudModelsQuiz,
+      bp02DataFormatsQuiz,
+      bp02NasSanQuiz,
+      bp03CpsQuiz,
+      bp03RestApiQuiz,
+      bp03SoftwareQualityQuiz,
+      bp03TddQuiz,
+      bp04ArchitecturePatternsQuiz,
+      bp04DesignPatternsQuiz,
+      bp04ProgrammingParadigmsQuiz,
+      bp04ScrumQuiz,
+      bp05DataStructuresQuiz,
+      bp05EncapsulationQuiz,
+      bp05SortingQuiz,
+      bp05SqlReferenceQuiz,
+      domManipulationQuiz,
+      fue01PlanningQuiz,
+      fue02AnomaliesRedundanciesQuiz,
+      fue02ControlStructuresQuiz,
+      fue02DevelopmentQuiz,
+      fue03LoadPerformanceTestsQuiz,
+      fue03QualityQuiz,
+      fue04SecurityQuiz,
+      fue04SecurityThreatsQuiz,
+      javascriptBasicsQuiz,
+      kerberosQuiz,
+      scrumQuiz,
+      securityThreatsQuiz,
+      sortingAlgorithmsQuiz,
+      sqlComprehensiveQuiz,
+      sqlDdl2025Quiz,
+      sqlDml2025Quiz,
+      tddQuiz,
+      undefinedQuiz,
+    ];
+
+    allQuizzes.forEach(quiz => {
+      this.quizzes.set(quiz.id, quiz);
+    });
+  }
+
+  /**
    * Get content statistics
    */
   getContentStats() {
@@ -495,19 +623,6 @@ class IHKContentService {
       totalQuizzes: this.quizzes.size,
       totalLearningPaths: 4,
     };
-  }
-
-  /**
-   * Check if cached data is still valid (24 hours)
-   * @private
-   */
-  _isCacheValid(cached) {
-    if (!cached || !cached.timestamp) {
-      return false;
-    }
-
-    const ONE_DAY = 24 * 60 * 60 * 1000;
-    return Date.now() - cached.timestamp < ONE_DAY;
   }
 }
 

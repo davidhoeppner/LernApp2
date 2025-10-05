@@ -1,0 +1,100 @@
+{
+  "id": "bp-03-cps-quiz",
+  "moduleId": "bp-03-cps",
+  "title": "Cyber-physische Systeme (CPS) Quiz",
+  "description": "Teste dein Wissen über Cyber-physische Systeme (CPS)",
+  "category": "BP-03",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "timeLimit": 10,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist Cyber-physische Systeme (CPS)?",
+      "options": [
+        "Richtige Antwort hier einfügen",
+        "Falsche Option 1",
+        "Falsche Option 2",
+        "Falsche Option 3"
+      ],
+      "correctAnswer": "Richtige Antwort hier einfügen",
+      "explanation": "Erklärung hier einfügen",
+      "points": 1,
+      "category": "Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Frage 2 hier einfügen",
+      "options": [
+        "Richtige Antwort",
+        "Falsche Option 1",
+        "Falsche Option 2",
+        "Falsche Option 3"
+      ],
+      "correctAnswer": "Richtige Antwort",
+      "explanation": "Erklärung hier einfügen",
+      "points": 1,
+      "category": "Konzepte"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen sind korrekt? (Mehrere Antworten möglich)",
+      "options": [
+        "Richtige Aussage 1",
+        "Richtige Aussage 2",
+        "Falsche Aussage 1",
+        "Falsche Aussage 2"
+      ],
+      "correctAnswer": [
+        "Richtige Aussage 1",
+        "Richtige Aussage 2"
+      ],
+      "explanation": "Erklärung hier einfügen",
+      "points": 2,
+      "category": "Anwendung"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Frage 4 hier einfügen",
+      "options": [
+        "Richtige Antwort",
+        "Falsche Option 1",
+        "Falsche Option 2",
+        "Falsche Option 3"
+      ],
+      "correctAnswer": "Richtige Antwort",
+      "explanation": "Erklärung hier einfügen",
+      "points": 1,
+      "category": "Praxis"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Frage 5 hier einfügen",
+      "options": [
+        "Richtige Antwort",
+        "Falsche Option 1",
+        "Falsche Option 2",
+        "Falsche Option 3"
+      ],
+      "correctAnswer": "Richtige Antwort",
+      "explanation": "Erklärung hier einfügen",
+      "points": 1,
+      "category": "Vertiefung"
+    }
+  ],
+  "tags": [
+    "CPS",
+    "Cyber-physische Systeme",
+    "Sensoren",
+    "Aktoren",
+    "IoT",
+    "Embedded Systems",
+    "Neu 2025"
+  ]
+}

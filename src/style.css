@@ -324,7 +324,7 @@ button,
   transition: all var(--transition-fast);
   text-decoration: none;
   white-space: nowrap;
-  /* Minimum touch target size for mobile */
+  /* Minimum touch target size for mobile (WCAG 2.1 Level AAA) */
   min-height: 44px;
   min-width: 44px;
 }
@@ -333,6 +333,7 @@ button:disabled,
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 /* Primary Button */
@@ -341,17 +342,21 @@ button:not([class]) {
   background-color: var(--color-primary);
   color: white;
   border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-primary:hover:not(:disabled),
 button:not([class]):hover:not(:disabled) {
   background-color: var(--color-primary-dark);
   border-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
 }
 
 .btn-primary:active:not(:disabled),
 button:not([class]):active:not(:disabled) {
-  transform: translateY(1px);
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Secondary Button */
@@ -364,6 +369,12 @@ button:not([class]):active:not(:disabled) {
 .btn-secondary:hover:not(:disabled) {
   background-color: var(--color-primary);
   color: white;
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 /* Ghost Button */
@@ -375,6 +386,12 @@ button:not([class]):active:not(:disabled) {
 
 .btn-ghost:hover:not(:disabled) {
   background-color: var(--color-bg-secondary);
+  transform: translateY(-1px);
+}
+
+.btn-ghost:active:not(:disabled) {
+  transform: translateY(0);
+  background-color: var(--color-bg-tertiary);
 }
 
 /* Danger Button */
@@ -382,29 +399,76 @@ button:not([class]):active:not(:disabled) {
   background-color: var(--color-error);
   color: white;
   border-color: var(--color-error);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-danger:hover:not(:disabled) {
   background-color: #dc2626;
   border-color: #dc2626;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-danger:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Success Button */
+.btn-success {
+  background-color: var(--color-success);
+  color: white;
+  border-color: var(--color-success);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: #059669;
+  border-color: #059669;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.btn-success:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Button Sizes */
 .btn-sm {
   font-size: var(--font-size-sm);
   padding: var(--spacing-xs) var(--spacing-sm);
+  min-height: 36px;
+  min-width: 36px;
 }
 
 .btn-lg {
   font-size: var(--font-size-lg);
   padding: var(--spacing-md) var(--spacing-lg);
+  min-height: 48px;
+  min-width: 48px;
 }
 
-/* Focus States */
+/* Focus States - WCAG 2.1 Level AA compliant */
 button:focus-visible,
 .btn:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  button,
+  .btn {
+    transition: none;
+  }
+  
+  button:hover,
+  .btn:hover,
+  button:active,
+  .btn:active {
+    transform: none;
+  }
 }
 
 /* ============================================
@@ -417,15 +481,16 @@ button:focus-visible,
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: box-shadow var(--transition-base);
+  transition: all var(--transition-base);
 }
 
 .card:hover {
   box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .card-header {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-lg);
   border-bottom: 1px solid var(--color-border);
   background-color: var(--color-bg-secondary);
 }
@@ -434,6 +499,7 @@ button:focus-visible,
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-semibold);
   margin: 0;
+  color: var(--color-text);
 }
 
 .card-body {
@@ -441,12 +507,48 @@ button:focus-visible,
 }
 
 .card-footer {
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-lg);
   border-top: 1px solid var(--color-border);
   background-color: var(--color-bg-secondary);
   display: flex;
   gap: var(--spacing-sm);
   justify-content: flex-end;
+}
+
+/* Card variants */
+.card-interactive {
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-interactive:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-md);
+}
+
+.card-elevated {
+  box-shadow: var(--shadow-md);
+}
+
+.card-elevated:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: box-shadow var(--transition-fast);
+  }
+  
+  .card:hover,
+  .card-interactive:hover,
+  .card-interactive:active {
+    transform: none;
+  }
 }
 
 /* ============================================
@@ -457,19 +559,30 @@ input[type='text'],
 input[type='email'],
 input[type='password'],
 input[type='search'],
+input[type='number'],
+input[type='tel'],
+input[type='url'],
 textarea,
 select {
   width: 100%;
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   padding: var(--spacing-sm) var(--spacing-md);
-  border: 1px solid var(--color-border);
+  border: 2px solid var(--color-border);
   border-radius: var(--radius-md);
   background-color: var(--color-bg);
   color: var(--color-text);
   transition:
     border-color var(--transition-fast),
-    box-shadow var(--transition-fast);
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+  min-height: 44px;
+}
+
+input:hover:not(:disabled):not(:focus),
+textarea:hover:not(:disabled):not(:focus),
+select:hover:not(:disabled):not(:focus) {
+  border-color: var(--color-text-tertiary);
 }
 
 input:focus,
@@ -478,6 +591,7 @@ select:focus {
   outline: none;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background-color: var(--color-bg);
 }
 
 input:disabled,
@@ -485,11 +599,50 @@ textarea:disabled,
 select:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+  background-color: var(--color-bg-secondary);
+}
+
+/* Validation states */
+input.input-error,
+textarea.input-error,
+select.input-error {
+  border-color: var(--color-error);
+}
+
+input.input-error:focus,
+textarea.input-error:focus,
+select.input-error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+input.input-success,
+textarea.input-success,
+select.input-success {
+  border-color: var(--color-success);
+}
+
+input.input-success:focus,
+textarea.input-success:focus,
+select.input-success:focus {
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+input.input-warning,
+textarea.input-warning,
+select.input-warning {
+  border-color: var(--color-warning);
+}
+
+input.input-warning:focus,
+textarea.input-warning:focus,
+select.input-warning:focus {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
 }
 
 textarea {
   resize: vertical;
   min-height: 100px;
+  line-height: var(--line-height-relaxed);
 }
 
 label {
@@ -500,15 +653,65 @@ label {
   margin-bottom: var(--spacing-xs);
 }
 
+/* Form groups */
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-help {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+.form-error {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  margin-top: var(--spacing-xs);
+}
+
+.form-success {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-success);
+  margin-top: var(--spacing-xs);
+}
+
 /* Radio and Checkbox */
 input[type='radio'],
 input[type='checkbox'] {
   width: auto;
   margin-right: var(--spacing-xs);
   cursor: pointer;
-  /* Minimum touch target size for mobile */
+  /* Minimum touch target size for mobile (WCAG 2.1 Level AAA) */
   min-width: 20px;
   min-height: 20px;
+}
+
+input[type='radio']:focus-visible,
+input[type='checkbox']:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Select dropdown */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--spacing-sm) center;
+  padding-right: var(--spacing-xl);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  input,
+  textarea,
+  select {
+    transition: none;
+  }
 }
 
 /* ============================================
@@ -1404,12 +1607,13 @@ input[type='checkbox'] {
   align-items: center;
   gap: var(--spacing-md);
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-base);
+  transition: all var(--transition-fast);
 }
 
 .stat-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
+  border-color: var(--color-border);
 }
 
 .stat-icon {
@@ -1461,15 +1665,28 @@ input[type='checkbox'] {
   align-items: center;
   gap: var(--spacing-md);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all var(--transition-fast);
   text-align: left;
   width: 100%;
+  box-shadow: var(--shadow-sm);
+  /* Minimum touch target size */
+  min-height: 80px;
 }
 
 .action-card:hover {
   border-color: var(--color-primary);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
+}
+
+.action-card:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.action-card:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .action-icon {
@@ -1793,17 +2010,34 @@ input[type='checkbox'] {
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-fast);
+  min-height: 44px;
 }
 
 .filter-btn:hover {
   background-color: var(--color-bg-tertiary);
   color: var(--color-text);
+  border-color: var(--color-text-tertiary);
+}
+
+.filter-btn:active {
+  transform: scale(0.98);
 }
 
 .filter-btn.active {
   background-color: var(--color-primary);
   color: white;
   border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-btn.active:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.filter-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* Module Grid */
@@ -4051,6 +4285,11 @@ input[type='checkbox'] {
   height: 24px;
 }
 
+.loading-spinner-medium .spinner {
+  width: 48px;
+  height: 48px;
+}
+
 .loading-spinner-large .spinner {
   width: 64px;
   height: 64px;
@@ -4065,6 +4304,14 @@ input[type='checkbox'] {
   animation: spin 0.8s linear infinite;
 }
 
+.loading-spinner-small .spinner-circle {
+  border-width: 2px;
+}
+
+.loading-spinner-large .spinner-circle {
+  border-width: 4px;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -4075,6 +4322,7 @@ input[type='checkbox'] {
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   font-weight: var(--font-weight-medium);
+  text-align: center;
 }
 
 /* Inline spinner */
@@ -4096,12 +4344,14 @@ input[type='checkbox'] {
 
 .spinner-inline-text {
   font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
 }
 
 /* Button loading state */
 .btn-loading {
   position: relative;
   color: transparent !important;
+  pointer-events: none;
 }
 
 .btn-loading .loading-inline {
@@ -4110,6 +4360,15 @@ input[type='checkbox'] {
   left: 50%;
   transform: translate(-50%, -50%);
   color: currentColor;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .spinner-circle,
+  .spinner-inline {
+    animation: none;
+    border-top-color: var(--color-border);
+  }
 }
 
 /* Skeleton loaders */
@@ -4257,10 +4516,21 @@ input[type='checkbox'] {
   cursor: pointer;
   transition: all var(--transition-fast);
   flex-shrink: 0;
+  min-height: 32px;
 }
 
 .toast-action:hover {
   background: var(--color-bg-secondary);
+  transform: translateY(-1px);
+}
+
+.toast-action:active {
+  transform: translateY(0);
+}
+
+.toast-action:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
 }
 
 .toast-dismiss {
@@ -4271,12 +4541,26 @@ input[type='checkbox'] {
   line-height: 1;
   cursor: pointer;
   color: var(--color-text-secondary);
-  transition: color var(--transition-fast);
+  transition: all var(--transition-fast);
   flex-shrink: 0;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: var(--radius-sm);
 }
 
 .toast-dismiss:hover {
   color: var(--color-text);
+  background-color: var(--color-bg-secondary);
+  transform: scale(1.1);
+}
+
+.toast-dismiss:active {
+  transform: scale(1);
+}
+
+.toast-dismiss:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* Toast types */
@@ -4336,6 +4620,9 @@ input[type='checkbox'] {
   justify-content: center;
   min-height: 300px;
   padding: var(--spacing-2xl);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--color-border);
 }
 
 .empty-state-content {
@@ -4347,6 +4634,7 @@ input[type='checkbox'] {
   font-size: 4rem;
   margin-bottom: var(--spacing-lg);
   opacity: 0.8;
+  line-height: 1;
 }
 
 .empty-state-title {
@@ -4368,13 +4656,25 @@ input[type='checkbox'] {
 }
 
 /* Empty state types */
+.empty-state-default {
+  background-color: var(--color-bg-secondary);
+}
+
+.empty-state-error {
+  background-color: var(--color-bg);
+  border-color: var(--color-error);
+  border-style: solid;
+}
+
 .empty-state-error .empty-state-icon {
   color: var(--color-error);
+  opacity: 1;
 }
 
 .empty-state-search .empty-state-icon,
 .empty-state-filter .empty-state-icon {
   opacity: 0.6;
+  color: var(--color-text-tertiary);
 }
 
 /* Mobile responsive */
@@ -4418,7 +4718,6 @@ input[type='checkbox'] {
     transform: none;
   }
 }
-
 
 /* ============================================
    Category Filter Component
@@ -4504,16 +4803,27 @@ input[type='checkbox'] {
   background-color: var(--color-bg-tertiary);
   border-color: var(--color-primary);
   color: var(--color-text);
+  transform: translateY(-1px);
+}
+
+.filter-chip:active {
+  transform: translateY(0);
 }
 
 .filter-chip.active {
   background-color: var(--color-primary);
   color: white;
   border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-chip.active:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
 }
 
 .filter-chip:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 3px solid var(--color-primary);
   outline-offset: 2px;
 }
 
@@ -4605,7 +4915,6 @@ input[type='checkbox'] {
   }
 }
 
-
 /* ============================================
    Exam Changes 2025 Component
    ============================================ */
@@ -4616,7 +4925,11 @@ input[type='checkbox'] {
 }
 
 .exam-changes-header {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  );
   border-radius: var(--radius-xl);
   padding: var(--spacing-2xl);
   margin-bottom: var(--spacing-xl);
@@ -5562,7 +5875,9 @@ input[type='checkbox'] {
   border-radius: 8px;
   padding: 1.25rem;
   border-left: 4px solid var(--border-color);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .category-card:hover {
@@ -5845,7 +6160,9 @@ input[type='checkbox'] {
   background: var(--bg-secondary);
   border-radius: 8px;
   padding: 1.25rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .recommended-module-card:hover {
@@ -6067,5 +6384,768 @@ input[type='checkbox'] {
 
   .info-message {
     background: rgba(59, 130, 246, 0.1);
+  }
+}
+
+/* ============================================
+   Enhanced Focus States for Interactive Cards
+   ============================================ */
+
+/* Clickable cards focus states */
+.module-card:focus-visible,
+.quiz-card:focus-visible,
+.action-card:focus-visible,
+.stat-card:focus-visible,
+.category-card:focus-visible,
+.recommended-module-card:focus-visible,
+.weak-area-card:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Ensure cards with click handlers have proper cursor */
+.module-card[data-module-id],
+.quiz-card[data-quiz-id],
+.action-card[data-action],
+.category-card[data-category-id] {
+  cursor: pointer;
+}
+
+/* Smooth transitions for all interactive elements */
+.module-card,
+.quiz-card,
+.action-card,
+.stat-card,
+.category-card,
+.recommended-module-card,
+.weak-area-card,
+.activity-item,
+.search-result-item,
+.toc-item,
+.filter-btn,
+.filter-chip,
+.status-tab {
+  transition: all var(--transition-fast);
+}
+
+/* Enhanced hover states with smooth transitions */
+.activity-item:hover,
+.search-result-item:hover,
+.toc-item:hover,
+.filter-btn:hover,
+.filter-chip:hover,
+.status-tab:hover {
+  background-color: var(--color-bg-secondary);
+  transform: translateX(2px);
+}
+
+/* Focus states for list items */
+.activity-item:focus-visible,
+.search-result-item:focus-visible,
+.toc-item:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  background-color: var(--color-bg-secondary);
+}
+
+/* Filter buttons focus and hover states */
+.filter-btn:focus-visible,
+.filter-chip:focus-visible,
+.status-tab:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.filter-btn.active,
+.filter-chip.active,
+.status-tab.active {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.filter-btn.active:hover,
+.filter-chip.active:hover,
+.status-tab.active:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+/* Link hover states with smooth transitions */
+.nav-link,
+.breadcrumb-link,
+.footer-link {
+  transition: all var(--transition-fast);
+}
+
+/* Ensure all buttons have smooth active states */
+button:active:not(:disabled),
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+  transition: transform 50ms ease-in-out;
+}
+
+/* Card active states for touch feedback */
+.module-card:active,
+.quiz-card:active,
+.action-card:active {
+  transform: translateY(-2px);
+  transition: transform 50ms ease-in-out;
+}
+
+/* Toast notification buttons */
+.toast-action:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.toast-action:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.toast-dismiss:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.toast-dismiss:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Progress bar items hover states */
+.progress-bar-item:hover {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+  margin: calc(var(--spacing-sm) * -1);
+}
+
+/* Recommendation cards */
+.recommended-module-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+}
+
+.recommended-module-card .module-start-btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Category cards hover enhancement */
+.category-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+}
+
+/* Weak area cards hover */
+.weak-area-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Export button hover states */
+.export-card button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Back button hover state */
+.back-btn:hover {
+  background-color: var(--color-bg-secondary);
+  transform: translateX(-2px);
+}
+
+/* Ensure smooth transitions for theme toggle */
+.theme-toggle {
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-bg-tertiary);
+  transform: scale(1.05);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Mobile menu toggle smooth animation */
+.nav-toggle {
+  transition: all var(--transition-fast);
+}
+
+.nav-toggle:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Hamburger menu smooth transitions */
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+  transition: all var(--transition-base);
+}
+
+/* Search clear button */
+.search-clear-btn:hover {
+  background-color: var(--color-bg-tertiary);
+  transform: scale(1.1);
+}
+
+.search-clear-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Ensure all interactive SVG elements have transitions */
+svg {
+  transition: all var(--transition-fast);
+}
+
+/* Progress circle animations */
+.progress-circle-fill,
+.readiness-circle-fill {
+  transition: stroke-dasharray var(--transition-slow);
+}
+
+/* Badge hover states for interactive badges */
+.badge.clickable:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.badge.clickable:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Ensure minimum touch target sizes */
+@media (max-width: 768px) {
+  button,
+  .btn,
+  a.nav-link,
+  .filter-btn,
+  .filter-chip,
+  .status-tab {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Increase tap target for small interactive elements */
+  .toast-dismiss,
+  .search-clear-btn,
+  .theme-toggle {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ============================================
+   Responsive Layout Fixes
+   ============================================ */
+
+/* Prevent horizontal scroll on all screen sizes */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Ensure all containers respect viewport width */
+* {
+  max-width: 100%;
+}
+
+/* Fix for images and media */
+img,
+video,
+iframe,
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent code blocks from causing horizontal scroll */
+pre,
+code {
+  max-width: 100%;
+  overflow-x: auto;
+  word-wrap: break-word;
+}
+
+/* Fix for tables */
+table {
+  max-width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+/* Ensure grid layouts don't overflow */
+.grid,
+.stats-grid,
+.actions-grid,
+.module-grid,
+.quiz-grid {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Fix for very small screens (320px) */
+@media (max-width: 320px) {
+  /* Reduce padding on containers */
+  .container,
+  .home-view,
+  .module-list-view,
+  .quiz-list-view,
+  .progress-view,
+  .ihk-progress-view {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+  
+  /* Reduce font sizes for better fit */
+  .hero-title,
+  .page-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  /* Stack navigation items */
+  .nav-container {
+    padding: 0 var(--spacing-sm);
+  }
+  
+  /* Reduce card padding */
+  .card,
+  .module-card,
+  .quiz-card,
+  .action-card,
+  .stat-card {
+    padding: var(--spacing-sm);
+  }
+  
+  /* Reduce button padding */
+  button,
+  .btn {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+  
+  /* Reduce grid gaps */
+  .stats-grid,
+  .actions-grid,
+  .module-grid,
+  .quiz-grid {
+    gap: var(--spacing-sm);
+  }
+}
+
+/* Fix for mobile (up to 768px) */
+@media (max-width: 768px) {
+  /* Ensure single column layouts */
+  .stats-grid,
+  .actions-grid,
+  .module-grid,
+  .quiz-grid,
+  .category-cards,
+  .recommendations-list {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Fix module detail sidebar */
+  .module-detail-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .module-detail-sidebar {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Fix navigation overflow */
+  .nav-menu {
+    max-width: 100vw;
+  }
+  
+  /* Prevent text overflow */
+  h1, h2, h3, h4, h5, h6 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  /* Fix long words in cards */
+  .module-card-title,
+  .quiz-card-title,
+  .action-title,
+  .stat-label {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Ensure buttons don't overflow */
+  button,
+  .btn {
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
+  
+  /* Fix hero section */
+  .hero {
+    padding: var(--spacing-xl) var(--spacing-md);
+  }
+  
+  /* Fix progress bars */
+  .progress-bar,
+  .progress-bar-track {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Fix search component */
+  .search-container {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  
+  /* Fix filter chips */
+  .filter-chips,
+  .active-filters-list {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+  
+  .filter-chip {
+    flex-shrink: 0;
+  }
+}
+
+/* Fix for tablet (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Two column layouts */
+  .stats-grid,
+  .actions-grid,
+  .module-grid,
+  .quiz-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Ensure proper spacing */
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+  
+  /* Fix navigation */
+  .nav-links {
+    gap: var(--spacing-sm);
+  }
+  
+  .nav-link {
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Fix for large screens (1920px+) */
+@media (min-width: 1920px) {
+  /* Prevent content from being too wide */
+  .container,
+  .home-view,
+  .module-list-view,
+  .quiz-list-view,
+  .progress-view,
+  .ihk-progress-view {
+    max-width: 1600px;
+  }
+  
+  /* Limit grid columns */
+  .stats-grid,
+  .actions-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .module-grid,
+  .quiz-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Fix overlapping elements */
+.module-card-header,
+.quiz-card-header,
+.card-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  align-items: center;
+}
+
+/* Ensure badges don't overlap */
+.badge,
+.new-badge,
+.difficulty-badge,
+.relevance-badge {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Fix for long module/quiz titles */
+.module-card-title,
+.quiz-card-title,
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  max-height: 2.8em;
+}
+
+/* Fix for descriptions */
+.module-card-description,
+.quiz-card-description,
+.action-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Ensure touch-friendly sizing on mobile */
+@media (max-width: 768px) {
+  /* Minimum touch target size (44x44px) */
+  button,
+  .btn,
+  a.nav-link,
+  .filter-btn,
+  .filter-chip,
+  .status-tab,
+  .theme-toggle,
+  .nav-toggle,
+  input[type="radio"],
+  input[type="checkbox"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Increase spacing between interactive elements */
+  .nav-links,
+  .filter-chips,
+  .button-group {
+    gap: var(--spacing-md);
+  }
+  
+  /* Larger tap targets for small buttons */
+  .toast-dismiss,
+  .search-clear-btn,
+  .back-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: var(--spacing-sm);
+  }
+  
+  /* Ensure form inputs are touch-friendly */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  textarea,
+  select {
+    min-height: 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Fix for landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Reduce vertical spacing */
+  .hero {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .section-title {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  /* Reduce card padding */
+  .card,
+  .module-card,
+  .quiz-card {
+    padding: var(--spacing-sm);
+  }
+  
+  /* Compact navigation */
+  .nav-container {
+    height: 56px;
+  }
+}
+
+/* Fix for very wide screens to prevent stretching */
+@media (min-width: 2560px) {
+  .container,
+  .home-view,
+  .module-list-view,
+  .quiz-list-view,
+  .progress-view,
+  .ihk-progress-view {
+    max-width: 1920px;
+  }
+}
+
+/* Ensure flexbox layouts don't overflow */
+.flex,
+.flex-row,
+.flex-col {
+  min-width: 0; /* Allows flex items to shrink below content size */
+}
+
+/* Fix for nested grids */
+.grid .grid,
+.stats-grid .grid,
+.module-grid .grid {
+  width: 100%;
+}
+
+/* Prevent absolute positioned elements from causing overflow */
+.relative {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fix for modal/overlay positioning */
+.modal,
+.overlay,
+.toast-container {
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+/* Ensure proper spacing in mobile menu */
+@media (max-width: 768px) {
+  .nav-menu.active {
+    padding: var(--spacing-lg);
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+  
+  .nav-links {
+    width: 100%;
+  }
+  
+  .nav-link {
+    width: 100%;
+    padding: var(--spacing-md);
+  }
+}
+
+/* Fix for quiz question layout */
+@media (max-width: 768px) {
+  .quiz-question-container {
+    padding: var(--spacing-md);
+  }
+  
+  .quiz-options {
+    gap: var(--spacing-sm);
+  }
+  
+  .quiz-option {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Fix for progress view layout */
+@media (max-width: 768px) {
+  .progress-summary {
+    grid-template-columns: 1fr;
+  }
+  
+  .module-progress-list {
+    gap: var(--spacing-sm);
+  }
+}
+
+/* Fix for IHK progress view */
+@media (max-width: 768px) {
+  .readiness-main {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+  
+  .readiness-circle-container {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+  }
+  
+  .category-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .weak-areas-list,
+  .recommendations-list {
+    gap: var(--spacing-md);
+  }
+}
+
+/* Ensure proper word breaking for long URLs or code */
+.module-content a,
+.quiz-content a,
+code,
+pre {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Fix for table of contents */
+@media (max-width: 1024px) {
+  .toc {
+    position: static;
+    width: 100%;
+    margin-bottom: var(--spacing-lg);
+  }
+}
+
+/* Ensure proper stacking context */
+.navigation {
+  z-index: 100;
+}
+
+.modal,
+.overlay {
+  z-index: 200;
+}
+
+.toast-container {
+  z-index: 300;
+}
+
+/* Fix for Safari iOS input zoom */
+@supports (-webkit-touch-callout: none) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  textarea,
+  select {
+    font-size: 16px;
   }
 }

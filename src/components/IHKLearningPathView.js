@@ -3,10 +3,11 @@
  * Displays structured learning paths with modules, quizzes, progress, and milestones
  */
 
-import LoadingSpinner from './LoadingSpinner.js';
-import EmptyState from './EmptyState.js';
-import toastNotification from './ToastNotification.js';
 import accessibilityHelper from '../utils/AccessibilityHelper.js';
+
+import EmptyState from './EmptyState.js';
+import LoadingSpinner from './LoadingSpinner.js';
+import toastNotification from './ToastNotification.js';
 
 class IHKLearningPathView {
   constructor(services) {
@@ -27,7 +28,7 @@ class IHKLearningPathView {
     container.innerHTML = LoadingSpinner.render('Loading learning path...');
 
     // Load learning path asynchronously
-    setTimeout(async () => {
+    window.setTimeout(async () => {
       try {
         this.learningPath =
           await this.ihkContentService.getLearningPath(pathId);
@@ -303,7 +304,7 @@ class IHKLearningPathView {
     const icon = isModule ? '📚' : '📝';
     const url = isModule
       ? `#/ihk/modules/${item.moduleId}`
-      : `#/ihk/quizzes/${item.quizId}`;
+      : `#/quizzes/${item.quizId}`;
 
     return `
       <article class="structure-item ${isCompleted ? 'completed' : ''} ${isLocked ? 'locked' : ''}" role="article">

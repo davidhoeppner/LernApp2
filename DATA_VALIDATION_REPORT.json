@@ -1,0 +1,685 @@
+{
+  "timestamp": "2025-10-05T17:50:13.971Z",
+  "summary": {
+    "totalFiles": 75,
+    "validFiles": 66,
+    "invalidFiles": 9,
+    "totalErrors": 64,
+    "totalWarnings": 0
+  },
+  "quizzes": [
+    {
+      "file": "array-methods-quiz.json",
+      "quizId": "array-methods-quiz",
+      "title": "Array Methods Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "async-javascript-quiz.json",
+      "quizId": "async-javascript-quiz",
+      "title": "Async JavaScript Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-01-documentation-quiz.json",
+      "quizId": "bp-01-documentation-quiz",
+      "title": "Programm- und Konfigurationsdokumentation Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-01-monitoring-quiz.json",
+      "quizId": "bp-01-monitoring-quiz",
+      "title": "System-Monitoring und Überwachung Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-01-odbc-quiz.json",
+      "quizId": "bp-01-odbc-quiz",
+      "title": "ODBC - Datenbankzugriff über offene Schnittstellen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-cloud-models-quiz.json",
+      "quizId": "bp-02-cloud-models-quiz",
+      "title": "Cloud-Modelle (SaaS, IaaS, PaaS) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-data-formats-quiz.json",
+      "quizId": "bp-02-data-formats-quiz",
+      "title": "Datenaustauschformate (XML, JSON, CSV) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-nas-san-quiz.json",
+      "quizId": "bp-02-nas-san-quiz",
+      "title": "Network Attached Storage (NAS) und Storage Area Network (SAN) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-cps-quiz.json",
+      "quizId": "bp-03-cps-quiz",
+      "title": "Cyber-physische Systeme (CPS) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-rest-api-quiz.json",
+      "quizId": "bp-03-rest-api-quiz",
+      "title": "REST API-Entwicklung Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-software-quality-quiz.json",
+      "quizId": "bp-03-software-quality-quiz",
+      "title": "Softwarequalitätsmerkmale (ISO 25010) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-tdd-quiz.json",
+      "quizId": "bp-03-tdd-quiz",
+      "title": "Test Driven Development (TDD) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-architecture-patterns-quiz.json",
+      "quizId": "bp-04-architecture-patterns-quiz",
+      "title": "Architektur-Pattern Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-design-patterns-quiz.json",
+      "quizId": "bp-04-design-patterns-quiz",
+      "title": "Design Patterns (Entwurfsmuster) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-programming-paradigms-quiz.json",
+      "quizId": "bp-04-programming-paradigms-quiz",
+      "title": "Programmierparadigmen (Veraltet ab 2025) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-scrum-quiz.json",
+      "quizId": "bp-04-scrum-quiz",
+      "title": "Scrum - Agiles Projektmanagement Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-data-structures-quiz.json",
+      "quizId": "bp-05-data-structures-quiz",
+      "title": "Datenstrukturen (Arrays, Listen, Stacks, Queues, Trees) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-encapsulation-quiz.json",
+      "quizId": "bp-05-encapsulation-quiz",
+      "title": "Kapselung (Encapsulation) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-sorting-quiz.json",
+      "quizId": "bp-05-sorting-quiz",
+      "title": "Sortierverfahren - Bubble, Selection und Insertion Sort Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-sql-reference-quiz.json",
+      "quizId": "bp-05-sql-reference-quiz",
+      "title": "SQL-Referenz mit Verweis auf Beiblatt Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "dom-manipulation-quiz.json",
+      "quizId": "dom-manipulation-quiz",
+      "title": "DOM Manipulation Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-01-planning-quiz.json",
+      "quizId": "fue-01-planning-quiz",
+      "title": "FÜ-01: Planen eines Softwareproduktes Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-02-anomalies-redundancies-quiz.json",
+      "quizId": "fue-02-anomalies-redundancies-quiz",
+      "title": "Datenbank-Anomalien und Redundanzen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-02-control-structures-quiz.json",
+      "quizId": "fue-02-control-structures-quiz",
+      "title": "Kontrollstrukturen: Aktivitätsdiagramme und Pseudocode Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-02-development-quiz.json",
+      "quizId": "fue-02-development-quiz",
+      "title": "FÜ-02: Entwickeln und Bereitstellen von Softwareanwendungen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-03-load-performance-tests-quiz.json",
+      "quizId": "fue-03-load-performance-tests-quiz",
+      "title": "Last-, Performance- und Stresstests Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-03-quality-quiz.json",
+      "quizId": "fue-03-quality-quiz",
+      "title": "FÜ-03: Durchführen von qualitätssichernden Maßnahmen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-04-security-quiz.json",
+      "quizId": "fue-04-security-quiz",
+      "title": "FÃœ-04: Sicherstellen der Informationssicherheit Quiz",
+      "valid": false,
+      "errors": [
+        "Invalid category format: \"FÃœ-04\""
+      ],
+      "warnings": []
+    },
+    {
+      "file": "fue-04-security-threats-quiz.json",
+      "quizId": "fue-04-security-threats-quiz",
+      "title": "Sicherheitsbedrohungen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "javascript-basics-quiz.json",
+      "quizId": "javascript-basics-quiz",
+      "title": "JavaScript Basics Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "kerberos-quiz.json",
+      "quizId": "kerberos-quiz",
+      "title": "Kerberos-Authentifizierung Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "scrum-quiz.json",
+      "quizId": "scrum-quiz-2025",
+      "title": "Scrum Quiz - Agile Projektmanagement",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "security-threats-quiz.json",
+      "quizId": "security-threats-quiz-2025",
+      "title": "IT-Sicherheitsbedrohungen Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "sorting-algorithms-quiz.json",
+      "quizId": "sorting-algorithms-quiz-2025",
+      "title": "Sortierverfahren Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "sql-comprehensive-quiz.json",
+      "quizId": "sql-comprehensive-quiz-2025",
+      "title": "SQL Komplett-Quiz - IHK Prüfungsvorbereitung",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "sql-ddl-2025-quiz.json",
+      "quizId": "sql-ddl-2025-quiz",
+      "title": "SQL DDL - Datenstrukturen definieren Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "sql-dml-2025-quiz.json",
+      "quizId": "sql-dml-2025-quiz",
+      "title": "SQL DML - Daten manipulieren Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "tdd-quiz.json",
+      "quizId": "tdd-quiz-2025",
+      "title": "Test Driven Development (TDD) Quiz",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "undefined-quiz.json",
+      "quizId": "undefined-quiz",
+      "title": "undefined Quiz",
+      "valid": false,
+      "errors": [
+        "Missing required field: category"
+      ],
+      "warnings": []
+    }
+  ],
+  "modules": [
+    {
+      "file": "bp-01-conception.json",
+      "valid": false,
+      "errors": [
+        "Missing required field: id",
+        "Missing required field: title",
+        "Missing required field: description",
+        "Missing required field: content",
+        "Missing required field: category",
+        "Missing required field: difficulty"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "bp-01-documentation.json",
+      "moduleId": "bp-01-documentation",
+      "title": "Programm- und Konfigurationsdokumentation",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-01-kerberos.json",
+      "moduleId": "bp-01-kerberos",
+      "title": "Kerberos-Authentifizierung und Zugriffskontrolle",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-01-monitoring.json",
+      "moduleId": "bp-01-monitoring",
+      "title": "System-Monitoring und Überwachung",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-01-odbc.json",
+      "moduleId": "bp-01-odbc",
+      "title": "ODBC - Datenbankzugriff über offene Schnittstellen",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-cloud-models.json",
+      "moduleId": "bp-02-cloud-models",
+      "title": "Cloud-Modelle (SaaS, IaaS, PaaS)",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-data-formats.json",
+      "moduleId": "bp-02-data-formats",
+      "title": "Datenaustauschformate (XML, JSON, CSV)",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-nas-san.json",
+      "moduleId": "bp-02-nas-san",
+      "title": "Network Attached Storage (NAS) und Storage Area Network (SAN)",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-02-quality-assurance.json",
+      "valid": false,
+      "errors": [
+        "Missing required field: id",
+        "Missing required field: title",
+        "Missing required field: description",
+        "Missing required field: content",
+        "Missing required field: category",
+        "Missing required field: difficulty"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-cps.json",
+      "moduleId": "bp-03-cps",
+      "title": "Cyber-physische Systeme (CPS)",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-rest-api.json",
+      "moduleId": "bp-03-rest-api",
+      "title": "REST API-Entwicklung",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-software-quality.json",
+      "moduleId": "bp-03-software-quality",
+      "title": "Softwarequalitätsmerkmale (ISO 25010)",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-03-tdd.json",
+      "moduleId": "bp-03-tdd",
+      "title": "Test Driven Development (TDD)",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-architecture-patterns.json",
+      "moduleId": "bp-04-architecture-patterns",
+      "title": "Architektur-Pattern",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-design-patterns.json",
+      "moduleId": "bp-04-design-patterns",
+      "title": "Design Patterns (Entwurfsmuster)",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-programming-paradigms.json",
+      "moduleId": "bp-04-programming-paradigms",
+      "title": "Programmierparadigmen (Veraltet ab 2025)",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-04-scrum.json",
+      "moduleId": "bp-04-scrum",
+      "title": "Scrum - Agiles Projektmanagement",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-data-structures.json",
+      "moduleId": "bp-05-data-structures",
+      "title": "Datenstrukturen (Arrays, Listen, Stacks, Queues, Trees)",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-encapsulation.json",
+      "moduleId": "bp-05-encapsulation",
+      "title": "Kapselung (Encapsulation)",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-sorting.json",
+      "moduleId": "bp-05-sorting",
+      "title": "Sortierverfahren - Bubble, Selection und Insertion Sort",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "bp-05-sql-reference.json",
+      "moduleId": "bp-05-sql-reference",
+      "title": "SQL-Referenz mit Verweis auf Beiblatt",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-01-planning.json",
+      "moduleId": "fue-01-planning",
+      "title": "FÜ-01: Planen eines Softwareproduktes",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-02-anomalies-redundancies.json",
+      "moduleId": "fue-02-anomalies-redundancies",
+      "title": "Datenbank-Anomalien und Redundanzen",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-02-control-structures.json",
+      "moduleId": "fue-02-control-structures",
+      "title": "Kontrollstrukturen: Aktivitätsdiagramme und Pseudocode",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-02-development.json",
+      "moduleId": "fue-02-development",
+      "title": "FÜ-02: Entwickeln und Bereitstellen von Softwareanwendungen",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-03-load-performance-tests.json",
+      "moduleId": "fue-03-load-performance-tests",
+      "title": "Last-, Performance- und Stresstests",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-03-quality.json",
+      "moduleId": "fue-03-quality",
+      "title": "FÜ-03: Durchführen von qualitätssichernden Maßnahmen",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-04-security-threats.json",
+      "moduleId": "fue-04-security-threats",
+      "title": "Sicherheitsbedrohungen",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "fue-04-security.json",
+      "moduleId": "fue-04-security",
+      "title": "FÃœ-04: Sicherstellen der Informationssicherheit",
+      "valid": false,
+      "errors": [
+        "Invalid category format: \"FÃœ-04\""
+      ],
+      "warnings": []
+    },
+    {
+      "file": "sql-ddl.json",
+      "moduleId": "sql-ddl-2025",
+      "title": "SQL DDL - Datenstrukturen definieren",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "sql-dml.json",
+      "moduleId": "sql-dml-2025",
+      "title": "SQL DML - Daten manipulieren",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "file": "sql-dql.json",
+      "moduleId": "sql-dql-2025",
+      "title": "SQL DQL - Daten abfragen",
+      "valid": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "learningPaths": [
+    {
+      "file": "ap2-complete-path.json",
+      "pathId": "ap2-complete-2025",
+      "title": "AP2 Komplett-Vorbereitung 2025",
+      "valid": false,
+      "errors": [
+        "Module 1: Referenced module \"[object Object]\" does not exist",
+        "Module 2: Referenced module \"[object Object]\" does not exist",
+        "Module 3: Referenced module \"[object Object]\" does not exist",
+        "Module 4: Referenced module \"[object Object]\" does not exist",
+        "Module 5: Referenced module \"[object Object]\" does not exist",
+        "Module 6: Referenced module \"[object Object]\" does not exist",
+        "Module 7: Referenced module \"[object Object]\" does not exist",
+        "Module 8: Referenced module \"[object Object]\" does not exist",
+        "Module 9: Referenced module \"[object Object]\" does not exist",
+        "Module 10: Referenced module \"[object Object]\" does not exist",
+        "Module 11: Referenced module \"[object Object]\" does not exist",
+        "Module 12: Referenced module \"[object Object]\" does not exist",
+        "Module 13: Referenced module \"[object Object]\" does not exist",
+        "Module 14: Referenced module \"[object Object]\" does not exist",
+        "Module 15: Referenced module \"[object Object]\" does not exist",
+        "Module 16: Referenced module \"[object Object]\" does not exist",
+        "Module 17: Referenced module \"[object Object]\" does not exist",
+        "Module 18: Referenced module \"[object Object]\" does not exist",
+        "Module 19: Referenced module \"[object Object]\" does not exist",
+        "Module 20: Referenced module \"[object Object]\" does not exist",
+        "Module 21: Referenced module \"[object Object]\" does not exist",
+        "Module 22: Referenced module \"[object Object]\" does not exist",
+        "Module 23: Referenced module \"[object Object]\" does not exist",
+        "Module 24: Referenced module \"[object Object]\" does not exist",
+        "Module 25: Referenced module \"[object Object]\" does not exist"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "new-topics-2025-path.json",
+      "pathId": "new-topics-2025",
+      "title": "Neue Themen 2025: Prüfungsänderungen meistern",
+      "valid": false,
+      "errors": [
+        "Module 1: Referenced module \"[object Object]\" does not exist",
+        "Module 2: Referenced module \"[object Object]\" does not exist",
+        "Module 3: Referenced module \"[object Object]\" does not exist",
+        "Module 4: Referenced module \"[object Object]\" does not exist",
+        "Module 5: Referenced module \"[object Object]\" does not exist",
+        "Module 6: Referenced module \"[object Object]\" does not exist",
+        "Module 7: Referenced module \"[object Object]\" does not exist",
+        "Module 8: Referenced module \"[object Object]\" does not exist",
+        "Module 9: Referenced module \"[object Object]\" does not exist",
+        "Module 10: Referenced module \"[object Object]\" does not exist",
+        "Module 11: Referenced module \"[object Object]\" does not exist",
+        "Module 12: Referenced module \"[object Object]\" does not exist",
+        "Module 13: Referenced module \"[object Object]\" does not exist",
+        "Module 14: Referenced module \"[object Object]\" does not exist"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "oop-fundamentals-path.json",
+      "pathId": "oop-fundamentals-2025",
+      "title": "OOP-Fundamentals: Objektorientierte Programmierung meistern",
+      "valid": false,
+      "errors": [
+        "Module 1: Referenced module \"[object Object]\" does not exist",
+        "Module 2: Referenced module \"[object Object]\" does not exist",
+        "Module 3: Referenced module \"[object Object]\" does not exist",
+        "Module 4: Referenced module \"[object Object]\" does not exist",
+        "Module 5: Referenced module \"[object Object]\" does not exist",
+        "Module 6: Referenced module \"[object Object]\" does not exist"
+      ],
+      "warnings": []
+    },
+    {
+      "file": "sql-mastery-path.json",
+      "pathId": "sql-mastery-2025",
+      "title": "SQL-Mastery: Von Grundlagen bis Experte",
+      "valid": false,
+      "errors": [
+        "Module 1: Referenced module \"[object Object]\" does not exist",
+        "Module 2: Referenced module \"[object Object]\" does not exist",
+        "Module 3: Referenced module \"[object Object]\" does not exist",
+        "Module 4: Referenced module \"[object Object]\" does not exist"
+      ],
+      "warnings": []
+    }
+  ]
+}

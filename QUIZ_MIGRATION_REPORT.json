@@ -1,0 +1,62 @@
+{
+  "timestamp": "2025-10-05T16:03:52.367Z",
+  "summary": {
+    "totalQuizzes": 4,
+    "migratedSuccessfully": 4,
+    "outputDirectory": "src/data/ihk/quizzes/"
+  },
+  "quizzes": [
+    {
+      "originalId": "quiz-1",
+      "newId": "javascript-basics-quiz",
+      "title": "JavaScript Basics Quiz",
+      "category": "FÜ-02",
+      "difficulty": "beginner",
+      "questionCount": 5,
+      "timeLimit": 8,
+      "tags": [
+        "JavaScript",
+        "Function"
+      ]
+    },
+    {
+      "originalId": "quiz-2",
+      "newId": "array-methods-quiz",
+      "title": "Array Methods Quiz",
+      "category": "FÜ-02",
+      "difficulty": "intermediate",
+      "questionCount": 5,
+      "timeLimit": 8,
+      "tags": [
+        "JavaScript",
+        "Array"
+      ]
+    },
+    {
+      "originalId": "quiz-3",
+      "newId": "async-javascript-quiz",
+      "title": "Async JavaScript Quiz",
+      "category": "FÜ-02",
+      "difficulty": "beginner",
+      "questionCount": 5,
+      "timeLimit": 8,
+      "tags": [
+        "JavaScript",
+        "Async",
+        "Promise"
+      ]
+    },
+    {
+      "originalId": "quiz-4",
+      "newId": "dom-manipulation-quiz",
+      "title": "DOM Manipulation Quiz",
+      "category": "BP-03",
+      "difficulty": "beginner",
+      "questionCount": 5,
+      "timeLimit": 8,
+      "tags": [
+        "DOM"
+      ]
+    }
+  ]
+}

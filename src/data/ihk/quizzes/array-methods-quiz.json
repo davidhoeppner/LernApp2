@@ -1,0 +1,92 @@
+{
+  "id": "array-methods-quiz",
+  "moduleId": "module-2",
+  "title": "Array Methods Quiz",
+  "description": "Challenge yourself on JavaScript array methods like map, filter, and reduce.",
+  "category": "FÜ-02",
+  "difficulty": "intermediate",
+  "examRelevance": "medium",
+  "newIn2025": false,
+  "timeLimit": 8,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Which array method creates a new array with all elements that pass a test?",
+      "options": [
+        "map()",
+        "filter()",
+        "reduce()",
+        "find()"
+      ],
+      "correctAnswer": "filter()",
+      "explanation": "The filter() method creates a new array with all elements that pass the test implemented by the provided function.",
+      "points": 1,
+      "category": "Arrays"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "What does [1, 2, 3].map(x => x * 2) return?",
+      "options": [
+        "[1, 2, 3]",
+        "[2, 4, 6]",
+        "[1, 4, 9]",
+        "6"
+      ],
+      "correctAnswer": "[2, 4, 6]",
+      "explanation": "The map() method transforms each element by multiplying it by 2, resulting in [2, 4, 6].",
+      "points": 1,
+      "category": "General"
+    },
+    {
+      "id": "q3",
+      "type": "true-false",
+      "question": "The reduce() method always returns an array.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "The reduce() method can return any type of value (number, string, object, array, etc.) depending on the accumulator and reducer function.",
+      "points": 1,
+      "category": "Arrays"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Which method would you use to find the first element that matches a condition?",
+      "options": [
+        "filter()",
+        "find()",
+        "map()",
+        "some()"
+      ],
+      "correctAnswer": "find()",
+      "explanation": "The find() method returns the first element in the array that satisfies the provided testing function. If no element matches, it returns undefined.",
+      "points": 1,
+      "category": "General"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "What is the result of [1, 2, 3, 4].reduce((acc, num) => acc + num, 0)?",
+      "options": [
+        "0",
+        "4",
+        "10",
+        "[1, 2, 3, 4]"
+      ],
+      "correctAnswer": "10",
+      "explanation": "The reduce() method sums all numbers in the array: 0 + 1 + 2 + 3 + 4 = 10.",
+      "points": 1,
+      "category": "General"
+    }
+  ],
+  "tags": [
+    "JavaScript",
+    "Array"
+  ],
+  "lastUpdated": "2025-10-05T16:03:52.362Z"
+}

@@ -353,7 +353,7 @@ class Router {
     if (path.startsWith('/module/')) {
       return 'Module Details';
     }
-    if (path.startsWith('/quiz/')) {
+    if (path.startsWith('/quizzes/')) {
       return 'Quiz';
     }
 

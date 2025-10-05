@@ -1,0 +1,89 @@
+{
+  "id": "dom-manipulation-quiz",
+  "moduleId": "module-4",
+  "title": "DOM Manipulation Quiz",
+  "description": "Assess your understanding of DOM manipulation, element selection, and event handling.",
+  "category": "BP-03",
+  "difficulty": "beginner",
+  "examRelevance": "medium",
+  "newIn2025": false,
+  "timeLimit": 8,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Which method selects ALL elements matching a CSS selector?",
+      "options": [
+        "getElementById()",
+        "querySelector()",
+        "querySelectorAll()",
+        "getElementsByClassName()"
+      ],
+      "correctAnswer": "querySelectorAll()",
+      "explanation": "querySelectorAll() returns a NodeList containing all elements that match the specified CSS selector.",
+      "points": 1,
+      "category": "General"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "innerHTML is always safer to use than textContent.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "textContent is safer than innerHTML because it doesn't parse HTML, preventing potential XSS (Cross-Site Scripting) attacks.",
+      "points": 1,
+      "category": "General"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Which method adds a CSS class to an element?",
+      "options": [
+        "element.addClass('active')",
+        "element.classList.add('active')",
+        "element.class.add('active')",
+        "element.addClassName('active')"
+      ],
+      "correctAnswer": "element.classList.add('active')",
+      "explanation": "The classList.add() method is used to add one or more CSS classes to an element.",
+      "points": 1,
+      "category": "General"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "What is event delegation?",
+      "options": [
+        "Removing event listeners",
+        "Adding events to parent elements to handle child events",
+        "Preventing default behavior",
+        "Stopping event propagation"
+      ],
+      "correctAnswer": "Adding events to parent elements to handle child events",
+      "explanation": "Event delegation is a technique where you add an event listener to a parent element to handle events from its children, leveraging event bubbling.",
+      "points": 1,
+      "category": "General"
+    },
+    {
+      "id": "q5",
+      "type": "true-false",
+      "question": "document.createElement() automatically adds the element to the DOM.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correctAnswer": "False",
+      "explanation": "document.createElement() only creates the element in memory. You must explicitly add it to the DOM using methods like appendChild() or append().",
+      "points": 1,
+      "category": "DOM"
+    }
+  ],
+  "tags": [
+    "DOM"
+  ],
+  "lastUpdated": "2025-10-05T16:03:52.366Z"
+}

@@ -3,16 +3,17 @@
  * Displays IHK-specific quizzes with metadata, questions, and results
  */
 
-import LoadingSpinner from './LoadingSpinner.js';
-import EmptyState from './EmptyState.js';
-import toastNotification from './ToastNotification.js';
 import accessibilityHelper from '../utils/AccessibilityHelper.js';
+
+import EmptyState from './EmptyState.js';
+import LoadingSpinner from './LoadingSpinner.js';
+import toastNotification from './ToastNotification.js';
 
 class IHKQuizView {
   constructor(services) {
     this.services = services;
     this.ihkContentService = services.ihkContentService;
-    this.examProgressService = services.examProgressService;
+    this.quizService = services.quizService;
     this.router = services.router;
     this.quiz = null;
     this.currentQuestionIndex = 0;
@@ -31,7 +32,7 @@ class IHKQuizView {
     container.innerHTML = LoadingSpinner.render('Loading quiz...');
 
     // Load quiz asynchronously
-    setTimeout(async () => {
+    window.setTimeout(async () => {
       try {
         this.quiz = await this.ihkContentService.getQuizById(quizId);
 
@@ -119,7 +120,7 @@ class IHKQuizView {
     nav.innerHTML = `
       <ol>
         <li><a href="#/ihk">IHK AP2</a></li>
-        <li><a href="#/ihk/quizzes">Quizzes</a></li>
+        <li><a href="#/quizzes">Quizzes</a></li>
         <li><span aria-current="page">${this.quiz.title}</span></li>
       </ol>
     `;
@@ -261,7 +262,7 @@ class IHKQuizView {
       case 'single-choice':
         return question.options
           .map(
-            (option, index) => `
+            option => `
           <label class="option-label">
             <input 
               type="radio" 
@@ -276,11 +277,11 @@ class IHKQuizView {
           )
           .join('');
 
-      case 'multiple-choice':
+      case 'multiple-choice': {
         const savedAnswers = savedAnswer || [];
         return question.options
           .map(
-            (option) => `
+            option => `
           <label class="option-label">
             <input 
               type="checkbox" 
@@ -294,6 +295,7 @@ class IHKQuizView {
         `
           )
           .join('');
+      }
 
       case 'true-false':
         return `
@@ -429,7 +431,7 @@ class IHKQuizView {
         </button>
         <button 
           class="btn btn-secondary"
-          onclick="window.location.hash = '#/ihk/quizzes'"
+          onclick="window.location.hash = '#/quizzes'"
         >
           Zurück zur Übersicht
         </button>
@@ -527,16 +529,26 @@ class IHKQuizView {
   /**
    * Submit quiz
    */
-  submitQuiz() {
+  async submitQuiz() {
     this.endTime = Date.now();
     this.showResults = true;
 
-    // Save attempt
-    this.examProgressService.saveQuizAttempt(this.quiz.id, {
-      answers: this.answers,
-      score: this.calculateScore(),
-      completedAt: new Date().toISOString(),
-    });
+    // Calculate score
+    const scoreData = this.calculateScore();
+
+    // Convert answers object to array format for QuizService
+    const answersArray = this.quiz.questions.map(question => ({
+      questionId: question.id,
+      userAnswer: this.answers[question.id],
+      isCorrect: this.checkAnswer(question, this.answers[question.id]),
+    }));
+
+    // Save attempt using QuizService
+    await this.quizService.saveQuizAttempt(
+      this.quiz.id,
+      scoreData.percentage,
+      answersArray
+    );
 
     this.updateView();
     accessibilityHelper.announce('Quiz completed. Results are now displayed.');

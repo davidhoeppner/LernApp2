@@ -3,10 +3,11 @@
  * Displays detailed view of an IHK module with metadata, content, and code examples
  */
 
-import LoadingSpinner from './LoadingSpinner.js';
-import EmptyState from './EmptyState.js';
-import toastNotification from './ToastNotification.js';
 import accessibilityHelper from '../utils/AccessibilityHelper.js';
+
+import EmptyState from './EmptyState.js';
+import LoadingSpinner from './LoadingSpinner.js';
+import toastNotification from './ToastNotification.js';
 
 class IHKModuleView {
   constructor(services) {
@@ -26,7 +27,7 @@ class IHKModuleView {
     container.innerHTML = LoadingSpinner.render('Loading module...');
 
     // Load module asynchronously
-    setTimeout(async () => {
+    window.setTimeout(async () => {
       try {
         this.module = await this.ihkContentService.getModuleById(moduleId);
 
@@ -275,7 +276,7 @@ class IHKModuleView {
               .map(
                 quiz => `
               <li>
-                <a href="#/ihk/quizzes/${quiz.id}" class="related-link">
+                <a href="#/quizzes/${quiz.id}" class="related-link">
                   <span class="link-icon">📝</span>
                   <span class="link-text">${quiz.title}</span>
                   <span class="link-meta">${quiz.questions?.length || 0} Fragen</span>
