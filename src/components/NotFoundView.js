@@ -1,5 +1,3 @@
-/* global setTimeout */
-
 /**
  * NotFoundView - 404 Page for invalid routes
  */

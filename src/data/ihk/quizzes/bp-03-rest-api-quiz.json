@@ -28,12 +28,7 @@
       "id": "q2",
       "type": "single-choice",
       "question": "Welche HTTP-Methode wird verwendet, um eine neue Ressource zu erstellen?",
-      "options": [
-        "POST",
-        "GET",
-        "PUT",
-        "DELETE"
-      ],
+      "options": ["POST", "GET", "PUT", "DELETE"],
       "correctAnswer": "POST",
       "explanation": "POST wird verwendet, um neue Ressourcen zu erstellen. GET liest Ressourcen, PUT aktualisiert bestehende Ressourcen vollständig, und DELETE löscht Ressourcen.",
       "points": 1,
@@ -58,12 +53,7 @@
       "id": "q4",
       "type": "single-choice",
       "question": "Welcher HTTP-Status-Code bedeutet 'Erfolgreich erstellt'?",
-      "options": [
-        "201 Created",
-        "200 OK",
-        "204 No Content",
-        "202 Accepted"
-      ],
+      "options": ["201 Created", "200 OK", "204 No Content", "202 Accepted"],
       "correctAnswer": "201 Created",
       "explanation": "201 Created wird zurückgegeben, wenn eine neue Ressource erfolgreich erstellt wurde. 200 OK ist eine allgemeine Erfolgsantwort, 204 No Content bedeutet Erfolg ohne Rückgabewert, und 202 Accepted bedeutet, dass die Anfrage akzeptiert wurde, aber noch nicht verarbeitet ist.",
       "points": 1,
@@ -88,17 +78,8 @@
       "id": "q6",
       "type": "multiple-choice",
       "question": "Welche HTTP-Methoden sind idempotent? (Mehrere Antworten möglich)",
-      "options": [
-        "GET",
-        "PUT",
-        "DELETE",
-        "POST"
-      ],
-      "correctAnswer": [
-        "GET",
-        "PUT",
-        "DELETE"
-      ],
+      "options": ["GET", "PUT", "DELETE", "POST"],
+      "correctAnswer": ["GET", "PUT", "DELETE"],
       "explanation": "GET, PUT und DELETE sind idempotent, d.h. mehrfache identische Anfragen haben denselben Effekt wie eine einzelne Anfrage. POST ist nicht idempotent, da jede POST-Anfrage eine neue Ressource erstellen kann.",
       "points": 2,
       "category": "HTTP-Methoden"
@@ -139,12 +120,7 @@
       "question": "Welcher HTTP-Status-Code sollte bei dieser erfolgreichen GET-Anfrage zurückgegeben werden?",
       "code": "GET /api/users/123\nResponse: { \"id\": 123, \"name\": \"Max Müller\" }",
       "language": "http",
-      "options": [
-        "200 OK",
-        "201 Created",
-        "204 No Content",
-        "202 Accepted"
-      ],
+      "options": ["200 OK", "201 Created", "204 No Content", "202 Accepted"],
       "correctAnswer": "200 OK",
       "explanation": "200 OK ist der Standard-Status-Code für erfolgreiche GET-Anfragen, die Daten zurückgeben. 201 Created wird für POST verwendet, 204 No Content für erfolgreiche Anfragen ohne Rückgabewert, und 202 Accepted für asynchrone Verarbeitung.",
       "points": 2,
@@ -190,12 +166,7 @@
       "question": "Welche HTTP-Methode wird in diesem API-Aufruf verwendet, um einen Benutzer zu aktualisieren?",
       "code": "PUT /api/users/123\nContent-Type: application/json\n\n{\n  \"name\": \"Max Mustermann\",\n  \"email\": \"max@example.com\"\n}",
       "language": "http",
-      "options": [
-        "PUT",
-        "POST",
-        "PATCH",
-        "UPDATE"
-      ],
+      "options": ["PUT", "POST", "PATCH", "UPDATE"],
       "correctAnswer": "PUT",
       "explanation": "PUT wird verwendet, um eine bestehende Ressource vollständig zu ersetzen. Die Anfrage sendet alle Daten der Ressource. PATCH würde nur einzelne Felder aktualisieren, POST neue Ressourcen erstellen, und UPDATE ist keine HTTP-Methode.",
       "points": 2,
@@ -205,12 +176,7 @@
       "id": "q13",
       "type": "single-choice",
       "question": "Welcher Status-Code wird bei einer erfolgreichen DELETE-Operation ohne Rückgabewert verwendet?",
-      "options": [
-        "204 No Content",
-        "200 OK",
-        "201 Created",
-        "202 Accepted"
-      ],
+      "options": ["204 No Content", "200 OK", "201 Created", "202 Accepted"],
       "correctAnswer": "204 No Content",
       "explanation": "204 No Content wird verwendet, wenn eine Operation erfolgreich war, aber keine Daten zurückgegeben werden. Dies ist typisch für DELETE-Operationen. 200 OK würde verwendet, wenn Daten zurückgegeben werden, 201 Created für neue Ressourcen, und 202 Accepted für asynchrone Verarbeitung.",
       "points": 1,
@@ -241,10 +207,7 @@
         "500 Internal Server Error",
         "503 Service Unavailable"
       ],
-      "correctAnswer": [
-        "400 Bad Request",
-        "404 Not Found"
-      ],
+      "correctAnswer": ["400 Bad Request", "404 Not Found"],
       "explanation": "Status-Codes im 4xx-Bereich sind Client-Fehler (400 Bad Request, 404 Not Found). Status-Codes im 5xx-Bereich sind Server-Fehler (500 Internal Server Error, 503 Service Unavailable). Client-Fehler bedeuten, dass der Client etwas falsch gemacht hat, Server-Fehler bedeuten ein Problem auf der Server-Seite.",
       "points": 2,
       "category": "Status-Codes"
@@ -321,12 +284,7 @@
       "question": "Welche HTTP-Methode sollte für diesen Anwendungsfall verwendet werden: 'Aktiviere einen Benutzer-Account'?",
       "code": "// Anwendungsfall: Benutzer-Account aktivieren\n// Endpunkt: /api/users/123/activate",
       "language": "javascript",
-      "options": [
-        "POST oder PATCH",
-        "GET",
-        "DELETE",
-        "PUT"
-      ],
+      "options": ["POST oder PATCH", "GET", "DELETE", "PUT"],
       "correctAnswer": "POST oder PATCH",
       "explanation": "Für Aktionen wie 'aktivieren' eignet sich POST (für nicht-idempotente Aktionen) oder PATCH (für Teilaktualisierung des Status-Feldes). GET sollte keine Änderungen vornehmen, DELETE würde löschen, und PUT würde die gesamte Ressource ersetzen. POST /users/123/activate oder PATCH /users/123 mit {\"status\": \"active\"} sind beide valide Ansätze.",
       "points": 2,

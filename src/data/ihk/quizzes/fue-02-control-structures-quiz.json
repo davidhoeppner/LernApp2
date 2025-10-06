@@ -80,12 +80,7 @@
       "question": "Was gibt dieser Pseudocode aus?\n\nBEGIN\n    counter = 0\n    WHILE counter < 3 DO\n        OUTPUT counter\n        counter = counter + 1\n    END WHILE\nEND",
       "code": "BEGIN\n    counter = 0\n    WHILE counter < 3 DO\n        OUTPUT counter\n        counter = counter + 1\n    END WHILE\nEND",
       "language": "pseudocode",
-      "options": [
-        "0 1 2",
-        "1 2 3",
-        "0 1 2 3",
-        "1 2"
-      ],
+      "options": ["0 1 2", "1 2 3", "0 1 2 3", "1 2"],
       "correctAnswer": "0 1 2",
       "explanation": "Die Schleife startet bei counter = 0 und läuft, solange counter < 3 ist. Es werden also 0, 1 und 2 ausgegeben. Bei counter = 3 wird die Bedingung false und die Schleife endet.",
       "points": 2,
@@ -112,12 +107,7 @@
       "question": "Was ist das Ergebnis dieses Java-Codes?",
       "code": "int ergebnis = 1;\nfor (int i = 1; i <= 4; i++) {\n    ergebnis = ergebnis * i;\n}\nSystem.out.println(ergebnis);",
       "language": "java",
-      "options": [
-        "24",
-        "10",
-        "4",
-        "120"
-      ],
+      "options": ["24", "10", "4", "120"],
       "correctAnswer": "24",
       "explanation": "Der Code berechnet die Fakultät von 4: 1 * 1 * 2 * 3 * 4 = 24. Die for-Schleife multipliziert ergebnis nacheinander mit 1, 2, 3 und 4.",
       "points": 2,
@@ -163,12 +153,7 @@
       "question": "Was gibt diese rekursive Funktion für fibonacci(5) zurück?",
       "code": "FUNCTION fibonacci(n)\nBEGIN\n    IF n <= 1 THEN\n        RETURN n\n    ELSE\n        RETURN fibonacci(n-1) + fibonacci(n-2)\n    END IF\nEND",
       "language": "pseudocode",
-      "options": [
-        "5",
-        "8",
-        "3",
-        "13"
-      ],
+      "options": ["5", "8", "3", "13"],
       "correctAnswer": "5",
       "explanation": "fibonacci(5) = fibonacci(4) + fibonacci(3) = 3 + 2 = 5. Die Fibonacci-Folge ist: 0, 1, 1, 2, 3, 5, 8, 13... Der 5. Wert (bei Index 5) ist 5.",
       "points": 3,
@@ -278,12 +263,7 @@
       "question": "Wie viele Iterationen führt diese Schleife aus?",
       "code": "for (int i = 5; i > 0; i--) {\n    System.out.println(i);\n}",
       "language": "java",
-      "options": [
-        "5",
-        "4",
-        "6",
-        "Endlosschleife"
-      ],
+      "options": ["5", "4", "6", "Endlosschleife"],
       "correctAnswer": "5",
       "explanation": "Die Schleife startet bei i = 5 und läuft, solange i > 0 ist. Sie gibt 5, 4, 3, 2, 1 aus - also 5 Iterationen. Bei i = 0 wird die Bedingung false.",
       "points": 2,

@@ -35,7 +35,11 @@
         "Quellcode-Qualität",
         "Temperatur und Verbindungsstatus"
       ],
-      "correctAnswer": ["CPU-Auslastung und RAM-Nutzung", "Festplattenspeicher und Netzwerkbandbreite", "Temperatur und Verbindungsstatus"],
+      "correctAnswer": [
+        "CPU-Auslastung und RAM-Nutzung",
+        "Festplattenspeicher und Netzwerkbandbreite",
+        "Temperatur und Verbindungsstatus"
+      ],
       "explanation": "Infrastruktur-Monitoring überwacht Hardware (CPU, RAM, Festplatte, Temperatur) und Netzwerk (Bandbreite, Latenz, Paketverlust, Verbindungen). Quellcode-Qualität gehört zu Code-Analyse-Tools wie SonarQube, nicht zum Infrastruktur-Monitoring.",
       "points": 2,
       "category": "Monitoring-Bereiche"
@@ -74,12 +78,7 @@
       "id": "q5",
       "type": "single-choice",
       "question": "Welches Tool ist eine Time-Series-Datenbank für Metriken und verwendet PromQL?",
-      "options": [
-        "Prometheus",
-        "Grafana",
-        "Nagios",
-        "Kibana"
-      ],
+      "options": ["Prometheus", "Grafana", "Nagios", "Kibana"],
       "correctAnswer": "Prometheus",
       "explanation": "Prometheus ist eine Open-Source Time-Series-Datenbank für Monitoring-Metriken. Es verwendet Pull-basiertes Scraping und die PromQL Query Language. Grafana ist für Visualisierung, Nagios für klassisches Monitoring, und Kibana für Log-Visualisierung (Teil des ELK-Stacks).",
       "points": 1,
@@ -89,12 +88,7 @@
       "id": "q6",
       "type": "single-choice",
       "question": "Welches Tool wird typischerweise für die Visualisierung von Prometheus-Metriken verwendet?",
-      "options": [
-        "Grafana",
-        "Nagios",
-        "Zabbix",
-        "Logstash"
-      ],
+      "options": ["Grafana", "Nagios", "Zabbix", "Logstash"],
       "correctAnswer": "Grafana",
       "explanation": "Grafana ist das Standard-Tool für Visualisierung von Monitoring-Daten. Es erstellt Dashboards, unterstützt viele Datenquellen (Prometheus, InfluxDB, Elasticsearch) und bietet Alerting. Nagios und Zabbix sind eigenständige Monitoring-Systeme, Logstash ist für Log-Verarbeitung.",
       "points": 1,
@@ -110,7 +104,11 @@
         "Kibana (Visualisierung)",
         "Prometheus (Metriken)"
       ],
-      "correctAnswer": ["Elasticsearch (Speicherung und Suche)", "Logstash (Log-Verarbeitung)", "Kibana (Visualisierung)"],
+      "correctAnswer": [
+        "Elasticsearch (Speicherung und Suche)",
+        "Logstash (Log-Verarbeitung)",
+        "Kibana (Visualisierung)"
+      ],
       "explanation": "Der ELK-Stack besteht aus Elasticsearch (Speicherung und Suche), Logstash (Log-Aggregation und -Verarbeitung) und Kibana (Visualisierung und Dashboards). Die Pipeline: Anwendung → Logstash → Elasticsearch → Kibana. Prometheus gehört nicht zum ELK-Stack.",
       "points": 2,
       "category": "Monitoring-Tools"
@@ -155,7 +153,11 @@
         "PagerDuty für On-Call-Management",
         "FTP für Dateiübertragung"
       ],
-      "correctAnswer": ["E-Mail für Standard-Benachrichtigungen", "Slack/Teams für Team-Kommunikation", "PagerDuty für On-Call-Management"],
+      "correctAnswer": [
+        "E-Mail für Standard-Benachrichtigungen",
+        "Slack/Teams für Team-Kommunikation",
+        "PagerDuty für On-Call-Management"
+      ],
       "explanation": "Typische Alert-Kanäle sind: E-Mail (Standard), SMS (kritisch), Slack/Teams (Team-Benachrichtigungen), PagerDuty (On-Call-Rotation) und Webhooks (Integration). FTP ist ein Dateiübertragungsprotokoll und kein Alert-Kanal.",
       "points": 2,
       "category": "Alerting"
@@ -232,7 +234,11 @@
         "Error Rate (Fehlerrate)",
         "Quellcode-Zeilen"
       ],
-      "correctAnswer": ["Requests pro Sekunde", "Response Time (Antwortzeit)", "Error Rate (Fehlerrate)"],
+      "correctAnswer": [
+        "Requests pro Sekunde",
+        "Response Time (Antwortzeit)",
+        "Error Rate (Fehlerrate)"
+      ],
       "explanation": "Ein gutes Anwendungs-Dashboard zeigt: Requests/Sekunde (Traffic), Response Time (Performance), Error Rate (Zuverlässigkeit) und Active Users. Diese Metriken entsprechen den RED-Signalen. Quellcode-Zeilen sind keine Runtime-Metrik und gehören nicht ins Monitoring-Dashboard.",
       "points": 2,
       "category": "Dashboards"
@@ -256,12 +262,7 @@
       "id": "q17",
       "type": "single-choice",
       "question": "Welche Alert-Severity erfordert sofortige Aktion?",
-      "options": [
-        "Critical",
-        "Warning",
-        "Info",
-        "Debug"
-      ],
+      "options": ["Critical", "Warning", "Info", "Debug"],
       "correctAnswer": "Critical",
       "explanation": "Alert-Severities: Critical (sofortige Aktion erforderlich, z.B. Service down), Warning (Beobachtung erforderlich, z.B. hohe CPU), Info (informativ, keine Aktion). Debug ist ein Log-Level, keine Alert-Severity. Critical-Alerts sollten zu Pager/SMS führen, Warnings zu E-Mail/Slack.",
       "points": 1,
@@ -277,7 +278,11 @@
         "Prometheus ist eine Time-Series-Datenbank",
         "Prometheus ist nur für Java-Anwendungen geeignet"
       ],
-      "correctAnswer": ["Prometheus verwendet Pull-basiertes Scraping von Metriken", "PromQL ist die Query Language für Prometheus", "Prometheus ist eine Time-Series-Datenbank"],
+      "correctAnswer": [
+        "Prometheus verwendet Pull-basiertes Scraping von Metriken",
+        "PromQL ist die Query Language für Prometheus",
+        "Prometheus ist eine Time-Series-Datenbank"
+      ],
       "explanation": "Prometheus ist eine Time-Series-Datenbank, die Metriken per Pull (HTTP-Scraping) sammelt. PromQL ist die Query Language für Aggregationen und Berechnungen. Prometheus ist sprachunabhängig - es gibt Exporters für alle Sprachen (Python, Java, Go, Node.js, etc.).",
       "points": 2,
       "category": "Monitoring-Tools"

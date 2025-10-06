@@ -274,17 +274,8 @@
       "id": "q17",
       "type": "multiple-choice",
       "question": "Welche Tools werden häufig für Last- und Performancetests verwendet? (Mehrere Antworten möglich)",
-      "options": [
-        "Apache JMeter",
-        "Gatling",
-        "Microsoft Word",
-        "K6"
-      ],
-      "correctAnswer": [
-        "Apache JMeter",
-        "Gatling",
-        "K6"
-      ],
+      "options": ["Apache JMeter", "Gatling", "Microsoft Word", "K6"],
+      "correctAnswer": ["Apache JMeter", "Gatling", "K6"],
       "explanation": "Apache JMeter (Open Source, Java), Gatling (Scala), K6 (JavaScript) und Locust (Python) sind beliebte Tools für Last- und Performancetests. Sie simulieren viele gleichzeitige Benutzer und messen Performance-Metriken. Microsoft Word ist kein Testing-Tool.",
       "points": 2,
       "category": "Last- und Performancetests"

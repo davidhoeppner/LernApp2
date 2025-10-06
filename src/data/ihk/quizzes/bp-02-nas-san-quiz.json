@@ -182,17 +182,8 @@
       "id": "q12",
       "type": "multiple-choice",
       "question": "Welche RAID-Level bieten Redundanz? (Mehrere Antworten möglich)",
-      "options": [
-        "RAID 1",
-        "RAID 5",
-        "RAID 6",
-        "RAID 0"
-      ],
-      "correctAnswer": [
-        "RAID 1",
-        "RAID 5",
-        "RAID 6"
-      ],
+      "options": ["RAID 1", "RAID 5", "RAID 6", "RAID 0"],
+      "correctAnswer": ["RAID 1", "RAID 5", "RAID 6"],
       "explanation": "RAID 1 (Spiegelung), RAID 5 (Parität) und RAID 6 (doppelte Parität) bieten Redundanz. RAID 0 bietet keine Redundanz und ist bei Festplattenausfall komplett verloren.",
       "points": 2,
       "category": "RAID"

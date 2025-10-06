@@ -29,12 +29,7 @@
       "id": "sec-q2",
       "type": "single-choice",
       "question": "Welches Protokoll schützt vor Man-in-the-Middle Angriffen?",
-      "options": [
-        "HTTPS/TLS",
-        "HTTP",
-        "FTP",
-        "Telnet"
-      ],
+      "options": ["HTTPS/TLS", "HTTP", "FTP", "Telnet"],
       "correctAnswer": "HTTPS/TLS",
       "explanation": "HTTPS mit TLS (Transport Layer Security) verschlüsselt die Kommunikation und authentifiziert den Server, wodurch MitM-Angriffe verhindert werden. HTTP, FTP und Telnet sind unverschlüsselt.",
       "points": 1,
@@ -315,6 +310,14 @@
       "category": "Szenarien"
     }
   ],
-  "tags": ["Sicherheit", "Man-in-the-Middle", "SQL-Injection", "DDoS", "IHK", "Neu 2025", "Cyber Security"],
+  "tags": [
+    "Sicherheit",
+    "Man-in-the-Middle",
+    "SQL-Injection",
+    "DDoS",
+    "IHK",
+    "Neu 2025",
+    "Cyber Security"
+  ],
   "lastUpdated": "2025-01-10T12:00:00Z"
 }

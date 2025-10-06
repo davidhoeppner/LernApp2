@@ -57,7 +57,12 @@
     {
       "title": "SQL-Master",
       "description": "Herzlichen Glückwunsch! Du beherrschst alle SQL-Befehle aus dem Prüfungsbeiblatt und bist bereit für jede SQL-Aufgabe in der AP2.",
-      "requiredModules": ["sql-ddl", "sql-dml", "sql-dql", "bp-05-sql-reference"],
+      "requiredModules": [
+        "sql-ddl",
+        "sql-dml",
+        "sql-dql",
+        "bp-05-sql-reference"
+      ],
       "requiredQuizzes": ["sql-comprehensive-quiz"]
     }
   ]

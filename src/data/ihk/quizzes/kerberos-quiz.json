@@ -58,12 +58,7 @@
       "id": "q4",
       "type": "single-choice",
       "question": "Wie lange ist ein TGT typischerweise gültig?",
-      "options": [
-        "8-10 Stunden",
-        "5 Minuten",
-        "24 Stunden",
-        "1 Stunde"
-      ],
+      "options": ["8-10 Stunden", "5 Minuten", "24 Stunden", "1 Stunde"],
       "correctAnswer": "8-10 Stunden",
       "explanation": "TGTs haben typischerweise eine Gültigkeitsdauer von 8-10 Stunden (eine Arbeitssession), während Service Tickets kürzer gültig sind (5-60 Minuten).",
       "points": 1,
@@ -95,7 +90,11 @@
         "Automatische Passwort-Generierung",
         "Dezentrale Verwaltung"
       ],
-      "correctAnswer": ["Single Sign-On (SSO)", "Mutual Authentication", "Keine Passwort-Übertragung über Netzwerk"],
+      "correctAnswer": [
+        "Single Sign-On (SSO)",
+        "Mutual Authentication",
+        "Keine Passwort-Übertragung über Netzwerk"
+      ],
       "explanation": "Kerberos bietet SSO (einmalige Anmeldung), Mutual Authentication (beide Seiten authentifizieren sich) und überträgt nie Passwörter über das Netzwerk. Die Verwaltung ist zentral (nicht dezentral) und Passwörter werden nicht automatisch generiert.",
       "points": 2,
       "category": "Vorteile"
@@ -104,12 +103,7 @@
       "id": "q7",
       "type": "single-choice",
       "question": "Welcher Befehl fordert ein Kerberos-Ticket unter Linux an?",
-      "options": [
-        "kinit",
-        "klist",
-        "kdestroy",
-        "kerberos-login"
-      ],
+      "options": ["kinit", "klist", "kdestroy", "kerberos-login"],
       "correctAnswer": "kinit",
       "explanation": "kinit fordert ein TGT an (Login), klist zeigt aktive Tickets an, und kdestroy löscht alle Tickets (Logout).",
       "points": 1,
@@ -179,12 +173,7 @@
       "id": "q12",
       "type": "single-choice",
       "question": "Welcher Befehl zeigt aktive Kerberos-Tickets unter Linux an?",
-      "options": [
-        "klist",
-        "kinit",
-        "kdestroy",
-        "kshow"
-      ],
+      "options": ["klist", "kinit", "kdestroy", "kshow"],
       "correctAnswer": "klist",
       "explanation": "Der Befehl 'klist' zeigt alle aktiven Kerberos-Tickets mit ihren Gültigkeitszeiträumen an. 'kinit' fordert neue Tickets an, 'kdestroy' löscht alle Tickets, und 'kshow' existiert nicht.",
       "points": 1,
@@ -215,7 +204,11 @@
         "Realm",
         "Benutzerpasswort"
       ],
-      "correctAnswer": ["Service-Typ (z.B. HTTP, LDAP)", "Hostname des Servers", "Realm"],
+      "correctAnswer": [
+        "Service-Typ (z.B. HTTP, LDAP)",
+        "Hostname des Servers",
+        "Realm"
+      ],
       "explanation": "Ein Service Principal Name hat das Format service/hostname@REALM (z.B. HTTP/webserver.company.com@COMPANY.COM). Er enthält den Service-Typ, den Hostname und den Realm, aber niemals Passwörter.",
       "points": 2,
       "category": "Principals"
@@ -239,12 +232,7 @@
       "id": "q16",
       "type": "single-choice",
       "question": "Welches Zeitfenster ist typisch für die Toleranz bei Zeitstempel-Validierung in Kerberos?",
-      "options": [
-        "5 Minuten",
-        "30 Sekunden",
-        "1 Stunde",
-        "24 Stunden"
-      ],
+      "options": ["5 Minuten", "30 Sekunden", "1 Stunde", "24 Stunden"],
       "correctAnswer": "5 Minuten",
       "explanation": "Kerberos verwendet typischerweise ein Zeitfenster von 5 Minuten für die Zeitstempel-Validierung. Wenn die Zeitdifferenz zwischen Client und Server größer ist, wird die Authentifizierung mit einem 'Clock Skew'-Fehler abgelehnt.",
       "points": 1,
@@ -266,7 +254,14 @@
       "category": "Troubleshooting"
     }
   ],
-  "tags": ["kerberos", "authentifizierung", "tickets", "kdc", "sicherheit", "principals"],
+  "tags": [
+    "kerberos",
+    "authentifizierung",
+    "tickets",
+    "kdc",
+    "sicherheit",
+    "principals"
+  ],
   "newIn2025": true,
   "lastUpdated": "2025-01-05T12:00:00Z"
 }

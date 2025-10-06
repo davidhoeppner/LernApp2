@@ -5,7 +5,14 @@
   "targetExam": "AP2-2025",
   "difficulty": "beginner",
   "estimatedDuration": 35,
-  "tags": ["OOP", "Objektorientierung", "Kapselung", "Vererbung", "Polymorphie", "Design Patterns"],
+  "tags": [
+    "OOP",
+    "Objektorientierung",
+    "Kapselung",
+    "Vererbung",
+    "Polymorphie",
+    "Design Patterns"
+  ],
   "modules": [
     {
       "moduleId": "bp-05-encapsulation",
@@ -61,19 +68,33 @@
     {
       "title": "Design Patterns anwenden",
       "description": "Du kennst wichtige Design Patterns und verstehst, wann und wie sie eingesetzt werden.",
-      "requiredModules": ["bp-05-encapsulation", "bp-05-data-structures", "bp-04-design-patterns"],
+      "requiredModules": [
+        "bp-05-encapsulation",
+        "bp-05-data-structures",
+        "bp-04-design-patterns"
+      ],
       "requiredQuizzes": []
     },
     {
       "title": "Architektur verstehen",
       "description": "Du verstehst verschiedene Architektur-Pattern wie MVC, Layered Architecture und Microservices.",
-      "requiredModules": ["bp-05-encapsulation", "bp-05-data-structures", "bp-04-design-patterns", "bp-04-architecture-patterns"],
+      "requiredModules": [
+        "bp-05-encapsulation",
+        "bp-05-data-structures",
+        "bp-04-design-patterns",
+        "bp-04-architecture-patterns"
+      ],
       "requiredQuizzes": []
     },
     {
       "title": "OOP-Experte",
       "description": "Herzlichen Glückwunsch! Du beherrschst die Grundlagen der objektorientierten Programmierung und bist bereit für komplexe OOP-Aufgaben.",
-      "requiredModules": ["bp-05-encapsulation", "bp-05-data-structures", "bp-04-design-patterns", "bp-04-architecture-patterns"],
+      "requiredModules": [
+        "bp-05-encapsulation",
+        "bp-05-data-structures",
+        "bp-04-design-patterns",
+        "bp-04-architecture-patterns"
+      ],
       "requiredQuizzes": []
     }
   ]

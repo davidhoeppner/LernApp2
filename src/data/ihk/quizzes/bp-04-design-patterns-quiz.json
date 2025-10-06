@@ -156,16 +156,8 @@
       "id": "q10",
       "type": "multiple-choice",
       "question": "Welche Patterns gehören zu den Creational Patterns (Erzeugungsmustern)? (Mehrere Antworten möglich)",
-      "options": [
-        "Singleton",
-        "Factory Method",
-        "Observer",
-        "Decorator"
-      ],
-      "correctAnswer": [
-        "Singleton",
-        "Factory Method"
-      ],
+      "options": ["Singleton", "Factory Method", "Observer", "Decorator"],
+      "correctAnswer": ["Singleton", "Factory Method"],
       "explanation": "Creational Patterns befassen sich mit der Objekterzeugung: Singleton (eine Instanz), Factory Method (flexible Objekterzeugung), Abstract Factory, Builder und Prototype. Observer ist ein Behavioral Pattern, Decorator ein Structural Pattern.",
       "points": 2,
       "category": "Grundlagen"

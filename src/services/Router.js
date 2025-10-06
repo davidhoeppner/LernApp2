@@ -1,4 +1,3 @@
-/* global setTimeout */
 import accessibilityHelper from '../utils/AccessibilityHelper.js';
 
 /**

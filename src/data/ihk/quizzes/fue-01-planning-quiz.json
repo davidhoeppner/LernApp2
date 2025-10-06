@@ -62,12 +62,7 @@
       "id": "q4",
       "type": "single-choice",
       "question": "Ein Projekt hat eine Investition von 120.000 € und erzielt einen jährlichen Gewinn von 30.000 €. Wie lange ist die Amortisationszeit?",
-      "options": [
-        "4 Jahre",
-        "3 Jahre",
-        "5 Jahre",
-        "2,5 Jahre"
-      ],
+      "options": ["4 Jahre", "3 Jahre", "5 Jahre", "2,5 Jahre"],
       "correctAnswer": "4 Jahre",
       "explanation": "Die Amortisationszeit berechnet sich als: Investition / Jährlicher Gewinn = 120.000 € / 30.000 € = 4 Jahre. Nach 4 Jahren hat sich die Investition vollständig amortisiert und das Projekt beginnt, Gewinn zu erwirtschaften.",
       "points": 1,

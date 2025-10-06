@@ -1,4 +1,3 @@
-/* global setTimeout */
 import { HTTP_STATUS, RETRY } from '../utils/constants.js';
 
 /**

@@ -1,4 +1,3 @@
-/* global setTimeout */
 /**
  * AccessibilityHelper - Utilities for accessibility features
  */

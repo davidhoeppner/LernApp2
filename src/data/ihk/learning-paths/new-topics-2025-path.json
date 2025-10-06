@@ -5,7 +5,15 @@
   "targetExam": "AP2-2025",
   "difficulty": "intermediate",
   "estimatedDuration": 50,
-  "tags": ["Neu 2025", "Prüfungsänderungen", "TDD", "Scrum", "Sortierverfahren", "CPS", "Sicherheit"],
+  "tags": [
+    "Neu 2025",
+    "Prüfungsänderungen",
+    "TDD",
+    "Scrum",
+    "Sortierverfahren",
+    "CPS",
+    "Sicherheit"
+  ],
   "modules": [
     {
       "moduleId": "bp-03-tdd",
@@ -121,7 +129,11 @@
     {
       "title": "Moderne Technologien kennengelernt",
       "description": "Du kennst Cyber-physische Systeme, Architektur-Pattern und moderne Sicherheitsbedrohungen.",
-      "requiredModules": ["bp-03-cps", "bp-04-architecture-patterns", "fue-04-security-threats"],
+      "requiredModules": [
+        "bp-03-cps",
+        "bp-04-architecture-patterns",
+        "fue-04-security-threats"
+      ],
       "requiredQuizzes": ["security-threats-quiz"]
     },
     {
@@ -133,8 +145,27 @@
     {
       "title": "Bereit für 2025",
       "description": "Herzlichen Glückwunsch! Du bist mit allen wichtigen Änderungen im Prüfungskatalog 2025 vertraut und optimal vorbereitet.",
-      "requiredModules": ["bp-03-tdd", "bp-04-scrum", "bp-05-sorting", "bp-03-cps", "bp-04-architecture-patterns", "fue-04-security-threats", "bp-05-encapsulation", "sql-ddl", "sql-dml", "sql-dql", "bp-01-monitoring", "bp-01-documentation"],
-      "requiredQuizzes": ["tdd-quiz", "scrum-quiz", "sorting-algorithms-quiz", "security-threats-quiz", "sql-comprehensive-quiz"]
+      "requiredModules": [
+        "bp-03-tdd",
+        "bp-04-scrum",
+        "bp-05-sorting",
+        "bp-03-cps",
+        "bp-04-architecture-patterns",
+        "fue-04-security-threats",
+        "bp-05-encapsulation",
+        "sql-ddl",
+        "sql-dml",
+        "sql-dql",
+        "bp-01-monitoring",
+        "bp-01-documentation"
+      ],
+      "requiredQuizzes": [
+        "tdd-quiz",
+        "scrum-quiz",
+        "sorting-algorithms-quiz",
+        "security-threats-quiz",
+        "sql-comprehensive-quiz"
+      ]
     }
   ]
 }

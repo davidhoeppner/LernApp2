@@ -40,9 +40,7 @@
       "explanation": "Dieses erweiterte Beispiel zeigt, wie TDD bei komplexerer Geschäftslogik angewendet wird. Jede neue Anforderung (Einzahlung, Validierung) wird durch einen Test definiert, bevor der Code implementiert wird."
     }
   ],
-  "relatedQuizzes": [
-    "tdd-quiz-2025"
-  ],
+  "relatedQuizzes": ["tdd-quiz-2025"],
   "resources": [
     {
       "title": "Test Driven Development by Example (Kent Beck)",

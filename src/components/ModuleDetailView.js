@@ -1,5 +1,3 @@
-/* global setTimeout */
-
 /**
  * ModuleDetailView - Display module content with markdown rendering
  */
@@ -7,6 +5,7 @@ class ModuleDetailView {
   constructor(services, params) {
     this.moduleService = services.moduleService;
     this.quizService = services.quizService;
+    this.ihkContentService = services.ihkContentService;
     this.router = services.router;
     this.moduleId = params.id;
     this.module = null;
@@ -361,7 +360,7 @@ class ModuleDetailView {
     if (quizBtn) {
       quizBtn.addEventListener('click', async () => {
         try {
-          const quizzes = await this.quizService.getQuizzes();
+          const quizzes = await this.ihkContentService.getAllQuizzes();
           const relatedQuiz = quizzes.find(q => q.moduleId === this.moduleId);
 
           if (relatedQuiz) {

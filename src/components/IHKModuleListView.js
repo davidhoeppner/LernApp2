@@ -3,8 +3,6 @@
  * Displays all IHK modules with filtering and search
  */
 
-/* global setTimeout */
-
 import accessibilityHelper from '../utils/AccessibilityHelper.js';
 
 import EmptyState from './EmptyState.js';

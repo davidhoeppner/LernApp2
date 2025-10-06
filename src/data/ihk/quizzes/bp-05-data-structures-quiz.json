@@ -28,12 +28,7 @@
       "id": "q2",
       "type": "single-choice",
       "question": "Welche Zeitkomplexität hat das Einfügen eines Elements am Anfang einer einfach verketteten Liste?",
-      "options": [
-        "O(1)",
-        "O(log n)",
-        "O(n)",
-        "O(n²)"
-      ],
+      "options": ["O(1)", "O(log n)", "O(n)", "O(n²)"],
       "correctAnswer": "O(1)",
       "explanation": "Das Einfügen am Anfang einer einfach verketteten Liste ist O(1), da nur der Head-Pointer angepasst werden muss. Das neue Element zeigt auf den alten Head, und der Head-Pointer zeigt auf das neue Element. Es ist keine Iteration durch die Liste erforderlich.",
       "points": 1,
@@ -60,12 +55,7 @@
       "question": "Was gibt dieser Stack-Code aus?",
       "code": "Stack<Integer> stack = new Stack<>();\nstack.push(10);\nstack.push(20);\nstack.push(30);\nstack.pop();\nSystem.out.println(stack.peek());",
       "language": "java",
-      "options": [
-        "20",
-        "30",
-        "10",
-        "Fehler: Stack ist leer"
-      ],
+      "options": ["20", "30", "10", "Fehler: Stack ist leer"],
       "correctAnswer": "20",
       "explanation": "Der Stack enthält nach den push-Operationen [10, 20, 30] (30 oben). pop() entfernt 30, sodass [10, 20] übrig bleibt. peek() gibt das oberste Element zurück, ohne es zu entfernen, also 20. Die Ausgabe ist daher 20.",
       "points": 2,
@@ -205,12 +195,7 @@
       "id": "q13",
       "type": "single-choice",
       "question": "Welche Datenstruktur wird typischerweise für die Breitensuche (BFS) in Graphen verwendet?",
-      "options": [
-        "Queue",
-        "Stack",
-        "Priority Queue",
-        "Hash-Tabelle"
-      ],
+      "options": ["Queue", "Stack", "Priority Queue", "Hash-Tabelle"],
       "correctAnswer": "Queue",
       "explanation": "Breitensuche (BFS) verwendet eine Queue, um Knoten ebenenweise zu besuchen. Startknoten wird in Queue eingefügt, dann werden alle Nachbarn besucht und zur Queue hinzugefügt, bevor zur nächsten Ebene übergegangen wird. Das FIFO-Prinzip der Queue garantiert die ebenenweise Verarbeitung. Tiefensuche (DFS) verwendet einen Stack.",
       "points": 1,
@@ -237,12 +222,7 @@
       "question": "Was ist die Zeitkomplexität dieser Operation?",
       "code": "// Suche nach einem Element in einem Array\nint[] arr = new int[n];\nfor (int i = 0; i < arr.length; i++) {\n  if (arr[i] == target) {\n    return i;\n  }\n}\nreturn -1;",
       "language": "java",
-      "options": [
-        "O(n)",
-        "O(1)",
-        "O(log n)",
-        "O(n²)"
-      ],
+      "options": ["O(n)", "O(1)", "O(log n)", "O(n²)"],
       "correctAnswer": "O(n)",
       "explanation": "Die lineare Suche durchläuft das Array sequenziell und vergleicht jedes Element mit dem Zielwert. Im schlimmsten Fall (Element nicht vorhanden oder am Ende) werden alle n Elemente durchlaufen. Die Zeitkomplexität ist daher O(n). Bei einem sortierten Array könnte binäre Suche O(log n) erreichen.",
       "points": 2,
@@ -252,12 +232,7 @@
       "id": "q16",
       "type": "single-choice",
       "question": "Welche Datenstruktur eignet sich am besten für die Implementierung eines Undo/Redo-Mechanismus?",
-      "options": [
-        "Stack",
-        "Queue",
-        "Hash-Tabelle",
-        "Binärer Baum"
-      ],
+      "options": ["Stack", "Queue", "Hash-Tabelle", "Binärer Baum"],
       "correctAnswer": "Stack",
       "explanation": "Ein Stack eignet sich perfekt für Undo/Redo, da die letzte Aktion zuerst rückgängig gemacht werden soll (LIFO). Für Undo wird ein Stack mit durchgeführten Aktionen verwendet, für Redo ein Stack mit rückgängig gemachten Aktionen. push() fügt neue Aktionen hinzu, pop() macht sie rückgängig.",
       "points": 1,

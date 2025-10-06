@@ -3,8 +3,6 @@
  * Provides full-text search across modules and quizzes
  */
 
-/* global setTimeout, clearTimeout */
-
 class SearchComponent {
   constructor(ihkContentService) {
     this.ihkContentService = ihkContentService;

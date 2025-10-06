@@ -111,6 +111,17 @@ class ModuleListView {
    * Render individual module card
    */
   _renderModuleCard(module) {
+    // Add defensive checks for undefined module properties
+    if (!module || !module.id) {
+      console.warn('Invalid module data:', module);
+      return '';
+    }
+
+    const title = module.title || 'Untitled Module';
+    const description = module.description || 'No description available';
+    const category = module.category || 'General';
+    const duration = module.duration || module.estimatedTime || 30;
+    
     const progress = module.completed ? 100 : module.inProgress ? 50 : 0;
     const statusBadge = this._getStatusBadge(module);
     const prerequisites =
@@ -130,18 +141,18 @@ class ModuleListView {
     return `
       <article class="module-card" data-module-id="${module.id}" role="listitem" aria-labelledby="module-title-${module.id}">
         <div class="module-card-header">
-          <div class="module-category">${module.category || 'General'}</div>
+          <div class="module-category">${category}</div>
           ${statusBadge}
         </div>
 
         <div class="module-card-body">
-          <h3 id="module-title-${module.id}" class="module-title">${module.title}</h3>
-          <p class="module-description">${module.description}</p>
+          <h3 id="module-title-${module.id}" class="module-title">${title}</h3>
+          <p class="module-description">${description}</p>
 
           <div class="module-meta">
             <div class="module-duration">
               <span class="meta-icon" aria-hidden="true">⏱️</span>
-              <span><span class="sr-only">Duration: </span>${module.duration || 30} minutes</span>
+              <span><span class="sr-only">Duration: </span>${duration} minutes</span>
             </div>
             ${prerequisites}
           </div>
@@ -155,7 +166,7 @@ class ModuleListView {
         </div>
 
         <div class="module-card-footer">
-          <button class="btn-primary btn-sm" data-action="view-module" data-module-id="${module.id}" aria-label="${actionText} module: ${module.title}">
+          <button class="btn-primary btn-sm" data-action="view-module" data-module-id="${module.id}" aria-label="${actionText} module: ${title}">
             ${actionText} Module
           </button>
         </div>

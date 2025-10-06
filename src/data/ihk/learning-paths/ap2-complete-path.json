@@ -164,38 +164,102 @@
     {
       "title": "Grundlagen abgeschlossen",
       "description": "Du hast die fachrichtungsübergreifenden Grundlagen erfolgreich abgeschlossen und bist bereit für die berufsprofilgebenden Themen.",
-      "requiredModules": ["fue-01-planning", "fue-02-development", "fue-03-quality", "fue-04-security"],
+      "requiredModules": [
+        "fue-01-planning",
+        "fue-02-development",
+        "fue-03-quality",
+        "fue-04-security"
+      ],
       "requiredQuizzes": []
     },
     {
       "title": "SQL-Kompetenz erreicht",
       "description": "Du beherrschst alle SQL-Befehle aus dem Prüfungsbeiblatt und kannst komplexe Datenbankabfragen durchführen.",
-      "requiredModules": ["sql-ddl", "sql-dml", "sql-dql", "bp-05-sql-reference"],
+      "requiredModules": [
+        "sql-ddl",
+        "sql-dml",
+        "sql-dql",
+        "bp-05-sql-reference"
+      ],
       "requiredQuizzes": ["sql-comprehensive-quiz"]
     },
     {
       "title": "Neue Themen 2025 gemeistert",
       "description": "Du hast alle neuen Themen ab 2025 erfolgreich gelernt und bist auf dem aktuellen Stand der Prüfungsanforderungen.",
-      "requiredModules": ["bp-03-tdd", "bp-04-scrum", "bp-05-sorting", "bp-03-cps", "bp-04-architecture-patterns", "fue-04-security-threats", "bp-05-encapsulation"],
-      "requiredQuizzes": ["tdd-quiz", "scrum-quiz", "sorting-algorithms-quiz", "security-threats-quiz"]
+      "requiredModules": [
+        "bp-03-tdd",
+        "bp-04-scrum",
+        "bp-05-sorting",
+        "bp-03-cps",
+        "bp-04-architecture-patterns",
+        "fue-04-security-threats",
+        "bp-05-encapsulation"
+      ],
+      "requiredQuizzes": [
+        "tdd-quiz",
+        "scrum-quiz",
+        "sorting-algorithms-quiz",
+        "security-threats-quiz"
+      ]
     },
     {
       "title": "Softwareentwicklung vertieft",
       "description": "Du hast fundierte Kenntnisse in Softwareentwicklung, Architektur und Best Practices erworben.",
-      "requiredModules": ["bp-03-software-quality", "bp-03-rest-api", "bp-04-architecture-patterns", "bp-04-design-patterns"],
+      "requiredModules": [
+        "bp-03-software-quality",
+        "bp-03-rest-api",
+        "bp-04-architecture-patterns",
+        "bp-04-design-patterns"
+      ],
       "requiredQuizzes": []
     },
     {
       "title": "OOP und Algorithmen beherrscht",
       "description": "Du verstehst objektorientierte Programmierung und wichtige Algorithmen vollständig.",
-      "requiredModules": ["bp-05-encapsulation", "bp-05-sorting", "bp-05-data-structures"],
+      "requiredModules": [
+        "bp-05-encapsulation",
+        "bp-05-sorting",
+        "bp-05-data-structures"
+      ],
       "requiredQuizzes": ["sorting-algorithms-quiz"]
     },
     {
       "title": "Prüfungsbereit",
       "description": "Herzlichen Glückwunsch! Du hast alle Themen durchgearbeitet und bist bereit für die AP2-Prüfung 2025.",
-      "requiredModules": ["fue-01-planning", "fue-02-development", "fue-03-quality", "fue-04-security", "fue-04-security-threats", "bp-01-conception", "bp-01-monitoring", "bp-01-documentation", "bp-02-quality-assurance", "bp-02-data-formats", "bp-02-cloud-models", "bp-03-software-quality", "bp-03-cps", "bp-03-tdd", "bp-03-rest-api", "bp-04-scrum", "bp-04-architecture-patterns", "bp-04-design-patterns", "bp-05-encapsulation", "bp-05-sorting", "bp-05-data-structures", "bp-05-sql-reference", "sql-ddl", "sql-dml", "sql-dql"],
-      "requiredQuizzes": ["sql-comprehensive-quiz", "tdd-quiz", "scrum-quiz", "sorting-algorithms-quiz", "security-threats-quiz"]
+      "requiredModules": [
+        "fue-01-planning",
+        "fue-02-development",
+        "fue-03-quality",
+        "fue-04-security",
+        "fue-04-security-threats",
+        "bp-01-conception",
+        "bp-01-monitoring",
+        "bp-01-documentation",
+        "bp-02-quality-assurance",
+        "bp-02-data-formats",
+        "bp-02-cloud-models",
+        "bp-03-software-quality",
+        "bp-03-cps",
+        "bp-03-tdd",
+        "bp-03-rest-api",
+        "bp-04-scrum",
+        "bp-04-architecture-patterns",
+        "bp-04-design-patterns",
+        "bp-05-encapsulation",
+        "bp-05-sorting",
+        "bp-05-data-structures",
+        "bp-05-sql-reference",
+        "sql-ddl",
+        "sql-dml",
+        "sql-dql"
+      ],
+      "requiredQuizzes": [
+        "sql-comprehensive-quiz",
+        "tdd-quiz",
+        "scrum-quiz",
+        "sorting-algorithms-quiz",
+        "security-threats-quiz"
+      ]
     }
   ]
 }

@@ -177,12 +177,7 @@
       "id": "q11",
       "type": "single-choice",
       "question": "Welches Format eignet sich am besten für Konfigurationsdateien, die von Menschen häufig bearbeitet werden?",
-      "options": [
-        "YAML",
-        "JSON",
-        "XML",
-        "CSV"
-      ],
+      "options": ["YAML", "JSON", "XML", "CSV"],
       "correctAnswer": "YAML",
       "explanation": "YAML eignet sich am besten für Konfigurationsdateien, da es durch Einrückungen statt Klammern sehr lesbar ist, Kommentare unterstützt und weniger Syntax-Overhead hat. Deshalb wird es oft in Docker, Kubernetes und CI/CD-Tools verwendet.",
       "points": 1,
@@ -192,12 +187,7 @@
       "id": "q12",
       "type": "single-choice",
       "question": "Welches Format wird typischerweise für REST-APIs verwendet?",
-      "options": [
-        "JSON",
-        "XML",
-        "YAML",
-        "CSV"
-      ],
+      "options": ["JSON", "XML", "YAML", "CSV"],
       "correctAnswer": "JSON",
       "explanation": "JSON ist das Standard-Format für moderne REST-APIs, da es kompakt ist, nativ von JavaScript unterstützt wird und von allen Programmiersprachen einfach geparst werden kann. XML wird seltener verwendet, hauptsächlich in Legacy-Systemen.",
       "points": 1,
@@ -230,11 +220,7 @@
         "null",
         "Date, RegExp, Function"
       ],
-      "correctAnswer": [
-        "String, Number, Boolean",
-        "Object, Array",
-        "null"
-      ],
+      "correctAnswer": ["String, Number, Boolean", "Object, Array", "null"],
       "explanation": "JSON unterstützt nativ: String, Number, Boolean, Object, Array und null. Komplexe Typen wie Date, RegExp oder Function werden nicht unterstützt und müssen als Strings serialisiert werden.",
       "points": 2,
       "category": "JSON-Syntax"
@@ -258,12 +244,7 @@
       "id": "q16",
       "type": "single-choice",
       "question": "Welches Format hat die geringste Dateigröße für dieselben Daten?",
-      "options": [
-        "JSON",
-        "XML",
-        "YAML",
-        "Alle haben die gleiche Größe"
-      ],
+      "options": ["JSON", "XML", "YAML", "Alle haben die gleiche Größe"],
       "correctAnswer": "JSON",
       "explanation": "JSON hat typischerweise die geringste Dateigröße, da es keine schließenden Tags wie XML benötigt und kompakter als YAML ist. XML hat durch öffnende und schließende Tags den größten Overhead.",
       "points": 1,

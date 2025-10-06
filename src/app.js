@@ -180,17 +180,11 @@ class App {
    * Initialize theme based on saved preference or system default
    */
   initializeTheme() {
-    const savedTheme = this.services.themeManager.getTheme();
-    if (savedTheme) {
-      this.services.themeManager.setTheme(savedTheme);
-    } else {
-      // Detect system preference
-      const prefersDark = window.matchMedia(
-        '(prefers-color-scheme: dark)'
-      ).matches;
-      const theme = prefersDark ? 'dark' : 'light';
-      this.services.themeManager.setTheme(theme);
-    }
+    // Initialize the theme manager first
+    this.services.themeManager.init();
+    
+    // Start watching for system preference changes
+    this.services.themeManager.watchSystemPreference();
   }
 
   /**

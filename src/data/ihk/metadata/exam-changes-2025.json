@@ -184,7 +184,11 @@
       "topic": "Test Driven Development (TDD)",
       "reason": "Neu und wichtig für moderne Softwareentwicklung",
       "estimatedHours": 10,
-      "resources": ["TDD-Tutorials", "Unit-Test-Frameworks", "Praktische Übungen"]
+      "resources": [
+        "TDD-Tutorials",
+        "Unit-Test-Frameworks",
+        "Praktische Übungen"
+      ]
     },
     {
       "priority": "critical",
@@ -198,28 +202,44 @@
       "topic": "Sortierverfahren",
       "reason": "Neu und grundlegend für Algorithmen",
       "estimatedHours": 12,
-      "resources": ["Algorithmen-Bücher", "Visualisierungen", "Code-Implementierungen"]
+      "resources": [
+        "Algorithmen-Bücher",
+        "Visualisierungen",
+        "Code-Implementierungen"
+      ]
     },
     {
       "priority": "high",
       "topic": "Architektur-Pattern",
       "reason": "Neu zusätzlich zu Design-Pattern",
       "estimatedHours": 15,
-      "resources": ["Software-Architektur-Bücher", "Pattern-Kataloge", "Praxisbeispiele"]
+      "resources": [
+        "Software-Architektur-Bücher",
+        "Pattern-Kataloge",
+        "Praxisbeispiele"
+      ]
     },
     {
       "priority": "high",
       "topic": "Sicherheitsbedrohungen",
       "reason": "Wichtig für IT-Sicherheit",
       "estimatedHours": 10,
-      "resources": ["IT-Security-Grundlagen", "Angriffsszenarien", "Gegenmaßnahmen"]
+      "resources": [
+        "IT-Security-Grundlagen",
+        "Angriffsszenarien",
+        "Gegenmaßnahmen"
+      ]
     },
     {
       "priority": "high",
       "topic": "Cyber-physische Systeme",
       "reason": "Neu und zukunftsrelevant",
       "estimatedHours": 8,
-      "resources": ["CPS-Grundlagen", "Sensor/Aktor-Programmierung", "Bibliotheken"]
+      "resources": [
+        "CPS-Grundlagen",
+        "Sensor/Aktor-Programmierung",
+        "Bibliotheken"
+      ]
     },
     {
       "priority": "medium",

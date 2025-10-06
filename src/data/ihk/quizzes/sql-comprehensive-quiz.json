@@ -14,12 +14,7 @@
       "id": "sql-q1",
       "type": "single-choice",
       "question": "Welcher SQL-Befehl wird verwendet, um eine neue Tabelle zu erstellen?",
-      "options": [
-        "CREATE TABLE",
-        "NEW TABLE",
-        "INSERT TABLE",
-        "MAKE TABLE"
-      ],
+      "options": ["CREATE TABLE", "NEW TABLE", "INSERT TABLE", "MAKE TABLE"],
       "correctAnswer": "CREATE TABLE",
       "explanation": "CREATE TABLE ist der DDL-Befehl zum Erstellen neuer Tabellen. Die Syntax lautet: CREATE TABLE table_name (column1 datatype, column2 datatype, ...);",
       "points": 1,

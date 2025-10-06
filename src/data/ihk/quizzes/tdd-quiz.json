@@ -151,12 +151,7 @@
       "id": "tdd-q10",
       "type": "single-choice",
       "question": "Welches Test-Framework wird häufig für Java verwendet?",
-      "options": [
-        "JUnit",
-        "PyTest",
-        "Mocha",
-        "NUnit"
-      ],
+      "options": ["JUnit", "PyTest", "Mocha", "NUnit"],
       "correctAnswer": "JUnit",
       "explanation": "JUnit ist das Standard-Test-Framework für Java. Andere: PyTest (Python), Mocha (JavaScript), NUnit (C#).",
       "points": 1,
@@ -293,6 +288,13 @@
       "category": "Best Practices"
     }
   ],
-  "tags": ["TDD", "Test Driven Development", "Unit-Tests", "IHK", "Neu 2025", "Softwareentwicklung"],
+  "tags": [
+    "TDD",
+    "Test Driven Development",
+    "Unit-Tests",
+    "IHK",
+    "Neu 2025",
+    "Softwareentwicklung"
+  ],
   "lastUpdated": "2025-01-05T12:00:00Z"
 }

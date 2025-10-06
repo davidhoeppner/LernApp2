@@ -175,12 +175,7 @@
       "id": "q11",
       "type": "single-choice",
       "question": "Welches Service-Modell eignet sich am besten für ein Startup, das schnell eine Webanwendung entwickeln möchte?",
-      "options": [
-        "PaaS",
-        "IaaS",
-        "SaaS",
-        "On-Premises"
-      ],
+      "options": ["PaaS", "IaaS", "SaaS", "On-Premises"],
       "correctAnswer": "PaaS",
       "explanation": "PaaS ist ideal für schnelle Anwendungsentwicklung, da die Plattform (Server, Datenbanken, Entwicklungstools) bereits bereitgestellt ist. Das Team kann sich auf die Anwendung konzentrieren, ohne Infrastruktur zu verwalten.",
       "points": 1,
@@ -190,12 +185,7 @@
       "id": "q12",
       "type": "single-choice",
       "question": "Welches Service-Modell eignet sich am besten für ein Unternehmen, das vollständige Kontrolle über Betriebssystem und Netzwerk benötigt?",
-      "options": [
-        "IaaS",
-        "PaaS",
-        "SaaS",
-        "FaaS"
-      ],
+      "options": ["IaaS", "PaaS", "SaaS", "FaaS"],
       "correctAnswer": "IaaS",
       "explanation": "IaaS bietet maximale Kontrolle über virtuelle Maschinen, Betriebssysteme, Netzwerkkonfiguration und Speicher. Dies ist ideal für Unternehmen mit spezifischen Anforderungen oder Legacy-Anwendungen.",
       "points": 1,

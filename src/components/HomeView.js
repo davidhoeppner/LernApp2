@@ -1,3 +1,5 @@
+import { formatTime } from '../utils/formatUtils.js';
+
 /**
  * HomeView - Landing page with overview and quick actions
  */
@@ -232,7 +234,7 @@ class HomeView {
         activities.push({
           icon: '✅',
           title: `Completed: ${module.title}`,
-          time: this._formatTime(progress.lastActivity),
+          time: formatTime(progress.lastActivity),
         });
       }
     });
@@ -243,34 +245,12 @@ class HomeView {
       activities.push({
         icon: attempt.score >= 70 ? '🎉' : '📝',
         title: `Quiz completed with ${attempt.score}%`,
-        time: this._formatTime(attempt.date),
+        time: formatTime(attempt.date),
       });
     });
 
     // Sort by time and limit to 5
     return activities.slice(0, 5);
-  }
-
-  /**
-   * Format time relative to now
-   */
-  _formatTime(dateString) {
-    if (!dateString) return 'Recently';
-
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffMs = now - date;
-    const diffMins = Math.floor(diffMs / 60000);
-    const diffHours = Math.floor(diffMs / 3600000);
-    const diffDays = Math.floor(diffMs / 86400000);
-
-    if (diffMins < 1) return 'Just now';
-    if (diffMins < 60)
-      return `${diffMins} minute${diffMins > 1 ? 's' : ''} ago`;
-    if (diffHours < 24)
-      return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
-    if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
-    return date.toLocaleDateString();
   }
 
   /**

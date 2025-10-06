@@ -173,12 +173,7 @@
       "question": "Was gibt dieser Code aus?",
       "code": "public class Counter {\n    private int count = 0;\n    public void increment() { count++; }\n    public int getCount() { return count; }\n}\n\nCounter c = new Counter();\nc.increment();\nc.increment();\nSystem.out.println(c.getCount());",
       "language": "java",
-      "options": [
-        "2",
-        "0",
-        "1",
-        "Compilerfehler"
-      ],
+      "options": ["2", "0", "1", "Compilerfehler"],
       "correctAnswer": "2",
       "explanation": "Der Code gibt '2' aus. Das private Attribut 'count' wird durch die public Methode increment() zweimal erhöht (0 → 1 → 2). Der Zugriff erfolgt über die public Methode getCount(). Dies ist ein gutes Beispiel für Kapselung: Das Attribut ist private, aber kontrollierter Zugriff ist über public Methoden möglich.",
       "points": 2,

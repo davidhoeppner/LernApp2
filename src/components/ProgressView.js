@@ -1,7 +1,7 @@
-/* global setTimeout */
 import EmptyState from './EmptyState.js';
 import LoadingSpinner from './LoadingSpinner.js';
 import toastNotification from './ToastNotification.js';
+import { formatDate } from '../utils/formatUtils.js';
 
 /**
  * ProgressView - Comprehensive progress dashboard
@@ -11,6 +11,7 @@ class ProgressView {
     this.progressService = services.progressService;
     this.moduleService = services.moduleService;
     this.quizService = services.quizService;
+    this.ihkContentService = services.ihkContentService;
     this.stateManager = services.stateManager;
   }
 
@@ -28,7 +29,7 @@ class ProgressView {
       const overallProgress = this.progressService.getOverallProgress();
       const modules = await this.moduleService.getModules();
       const quizHistory = this.progressService.getQuizHistory();
-      const quizzes = await this.quizService.getQuizzes();
+      const quizzes = await this.ihkContentService.getAllQuizzes();
 
       container.innerHTML = `
         <header class="progress-header">
@@ -57,7 +58,7 @@ class ProgressView {
   _renderOverallProgress(progress) {
     const percentage = progress.overallPercentage || 0;
     const lastActivity = progress.lastActivity
-      ? this._formatDate(progress.lastActivity)
+      ? formatDate(progress.lastActivity)
       : 'No activity yet';
 
     return `
@@ -239,7 +240,7 @@ class ProgressView {
               </span>
             </td>
             <td>${attempt.correctAnswers}/${attempt.totalQuestions}</td>
-            <td>${this._formatDate(attempt.date)}</td>
+            <td>${formatDate(attempt.date)}</td>
             <td>
               <span class="badge ${attempt.passed ? 'badge-success' : 'badge-error'}">
                 ${attempt.passed ? 'Passed' : 'Failed'}
@@ -306,28 +307,6 @@ class ProgressView {
         <button class="btn-primary" onclick="window.location.reload()">Refresh</button>
       </div>
     `;
-  }
-
-  /**
-   * Format date
-   */
-  _formatDate(dateString) {
-    if (!dateString) return 'N/A';
-
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffMs = now - date;
-    const diffDays = Math.floor(diffMs / 86400000);
-
-    if (diffDays === 0) return 'Today';
-    if (diffDays === 1) return 'Yesterday';
-    if (diffDays < 7) return `${diffDays} days ago`;
-
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-    });
   }
 
   /**

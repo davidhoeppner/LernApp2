@@ -25,12 +25,40 @@ class ModuleService {
       if (this.ihkContentService) {
         try {
           ihkModules = await this.ihkContentService.searchContent('', {});
-          ihkModules = ihkModules.map(module => ({
-            ...module,
-            source: 'ihk',
-            // Map IHK fields to regular module fields for consistency
-            duration: module.estimatedDuration || 30,
-          }));
+          
+          // Add debugging to identify problematic modules
+          console.log('Raw IHK modules loaded:', ihkModules.length);
+          
+          ihkModules = ihkModules.map((module, index) => {
+            // Check for undefined properties
+            if (!module.title || !module.description) {
+              console.warn(`Module at index ${index} has undefined properties:`, {
+                id: module.id,
+                title: module.title,
+                description: module.description,
+                module: module
+              });
+            }
+            
+            return {
+              ...module,
+              source: 'ihk',
+              // Map IHK fields to regular module fields for consistency
+              duration: module.estimatedTime || module.estimatedDuration || 30,
+            };
+          });
+          
+          // Filter out any modules with missing essential properties
+          const validModules = ihkModules.filter(module => 
+            module && module.id && module.title && module.description
+          );
+          
+          if (validModules.length !== ihkModules.length) {
+            console.warn(`Filtered out ${ihkModules.length - validModules.length} invalid modules`);
+          }
+          
+          console.log('Valid IHK modules after filtering:', validModules.length);
+          return validModules;
         } catch (error) {
           console.error('Could not load IHK modules:', error);
           throw error;

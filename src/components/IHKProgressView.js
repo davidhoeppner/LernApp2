@@ -1,4 +1,3 @@
-/* global setTimeout */
 /**
  * IHK Progress View Component
  * Displays comprehensive IHK exam preparation progress with category breakdown,

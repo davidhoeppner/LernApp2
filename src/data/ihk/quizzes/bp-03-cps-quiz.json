@@ -137,17 +137,8 @@
       "id": "q9",
       "type": "multiple-choice",
       "question": "Welche Kommunikationsprotokolle werden häufig in IoT/CPS verwendet? (Mehrere Antworten möglich)",
-      "options": [
-        "MQTT",
-        "CoAP",
-        "HTTP/HTTPS",
-        "FTP"
-      ],
-      "correctAnswer": [
-        "MQTT",
-        "CoAP",
-        "HTTP/HTTPS"
-      ],
+      "options": ["MQTT", "CoAP", "HTTP/HTTPS", "FTP"],
+      "correctAnswer": ["MQTT", "CoAP", "HTTP/HTTPS"],
       "explanation": "MQTT (Message Queuing Telemetry Transport) ist ein leichtgewichtiges Publish-Subscribe-Protokoll für IoT. CoAP (Constrained Application Protocol) ist für ressourcenbeschränkte Geräte optimiert. HTTP/HTTPS wird auch in IoT verwendet. FTP ist für Dateiübertragung, nicht für IoT-Kommunikation optimiert.",
       "points": 2,
       "category": "Kommunikation"

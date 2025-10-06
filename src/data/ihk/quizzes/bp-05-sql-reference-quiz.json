@@ -13,12 +13,7 @@
       "id": "q1",
       "type": "single-choice",
       "question": "Welcher SQL-Befehl gehört zur DDL (Data Definition Language)?",
-      "options": [
-        "CREATE TABLE",
-        "SELECT",
-        "INSERT",
-        "UPDATE"
-      ],
+      "options": ["CREATE TABLE", "SELECT", "INSERT", "UPDATE"],
       "correctAnswer": "CREATE TABLE",
       "explanation": "CREATE TABLE ist ein DDL-Befehl, der die Struktur der Datenbank definiert. SELECT ist DQL, INSERT und UPDATE sind DML-Befehle zur Datenmanipulation.",
       "points": 1,
@@ -28,17 +23,8 @@
       "id": "q2",
       "type": "multiple-choice",
       "question": "Welche Constraints können in SQL verwendet werden, um Datenintegrität zu gewährleisten? (Mehrere Antworten möglich)",
-      "options": [
-        "PRIMARY KEY",
-        "FOREIGN KEY",
-        "UNIQUE",
-        "SELECT"
-      ],
-      "correctAnswer": [
-        "PRIMARY KEY",
-        "FOREIGN KEY",
-        "UNIQUE"
-      ],
+      "options": ["PRIMARY KEY", "FOREIGN KEY", "UNIQUE", "SELECT"],
+      "correctAnswer": ["PRIMARY KEY", "FOREIGN KEY", "UNIQUE"],
       "explanation": "PRIMARY KEY, FOREIGN KEY und UNIQUE sind Constraints zur Sicherstellung der Datenintegrität. SELECT ist ein Abfragebefehl und kein Constraint.",
       "points": 2,
       "category": "Constraints"
@@ -164,12 +150,7 @@
       "id": "q10",
       "type": "single-choice",
       "question": "Welcher Constraint verhindert NULL-Werte in einer Spalte?",
-      "options": [
-        "NOT NULL",
-        "UNIQUE",
-        "CHECK",
-        "DEFAULT"
-      ],
+      "options": ["NOT NULL", "UNIQUE", "CHECK", "DEFAULT"],
       "correctAnswer": "NOT NULL",
       "explanation": "NOT NULL stellt sicher, dass eine Spalte immer einen Wert enthalten muss. UNIQUE erlaubt NULL-Werte, CHECK prüft Bedingungen, und DEFAULT setzt Standardwerte.",
       "points": 1,
@@ -279,12 +260,7 @@
       "id": "q17",
       "type": "single-choice",
       "question": "Welcher JOIN-Typ gibt alle Zeilen der linken Tabelle zurück, auch wenn keine Übereinstimmung in der rechten Tabelle existiert?",
-      "options": [
-        "LEFT JOIN",
-        "INNER JOIN",
-        "RIGHT JOIN",
-        "CROSS JOIN"
-      ],
+      "options": ["LEFT JOIN", "INNER JOIN", "RIGHT JOIN", "CROSS JOIN"],
       "correctAnswer": "LEFT JOIN",
       "explanation": "LEFT JOIN (oder LEFT OUTER JOIN) gibt alle Zeilen der linken Tabelle zurück. Fehlende Werte aus der rechten Tabelle werden als NULL dargestellt.",
       "points": 1,
@@ -311,17 +287,8 @@
       "id": "q19",
       "type": "multiple-choice",
       "question": "Welche Aggregatfunktionen sind in SQL verfügbar? (Mehrere Antworten möglich)",
-      "options": [
-        "COUNT()",
-        "SUM()",
-        "AVG()",
-        "JOIN()"
-      ],
-      "correctAnswer": [
-        "COUNT()",
-        "SUM()",
-        "AVG()"
-      ],
+      "options": ["COUNT()", "SUM()", "AVG()", "JOIN()"],
+      "correctAnswer": ["COUNT()", "SUM()", "AVG()"],
       "explanation": "COUNT, SUM, AVG, MIN und MAX sind Standard-Aggregatfunktionen. JOIN ist kein Aggregat, sondern eine Verknüpfungsoperation zwischen Tabellen.",
       "points": 2,
       "category": "Aggregatfunktionen"

@@ -82,9 +82,10 @@ class ThemeManager {
       this.currentTheme
     );
 
-    // Also set class for backwards compatibility
-    document.documentElement.classList.remove('light-theme', 'dark-theme');
-    document.documentElement.classList.add(`${this.currentTheme}-theme`);
+    // Set classes for CSS selectors
+    document.documentElement.classList.remove('light', 'dark', 'light-theme', 'dark-theme');
+    document.documentElement.classList.add(this.currentTheme); // For :root.dark selectors
+    document.documentElement.classList.add(`${this.currentTheme}-theme`); // For backwards compatibility
 
     // Dispatch custom event for components that need to react
     window.dispatchEvent(

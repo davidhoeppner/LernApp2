@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { formatBytes } from '../src/utils/formatUtils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -40,15 +41,6 @@ class PerformanceAnalyzer {
     return { size: totalSize, count: fileCount };
   }
 
-  // Format bytes to human readable
-  formatBytes(bytes) {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-  }
-
   // Measure bundle size
   measureBundleSize() {
     console.log('📦 Measuring bundle size...\n');
@@ -62,7 +54,7 @@ class PerformanceAnalyzer {
 
     const distResult = this.getDirectorySize(distPath);
     this.results.bundleSize.total = distResult.size;
-    this.results.bundleSize.totalFormatted = this.formatBytes(distResult.size);
+    this.results.bundleSize.totalFormatted = formatBytes(distResult.size);
     this.results.bundleSize.fileCount = distResult.count;
 
     // Measure individual asset sizes
@@ -76,7 +68,7 @@ class PerformanceAnalyzer {
         const stats = fs.statSync(assetPath);
         this.results.bundleSize.assets[asset] = {
           size: stats.size,
-          formatted: this.formatBytes(stats.size),
+          formatted: formatBytes(stats.size),
         };
       }
     }
@@ -96,7 +88,7 @@ class PerformanceAnalyzer {
     this.results.fileCount.source = {
       total: srcResult.count,
       size: srcResult.size,
-      sizeFormatted: this.formatBytes(srcResult.size),
+      sizeFormatted: formatBytes(srcResult.size),
     };
 
     // Count by type
@@ -134,17 +126,17 @@ class PerformanceAnalyzer {
       javascript: {
         count: jsResult.count,
         size: jsResult.size,
-        sizeFormatted: this.formatBytes(jsResult.size),
+        sizeFormatted: formatBytes(jsResult.size),
       },
       css: {
         count: cssResult.count,
         size: cssResult.size,
-        sizeFormatted: this.formatBytes(cssResult.size),
+        sizeFormatted: formatBytes(cssResult.size),
       },
       json: {
         count: jsonResult.count,
         size: jsonResult.size,
-        sizeFormatted: this.formatBytes(jsonResult.size),
+        sizeFormatted: formatBytes(jsonResult.size),
       },
     };
 
@@ -263,7 +255,7 @@ class PerformanceAnalyzer {
       this.results.comparison.bundleSize = {
         previous: previous.bundleSize.totalFormatted,
         current: this.results.bundleSize.totalFormatted,
-        difference: this.formatBytes(Math.abs(diff)),
+        difference: formatBytes(Math.abs(diff)),
         percentChange: percentChange + '%',
         improved: diff < 0,
       };
@@ -272,7 +264,7 @@ class PerformanceAnalyzer {
       console.log(`  Previous: ${previous.bundleSize.totalFormatted}`);
       console.log(`  Current: ${this.results.bundleSize.totalFormatted}`);
       console.log(
-        `  Change: ${diff < 0 ? '↓' : '↑'} ${this.formatBytes(Math.abs(diff))} (${percentChange}%)`
+        `  Change: ${diff < 0 ? '↓' : '↑'} ${formatBytes(Math.abs(diff))} (${percentChange}%)`
       );
       console.log('');
     }

@@ -3,12 +3,11 @@
  * Provides a gamified way to discover learning modules
  */
 
-/* global setTimeout */
-
 import accessibilityHelper from '../utils/AccessibilityHelper.js';
 import LoadingSpinner from './LoadingSpinner.js';
 import EmptyState from './EmptyState.js';
 import toastNotification from './ToastNotification.js';
+import WheelModuleValidator from '../utils/WheelModuleValidator.js';
 
 class WheelView {
   constructor(services) {
@@ -19,6 +18,7 @@ class WheelView {
     this.modules = [];
     this.selectedModule = null;
     this.isSpinning = false;
+    this.validator = new WheelModuleValidator();
   }
 
   /**
@@ -34,7 +34,13 @@ class WheelView {
       try {
         await this.loadModules();
 
-        // Check if we have enough modules
+        // Check if we have enough valid modules
+        if (this.modules.length === 0) {
+          container.innerHTML = '';
+          container.appendChild(this.showNoModulesMessage());
+          return;
+        }
+
         if (this.modules.length < 2) {
           container.innerHTML = '';
           container.appendChild(this.renderInsufficientModules());
@@ -49,19 +55,34 @@ class WheelView {
 
         accessibilityHelper.announce('Wheel of Fortune loaded');
       } catch (error) {
-        console.error('Error loading wheel:', error);
+        console.error('WheelView: Critical error during render:', error);
+        this.logCriticalError('render', error);
+        
         const errorState = EmptyState.create({
           icon: '⚠️',
-          title: 'Error Loading Wheel',
-          message: 'Failed to load modules. Please try again.',
+          title: 'Fehler beim Laden des Glücksrads',
+          message: 'Die Module konnten nicht geladen werden. Bitte versuchen Sie es erneut.',
           action: {
-            label: 'Retry',
-            onClick: () => this.render(),
+            label: 'Erneut versuchen',
+            onClick: () => {
+              // Force reload with fresh state
+              this.modules = [];
+              this.selectedModule = null;
+              this.render().then(newContainer => {
+                const currentContainer = document.querySelector('.wheel-view');
+                if (currentContainer && currentContainer.parentNode) {
+                  currentContainer.parentNode.replaceChild(newContainer, currentContainer);
+                }
+              }).catch(retryError => {
+                console.error('WheelView: Retry also failed:', retryError);
+                toastNotification.error('Wiederholung fehlgeschlagen');
+              });
+            },
           },
         });
         container.innerHTML = '';
         container.appendChild(errorState);
-        toastNotification.error('Failed to load wheel');
+        toastNotification.error('Glücksrad konnte nicht geladen werden');
       }
     }, 0);
 
@@ -69,59 +90,141 @@ class WheelView {
   }
 
   /**
-   * Load modules from IHKContentService
+   * Load modules from IHKContentService with comprehensive error handling
    */
   async loadModules() {
+    let rawModules = [];
+    let loadingSource = 'unknown';
+
     try {
-      // Load all modules from IHKContentService
-      const result = await this.ihkContentService.searchContent('', {});
-
-      // Ensure we have a valid array
-      if (Array.isArray(result) && result.length > 0) {
-        this.modules = result;
-      } else {
-        // Fallback to static list if service fails or returns empty
-        console.warn('IHKContentService returned no modules, using fallback');
-        this.modules = this.getFallbackModules();
+      console.log('WheelView: Starting module loading...');
+      
+      // Attempt to load modules from IHKContentService
+      try {
+        const result = await this.ihkContentService.searchContent('', {});
+        
+        if (Array.isArray(result) && result.length > 0) {
+          rawModules = result;
+          loadingSource = 'IHKContentService';
+          console.log(`WheelView: Successfully loaded ${result.length} modules from IHKContentService`);
+        } else {
+          console.warn('WheelView: IHKContentService returned empty or invalid result:', result);
+          throw new Error('IHKContentService returned no valid modules');
+        }
+      } catch (serviceError) {
+        console.error('WheelView: IHKContentService failed:', serviceError);
+        
+        // Fallback to validator's fallback modules
+        console.warn('WheelView: Using fallback modules due to service failure');
+        rawModules = this.validator.getFallbackModules();
+        loadingSource = 'fallback';
       }
-    } catch (error) {
-      console.error('Error loading modules:', error);
-      // Use fallback modules
-      this.modules = this.getFallbackModules();
+
+      // Validate and filter modules
+      try {
+        console.log(`WheelView: Validating ${rawModules.length} raw modules...`);
+        this.modules = this.validator.filterValidModules(rawModules);
+        
+        if (this.modules.length === 0) {
+          console.error('WheelView: All modules failed validation, using emergency fallback');
+          this.modules = this.validator.getFallbackModules();
+          loadingSource = 'emergency-fallback';
+        }
+        
+        console.log(`WheelView: Successfully validated ${this.modules.length} modules from ${loadingSource}`);
+        
+      } catch (validationError) {
+        console.error('WheelView: Module validation failed:', validationError);
+        
+        // Last resort - use emergency fallback
+        try {
+          this.modules = this.validator.getFallbackModules();
+          loadingSource = 'emergency-fallback';
+          console.log('WheelView: Using emergency fallback modules');
+        } catch (fallbackError) {
+          console.error('WheelView: Even fallback modules failed:', fallbackError);
+          // Create minimal valid module as absolute last resort
+          this.modules = [{
+            id: 'emergency-module',
+            title: 'Learning Module',
+            category: 'general'
+          }];
+          loadingSource = 'absolute-emergency';
+        }
+      }
+
+    } catch (criticalError) {
+      console.error('WheelView: Critical error during module loading:', criticalError);
+      
+      // Absolute last resort - create a single valid module
+      this.modules = [{
+        id: 'critical-error-fallback',
+        title: 'Learning Module',
+        category: 'general'
+      }];
+      loadingSource = 'critical-error-fallback';
+      
+      // Log the critical error for debugging
+      this.logCriticalError('loadModules', criticalError);
     }
 
-    // Final safety check
-    if (!Array.isArray(this.modules)) {
-      console.error('Modules is not an array, using fallback');
-      this.modules = this.getFallbackModules();
+    // Final validation and logging
+    const finalValidation = this.modules.every(module => this.validator.validateModule(module));
+    if (!finalValidation) {
+      console.error('WheelView: Final validation failed - some modules are still invalid');
+      this.modules = this.validator.getFallbackModules();
+      loadingSource = 'final-validation-fallback';
     }
+
+    console.log(`WheelView: Module loading complete - ${this.modules.length} valid modules from ${loadingSource}`);
   }
 
   /**
-   * Get fallback modules if service fails
+   * Show message when no modules are available
    */
-  getFallbackModules() {
-    return [
-      {
-        id: 'bp-03-tdd',
-        title: 'Test-Driven Development (TDD)',
-        category: 'BP-03',
-      },
-      { id: 'bp-04-scrum', title: 'Scrum', category: 'BP-04' },
-      { id: 'bp-05-sorting', title: 'Sortierverfahren', category: 'BP-05' },
-      { id: 'bp-01-kerberos', title: 'Kerberos', category: 'BP-01' },
-      { id: 'bp-03-rest-api', title: 'REST API', category: 'BP-03' },
-    ];
+  showNoModulesMessage() {
+    return EmptyState.create({
+      icon: '🎯',
+      title: 'Keine Module verfügbar',
+      message: 'Es sind derzeit keine gültigen Module zum Lernen verfügbar. Bitte versuchen Sie es später erneut.',
+      action: {
+        label: 'Erneut laden',
+        onClick: () => {
+          // Reload the entire wheel view
+          this.render().then(newContainer => {
+            const currentContainer = document.querySelector('.wheel-view');
+            if (currentContainer && currentContainer.parentNode) {
+              currentContainer.parentNode.replaceChild(newContainer, currentContainer);
+            }
+          });
+        }
+      }
+    });
   }
 
   /**
-   * Load last selected module from state
+   * Load last selected module from state with validation
    */
   loadLastSelection() {
-    const lastModule = this.stateManager.getState('lastWheelModule');
-    if (lastModule) {
-      this.selectedModule = lastModule;
-      this.updateDisplay();
+    try {
+      const lastModule = this.stateManager.getState('lastWheelModule');
+      
+      if (lastModule && this.validator.validateModule(lastModule)) {
+        this.selectedModule = lastModule;
+        this.updateDisplay();
+        console.log('WheelView: Restored last wheel selection:', lastModule.title);
+      } else if (lastModule) {
+        console.warn('WheelView: Last saved module is invalid, ignoring:', lastModule);
+        // Clear invalid saved state
+        try {
+          this.stateManager.setState('lastWheelModule', null);
+        } catch (clearError) {
+          console.error('WheelView: Failed to clear invalid saved state:', clearError);
+        }
+      }
+    } catch (error) {
+      console.error('WheelView: Error loading last selection:', error);
+      this.logCriticalError('loadLastSelection', error);
     }
   }
 
@@ -199,7 +302,7 @@ class WheelView {
           </button>
         </div>
         <div class="wheel-result-display" id="wheel-result-display">
-          <span class="wheel-result-text">Klicke auf das Rad zum Drehen</span>
+          <div class="wheel-result-text">Klicke auf das Rad zum Drehen</div>
         </div>
       </div>
     `;
@@ -233,6 +336,17 @@ class WheelView {
       return '<div class="wheel-placeholder">Loading...</div>';
     }
 
+    // Additional validation - filter modules again before rendering
+    const validModules = this.validator.filterValidModules(this.modules);
+    
+    if (validModules.length === 0) {
+      console.error('WheelView: No valid modules to render in wheel');
+      return '<div class="wheel-placeholder">No valid modules available</div>';
+    }
+
+    // Use validated modules for rendering
+    const modulesToRender = validModules;
+
     const colors = [
       '#3b82f6',
       '#8b5cf6',
@@ -244,17 +358,17 @@ class WheelView {
       '#f97316',
     ];
 
-    const segmentAngle = 360 / this.modules.length;
+    const segmentAngle = 360 / modulesToRender.length;
     const radius = 380; // Increased for longer text
     const centerX = 400; // Increased
     const centerY = 400; // Increased
 
     let segments = '';
 
-    this.modules.forEach((module, index) => {
-      // Safety check for module object
-      if (!module || !module.title) {
-        // Skip invalid modules silently
+    modulesToRender.forEach((module, index) => {
+      // Modules are already validated, but add extra safety check
+      if (!this.validator.validateModule(module)) {
+        console.warn('WheelView: Invalid module found during rendering, skipping:', module);
         return;
       }
 
@@ -407,7 +521,10 @@ class WheelView {
 
     display.innerHTML = `
       <p class="selected-label">Ausgewähltes Modul:</p>
-      <p class="selected-module" id="selected-module-text">Noch kein Modul ausgewählt</p>
+      <div class="selected-module-container" id="selected-module-container">
+        <p class="selected-module" id="selected-module-text">Noch kein Modul ausgewählt</p>
+        <p class="click-hint" id="click-hint" style="display: none;">👆 Klicken zum Öffnen</p>
+      </div>
     `;
 
     return display;
@@ -418,6 +535,15 @@ class WheelView {
    */
   async spin() {
     if (this.isSpinning) return;
+
+    // Validate modules before spinning
+    const validModules = this.validator.filterValidModules(this.modules);
+    
+    if (validModules.length === 0) {
+      console.error('WheelView: No valid modules available for spinning');
+      toastNotification.error('Keine gültigen Module zum Drehen verfügbar');
+      return;
+    }
 
     this.isSpinning = true;
 
@@ -430,16 +556,27 @@ class WheelView {
     if (againBtn) againBtn.style.display = 'none';
     if (gotoBtn) gotoBtn.style.display = 'none';
 
-    // Select random module
-    const selectedIndex = Math.floor(Math.random() * this.modules.length);
-    this.selectedModule = this.modules[selectedIndex];
+    // Select random module from valid modules only
+    const selectedIndex = Math.floor(Math.random() * validModules.length);
+    this.selectedModule = validModules[selectedIndex];
 
-    console.log('🎯 Spinning wheel:');
-    console.log('  Selected index:', selectedIndex);
-    console.log('  Selected module:', this.selectedModule.title);
+    // Validate the selected module
+    if (!this.validator.validateModule(this.selectedModule)) {
+      console.error('WheelView: Selected module is invalid:', this.selectedModule);
+      // Fallback to first valid module
+      this.selectedModule = validModules[0];
+    }
+
+    console.warn('🎯 Spinning wheel:');
+    console.warn('  Selected index:', selectedIndex);
+    console.warn('  Selected module:', this.selectedModule.title);
+
+    // Find the index of selected module in the original modules array for animation
+    const animationIndex = this.modules.findIndex(m => m.id === this.selectedModule.id);
+    const indexToUse = animationIndex >= 0 ? animationIndex : selectedIndex;
 
     // Animate the selection
-    await this.animateSelection(selectedIndex);
+    await this.animateSelection(indexToUse);
 
     // Update display
     this.updateDisplay();
@@ -498,12 +635,12 @@ class WheelView {
     const fullRotations = Math.floor(3 + Math.random() * 3); // 3, 4, or 5 complete rotations
     const totalRotation = fullRotations * 360 + targetAngle;
 
-    console.log('🎲 Animation calculation:');
-    console.log('  Segment angle:', segmentAngle);
-    console.log('  Target segment center:', targetSegmentCenter);
-    console.log('  Target angle:', targetAngle);
-    console.log('  Total rotation:', totalRotation);
-    console.log('  Final module:', this.selectedModule.title);
+    console.warn('🎲 Animation calculation:');
+    console.warn('  Segment angle:', segmentAngle);
+    console.warn('  Target segment center:', targetSegmentCenter);
+    console.warn('  Target angle:', targetAngle);
+    console.warn('  Total rotation:', totalRotation);
+    console.warn('  Final module:', this.selectedModule.title);
 
     // Animation using CSS transition
     wheelGroup.style.transition = 'none';
@@ -519,7 +656,7 @@ class WheelView {
 
     // Update result display during spin
     if (resultDisplay) {
-      resultDisplay.textContent = 'Spinning...';
+      resultDisplay.innerHTML = '<div class="wheel-result-text">Spinning...</div>';
       resultDisplay.style.opacity = '0.5';
     }
 
@@ -554,25 +691,57 @@ class WheelView {
           ? segmentAtPointer + this.modules.length
           : segmentAtPointer;
 
-      console.log('🏆 Winner verification:');
-      console.log('  Final index (selected):', finalIndex);
-      console.log('  Winner module:', winnerModule.title);
-      console.log('  Total rotation:', totalRotation);
-      console.log('  Final rotation (mod 360):', finalRotation);
-      console.log(
+      console.warn('🏆 Winner verification:');
+      console.warn('  Final index (selected):', finalIndex);
+      console.warn('  Winner module:', winnerModule.title);
+      console.warn('  Total rotation:', totalRotation);
+      console.warn('  Final rotation (mod 360):', finalRotation);
+      console.warn(
         '  Segment 0 center after rotation:',
         segment0CenterAfterRotation
       );
-      console.log('  Calculated segment at pointer:', actualSegmentAtPointer);
-      
+      console.warn('  Calculated segment at pointer:', actualSegmentAtPointer);
 
-      resultDisplay.textContent = winnerModule.title;
+      resultDisplay.innerHTML = `
+        <span class="winner-text">${winnerModule.title}</span>
+        <span class="winner-click-icon">🎯</span>
+      `;
       resultDisplay.style.opacity = '1';
       resultDisplay.classList.add('wheel-result-highlight');
+      
+      // Make the result display clickable
+      const resultContainer = resultDisplay.parentElement;
+      if (resultContainer) {
+        resultContainer.style.cursor = 'pointer';
+        resultContainer.classList.add('clickable-result');
+        resultContainer.setAttribute('role', 'button');
+        resultContainer.setAttribute('tabindex', '0');
+        resultContainer.setAttribute('aria-label', `Open winning module: ${winnerModule.title}`);
+        
+        // Remove existing event listeners to avoid duplicates
+        const newResultContainer = resultContainer.cloneNode(true);
+        resultContainer.parentNode.replaceChild(newResultContainer, resultContainer);
+        
+        // Add click event listener to the new container
+        newResultContainer.addEventListener('click', () => {
+          this.navigateToModule();
+        });
+        
+        // Add keyboard support
+        newResultContainer.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.navigateToModule();
+          }
+        });
+      }
 
       // Remove highlight after animation
       setTimeout(() => {
-        resultDisplay.classList.remove('wheel-result-highlight');
+        const currentResultDisplay = document.querySelector('.wheel-result-display .wheel-result-text');
+        if (currentResultDisplay) {
+          currentResultDisplay.classList.remove('wheel-result-highlight');
+        }
       }, 1000);
     }
   }
@@ -589,30 +758,84 @@ class WheelView {
    */
   updateDisplay() {
     const selectedText = document.querySelector('#selected-module-text');
+    const selectedContainer = document.querySelector('#selected-module-container');
+    const clickHint = document.querySelector('#click-hint');
+    
     if (selectedText && this.selectedModule) {
       selectedText.textContent = `${this.selectedModule.title} (${this.selectedModule.category || 'N/A'})`;
+      
+      // Make the selected module clickable
+      if (selectedContainer) {
+        selectedContainer.style.cursor = 'pointer';
+        selectedContainer.classList.add('clickable-module');
+        selectedContainer.setAttribute('role', 'button');
+        selectedContainer.setAttribute('tabindex', '0');
+        selectedContainer.setAttribute('aria-label', `Open module: ${this.selectedModule.title}`);
+        
+        // Show click hint
+        if (clickHint) {
+          clickHint.style.display = 'block';
+        }
+        
+        // Remove existing event listeners to avoid duplicates
+        const newContainer = selectedContainer.cloneNode(true);
+        selectedContainer.parentNode.replaceChild(newContainer, selectedContainer);
+        
+        // Add click event listener
+        newContainer.addEventListener('click', () => {
+          this.navigateToModule();
+        });
+        
+        // Add keyboard support
+        newContainer.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.navigateToModule();
+          }
+        });
+        
+        // Add hover effect
+        newContainer.addEventListener('mouseenter', () => {
+          newContainer.classList.add('hover');
+        });
+        
+        newContainer.addEventListener('mouseleave', () => {
+          newContainer.classList.remove('hover');
+        });
+      }
     }
   }
 
   /**
-   * Save selection to state
+   * Save selection to state with error handling
    */
   saveSelection() {
     try {
-      this.stateManager.setState('lastWheelModule', {
+      // Validate selected module before saving
+      if (!this.validator.validateModule(this.selectedModule)) {
+        console.warn('WheelView: Cannot save invalid selected module:', this.selectedModule);
+        return;
+      }
+
+      const stateData = {
         id: this.selectedModule.id,
         title: this.selectedModule.title,
         category: this.selectedModule.category,
         selectedAt: new Date().toISOString(),
-      });
+      };
+
+      this.stateManager.setState('lastWheelModule', stateData);
+      console.log('WheelView: Successfully saved wheel selection to state');
+      
     } catch (error) {
-      console.error('Failed to save wheel state:', error);
-      // Non-critical, continue anyway
+      console.error('WheelView: Failed to save wheel state:', error);
+      // Non-critical error, log but continue
+      this.logCriticalError('saveSelection', error);
     }
   }
 
   /**
-   * Navigate to the selected module
+   * Navigate to the selected module with error handling
    */
   navigateToModule() {
     if (!this.selectedModule) {
@@ -620,11 +843,62 @@ class WheelView {
       return;
     }
 
+    // Validate selected module before navigation
+    if (!this.validator.validateModule(this.selectedModule)) {
+      console.error('WheelView: Cannot navigate to invalid module:', this.selectedModule);
+      toastNotification.error('Das ausgewählte Modul ist ungültig');
+      return;
+    }
+
     try {
+      console.log('WheelView: Navigating to module:', this.selectedModule.id);
       window.location.hash = `#/modules/${this.selectedModule.id}`;
     } catch (error) {
-      console.error('Navigation failed:', error);
+      console.error('WheelView: Navigation failed:', error);
+      this.logCriticalError('navigateToModule', error);
       toastNotification.error('Modul konnte nicht geöffnet werden');
+    }
+  }
+
+  /**
+   * Log critical errors for debugging
+   * @param {string} operation - The operation that failed
+   * @param {Error} error - The error that occurred
+   */
+  logCriticalError(operation, error) {
+    const errorInfo = {
+      operation: operation,
+      error: {
+        message: error.message,
+        stack: error.stack,
+        name: error.name
+      },
+      timestamp: new Date().toISOString(),
+      modules: this.modules ? this.modules.length : 'undefined',
+      selectedModule: this.selectedModule ? this.selectedModule.id : 'none'
+    };
+
+    console.error('WheelView: Critical Error Log:', errorInfo);
+    
+    // Could also send to error tracking service here
+    // errorTrackingService.logError(errorInfo);
+  }
+
+  /**
+   * Safe method to get module count with error handling
+   * @returns {number} - Number of valid modules
+   */
+  getValidModuleCount() {
+    try {
+      if (!Array.isArray(this.modules)) {
+        return 0;
+      }
+      
+      const validModules = this.validator.filterValidModules(this.modules);
+      return validModules.length;
+    } catch (error) {
+      console.error('WheelView: Error getting module count:', error);
+      return 0;
     }
   }
 

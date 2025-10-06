@@ -50,7 +50,11 @@
         "@throws für Exceptions",
         "@import für Abhängigkeiten"
       ],
-      "correctAnswer": ["@param für Parameter-Beschreibungen", "@return für Rückgabewerte", "@throws für Exceptions"],
+      "correctAnswer": [
+        "@param für Parameter-Beschreibungen",
+        "@return für Rückgabewerte",
+        "@throws für Exceptions"
+      ],
       "explanation": "@param beschreibt Methodenparameter, @return den Rückgabewert, und @throws dokumentiert geworfene Exceptions. Weitere wichtige Tags sind @deprecated, @see, @since und @author. @import existiert nicht als JavaDoc-Tag - Imports werden mit der import-Anweisung gemacht.",
       "points": 2,
       "category": "JavaDoc"
@@ -74,12 +78,7 @@
       "id": "q5",
       "type": "single-choice",
       "question": "Welches Format wird häufig für REST-API-Dokumentation verwendet?",
-      "options": [
-        "Swagger/OpenAPI",
-        "JavaDoc",
-        "Markdown",
-        "UML"
-      ],
+      "options": ["Swagger/OpenAPI", "JavaDoc", "Markdown", "UML"],
       "correctAnswer": "Swagger/OpenAPI",
       "explanation": "Swagger/OpenAPI ist der Standard für REST-API-Dokumentation. Es definiert Endpoints, Parameter, Request/Response-Formate und generiert interaktive Dokumentation. JavaDoc ist für Java-Code, Markdown für allgemeine Dokumentation, und UML für Diagramme.",
       "points": 1,
@@ -95,7 +94,11 @@
         "Konfiguration und Tests",
         "Persönliche Tagebucheinträge"
       ],
-      "correctAnswer": ["Projektbeschreibung und Features", "Installation und Verwendung", "Konfiguration und Tests"],
+      "correctAnswer": [
+        "Projektbeschreibung und Features",
+        "Installation und Verwendung",
+        "Konfiguration und Tests"
+      ],
       "explanation": "Eine gute README enthält: Projektbeschreibung, Features, Installation, Verwendung, Konfiguration, Tests, Lizenz und ggf. Contributing-Guidelines. Sie ist oft der erste Kontaktpunkt für neue Nutzer und Entwickler. Persönliche Inhalte gehören nicht in eine README.",
       "points": 2,
       "category": "README"
@@ -121,12 +124,7 @@
       "question": "Welcher JavaDoc-Kommentar ist korrekt formatiert?",
       "code": "// Option A\n/* Berechnet die Summe */\nint sum(int a, int b) { return a + b; }\n\n// Option B\n/** \n * Berechnet die Summe zweier Zahlen.\n * @param a Erste Zahl\n * @param b Zweite Zahl\n * @return Die Summe von a und b\n */\nint sum(int a, int b) { return a + b; }\n\n// Option C\n// Berechnet die Summe\nint sum(int a, int b) { return a + b; }",
       "language": "java",
-      "options": [
-        "Option A",
-        "Option B",
-        "Option C",
-        "Alle sind korrekt"
-      ],
+      "options": ["Option A", "Option B", "Option C", "Alle sind korrekt"],
       "correctAnswer": "Option B",
       "explanation": "Option B ist korrekt: JavaDoc verwendet /** */ (nicht /* */ oder //), beschreibt die Methode und dokumentiert Parameter mit @param und Rückgabewert mit @return. Option A verwendet falsches Kommentarformat, Option C ist ein einfacher Kommentar ohne JavaDoc-Tags.",
       "points": 2,
@@ -151,12 +149,7 @@
       "id": "q10",
       "type": "single-choice",
       "question": "Welches Tool wird für Python-Dokumentation aus Docstrings verwendet?",
-      "options": [
-        "Sphinx",
-        "JavaDoc",
-        "Swagger",
-        "Doxygen"
-      ],
+      "options": ["Sphinx", "JavaDoc", "Swagger", "Doxygen"],
       "correctAnswer": "Sphinx",
       "explanation": "Sphinx ist das Standard-Tool für Python-Dokumentation. Es generiert HTML-Dokumentation aus Docstrings und unterstützt reStructuredText und Markdown. JavaDoc ist für Java, Swagger für REST-APIs, und Doxygen hauptsächlich für C/C++.",
       "points": 1,
@@ -172,7 +165,11 @@
         "Beispiele für typische Konfigurationen",
         "Quellcode der Anwendung"
       ],
-      "correctAnswer": ["Beschreibung jeder Konfigurationsoption", "Standardwerte und erlaubte Wertebereiche", "Beispiele für typische Konfigurationen"],
+      "correctAnswer": [
+        "Beschreibung jeder Konfigurationsoption",
+        "Standardwerte und erlaubte Wertebereiche",
+        "Beispiele für typische Konfigurationen"
+      ],
       "explanation": "Gute Konfigurationsdokumentation erklärt jede Option, gibt Standardwerte und Wertebereiche an, und zeigt Beispiele. Inline-Kommentare in Konfigurationsdateien (YAML, JSON, Properties) sind hilfreich. Der Quellcode gehört nicht in die Konfigurationsdokumentation.",
       "points": 2,
       "category": "Konfiguration"
@@ -217,7 +214,11 @@
         "Status-Codes und Fehlerbehandlung sollten erklärt werden",
         "API-Dokumentation ist nur für externe APIs notwendig"
       ],
-      "correctAnswer": ["Sie sollte alle Endpoints mit Parametern und Responses dokumentieren", "Beispiel-Requests und -Responses sind hilfreich", "Status-Codes und Fehlerbehandlung sollten erklärt werden"],
+      "correctAnswer": [
+        "Sie sollte alle Endpoints mit Parametern und Responses dokumentieren",
+        "Beispiel-Requests und -Responses sind hilfreich",
+        "Status-Codes und Fehlerbehandlung sollten erklärt werden"
+      ],
       "explanation": "Gute API-Dokumentation enthält: Endpoints, Parameter (Typ, Pflicht/Optional), Request/Response-Formate, Status-Codes, Fehler, Authentifizierung und Beispiele. Dies gilt für externe UND interne APIs - auch interne Teams profitieren von guter Dokumentation.",
       "points": 2,
       "category": "API-Dokumentation"
@@ -258,12 +259,7 @@
       "question": "Welcher Python-Docstring folgt dem korrekten Format?",
       "code": "# Option A\ndef add(a, b):\n    # Addiert zwei Zahlen\n    return a + b\n\n# Option B\ndef add(a, b):\n    \"\"\"\n    Addiert zwei Zahlen.\n    \n    Args:\n        a: Erste Zahl\n        b: Zweite Zahl\n    \n    Returns:\n        Die Summe von a und b\n    \"\"\"\n    return a + b\n\n# Option C\ndef add(a, b):\n    /* Addiert zwei Zahlen */\n    return a + b",
       "language": "python",
-      "options": [
-        "Option A",
-        "Option B",
-        "Option C",
-        "Alle sind korrekt"
-      ],
+      "options": ["Option A", "Option B", "Option C", "Alle sind korrekt"],
       "correctAnswer": "Option B",
       "explanation": "Option B ist korrekt: Python-Docstrings verwenden dreifache Anführungszeichen (\"\"\" \"\"\") direkt nach der Funktionsdefinition. Sie dokumentieren Args (Parameter) und Returns (Rückgabewert). Option A ist ein normaler Kommentar, Option C verwendet C-Syntax (/* */) die in Python nicht funktioniert.",
       "points": 2,
@@ -273,12 +269,7 @@
       "id": "q18",
       "type": "single-choice",
       "question": "Welches Tool generiert interaktive API-Dokumentation aus OpenAPI/Swagger-Spezifikationen?",
-      "options": [
-        "Swagger UI",
-        "JavaDoc",
-        "Git",
-        "npm"
-      ],
+      "options": ["Swagger UI", "JavaDoc", "Git", "npm"],
       "correctAnswer": "Swagger UI",
       "explanation": "Swagger UI generiert interaktive, browserbasierte API-Dokumentation aus OpenAPI/Swagger-Spezifikationen. Entwickler können APIs direkt in der Dokumentation testen. JavaDoc ist für Java-Code, Git für Versionskontrolle, und npm ist ein Paketmanager.",
       "points": 1,
@@ -294,7 +285,11 @@
         "Installations- und Start-Befehle",
         "Persönliche Meinungen über das Projekt"
       ],
-      "correctAnswer": ["Voraussetzungen (Node.js, Datenbank-Versionen)", "Umgebungsvariablen und Konfiguration", "Installations- und Start-Befehle"],
+      "correctAnswer": [
+        "Voraussetzungen (Node.js, Datenbank-Versionen)",
+        "Umgebungsvariablen und Konfiguration",
+        "Installations- und Start-Befehle"
+      ],
       "explanation": "Deployment-Dokumentation enthält: Voraussetzungen (Software-Versionen), Umgebungsvariablen, Installations-Schritte, Build-Prozess, Start-Befehle, Monitoring und Health-Checks. Sie ermöglicht reproduzierbare Deployments. Persönliche Meinungen gehören nicht hinein.",
       "points": 2,
       "category": "Deployment"

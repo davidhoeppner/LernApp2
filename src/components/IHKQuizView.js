@@ -8,6 +8,9 @@ import accessibilityHelper from '../utils/AccessibilityHelper.js';
 import EmptyState from './EmptyState.js';
 import LoadingSpinner from './LoadingSpinner.js';
 import toastNotification from './ToastNotification.js';
+import QuizResultsDisplay from './QuizResultsDisplay.js';
+import AnswerReviewSection from './AnswerReviewSection.js';
+import QuizActionButtons from './QuizActionButtons.js';
 
 class IHKQuizView {
   constructor(services) {
@@ -381,11 +384,11 @@ class IHKQuizView {
   }
 
   /**
-   * Render results
+   * Render results with enhanced components
    */
   renderResults() {
     const results = document.createElement('div');
-    results.className = 'quiz-results';
+    results.className = 'quiz-results-enhanced';
 
     const score = this.calculateScore();
     const passed = score.percentage >= this.quiz.passingScore;
@@ -393,89 +396,51 @@ class IHKQuizView {
       ? Math.round((this.endTime - this.startTime) / 1000 / 60)
       : 0;
 
-    results.innerHTML = `
-      <div class="results-header">
-        <div class="results-icon ${passed ? 'passed' : 'failed'}">
-          ${passed ? '✓' : '✗'}
-        </div>
-        <h1>${passed ? 'Bestanden!' : 'Nicht bestanden'}</h1>
-        <p class="results-score">${score.earned} / ${score.total} Punkte (${score.percentage}%)</p>
-      </div>
-
-      <div class="results-stats">
-        <div class="stat-card">
-          <div class="stat-value">${score.correct}</div>
-          <div class="stat-label">Richtig</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">${score.incorrect}</div>
-          <div class="stat-label">Falsch</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">${timeTaken}</div>
-          <div class="stat-label">Minuten</div>
-        </div>
-      </div>
-
-      <div class="results-breakdown">
-        <h2>Antworten im Detail</h2>
-        ${this.renderAnswerBreakdown()}
-      </div>
-
-      <div class="results-actions">
-        <button 
-          class="btn btn-primary"
-          onclick="window.location.reload()"
-        >
-          Quiz wiederholen
-        </button>
-        <button 
-          class="btn btn-secondary"
-          onclick="window.location.hash = '#/quizzes'"
-        >
-          Zurück zur Übersicht
-        </button>
+    // Header with pass/fail status
+    const header = document.createElement('div');
+    header.className = 'enhanced-results-header';
+    header.innerHTML = `
+      <div class="results-status ${passed ? 'passed' : 'failed'}">
+        <div class="status-icon">${passed ? '🎉' : '📚'}</div>
+        <h1>${passed ? 'Congratulations! You Passed!' : 'Keep Learning!'}</h1>
+        <p class="status-message">
+          ${passed 
+            ? 'Great job! You have successfully completed this quiz.' 
+            : 'Don\'t worry, review the explanations and try again.'}
+        </p>
+        ${timeTaken > 0 ? `<p class="time-taken">Completed in ${timeTaken} minutes</p>` : ''}
       </div>
     `;
+    results.appendChild(header);
+
+    // Enhanced results display
+    const resultsDisplay = QuizResultsDisplay.create(
+      score.earned, 
+      this.quiz.questions.length, 
+      score.total
+    );
+    results.appendChild(resultsDisplay);
+
+    // Answer review section
+    const answerReview = AnswerReviewSection.create(
+      this.quiz.questions, 
+      this.answers
+    );
+    results.appendChild(answerReview);
+
+    // Action buttons
+    const actionButtons = QuizActionButtons.create(
+      this.quiz.id,
+      score.earned,
+      score.total,
+      this.router
+    );
+    results.appendChild(actionButtons);
 
     return results;
   }
 
-  /**
-   * Render answer breakdown
-   */
-  renderAnswerBreakdown() {
-    return this.quiz.questions
-      .map((question, index) => {
-        const userAnswer = this.answers[question.id];
-        const isCorrect = this.checkAnswer(question, userAnswer);
 
-        return `
-        <div class="answer-item ${isCorrect ? 'correct' : 'incorrect'}">
-          <div class="answer-header">
-            <span class="answer-number">Frage ${index + 1}</span>
-            <span class="answer-status">${isCorrect ? '✓ Richtig' : '✗ Falsch'}</span>
-          </div>
-          <p class="answer-question">${question.question}</p>
-          <div class="answer-details">
-            <p><strong>Deine Antwort:</strong> ${this.formatAnswer(userAnswer)}</p>
-            <p><strong>Richtige Antwort:</strong> ${this.formatAnswer(question.correctAnswer)}</p>
-          </div>
-          ${
-            question.explanation
-              ? `
-            <div class="answer-explanation">
-              <strong>Erklärung:</strong>
-              <p>${question.explanation}</p>
-            </div>
-          `
-              : ''
-          }
-        </div>
-      `;
-      })
-      .join('');
-  }
 
   /**
    * Save single answer

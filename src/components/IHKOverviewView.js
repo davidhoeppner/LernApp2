@@ -3,8 +3,6 @@
  * Displays overview of IHK AP2 content with categories, filters, and learning paths
  */
 
-/* global setTimeout */
-
 import accessibilityHelper from '../utils/AccessibilityHelper.js';
 
 import CategoryFilterComponent from './CategoryFilterComponent.js';

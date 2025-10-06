@@ -77,12 +77,7 @@
       "id": "q5",
       "type": "single-choice",
       "question": "Welcher Git-Befehl wird verwendet, um Änderungen aus einem Remote-Repository zu holen und mit dem lokalen Branch zu mergen?",
-      "options": [
-        "git pull",
-        "git fetch",
-        "git clone",
-        "git merge"
-      ],
+      "options": ["git pull", "git fetch", "git clone", "git merge"],
       "correctAnswer": "git pull",
       "explanation": "Der Befehl 'git pull' holt Änderungen vom Remote-Repository und merged sie automatisch in den aktuellen lokalen Branch. Er ist eine Kombination aus 'git fetch' (Änderungen holen) und 'git merge' (Änderungen zusammenführen). 'git clone' wird nur einmalig zum Klonen eines Repositories verwendet.",
       "points": 1,

@@ -1,3 +1,5 @@
+import { formatDate } from '../utils/formatUtils.js';
+
 /**
  * ExamChanges2025Component - Display exam changes for 2025
  * Shows new topics, removed topics, and important changes
@@ -29,7 +31,7 @@ class ExamChanges2025Component {
           </p>
           <div class="exam-changes-meta">
             <span class="meta-item">
-              <strong>Gültig ab:</strong> ${this._formatDate(this.examChangesData.effectiveDate)}
+              <strong>Gültig ab:</strong> ${formatDate(this.examChangesData.effectiveDate)}
             </span>
             <span class="meta-item">
               <strong>Prüfungszeitraum:</strong> ${this.examChangesData.examPeriod}
@@ -274,18 +276,6 @@ class ExamChanges2025Component {
         </button>
       </article>
     `;
-  }
-
-  /**
-   * Format date
-   */
-  _formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('de-DE', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
   }
 
   /**

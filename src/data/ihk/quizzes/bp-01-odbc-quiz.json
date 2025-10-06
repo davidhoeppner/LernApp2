@@ -49,10 +49,7 @@
         "Falsche Aussage 1",
         "Falsche Aussage 2"
       ],
-      "correctAnswer": [
-        "Richtige Aussage 1",
-        "Richtige Aussage 2"
-      ],
+      "correctAnswer": ["Richtige Aussage 1", "Richtige Aussage 2"],
       "explanation": "Erklärung hier einfügen",
       "points": 2,
       "category": "Anwendung"
@@ -88,11 +85,5 @@
       "category": "Vertiefung"
     }
   ],
-  "tags": [
-    "ODBC",
-    "Datenbank",
-    "API",
-    "Schnittstelle",
-    "Neu 2025"
-  ]
+  "tags": ["ODBC", "Datenbank", "API", "Schnittstelle", "Neu 2025"]
 }

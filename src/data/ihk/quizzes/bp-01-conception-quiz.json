@@ -59,12 +59,7 @@
       "id": "q4",
       "type": "single-choice",
       "question": "Wie viele Schichten hat das OSI-Modell?",
-      "options": [
-        "4 Schichten",
-        "5 Schichten",
-        "7 Schichten",
-        "9 Schichten"
-      ],
+      "options": ["4 Schichten", "5 Schichten", "7 Schichten", "9 Schichten"],
       "correctAnswer": "7 Schichten",
       "explanation": "Das OSI-Modell (Open Systems Interconnection) hat 7 Schichten: Anwendungsschicht, Darstellungsschicht, Sitzungsschicht, Transportschicht, Vermittlungsschicht, Sicherungsschicht und Bitübertragungsschicht. Das TCP/IP-Modell hat dagegen nur 4 Schichten.",
       "points": 1,
@@ -80,7 +75,10 @@
         "IP (Internet Protocol)",
         "HTTP (Hypertext Transfer Protocol)"
       ],
-      "correctAnswer": ["TCP (Transmission Control Protocol)", "UDP (User Datagram Protocol)"],
+      "correctAnswer": [
+        "TCP (Transmission Control Protocol)",
+        "UDP (User Datagram Protocol)"
+      ],
       "explanation": "TCP und UDP sind Transportschicht-Protokolle (Schicht 4). TCP ist verbindungsorientiert und zuverlässig, UDP ist verbindungslos und schneller. IP gehört zur Vermittlungsschicht (Schicht 3) und HTTP zur Anwendungsschicht (Schicht 7).",
       "points": 2,
       "category": "OSI-Modell"
@@ -125,7 +123,11 @@
         "E-Mail-Versand (SMTP)",
         "DNS-Abfragen"
       ],
-      "correctAnswer": ["Video- und Audio-Streaming", "Online-Gaming", "DNS-Abfragen"],
+      "correctAnswer": [
+        "Video- und Audio-Streaming",
+        "Online-Gaming",
+        "DNS-Abfragen"
+      ],
       "explanation": "UDP ist ideal für zeitkritische Anwendungen, bei denen geringe Latenz wichtiger ist als Zuverlässigkeit: Streaming (verlorene Pakete sind akzeptabel), Gaming (schnelle Reaktion wichtig) und DNS (kurze Abfragen, Wiederholung bei Timeout). SMTP verwendet TCP, da E-Mails zuverlässig übertragen werden müssen.",
       "points": 2,
       "category": "Protokolle"
@@ -134,12 +136,7 @@
       "id": "q9",
       "type": "single-choice",
       "question": "Welche HTTP-Methode wird verwendet, um Daten vom Server abzurufen?",
-      "options": [
-        "POST",
-        "GET",
-        "PUT",
-        "DELETE"
-      ],
+      "options": ["POST", "GET", "PUT", "DELETE"],
       "correctAnswer": "GET",
       "explanation": "GET wird verwendet, um Daten vom Server abzurufen (z.B. Webseiten, Bilder). POST sendet Daten an den Server, PUT aktualisiert bestehende Ressourcen, und DELETE löscht Ressourcen. GET-Anfragen sollten keine Seiteneffekte haben (idempotent).",
       "points": 1,
@@ -200,7 +197,11 @@
         "MX-Record (Mail-Server)",
         "TCP-Record (Transportprotokoll)"
       ],
-      "correctAnswer": ["A-Record (IPv4-Adresse)", "AAAA-Record (IPv6-Adresse)", "MX-Record (Mail-Server)"],
+      "correctAnswer": [
+        "A-Record (IPv4-Adresse)",
+        "AAAA-Record (IPv6-Adresse)",
+        "MX-Record (Mail-Server)"
+      ],
       "explanation": "A-Records speichern IPv4-Adressen, AAAA-Records IPv6-Adressen, und MX-Records definieren Mail-Server für eine Domain. Weitere wichtige Record-Typen sind CNAME (Alias), TXT (Textinformationen) und NS (Nameserver). TCP-Record existiert nicht - TCP ist ein Transportprotokoll, kein DNS-Record-Typ.",
       "points": 2,
       "category": "DNS"
@@ -224,12 +225,7 @@
       "id": "q15",
       "type": "single-choice",
       "question": "Welcher Port wird standardmäßig für HTTPS verwendet?",
-      "options": [
-        "Port 80",
-        "Port 443",
-        "Port 8080",
-        "Port 22"
-      ],
+      "options": ["Port 80", "Port 443", "Port 8080", "Port 22"],
       "correctAnswer": "Port 443",
       "explanation": "HTTPS verwendet standardmäßig Port 443. HTTP verwendet Port 80, SSH Port 22, und Port 8080 wird oft als alternativer HTTP-Port für Entwicklung oder Proxy-Server verwendet. Well-Known Ports (0-1023) sind für Standarddienste reserviert.",
       "points": 1,
@@ -245,7 +241,11 @@
         "Port 80 (HTTP)",
         "Port 1433 (Microsoft SQL Server)"
       ],
-      "correctAnswer": ["Port 3306 (MySQL)", "Port 5432 (PostgreSQL)", "Port 1433 (Microsoft SQL Server)"],
+      "correctAnswer": [
+        "Port 3306 (MySQL)",
+        "Port 5432 (PostgreSQL)",
+        "Port 1433 (Microsoft SQL Server)"
+      ],
       "explanation": "MySQL verwendet Port 3306, PostgreSQL Port 5432, und Microsoft SQL Server Port 1433. Diese Ports sind standardmäßig für Datenbankverbindungen konfiguriert. Port 80 ist für HTTP und gehört nicht zu Datenbankdiensten. Weitere wichtige Datenbank-Ports: MongoDB (27017), Redis (6379).",
       "points": 2,
       "category": "Ports"
@@ -254,12 +254,7 @@
       "id": "q17",
       "type": "single-choice",
       "question": "Welcher Port wird für DNS-Abfragen verwendet?",
-      "options": [
-        "Port 25",
-        "Port 53",
-        "Port 67",
-        "Port 110"
-      ],
+      "options": ["Port 25", "Port 53", "Port 67", "Port 110"],
       "correctAnswer": "Port 53",
       "explanation": "DNS verwendet Port 53 für Namensauflösungen, sowohl über UDP (für normale Abfragen) als auch TCP (für Zonentransfers). Port 25 ist SMTP (E-Mail), Port 67 ist DHCP-Server, und Port 110 ist POP3 (E-Mail-Abruf).",
       "points": 1,
@@ -305,12 +300,26 @@
         "Ausfall eines Geräts kann das gesamte Netzwerk unterbrechen",
         "Sie ist die häufigste Topologie in modernen LANs"
       ],
-      "correctAnswer": ["Daten fließen in eine Richtung oder bidirektional", "Es gibt keine Kollisionen durch Token-basierte Zugriffskontrolle", "Ausfall eines Geräts kann das gesamte Netzwerk unterbrechen"],
+      "correctAnswer": [
+        "Daten fließen in eine Richtung oder bidirektional",
+        "Es gibt keine Kollisionen durch Token-basierte Zugriffskontrolle",
+        "Ausfall eines Geräts kann das gesamte Netzwerk unterbrechen"
+      ],
       "explanation": "In der Ring-Topologie fließen Daten in eine Richtung (oder bidirektional bei doppeltem Ring). Token-basierte Verfahren (Token Ring, FDDI) verhindern Kollisionen. Der Ausfall eines Geräts kann den Ring unterbrechen, außer bei redundanten Ringen. Die Stern-Topologie ist heute die häufigste in LANs, nicht die Ring-Topologie.",
       "points": 2,
       "category": "Netzwerktopologien"
     }
   ],
-  "tags": ["Netzwerk", "Topologie", "OSI-Modell", "TCP/IP", "HTTP", "DNS", "DHCP", "Ports", "Protokolle"],
+  "tags": [
+    "Netzwerk",
+    "Topologie",
+    "OSI-Modell",
+    "TCP/IP",
+    "HTTP",
+    "DNS",
+    "DHCP",
+    "Ports",
+    "Protokolle"
+  ],
   "lastUpdated": "2025-01-10T00:00:00Z"
 }
