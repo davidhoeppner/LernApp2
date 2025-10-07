@@ -67,7 +67,7 @@ class WheelModuleValidator {
       return isValid;
     });
 
-    console.log(
+    console.warn(
       `WheelModuleValidator: Filtered ${modules.length} modules to ${validModules.length} valid modules`
     );
     return validModules;

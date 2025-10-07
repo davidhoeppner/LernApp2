@@ -250,7 +250,7 @@ class WheelView {
       if (lastModule && this.validator.validateModule(lastModule)) {
         this.selectedModule = lastModule;
         this.updateDisplay();
-        console.log(
+        console.warn(
           'WheelView: Restored last wheel selection:',
           lastModule.title
         );

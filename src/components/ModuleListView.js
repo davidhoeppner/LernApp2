@@ -171,7 +171,7 @@ class ModuleListView {
       this.currentCategoryFilter
     );
     const filteredModules = this._filterModules(modules);
-    console.log(
+    console.warn(
       '🎯 After filtering:',
       filteredModules.length,
       'modules remain'

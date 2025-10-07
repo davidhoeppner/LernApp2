@@ -161,7 +161,7 @@ class Router {
 
         // Only update if different from current specialization
         if (currentSpecialization !== params.specialization) {
-          console.log(
+          console.warn(
             `🔄 Switching specialization from URL: ${params.specialization}`
           );
           this.specializationService.setSpecialization(params.specialization, {

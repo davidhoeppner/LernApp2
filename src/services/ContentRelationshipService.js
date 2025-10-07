@@ -33,7 +33,7 @@ class ContentRelationshipService {
   async initialize() {
     try {
       await this._buildRelationshipMappings();
-      console.log('ContentRelationshipService initialized successfully');
+      console.warn('ContentRelationshipService initialized successfully');
     } catch (error) {
       console.error('Error initializing ContentRelationshipService:', error);
       throw error;
@@ -248,7 +248,7 @@ class ContentRelationshipService {
         );
       }
 
-      console.log(
+      console.warn(
         `Built relationship mappings for ${allContent.length} content items`
       );
     } catch (error) {

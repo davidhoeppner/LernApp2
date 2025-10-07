@@ -92,7 +92,7 @@ class PerformanceMonitoringService {
 
     // Log detailed information if enabled
     if (this.metrics.monitoring.detailedLogging) {
-      console.log(`Performance metric recorded: ${operationType}`, metric);
+      console.warn(`Performance metric recorded: ${operationType}`, metric);
     }
   }
 

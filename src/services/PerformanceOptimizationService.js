@@ -63,7 +63,7 @@ class PerformanceOptimizationService {
 
       if (this.config.enableMetrics) {
         this.performanceMetrics.indexBuilds++;
-        console.log(`Performance indexes built in ${buildTime.toFixed(2)}ms`);
+        console.warn(`Performance indexes built in ${buildTime.toFixed(2)}ms`);
       }
     } catch (error) {
       console.error('Error initializing performance indexes:', error);
@@ -809,7 +809,7 @@ class PerformanceOptimizationService {
 
       await this._initializeIndexes();
 
-      console.log('Performance caches invalidated and rebuilt');
+      console.warn('Performance caches invalidated and rebuilt');
     } catch (error) {
       console.error('Error invalidating cache:', error);
     }

@@ -1190,7 +1190,7 @@ class IHKQuizListView {
       // Ensure status filter is preserved
       this.currentStatusFilter = preservedStatusFilter;
 
-      console.log('Category filter reset to "all", status filter preserved:', {
+      console.warn('Category filter reset to "all", status filter preserved:', {
         categoryFilter: this.currentCategoryFilter,
         statusFilter: this.currentStatusFilter,
       });
@@ -2127,7 +2127,7 @@ class IHKQuizListView {
       // Ensure category filter is preserved
       this.currentCategoryFilter = preservedCategoryFilter;
 
-      console.log('Status filter reset to "all", category filter preserved:', {
+      console.warn('Status filter reset to "all", category filter preserved:', {
         statusFilter: this.currentStatusFilter,
         categoryFilter: this.currentCategoryFilter,
       });

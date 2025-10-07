@@ -52,7 +52,7 @@ class CategoryValidationService {
   async validateAllContentCategorization(options = {}) {
     try {
       const startTime = new Date();
-      console.log(
+      console.warn(
         'Starting comprehensive content categorization validation...'
       );
 
