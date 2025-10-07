@@ -110,12 +110,14 @@ Jedes Quiz sollte eine ausgewogene Mischung haben:
 Die Quizzes werden nach dem IHK-Prüfungskatalog kategorisiert:
 
 **Fachübergreifende Qualifikationen (FÜ):**
+
 - FÜ-01: Projektplanung und -durchführung
 - FÜ-02: Entwicklung und Bereitstellung
 - FÜ-03: Qualitätssicherung und Testing
 - FÜ-04: IT-Sicherheit
 
 **Berufsspezifische Qualifikationen (BP):**
+
 - BP-01: Konzeption und Design
 - BP-02: Datenbanken und Datenformate
 - BP-03: Softwareentwicklung und Qualität
@@ -126,13 +128,13 @@ Die Quizzes werden nach dem IHK-Prüfungskatalog kategorisiert:
 
 Jedes Modul erhält mindestens ein Quiz. Umfangreiche Module können in mehrere thematische Quizzes aufgeteilt werden:
 
-| Modul | Quiz(zes) | Anzahl Fragen |
-|-------|-----------|---------------|
-| bp-01-kerberos | kerberos-quiz | 15-20 |
-| bp-01-conception | conception-quiz | 15-20 |
-| bp-04-scrum | scrum-quiz | 15-20 |
+| Modul                     | Quiz(zes)              | Anzahl Fragen   |
+| ------------------------- | ---------------------- | --------------- |
+| bp-01-kerberos            | kerberos-quiz          | 15-20           |
+| bp-01-conception          | conception-quiz        | 15-20           |
+| bp-04-scrum               | scrum-quiz             | 15-20           |
 | sql-ddl, sql-dml, sql-dql | sql-comprehensive-quiz | 20 (aufgeteilt) |
-| fue-04-security-threats | security-threats-quiz | 20 |
+| fue-04-security-threats   | security-threats-quiz  | 20              |
 
 ## Error Handling
 
@@ -161,7 +163,7 @@ Der `QuizValidator` prüft:
 try {
   const quiz = JSON.parse(quizContent);
   const validation = QuizValidator.validate(quiz);
-  
+
   if (!validation.isValid) {
     console.error('Validation errors:', validation.errors);
     // Fehler ausgeben und Korrektur anfordern
@@ -177,6 +179,7 @@ try {
 ### 1. Automatisierte Tests
 
 **Validierungs-Tests**:
+
 ```javascript
 // Test: Quiz hat 15-20 Fragen
 test('Quiz should have 15-20 questions', () => {
@@ -203,7 +206,7 @@ test('All correct answers should be in options', () => {
 test('Quiz should use proper UTF-8 encoding', () => {
   const quiz = loadQuiz('bp-01-kerberos-quiz.json');
   const content = JSON.stringify(quiz);
-  
+
   // Keine falschen Kodierungen
   expect(content).not.toMatch(/ae(?![a-z])/); // ä statt ae
   expect(content).not.toMatch(/oe(?![a-z])/); // ö statt oe
@@ -228,7 +231,7 @@ Für jedes Quiz:
 test('Quiz can be loaded and displayed', () => {
   const quizService = new QuizService();
   const quiz = quizService.getQuizById('bp-01-kerberos-quiz');
-  
+
   expect(quiz).toBeDefined();
   expect(quiz.questions.length).toBeGreaterThan(0);
 });
@@ -237,11 +240,11 @@ test('Quiz can be loaded and displayed', () => {
 test('Quiz results are calculated correctly', () => {
   const quiz = loadQuiz('bp-01-kerberos-quiz.json');
   const answers = {
-    'q1': 'Zentrale Authentifizierung und Ticket-Ausgabe',
-    'q2': 'Authentication Server (AS) und Ticket Granting Server (TGS)',
+    q1: 'Zentrale Authentifizierung und Ticket-Ausgabe',
+    q2: 'Authentication Server (AS) und Ticket Granting Server (TGS)',
     // ...
   };
-  
+
   const result = calculateQuizResult(quiz, answers);
   expect(result.score).toBeGreaterThanOrEqual(0);
   expect(result.score).toBeLessThanOrEqual(100);
@@ -255,12 +258,14 @@ test('Quiz results are calculated correctly', () => {
 #### 1. Gute Fragen schreiben
 
 **DO:**
+
 - Klare, eindeutige Formulierung
 - Prüfungsrelevante Inhalte
 - Realistische Szenarien
 - Fachlich korrekt
 
 **DON'T:**
+
 - Doppelte Verneinungen
 - Mehrdeutige Formulierungen
 - Triviale Fragen
@@ -269,12 +274,14 @@ test('Quiz results are calculated correctly', () => {
 #### 2. Plausible Ablenker erstellen
 
 **Gute Ablenker:**
+
 - Klingen plausibel
 - Basieren auf häufigen Missverständnissen
 - Sind fachlich verwandt
 - Erfordern echtes Verständnis zur Unterscheidung
 
 **Schlechte Ablenker:**
+
 - Offensichtlich falsch
 - Unsinnig oder absurd
 - Nicht zum Thema passend
@@ -282,12 +289,14 @@ test('Quiz results are calculated correctly', () => {
 #### 3. Erklärungen schreiben
 
 Jede Erklärung sollte:
+
 - Warum die richtige Antwort korrekt ist
 - Warum die falschen Antworten falsch sind (wenn relevant)
 - Zusätzlichen Kontext oder Merkhilfen
 - Mindestens 50 Zeichen, idealerweise 100-200 Zeichen
 
 **Beispiel:**
+
 ```json
 {
   "question": "Was ist die Hauptfunktion des Key Distribution Center (KDC) in Kerberos?",
@@ -301,21 +310,25 @@ Jede Erklärung sollte:
 #### Korrekte Verwendung von Umlauten
 
 **Richtig:**
+
 - ä, ö, ü, Ä, Ö, Ü, ß
 - "Schlüssel", "Größe", "Übertragung"
 - "Prüfung", "Qualität", "Lösung"
 
 **Falsch:**
+
 - ae, oe, ue, ss (außer in Eigennamen)
 - "Schluessel", "Groesse", "Uebertragung"
 
 #### Fachbegriffe
 
 Viele IT-Fachbegriffe bleiben englisch:
+
 - "Server", "Client", "Router"
 - "Framework", "Pattern", "Interface"
 
 Deutsche Übersetzungen verwenden, wo üblich:
+
 - "Datenbank" (nicht "Database")
 - "Netzwerk" (nicht "Network")
 - "Verschlüsselung" (nicht "Encryption")
@@ -436,12 +449,12 @@ let errors = 0;
 
 files.forEach(file => {
   if (!file.endsWith('.json')) return;
-  
+
   const content = fs.readFileSync(path.join(quizzesDir, file), 'utf8');
   const quiz = JSON.parse(content);
-  
+
   const validation = QuizValidator.validate(quiz);
-  
+
   if (!validation.isValid) {
     console.error(`❌ ${file}:`);
     validation.errors.forEach(err => console.error(`  - ${err}`));
@@ -471,14 +484,14 @@ const problematicPatterns = [
   { pattern: /\bue\b/g, should: 'ü' },
   { pattern: /\bAe\b/g, should: 'Ä' },
   { pattern: /\bOe\b/g, should: 'Ö' },
-  { pattern: /\bUe\b/g, should: 'Ü' }
+  { pattern: /\bUe\b/g, should: 'Ü' },
 ];
 
 files.forEach(file => {
   if (!file.endsWith('.json')) return;
-  
+
   const content = fs.readFileSync(path.join(quizzesDir, file), 'utf8');
-  
+
   problematicPatterns.forEach(({ pattern, should }) => {
     const matches = content.match(pattern);
     if (matches) {

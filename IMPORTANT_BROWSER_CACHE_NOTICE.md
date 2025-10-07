@@ -13,6 +13,7 @@ With visible `\n` characters, it's because **your browser is using cached (old) 
 ## The Fix IS Applied ✅
 
 Run this to verify:
+
 ```bash
 node scripts/verify-markdown-fix.js
 ```
@@ -26,11 +27,13 @@ The code is correct. Your browser just needs to fetch the new version.
 ### Option 1: Hard Refresh (Easiest)
 
 **Windows/Linux:**
+
 ```
 Ctrl + Shift + R
 ```
 
 **Mac:**
+
 ```
 Cmd + Shift + R
 ```
@@ -38,7 +41,7 @@ Cmd + Shift + R
 ### Option 2: DevTools Method
 
 1. Open DevTools (F12)
-2. Right-click the refresh button  
+2. Right-click the refresh button
 3. Select "Empty Cache and Hard Reload"
 
 ### Option 3: Incognito Mode (If above doesn't work)
@@ -50,11 +53,13 @@ Cmd + Shift + R
 ## What You Should See After Cache Clear
 
 ### ❌ Before (Cached - Wrong):
+
 - Content appears as one blob of text
 - Visible `\n` characters everywhere
 - No proper headings or formatting
 
 ### ✅ After (Fresh - Correct):
+
 - Proper headings in different sizes (h1, h2, h3)
 - Separated paragraphs with spacing
 - Bullet lists formatted correctly

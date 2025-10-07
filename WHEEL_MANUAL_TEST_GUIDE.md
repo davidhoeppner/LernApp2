@@ -43,6 +43,7 @@ This manual test covers the following requirements from the spec:
 ### Task Details
 
 From `tasks.md` Task 9:
+
 - Click wheel link in navigation
 - Spin wheel 3 times
 - Click "Zum Modul" and verify it navigates
@@ -115,16 +116,19 @@ From `tasks.md` Task 9:
 ### UI States
 
 **Initial State:**
+
 - "Rad drehen" button visible
 - "Nochmal" and "Zum Modul" buttons hidden
 - Display shows "Drücke 'Rad drehen'"
 
 **During Spin:**
+
 - All buttons disabled
 - Module names cycle in display
 - Animation running
 
 **After Spin:**
+
 - "Rad drehen" button hidden
 - "Nochmal" button visible
 - "Zum Modul" button visible
@@ -134,6 +138,7 @@ From `tasks.md` Task 9:
 ### State Persistence
 
 The following should persist across page reloads:
+
 - Last selected module ID
 - Last selected module title
 - Last selected module category
@@ -148,11 +153,13 @@ Stored in: `StateManager` with key `lastWheelModule`
 ### Issue: Wheel page doesn't load
 
 **Check:**
+
 - Is the dev server running?
 - Any console errors?
 - Is the URL correct? (`#/wheel`)
 
 **Solution:**
+
 - Restart dev server
 - Clear browser cache
 - Check browser console for errors
@@ -160,11 +167,13 @@ Stored in: `StateManager` with key `lastWheelModule`
 ### Issue: Animation is choppy
 
 **Check:**
+
 - Browser performance
 - Other tabs consuming resources
 - DevTools performance tab
 
 **Solution:**
+
 - Close other tabs
 - Test in different browser
 - Check if `prefers-reduced-motion` is enabled
@@ -172,11 +181,13 @@ Stored in: `StateManager` with key `lastWheelModule`
 ### Issue: State doesn't persist
 
 **Check:**
+
 - Browser console for storage errors
 - LocalStorage is enabled
 - No private/incognito mode
 
 **Solution:**
+
 - Check browser storage settings
 - Try different browser
 - Check console for errors
@@ -184,11 +195,13 @@ Stored in: `StateManager` with key `lastWheelModule`
 ### Issue: Dark mode styling looks wrong
 
 **Check:**
+
 - Theme toggle working?
 - CSS loaded correctly?
 - Browser cache cleared?
 
 **Solution:**
+
 - Hard refresh (Ctrl+Shift+R)
 - Check DevTools for CSS errors
 - Verify `data-theme` attribute on `<html>`
@@ -239,7 +252,7 @@ Performance:
 Test in at least 2 browsers:
 
 | Browser | Version | Desktop | Mobile | Status |
-|---------|---------|---------|--------|--------|
+| ------- | ------- | ------- | ------ | ------ |
 | Chrome  | Latest  | [ ]     | [ ]    |        |
 | Firefox | Latest  | [ ]     | [ ]    |        |
 | Safari  | Latest  | [ ]     | [ ]    |        |
@@ -252,29 +265,38 @@ Test in at least 2 browsers:
 Open browser console and run these commands to inspect state:
 
 ### Check Current Route
+
 ```javascript
 console.log('Current route:', window.location.hash);
 ```
 
 ### Check Last Selected Module
+
 ```javascript
-const lastModule = window.app?.services?.stateManager?.getState('lastWheelModule');
+const lastModule =
+  window.app?.services?.stateManager?.getState('lastWheelModule');
 console.log('Last wheel module:', lastModule);
 ```
 
 ### Check Current Theme
+
 ```javascript
 const theme = window.app?.services?.themeManager?.getTheme();
 console.log('Current theme:', theme);
 ```
 
 ### Check Available Modules
+
 ```javascript
-const modules = await window.app?.services?.ihkContentService?.searchContent('', {});
+const modules = await window.app?.services?.ihkContentService?.searchContent(
+  '',
+  {}
+);
 console.log('Available modules:', modules.length);
 ```
 
 ### Manually Trigger Spin (for debugging)
+
 ```javascript
 // Navigate to wheel first, then:
 const spinBtn = document.querySelector('#btn-spin');

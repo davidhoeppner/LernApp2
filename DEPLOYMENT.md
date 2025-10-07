@@ -28,6 +28,7 @@ npm run build
 ```
 
 This will generate optimized files in the `dist` directory with:
+
 - Minified JavaScript and CSS
 - Hashed filenames for cache invalidation
 - Optimized images and assets
@@ -73,6 +74,7 @@ netlify deploy --prod
 6. Click "Deploy site"
 
 **Features:**
+
 - Automatic deployments on git push
 - Preview deployments for pull requests
 - Custom domain support
@@ -110,6 +112,7 @@ vercel --prod
 6. Click "Deploy"
 
 **Features:**
+
 - Automatic deployments on git push
 - Preview deployments for branches
 - Edge network for fast global delivery
@@ -150,11 +153,13 @@ VITE_BASE_PATH=/repo-name/ npm run build
 ```
 
 For custom domain or `username.github.io`, use:
+
 ```bash
 VITE_BASE_PATH=/ npm run build
 ```
 
 **Features:**
+
 - Free hosting for public repositories
 - Automatic deployments via GitHub Actions
 - Custom domain support
@@ -165,6 +170,7 @@ VITE_BASE_PATH=/ npm run build
 #### General Steps:
 
 1. Build the project:
+
 ```bash
 npm run build
 ```
@@ -223,6 +229,7 @@ After deploying, verify the following:
 **Problem:** Navigating directly to routes like `/modules` or `/quiz` returns 404.
 
 **Solution:** Configure your hosting to serve `index.html` for all routes:
+
 - Netlify: Already configured in `netlify.toml`
 - Vercel: Already configured in `vercel.json`
 - GitHub Pages: Works automatically with hash routing
@@ -232,7 +239,8 @@ After deploying, verify the following:
 
 **Problem:** CSS, JS, or images fail to load.
 
-**Solution:** 
+**Solution:**
+
 - Check that the `base` path in `vite.config.js` matches your deployment URL
 - Verify asset paths in browser dev tools Network tab
 - For GitHub Pages with repo name, ensure `VITE_BASE_PATH` is set correctly
@@ -242,6 +250,7 @@ After deploying, verify the following:
 **Problem:** App shows blank page or loading spinner forever.
 
 **Solution:**
+
 - Check browser console for errors
 - Verify all dependencies are in `dependencies` (not `devDependencies`)
 - Ensure build completed successfully without errors

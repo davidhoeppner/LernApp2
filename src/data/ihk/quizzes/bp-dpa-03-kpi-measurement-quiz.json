@@ -1,0 +1,208 @@
+{
+  "id": "bp-dpa-03-kpi-measurement-quiz",
+  "moduleId": "bp-dpa-03-kpi-measurement",
+  "title": "Prozess-KPI Messung & Auswertung",
+  "description": "Quiz zu Definition, Berechnung und Governance von Prozess-KPIs",
+  "category": "BP-DPA-03",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "timeLimit": 20,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welche Bestandteile sollte eine vollständige KPI-Definition enthalten?",
+      "options": [
+        "Name, Formel, Quelle, Frequenz, Verantwortlich",
+        "Name und Überschrift",
+        "Nur Formel",
+        "Nur Diagrammtyp"
+      ],
+      "correctAnswer": "Name, Formel, Quelle, Frequenz, Verantwortlich",
+      "explanation": "Ohne Quelle, Frequenz und Verantwortlichkeit fehlt Governance.",
+      "points": 1,
+      "category": "Definition"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Welche Kennzahl ist am robustesten gegenüber Ausreißern?",
+      "options": ["Mittelwert", "Median", "Summe", "Maximum"],
+      "correctAnswer": "Median",
+      "explanation": "Median reduziert Verzerrung durch extreme Werte.",
+      "points": 1,
+      "category": "Statistik"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Kennzahlen messen Zeitdimensionen?",
+      "options": [
+        "Durchlaufzeit",
+        "Bearbeitungszeit",
+        "Wartezeit",
+        "Kosten je Case"
+      ],
+      "correctAnswer": ["Durchlaufzeit", "Bearbeitungszeit", "Wartezeit"],
+      "explanation": "Kosten je Case ist Kostendimension, keine Zeit.",
+      "points": 2,
+      "category": "Zeit"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Was ist Rework-Quote?",
+      "options": [
+        "Anteil Fälle ohne Fehler",
+        "Verhältnis wiederholter Aktivitäten zu Gesamtaktivitäten",
+        "Zeit pro Aktivität",
+        "Kosten pro Aktivität"
+      ],
+      "correctAnswer": "Verhältnis wiederholter Aktivitäten zu Gesamtaktivitäten",
+      "explanation": "Rework signalisiert Nacharbeit / Qualitätsthemen.",
+      "points": 1,
+      "category": "Qualität"
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "question": "Welche Risiken entstehen bei reinem Fokus auf Durchschnittswerte?",
+      "options": [
+        "Ausreißer werden verschleiert",
+        "Varianz bleibt unberücksichtigt",
+        "Median wird automatisch kleiner",
+        "Segmentunterschiede können verdeckt sein"
+      ],
+      "correctAnswer": [
+        "Ausreißer werden verschleiert",
+        "Varianz bleibt unberücksichtigt",
+        "Segmentunterschiede können verdeckt sein"
+      ],
+      "explanation": "Durchschnitt glättet Extreme, Segmentunterschiede (Simpson) bleiben verborgen.",
+      "points": 2,
+      "category": "Interpretation"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Welche Datenplattform-Eigenschaft unterstützt revisionssichere KPI-Historien?",
+      "options": [
+        "ACID & Time Travel",
+        "Komprimierung",
+        "UI-Theming",
+        "Mehrsprachigkeit"
+      ],
+      "correctAnswer": "ACID & Time Travel",
+      "explanation": "ACID + Time Travel sichern Integrität und rekonstruierbare Stände.",
+      "points": 1,
+      "category": "Plattform"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Welche KPI zeigt Puffer und Engpässe, wenn sie stark wächst?",
+      "options": [
+        "Bearbeitungszeit",
+        "Wartezeit",
+        "Rework-Quote",
+        "Kosten je Case"
+      ],
+      "correctAnswer": "Wartezeit",
+      "explanation": "Steigende Wartezeit deutet auf Stau vor Engpässen.",
+      "points": 1,
+      "category": "Analyse"
+    },
+    {
+      "id": "q8",
+      "type": "multiple-choice",
+      "question": "Welche Governance-Praktiken erhöhen KPI-Verlässlichkeit?",
+      "options": [
+        "Versionierung von Definitionen",
+        "Zugriffskontrolle",
+        "Dokumentation von Formeln",
+        "Ignorieren von Datenqualitätsprüfungen"
+      ],
+      "correctAnswer": [
+        "Versionierung von Definitionen",
+        "Zugriffskontrolle",
+        "Dokumentation von Formeln"
+      ],
+      "explanation": "Verlässlichkeit braucht kontrollierte Änderung und Transparenz.",
+      "points": 2,
+      "category": "Governance"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Warum wird häufig der Median für Durchlaufzeiten genutzt?",
+      "options": [
+        "Weil er alle Extremwerte verstärkt",
+        "Weil er einfacher zu berechnen ist",
+        "Weil er robust gegen Ausreißer ist",
+        "Weil er größer als das Maximum ist"
+      ],
+      "correctAnswer": "Weil er robust gegen Ausreißer ist",
+      "explanation": "Robustheit bei schiefen Verteilungen.",
+      "points": 1,
+      "category": "Statistik"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Welche Kennzahl misst Prozessstabilität über Varianten?",
+      "options": [
+        "Variantenanzahl",
+        "Kosten je Case",
+        "Rework-Quote",
+        "Durchlaufzeit"
+      ],
+      "correctAnswer": "Variantenanzahl",
+      "explanation": "Viele Varianten können mangelnde Standardisierung anzeigen.",
+      "points": 1,
+      "category": "Stabilität"
+    },
+    {
+      "id": "q11",
+      "type": "multiple-choice",
+      "question": "Welche Bestandteile gehören zur KPI-Steuerung auf Dashboards?",
+      "options": [
+        "Drill-Down",
+        "SLA-Linien",
+        "Kontextperiode",
+        "Zwang zu 20 Kennzahlen"
+      ],
+      "correctAnswer": ["Drill-Down", "SLA-Linien", "Kontextperiode"],
+      "explanation": "Überladung vermindert Nutzbarkeit; Fokus ist wichtig.",
+      "points": 2,
+      "category": "Visualisierung"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Simpson-Paradox bedeutet?",
+      "options": [
+        "Aggregattrend kehrt sich in Segmenten um",
+        "Immer gleiche Richtung",
+        "Varianz steigt automatisch",
+        "Median = Mittelwert"
+      ],
+      "correctAnswer": "Aggregattrend kehrt sich in Segmenten um",
+      "explanation": "Segmentierte Analyse kann gegenteilige Trends offenlegen.",
+      "points": 1,
+      "category": "Statistik"
+    }
+  ],
+  "tags": [
+    "kpi",
+    "prozesskennzahlen",
+    "durchlaufzeit",
+    "governance",
+    "rework",
+    "median",
+    "steuerung"
+  ],
+  "lastUpdated": "2025-10-07T00:00:00Z",
+  "tracks": ["DPA"]
+}

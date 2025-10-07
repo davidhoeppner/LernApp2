@@ -61,5 +61,12 @@
     }
   ],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand Sortieralgorithmen",
+    "Understand Bubble Sort",
+    "Understand Selection Sort",
+    "Understand Insertion Sort",
+    "Understand Zeitkomplexität"
+  ]
 }

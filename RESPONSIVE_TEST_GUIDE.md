@@ -7,25 +7,30 @@
 Open the app in your browser and test these breakpoints:
 
 #### Large Desktop (1441px+)
+
 1. Resize browser to full width (> 1441px)
 2. **Expected**: 4-column grids for modules/quizzes, 4-column stats
 
 #### Standard Desktop (1025px - 1440px)
+
 1. Resize browser to ~1200px width
 2. **Expected**: 3-column grids, full sidebar visible
 
 #### Tablet (769px - 1024px)
+
 1. Resize browser to ~900px width
 2. **Expected**: 2-column grids, compact navigation, sidebar visible
 
 #### Mobile (481px - 768px)
+
 1. Resize browser to ~600px width
-2. **Expected**: 
+2. **Expected**:
    - Hamburger menu appears
    - 2-column grids for some layouts
    - Single column for modules/quizzes
 
 #### Small Mobile (320px - 480px)
+
 1. Resize browser to ~375px width (iPhone size)
 2. **Expected**:
    - Hamburger menu
@@ -60,26 +65,31 @@ On mobile view (< 768px):
 ### 4. Layout Tests by View
 
 #### Home View
+
 - **Desktop**: 3-4 column stats grid, 3 column actions
 - **Tablet**: 2-3 column grids
 - **Mobile**: Single column, stacked cards
 
 #### Module List View
+
 - **Desktop**: 3-4 modules per row
 - **Tablet**: 2 modules per row
 - **Mobile**: 1 module per row, full width
 
 #### Module Detail View
+
 - **Desktop**: Sidebar + content (280px + remaining)
 - **Tablet**: Sidebar + content (240px + remaining)
 - **Mobile**: Sidebar below content, full width
 
 #### Quiz View
+
 - **Desktop**: Centered content, max 900px
 - **Tablet**: Centered content, full width
 - **Mobile**: Full width, larger touch targets
 
 #### Progress View
+
 - **Desktop**: 3-4 column summary grid
 - **Tablet**: 2-3 column grid
 - **Mobile**: Single column, stacked items
@@ -87,12 +97,14 @@ On mobile view (< 768px):
 ### 5. Orientation Test
 
 #### Portrait Mode
+
 1. Hold device vertically
 2. **Check**: All content fits, proper spacing
 
 #### Landscape Mode
+
 1. Rotate device horizontally
-2. **Check**: 
+2. **Check**:
    - Reduced vertical spacing
    - Navigation height adjusted
    - Quiz screens optimized
@@ -101,6 +113,7 @@ On mobile view (< 768px):
 ### 6. Browser DevTools Testing
 
 #### Chrome/Edge DevTools
+
 1. Press F12 to open DevTools
 2. Click "Toggle device toolbar" (Ctrl+Shift+M)
 3. Test these presets:
@@ -111,6 +124,7 @@ On mobile view (< 768px):
    - Galaxy S20 (360x800)
 
 #### Firefox DevTools
+
 1. Press F12 to open DevTools
 2. Click "Responsive Design Mode" (Ctrl+Shift+M)
 3. Test various screen sizes
@@ -118,6 +132,7 @@ On mobile view (< 768px):
 ### 7. Touch Device Simulation
 
 In Chrome DevTools:
+
 1. Enable device toolbar
 2. Select a mobile device
 3. **Test**:
@@ -130,6 +145,7 @@ In Chrome DevTools:
 ### 8. Specific Feature Tests
 
 #### Hamburger Menu Animation
+
 1. Resize to mobile (< 768px)
 2. Click hamburger icon
 3. **Check**:
@@ -139,6 +155,7 @@ In Chrome DevTools:
    - Forms an X shape
 
 #### Safe Area Insets (iPhone X+)
+
 1. Test on device with notch
 2. **Check**:
    - Content doesn't hide behind notch
@@ -146,26 +163,31 @@ In Chrome DevTools:
    - Notifications positioned correctly
 
 #### Reduced Motion
+
 1. Enable "Reduce motion" in OS settings
 2. **Check**: Animations are minimal/instant
 
 ### 9. Performance Tests
 
 #### Smooth Scrolling
+
 1. Scroll through long content
 2. **Check**: Smooth, no jank
 
 #### Menu Transitions
+
 1. Open/close mobile menu repeatedly
 2. **Check**: Smooth animation, no lag
 
 #### Card Hover (Desktop)
+
 1. Hover over module/quiz cards
 2. **Check**: Smooth transform and shadow
 
 ### 10. Accessibility Tests
 
 #### Keyboard Navigation
+
 1. Use Tab key to navigate
 2. **Check**:
    - All interactive elements focusable
@@ -173,6 +195,7 @@ In Chrome DevTools:
    - Logical tab order
 
 #### Screen Reader
+
 1. Enable screen reader (NVDA/VoiceOver)
 2. **Check**:
    - Navigation has proper ARIA labels
@@ -182,6 +205,7 @@ In Chrome DevTools:
 ## Expected Results Summary
 
 ### ✅ Mobile (< 768px)
+
 - Hamburger menu visible and functional
 - Single column layouts
 - Full-width buttons (44px minimum height)
@@ -190,12 +214,14 @@ In Chrome DevTools:
 - Stacked navigation
 
 ### ✅ Tablet (769px - 1024px)
+
 - 2-3 column grids
 - Compact navigation
 - Sidebar visible
 - Balanced spacing
 
 ### ✅ Desktop (1025px+)
+
 - 3-4 column grids
 - Full navigation bar
 - Sidebar navigation
@@ -203,6 +229,7 @@ In Chrome DevTools:
 - Optimal spacing
 
 ### ✅ Touch Devices
+
 - All interactive elements ≥ 44px
 - No hover-dependent features
 - Larger radio/checkbox (24px)
@@ -222,6 +249,7 @@ In Chrome DevTools:
 ## Browser Compatibility
 
 Test in these browsers:
+
 - ✅ Chrome (Desktop & Mobile)
 - ✅ Firefox (Desktop & Mobile)
 - ✅ Safari (Desktop & iOS)
@@ -231,12 +259,14 @@ Test in these browsers:
 ## Device Testing Recommendations
 
 ### Minimum Test Devices
+
 1. **Small Phone**: iPhone SE or similar (375px)
 2. **Large Phone**: iPhone 12 Pro or similar (390px)
 3. **Tablet**: iPad or similar (768px)
 4. **Desktop**: Standard monitor (1920px)
 
 ### Ideal Test Devices
+
 1. Small phone (320px - 375px)
 2. Medium phone (375px - 414px)
 3. Large phone (414px - 480px)

@@ -61,5 +61,12 @@
     }
   ],
   "lastUpdated": "2025-01-05T10:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand kerberos",
+    "Understand authentifizierung",
+    "Understand sicherheit",
+    "Understand tickets",
+    "Understand kdc"
+  ]
 }

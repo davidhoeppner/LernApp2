@@ -26,6 +26,12 @@ export default [
         clearTimeout: 'readonly',
         setInterval: 'readonly',
         clearInterval: 'readonly',
+        crypto: 'readonly',
+        performance: 'readonly',
+        requestAnimationFrame: 'readonly',
+        confirm: 'readonly',
+        global: 'readonly',
+        Blob: 'readonly',
       },
     },
     plugins: {
@@ -57,6 +63,22 @@ export default [
     },
     rules: {
       'no-console': 'off', // Allow console in scripts
+    },
+  },
+  // Allow .mjs script files to use Node globals during tooling
+  {
+    files: ['scripts/**/*.mjs'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'module',
+      globals: {
+        process: 'readonly',
+        console: 'readonly',
+        global: 'readonly',
+      },
+    },
+    rules: {
+      'no-console': 'off',
     },
   },
 ];

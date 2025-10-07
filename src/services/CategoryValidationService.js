@@ -4,7 +4,11 @@
  * for the three-tier category system
  */
 class CategoryValidationService {
-  constructor(categoryMappingService, ihkContentService, specializationService) {
+  constructor(
+    categoryMappingService,
+    ihkContentService,
+    specializationService
+  ) {
     this.categoryMappingService = categoryMappingService;
     this.ihkContentService = ihkContentService;
     this.specializationService = specializationService;
@@ -21,22 +25,22 @@ class CategoryValidationService {
       categoryDistribution: {
         minPercentagePerCategory: 10, // Each category should have at least 10% of content
         maxPercentagePerCategory: 70, // No category should dominate with >70%
-        warningThreshold: 5 // Warn if category has <5% of content
+        warningThreshold: 5, // Warn if category has <5% of content
       },
       specializationRelevance: {
         requiredHighRelevancePercentage: 30, // Each specialization should have 30% high-relevance content
-        maxLowRelevancePercentage: 20 // Max 20% low-relevance content per specialization
+        maxLowRelevancePercentage: 20, // Max 20% low-relevance content per specialization
       },
       contentQuality: {
         requireCategoryMetadata: true,
         requireSpecializationRelevance: true,
-        allowUnmappedContent: false
+        allowUnmappedContent: false,
       },
       conflictDetection: {
         checkCrossReferences: true,
         validatePrerequisites: true,
-        checkDuplicateAssignments: true
-      }
+        checkDuplicateAssignments: true,
+      },
     };
   }
 
@@ -48,37 +52,43 @@ class CategoryValidationService {
   async validateAllContentCategorization(options = {}) {
     try {
       const startTime = new Date();
-      console.log('Starting comprehensive content categorization validation...');
+      console.warn(
+        'Starting comprehensive content categorization validation...'
+      );
 
       // Get all content for validation
       const allContent = await this._getAllContent();
-      
+
       // Perform different types of validation
       const validationResults = {
         summary: {
           totalContent: allContent.length,
           validationStarted: startTime.toISOString(),
           validationCompleted: null,
-          overallStatus: 'success'
+          overallStatus: 'success',
         },
-        categoryMappingValidation: await this._validateCategoryMappings(allContent),
-        distributionValidation: await this._validateCategoryDistribution(allContent),
-        specializationRelevanceValidation: await this._validateSpecializationRelevance(allContent),
+        categoryMappingValidation:
+          await this._validateCategoryMappings(allContent),
+        distributionValidation:
+          await this._validateCategoryDistribution(allContent),
+        specializationRelevanceValidation:
+          await this._validateSpecializationRelevance(allContent),
         conflictDetection: await this._detectCategoryConflicts(allContent),
         qualityAssessment: await this._assessContentQuality(allContent),
-        optimizationSuggestions: []
+        optimizationSuggestions: [],
       };
 
       // Generate optimization suggestions based on validation results
-      validationResults.optimizationSuggestions = this._generateOptimizationSuggestions(validationResults);
+      validationResults.optimizationSuggestions =
+        this._generateOptimizationSuggestions(validationResults);
 
       // Determine overall status
-      validationResults.summary.overallStatus = this._determineOverallStatus(validationResults);
+      validationResults.summary.overallStatus =
+        this._determineOverallStatus(validationResults);
       validationResults.summary.validationCompleted = new Date().toISOString();
       validationResults.summary.validationDuration = new Date() - startTime;
 
       return validationResults;
-
     } catch (error) {
       console.error('Comprehensive validation failed:', error);
       return {
@@ -87,8 +97,8 @@ class CategoryValidationService {
           validationStarted: new Date().toISOString(),
           validationCompleted: new Date().toISOString(),
           overallStatus: 'error',
-          error: error.message
-        }
+          error: error.message,
+        },
       };
     }
   }
@@ -107,12 +117,13 @@ class CategoryValidationService {
       invalidMappings: 0,
       warnings: [],
       errors: [],
-      details: []
+      details: [],
     };
 
     for (const content of allContent) {
       try {
-        const mappingResult = this.categoryMappingService.mapToThreeTierCategory(content);
+        const mappingResult =
+          this.categoryMappingService.mapToThreeTierCategory(content);
         const itemValidation = {
           contentId: content.id,
           contentType: this._getContentType(content),
@@ -120,7 +131,7 @@ class CategoryValidationService {
           mappedCategory: mappingResult.threeTierCategory,
           appliedRule: mappingResult.appliedRule,
           isValid: true,
-          issues: []
+          issues: [],
         };
 
         // Validate mapping result
@@ -128,9 +139,13 @@ class CategoryValidationService {
           itemValidation.isValid = false;
           itemValidation.issues.push('No category assigned');
           results.invalidMappings++;
-        } else if (!this._isValidThreeTierCategory(mappingResult.threeTierCategory)) {
+        } else if (
+          !this._isValidThreeTierCategory(mappingResult.threeTierCategory)
+        ) {
           itemValidation.isValid = false;
-          itemValidation.issues.push(`Invalid category: ${mappingResult.threeTierCategory}`);
+          itemValidation.issues.push(
+            `Invalid category: ${mappingResult.threeTierCategory}`
+          );
           results.invalidMappings++;
         } else {
           results.validMappings++;
@@ -148,14 +163,15 @@ class CategoryValidationService {
         }
 
         results.details.push(itemValidation);
-
       } catch (error) {
         results.invalidMappings++;
-        results.errors.push(`Failed to validate ${content.id}: ${error.message}`);
+        results.errors.push(
+          `Failed to validate ${content.id}: ${error.message}`
+        );
         results.details.push({
           contentId: content.id,
           isValid: false,
-          issues: [`Validation error: ${error.message}`]
+          issues: [`Validation error: ${error.message}`],
         });
       }
     }
@@ -179,15 +195,16 @@ class CategoryValidationService {
   async _validateCategoryDistribution(allContent) {
     const distribution = {
       'daten-prozessanalyse': { count: 0, percentage: 0, content: [] },
-      'anwendungsentwicklung': { count: 0, percentage: 0, content: [] },
-      'allgemein': { count: 0, percentage: 0, content: [] }
+      anwendungsentwicklung: { count: 0, percentage: 0, content: [] },
+      allgemein: { count: 0, percentage: 0, content: [] },
     };
 
     // Count content by category
     for (const content of allContent) {
-      const mappingResult = this.categoryMappingService.mapToThreeTierCategory(content);
+      const mappingResult =
+        this.categoryMappingService.mapToThreeTierCategory(content);
       const category = mappingResult.threeTierCategory || 'allgemein';
-      
+
       if (distribution[category]) {
         distribution[category].count++;
         distribution[category].content.push(content.id);
@@ -197,9 +214,10 @@ class CategoryValidationService {
     // Calculate percentages
     const totalContent = allContent.length;
     Object.keys(distribution).forEach(category => {
-      distribution[category].percentage = totalContent > 0 
-        ? Math.round((distribution[category].count / totalContent) * 100)
-        : 0;
+      distribution[category].percentage =
+        totalContent > 0
+          ? Math.round((distribution[category].count / totalContent) * 100)
+          : 0;
     });
 
     // Validate distribution against rules
@@ -207,7 +225,7 @@ class CategoryValidationService {
       status: 'success',
       distribution,
       issues: [],
-      recommendations: []
+      recommendations: [],
     };
 
     const rules = this.validationRules.categoryDistribution;
@@ -218,7 +236,7 @@ class CategoryValidationService {
         validationResult.issues.push({
           severity: 'error',
           category,
-          message: `Category ${category} has only ${data.percentage}% of content (minimum: ${rules.minPercentagePerCategory}%)`
+          message: `Category ${category} has only ${data.percentage}% of content (minimum: ${rules.minPercentagePerCategory}%)`,
         });
         validationResult.status = 'error';
       }
@@ -228,7 +246,7 @@ class CategoryValidationService {
         validationResult.issues.push({
           severity: 'warning',
           category,
-          message: `Category ${category} has ${data.percentage}% of content (maximum recommended: ${rules.maxPercentagePerCategory}%)`
+          message: `Category ${category} has ${data.percentage}% of content (maximum recommended: ${rules.maxPercentagePerCategory}%)`,
         });
         if (validationResult.status === 'success') {
           validationResult.status = 'warning';
@@ -240,7 +258,7 @@ class CategoryValidationService {
         validationResult.issues.push({
           severity: 'warning',
           category,
-          message: `Category ${category} has very low content (${data.percentage}%)`
+          message: `Category ${category} has very low content (${data.percentage}%)`,
         });
         if (validationResult.status === 'success') {
           validationResult.status = 'warning';
@@ -259,44 +277,55 @@ class CategoryValidationService {
    */
   async _validateSpecializationRelevance(allContent) {
     const specializationAnalysis = {
-      'anwendungsentwicklung': {
+      anwendungsentwicklung: {
         high: { count: 0, percentage: 0, content: [] },
         medium: { count: 0, percentage: 0, content: [] },
         low: { count: 0, percentage: 0, content: [] },
-        none: { count: 0, percentage: 0, content: [] }
+        none: { count: 0, percentage: 0, content: [] },
       },
       'daten-prozessanalyse': {
         high: { count: 0, percentage: 0, content: [] },
         medium: { count: 0, percentage: 0, content: [] },
         low: { count: 0, percentage: 0, content: [] },
-        none: { count: 0, percentage: 0, content: [] }
-      }
+        none: { count: 0, percentage: 0, content: [] },
+      },
     };
 
     // Analyze relevance for each specialization
     for (const content of allContent) {
-      const mappingResult = this.categoryMappingService.mapToThreeTierCategory(content);
+      const mappingResult =
+        this.categoryMappingService.mapToThreeTierCategory(content);
       const category = mappingResult.threeTierCategory;
 
-      ['anwendungsentwicklung', 'daten-prozessanalyse'].forEach(specializationId => {
-        const relevance = this.categoryMappingService.getCategoryRelevance(category, specializationId);
-        
-        if (specializationAnalysis[specializationId][relevance]) {
-          specializationAnalysis[specializationId][relevance].count++;
-          specializationAnalysis[specializationId][relevance].content.push(content.id);
+      ['anwendungsentwicklung', 'daten-prozessanalyse'].forEach(
+        specializationId => {
+          const relevance = this.categoryMappingService.getCategoryRelevance(
+            category,
+            specializationId
+          );
+
+          if (specializationAnalysis[specializationId][relevance]) {
+            specializationAnalysis[specializationId][relevance].count++;
+            specializationAnalysis[specializationId][relevance].content.push(
+              content.id
+            );
+          }
         }
-      });
+      );
     }
 
     // Calculate percentages
     const totalContent = allContent.length;
     Object.keys(specializationAnalysis).forEach(specializationId => {
-      Object.keys(specializationAnalysis[specializationId]).forEach(relevanceLevel => {
-        const data = specializationAnalysis[specializationId][relevanceLevel];
-        data.percentage = totalContent > 0 
-          ? Math.round((data.count / totalContent) * 100)
-          : 0;
-      });
+      Object.keys(specializationAnalysis[specializationId]).forEach(
+        relevanceLevel => {
+          const data = specializationAnalysis[specializationId][relevanceLevel];
+          data.percentage =
+            totalContent > 0
+              ? Math.round((data.count / totalContent) * 100)
+              : 0;
+        }
+      );
     });
 
     // Validate against rules
@@ -304,36 +333,40 @@ class CategoryValidationService {
       status: 'success',
       analysis: specializationAnalysis,
       issues: [],
-      recommendations: []
+      recommendations: [],
     };
 
     const rules = this.validationRules.specializationRelevance;
 
-    Object.entries(specializationAnalysis).forEach(([specializationId, relevanceData]) => {
-      // Check high relevance requirement
-      if (relevanceData.high.percentage < rules.requiredHighRelevancePercentage) {
-        validationResult.issues.push({
-          severity: 'warning',
-          specialization: specializationId,
-          message: `Only ${relevanceData.high.percentage}% high-relevance content for ${specializationId} (required: ${rules.requiredHighRelevancePercentage}%)`
-        });
-        if (validationResult.status === 'success') {
-          validationResult.status = 'warning';
+    Object.entries(specializationAnalysis).forEach(
+      ([specializationId, relevanceData]) => {
+        // Check high relevance requirement
+        if (
+          relevanceData.high.percentage < rules.requiredHighRelevancePercentage
+        ) {
+          validationResult.issues.push({
+            severity: 'warning',
+            specialization: specializationId,
+            message: `Only ${relevanceData.high.percentage}% high-relevance content for ${specializationId} (required: ${rules.requiredHighRelevancePercentage}%)`,
+          });
+          if (validationResult.status === 'success') {
+            validationResult.status = 'warning';
+          }
         }
-      }
 
-      // Check low relevance threshold
-      if (relevanceData.low.percentage > rules.maxLowRelevancePercentage) {
-        validationResult.issues.push({
-          severity: 'warning',
-          specialization: specializationId,
-          message: `${relevanceData.low.percentage}% low-relevance content for ${specializationId} (maximum: ${rules.maxLowRelevancePercentage}%)`
-        });
-        if (validationResult.status === 'success') {
-          validationResult.status = 'warning';
+        // Check low relevance threshold
+        if (relevanceData.low.percentage > rules.maxLowRelevancePercentage) {
+          validationResult.issues.push({
+            severity: 'warning',
+            specialization: specializationId,
+            message: `${relevanceData.low.percentage}% low-relevance content for ${specializationId} (maximum: ${rules.maxLowRelevancePercentage}%)`,
+          });
+          if (validationResult.status === 'success') {
+            validationResult.status = 'warning';
+          }
         }
       }
-    });
+    );
 
     return validationResult;
   }
@@ -349,14 +382,15 @@ class CategoryValidationService {
       duplicateAssignments: [],
       crossReferenceConflicts: [],
       prerequisiteConflicts: [],
-      specializationMismatches: []
+      specializationMismatches: [],
     };
 
     const categoryAssignments = new Map();
 
     // Check for duplicate assignments and collect mappings
     for (const content of allContent) {
-      const mappingResult = this.categoryMappingService.mapToThreeTierCategory(content);
+      const mappingResult =
+        this.categoryMappingService.mapToThreeTierCategory(content);
       const category = mappingResult.threeTierCategory;
 
       // Track assignments for duplicate detection
@@ -365,18 +399,21 @@ class CategoryValidationService {
         conflicts.duplicateAssignments.push({
           contentId: content.id,
           category,
-          message: 'Duplicate category assignment detected'
+          message: 'Duplicate category assignment detected',
         });
       } else {
         categoryAssignments.set(assignmentKey, {
           content,
           category,
-          mappingResult
+          mappingResult,
         });
       }
 
       // Check for specialization mismatches
-      const specializationMismatch = this._checkSpecializationMismatch(content, mappingResult);
+      const specializationMismatch = this._checkSpecializationMismatch(
+        content,
+        mappingResult
+      );
       if (specializationMismatch) {
         conflicts.specializationMismatches.push(specializationMismatch);
       }
@@ -384,21 +421,28 @@ class CategoryValidationService {
 
     // Check cross-reference conflicts (if content references other content)
     if (this.validationRules.conflictDetection.checkCrossReferences) {
-      conflicts.crossReferenceConflicts = await this._checkCrossReferenceConflicts(allContent);
+      conflicts.crossReferenceConflicts =
+        await this._checkCrossReferenceConflicts(allContent);
     }
 
     // Check prerequisite conflicts
     if (this.validationRules.conflictDetection.validatePrerequisites) {
-      conflicts.prerequisiteConflicts = await this._checkPrerequisiteConflicts(allContent);
+      conflicts.prerequisiteConflicts =
+        await this._checkPrerequisiteConflicts(allContent);
     }
 
     return {
       status: this._getConflictStatus(conflicts),
       conflicts,
       summary: {
-        totalConflicts: Object.values(conflicts).reduce((sum, arr) => sum + arr.length, 0),
-        conflictTypes: Object.keys(conflicts).filter(key => conflicts[key].length > 0)
-      }
+        totalConflicts: Object.values(conflicts).reduce(
+          (sum, arr) => sum + arr.length,
+          0
+        ),
+        conflictTypes: Object.keys(conflicts).filter(
+          key => conflicts[key].length > 0
+        ),
+      },
     };
   }
 
@@ -413,7 +457,7 @@ class CategoryValidationService {
       completeness: { score: 0, issues: [] },
       consistency: { score: 0, issues: [] },
       accuracy: { score: 0, issues: [] },
-      maintainability: { score: 0, issues: [] }
+      maintainability: { score: 0, issues: [] },
     };
 
     let totalScore = 0;
@@ -421,12 +465,18 @@ class CategoryValidationService {
 
     // Assess completeness (all content has proper categorization)
     const uncategorizedContent = allContent.filter(content => {
-      const mappingResult = this.categoryMappingService.mapToThreeTierCategory(content);
+      const mappingResult =
+        this.categoryMappingService.mapToThreeTierCategory(content);
       return !mappingResult.threeTierCategory;
     });
 
-    qualityMetrics.completeness.score = Math.max(0, 
-      Math.round(((allContent.length - uncategorizedContent.length) / allContent.length) * 100)
+    qualityMetrics.completeness.score = Math.max(
+      0,
+      Math.round(
+        ((allContent.length - uncategorizedContent.length) /
+          allContent.length) *
+          100
+      )
     );
 
     if (uncategorizedContent.length > 0) {
@@ -436,7 +486,8 @@ class CategoryValidationService {
     }
 
     // Assess consistency (similar content has similar categorization)
-    const consistencyScore = await this._assessCategorizationConsistency(allContent);
+    const consistencyScore =
+      await this._assessCategorizationConsistency(allContent);
     qualityMetrics.consistency.score = consistencyScore.score;
     qualityMetrics.consistency.issues = consistencyScore.issues;
 
@@ -452,17 +503,18 @@ class CategoryValidationService {
 
     // Calculate overall quality score
     totalScore = Math.round(
-      (qualityMetrics.completeness.score + 
-       qualityMetrics.consistency.score + 
-       qualityMetrics.accuracy.score + 
-       qualityMetrics.maintainability.score) / 4
+      (qualityMetrics.completeness.score +
+        qualityMetrics.consistency.score +
+        qualityMetrics.accuracy.score +
+        qualityMetrics.maintainability.score) /
+        4
     );
 
     return {
       overallScore: totalScore,
       grade: this._getQualityGrade(totalScore),
       metrics: qualityMetrics,
-      recommendations: this._generateQualityRecommendations(qualityMetrics)
+      recommendations: this._generateQualityRecommendations(qualityMetrics),
     };
   }
 
@@ -477,9 +529,10 @@ class CategoryValidationService {
 
     // Category distribution suggestions
     if (validationResults.distributionValidation.issues.length > 0) {
-      const imbalancedCategories = validationResults.distributionValidation.issues
-        .filter(issue => issue.severity === 'error')
-        .map(issue => issue.category);
+      const imbalancedCategories =
+        validationResults.distributionValidation.issues
+          .filter(issue => issue.severity === 'error')
+          .map(issue => issue.category);
 
       if (imbalancedCategories.length > 0) {
         suggestions.push({
@@ -490,8 +543,8 @@ class CategoryValidationService {
           actions: [
             'Review content assignment rules for underrepresented categories',
             'Consider splitting overloaded categories',
-            'Add more content to underrepresented categories'
-          ]
+            'Add more content to underrepresented categories',
+          ],
         });
       }
     }
@@ -502,12 +555,13 @@ class CategoryValidationService {
         type: 'relevance',
         priority: 'medium',
         title: 'Improve Specialization Relevance',
-        description: 'Some specializations lack sufficient high-relevance content',
+        description:
+          'Some specializations lack sufficient high-relevance content',
         actions: [
           'Review and update specialization relevance mappings',
           'Create more specialized content for underserved areas',
-          'Reassess general content for specialization-specific value'
-        ]
+          'Reassess general content for specialization-specific value',
+        ],
       });
     }
 
@@ -521,8 +575,8 @@ class CategoryValidationService {
         actions: [
           'Review and resolve duplicate assignments',
           'Fix cross-reference inconsistencies',
-          'Update prerequisite relationships'
-        ]
+          'Update prerequisite relationships',
+        ],
       });
     }
 
@@ -533,7 +587,7 @@ class CategoryValidationService {
         priority: 'medium',
         title: 'Improve Categorization Quality',
         description: `Quality score: ${validationResults.qualityAssessment.overallScore}/100`,
-        actions: validationResults.qualityAssessment.recommendations
+        actions: validationResults.qualityAssessment.recommendations,
       });
     }
 
@@ -550,25 +604,26 @@ class CategoryValidationService {
    */
   async createConflictReport(contentItems = null) {
     try {
-      const content = contentItems || await this._getAllContent();
+      const content = contentItems || (await this._getAllContent());
       const conflicts = await this._detectCategoryConflicts(content);
-      
+
       return {
         reportId: this._generateReportId(),
         generatedAt: new Date().toISOString(),
         contentAnalyzed: content.length,
         conflictSummary: conflicts.summary,
         detailedConflicts: conflicts.conflicts,
-        resolutionSuggestions: this._generateConflictResolutions(conflicts.conflicts),
-        status: conflicts.status
+        resolutionSuggestions: this._generateConflictResolutions(
+          conflicts.conflicts
+        ),
+        status: conflicts.status,
       };
-
     } catch (error) {
       console.error('Failed to create conflict report:', error);
       return {
         reportId: null,
         error: error.message,
-        status: 'error'
+        status: 'error',
       };
     }
   }
@@ -580,13 +635,14 @@ class CategoryValidationService {
    */
   async generateAssignmentSuggestions(contentItems = null) {
     try {
-      const content = contentItems || await this._getAllContent();
+      const content = contentItems || (await this._getAllContent());
       const suggestions = [];
 
       for (const item of content) {
-        const currentMapping = this.categoryMappingService.mapToThreeTierCategory(item);
+        const currentMapping =
+          this.categoryMappingService.mapToThreeTierCategory(item);
         const alternativeMappings = await this._getAlternativeMappings(item);
-        
+
         if (alternativeMappings.length > 0) {
           suggestions.push({
             contentId: item.id,
@@ -594,7 +650,10 @@ class CategoryValidationService {
             currentCategory: currentMapping.threeTierCategory,
             currentConfidence: this._calculateMappingConfidence(currentMapping),
             alternatives: alternativeMappings,
-            recommendation: this._selectBestAlternative(currentMapping, alternativeMappings)
+            recommendation: this._selectBestAlternative(
+              currentMapping,
+              alternativeMappings
+            ),
           });
         }
       }
@@ -604,18 +663,17 @@ class CategoryValidationService {
         generatedAt: new Date().toISOString(),
         contentAnalyzed: content.length,
         suggestionsCount: suggestions.length,
-        suggestions: suggestions.sort((a, b) => 
-          b.recommendation.confidence - a.recommendation.confidence
+        suggestions: suggestions.sort(
+          (a, b) => b.recommendation.confidence - a.recommendation.confidence
         ),
-        summary: this._summarizeAssignmentSuggestions(suggestions)
+        summary: this._summarizeAssignmentSuggestions(suggestions),
       };
-
     } catch (error) {
       console.error('Failed to generate assignment suggestions:', error);
       return {
         reportId: null,
         error: error.message,
-        status: 'error'
+        status: 'error',
       };
     }
   }
@@ -650,7 +708,11 @@ class CategoryValidationService {
    * @returns {boolean} True if valid
    */
   _isValidThreeTierCategory(categoryId) {
-    const validCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+    const validCategories = [
+      'daten-prozessanalyse',
+      'anwendungsentwicklung',
+      'allgemein',
+    ];
     return validCategories.includes(categoryId);
   }
 
@@ -679,22 +741,28 @@ class CategoryValidationService {
    */
   _checkMappingIssues(content, mappingResult) {
     const issues = [];
-    
+
     // Check for obvious category mismatches
     const originalCategory = (content.category || '').toLowerCase();
     const targetCategory = mappingResult.threeTierCategory;
 
-    if (originalCategory.includes('dpa') && targetCategory !== 'daten-prozessanalyse') {
+    if (
+      originalCategory.includes('dpa') &&
+      targetCategory !== 'daten-prozessanalyse'
+    ) {
       issues.push({
         severity: 'warning',
-        message: 'DPA content mapped to non-DPA category'
+        message: 'DPA content mapped to non-DPA category',
       });
     }
 
-    if (originalCategory.includes('ae') && targetCategory !== 'anwendungsentwicklung') {
+    if (
+      originalCategory.includes('ae') &&
+      targetCategory !== 'anwendungsentwicklung'
+    ) {
       issues.push({
         severity: 'warning',
-        message: 'AE content mapped to non-AE category'
+        message: 'AE content mapped to non-AE category',
       });
     }
 
@@ -719,14 +787,17 @@ class CategoryValidationService {
    * @returns {string} Overall status
    */
   _determineOverallStatus(validationResults) {
-    const hasErrors = Object.values(validationResults).some(result => 
-      result.status === 'error' || (result.errors && result.errors.length > 0)
+    const hasErrors = Object.values(validationResults).some(
+      result =>
+        result.status === 'error' || (result.errors && result.errors.length > 0)
     );
 
     if (hasErrors) return 'error';
 
-    const hasWarnings = Object.values(validationResults).some(result => 
-      result.status === 'warning' || (result.warnings && result.warnings.length > 0)
+    const hasWarnings = Object.values(validationResults).some(
+      result =>
+        result.status === 'warning' ||
+        (result.warnings && result.warnings.length > 0)
     );
 
     return hasWarnings ? 'warning' : 'success';
@@ -734,7 +805,7 @@ class CategoryValidationService {
 
   // Additional helper methods would be implemented here for:
   // - _checkSpecializationMismatch
-  // - _checkCrossReferenceConflicts  
+  // - _checkCrossReferenceConflicts
   // - _checkPrerequisiteConflicts
   // - _getConflictStatus
   // - _assessCategorizationConsistency
@@ -767,7 +838,10 @@ class CategoryValidationService {
    * @returns {string} Status
    */
   _getConflictStatus(conflicts) {
-    const totalConflicts = Object.values(conflicts).reduce((sum, arr) => sum + arr.length, 0);
+    const totalConflicts = Object.values(conflicts).reduce(
+      (sum, arr) => sum + arr.length,
+      0
+    );
     return totalConflicts > 0 ? 'warning' : 'success';
   }
 
@@ -822,7 +896,7 @@ class CategoryValidationService {
    */
   _generateQualityRecommendations(qualityMetrics) {
     const recommendations = [];
-    
+
     Object.entries(qualityMetrics).forEach(([metric, data]) => {
       if (data.score < 80) {
         recommendations.push(`Improve ${metric}: ${data.issues.join(', ')}`);

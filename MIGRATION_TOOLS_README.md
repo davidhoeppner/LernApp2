@@ -5,6 +5,7 @@ This document describes the migration and validation tools implemented for the t
 ## Overview
 
 The migration tools provide comprehensive functionality for:
+
 - **User Progress Migration**: Safely migrate existing user progress to the new three-tier category structure
 - **Category Assignment Validation**: Validate and optimize content categorization
 - **Migration Monitoring**: Track migration progress and handle rollbacks
@@ -13,9 +14,11 @@ The migration tools provide comprehensive functionality for:
 ## Services
 
 ### 1. ProgressMigrationService
+
 Handles migration of user progress data to the three-tier category system.
 
 **Key Features:**
+
 - Preserves all existing progress data (modules completed, quiz attempts, specialization progress)
 - Maps content to new three-tier categories using CategoryMappingService
 - Creates backups before migration
@@ -23,16 +26,19 @@ Handles migration of user progress data to the three-tier category system.
 - Validates migration integrity
 
 **Usage:**
+
 ```javascript
 const migrationResult = await progressMigrationService.migrateUserProgress({
-  force: false // Set to true to proceed despite validation warnings
+  force: false, // Set to true to proceed despite validation warnings
 });
 ```
 
 ### 2. CategoryValidationService
+
 Provides comprehensive validation for content categorization.
 
 **Key Features:**
+
 - Validates category mappings for all content
 - Detects category assignment conflicts
 - Analyzes category distribution and specialization relevance
@@ -40,21 +46,26 @@ Provides comprehensive validation for content categorization.
 - Creates detailed validation reports
 
 **Usage:**
+
 ```javascript
 // Validate all content categorization
-const validationResult = await categoryValidationService.validateAllContentCategorization();
+const validationResult =
+  await categoryValidationService.validateAllContentCategorization();
 
 // Generate conflict report
 const conflictReport = await categoryValidationService.createConflictReport();
 
 // Get assignment suggestions
-const suggestions = await categoryValidationService.generateAssignmentSuggestions();
+const suggestions =
+  await categoryValidationService.generateAssignmentSuggestions();
 ```
 
 ### 3. MigrationMonitoringService
+
 Monitors migration progress and provides rollback capabilities.
 
 **Key Features:**
+
 - Real-time migration progress tracking
 - Performance metrics and alerts
 - Rollback functionality with integrity verification
@@ -62,35 +73,41 @@ Monitors migration progress and provides rollback capabilities.
 - Migration history and status tracking
 
 **Usage:**
+
 ```javascript
 // Start monitoring
-const monitoringResult = migrationMonitoringService.startMigrationMonitoring(migrationId);
+const monitoringResult =
+  migrationMonitoringService.startMigrationMonitoring(migrationId);
 
 // Update progress
 migrationMonitoringService.updateMigrationProgress(sessionId, {
   itemsProcessed: 50,
   itemsTotal: 100,
-  checkpoint: { phase: 'processing', description: 'Processing modules' }
+  checkpoint: { phase: 'processing', description: 'Processing modules' },
 });
 
 // Rollback migration
-const rollbackResult = await migrationMonitoringService.rollbackMigration(migrationId);
+const rollbackResult =
+  await migrationMonitoringService.rollbackMigration(migrationId);
 ```
 
 ### 4. MigrationToolsIntegration
+
 Unified interface that combines all migration tools.
 
 **Key Features:**
+
 - Complete migration workflow with monitoring and validation
 - Migration readiness assessment
 - Comprehensive reporting
 - Monitored rollback operations
 
 **Usage:**
+
 ```javascript
 // Perform complete migration
 const result = await migrationToolsIntegration.performCompleteMigration({
-  force: false
+  force: false,
 });
 
 // Check migration readiness
@@ -113,7 +130,7 @@ const needsMigration = migrationUtils.isMigrationNeeded(stateManager);
 // Execute migration with progress callback
 const result = await migrationUtils.executeMigrationWithProgress(
   migrationServices,
-  (progress) => console.log(progress),
+  progress => console.log(progress),
   { force: false }
 );
 
@@ -124,6 +141,7 @@ const status = migrationUtils.getMigrationStatusFormatted(migrationServices);
 ## Migration Workflow
 
 ### 1. Pre-Migration Assessment
+
 ```javascript
 // Check if migration is needed
 const needsMigration = migrationUtils.isMigrationNeeded(stateManager);
@@ -131,7 +149,7 @@ const needsMigration = migrationUtils.isMigrationNeeded(stateManager);
 if (needsMigration) {
   // Validate readiness
   const readiness = await migrationUtils.quickReadinessCheck(migrationServices);
-  
+
   if (readiness.readiness.overall === 'blocked') {
     console.error('Migration blocked:', readiness.readiness.blockers);
     return;
@@ -140,12 +158,15 @@ if (needsMigration) {
 ```
 
 ### 2. Execute Migration
+
 ```javascript
 // Execute with progress tracking
 const migrationResult = await migrationUtils.executeMigrationWithProgress(
   migrationServices,
-  (progress) => {
-    console.log(`${progress.phase}: ${progress.progress}% - ${progress.message}`);
+  progress => {
+    console.log(
+      `${progress.phase}: ${progress.progress}% - ${progress.message}`
+    );
   },
   { force: false }
 );
@@ -158,13 +179,15 @@ if (migrationResult.success) {
 ```
 
 ### 3. Post-Migration Validation
+
 ```javascript
 // Generate summary report
-const summary = await migrationUtils.generateMigrationSummary(migrationServices);
+const summary =
+  await migrationUtils.generateMigrationSummary(migrationServices);
 
 if (summary.success) {
   console.log('Migration Summary:', summary.summary);
-  
+
   // Check for critical issues
   if (summary.summary.criticalIssues.length > 0) {
     console.warn('Critical issues found:', summary.summary.criticalIssues);
@@ -173,6 +196,7 @@ if (summary.success) {
 ```
 
 ### 4. Rollback (if needed)
+
 ```javascript
 // Rollback with confirmation
 const rollbackResult = await migrationUtils.rollbackMigrationWithConfirmation(
@@ -192,6 +216,7 @@ if (rollbackResult.success) {
 ## Data Structure Changes
 
 ### Before Migration
+
 ```javascript
 {
   modulesCompleted: ["module-1", "module-2"],
@@ -205,6 +230,7 @@ if (rollbackResult.success) {
 ```
 
 ### After Migration
+
 ```javascript
 {
   modulesCompleted: [
@@ -291,6 +317,7 @@ The monitoring system provides:
 ### Support
 
 For additional support or issues:
+
 1. Check the monitoring dashboard for real-time status
 2. Review validation reports for specific error details
 3. Examine migration history for previous successful operations

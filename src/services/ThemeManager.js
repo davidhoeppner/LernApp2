@@ -83,7 +83,12 @@ class ThemeManager {
     );
 
     // Set classes for CSS selectors
-    document.documentElement.classList.remove('light', 'dark', 'light-theme', 'dark-theme');
+    document.documentElement.classList.remove(
+      'light',
+      'dark',
+      'light-theme',
+      'dark-theme'
+    );
     document.documentElement.classList.add(this.currentTheme); // For :root.dark selectors
     document.documentElement.classList.add(`${this.currentTheme}-theme`); // For backwards compatibility
 

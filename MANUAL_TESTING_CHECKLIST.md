@@ -12,6 +12,7 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## 1. Routes and Navigation Testing
 
 ### Basic Route Navigation
+
 - [ ] **Home Route (/)**: Navigate to home page
   - Verify page loads correctly
   - Check for proper content display
@@ -52,6 +53,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Check navigation back to valid routes
 
 ### Navigation Menu
+
 - [ ] **Menu Functionality**: Test navigation menu
   - Click each menu item
   - Verify active states
@@ -61,6 +63,7 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## 2. Module Functionality Testing
 
 ### Module List View
+
 - [ ] **Module Display**: Verify module list
   - All modules show with titles and descriptions
   - Progress indicators work correctly
@@ -68,6 +71,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Search/filter functionality (if available)
 
 ### Module Detail View
+
 - [ ] **Content Loading**: Test module detail page
   - Content loads properly and completely
   - Images and media display correctly
@@ -81,6 +85,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Test overall module completion
 
 ### Module Integration
+
 - [ ] **Service Integration**: Verify module services
   - ModuleService works correctly
   - IHKContentService integration functions
@@ -90,6 +95,7 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## 3. Quiz Functionality Testing
 
 ### Quiz List View
+
 - [ ] **Quiz Display**: Verify quiz list
   - All quizzes show with proper metadata
   - Difficulty indicators work
@@ -97,6 +103,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Quiz categories function properly
 
 ### Quiz Taking Experience
+
 - [ ] **Quiz Interface**: Test quiz functionality
   - Questions display properly with all options
   - Answer selection works (radio buttons/checkboxes)
@@ -111,6 +118,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Proper error handling
 
 ### Quiz Results
+
 - [ ] **Results Display**: Test quiz results
   - Score calculation is accurate
   - Results show with proper formatting
@@ -124,6 +132,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Results persistence
 
 ### Quiz Progress Tracking
+
 - [ ] **Progress Persistence**: Test quiz tracking
   - Quiz attempts are recorded correctly
   - Best scores are saved and displayed
@@ -133,6 +142,7 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## 4. Progress Tracking Testing
 
 ### Progress View
+
 - [ ] **Overall Progress**: Test progress display
   - Overall completion percentage accurate
   - Module progress shows correctly
@@ -140,6 +150,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Time tracking functions (if available)
 
 ### Data Persistence
+
 - [ ] **Storage Testing**: Test data persistence
   - Data survives page refresh
   - Data survives browser restart
@@ -147,6 +158,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - No data corruption issues
 
 ### Progress Calculations
+
 - [ ] **Accuracy Testing**: Verify calculations
   - Completion percentages are correct
   - Progress bars reflect actual completion
@@ -156,6 +168,7 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## 5. Wheel of Fortune Testing
 
 ### Wheel Display
+
 - [ ] **Visual Display**: Test wheel appearance
   - Wheel displays correctly with all modules
   - Visual design is appealing
@@ -163,6 +176,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Proper module distribution on wheel
 
 ### Wheel Functionality
+
 - [ ] **Interaction Testing**: Test wheel mechanics
   - Spinning animation works smoothly
   - Random selection functions properly
@@ -170,6 +184,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Spin button responds correctly
 
 ### Edge Cases
+
 - [ ] **Edge Case Testing**: Test unusual scenarios
   - Test with no available modules
   - Test with single module
@@ -179,6 +194,7 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## 6. Accessibility Testing
 
 ### Keyboard Navigation
+
 - [ ] **Keyboard Support**: Test keyboard accessibility
   - Tab through all interactive elements
   - Enter/Space activate buttons and links
@@ -187,6 +203,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Skip links function properly
 
 ### Screen Reader Compatibility
+
 - [ ] **Screen Reader Support**: Test with screen reader
   - All content has proper labels
   - Live regions announce changes
@@ -194,6 +211,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Form elements are properly labeled
 
 ### Visual Accessibility
+
 - [ ] **Visual Requirements**: Test visual accessibility
   - Sufficient color contrast (4.5:1 minimum)
   - Text is readable at 200% zoom
@@ -203,6 +221,7 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## 7. Error Handling Testing
 
 ### Network Errors
+
 - [ ] **Network Issues**: Test network error handling
   - Test with offline mode
   - Test with slow network connection
@@ -210,6 +229,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Test retry mechanisms
 
 ### Data Validation
+
 - [ ] **Invalid Data**: Test data handling
   - Test with corrupted local storage
   - Test with missing or invalid data
@@ -217,6 +237,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Check fallback mechanisms
 
 ### User Input Validation
+
 - [ ] **Input Validation**: Test form validation
   - Test form field validation
   - Test edge cases and boundary values
@@ -226,6 +247,7 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## 8. Performance Testing
 
 ### Load Times
+
 - [ ] **Performance Metrics**: Test loading performance
   - Initial page load under 3 seconds
   - Route changes under 1 second
@@ -233,6 +255,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Smooth animations and transitions
 
 ### Resource Usage
+
 - [ ] **Resource Monitoring**: Monitor resource usage
   - Check network tab for asset sizes
   - Verify no unnecessary assets loaded
@@ -240,6 +263,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Check for memory leaks
 
 ### Bundle Optimization
+
 - [ ] **Bundle Analysis**: Verify bundle optimization
   - Check for code splitting effectiveness
   - Verify unused code removal
@@ -249,6 +273,7 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## 9. Integration Testing
 
 ### Service Integration
+
 - [ ] **Service Consolidation**: Test service integration
   - QuizService and IHKContentService work together
   - No duplicate functionality
@@ -256,6 +281,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Proper error propagation
 
 ### Component Integration
+
 - [ ] **Component Compatibility**: Test component integration
   - All components work with consolidated services
   - No broken component dependencies
@@ -265,6 +291,7 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## 10. Regression Testing
 
 ### Previous Functionality
+
 - [ ] **Feature Preservation**: Verify existing features
   - All previous functionality still works
   - No features were accidentally removed
@@ -272,6 +299,7 @@ This document provides a comprehensive manual testing checklist for all applicat
   - Data migration was successful
 
 ### Bug Fixes
+
 - [ ] **Issue Resolution**: Verify bug fixes
   - Previously reported issues are resolved
   - No new bugs introduced
@@ -281,14 +309,18 @@ This document provides a comprehensive manual testing checklist for all applicat
 ## Testing Results Documentation
 
 ### Test Execution Log
+
 Document the following for each test:
+
 - **Test Name**: Brief description of what was tested
 - **Status**: Pass/Fail/Warning
 - **Details**: Specific observations or issues
 - **Timestamp**: When the test was performed
 
 ### Issue Tracking
+
 For any issues found:
+
 - **Issue Description**: Clear description of the problem
 - **Steps to Reproduce**: How to recreate the issue
 - **Expected Behavior**: What should happen
@@ -297,7 +329,9 @@ For any issues found:
 - **Browser/Environment**: Testing environment details
 
 ### Final Test Report
+
 After completing all tests:
+
 - **Total Tests Executed**: Number of test cases run
 - **Pass Rate**: Percentage of tests that passed
 - **Critical Issues**: Any blocking issues found
@@ -319,8 +353,9 @@ function quickAccessibilityCheck() {
   if (!document.querySelector('main')) issues.push('Missing main landmark');
   if (!document.querySelector('h1')) issues.push('Missing h1 heading');
   const imagesWithoutAlt = document.querySelectorAll('img:not([alt])');
-  if (imagesWithoutAlt.length > 0) issues.push(`${imagesWithoutAlt.length} images without alt text`);
-  
+  if (imagesWithoutAlt.length > 0)
+    issues.push(`${imagesWithoutAlt.length} images without alt text`);
+
   console.log('Accessibility issues:', issues.length ? issues : 'None found');
 }
 quickAccessibilityCheck();
@@ -330,7 +365,10 @@ async function testRoute(route) {
   window.location.hash = route;
   await new Promise(resolve => setTimeout(resolve, 500));
   const content = document.getElementById('main-content');
-  console.log(`Route ${route}:`, content && content.innerHTML.trim() ? 'OK' : 'FAIL');
+  console.log(
+    `Route ${route}:`,
+    content && content.innerHTML.trim() ? 'OK' : 'FAIL'
+  );
 }
 
 // Test all main routes

@@ -2,9 +2,10 @@
 
 ## Introduction
 
-This spec addresses critical content quality issues in the IHK (German Chamber of Commerce) learning application. The fue-04-security module and potentially other modules have severe UTF-8 encoding problems displaying garbled text (e.g., "FÃœ" instead of "FÜ", "MaÃŸnahmen" instead of "Maßnahmen"). 
+This spec addresses critical content quality issues in the IHK (German Chamber of Commerce) learning application. The fue-04-security module and potentially other modules have severe UTF-8 encoding problems displaying garbled text (e.g., "FÃœ" instead of "FÜ", "MaÃŸnahmen" instead of "Maßnahmen").
 
 **Important Context:**
+
 - **FÜ** = "Fachqualifikationen Ü" (Professional Qualifications) - official IHK exam category
 - **BP** = "Berufspraktische Qualifikationen" (Professional Practice Qualifications) - official IHK exam category
 
@@ -57,7 +58,7 @@ Additionally, the project has accumulated numerous unnecessary documentation fil
 #### Acceptance Criteria
 
 1. WHEN identifying files to remove THEN the system SHALL preserve essential files (README.md, LICENSE, deployment docs, error handling guides, accessibility docs)
-2. WHEN identifying files to remove THEN the system SHALL remove task summary files (TASK_*_SUMMARY.md) from the root and spec directories
+2. WHEN identifying files to remove THEN the system SHALL remove task summary files (TASK\_\*\_SUMMARY.md) from the root and spec directories
 3. WHEN identifying files to remove THEN the system SHALL remove temporary fix documentation (BUILD_FIXED.md, FINAL_FIX_COMPLETE.md, JSON_LOADING_FIXED.md, MODULE_LOADING_FIXED.md, LOADINGSPINNER_FIX.md, etc.)
 4. WHEN identifying files to remove THEN the system SHALL remove duplicate or outdated deployment documentation (DEPLOYMENT_COMPLETE.md, DEPLOYMENT_SUCCESS_2025.md, DEPLOYMENT_SUMMARY.md, GITHUB_PAGES_DEPLOYED.md, GITHUB_PUBLISHED.md)
 5. WHEN identifying files to remove THEN the system SHALL remove analysis and audit reports that are no longer needed (CODE_QUALITY_VERIFICATION.json, COMPLEXITY_ANALYSIS.json, DEPENDENCY_AUDIT.json, PERFORMANCE_METRICS.json, etc.)

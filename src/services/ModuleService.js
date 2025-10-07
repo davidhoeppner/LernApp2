@@ -7,7 +7,12 @@ import StorageService from './StorageService.js';
  * Now includes both regular and IHK modules with specialization filtering support
  */
 class ModuleService {
-  constructor(stateManager, storageService, ihkContentService, specializationService) {
+  constructor(
+    stateManager,
+    storageService,
+    ihkContentService,
+    specializationService
+  ) {
     this.stateManager = stateManager;
     this.storage = storageService || new StorageService();
     this.ihkContentService = ihkContentService;
@@ -26,21 +31,24 @@ class ModuleService {
       if (this.ihkContentService) {
         try {
           ihkModules = await this.ihkContentService.searchContent('', {});
-          
+
           // Add debugging to identify problematic modules
-          console.log('Raw IHK modules loaded:', ihkModules.length);
-          
+          console.warn('Raw IHK modules loaded:', ihkModules.length);
+
           ihkModules = ihkModules.map((module, index) => {
             // Check for undefined properties
             if (!module.title || !module.description) {
-              console.warn(`Module at index ${index} has undefined properties:`, {
-                id: module.id,
-                title: module.title,
-                description: module.description,
-                module: module
-              });
+              console.warn(
+                `Module at index ${index} has undefined properties:`,
+                {
+                  id: module.id,
+                  title: module.title,
+                  description: module.description,
+                  module: module,
+                }
+              );
             }
-            
+
             return {
               ...module,
               source: 'ihk',
@@ -48,17 +56,22 @@ class ModuleService {
               duration: module.estimatedTime || module.estimatedDuration || 30,
             };
           });
-          
+
           // Filter out any modules with missing essential properties
-          const validModules = ihkModules.filter(module => 
-            module && module.id && module.title && module.description
+          const validModules = ihkModules.filter(
+            module => module && module.id && module.title && module.description
           );
-          
+
           if (validModules.length !== ihkModules.length) {
-            console.warn(`Filtered out ${ihkModules.length - validModules.length} invalid modules`);
+            console.warn(
+              `Filtered out ${ihkModules.length - validModules.length} invalid modules`
+            );
           }
-          
-          console.log('Valid IHK modules after filtering:', validModules.length);
+
+          console.warn(
+            'Valid IHK modules after filtering:',
+            validModules.length
+          );
           return validModules;
         } catch (error) {
           console.error('Could not load IHK modules:', error);
@@ -241,23 +254,29 @@ class ModuleService {
 
       // If no specialization service available, return all modules
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning all modules');
+        console.warn(
+          'SpecializationService not available, returning all modules'
+        );
         return allModules;
       }
 
       // Filter modules by specialization
-      const filteredModules = this.specializationService.filterContentBySpecialization(
-        allModules,
-        specializationId,
-        {
-          minRelevance: options.minRelevance || 'low',
-          includeGeneral: options.includeGeneral !== false // default to true
-        }
-      );
+      const filteredModules =
+        this.specializationService.filterContentBySpecialization(
+          allModules,
+          specializationId,
+          {
+            minRelevance: options.minRelevance || 'low',
+            includeGeneral: options.includeGeneral !== false, // default to true
+          }
+        );
 
       return filteredModules;
     } catch (error) {
-      console.error(`Error getting modules by specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting modules by specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -278,12 +297,15 @@ class ModuleService {
 
       // If no specialization service available, return modules under 'all' category
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning uncategorized modules');
+        console.warn(
+          'SpecializationService not available, returning uncategorized modules'
+        );
         return { all: allModules };
       }
 
       // Get content categories for this specialization
-      const categories = this.specializationService.getContentCategories(specializationId);
+      const categories =
+        this.specializationService.getContentCategories(specializationId);
       const categorizedModules = {};
 
       // Initialize categories
@@ -297,11 +319,14 @@ class ModuleService {
       // Categorize modules
       allModules.forEach(module => {
         const categoryId = module.category || module.categoryId;
-        
+
         if (categoryId) {
           // Get relevance for this category and specialization
-          const relevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
-          
+          const relevance = this.specializationService.getCategoryRelevance(
+            categoryId,
+            specializationId
+          );
+
           // Add to appropriate category based on relevance
           if (relevance === 'high' || relevance === 'medium') {
             // Find the category this module belongs to
@@ -328,7 +353,10 @@ class ModuleService {
 
       return categorizedModules;
     } catch (error) {
-      console.error(`Error getting categorized modules for specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting categorized modules for specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -360,23 +388,29 @@ class ModuleService {
 
       // If no specialization service available, return category modules as-is
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning unfiltered category modules');
+        console.warn(
+          'SpecializationService not available, returning unfiltered category modules'
+        );
         return categoryModules;
       }
 
       // Further filter by specialization relevance
-      const filteredModules = this.specializationService.filterContentBySpecialization(
-        categoryModules,
-        specializationId,
-        {
-          minRelevance: 'low',
-          includeGeneral: true
-        }
-      );
+      const filteredModules =
+        this.specializationService.filterContentBySpecialization(
+          categoryModules,
+          specializationId,
+          {
+            minRelevance: 'low',
+            includeGeneral: true,
+          }
+        );
 
       return filteredModules;
     } catch (error) {
-      console.error(`Error getting modules by category ${categoryId} for specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting modules by category ${categoryId} for specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -405,18 +439,24 @@ class ModuleService {
   async getCurrentSpecializationModules(options = {}) {
     try {
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning all modules');
+        console.warn(
+          'SpecializationService not available, returning all modules'
+        );
         return await this.getModules();
       }
 
-      const currentSpecialization = this.specializationService.getCurrentSpecialization();
-      
+      const currentSpecialization =
+        this.specializationService.getCurrentSpecialization();
+
       if (!currentSpecialization) {
         // No specialization selected, return all modules
         return await this.getModules();
       }
 
-      return await this.getModulesBySpecialization(currentSpecialization, options);
+      return await this.getModulesBySpecialization(
+        currentSpecialization,
+        options
+      );
     } catch (error) {
       console.error('Error getting current specialization modules:', error);
       throw error;
@@ -441,24 +481,29 @@ class ModuleService {
           high: 0,
           medium: 0,
           low: 0,
-          none: 0
+          none: 0,
         },
         byCategory: {},
-        specialization: specializationId
+        specialization: specializationId,
       };
 
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning basic statistics');
+        console.warn(
+          'SpecializationService not available, returning basic statistics'
+        );
         return stats;
       }
 
       // Calculate statistics
       allModules.forEach(module => {
         const categoryId = module.category || module.categoryId;
-        
+
         if (categoryId) {
-          const relevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
-          
+          const relevance = this.specializationService.getCategoryRelevance(
+            categoryId,
+            specializationId
+          );
+
           // Count by relevance
           if (stats.byRelevance[relevance] !== undefined) {
             stats.byRelevance[relevance]++;
@@ -468,7 +513,7 @@ class ModuleService {
           if (!stats.byCategory[categoryId]) {
             stats.byCategory[categoryId] = {
               count: 0,
-              relevance: relevance
+              relevance: relevance,
             };
           }
           stats.byCategory[categoryId].count++;
@@ -480,7 +525,10 @@ class ModuleService {
 
       return stats;
     } catch (error) {
-      console.error(`Error getting module statistics for specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting module statistics for specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }

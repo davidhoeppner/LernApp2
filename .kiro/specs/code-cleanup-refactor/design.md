@@ -9,6 +9,7 @@ This design outlines a systematic approach to analyzing, refactoring, and cleani
 ### Analysis-First Approach
 
 **Three-Phase Strategy**:
+
 1. **Discovery**: Identify all unused code, duplicates, and integration opportunities
 2. **Integration**: Attempt to integrate valuable unused code before deletion
 3. **Cleanup**: Remove truly unused code and refactor duplicates
@@ -16,12 +17,14 @@ This design outlines a systematic approach to analyzing, refactoring, and cleani
 ### Code Analysis Tools
 
 **Static Analysis**:
+
 - AST (Abstract Syntax Tree) parsing for JavaScript files
 - Import/export analysis
 - Function call graph generation
 - Component usage tracking
 
 **Dynamic Analysis**:
+
 - Route usage tracking
 - Service method usage
 - Component rendering frequency
@@ -33,6 +36,7 @@ This design outlines a systematic approach to analyzing, refactoring, and cleani
 **Purpose**: Identify all potentially unused code
 
 **Implementation**:
+
 ```javascript
 class UnusedCodeAnalyzer {
   constructor() {
@@ -79,11 +83,13 @@ class UnusedCodeAnalyzer {
 **Purpose**: Find and document code duplication
 
 **Detection Strategies**:
+
 - **Exact Duplicates**: Identical code blocks
 - **Structural Duplicates**: Same logic, different names
 - **Functional Duplicates**: Different implementation, same purpose
 
 **Implementation**:
+
 ```javascript
 class DuplicateCodeDetector {
   findDuplicates(files) {
@@ -109,18 +115,21 @@ class DuplicateCodeDetector {
 **Purpose**: Identify unused code that could be integrated
 
 **Analysis Criteria**:
+
 - **Functionality Value**: Does it provide useful features?
 - **Code Quality**: Is it well-written and tested?
 - **Integration Effort**: How difficult to integrate?
 - **User Benefit**: Would users benefit from this feature?
 
 **Current Unused Components to Analyze**:
+
 - Old QuizView vs IHKQuizView (IHK is better, migrate to it)
 - Old QuizService vs IHKContentService (consolidate)
 - Any unused utility functions
 - Any unused UI components
 
 **Integration Strategies**:
+
 ```javascript
 {
   "component": "QuizView",
@@ -140,11 +149,13 @@ class DuplicateCodeDetector {
 **Current Service Overlap**:
 
 **QuizService vs IHKContentService**:
+
 - Both handle quiz data loading
 - IHKContentService is more comprehensive
 - QuizService has simpler interface
 
 **Consolidation Strategy**:
+
 ```javascript
 // Unified service approach
 class ContentService {
@@ -171,6 +182,7 @@ class ContentService {
 ```
 
 **Migration Path**:
+
 1. Create unified ContentService
 2. Update all components to use ContentService
 3. Deprecate old QuizService
@@ -179,6 +191,7 @@ class ContentService {
 ### 5. Route Cleanup
 
 **Route Analysis**:
+
 ```javascript
 // Current routes (from app.js)
 const routes = {
@@ -187,7 +200,7 @@ const routes = {
   '/modules/:id': ModuleDetailView,
   '/quizzes': QuizListView,
   '/quizzes/:id': QuizView,
-  '/progress': ProgressView
+  '/progress': ProgressView,
 };
 
 // Check for:
@@ -197,6 +210,7 @@ const routes = {
 ```
 
 **Cleanup Actions**:
+
 - Remove routes to deprecated components
 - Consolidate similar routes
 - Update route handlers to use new components
@@ -204,6 +218,7 @@ const routes = {
 ### 6. Import Cleanup
 
 **Automated Import Cleanup**:
+
 ```javascript
 class ImportCleaner {
   cleanFile(filePath) {
@@ -223,6 +238,7 @@ class ImportCleaner {
 ```
 
 **Import Organization**:
+
 ```javascript
 // External dependencies
 import React from 'react';
@@ -244,6 +260,7 @@ import accessibilityHelper from './utils/AccessibilityHelper.js';
 **Refactoring Patterns**:
 
 **Extract Function**:
+
 ```javascript
 // Before: Long function
 function processQuizData(quiz) {
@@ -260,16 +277,22 @@ function processQuizData(quiz) {
 ```
 
 **Extract Constant**:
+
 ```javascript
 // Before: Magic numbers
-if (score >= 70) { /* pass */ }
+if (score >= 70) {
+  /* pass */
+}
 
 // After: Named constant
 const PASSING_SCORE_PERCENTAGE = 70;
-if (score >= PASSING_SCORE_PERCENTAGE) { /* pass */ }
+if (score >= PASSING_SCORE_PERCENTAGE) {
+  /* pass */
+}
 ```
 
 **Simplify Conditionals**:
+
 ```javascript
 // Before: Complex nested conditions
 if (user) {
@@ -365,12 +388,14 @@ if (!user.hasPermission) return;
 ### Safe Deletion Strategy
 
 **Pre-Deletion Checks**:
+
 1. Verify no dynamic imports reference the code
 2. Check for string-based references (e.g., route names)
 3. Search for comments mentioning the code
 4. Verify no runtime reflection uses the code
 
 **Backup Strategy**:
+
 - Create git branch before cleanup
 - Document all deletions
 - Keep deleted code in archive for 30 days
@@ -378,6 +403,7 @@ if (!user.hasPermission) return;
 ### Integration Failure Handling
 
 **If Integration Fails**:
+
 1. Revert integration changes
 2. Document why integration failed
 3. Mark component for deletion
@@ -388,6 +414,7 @@ if (!user.hasPermission) return;
 ### Pre-Cleanup Testing
 
 **Baseline Tests**:
+
 1. Run all existing tests
 2. Document current functionality
 3. Create integration test suite
@@ -396,6 +423,7 @@ if (!user.hasPermission) return;
 ### Post-Cleanup Testing
 
 **Verification Tests**:
+
 1. All tests still pass
 2. No console errors
 3. All routes still work
@@ -405,6 +433,7 @@ if (!user.hasPermission) return;
 ### Integration Testing
 
 **For Each Integration**:
+
 1. Unit test the integrated component
 2. Integration test with existing features
 3. E2E test user workflows
@@ -413,6 +442,7 @@ if (!user.hasPermission) return;
 ## Implementation Plan
 
 ### Phase 1: Analysis (No Code Changes)
+
 1. Run unused code analyzer
 2. Run duplicate code detector
 3. Analyze integration opportunities
@@ -420,24 +450,28 @@ if (!user.hasPermission) return;
 5. Review findings with stakeholder
 
 ### Phase 2: Integration
+
 1. Prioritize integration opportunities
 2. Implement integrations one by one
 3. Test each integration thoroughly
 4. Document integration decisions
 
 ### Phase 3: Consolidation
+
 1. Consolidate duplicate code
 2. Merge similar services
 3. Refactor complex functions
 4. Organize imports
 
 ### Phase 4: Cleanup
+
 1. Remove truly unused code
 2. Delete deprecated files
 3. Clean up imports
 4. Update documentation
 
 ### Phase 5: Validation
+
 1. Run full test suite
 2. Manual testing
 3. Performance testing
@@ -448,20 +482,24 @@ if (!user.hasPermission) return;
 **Purpose**: Fix empty module issue in wheel functionality
 
 **Current Problem**:
+
 - Wheel sometimes displays empty or undefined modules
 - getFallbackModules() may return invalid data
 - No validation of module objects before rendering
 
 **Solution Design**:
+
 ```javascript
 class WheelModuleValidator {
   validateModule(module) {
-    return module && 
-           module.id && 
-           module.title && 
-           module.category &&
-           typeof module.id === 'string' &&
-           typeof module.title === 'string';
+    return (
+      module &&
+      module.id &&
+      module.title &&
+      module.category &&
+      typeof module.id === 'string' &&
+      typeof module.title === 'string'
+    );
   }
 
   filterValidModules(modules) {
@@ -470,8 +508,12 @@ class WheelModuleValidator {
 
   getFallbackModules() {
     const fallbacks = [
-      { id: 'intro-basics', title: 'Introduction to Basics', category: 'fundamentals' },
-      { id: 'getting-started', title: 'Getting Started', category: 'basics' }
+      {
+        id: 'intro-basics',
+        title: 'Introduction to Basics',
+        category: 'fundamentals',
+      },
+      { id: 'getting-started', title: 'Getting Started', category: 'basics' },
     ];
     return this.filterValidModules(fallbacks);
   }
@@ -479,17 +521,18 @@ class WheelModuleValidator {
 ```
 
 **WheelView.js Updates**:
+
 ```javascript
 // Add validation before rendering
 renderWheel() {
   const allModules = this.moduleService.getAllModules();
   const validModules = this.validator.filterValidModules(allModules);
-  
+
   if (validModules.length === 0) {
     this.showNoModulesMessage();
     return;
   }
-  
+
   this.displayWheel(validModules);
 }
 
@@ -508,6 +551,7 @@ showNoModulesMessage() {
 **Purpose**: Improve quiz completion user experience
 
 **Current State**:
+
 - Basic score display
 - Limited visual feedback
 - Unclear next steps
@@ -515,6 +559,7 @@ showNoModulesMessage() {
 **Enhanced Design**:
 
 **Score Display Component**:
+
 ```javascript
 class QuizResultsDisplay {
   constructor(score, totalQuestions) {
@@ -524,10 +569,14 @@ class QuizResultsDisplay {
   }
 
   getPerformanceBadge() {
-    if (this.percentage >= 90) return { icon: '🏆', text: 'Excellent', class: 'excellent' };
-    if (this.percentage >= 80) return { icon: '🥇', text: 'Very Good', class: 'very-good' };
-    if (this.percentage >= 70) return { icon: '🥈', text: 'Good', class: 'good' };
-    if (this.percentage >= 60) return { icon: '🥉', text: 'Pass', class: 'pass' };
+    if (this.percentage >= 90)
+      return { icon: '🏆', text: 'Excellent', class: 'excellent' };
+    if (this.percentage >= 80)
+      return { icon: '🥇', text: 'Very Good', class: 'very-good' };
+    if (this.percentage >= 70)
+      return { icon: '🥈', text: 'Good', class: 'good' };
+    if (this.percentage >= 60)
+      return { icon: '🥉', text: 'Pass', class: 'pass' };
     return { icon: '📚', text: 'Needs Review', class: 'needs-review' };
   }
 
@@ -555,6 +604,7 @@ class QuizResultsDisplay {
 ```
 
 **Answer Review Component**:
+
 ```javascript
 class AnswerReviewSection {
   constructor(questions, userAnswers) {
@@ -575,7 +625,7 @@ class AnswerReviewSection {
     const userAnswer = this.userAnswers[index];
     const isCorrect = userAnswer === question.correctAnswer;
     const statusClass = isCorrect ? 'correct' : 'incorrect';
-    
+
     return `
       <div class="question-review ${statusClass}">
         <div class="question-header">
@@ -588,18 +638,26 @@ class AnswerReviewSection {
             <label>Your Answer:</label>
             <span class="${statusClass}">${userAnswer}</span>
           </div>
-          ${!isCorrect ? `
+          ${
+            !isCorrect
+              ? `
             <div class="correct-answer">
               <label>Correct Answer:</label>
               <span class="correct">${question.correctAnswer}</span>
             </div>
-          ` : ''}
+          `
+              : ''
+          }
         </div>
-        ${question.explanation ? `
+        ${
+          question.explanation
+            ? `
           <div class="explanation">
             <strong>Explanation:</strong> ${question.explanation}
           </div>
-        ` : ''}
+        `
+            : ''
+        }
       </div>
     `;
   }
@@ -607,6 +665,7 @@ class AnswerReviewSection {
 ```
 
 **Action Buttons Component**:
+
 ```javascript
 class QuizActionButtons {
   constructor(quizId, score, total) {
@@ -622,19 +681,27 @@ class QuizActionButtons {
         <button class="btn btn-primary" onclick="retakeQuiz('${this.quizId}')">
           🔄 Retake Quiz
         </button>
-        ${this.score < this.total ? `
+        ${
+          this.score < this.total
+            ? `
           <button class="btn btn-secondary" onclick="reviewIncorrect('${this.quizId}')">
             📖 Review Incorrect Answers
           </button>
-        ` : ''}
+        `
+            : ''
+        }
         <button class="btn btn-success" onclick="continuelearning()">
           ➡️ Continue Learning
         </button>
-        ${this.percentage < 70 ? `
+        ${
+          this.percentage < 70
+            ? `
           <button class="btn btn-info" onclick="findRelatedContent('${this.quizId}')">
             🔍 Find Related Content
           </button>
-        ` : ''}
+        `
+            : ''
+        }
       </div>
     `;
   }
@@ -642,6 +709,7 @@ class QuizActionButtons {
 ```
 
 **CSS Enhancements**:
+
 ```css
 .quiz-results {
   text-align: center;
@@ -663,11 +731,26 @@ class QuizActionButtons {
   border: 4px solid;
 }
 
-.score-circle.excellent { border-color: #28a745; background: #d4edda; }
-.score-circle.very-good { border-color: #17a2b8; background: #d1ecf1; }
-.score-circle.good { border-color: #ffc107; background: #fff3cd; }
-.score-circle.pass { border-color: #fd7e14; background: #ffeaa7; }
-.score-circle.needs-review { border-color: #dc3545; background: #f8d7da; }
+.score-circle.excellent {
+  border-color: #28a745;
+  background: #d4edda;
+}
+.score-circle.very-good {
+  border-color: #17a2b8;
+  background: #d1ecf1;
+}
+.score-circle.good {
+  border-color: #ffc107;
+  background: #fff3cd;
+}
+.score-circle.pass {
+  border-color: #fd7e14;
+  background: #ffeaa7;
+}
+.score-circle.needs-review {
+  border-color: #dc3545;
+  background: #f8d7da;
+}
 
 .progress-bar {
   width: 100%;
@@ -691,8 +774,12 @@ class QuizActionButtons {
   margin: 1rem 0;
 }
 
-.question-review.correct { border-left: 4px solid #28a745; }
-.question-review.incorrect { border-left: 4px solid #dc3545; }
+.question-review.correct {
+  border-left: 4px solid #28a745;
+}
+.question-review.incorrect {
+  border-left: 4px solid #dc3545;
+}
 
 .quiz-actions {
   display: flex;
@@ -711,15 +798,28 @@ class QuizActionButtons {
   transition: all 0.2s;
 }
 
-.btn-primary { background: #007bff; color: white; }
-.btn-secondary { background: #6c757d; color: white; }
-.btn-success { background: #28a745; color: white; }
-.btn-info { background: #17a2b8; color: white; }
+.btn-primary {
+  background: #007bff;
+  color: white;
+}
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+.btn-success {
+  background: #28a745;
+  color: white;
+}
+.btn-info {
+  background: #17a2b8;
+  color: white;
+}
 ```
 
 ## Success Metrics
 
 **Quantitative**:
+
 - Reduce total lines of code by 10-15%
 - Reduce bundle size by 10-15%
 - Eliminate all unused imports
@@ -729,6 +829,7 @@ class QuizActionButtons {
 - 100% of quiz results show enhanced visual feedback
 
 **Qualitative**:
+
 - Cleaner, more maintainable codebase
 - Consistent coding patterns
 - Better organized imports
@@ -742,6 +843,7 @@ class QuizActionButtons {
 ### Cleanup Summary Document
 
 **Contents**:
+
 1. Executive summary
 2. Analysis findings
 3. Integration decisions

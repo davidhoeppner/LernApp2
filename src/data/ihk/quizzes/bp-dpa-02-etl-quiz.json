@@ -144,12 +144,7 @@
       "id": "q9",
       "type": "single-choice",
       "question": "Welcher SCD-Typ behält die komplette Historie bei?",
-      "options": [
-        "SCD Type 1",
-        "SCD Type 2",
-        "SCD Type 3",
-        "SCD Type 4"
-      ],
+      "options": ["SCD Type 1", "SCD Type 2", "SCD Type 3", "SCD Type 4"],
       "correctAnswer": "SCD Type 2",
       "explanation": "SCD Type 2 behält die komplette Historie bei, indem für jede Änderung ein neuer Datensatz mit Gültigkeitszeiträumen erstellt wird. Dies ermöglicht historische Analysen.",
       "points": 1,
@@ -208,12 +203,7 @@
       "id": "q13",
       "type": "multiple-choice",
       "question": "Welche Datenqualitätsdimensionen gibt es?",
-      "options": [
-        "Vollständigkeit",
-        "Genauigkeit",
-        "Konsistenz",
-        "Aktualität"
-      ],
+      "options": ["Vollständigkeit", "Genauigkeit", "Konsistenz", "Aktualität"],
       "correctAnswer": [
         "Vollständigkeit",
         "Genauigkeit",

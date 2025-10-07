@@ -1,5 +1,5 @@
-import threeTierCategoriesData from '../data/ihk/metadata/three-tier-categories.json' with { type: 'json' };
-import categoryMappingRulesData from '../data/ihk/metadata/category-mapping-rules.json' with { type: 'json' };
+import threeTierCategoriesData from '../data/ihk/metadata/three-tier-categories.json';
+import categoryMappingRulesData from '../data/ihk/metadata/category-mapping-rules.json';
 
 /**
  * CategoryMappingService - Maps existing content categories to three-tier system
@@ -38,24 +38,27 @@ class CategoryMappingService {
       {
         id: 'daten-prozessanalyse',
         name: 'Daten und Prozessanalyse',
-        description: 'Inhalte mit hoher Relevanz für die Fachrichtung Daten- und Prozessanalyse',
+        description:
+          'Inhalte mit hoher Relevanz für die Fachrichtung Daten- und Prozessanalyse',
         color: '#3b82f6',
-        icon: '📊'
+        icon: '📊',
       },
       {
         id: 'anwendungsentwicklung',
         name: 'Anwendungsentwicklung',
-        description: 'Inhalte mit hoher Relevanz für die Fachrichtung Anwendungsentwicklung',
+        description:
+          'Inhalte mit hoher Relevanz für die Fachrichtung Anwendungsentwicklung',
         color: '#10b981',
-        icon: '💻'
+        icon: '💻',
       },
       {
         id: 'allgemein',
         name: 'Allgemein',
-        description: 'Fachrichtungsübergreifende Inhalte und Grundlagen für beide Spezialisierungen',
+        description:
+          'Fachrichtungsübergreifende Inhalte und Grundlagen für beide Spezialisierungen',
         color: '#6b7280',
-        icon: '📚'
-      }
+        icon: '📚',
+      },
     ];
   }
 
@@ -67,17 +70,16 @@ class CategoryMappingService {
   _loadMappingRules() {
     try {
       const rules = categoryMappingRulesData.mappingRules || [];
-      
+
       // Convert string patterns to RegExp objects and filter active rules
       return rules
         .filter(rule => rule.active !== false)
         .map(rule => ({
           ...rule,
           sourcePattern: new RegExp(rule.sourcePattern, 'i'),
-          condition: rule.conditions // Note: 'conditions' in JSON, 'condition' in code
+          condition: rule.conditions, // Note: 'conditions' in JSON, 'condition' in code
         }))
         .sort((a, b) => b.priority - a.priority); // Sort by priority descending
-        
     } catch (error) {
       console.error('Error loading mapping rules:', error);
       return this._getFallbackMappingRules();
@@ -97,7 +99,7 @@ class CategoryMappingService {
         sourcePattern: /^(BP-DPA-|bp-dpa-)/i,
         targetCategory: 'daten-prozessanalyse',
         priority: 100,
-        description: 'Fallback: DPA-specific content with BP-DPA prefix'
+        description: 'Fallback: DPA-specific content with BP-DPA prefix',
       },
       // Explicit AE content (highest priority)
       {
@@ -105,7 +107,7 @@ class CategoryMappingService {
         sourcePattern: /^(BP-AE-|bp-ae-)/i,
         targetCategory: 'anwendungsentwicklung',
         priority: 100,
-        description: 'Fallback: AE-specific content with BP-AE prefix'
+        description: 'Fallback: AE-specific content with BP-AE prefix',
       },
       // General content (FÜ prefix)
       {
@@ -113,7 +115,7 @@ class CategoryMappingService {
         sourcePattern: /^(FÜ-|FUE-|fue-)/i,
         targetCategory: 'allgemein',
         priority: 90,
-        description: 'Fallback: General content with FÜ/FUE prefix'
+        description: 'Fallback: General content with FÜ/FUE prefix',
       },
       // Default fallback (lowest priority)
       {
@@ -121,8 +123,8 @@ class CategoryMappingService {
         sourcePattern: /.*/,
         targetCategory: 'allgemein',
         priority: 1,
-        description: 'Fallback: Default for unmapped content'
-      }
+        description: 'Fallback: Default for unmapped content',
+      },
     ];
   }
 
@@ -137,28 +139,43 @@ class CategoryMappingService {
         throw new Error('Invalid content item provided');
       }
 
-      const sourceCategory = contentItem.category || contentItem.categoryId || '';
-      
+      const sourceCategory =
+        contentItem.category || contentItem.categoryId || '';
+
       // Find the highest priority matching rule
       const matchingRule = this._findMatchingRule(sourceCategory, contentItem);
-      
+
       if (!matchingRule) {
-        console.warn(`No mapping rule found for content item: ${contentItem.id || 'unknown'}`);
-        return this._createMappingResult('allgemein', null, 'No matching rule found');
+        console.warn(
+          `No mapping rule found for content item: ${contentItem.id || 'unknown'}`
+        );
+        return this._createMappingResult(
+          'allgemein',
+          null,
+          'No matching rule found'
+        );
       }
 
-      const targetCategory = this.threeTierCategories.find(cat => cat.id === matchingRule.targetCategory);
-      
+      const targetCategory = this.threeTierCategories.find(
+        cat => cat.id === matchingRule.targetCategory
+      );
+
       return this._createMappingResult(
         matchingRule.targetCategory,
         matchingRule,
         'Successfully mapped using rule',
         targetCategory
       );
-
     } catch (error) {
-      console.error('Error mapping content item to three-tier category:', error);
-      return this._createMappingResult('allgemein', null, `Error: ${error.message}`);
+      console.error(
+        'Error mapping content item to three-tier category:',
+        error
+      );
+      return this._createMappingResult(
+        'allgemein',
+        null,
+        `Error: ${error.message}`
+      );
     }
   }
 
@@ -209,10 +226,15 @@ class CategoryMappingService {
   _evaluateRuleCondition(condition, contentItem) {
     if (condition.specializationRelevance && this.specializationService) {
       const categoryId = contentItem.category || contentItem.categoryId;
-      
-      for (const [specializationId, expectedRelevance] of Object.entries(condition.specializationRelevance)) {
-        const actualRelevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
-        
+
+      for (const [specializationId, expectedRelevance] of Object.entries(
+        condition.specializationRelevance
+      )) {
+        const actualRelevance = this.specializationService.getCategoryRelevance(
+          categoryId,
+          specializationId
+        );
+
         if (Array.isArray(expectedRelevance)) {
           // Multiple acceptable relevance levels
           if (!expectedRelevance.includes(actualRelevance)) {
@@ -237,8 +259,10 @@ class CategoryMappingService {
 
     if (condition.tags && Array.isArray(condition.tags)) {
       const itemTags = contentItem.tags || [];
-      const hasRequiredTag = condition.tags.some(tag => 
-        itemTags.some(itemTag => itemTag.toLowerCase().includes(tag.toLowerCase()))
+      const hasRequiredTag = condition.tags.some(tag =>
+        itemTags.some(itemTag =>
+          itemTag.toLowerCase().includes(tag.toLowerCase())
+        )
       );
       if (!hasRequiredTag) {
         return false;
@@ -274,18 +298,22 @@ class CategoryMappingService {
    * @returns {Object} Mapping result object
    */
   _createMappingResult(categoryId, rule, reason, categoryInfo = null) {
-    const category = categoryInfo || this.threeTierCategories.find(cat => cat.id === categoryId);
-    
+    const category =
+      categoryInfo ||
+      this.threeTierCategories.find(cat => cat.id === categoryId);
+
     return {
       threeTierCategory: categoryId,
       categoryInfo: category,
-      appliedRule: rule ? {
-        priority: rule.priority,
-        description: rule.description,
-        pattern: rule.sourcePattern.toString()
-      } : null,
+      appliedRule: rule
+        ? {
+            priority: rule.priority,
+            description: rule.description,
+            pattern: rule.sourcePattern.toString(),
+          }
+        : null,
       reason: reason,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
   }
 
@@ -304,16 +332,16 @@ class CategoryMappingService {
     const relevanceMap = {
       'daten-prozessanalyse': {
         'daten-prozessanalyse': 'high',
-        'anwendungsentwicklung': 'low'
+        anwendungsentwicklung: 'low',
       },
-      'anwendungsentwicklung': {
-        'anwendungsentwicklung': 'high',
-        'daten-prozessanalyse': 'low'
+      anwendungsentwicklung: {
+        anwendungsentwicklung: 'high',
+        'daten-prozessanalyse': 'low',
       },
-      'allgemein': {
-        'anwendungsentwicklung': 'high',
-        'daten-prozessanalyse': 'high'
-      }
+      allgemein: {
+        anwendungsentwicklung: 'high',
+        'daten-prozessanalyse': 'high',
+      },
     };
 
     return relevanceMap[categoryId]?.[specializationId] || 'none';
@@ -351,7 +379,7 @@ class CategoryMappingService {
         invalidItems: 0,
         warnings: [],
         errors: [],
-        details: []
+        details: [],
       };
 
       for (const item of items) {
@@ -378,10 +406,10 @@ class CategoryMappingService {
       }
 
       // Add summary statistics
-      validationResult.summary = this._generateValidationSummary(validationResult);
+      validationResult.summary =
+        this._generateValidationSummary(validationResult);
 
       return validationResult;
-
     } catch (error) {
       console.error('Error validating category mapping:', error);
       return {
@@ -391,7 +419,7 @@ class CategoryMappingService {
         invalidItems: 0,
         warnings: [],
         errors: [`Validation failed: ${error.message}`],
-        details: []
+        details: [],
       };
     }
   }
@@ -411,7 +439,7 @@ class CategoryMappingService {
         errors: ['Invalid item structure: item must be an object'],
         warnings: [],
         mappingResult: null,
-        originalCategory: null
+        originalCategory: null,
       };
     }
 
@@ -421,7 +449,7 @@ class CategoryMappingService {
       errors: [],
       warnings: [],
       mappingResult: null,
-      originalCategory: item.category || item.categoryId || null
+      originalCategory: item.category || item.categoryId || null,
     };
 
     // Validate item has required fields
@@ -432,14 +460,18 @@ class CategoryMappingService {
     // Perform category mapping
     try {
       result.mappingResult = this.mapToThreeTierCategory(item);
-      
+
       // Validate mapping result
       if (!result.mappingResult.threeTierCategory) {
         result.isValid = false;
         result.errors.push('Mapping failed: no target category assigned');
-      } else if (!this._isValidThreeTierCategory(result.mappingResult.threeTierCategory)) {
+      } else if (
+        !this._isValidThreeTierCategory(result.mappingResult.threeTierCategory)
+      ) {
         result.isValid = false;
-        result.errors.push(`Invalid target category: ${result.mappingResult.threeTierCategory}`);
+        result.errors.push(
+          `Invalid target category: ${result.mappingResult.threeTierCategory}`
+        );
       }
 
       // Check for mapping conflicts
@@ -449,11 +481,13 @@ class CategoryMappingService {
       }
 
       // Validate specialization relevance consistency
-      const relevanceIssues = this._validateRelevanceConsistency(item, result.mappingResult);
+      const relevanceIssues = this._validateRelevanceConsistency(
+        item,
+        result.mappingResult
+      );
       if (relevanceIssues.length > 0) {
         result.warnings.push(...relevanceIssues);
       }
-
     } catch (mappingError) {
       result.isValid = false;
       result.errors.push(`Mapping error: ${mappingError.message}`);
@@ -469,7 +503,11 @@ class CategoryMappingService {
    * @returns {boolean} True if valid
    */
   _isValidThreeTierCategory(categoryId) {
-    const validCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+    const validCategories = [
+      'daten-prozessanalyse',
+      'anwendungsentwicklung',
+      'allgemein',
+    ];
     return validCategories.includes(categoryId);
   }
 
@@ -486,20 +524,39 @@ class CategoryMappingService {
     const targetCategory = mappingResult.threeTierCategory;
 
     // Check for obvious mismatches
-    if (originalCategory.toLowerCase().includes('dpa') && targetCategory !== 'daten-prozessanalyse') {
-      conflicts.push(`Potential conflict: DPA content mapped to ${targetCategory}`);
+    if (
+      originalCategory.toLowerCase().includes('dpa') &&
+      targetCategory !== 'daten-prozessanalyse'
+    ) {
+      conflicts.push(
+        `Potential conflict: DPA content mapped to ${targetCategory}`
+      );
     }
 
-    if (originalCategory.toLowerCase().includes('ae') && targetCategory !== 'anwendungsentwicklung') {
-      conflicts.push(`Potential conflict: AE content mapped to ${targetCategory}`);
+    if (
+      originalCategory.toLowerCase().includes('ae') &&
+      targetCategory !== 'anwendungsentwicklung'
+    ) {
+      conflicts.push(
+        `Potential conflict: AE content mapped to ${targetCategory}`
+      );
     }
 
-    if (originalCategory.toLowerCase().includes('fue') && targetCategory !== 'allgemein') {
-      conflicts.push(`Potential conflict: General content mapped to ${targetCategory}`);
+    if (
+      originalCategory.toLowerCase().includes('fue') &&
+      targetCategory !== 'allgemein'
+    ) {
+      conflicts.push(
+        `Potential conflict: General content mapped to ${targetCategory}`
+      );
     }
 
     // Check for low-priority rule usage on important content
-    if (mappingResult.appliedRule && mappingResult.appliedRule.priority < 50 && item.important) {
+    if (
+      mappingResult.appliedRule &&
+      mappingResult.appliedRule.priority < 50 &&
+      item.important
+    ) {
       conflicts.push('Important content mapped using low-priority rule');
     }
 
@@ -515,7 +572,7 @@ class CategoryMappingService {
    */
   _validateRelevanceConsistency(item, mappingResult) {
     const warnings = [];
-    
+
     if (!this.specializationService) {
       return warnings;
     }
@@ -525,20 +582,40 @@ class CategoryMappingService {
 
     if (originalCategory) {
       // Check relevance for both specializations
-      const aeRelevance = this.specializationService.getCategoryRelevance(originalCategory, 'anwendungsentwicklung');
-      const dpaRelevance = this.specializationService.getCategoryRelevance(originalCategory, 'daten-prozessanalyse');
+      const aeRelevance = this.specializationService.getCategoryRelevance(
+        originalCategory,
+        'anwendungsentwicklung'
+      );
+      const dpaRelevance = this.specializationService.getCategoryRelevance(
+        originalCategory,
+        'daten-prozessanalyse'
+      );
 
       // Validate mapping consistency with relevance
-      if (targetCategory === 'anwendungsentwicklung' && aeRelevance === 'none') {
+      if (
+        targetCategory === 'anwendungsentwicklung' &&
+        aeRelevance === 'none'
+      ) {
         warnings.push('Content mapped to AE category but has no AE relevance');
       }
 
-      if (targetCategory === 'daten-prozessanalyse' && dpaRelevance === 'none') {
-        warnings.push('Content mapped to DPA category but has no DPA relevance');
+      if (
+        targetCategory === 'daten-prozessanalyse' &&
+        dpaRelevance === 'none'
+      ) {
+        warnings.push(
+          'Content mapped to DPA category but has no DPA relevance'
+        );
       }
 
-      if (targetCategory === 'allgemein' && aeRelevance === 'none' && dpaRelevance === 'none') {
-        warnings.push('Content mapped to general category but has no relevance for either specialization');
+      if (
+        targetCategory === 'allgemein' &&
+        aeRelevance === 'none' &&
+        dpaRelevance === 'none'
+      ) {
+        warnings.push(
+          'Content mapped to general category but has no relevance for either specialization'
+        );
       }
     }
 
@@ -559,10 +636,12 @@ class CategoryMappingService {
     validationResult.details.forEach(detail => {
       if (detail.mappingResult && detail.mappingResult.threeTierCategory) {
         const category = detail.mappingResult.threeTierCategory;
-        categoryDistribution[category] = (categoryDistribution[category] || 0) + 1;
+        categoryDistribution[category] =
+          (categoryDistribution[category] || 0) + 1;
 
         if (detail.mappingResult.appliedRule) {
-          const ruleId = detail.mappingResult.appliedRule.description || 'unknown';
+          const ruleId =
+            detail.mappingResult.appliedRule.description || 'unknown';
           ruleUsage[ruleId] = (ruleUsage[ruleId] || 0) + 1;
         }
       }
@@ -576,9 +655,13 @@ class CategoryMappingService {
       categoryDistribution,
       ruleUsage,
       conflictCount,
-      successRate: validationResult.totalItems > 0 
-        ? (validationResult.validItems / validationResult.totalItems * 100).toFixed(2) + '%'
-        : '0%'
+      successRate:
+        validationResult.totalItems > 0
+          ? (
+              (validationResult.validItems / validationResult.totalItems) *
+              100
+            ).toFixed(2) + '%'
+          : '0%',
     };
   }
 
@@ -595,7 +678,7 @@ class CategoryMappingService {
         invalidRules: 0,
         errors: [],
         warnings: [],
-        details: []
+        details: [],
       };
 
       const priorities = new Set();
@@ -621,14 +704,24 @@ class CategoryMappingService {
 
       // Check for priority conflicts
       if (priorities.size !== this.mappingRules.length) {
-        result.warnings.push('Some rules have duplicate priorities - this may cause non-deterministic behavior');
+        result.warnings.push(
+          'Some rules have duplicate priorities - this may cause non-deterministic behavior'
+        );
       }
 
       // Check category coverage
-      const expectedCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
-      const missingCategories = expectedCategories.filter(cat => !targetCategories.has(cat));
+      const expectedCategories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
+      const missingCategories = expectedCategories.filter(
+        cat => !targetCategories.has(cat)
+      );
       if (missingCategories.length > 0) {
-        result.warnings.push(`No rules target these categories: ${missingCategories.join(', ')}`);
+        result.warnings.push(
+          `No rules target these categories: ${missingCategories.join(', ')}`
+        );
       }
 
       // Set overall status
@@ -639,7 +732,6 @@ class CategoryMappingService {
       }
 
       return result;
-
     } catch (error) {
       console.error('Error validating mapping rules:', error);
       return {
@@ -649,7 +741,7 @@ class CategoryMappingService {
         invalidRules: 0,
         errors: [`Rule validation failed: ${error.message}`],
         warnings: [],
-        details: []
+        details: [],
       };
     }
   }
@@ -665,7 +757,7 @@ class CategoryMappingService {
       ruleId: rule.id || 'unknown',
       isValid: true,
       errors: [],
-      warnings: []
+      warnings: [],
     };
 
     // Required fields validation
@@ -685,14 +777,22 @@ class CategoryMappingService {
     }
 
     // Validate target category
-    if (rule.targetCategory && !this._isValidThreeTierCategory(rule.targetCategory)) {
+    if (
+      rule.targetCategory &&
+      !this._isValidThreeTierCategory(rule.targetCategory)
+    ) {
       result.isValid = false;
       result.errors.push(`Invalid target category: ${rule.targetCategory}`);
     }
 
     // Validate priority range
-    if (typeof rule.priority === 'number' && (rule.priority < 1 || rule.priority > 100)) {
-      result.warnings.push(`Priority ${rule.priority} outside recommended range (1-100)`);
+    if (
+      typeof rule.priority === 'number' &&
+      (rule.priority < 1 || rule.priority > 100)
+    ) {
+      result.warnings.push(
+        `Priority ${rule.priority} outside recommended range (1-100)`
+      );
     }
 
     // Validate regex pattern
@@ -724,7 +824,7 @@ class CategoryMappingService {
     return {
       ...this.configuration,
       validationRules: categoryMappingRulesData.validationRules || [],
-      threeTierCategories: this.threeTierCategories.map(cat => cat.id)
+      threeTierCategories: this.threeTierCategories.map(cat => cat.id),
     };
   }
 }

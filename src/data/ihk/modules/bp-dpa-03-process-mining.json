@@ -1,0 +1,73 @@
+{
+  "id": "bp-dpa-03-process-mining",
+  "title": "Process Mining: Discovery, Conformance & Enhancement",
+  "description": "Grundlagen und Anwendung von Process Mining zur datengetriebenen Analyse, Übereinstimmungsprüfung und Optimierung von Geschäftsprozessen",
+  "category": "BP-DPA-03",
+  "subcategory": "Geschäftsprozesse analysieren und optimieren",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 65,
+  "prerequisites": ["bp-dpa-03-bpmn-fundamentals"],
+  "tags": [
+    "process-mining",
+    "event-log",
+    "discovery",
+    "conformance",
+    "enhancement",
+    "prozessanalyse",
+    "kpi",
+    "BPMN"
+  ],
+  "content": "# Process Mining: Discovery, Conformance & Enhancement\n\n## Einführung\nProcess Mining verbindet Geschäftsprozessmodellierung (z.B. BPMN) mit datenbasierter Analyse realer Ausführungen. Aus Event Logs (Ereignisprotokollen) werden Prozesse automatisch rekonstruiert (Discovery), mit Soll-Modellen verglichen (Conformance) und gezielt verbessert (Enhancement). Es schließt Lücken zwischen modelliertem und gelebtem Prozess und liefert belastbare Kennzahlen (KPIs) wie Durchlaufzeit, Variantenvielfalt und Engpässe.\n\n## Event Logs & Datenqualität\nEin Event Log besteht typischerweise aus:\n- Case ID (Prozessinstanz)\n- Activity (Schritt)\n- Timestamp (Zeitpunkt)\n- Optional: Resource, Cost, Status\n\nTypische Qualitätsprobleme: fehlende Timestamps, doppelte Events, falsche Reihenfolge, uneinheitliche Aktivitätsbezeichnungen.\n\n| Problem | Risiko | Gegenmaßnahme |\n|---------|--------|---------------|\n| Fehlende Timestamps | Unvollständige Zeit-KPIs | Datenbereinigung / Imputation dokumentieren |\n| Inkonsistente Labels | Falsche Varianten | Normalisierung, Mapping-Tabelle |\n| Doppelte Events | Verzerrte Häufigkeiten | Duplikaterkennung (Case+Activity+Timestamp) |\n| Zeitzonen-Differenzen | Negative Durchlaufzeiten | Normalisierung auf UTC |\n\nHäufige Fehler: (1) Aktivitäten granularity zu fein; (2) Vermischung technischer und fachlicher Events; (3) Ignorieren von Rework-Schleifen.\n\n## Discovery (Prozessentdeckung)\nZiel: Automatische Ableitung eines Prozessmodells aus Logdaten.\nWichtige Algorithmen (konzeptionell):\n- Alpha-Miner (historisch, sensitiv für Rauschen)\n- Heuristics Miner (Häufigkeits- / Abhängigkeitsbasierend)\n- Inductive Miner (balanciert Präzision & Generalisierung)\n\nBewertungskriterien: Fitness (passt das Modell zu Log?), Präzision (vermeidet es nicht beobachtete Pfade?), Generalisierung, Einfachheit.\n\n## Conformance Checking\nVergleich tatsächlicher Ausführung mit Soll-Modell (z.B. BPMN). Kennzahlen:\n- Fitness-Abweichungen (fehlende / zusätzliche Aktivitäten)\n- Nicht zugelassene Pfade (Regelverletzungen)\n- Zeitabweichungen (SLA-Verstöße)\n\nNutzen: Compliance, Risikoreduktion, Identifikation von Workarounds.\n\n## Enhancement (Optimierung)\nAnreicherung des Modells um Performance-Information:\n- Aktivitäts-Durchlaufzeiten (Median vs. Ausreißer)\n- Engpässe (Wartende Queues vor Ressourcen)\n- Variantenanalyse (Pareto: wenige Varianten decken Großteil ab)\n\nKombination mit kontinuierlicher Verbesserung (PDCA): regelmäßige Re-Discovery zur Wirksamkeitsprüfung von Maßnahmen.\n\n## KPI-Analyse & Varianten\nWichtige KPIs: Durchlaufzeit (Start→Ende), Aktivitätsdauer, Anzahl Aktivitäten pro Case, Anzahl Varianten, Rework-Quote.\n\n| KPI | Aussage | Typischer Optimierungshebel |\n|-----|--------|------------------------------|\n| Durchlaufzeit | Gesamtprozessgeschwindigkeit | Engpässe entlasten, Parallelisierung |\n| Aktivitätsdauer | Effizienz einzelner Schritte | Schulung, Automatisierung |\n| Variantenanzahl | Prozessstabilität | Standardisierung / Regelklarheit |\n| Rework-Quote | Qualitäts-/Datenprobleme | Root-Cause Analyse, Fehlerprävention |\n\n## Prüfungsrelevante Aspekte\n- Bestandteile eines Event Logs (Case, Activity, Timestamp)\n- Unterschied Discovery vs. Conformance vs. Enhancement\n- Rolle von KPIs im Process Mining\n- Typische Datenqualitätsprobleme und Gegenmaßnahmen\n- Nutzen von Varianten- und Engpassanalyse für Optimierung\n- Verbindung BPMN-Modell ↔ Logdaten\n",
+  "codeExamples": [
+    {
+      "language": "python",
+      "title": "Durchlaufzeitberechnung mit pandas",
+      "code": "import pandas as pd\n# Event Log Beispiel\nlog = pd.DataFrame([\n  {'case':'C1','activity':'Start','ts':'2025-10-01T08:00:00'},\n  {'case':'C1','activity':'Prüfung','ts':'2025-10-01T09:15:00'},\n  {'case':'C1','activity':'Genehmigung','ts':'2025-10-01T10:00:00'},\n  {'case':'C1','activity':'Ende','ts':'2025-10-01T11:05:00'},\n  {'case':'C2','activity':'Start','ts':'2025-10-01T08:05:00'},\n  {'case':'C2','activity':'Prüfung','ts':'2025-10-01T13:00:00'},\n  {'case':'C2','activity':'Ende','ts':'2025-10-01T14:10:00'}\n])\nlog['ts']=pd.to_datetime(log['ts'])\n\n# Durchlaufzeit pro Case (Ende - Start)\nagg = log.groupby('case').agg(start=('ts','min'), end=('ts','max'))\nagg['durchlaufzeit_min'] = (agg['end']-agg['start']).dt.total_seconds()/60\nprint(agg)\n\n# Median als robuster KPI\nmedian_cycle = agg['durchlaufzeit_min'].median()\nprint('Median Durchlaufzeit (Minuten):', median_cycle)",
+      "explanation": "Einfaches Beispiel zur Aggregation von Durchlaufzeiten aus einem Event Log."
+    },
+    {
+      "language": "sql",
+      "title": "SQL Aggregation Durchlaufzeit",
+      "code": "SELECT case_id,\n       TIMESTAMPDIFF(MINUTE, MIN(ts), MAX(ts)) AS durchlaufzeit_min\nFROM event_log\nGROUP BY case_id;",
+      "explanation": "Berechnung der Durchlaufzeit je Prozessinstanz (Case) in SQL."
+    }
+  ],
+  "relatedQuizzes": ["bp-dpa-03-process-mining-quiz"],
+  "resources": [
+    {
+      "title": "BPMN 2.0 Specification",
+      "url": "https://www.omg.org/spec/BPMN/2.0/",
+      "type": "documentation"
+    },
+    {
+      "title": "Process Mining Portal (University) ",
+      "url": "https://www.processmining.org/",
+      "type": "article"
+    },
+    {
+      "title": "Einführung Process Mining (Tutorial)",
+      "url": "https://camunda.com/resource/process-mining/",
+      "type": "tutorial"
+    }
+  ],
+  "learningObjectives": [
+    "Event Log Struktur und Qualitätsprobleme erkennen",
+    "Phasen Discovery, Conformance, Enhancement erklären",
+    "Zentrale KPIs (Durchlaufzeit, Varianten) aus Logs herleiten",
+    "Engpässe und Rework datenbasiert identifizieren",
+    "BPMN-Modelle mit Logdaten zur Übereinstimmungsanalyse verknüpfen"
+  ],
+  "keyTakeaways": [
+    "Process Mining liefert faktische Prozessrealität",
+    "Discovery rekonstruiert Modelle automatisch",
+    "Conformance deckt Abweichungen und Compliance-Risiken auf",
+    "Enhancement fügt Performance-Kennzahlen dem Modell hinzu"
+  ],
+  "lastUpdated": "2025-10-07T00:00:00Z",
+  "version": "1.0",
+  "tracks": ["DPA"]
+}

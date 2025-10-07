@@ -22,8 +22,8 @@ const testResults = {
     'Cross-Category Relationships': { passed: 0, failed: 0 },
     'Category Search': { passed: 0, failed: 0 },
     'Content Recommendations': { passed: 0, failed: 0 },
-    'Performance': { passed: 0, failed: 0 }
-  }
+    Performance: { passed: 0, failed: 0 },
+  },
 };
 
 // Helper function to log test results
@@ -57,14 +57,14 @@ class MockStateManager {
         hasSelected: true,
         preferences: {
           showAllContent: false,
-          preferredCategories: ['anwendungsentwicklung', 'allgemein']
-        }
+          preferredCategories: ['anwendungsentwicklung', 'allgemein'],
+        },
       },
       progress: {
         modulesCompleted: ['fue-01-planning', 'bp-ae-01-basics'],
         modulesInProgress: ['bp-ae-02-advanced'],
-        quizzesCompleted: ['fue-01-planning-quiz']
-      }
+        quizzesCompleted: ['fue-01-planning-quiz'],
+      },
     };
   }
 
@@ -106,23 +106,45 @@ class MockStorageService {
  */
 async function testCrossCategoryRelationships() {
   console.log('\n🔗 Testing Cross-Category Relationship Identification...');
-  
+
   try {
     // Import required services
-    const { default: ContentRelationshipService } = await import('../src/services/ContentRelationshipService.js');
-    const { default: IHKContentService } = await import('../src/services/IHKContentService.js');
-    const { default: CategoryMappingService } = await import('../src/services/CategoryMappingService.js');
-    const { default: SpecializationService } = await import('../src/services/SpecializationService.js');
-    
+    const { default: ContentRelationshipService } = await import(
+      '../src/services/ContentRelationshipService.js'
+    );
+    const { default: IHKContentService } = await import(
+      '../src/services/IHKContentService.js'
+    );
+    const { default: CategoryMappingService } = await import(
+      '../src/services/CategoryMappingService.js'
+    );
+    const { default: SpecializationService } = await import(
+      '../src/services/SpecializationService.js'
+    );
+
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
-    
+
     // Initialize services
-    const specializationService = new SpecializationService(mockStateManager, mockStorageService);
-    const categoryMappingService = new CategoryMappingService(specializationService);
-    const ihkContentService = new IHKContentService(mockStateManager, mockStorageService, specializationService, categoryMappingService);
-    const contentRelationshipService = new ContentRelationshipService(ihkContentService, categoryMappingService, specializationService);
-    
+    const specializationService = new SpecializationService(
+      mockStateManager,
+      mockStorageService
+    );
+    const categoryMappingService = new CategoryMappingService(
+      specializationService
+    );
+    const ihkContentService = new IHKContentService(
+      mockStateManager,
+      mockStorageService,
+      specializationService,
+      categoryMappingService
+    );
+    const contentRelationshipService = new ContentRelationshipService(
+      ihkContentService,
+      categoryMappingService,
+      specializationService
+    );
+
     await contentRelationshipService.initialize();
 
     // Test 1: Service initialization
@@ -136,22 +158,34 @@ async function testCrossCategoryRelationships() {
     // Test 2: Get related content across categories
     // Use a DPA content item and check for related content in other categories
     const testContentId = 'bp-dpa-01-er-modeling';
-    const relatedContent = await contentRelationshipService.getRelatedContent(testContentId, {
-      excludeCurrentCategory: true,
-      maxResults: 5
-    });
+    const relatedContent = await contentRelationshipService.getRelatedContent(
+      testContentId,
+      {
+        excludeCurrentCategory: true,
+        maxResults: 5,
+      }
+    );
 
     logTest(
       'getRelatedContent returns cross-category relationships',
-      relatedContent && typeof relatedContent === 'object' && relatedContent.relationships !== undefined,
+      relatedContent &&
+        typeof relatedContent === 'object' &&
+        relatedContent.relationships !== undefined,
       `Expected object with relationships property, got ${typeof relatedContent}`,
       'Cross-Category Relationships'
     );
 
     // Test 3: Relationship types are correctly identified
     const relationshipTypes = Object.keys(relatedContent.relationships || {});
-    const expectedTypes = ['prerequisite', 'related', 'advanced', 'complementary'];
-    const hasValidTypes = relationshipTypes.length === 0 || relationshipTypes.some(type => expectedTypes.includes(type));
+    const expectedTypes = [
+      'prerequisite',
+      'related',
+      'advanced',
+      'complementary',
+    ];
+    const hasValidTypes =
+      relationshipTypes.length === 0 ||
+      relationshipTypes.some(type => expectedTypes.includes(type));
 
     logTest(
       'Related content includes valid relationship types or is empty',
@@ -161,7 +195,8 @@ async function testCrossCategoryRelationships() {
     );
 
     // Test 4: Prerequisites identification
-    const prerequisites = await contentRelationshipService.getPrerequisites(testContentId);
+    const prerequisites =
+      await contentRelationshipService.getPrerequisites(testContentId);
     logTest(
       'getPrerequisites identifies prerequisite content',
       Array.isArray(prerequisites),
@@ -170,7 +205,8 @@ async function testCrossCategoryRelationships() {
     );
 
     // Test 5: Advanced content identification
-    const advancedContent = await contentRelationshipService.getAdvancedContent(testContentId);
+    const advancedContent =
+      await contentRelationshipService.getAdvancedContent(testContentId);
     logTest(
       'getAdvancedContent identifies advanced follow-up content',
       Array.isArray(advancedContent),
@@ -180,10 +216,14 @@ async function testCrossCategoryRelationships() {
 
     // Test 6: Cross-category relationships exclude same category when requested
     if (relatedContent.relationships) {
-      const allRelatedItems = Object.values(relatedContent.relationships).flat();
+      const allRelatedItems = Object.values(
+        relatedContent.relationships
+      ).flat();
       const sourceCategory = 'daten-prozessanalyse'; // Expected category for bp-dpa content
-      const hasSameCategoryItems = allRelatedItems.some(item => item.threeTierCategory === sourceCategory);
-      
+      const hasSameCategoryItems = allRelatedItems.some(
+        item => item.threeTierCategory === sourceCategory
+      );
+
       logTest(
         'Cross-category relationships exclude same category when requested',
         !hasSameCategoryItems,
@@ -194,11 +234,16 @@ async function testCrossCategoryRelationships() {
 
     // Test 7: Relationship scoring and ranking
     if (relatedContent.relationships) {
-      const allRelatedItems = Object.values(relatedContent.relationships).flat();
-      const hasScoring = allRelatedItems.every(item => 
-        typeof item.relationshipScore === 'number' && item.relationshipScore >= 0 && item.relationshipScore <= 1
+      const allRelatedItems = Object.values(
+        relatedContent.relationships
+      ).flat();
+      const hasScoring = allRelatedItems.every(
+        item =>
+          typeof item.relationshipScore === 'number' &&
+          item.relationshipScore >= 0 &&
+          item.relationshipScore <= 1
       );
-      
+
       logTest(
         'Related content items have valid relationship scores',
         hasScoring,
@@ -206,7 +251,6 @@ async function testCrossCategoryRelationships() {
         'Cross-Category Relationships'
       );
     }
-
   } catch (error) {
     logTest(
       'Cross-category relationship identification tests',
@@ -223,23 +267,42 @@ async function testCrossCategoryRelationships() {
  */
 async function testCategorySearch() {
   console.log('\n🔍 Testing Search Functionality Within Categories...');
-  
+
   try {
     // Import required services
-    const { default: IHKContentService } = await import('../src/services/IHKContentService.js');
-    const { default: CategoryMappingService } = await import('../src/services/CategoryMappingService.js');
-    const { default: SpecializationService } = await import('../src/services/SpecializationService.js');
-    
+    const { default: IHKContentService } = await import(
+      '../src/services/IHKContentService.js'
+    );
+    const { default: CategoryMappingService } = await import(
+      '../src/services/CategoryMappingService.js'
+    );
+    const { default: SpecializationService } = await import(
+      '../src/services/SpecializationService.js'
+    );
+
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
-    
+
     // Initialize services
-    const specializationService = new SpecializationService(mockStateManager, mockStorageService);
-    const categoryMappingService = new CategoryMappingService(specializationService);
-    const ihkContentService = new IHKContentService(mockStateManager, mockStorageService, specializationService, categoryMappingService);
+    const specializationService = new SpecializationService(
+      mockStateManager,
+      mockStorageService
+    );
+    const categoryMappingService = new CategoryMappingService(
+      specializationService
+    );
+    const ihkContentService = new IHKContentService(
+      mockStateManager,
+      mockStorageService,
+      specializationService,
+      categoryMappingService
+    );
 
     // Test 1: Search within DPA category
-    const dpaSearchResults = await ihkContentService.searchInCategory('data', 'daten-prozessanalyse');
+    const dpaSearchResults = await ihkContentService.searchInCategory(
+      'data',
+      'daten-prozessanalyse'
+    );
     logTest(
       'searchInCategory works for DPA category',
       Array.isArray(dpaSearchResults),
@@ -248,7 +311,10 @@ async function testCategorySearch() {
     );
 
     // Test 2: Search within AE category
-    const aeSearchResults = await ihkContentService.searchInCategory('programming', 'anwendungsentwicklung');
+    const aeSearchResults = await ihkContentService.searchInCategory(
+      'programming',
+      'anwendungsentwicklung'
+    );
     logTest(
       'searchInCategory works for AE category',
       Array.isArray(aeSearchResults),
@@ -257,7 +323,10 @@ async function testCategorySearch() {
     );
 
     // Test 3: Search within General category
-    const generalSearchResults = await ihkContentService.searchInCategory('quality', 'allgemein');
+    const generalSearchResults = await ihkContentService.searchInCategory(
+      'quality',
+      'allgemein'
+    );
     logTest(
       'searchInCategory works for General category',
       Array.isArray(generalSearchResults),
@@ -267,11 +336,12 @@ async function testCategorySearch() {
 
     // Test 4: Search results are filtered by category
     if (dpaSearchResults.length > 0) {
-      const allFromCorrectCategory = dpaSearchResults.every(item => 
-        item.threeTierCategory === 'daten-prozessanalyse' || 
-        item.category?.toLowerCase().includes('dpa')
+      const allFromCorrectCategory = dpaSearchResults.every(
+        item =>
+          item.threeTierCategory === 'daten-prozessanalyse' ||
+          item.category?.toLowerCase().includes('dpa')
       );
-      
+
       logTest(
         'Search results are correctly filtered by category',
         allFromCorrectCategory,
@@ -281,7 +351,10 @@ async function testCategorySearch() {
     }
 
     // Test 5: Search with non-empty query (skip empty query test due to validation)
-    const specificSearchResults = await ihkContentService.searchInCategory('model', 'daten-prozessanalyse');
+    const specificSearchResults = await ihkContentService.searchInCategory(
+      'model',
+      'daten-prozessanalyse'
+    );
     logTest(
       'Specific search query returns filtered results',
       Array.isArray(specificSearchResults),
@@ -291,10 +364,10 @@ async function testCategorySearch() {
 
     // Test 6: Search results include relevance information
     if (dpaSearchResults.length > 0) {
-      const hasRelevanceInfo = dpaSearchResults.every(item => 
-        item.threeTierCategory !== undefined
+      const hasRelevanceInfo = dpaSearchResults.every(
+        item => item.threeTierCategory !== undefined
       );
-      
+
       logTest(
         'Search results include three-tier category information',
         hasRelevanceInfo,
@@ -304,9 +377,15 @@ async function testCategorySearch() {
     }
 
     // Test 7: Case-insensitive search
-    const upperCaseSearch = await ihkContentService.searchInCategory('DATA', 'daten-prozessanalyse');
-    const lowerCaseSearch = await ihkContentService.searchInCategory('data', 'daten-prozessanalyse');
-    
+    const upperCaseSearch = await ihkContentService.searchInCategory(
+      'DATA',
+      'daten-prozessanalyse'
+    );
+    const lowerCaseSearch = await ihkContentService.searchInCategory(
+      'data',
+      'daten-prozessanalyse'
+    );
+
     logTest(
       'Search is case-insensitive',
       upperCaseSearch.length === lowerCaseSearch.length,
@@ -315,14 +394,16 @@ async function testCategorySearch() {
     );
 
     // Test 8: Search handles special characters gracefully
-    const specialCharSearch = await ihkContentService.searchInCategory('test@#$%', 'allgemein');
+    const specialCharSearch = await ihkContentService.searchInCategory(
+      'test@#$%',
+      'allgemein'
+    );
     logTest(
       'Search handles special characters without errors',
       Array.isArray(specialCharSearch),
       `Expected array, got ${typeof specialCharSearch}`,
       'Category Search'
     );
-
   } catch (error) {
     logTest(
       'Category search functionality tests',
@@ -339,33 +420,56 @@ async function testCategorySearch() {
  */
 async function testContentRecommendations() {
   console.log('\n🎯 Testing Content Recommendation Accuracy...');
-  
+
   try {
     // Import required services
-    const { default: ContentRelationshipService } = await import('../src/services/ContentRelationshipService.js');
-    const { default: IHKContentService } = await import('../src/services/IHKContentService.js');
-    const { default: CategoryMappingService } = await import('../src/services/CategoryMappingService.js');
-    const { default: SpecializationService } = await import('../src/services/SpecializationService.js');
-    
+    const { default: ContentRelationshipService } = await import(
+      '../src/services/ContentRelationshipService.js'
+    );
+    const { default: IHKContentService } = await import(
+      '../src/services/IHKContentService.js'
+    );
+    const { default: CategoryMappingService } = await import(
+      '../src/services/CategoryMappingService.js'
+    );
+    const { default: SpecializationService } = await import(
+      '../src/services/SpecializationService.js'
+    );
+
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
-    
+
     // Initialize services
-    const specializationService = new SpecializationService(mockStateManager, mockStorageService);
-    const categoryMappingService = new CategoryMappingService(specializationService);
-    const ihkContentService = new IHKContentService(mockStateManager, mockStorageService, specializationService, categoryMappingService);
-    const contentRelationshipService = new ContentRelationshipService(ihkContentService, categoryMappingService, specializationService);
-    
+    const specializationService = new SpecializationService(
+      mockStateManager,
+      mockStorageService
+    );
+    const categoryMappingService = new CategoryMappingService(
+      specializationService
+    );
+    const ihkContentService = new IHKContentService(
+      mockStateManager,
+      mockStorageService,
+      specializationService,
+      categoryMappingService
+    );
+    const contentRelationshipService = new ContentRelationshipService(
+      ihkContentService,
+      categoryMappingService,
+      specializationService
+    );
+
     await contentRelationshipService.initialize();
 
     // Test 1: Get recommendations for AE specialization
     const aeSpecialization = 'anwendungsentwicklung';
     const completedContent = ['fue-01-planning', 'bp-ae-01-basics'];
-    const aeRecommendations = await contentRelationshipService.getContentRecommendations(
-      aeSpecialization, 
-      completedContent,
-      { maxResults: 10 }
-    );
+    const aeRecommendations =
+      await contentRelationshipService.getContentRecommendations(
+        aeSpecialization,
+        completedContent,
+        { maxResults: 10 }
+      );
 
     logTest(
       'getContentRecommendations returns recommendations for AE specialization',
@@ -376,11 +480,12 @@ async function testContentRecommendations() {
 
     // Test 2: Get recommendations for DPA specialization
     const dpaSpecialization = 'daten-prozessanalyse';
-    const dpaRecommendations = await contentRelationshipService.getContentRecommendations(
-      dpaSpecialization, 
-      completedContent,
-      { maxResults: 10 }
-    );
+    const dpaRecommendations =
+      await contentRelationshipService.getContentRecommendations(
+        dpaSpecialization,
+        completedContent,
+        { maxResults: 10 }
+      );
 
     logTest(
       'getContentRecommendations returns recommendations for DPA specialization',
@@ -391,10 +496,10 @@ async function testContentRecommendations() {
 
     // Test 3: Recommendations have scoring information
     if (aeRecommendations.length > 0) {
-      const hasScoring = aeRecommendations.every(item => 
-        typeof item.score === 'number' && item.score >= 0
+      const hasScoring = aeRecommendations.every(
+        item => typeof item.score === 'number' && item.score >= 0
       );
-      
+
       logTest(
         'Recommendations include scoring information',
         hasScoring,
@@ -405,10 +510,11 @@ async function testContentRecommendations() {
 
     // Test 4: Recommendations are sorted by relevance
     if (aeRecommendations.length > 1) {
-      const isSorted = aeRecommendations.every((item, index) => 
-        index === 0 || aeRecommendations[index - 1].score >= item.score
+      const isSorted = aeRecommendations.every(
+        (item, index) =>
+          index === 0 || aeRecommendations[index - 1].score >= item.score
       );
-      
+
       logTest(
         'Recommendations are sorted by relevance score',
         isSorted,
@@ -419,10 +525,10 @@ async function testContentRecommendations() {
 
     // Test 5: Recommendations exclude completed content
     if (aeRecommendations.length > 0) {
-      const excludesCompleted = aeRecommendations.every(item => 
-        !completedContent.includes(item.id)
+      const excludesCompleted = aeRecommendations.every(
+        item => !completedContent.includes(item.id)
       );
-      
+
       logTest(
         'Recommendations exclude already completed content',
         excludesCompleted,
@@ -433,10 +539,12 @@ async function testContentRecommendations() {
 
     // Test 6: Recommendations include reason information
     if (aeRecommendations.length > 0) {
-      const hasReasons = aeRecommendations.every(item => 
-        item.recommendationReasons && Array.isArray(item.recommendationReasons)
+      const hasReasons = aeRecommendations.every(
+        item =>
+          item.recommendationReasons &&
+          Array.isArray(item.recommendationReasons)
       );
-      
+
       logTest(
         'Recommendations include reasoning information',
         hasReasons,
@@ -451,32 +559,37 @@ async function testContentRecommendations() {
       const aeIds = aeRecommendations.map(item => item.id).sort();
       const dpaIds = dpaRecommendations.map(item => item.id).sort();
       const areDifferent = JSON.stringify(aeIds) !== JSON.stringify(dpaIds);
-      
+
       // Also check if scores are different (indicating specialization-based scoring)
       const aeScores = aeRecommendations.map(item => item.score);
       const dpaScores = dpaRecommendations.map(item => item.score);
-      const scoresAreDifferent = JSON.stringify(aeScores) !== JSON.stringify(dpaScores);
-      
+      const scoresAreDifferent =
+        JSON.stringify(aeScores) !== JSON.stringify(dpaScores);
+
       logTest(
         'Recommendations show specialization awareness (or have limited test data)',
         true, // Always pass but note the behavior
-        areDifferent || scoresAreDifferent ? 'Specialization awareness confirmed' : 'Note: Recommendations identical (may be due to limited test data)',
+        areDifferent || scoresAreDifferent
+          ? 'Specialization awareness confirmed'
+          : 'Note: Recommendations identical (may be due to limited test data)',
         'Content Recommendations'
       );
     }
 
     // Test 8: Difficulty progression in recommendations
-    const beginnerRecommendations = await contentRelationshipService.getContentRecommendations(
-      aeSpecialization, 
-      [], // No completed content (beginner)
-      { maxResults: 5, difficultyProgression: true }
-    );
+    const beginnerRecommendations =
+      await contentRelationshipService.getContentRecommendations(
+        aeSpecialization,
+        [], // No completed content (beginner)
+        { maxResults: 5, difficultyProgression: true }
+      );
 
     if (beginnerRecommendations.length > 0) {
-      const hasBeginnerContent = beginnerRecommendations.some(item => 
-        item.difficulty === 'beginner' || item.difficulty === 'intermediate'
+      const hasBeginnerContent = beginnerRecommendations.some(
+        item =>
+          item.difficulty === 'beginner' || item.difficulty === 'intermediate'
       );
-      
+
       logTest(
         'Recommendations consider difficulty progression',
         hasBeginnerContent,
@@ -486,20 +599,21 @@ async function testContentRecommendations() {
     }
 
     // Test 9: Category filtering in recommendations
-    const dpaOnlyRecommendations = await contentRelationshipService.getContentRecommendations(
-      aeSpecialization, 
-      completedContent,
-      { 
-        maxResults: 5, 
-        includeCategories: ['daten-prozessanalyse'] 
-      }
-    );
+    const dpaOnlyRecommendations =
+      await contentRelationshipService.getContentRecommendations(
+        aeSpecialization,
+        completedContent,
+        {
+          maxResults: 5,
+          includeCategories: ['daten-prozessanalyse'],
+        }
+      );
 
     if (dpaOnlyRecommendations.length > 0) {
-      const allFromDpaCategory = dpaOnlyRecommendations.every(item => 
-        item.threeTierCategory === 'daten-prozessanalyse'
+      const allFromDpaCategory = dpaOnlyRecommendations.every(
+        item => item.threeTierCategory === 'daten-prozessanalyse'
       );
-      
+
       logTest(
         'Recommendations respect category filtering',
         allFromDpaCategory,
@@ -507,7 +621,6 @@ async function testContentRecommendations() {
         'Content Recommendations'
       );
     }
-
   } catch (error) {
     logTest(
       'Content recommendation accuracy tests',
@@ -523,31 +636,56 @@ async function testContentRecommendations() {
  */
 async function testContentDiscoveryPerformance() {
   console.log('\n⚡ Testing Content Discovery Performance...');
-  
+
   try {
     // Import required services
-    const { default: ContentRelationshipService } = await import('../src/services/ContentRelationshipService.js');
-    const { default: IHKContentService } = await import('../src/services/IHKContentService.js');
-    const { default: CategoryMappingService } = await import('../src/services/CategoryMappingService.js');
-    const { default: SpecializationService } = await import('../src/services/SpecializationService.js');
-    
+    const { default: ContentRelationshipService } = await import(
+      '../src/services/ContentRelationshipService.js'
+    );
+    const { default: IHKContentService } = await import(
+      '../src/services/IHKContentService.js'
+    );
+    const { default: CategoryMappingService } = await import(
+      '../src/services/CategoryMappingService.js'
+    );
+    const { default: SpecializationService } = await import(
+      '../src/services/SpecializationService.js'
+    );
+
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
-    
+
     // Initialize services
-    const specializationService = new SpecializationService(mockStateManager, mockStorageService);
-    const categoryMappingService = new CategoryMappingService(specializationService);
-    const ihkContentService = new IHKContentService(mockStateManager, mockStorageService, specializationService, categoryMappingService);
-    const contentRelationshipService = new ContentRelationshipService(ihkContentService, categoryMappingService, specializationService);
-    
+    const specializationService = new SpecializationService(
+      mockStateManager,
+      mockStorageService
+    );
+    const categoryMappingService = new CategoryMappingService(
+      specializationService
+    );
+    const ihkContentService = new IHKContentService(
+      mockStateManager,
+      mockStorageService,
+      specializationService,
+      categoryMappingService
+    );
+    const contentRelationshipService = new ContentRelationshipService(
+      ihkContentService,
+      categoryMappingService,
+      specializationService
+    );
+
     await contentRelationshipService.initialize();
 
     // Test 1: Cross-category relationship lookup performance
     const relationshipStartTime = performance.now();
-    await contentRelationshipService.getRelatedContent('bp-dpa-01-er-modeling', { maxResults: 10 });
+    await contentRelationshipService.getRelatedContent(
+      'bp-dpa-01-er-modeling',
+      { maxResults: 10 }
+    );
     const relationshipEndTime = performance.now();
     const relationshipTime = relationshipEndTime - relationshipStartTime;
-    
+
     logTest(
       'Cross-category relationship lookup performance (<200ms)',
       relationshipTime < 200,
@@ -557,10 +695,13 @@ async function testContentDiscoveryPerformance() {
 
     // Test 2: Category search performance
     const searchStartTime = performance.now();
-    await ihkContentService.searchInCategory('programming', 'anwendungsentwicklung');
+    await ihkContentService.searchInCategory(
+      'programming',
+      'anwendungsentwicklung'
+    );
     const searchEndTime = performance.now();
     const searchTime = searchEndTime - searchStartTime;
-    
+
     logTest(
       'Category search performance (<100ms)',
       searchTime < 100,
@@ -571,13 +712,13 @@ async function testContentDiscoveryPerformance() {
     // Test 3: Content recommendation generation performance
     const recommendationStartTime = performance.now();
     await contentRelationshipService.getContentRecommendations(
-      'anwendungsentwicklung', 
-      ['fue-01-planning'], 
+      'anwendungsentwicklung',
+      ['fue-01-planning'],
       { maxResults: 10 }
     );
     const recommendationEndTime = performance.now();
     const recommendationTime = recommendationEndTime - recommendationStartTime;
-    
+
     logTest(
       'Content recommendation generation performance (<300ms)',
       recommendationTime < 300,
@@ -588,16 +729,22 @@ async function testContentDiscoveryPerformance() {
     // Test 4: Cache effectiveness
     // First call (should populate cache)
     const firstCallStart = performance.now();
-    await contentRelationshipService.getRelatedContent('bp-dpa-01-er-modeling', { maxResults: 5 });
+    await contentRelationshipService.getRelatedContent(
+      'bp-dpa-01-er-modeling',
+      { maxResults: 5 }
+    );
     const firstCallEnd = performance.now();
     const firstCallTime = firstCallEnd - firstCallStart;
 
     // Second call (should use cache)
     const secondCallStart = performance.now();
-    await contentRelationshipService.getRelatedContent('bp-dpa-01-er-modeling', { maxResults: 5 });
+    await contentRelationshipService.getRelatedContent(
+      'bp-dpa-01-er-modeling',
+      { maxResults: 5 }
+    );
     const secondCallEnd = performance.now();
     const secondCallTime = secondCallEnd - secondCallStart;
-    
+
     logTest(
       'Caching improves performance on repeated calls',
       secondCallTime < firstCallTime,
@@ -611,8 +758,8 @@ async function testContentDiscoveryPerformance() {
     for (let i = 0; i < 5; i++) {
       bulkPromises.push(
         contentRelationshipService.getContentRecommendations(
-          'anwendungsentwicklung', 
-          [`test-${i}`], 
+          'anwendungsentwicklung',
+          [`test-${i}`],
           { maxResults: 3 }
         )
       );
@@ -620,14 +767,13 @@ async function testContentDiscoveryPerformance() {
     await Promise.all(bulkPromises);
     const bulkEndTime = performance.now();
     const bulkTime = bulkEndTime - bulkStartTime;
-    
+
     logTest(
       'Bulk recommendation generation performance (<500ms for 5 requests)',
       bulkTime < 500,
       `Bulk recommendations took ${bulkTime.toFixed(2)}ms`,
       'Performance'
     );
-
   } catch (error) {
     logTest(
       'Content discovery performance tests',
@@ -645,17 +791,18 @@ function generateTestReport() {
   console.log('\n' + '='.repeat(80));
   console.log('📋 CONTENT DISCOVERY FEATURES TEST REPORT');
   console.log('='.repeat(80));
-  
+
   // Overall results
   const totalTests = testResults.passed + testResults.failed;
-  const successRate = totalTests > 0 ? ((testResults.passed / totalTests) * 100).toFixed(1) : 0;
-  
+  const successRate =
+    totalTests > 0 ? ((testResults.passed / totalTests) * 100).toFixed(1) : 0;
+
   console.log(`\n📊 OVERALL RESULTS:`);
   console.log(`   Total Tests: ${totalTests}`);
   console.log(`   Passed: ${testResults.passed}`);
   console.log(`   Failed: ${testResults.failed}`);
   console.log(`   Success Rate: ${successRate}%`);
-  
+
   // Category breakdown
   console.log(`\n📈 RESULTS BY CATEGORY:`);
   Object.entries(testResults.categories).forEach(([category, results]) => {
@@ -665,7 +812,7 @@ function generateTestReport() {
       console.log(`   ${category}: ${results.passed}/${total} (${rate}%)`);
     }
   });
-  
+
   // Failed tests details
   if (testResults.failed > 0) {
     console.log(`\n❌ FAILED TESTS:`);
@@ -678,13 +825,13 @@ function generateTestReport() {
         }
       });
   }
-  
+
   // Requirements coverage
   console.log(`\n📋 REQUIREMENTS COVERAGE:`);
   console.log('   ✅ Requirement 5.1: Cross-category content relationships');
   console.log('   ✅ Requirement 5.3: Category-aware search and filtering');
   console.log('   ✅ Requirement 5.4: Content recommendations and discovery');
-  
+
   // Recommendations
   console.log(`\n💡 RECOMMENDATIONS:`);
   if (testResults.failed === 0) {
@@ -697,16 +844,16 @@ function generateTestReport() {
     console.log('   ⚠️  Review failed tests and check service integrations.');
     console.log('   ⚠️  Verify content relationship algorithms and scoring.');
   }
-  
+
   console.log('\n' + '='.repeat(80));
-  
+
   return {
     success: testResults.failed === 0,
     totalTests,
     passed: testResults.passed,
     failed: testResults.failed,
     successRate: parseFloat(successRate),
-    categories: testResults.categories
+    categories: testResults.categories,
   };
 }
 
@@ -718,26 +865,25 @@ async function runContentDiscoveryTests() {
   console.log('║           Content Discovery Features Test Suite            ║');
   console.log('║                    Task 4.4 Implementation                 ║');
   console.log('╚════════════════════════════════════════════════════════════╝');
-  
+
   const startTime = performance.now();
-  
+
   try {
     // Run all test suites
     await testCrossCategoryRelationships();
     await testCategorySearch();
     await testContentRecommendations();
     await testContentDiscoveryPerformance();
-    
   } catch (error) {
     console.error('❌ Critical error during test execution:', error);
     logTest('Test Suite Execution', false, error.message);
   }
-  
+
   const endTime = performance.now();
   const totalTime = ((endTime - startTime) / 1000).toFixed(2);
-  
+
   console.log(`\n⏱️  Total execution time: ${totalTime}s`);
-  
+
   // Generate and return comprehensive report
   return generateTestReport();
 }
@@ -750,11 +896,11 @@ const currentFile = fileURLToPath(import.meta.url);
 const executedFile = process.argv[1];
 if (currentFile === executedFile) {
   console.log('🚀 Starting content discovery features tests...');
-  
+
   runContentDiscoveryTests()
     .then(report => {
       console.log('\n✅ Content discovery test execution completed');
-    
+
       process.exit(report.success ? 0 : 1);
     })
     .catch(error => {

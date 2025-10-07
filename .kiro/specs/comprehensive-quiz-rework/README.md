@@ -28,6 +28,7 @@ Diese Spezifikation beschreibt die vollständige Überarbeitung des Quiz-Systems
 ## Priorisierung
 
 ### Priorität 1: Neue 2025-Themen
+
 - Kerberos (10 → 15-20 Fragen)
 - Security-Threats (22 → 20 Fragen)
 - Scrum (5 → 15-20 Fragen)
@@ -35,6 +36,7 @@ Diese Spezifikation beschreibt die vollständige Überarbeitung des Quiz-Systems
 - SQL (35 → 20 Fragen oder aufteilen)
 
 ### Priorität 2: Hohe Prüfungsrelevanz
+
 - Netzwerke und Konzeption (3 Quizzes)
 - Datenbanken und Formate (3 Quizzes)
 - Softwareentwicklung (3 Quizzes)
@@ -43,6 +45,7 @@ Diese Spezifikation beschreibt die vollständige Überarbeitung des Quiz-Systems
 - Fachübergreifende Qualifikationen (7 Quizzes)
 
 ### Priorität 3: Weitere Module
+
 - ODBC, Quality-Assurance, etc.
 
 ## Nächste Schritte
@@ -56,6 +59,7 @@ Um mit der Implementierung zu beginnen:
 ## Qualitätskriterien
 
 Ein Quiz gilt als fertig, wenn:
+
 - ✅ 15-20 Fragen vorhanden
 - ✅ Alle Fragen haben 4 Antwortoptionen
 - ✅ Alle correctAnswer sind in options vorhanden

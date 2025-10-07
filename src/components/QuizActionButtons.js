@@ -16,7 +16,11 @@ class QuizActionButtons {
    * Handle retake quiz action
    */
   retakeQuiz() {
-    if (confirm('Are you sure you want to retake this quiz? Your current results will be replaced.')) {
+    if (
+      confirm(
+        'Are you sure you want to retake this quiz? Your current results will be replaced.'
+      )
+    ) {
       // Reload the current quiz
       window.location.reload();
     }
@@ -29,13 +33,15 @@ class QuizActionButtons {
     // Scroll to the answer review section
     const reviewSection = document.querySelector('.answer-review-section');
     if (reviewSection) {
-      reviewSection.scrollIntoView({ 
+      reviewSection.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
-      
+
       // Highlight incorrect answers
-      const incorrectAnswers = reviewSection.querySelectorAll('.question-review.incorrect');
+      const incorrectAnswers = reviewSection.querySelectorAll(
+        '.question-review.incorrect'
+      );
       incorrectAnswers.forEach((element, index) => {
         setTimeout(() => {
           element.classList.add('highlight-incorrect');
@@ -65,9 +71,12 @@ class QuizActionButtons {
   findRelatedContent() {
     // For low scores, suggest related learning materials
     if (this.router) {
-      this.router.navigate('/modules?related=' + encodeURIComponent(this.quizId));
+      this.router.navigate(
+        '/modules?related=' + encodeURIComponent(this.quizId)
+      );
     } else {
-      window.location.hash = '#/modules?related=' + encodeURIComponent(this.quizId);
+      window.location.hash =
+        '#/modules?related=' + encodeURIComponent(this.quizId);
     }
   }
 
@@ -87,22 +96,25 @@ class QuizActionButtons {
    */
   shareResults() {
     const shareText = `I just completed a quiz and scored ${this.percentage}%! 🎉`;
-    
+
     if (navigator.share) {
-      navigator.share({
-        title: 'Quiz Results',
-        text: shareText,
-        url: window.location.href
-      }).catch(err => console.log('Error sharing:', err));
+      navigator
+        .share({
+          title: 'Quiz Results',
+          text: shareText,
+          url: window.location.href,
+        })
+        .catch(err => console.warn('Error sharing:', err));
     } else {
       // Fallback: copy to clipboard
-      navigator.clipboard.writeText(shareText + ' ' + window.location.href)
+      navigator.clipboard
+        .writeText(shareText + ' ' + window.location.href)
         .then(() => {
           // Show temporary notification
           this.showNotification('Results copied to clipboard!');
         })
         .catch(err => {
-          console.log('Error copying to clipboard:', err);
+          console.warn('Error copying to clipboard:', err);
         });
     }
   }
@@ -115,11 +127,11 @@ class QuizActionButtons {
     notification.className = 'action-notification';
     notification.textContent = message;
     document.body.appendChild(notification);
-    
+
     setTimeout(() => {
       notification.classList.add('show');
     }, 10);
-    
+
     setTimeout(() => {
       notification.classList.remove('show');
       setTimeout(() => {
@@ -134,11 +146,11 @@ class QuizActionButtons {
   render() {
     const container = document.createElement('div');
     container.className = 'quiz-action-buttons';
-    
+
     // Primary actions (always shown)
     const primaryActions = document.createElement('div');
     primaryActions.className = 'primary-actions';
-    
+
     // Retake quiz button
     const retakeBtn = document.createElement('button');
     retakeBtn.className = 'btn btn-primary action-btn';

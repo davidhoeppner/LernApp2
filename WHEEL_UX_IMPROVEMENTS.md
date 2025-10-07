@@ -15,6 +15,7 @@
 **After**: The entire wheel is now clickable! Users can click anywhere on the wheel to spin it.
 
 **Implementation**:
+
 ```javascript
 wheelContainer.style.cursor = 'pointer';
 wheelContainer.addEventListener('click', () => this.spin());
@@ -25,6 +26,7 @@ wheelContainer.addEventListener('click', () => this.spin());
 Added a prominent circular button in the center of the wheel that says "DREHEN" with a dice icon (🎲).
 
 **Features**:
+
 - Positioned in the center of the wheel
 - Circular design (120px diameter)
 - Gradient background (primary colors)
@@ -39,7 +41,8 @@ Added a prominent circular button in the center of the wheel that says "DREHEN" 
 
 **Removed**: The large "🎲 Rad drehen" button below the wheel
 
-**Kept**: 
+**Kept**:
+
 - "🔄 Nochmal drehen" button (appears after spin)
 - "➡️ Zum Modul" button (appears after spin)
 
@@ -63,6 +66,7 @@ console.log('  Total modules:', this.modules.length);
 ## User Experience Flow
 
 ### Initial State
+
 ```
 ┌──────────────────────────────┐
 │         ▼ Pointer            │
@@ -80,6 +84,7 @@ console.log('  Total modules:', this.modules.length);
 ```
 
 ### During Spin
+
 ```
 ┌──────────────────────────────┐
 │         ▼ Pointer            │
@@ -96,6 +101,7 @@ console.log('  Total modules:', this.modules.length);
 ```
 
 ### After Spin
+
 ```
 ┌──────────────────────────────┐
 │         ▼ Pointer            │
@@ -117,6 +123,7 @@ console.log('  Total modules:', this.modules.length);
 ## CSS Styling
 
 ### Overlay Button
+
 ```css
 .wheel-spin-overlay {
   position: absolute;
@@ -135,6 +142,7 @@ console.log('  Total modules:', this.modules.length);
 ```
 
 ### Hover Effect
+
 ```css
 .wheel-spin-overlay:hover {
   transform: translate(-50%, -50%) scale(1.1);
@@ -143,6 +151,7 @@ console.log('  Total modules:', this.modules.length);
 ```
 
 ### Mobile Responsive
+
 ```css
 @media (max-width: 768px) {
   .wheel-spin-overlay {
@@ -157,21 +166,25 @@ console.log('  Total modules:', this.modules.length);
 ## Benefits
 
 ### 1. No Scrolling Required
+
 - ✅ Spin button is always visible
 - ✅ No need to scroll down to find controls
 - ✅ Faster interaction
 
 ### 2. Intuitive Interaction
+
 - ✅ Wheel looks clickable (cursor changes)
 - ✅ Clear call-to-action in center
 - ✅ Familiar wheel-of-fortune interaction
 
 ### 3. Cleaner Interface
+
 - ✅ Removed redundant large button
 - ✅ More focus on the wheel itself
 - ✅ Action buttons appear only when needed
 
 ### 4. Better Mobile Experience
+
 - ✅ Large touch target (120px button)
 - ✅ Entire wheel is tappable
 - ✅ No scrolling on mobile devices
@@ -181,12 +194,14 @@ console.log('  Total modules:', this.modules.length);
 ## Accessibility
 
 ### Maintained Features
+
 - ✅ ARIA labels on all buttons
 - ✅ Keyboard navigation still works
 - ✅ Screen reader announcements
 - ✅ Focus management
 
 ### New Features
+
 - ✅ Overlay button has aria-label
 - ✅ Cursor changes to pointer
 - ✅ Clear visual feedback on hover/active
@@ -211,6 +226,7 @@ console.log('  Total modules:', this.modules.length);
 ## Debug Information
 
 ### Console Output Example
+
 ```
 🎯 Spinning wheel:
   Selected index: 5
@@ -219,6 +235,7 @@ console.log('  Total modules:', this.modules.length);
 ```
 
 This helps verify:
+
 1. Which index was randomly selected
 2. Which module corresponds to that index
 3. Total number of modules available
@@ -226,6 +243,7 @@ This helps verify:
 ### Troubleshooting Winner Detection
 
 If the arrow still doesn't match the result:
+
 1. Check console logs for selected index
 2. Verify rotation calculation in `animateSelection()`
 3. Check if modules array order matches wheel segments
@@ -236,6 +254,7 @@ If the arrow still doesn't match the result:
 ## Files Modified
 
 ### Components
+
 - `src/components/WheelView.js`
   - Added clickable wheel functionality
   - Added overlay spin button
@@ -244,6 +263,7 @@ If the arrow still doesn't match the result:
   - Updated button visibility logic
 
 ### Styles
+
 - `src/style.css`
   - Added `.wheel-spin-overlay` styles
   - Added hover/active effects
@@ -255,6 +275,7 @@ If the arrow still doesn't match the result:
 ## Future Enhancements
 
 ### Potential Improvements
+
 1. **Haptic feedback**: Vibration on mobile when spinning
 2. **Sound effects**: Click sound when wheel spins
 3. **Visual feedback**: Ripple effect on click
@@ -262,6 +283,7 @@ If the arrow still doesn't match the result:
 5. **Customization**: Allow users to change button text/icon
 
 ### Advanced Features
+
 - Drag to spin (swipe gesture)
 - Spin speed control
 - Multiple spin modes (fast/slow)
@@ -272,6 +294,7 @@ If the arrow still doesn't match the result:
 ## Conclusion
 
 The wheel is now much more user-friendly with:
+
 - Direct interaction (click anywhere on wheel)
 - Prominent center button for first-time users
 - No scrolling required

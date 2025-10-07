@@ -16,7 +16,11 @@ const cssContent = fs.readFileSync(cssPath, 'utf8');
 
 // Check for the main quiz-grid rule
 console.log('\n🔍 Checking main quiz-grid rule...');
-if (cssContent.includes('.quiz-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));')) {
+if (
+  cssContent.includes(
+    '.quiz-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));'
+  )
+) {
   console.log('✅ Main quiz-grid uses minmax(400px, 1fr)');
 } else {
   console.log('❌ Main quiz-grid rule not found or incorrect');
@@ -28,7 +32,7 @@ const problematicPatterns = [
   'quiz-grid {\\s*grid-template-columns: repeat(2, 1fr)',
   'quiz-grid {\\s*grid-template-columns: 1fr',
   'quiz-grid {\\s*grid-template-columns: repeat(3, 1fr)',
-  'quiz-grid {\\s*grid-template-columns: repeat(4, 1fr)'
+  'quiz-grid {\\s*grid-template-columns: repeat(4, 1fr)',
 ];
 
 let hasProblematicRules = false;
@@ -51,23 +55,23 @@ const responsiveChecks = [
   {
     name: 'Mobile (max-width: 768px)',
     pattern: 'minmax(300px, 1fr)',
-    context: '@media (max-width: 768px)'
+    context: '@media (max-width: 768px)',
   },
   {
     name: 'Tablet (769px - 1024px)',
     pattern: 'minmax(350px, 1fr)',
-    context: '@media (min-width: 769px) and (max-width: 1024px)'
+    context: '@media (min-width: 769px) and (max-width: 1024px)',
   },
   {
     name: 'Medium screens',
     pattern: 'minmax(380px, 1fr)',
-    context: 'medium screen media query'
+    context: 'medium screen media query',
   },
   {
     name: 'Large screens',
     pattern: 'minmax(400px, 1fr)',
-    context: 'large screen media query'
-  }
+    context: 'large screen media query',
+  },
 ];
 
 let responsiveRulesFound = 0;
@@ -82,11 +86,14 @@ for (const check of responsiveChecks) {
 
 // Check that we don't have any remaining combined selectors
 console.log('\n🔍 Checking for combined selectors...');
-const combinedSelectorPattern = /\.module-grid,\s*\.quiz-grid\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2,\s*1fr\)/g;
+const combinedSelectorPattern =
+  /\.module-grid,\s*\.quiz-grid\s*\{[\s\S]*?grid-template-columns:\s*repeat\(2,\s*1fr\)/g;
 const combinedMatches = cssContent.match(combinedSelectorPattern);
 
 if (combinedMatches && combinedMatches.length > 0) {
-  console.log(`❌ Found ${combinedMatches.length} remaining combined selectors that force 2-column layout`);
+  console.log(
+    `❌ Found ${combinedMatches.length} remaining combined selectors that force 2-column layout`
+  );
   combinedMatches.forEach((match, index) => {
     console.log(`   ${index + 1}: ${match.substring(0, 50)}...`);
   });
@@ -99,15 +106,25 @@ console.log('\n' + '='.repeat(50));
 if (!hasProblematicRules && responsiveRulesFound >= 2) {
   console.log('🎉 SUCCESS: Quiz card sizing fix applied correctly!');
   console.log('\n📋 Fix Summary:');
-  console.log('✅ Main quiz-grid uses minmax(400px, 1fr) for consistent sizing');
-  console.log('✅ Responsive rules maintain minmax() approach instead of fixed layouts');
-  console.log('✅ Cards will maintain consistent size regardless of filter state');
-  console.log('✅ No more stretching when fewer items are displayed after filtering');
-  
+  console.log(
+    '✅ Main quiz-grid uses minmax(400px, 1fr) for consistent sizing'
+  );
+  console.log(
+    '✅ Responsive rules maintain minmax() approach instead of fixed layouts'
+  );
+  console.log(
+    '✅ Cards will maintain consistent size regardless of filter state'
+  );
+  console.log(
+    '✅ No more stretching when fewer items are displayed after filtering'
+  );
+
   process.exit(0);
 } else {
   console.log('❌ FAILURE: Quiz card sizing fix incomplete');
-  console.log(`   - Problematic rules found: ${hasProblematicRules ? 'Yes' : 'No'}`);
+  console.log(
+    `   - Problematic rules found: ${hasProblematicRules ? 'Yes' : 'No'}`
+  );
   console.log(`   - Responsive rules found: ${responsiveRulesFound}/4`);
   process.exit(1);
 }

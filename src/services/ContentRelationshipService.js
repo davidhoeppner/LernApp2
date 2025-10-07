@@ -4,22 +4,26 @@
  * Provides content recommendations and prerequisite tracking
  */
 class ContentRelationshipService {
-  constructor(ihkContentService, categoryMappingService, specializationService) {
+  constructor(
+    ihkContentService,
+    categoryMappingService,
+    specializationService
+  ) {
     this.contentService = ihkContentService;
     this.categoryMappingService = categoryMappingService;
     this.specializationService = specializationService;
-    
+
     // Cache for relationship mappings
     this.relationshipCache = new Map();
     this.prerequisiteCache = new Map();
     this.recommendationCache = new Map();
-    
+
     // Relationship types
     this.relationshipTypes = {
       PREREQUISITE: 'prerequisite',
-      RELATED: 'related', 
+      RELATED: 'related',
       ADVANCED: 'advanced',
-      COMPLEMENTARY: 'complementary'
+      COMPLEMENTARY: 'complementary',
     };
   }
 
@@ -29,7 +33,7 @@ class ContentRelationshipService {
   async initialize() {
     try {
       await this._buildRelationshipMappings();
-      console.log('ContentRelationshipService initialized successfully');
+      console.warn('ContentRelationshipService initialized successfully');
     } catch (error) {
       console.error('Error initializing ContentRelationshipService:', error);
       throw error;
@@ -48,7 +52,7 @@ class ContentRelationshipService {
         maxResults = 5,
         includeTypes = Object.values(this.relationshipTypes),
         excludeCurrentCategory = false,
-        specializationId = null
+        specializationId = null,
       } = options;
 
       // Get the source content item
@@ -69,11 +73,11 @@ class ContentRelationshipService {
       // Find relationships for each type
       for (const relationshipType of includeTypes) {
         const relatedItems = await this._findRelatedContentByType(
-          sourceContent, 
-          relationshipType, 
+          sourceContent,
+          relationshipType,
           { maxResults, excludeCurrentCategory, specializationId }
         );
-        
+
         if (relatedItems.length > 0) {
           relationships[relationshipType] = relatedItems;
           totalFound += relatedItems.length;
@@ -81,10 +85,10 @@ class ContentRelationshipService {
       }
 
       const result = { relationships, totalFound };
-      
+
       // Cache the result
       this.relationshipCache.set(cacheKey, result);
-      
+
       return result;
     } catch (error) {
       console.error('Error getting related content:', error);
@@ -109,10 +113,10 @@ class ContentRelationshipService {
       }
 
       const prerequisites = await this._findPrerequisites(sourceContent);
-      
+
       // Cache the result
       this.prerequisiteCache.set(contentId, prerequisites);
-      
+
       return prerequisites;
     } catch (error) {
       console.error('Error getting prerequisites:', error);
@@ -127,12 +131,20 @@ class ContentRelationshipService {
    * @param {Object} options - Options for recommendations
    * @returns {Promise<Array>} Array of recommended content items
    */
-  async getContentRecommendations(specializationId, completedContentIds = [], options = {}) {
+  async getContentRecommendations(
+    specializationId,
+    completedContentIds = [],
+    options = {}
+  ) {
     try {
       const {
         maxResults = 10,
-        includeCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'],
-        difficultyProgression = true
+        includeCategories = [
+          'daten-prozessanalyse',
+          'anwendungsentwicklung',
+          'allgemein',
+        ],
+        difficultyProgression = true,
       } = options;
 
       const cacheKey = `rec-${specializationId}-${completedContentIds.length}-${JSON.stringify(options)}`;
@@ -144,10 +156,10 @@ class ContentRelationshipService {
 
       // Get all available content
       const allContent = await this._getAllContent();
-      
+
       // Filter out completed content
-      const availableContent = allContent.filter(item => 
-        !completedContentIds.includes(item.id)
+      const availableContent = allContent.filter(
+        item => !completedContentIds.includes(item.id)
       );
 
       // Score and rank content based on various factors
@@ -165,7 +177,7 @@ class ContentRelationshipService {
 
       // Cache the result
       this.recommendationCache.set(cacheKey, topRecommendations);
-      
+
       return topRecommendations;
     } catch (error) {
       console.error('Error getting content recommendations:', error);
@@ -186,7 +198,7 @@ class ContentRelationshipService {
       }
 
       return await this._findRelatedContentByType(
-        sourceContent, 
+        sourceContent,
         this.relationshipTypes.ADVANCED,
         { maxResults: 5 }
       );
@@ -214,7 +226,7 @@ class ContentRelationshipService {
   async _buildRelationshipMappings() {
     try {
       const allContent = await this._getAllContent();
-      
+
       // Build keyword and topic mappings
       this.keywordMap = new Map();
       this.topicMap = new Map();
@@ -230,10 +242,15 @@ class ContentRelationshipService {
         this.topicMap.set(content.id, topics);
 
         // Map difficulty levels
-        this.difficultyMap.set(content.id, content.difficulty || 'intermediate');
+        this.difficultyMap.set(
+          content.id,
+          content.difficulty || 'intermediate'
+        );
       }
 
-      console.log(`Built relationship mappings for ${allContent.length} content items`);
+      console.warn(
+        `Built relationship mappings for ${allContent.length} content items`
+      );
     } catch (error) {
       console.error('Error building relationship mappings:', error);
       throw error;
@@ -273,12 +290,12 @@ class ContentRelationshipService {
     try {
       const [modules, quizzes] = await Promise.all([
         this.contentService.getAllModules(),
-        this.contentService.getAllQuizzes()
+        this.contentService.getAllQuizzes(),
       ]);
 
       const allContent = [
         ...modules.map(m => ({ ...m, type: 'module' })),
-        ...quizzes.map(q => ({ ...q, type: 'quiz' }))
+        ...quizzes.map(q => ({ ...q, type: 'quiz' })),
       ];
 
       return allContent;
@@ -292,9 +309,17 @@ class ContentRelationshipService {
    * Find related content by relationship type
    * @private
    */
-  async _findRelatedContentByType(sourceContent, relationshipType, options = {}) {
-    const { maxResults = 5, excludeCurrentCategory = false, specializationId = null } = options;
-    
+  async _findRelatedContentByType(
+    sourceContent,
+    relationshipType,
+    options = {}
+  ) {
+    const {
+      maxResults = 5,
+      excludeCurrentCategory = false,
+      specializationId = null,
+    } = options;
+
     try {
       const allContent = await this._getAllContent();
       const candidates = [];
@@ -303,22 +328,26 @@ class ContentRelationshipService {
         if (content.id === sourceContent.id) continue;
 
         // Skip if excluding current category
-        if (excludeCurrentCategory && content.threeTierCategory === sourceContent.threeTierCategory) {
+        if (
+          excludeCurrentCategory &&
+          content.threeTierCategory === sourceContent.threeTierCategory
+        ) {
           continue;
         }
 
         const relationshipScore = this._calculateRelationshipScore(
-          sourceContent, 
-          content, 
+          sourceContent,
+          content,
           relationshipType,
           specializationId
         );
 
-        if (relationshipScore > 0.3) { // Minimum threshold
+        if (relationshipScore > 0.3) {
+          // Minimum threshold
           candidates.push({
             ...content,
             relationshipScore,
-            relationshipType
+            relationshipType,
           });
         }
       }
@@ -327,7 +356,6 @@ class ContentRelationshipService {
       return candidates
         .sort((a, b) => b.relationshipScore - a.relationshipScore)
         .slice(0, maxResults);
-
     } catch (error) {
       console.error('Error finding related content by type:', error);
       return [];
@@ -348,21 +376,26 @@ class ContentRelationshipService {
 
         // Check if this content is a prerequisite
         const isPrerequisite = this._isPrerequisite(content, sourceContent);
-        
+
         if (isPrerequisite) {
           prerequisites.push({
             ...content,
-            prerequisiteReason: this._getPrerequisiteReason(content, sourceContent)
+            prerequisiteReason: this._getPrerequisiteReason(
+              content,
+              sourceContent
+            ),
           });
         }
       }
 
       // Sort by importance/difficulty
       return prerequisites.sort((a, b) => {
-        const difficultyOrder = { 'beginner': 1, 'intermediate': 2, 'advanced': 3 };
-        return (difficultyOrder[a.difficulty] || 2) - (difficultyOrder[b.difficulty] || 2);
+        const difficultyOrder = { beginner: 1, intermediate: 2, advanced: 3 };
+        return (
+          (difficultyOrder[a.difficulty] || 2) -
+          (difficultyOrder[b.difficulty] || 2)
+        );
       });
-
     } catch (error) {
       console.error('Error finding prerequisites:', error);
       return [];
@@ -373,14 +406,22 @@ class ContentRelationshipService {
    * Score content for recommendation based on various factors
    * @private
    */
-  async _scoreContentForRecommendation(availableContent, specializationId, completedContentIds, options) {
+  async _scoreContentForRecommendation(
+    availableContent,
+    specializationId,
+    completedContentIds,
+    options
+  ) {
     const { includeCategories, difficultyProgression } = options;
-    
+
     return availableContent.map(content => {
       let score = 0;
 
       // Base score from specialization relevance
-      if (content.specializationRelevance && content.specializationRelevance[specializationId]) {
+      if (
+        content.specializationRelevance &&
+        content.specializationRelevance[specializationId]
+      ) {
         const relevance = content.specializationRelevance[specializationId];
         score += relevance === 'high' ? 3 : relevance === 'medium' ? 2 : 1;
       }
@@ -394,14 +435,17 @@ class ContentRelationshipService {
       if (difficultyProgression) {
         const userLevel = this._estimateUserLevel(completedContentIds);
         const contentDifficulty = content.difficulty || 'intermediate';
-        
+
         if (this._isDifficultyAppropriate(userLevel, contentDifficulty)) {
           score += 2;
         }
       }
 
       // Prerequisite completion bonus
-      const prerequisitesMet = this._checkPrerequisitesMet(content, completedContentIds);
+      const prerequisitesMet = this._checkPrerequisitesMet(
+        content,
+        completedContentIds
+      );
       if (prerequisitesMet) {
         score += 1;
       }
@@ -409,7 +453,11 @@ class ContentRelationshipService {
       return {
         ...content,
         score,
-        recommendationReasons: this._getRecommendationReasons(content, score, specializationId)
+        recommendationReasons: this._getRecommendationReasons(
+          content,
+          score,
+          specializationId
+        ),
       };
     });
   }
@@ -418,19 +466,30 @@ class ContentRelationshipService {
    * Calculate relationship score between two content items
    * @private
    */
-  _calculateRelationshipScore(sourceContent, targetContent, relationshipType, specializationId) {
+  _calculateRelationshipScore(
+    sourceContent,
+    targetContent,
+    relationshipType,
+    specializationId
+  ) {
     let score = 0;
 
     // Keyword similarity
     const sourceKeywords = this.keywordMap.get(sourceContent.id) || [];
     const targetKeywords = this.keywordMap.get(targetContent.id) || [];
-    const keywordSimilarity = this._calculateKeywordSimilarity(sourceKeywords, targetKeywords);
+    const keywordSimilarity = this._calculateKeywordSimilarity(
+      sourceKeywords,
+      targetKeywords
+    );
     score += keywordSimilarity * 0.4;
 
     // Topic similarity
     const sourceTopics = this.topicMap.get(sourceContent.id) || [];
     const targetTopics = this.topicMap.get(targetContent.id) || [];
-    const topicSimilarity = this._calculateTopicSimilarity(sourceTopics, targetTopics);
+    const topicSimilarity = this._calculateTopicSimilarity(
+      sourceTopics,
+      targetTopics
+    );
     score += topicSimilarity * 0.3;
 
     // Specialization relevance
@@ -443,19 +502,28 @@ class ContentRelationshipService {
     switch (relationshipType) {
       case this.relationshipTypes.PREREQUISITE:
         // Lower difficulty content gets higher score for prerequisites
-        if (this._getDifficultyLevel(targetContent) < this._getDifficultyLevel(sourceContent)) {
+        if (
+          this._getDifficultyLevel(targetContent) <
+          this._getDifficultyLevel(sourceContent)
+        ) {
           score += 0.1;
         }
         break;
       case this.relationshipTypes.ADVANCED:
         // Higher difficulty content gets higher score for advanced
-        if (this._getDifficultyLevel(targetContent) > this._getDifficultyLevel(sourceContent)) {
+        if (
+          this._getDifficultyLevel(targetContent) >
+          this._getDifficultyLevel(sourceContent)
+        ) {
           score += 0.1;
         }
         break;
       case this.relationshipTypes.RELATED:
         // Same difficulty level gets bonus for related content
-        if (this._getDifficultyLevel(targetContent) === this._getDifficultyLevel(sourceContent)) {
+        if (
+          this._getDifficultyLevel(targetContent) ===
+          this._getDifficultyLevel(sourceContent)
+        ) {
           score += 0.05;
         }
         break;
@@ -469,25 +537,52 @@ class ContentRelationshipService {
    * @private
    */
   _extractKeywords(content) {
-    const text = `${content.title || ''} ${content.description || ''} ${content.category || ''}`.toLowerCase();
-    
+    const text =
+      `${content.title || ''} ${content.description || ''} ${content.category || ''}`.toLowerCase();
+
     // Common technical keywords to look for
     const technicalKeywords = [
-      'datenbank', 'database', 'sql', 'normalisierung', 'er-modell',
-      'etl', 'data warehouse', 'bi', 'business intelligence', 'olap',
-      'programmierung', 'java', 'javascript', 'python', 'web',
-      'algorithmus', 'datenstruktur', 'objektorientiert', 'design pattern',
-      'testing', 'qualität', 'projekt', 'agil', 'scrum',
-      'sicherheit', 'verschlüsselung', 'authentifizierung',
-      'netzwerk', 'protokoll', 'api', 'rest', 'json'
+      'datenbank',
+      'database',
+      'sql',
+      'normalisierung',
+      'er-modell',
+      'etl',
+      'data warehouse',
+      'bi',
+      'business intelligence',
+      'olap',
+      'programmierung',
+      'java',
+      'javascript',
+      'python',
+      'web',
+      'algorithmus',
+      'datenstruktur',
+      'objektorientiert',
+      'design pattern',
+      'testing',
+      'qualität',
+      'projekt',
+      'agil',
+      'scrum',
+      'sicherheit',
+      'verschlüsselung',
+      'authentifizierung',
+      'netzwerk',
+      'protokoll',
+      'api',
+      'rest',
+      'json',
     ];
 
-    const foundKeywords = technicalKeywords.filter(keyword => 
+    const foundKeywords = technicalKeywords.filter(keyword =>
       text.includes(keyword)
     );
 
     // Also extract words from title (simplified)
-    const titleWords = (content.title || '').toLowerCase()
+    const titleWords = (content.title || '')
+      .toLowerCase()
       .split(/\s+/)
       .filter(word => word.length > 3)
       .slice(0, 5); // Limit to first 5 words
@@ -501,7 +596,7 @@ class ContentRelationshipService {
    */
   _extractTopics(content) {
     const topics = [];
-    
+
     // Add three-tier category as primary topic
     if (content.threeTierCategory) {
       topics.push(content.threeTierCategory);
@@ -528,7 +623,7 @@ class ContentRelationshipService {
 
     const intersection = keywords1.filter(k => keywords2.includes(k));
     const union = [...new Set([...keywords1, ...keywords2])];
-    
+
     return intersection.length / union.length;
   }
 
@@ -549,25 +644,33 @@ class ContentRelationshipService {
    */
   _isPrerequisite(candidateContent, targetContent) {
     // Basic heuristics for prerequisite detection
-    
+
     // Lower difficulty is often a prerequisite
     const candidateDifficulty = this._getDifficultyLevel(candidateContent);
     const targetDifficulty = this._getDifficultyLevel(targetContent);
-    
+
     if (candidateDifficulty >= targetDifficulty) return false;
 
     // Check for foundational topics
     const candidateKeywords = this.keywordMap.get(candidateContent.id) || [];
     const targetKeywords = this.keywordMap.get(targetContent.id) || [];
-    
+
     // If candidate has foundational keywords and target has advanced ones
-    const foundationalKeywords = ['grundlagen', 'einführung', 'basics', 'introduction'];
-    const hasFoundational = candidateKeywords.some(k => 
+    const foundationalKeywords = [
+      'grundlagen',
+      'einführung',
+      'basics',
+      'introduction',
+    ];
+    const hasFoundational = candidateKeywords.some(k =>
       foundationalKeywords.some(f => k.includes(f))
     );
-    
-    const keywordOverlap = this._calculateKeywordSimilarity(candidateKeywords, targetKeywords);
-    
+
+    const keywordOverlap = this._calculateKeywordSimilarity(
+      candidateKeywords,
+      targetKeywords
+    );
+
     return hasFoundational && keywordOverlap > 0.2;
   }
 
@@ -577,7 +680,7 @@ class ContentRelationshipService {
    */
   _getDifficultyLevel(content) {
     const difficulty = content.difficulty || 'intermediate';
-    const levels = { 'beginner': 1, 'intermediate': 2, 'advanced': 3 };
+    const levels = { beginner: 1, intermediate: 2, advanced: 3 };
     return levels[difficulty] || 2;
   }
 
@@ -606,10 +709,14 @@ class ContentRelationshipService {
    */
   _isDifficultyAppropriate(userLevel, contentDifficulty) {
     const userLevelNum = this._getDifficultyLevel({ difficulty: userLevel });
-    const contentLevelNum = this._getDifficultyLevel({ difficulty: contentDifficulty });
-    
+    const contentLevelNum = this._getDifficultyLevel({
+      difficulty: contentDifficulty,
+    });
+
     // Content should be at user level or slightly above
-    return contentLevelNum >= userLevelNum && contentLevelNum <= userLevelNum + 1;
+    return (
+      contentLevelNum >= userLevelNum && contentLevelNum <= userLevelNum + 1
+    );
   }
 
   /**
@@ -627,17 +734,20 @@ class ContentRelationshipService {
    */
   _getRecommendationReasons(content, score, specializationId) {
     const reasons = [];
-    
-    if (content.specializationRelevance && content.specializationRelevance[specializationId] === 'high') {
+
+    if (
+      content.specializationRelevance &&
+      content.specializationRelevance[specializationId] === 'high'
+    ) {
       reasons.push('Highly relevant for your specialization');
     }
-    
+
     if (score > 4) {
       reasons.push('Excellent match for your learning path');
     } else if (score > 3) {
       reasons.push('Good fit for your current level');
     }
-    
+
     return reasons;
   }
 }

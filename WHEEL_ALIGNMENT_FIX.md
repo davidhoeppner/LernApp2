@@ -1,10 +1,11 @@
 # Wheel Alignment and Winner Detection Fix
 
 **Date**: 2025-10-05  
-**Issues**: 
+**Issues**:
+
 1. Arrow points to wrong winner
 2. Text not aligned with slice angle
-**Status**: ✅ Fixed
+   **Status**: ✅ Fixed
 
 ---
 
@@ -15,6 +16,7 @@
 **Issue**: The arrow at the top pointed to one segment, but a different segment was selected as the winner.
 
 **Root Cause**: The rotation calculation was incorrect. The formula `360 - targetSegmentAngle` didn't account for:
+
 - Where segments actually start (-90 degrees)
 - The center point of each segment
 - The pointer position (top = 90 degrees)
@@ -32,6 +34,7 @@
 ### 1. Fixed Winner Detection
 
 **Before:**
+
 ```javascript
 const targetSegmentAngle = finalIndex * segmentAngle;
 const totalRotation = fullRotations * 360 + (360 - targetSegmentAngle);
@@ -40,10 +43,11 @@ const totalRotation = fullRotations * 360 + (360 - targetSegmentAngle);
 **Problem**: This didn't account for segment centers or the pointer position.
 
 **After:**
+
 ```javascript
 // Calculate the angle to the CENTER of the target segment
 // Segments start at -90, so segment 0 center is at -90 + segmentAngle/2
-const targetSegmentCenter = finalIndex * segmentAngle + (segmentAngle / 2);
+const targetSegmentCenter = finalIndex * segmentAngle + segmentAngle / 2;
 
 // We want this center to be at 90 degrees (top, where pointer is)
 // So we need to rotate by: 90 - targetSegmentCenter
@@ -53,6 +57,7 @@ const totalRotation = fullRotations * 360 + targetAngle;
 ```
 
 **How it works:**
+
 1. Calculate where the center of the target segment is
 2. Calculate how much to rotate to bring that center to the top (90°)
 3. Add full rotations for the spinning effect
@@ -60,18 +65,21 @@ const totalRotation = fullRotations * 360 + targetAngle;
 ### 2. Fixed Text Alignment
 
 **Before:**
+
 ```javascript
-transform="rotate(${midAngle + 90}, ${textX}, ${textY})"
+transform = 'rotate(${midAngle + 90}, ${textX}, ${textY})';
 ```
 
 **Problem**: Adding 90° made text perpendicular to the radius.
 
 **After:**
+
 ```javascript
-transform="rotate(${midAngle}, ${textX}, ${textY})"
+transform = 'rotate(${midAngle}, ${textX}, ${textY})';
 ```
 
 **How it works:**
+
 - Text now rotates by the same angle as the segment's midpoint
 - This makes text tangent to the circle (aligned with the slice)
 - Text follows the natural curve of the wheel
@@ -94,13 +102,15 @@ transform="rotate(${midAngle}, ${textX}, ${textY})"
 ### Segment Layout
 
 Segments are drawn starting at -90° (left side):
+
 - Segment 0: -90° to -90° + segmentAngle
-- Segment 1: -90° + segmentAngle to -90° + 2*segmentAngle
+- Segment 1: -90° + segmentAngle to -90° + 2\*segmentAngle
 - etc.
 
 ### Winner Calculation
 
 For the pointer at 90° to point to segment N:
+
 1. Find segment N's center angle: `N * segmentAngle + segmentAngle/2`
 2. Calculate rotation needed: `90 - centerAngle`
 3. Add full rotations: `fullRotations * 360 + rotation`
@@ -108,6 +118,7 @@ For the pointer at 90° to point to segment N:
 ### Text Rotation
 
 Text at angle θ from center:
+
 - Position: `(centerX + r*cos(θ), centerY + r*sin(θ))`
 - Rotation: `θ` (same as position angle)
 - Result: Text is tangent to circle at that point
@@ -188,12 +199,14 @@ Text at angle θ from center:
 ### Why the formula works:
 
 Given:
+
 - Pointer at 90° (top)
 - Segment N starts at: `-90 + N * segmentAngle`
 - Segment N ends at: `-90 + (N+1) * segmentAngle`
 - Segment N center: `-90 + N * segmentAngle + segmentAngle/2`
 
 To align segment N's center with pointer:
+
 ```
 Rotation needed = Pointer angle - Segment center angle
                 = 90 - (-90 + N * segmentAngle + segmentAngle/2)
@@ -202,6 +215,7 @@ Rotation needed = Pointer angle - Segment center angle
 ```
 
 Simplified:
+
 ```
 targetAngle = 90 - (N * segmentAngle + segmentAngle/2)
 ```
@@ -213,12 +227,14 @@ This ensures the segment center aligns perfectly with the pointer.
 ## Impact
 
 ### Before Fix
+
 - ❌ Wrong segment selected
 - ❌ Confusing user experience
 - ❌ Text hard to read
 - ❌ Unprofessional appearance
 
 ### After Fix
+
 - ✅ Correct segment always selected
 - ✅ Clear and intuitive
 - ✅ Text easy to read
@@ -239,6 +255,7 @@ This ensures the segment center aligns perfectly with the pointer.
 ## Related Issues
 
 This fix also improves:
+
 - User trust in the feature
 - Visual consistency
 - Professional appearance
@@ -249,6 +266,7 @@ This fix also improves:
 ## Future Enhancements
 
 ### Potential Improvements
+
 1. **Visual indicator**: Highlight winning segment
 2. **Sound effects**: "Tick" sound as segments pass pointer
 3. **Slow-motion**: Slow down more dramatically near end
@@ -256,6 +274,7 @@ This fix also improves:
 5. **Glow effect**: Winning segment glows briefly
 
 ### Advanced Features
+
 - Multiple pointers for team mode
 - Adjustable spin speed
 - Custom pointer designs

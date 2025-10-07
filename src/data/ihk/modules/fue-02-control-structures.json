@@ -68,5 +68,12 @@
     }
   ],
   "lastUpdated": "2025-01-05T10:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand kontrollstrukturen",
+    "Understand aktivitätsdiagramm",
+    "Understand pseudocode",
+    "Understand algorithmen",
+    "Understand uml"
+  ]
 }

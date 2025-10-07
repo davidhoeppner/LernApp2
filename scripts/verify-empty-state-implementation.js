@@ -11,7 +11,12 @@ import path from 'path';
 console.log('🚀 Verifying Empty State and Feedback Implementation...');
 
 // Read the IHKQuizListView file
-const filePath = path.join(process.cwd(), 'src', 'components', 'IHKQuizListView.js');
+const filePath = path.join(
+  process.cwd(),
+  'src',
+  'components',
+  'IHKQuizListView.js'
+);
 const fileContent = fs.readFileSync(filePath, 'utf8');
 
 // Check for required methods
@@ -24,7 +29,7 @@ const requiredMethods = [
   '_createQuizCountDisplay',
   '_updateQuizCountDisplay',
   '_showFilterOperationFeedback',
-  '_announceFilterChange'
+  '_announceFilterChange',
 ];
 
 console.log('\n🔍 Checking for required methods...');
@@ -53,9 +58,12 @@ if (fileContent.includes('this._createEnhancedEmptyState()')) {
 console.log('\n🔍 Checking for feedback integration...');
 const feedbackChecks = [
   { name: 'Quiz count display in header', pattern: 'quiz-count-display' },
-  { name: 'Filter operation feedback', pattern: '_showFilterOperationFeedback' },
+  {
+    name: 'Filter operation feedback',
+    pattern: '_showFilterOperationFeedback',
+  },
   { name: 'Enhanced announcements', pattern: '_announceFilterChange' },
-  { name: 'Count display updates', pattern: '_updateQuizCountDisplay' }
+  { name: 'Count display updates', pattern: '_updateQuizCountDisplay' },
 ];
 
 for (const check of feedbackChecks) {
@@ -76,7 +84,7 @@ const cssChecks = [
   { name: 'Quiz count display styles', pattern: '.quiz-count-display' },
   { name: 'Updating animation', pattern: '.updating' },
   { name: 'Filter feedback styles', pattern: '.filtering' },
-  { name: 'Spin animation', pattern: '@keyframes spin' }
+  { name: 'Spin animation', pattern: '@keyframes spin' },
 ];
 
 for (const check of cssChecks) {
@@ -94,20 +102,26 @@ console.log('\n📋 Requirements Coverage Check...');
 const requirementChecks = [
   {
     requirement: '1.6 - Empty state messages for filter combinations',
-    patterns: ['No quizzes match your current filters', 'filterDescription']
+    patterns: ['No quizzes match your current filters', 'filterDescription'],
   },
   {
     requirement: '4.4 - Clear guidance on adjusting filters',
-    patterns: ['_getFilterAdjustmentSuggestions', 'selecting "All Categories"']
+    patterns: ['_getFilterAdjustmentSuggestions', 'selecting "All Categories"'],
   },
   {
     requirement: '6.3 - Quiz count display and announcements',
-    patterns: ['quiz-count-display', '_announceFilterChange', 'accessibilityHelper.announce']
-  }
+    patterns: [
+      'quiz-count-display',
+      '_announceFilterChange',
+      'accessibilityHelper.announce',
+    ],
+  },
 ];
 
 for (const check of requirementChecks) {
-  const allPatternsFound = check.patterns.every(pattern => fileContent.includes(pattern));
+  const allPatternsFound = check.patterns.every(pattern =>
+    fileContent.includes(pattern)
+  );
   if (allPatternsFound) {
     console.log(`✅ ${check.requirement} - Implemented`);
   } else {
@@ -127,7 +141,7 @@ if (allMethodsFound) {
   console.log('✅ Accessibility announcements with result counts');
   console.log('✅ CSS animations and visual feedback');
   console.log('✅ All requirements (1.6, 4.4, 6.3) covered');
-  
+
   process.exit(0);
 } else {
   console.log('❌ FAILURE: Some features are missing or incomplete');

@@ -1,4 +1,3 @@
-/* global requestAnimationFrame */
 import { TIME, UI } from '../utils/constants.js';
 
 /**

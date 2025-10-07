@@ -89,18 +89,8 @@
       "id": "q6",
       "type": "multiple-choice",
       "question": "Welche OLAP-Operationen gibt es?",
-      "options": [
-        "Drill-Down",
-        "Roll-Up",
-        "Slice",
-        "Dice"
-      ],
-      "correctAnswer": [
-        "Drill-Down",
-        "Roll-Up",
-        "Slice",
-        "Dice"
-      ],
+      "options": ["Drill-Down", "Roll-Up", "Slice", "Dice"],
+      "correctAnswer": ["Drill-Down", "Roll-Up", "Slice", "Dice"],
       "explanation": "Die wichtigsten OLAP-Operationen sind: Drill-Down (zu Details), Roll-Up (zu Aggregaten), Slice (eine Dimension auswählen), Dice (mehrere Dimensionen auswählen) und Pivot (Rotation der Ansicht).",
       "points": 2,
       "category": "OLAP"
@@ -302,12 +292,7 @@
       "id": "q18",
       "type": "multiple-choice",
       "question": "Welche Datenqualitätsdimensionen gibt es?",
-      "options": [
-        "Vollständigkeit",
-        "Genauigkeit",
-        "Konsistenz",
-        "Aktualität"
-      ],
+      "options": ["Vollständigkeit", "Genauigkeit", "Konsistenz", "Aktualität"],
       "correctAnswer": [
         "Vollständigkeit",
         "Genauigkeit",

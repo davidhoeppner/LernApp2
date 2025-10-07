@@ -24,8 +24,8 @@ const testResults = {
     'Content Service Integration': { passed: 0, failed: 0 },
     'Specialization Integration': { passed: 0, failed: 0 },
     'Backward Compatibility': { passed: 0, failed: 0 },
-    'Performance': { passed: 0, failed: 0 }
-  }
+    Performance: { passed: 0, failed: 0 },
+  },
 };
 
 // Helper function to log test results
@@ -73,9 +73,9 @@ class MockStateManager {
         hasSelected: false,
         preferences: {
           showAllContent: false,
-          preferredCategories: []
-        }
-      }
+          preferredCategories: [],
+        },
+      },
     };
   }
 
@@ -116,17 +116,22 @@ class MockStorageService {
  */
 async function testCategoryMappingService() {
   console.log('\n📊 Testing Category Mapping Service...');
-  
+
   try {
     // Import the service
-    const { default: CategoryMappingService } = await import('../src/services/CategoryMappingService.js');
+    const { default: CategoryMappingService } = await import(
+      '../src/services/CategoryMappingService.js'
+    );
     const mockSpecializationService = { getCategoryRelevance: () => 'medium' };
-    const categoryMappingService = new CategoryMappingService(mockSpecializationService);
+    const categoryMappingService = new CategoryMappingService(
+      mockSpecializationService
+    );
 
     // Test 1: Service initialization
     logTest(
       'CategoryMappingService initializes correctly',
-      categoryMappingService !== null && categoryMappingService.threeTierCategories !== null,
+      categoryMappingService !== null &&
+        categoryMappingService.threeTierCategories !== null,
       '',
       'Category Mapping'
     );
@@ -142,7 +147,8 @@ async function testCategoryMappingService() {
 
     // Test 3: Category mapping for DPA content
     const dpaContent = { category: 'bp-dpa-01', id: 'test-dpa' };
-    const dpaMapping = categoryMappingService.mapToThreeTierCategory(dpaContent);
+    const dpaMapping =
+      categoryMappingService.mapToThreeTierCategory(dpaContent);
     logTest(
       'DPA content maps to correct category',
       dpaMapping === 'daten-prozessanalyse',
@@ -162,7 +168,8 @@ async function testCategoryMappingService() {
 
     // Test 5: Category mapping for general content
     const generalContent = { category: 'fue-01', id: 'test-general' };
-    const generalMapping = categoryMappingService.mapToThreeTierCategory(generalContent);
+    const generalMapping =
+      categoryMappingService.mapToThreeTierCategory(generalContent);
     logTest(
       'General content maps to correct category',
       generalMapping === 'allgemein',
@@ -172,14 +179,14 @@ async function testCategoryMappingService() {
 
     // Test 6: Validation functionality
     const testContent = [dpaContent, aeContent, generalContent];
-    const validationResult = categoryMappingService.validateCategoryMapping(testContent);
+    const validationResult =
+      categoryMappingService.validateCategoryMapping(testContent);
     logTest(
       'Category mapping validation works',
       validationResult && typeof validationResult === 'object',
       '',
       'Category Mapping'
     );
-
   } catch (error) {
     logTest(
       'CategoryMappingService tests',
@@ -195,18 +202,28 @@ async function testCategoryMappingService() {
  */
 async function testContentServiceIntegration() {
   console.log('\n📚 Testing Content Service Integration...');
-  
+
   try {
     // Import services
-    const { default: IHKContentService } = await import('../src/services/IHKContentService.js');
-    const { default: CategoryMappingService } = await import('../src/services/CategoryMappingService.js');
-    
+    const { default: IHKContentService } = await import(
+      '../src/services/IHKContentService.js'
+    );
+    const { default: CategoryMappingService } = await import(
+      '../src/services/CategoryMappingService.js'
+    );
+
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
     const mockSpecializationService = { getCategoryRelevance: () => 'medium' };
-    
-    const categoryMappingService = new CategoryMappingService(mockSpecializationService);
-    const contentService = new IHKContentService(mockStateManager, mockStorageService, categoryMappingService);
+
+    const categoryMappingService = new CategoryMappingService(
+      mockSpecializationService
+    );
+    const contentService = new IHKContentService(
+      mockStateManager,
+      mockStorageService,
+      categoryMappingService
+    );
 
     // Test 1: Content service initializes with category mapping
     logTest(
@@ -217,7 +234,9 @@ async function testContentServiceIntegration() {
     );
 
     // Test 2: Get content by three-tier category
-    const dpaContent = await contentService.getContentByThreeTierCategory('daten-prozessanalyse');
+    const dpaContent = await contentService.getContentByThreeTierCategory(
+      'daten-prozessanalyse'
+    );
     logTest(
       'getContentByThreeTierCategory returns DPA content',
       Array.isArray(dpaContent),
@@ -225,7 +244,9 @@ async function testContentServiceIntegration() {
       'Content Service Integration'
     );
 
-    const aeContent = await contentService.getContentByThreeTierCategory('anwendungsentwicklung');
+    const aeContent = await contentService.getContentByThreeTierCategory(
+      'anwendungsentwicklung'
+    );
     logTest(
       'getContentByThreeTierCategory returns AE content',
       Array.isArray(aeContent),
@@ -233,7 +254,8 @@ async function testContentServiceIntegration() {
       'Content Service Integration'
     );
 
-    const generalContent = await contentService.getContentByThreeTierCategory('allgemein');
+    const generalContent =
+      await contentService.getContentByThreeTierCategory('allgemein');
     logTest(
       'getContentByThreeTierCategory returns general content',
       Array.isArray(generalContent),
@@ -242,19 +264,23 @@ async function testContentServiceIntegration() {
     );
 
     // Test 3: Get content with category info
-    const categorizedContent = await contentService.getContentWithCategoryInfo();
+    const categorizedContent =
+      await contentService.getContentWithCategoryInfo();
     logTest(
       'getContentWithCategoryInfo returns structured data',
-      categorizedContent && 
-      categorizedContent['daten-prozessanalyse'] &&
-      categorizedContent['anwendungsentwicklung'] &&
-      categorizedContent['allgemein'],
+      categorizedContent &&
+        categorizedContent['daten-prozessanalyse'] &&
+        categorizedContent['anwendungsentwicklung'] &&
+        categorizedContent['allgemein'],
       'Missing expected category structure',
       'Content Service Integration'
     );
 
     // Test 4: Search within category
-    const searchResults = await contentService.searchInCategory('data', 'daten-prozessanalyse');
+    const searchResults = await contentService.searchInCategory(
+      'data',
+      'daten-prozessanalyse'
+    );
     logTest(
       'searchInCategory returns filtered results',
       Array.isArray(searchResults),
@@ -270,7 +296,6 @@ async function testContentServiceIntegration() {
       'Missing threeTierCategories in stats',
       'Content Service Integration'
     );
-
   } catch (error) {
     logTest(
       'Content Service Integration tests',
@@ -286,18 +311,30 @@ async function testContentServiceIntegration() {
  */
 async function testSpecializationServiceIntegration() {
   console.log('\n🎯 Testing Specialization Service Integration...');
-  
+
   try {
     // Import services
-    const { default: SpecializationService } = await import('../src/services/SpecializationService.js');
-    const { default: CategoryMappingService } = await import('../src/services/CategoryMappingService.js');
-    
+    const { default: SpecializationService } = await import(
+      '../src/services/SpecializationService.js'
+    );
+    const { default: CategoryMappingService } = await import(
+      '../src/services/CategoryMappingService.js'
+    );
+
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
-    const mockSpecializationServiceForMapping = { getCategoryRelevance: () => 'medium' };
-    
-    const categoryMappingService = new CategoryMappingService(mockSpecializationServiceForMapping);
-    const specializationService = new SpecializationService(mockStateManager, mockStorageService, categoryMappingService);
+    const mockSpecializationServiceForMapping = {
+      getCategoryRelevance: () => 'medium',
+    };
+
+    const categoryMappingService = new CategoryMappingService(
+      mockSpecializationServiceForMapping
+    );
+    const specializationService = new SpecializationService(
+      mockStateManager,
+      mockStorageService,
+      categoryMappingService
+    );
 
     // Test 1: Specialization service integrates with category mapping
     logTest(
@@ -308,7 +345,8 @@ async function testSpecializationServiceIntegration() {
     );
 
     // Test 2: Get three-tier content categories
-    const threeTierCategories = specializationService.getThreeTierContentCategories();
+    const threeTierCategories =
+      specializationService.getThreeTierContentCategories();
     logTest(
       'getThreeTierContentCategories returns category data',
       Array.isArray(threeTierCategories) && threeTierCategories.length === 3,
@@ -319,13 +357,15 @@ async function testSpecializationServiceIntegration() {
     // Test 3: Filter content by specialization with three-tier categories
     const dpaSpecialization = 'daten-prozessanalyse';
     specializationService.setSpecialization(dpaSpecialization);
-    
-    const filteredContent = specializationService.filterContentBySpecialization([
-      { category: 'bp-dpa-01', threeTierCategory: 'daten-prozessanalyse' },
-      { category: 'bp-ae-01', threeTierCategory: 'anwendungsentwicklung' },
-      { category: 'fue-01', threeTierCategory: 'allgemein' }
-    ]);
-    
+
+    const filteredContent = specializationService.filterContentBySpecialization(
+      [
+        { category: 'bp-dpa-01', threeTierCategory: 'daten-prozessanalyse' },
+        { category: 'bp-ae-01', threeTierCategory: 'anwendungsentwicklung' },
+        { category: 'fue-01', threeTierCategory: 'allgemein' },
+      ]
+    );
+
     logTest(
       'filterContentBySpecialization works with three-tier categories',
       Array.isArray(filteredContent),
@@ -334,7 +374,8 @@ async function testSpecializationServiceIntegration() {
     );
 
     // Test 4: Content statistics by specialization
-    const specializationStats = specializationService.getContentStatsBySpecialization(dpaSpecialization);
+    const specializationStats =
+      specializationService.getContentStatsBySpecialization(dpaSpecialization);
     logTest(
       'getContentStatsBySpecialization includes three-tier data',
       specializationStats && typeof specializationStats === 'object',
@@ -343,14 +384,17 @@ async function testSpecializationServiceIntegration() {
     );
 
     // Test 5: Category relevance calculation
-    const relevance = specializationService.getCategoryRelevance('daten-prozessanalyse', dpaSpecialization);
+    const relevance = specializationService.getCategoryRelevance(
+      'daten-prozessanalyse',
+      dpaSpecialization
+    );
     logTest(
       'getCategoryRelevance works for three-tier categories',
-      typeof relevance === 'string' && ['high', 'medium', 'low'].includes(relevance),
+      typeof relevance === 'string' &&
+        ['high', 'medium', 'low'].includes(relevance),
       `Expected relevance level, got '${relevance}'`,
       'Specialization Integration'
     );
-
   } catch (error) {
     logTest(
       'Specialization Service Integration tests',
@@ -366,17 +410,27 @@ async function testSpecializationServiceIntegration() {
  */
 async function testBackwardCompatibility() {
   console.log('\n🔄 Testing Backward Compatibility...');
-  
+
   try {
     // Import services
-    const { default: IHKContentService } = await import('../src/services/IHKContentService.js');
-    const { default: SpecializationService } = await import('../src/services/SpecializationService.js');
-    
+    const { default: IHKContentService } = await import(
+      '../src/services/IHKContentService.js'
+    );
+    const { default: SpecializationService } = await import(
+      '../src/services/SpecializationService.js'
+    );
+
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
-    
-    const contentService = new IHKContentService(mockStateManager, mockStorageService);
-    const specializationService = new SpecializationService(mockStateManager, mockStorageService);
+
+    const contentService = new IHKContentService(
+      mockStateManager,
+      mockStorageService
+    );
+    const specializationService = new SpecializationService(
+      mockStateManager,
+      mockStorageService
+    );
 
     // Test 1: Existing getAllModules method still works
     const allModules = await contentService.getAllModules();
@@ -406,7 +460,8 @@ async function testBackwardCompatibility() {
     );
 
     // Test 4: Existing specialization methods still work
-    const availableSpecializations = specializationService.getAvailableSpecializations();
+    const availableSpecializations =
+      specializationService.getAvailableSpecializations();
     logTest(
       'getAvailableSpecializations method maintains backward compatibility',
       Array.isArray(availableSpecializations),
@@ -428,15 +483,16 @@ async function testBackwardCompatibility() {
     // Test 6: Progress tracking compatibility
     const testProgress = { 'fue-01': { completed: true, score: 85 } };
     mockStorageService.set('moduleProgress', testProgress);
-    
+
     const retrievedProgress = mockStorageService.get('moduleProgress');
     logTest(
       'Progress tracking maintains data structure compatibility',
-      retrievedProgress && retrievedProgress['fue-01'] && retrievedProgress['fue-01'].completed,
+      retrievedProgress &&
+        retrievedProgress['fue-01'] &&
+        retrievedProgress['fue-01'].completed,
       'Progress data structure changed',
       'Backward Compatibility'
     );
-
   } catch (error) {
     logTest(
       'Backward Compatibility tests',
@@ -452,25 +508,35 @@ async function testBackwardCompatibility() {
  */
 async function testPerformanceRequirements() {
   console.log('\n⚡ Testing Performance Requirements...');
-  
+
   try {
     // Import services
-    const { default: IHKContentService } = await import('../src/services/IHKContentService.js');
-    const { default: CategoryMappingService } = await import('../src/services/CategoryMappingService.js');
-    
+    const { default: IHKContentService } = await import(
+      '../src/services/IHKContentService.js'
+    );
+    const { default: CategoryMappingService } = await import(
+      '../src/services/CategoryMappingService.js'
+    );
+
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
     const mockSpecializationService = { getCategoryRelevance: () => 'medium' };
-    
-    const categoryMappingService = new CategoryMappingService(mockSpecializationService);
-    const contentService = new IHKContentService(mockStateManager, mockStorageService, categoryMappingService);
+
+    const categoryMappingService = new CategoryMappingService(
+      mockSpecializationService
+    );
+    const contentService = new IHKContentService(
+      mockStateManager,
+      mockStorageService,
+      categoryMappingService
+    );
 
     // Test 1: Category filtering performance (should be < 100ms)
     const startTime = performance.now();
     await contentService.getContentByThreeTierCategory('daten-prozessanalyse');
     const endTime = performance.now();
     const filterTime = endTime - startTime;
-    
+
     logTest(
       'Category filtering meets performance requirement (<100ms)',
       filterTime < 100,
@@ -481,14 +547,16 @@ async function testPerformanceRequirements() {
     // Test 2: Category mapping performance for multiple items
     const testContent = Array.from({ length: 100 }, (_, i) => ({
       id: `test-${i}`,
-      category: i % 3 === 0 ? 'bp-dpa-01' : i % 3 === 1 ? 'bp-ae-01' : 'fue-01'
+      category: i % 3 === 0 ? 'bp-dpa-01' : i % 3 === 1 ? 'bp-ae-01' : 'fue-01',
     }));
-    
+
     const mappingStartTime = performance.now();
-    testContent.forEach(item => categoryMappingService.mapToThreeTierCategory(item));
+    testContent.forEach(item =>
+      categoryMappingService.mapToThreeTierCategory(item)
+    );
     const mappingEndTime = performance.now();
     const mappingTime = mappingEndTime - mappingStartTime;
-    
+
     logTest(
       'Category mapping performance for 100 items (<50ms)',
       mappingTime < 50,
@@ -501,14 +569,13 @@ async function testPerformanceRequirements() {
     await contentService.searchInCategory('test', 'allgemein');
     const searchEndTime = performance.now();
     const searchTime = searchEndTime - searchStartTime;
-    
+
     logTest(
       'Category search performance (<100ms)',
       searchTime < 100,
       `Search took ${searchTime.toFixed(2)}ms`,
       'Performance'
     );
-
   } catch (error) {
     logTest(
       'Performance Requirements tests',
@@ -524,19 +591,25 @@ async function testPerformanceRequirements() {
  */
 async function testDataIntegrity() {
   console.log('\n🔍 Testing Data Integrity...');
-  
+
   try {
     // Test 1: Three-tier categories configuration exists
-    const categoriesConfig = loadJSON('src/data/ihk/metadata/three-tier-categories.json');
+    const categoriesConfig = loadJSON(
+      'src/data/ihk/metadata/three-tier-categories.json'
+    );
     logTest(
       'Three-tier categories configuration file exists and is valid',
-      categoriesConfig && categoriesConfig.categories && Array.isArray(categoriesConfig.categories),
+      categoriesConfig &&
+        categoriesConfig.categories &&
+        Array.isArray(categoriesConfig.categories),
       'Invalid or missing three-tier categories configuration',
       'Data Integrity'
     );
 
     // Test 2: Category mapping rules configuration exists
-    const mappingRules = loadJSON('src/data/ihk/metadata/category-mapping-rules.json');
+    const mappingRules = loadJSON(
+      'src/data/ihk/metadata/category-mapping-rules.json'
+    );
     logTest(
       'Category mapping rules configuration file exists and is valid',
       mappingRules && mappingRules.rules && Array.isArray(mappingRules.rules),
@@ -547,9 +620,15 @@ async function testDataIntegrity() {
     // Test 3: All three expected categories are defined
     if (categoriesConfig && categoriesConfig.categories) {
       const categoryIds = categoriesConfig.categories.map(cat => cat.id);
-      const expectedCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
-      const hasAllCategories = expectedCategories.every(id => categoryIds.includes(id));
-      
+      const expectedCategories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
+      const hasAllCategories = expectedCategories.every(id =>
+        categoryIds.includes(id)
+      );
+
       logTest(
         'All three required categories are defined',
         hasAllCategories,
@@ -560,7 +639,9 @@ async function testDataIntegrity() {
 
     // Test 4: Mapping rules cover all content types
     if (mappingRules && mappingRules.rules) {
-      const hasDefaultRule = mappingRules.rules.some(rule => rule.priority === 1);
+      const hasDefaultRule = mappingRules.rules.some(
+        rule => rule.priority === 1
+      );
       logTest(
         'Default mapping rule exists for uncategorized content',
         hasDefaultRule,
@@ -568,7 +649,6 @@ async function testDataIntegrity() {
         'Data Integrity'
       );
     }
-
   } catch (error) {
     logTest(
       'Data Integrity tests',
@@ -586,17 +666,18 @@ function generateTestReport() {
   console.log('\n' + '='.repeat(80));
   console.log('📋 THREE-TIER CATEGORY SYSTEM INTEGRATION TEST REPORT');
   console.log('='.repeat(80));
-  
+
   // Overall results
   const totalTests = testResults.passed + testResults.failed;
-  const successRate = totalTests > 0 ? ((testResults.passed / totalTests) * 100).toFixed(1) : 0;
-  
+  const successRate =
+    totalTests > 0 ? ((testResults.passed / totalTests) * 100).toFixed(1) : 0;
+
   console.log(`\n📊 OVERALL RESULTS:`);
   console.log(`   Total Tests: ${totalTests}`);
   console.log(`   Passed: ${testResults.passed}`);
   console.log(`   Failed: ${testResults.failed}`);
   console.log(`   Success Rate: ${successRate}%`);
-  
+
   // Category breakdown
   console.log(`\n📈 RESULTS BY CATEGORY:`);
   Object.entries(testResults.categories).forEach(([category, results]) => {
@@ -606,7 +687,7 @@ function generateTestReport() {
       console.log(`   ${category}: ${results.passed}/${total} (${rate}%)`);
     }
   });
-  
+
   // Failed tests details
   if (testResults.failed > 0) {
     console.log(`\n❌ FAILED TESTS:`);
@@ -619,11 +700,13 @@ function generateTestReport() {
         }
       });
   }
-  
+
   // Recommendations
   console.log(`\n💡 RECOMMENDATIONS:`);
   if (testResults.failed === 0) {
-    console.log('   ✅ All tests passed! The three-tier category system is working correctly.');
+    console.log(
+      '   ✅ All tests passed! The three-tier category system is working correctly.'
+    );
     console.log('   ✅ Service integrations are functioning as expected.');
     console.log('   ✅ Backward compatibility is maintained.');
   } else {
@@ -631,16 +714,16 @@ function generateTestReport() {
     console.log('   ⚠️  Check service configurations and data integrity.');
     console.log('   ⚠️  Verify that all required files are present and valid.');
   }
-  
+
   console.log('\n' + '='.repeat(80));
-  
+
   return {
     success: testResults.failed === 0,
     totalTests,
     passed: testResults.passed,
     failed: testResults.failed,
     successRate: parseFloat(successRate),
-    categories: testResults.categories
+    categories: testResults.categories,
   };
 }
 
@@ -651,9 +734,9 @@ async function runAllTests() {
   console.log('╔════════════════════════════════════════════════════════════╗');
   console.log('║  Three-Tier Category System End-to-End Integration Tests  ║');
   console.log('╚════════════════════════════════════════════════════════════╝');
-  
+
   const startTime = performance.now();
-  
+
   try {
     // Run all test suites
     await testDataIntegrity();
@@ -662,17 +745,16 @@ async function runAllTests() {
     await testSpecializationServiceIntegration();
     await testBackwardCompatibility();
     await testPerformanceRequirements();
-    
   } catch (error) {
     console.error('❌ Critical error during test execution:', error);
     logTest('Test Suite Execution', false, error.message);
   }
-  
+
   const endTime = performance.now();
   const totalTime = ((endTime - startTime) / 1000).toFixed(2);
-  
+
   console.log(`\n⏱️  Total execution time: ${totalTime}s`);
-  
+
   // Generate and return comprehensive report
   return generateTestReport();
 }
@@ -683,7 +765,7 @@ export { runAllTests, testResults };
 // Run tests if this script is executed directly
 if (import.meta.url === `file://${process.argv[1]}`) {
   console.log('🚀 Starting three-tier integration tests...');
-  
+
   runAllTests()
     .then(report => {
       console.log('\n✅ Test execution completed');

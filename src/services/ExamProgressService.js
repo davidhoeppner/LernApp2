@@ -1,4 +1,4 @@
-/* global Blob, URL */
+/* global URL */
 import StorageService from './StorageService.js';
 
 /**

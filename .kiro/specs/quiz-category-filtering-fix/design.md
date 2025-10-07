@@ -11,6 +11,7 @@ The solution leverages the existing three-tier category system and CategoryMappi
 ### Current System Analysis
 
 The platform already has a robust foundation:
+
 - **CategoryMappingService**: Handles mapping from legacy categories to three-tier system
 - **Three-tier category system**: Standardized categories (daten-prozessanalyse, anwendungsentwicklung, allgemein)
 - **IHKQuizListView**: Main component with filtering UI and logic
@@ -37,6 +38,7 @@ The platform already has a robust foundation:
 ### Enhanced IHKQuizListView
 
 **Responsibilities:**
+
 - Render category filter UI with proper state management
 - Apply category filters using CategoryMappingService
 - Handle filter combinations (category + status)
@@ -44,36 +46,41 @@ The platform already has a robust foundation:
 - Display appropriate empty states
 
 **Key Methods:**
+
 ```javascript
 // Enhanced category filtering
-_getCategoryIndicator(quiz) // Uses CategoryMappingService
-_filterQuizzes(quizzes) // Improved filtering logic
-_handleCategoryFilterChange(category, container) // Fixed state management
-_refreshQuizGrid(container) // Optimized re-rendering
+_getCategoryIndicator(quiz); // Uses CategoryMappingService
+_filterQuizzes(quizzes); // Improved filtering logic
+_handleCategoryFilterChange(category, container); // Fixed state management
+_refreshQuizGrid(container); // Optimized re-rendering
 
 // New error handling methods
-_handleFilterError(error) // Graceful error handling
-_validateQuizCategory(quiz) // Category validation
+_handleFilterError(error); // Graceful error handling
+_validateQuizCategory(quiz); // Category validation
 ```
 
 ### CategoryMappingService Integration
 
 **Enhanced Usage:**
+
 - All category detection goes through CategoryMappingService.mapToThreeTierCategory()
 - Fallback mapping for quizzes without threeTierCategory field
 - Validation and error logging for invalid categories
 - Performance optimization for bulk category operations
 
 **Integration Points:**
+
 ```javascript
 // In IHKQuizListView
-const categoryResult = this.services.categoryMappingService.mapToThreeTierCategory(quiz);
+const categoryResult =
+  this.services.categoryMappingService.mapToThreeTierCategory(quiz);
 const categoryIndicator = this._createCategoryIndicator(categoryResult);
 ```
 
 ### Filter State Management
 
 **State Structure:**
+
 ```javascript
 {
   currentCategoryFilter: 'all' | 'daten-prozessanalyse' | 'anwendungsentwicklung' | 'allgemein',
@@ -84,6 +91,7 @@ const categoryIndicator = this._createCategoryIndicator(categoryResult);
 ```
 
 **Visual State Management:**
+
 - Active filter buttons have `active` class and `aria-pressed="true"`
 - Inactive buttons have `aria-pressed="false"`
 - Filter changes update both visual state and internal state atomically
@@ -93,6 +101,7 @@ const categoryIndicator = this._createCategoryIndicator(categoryResult);
 ### Quiz Category Enhancement
 
 **Existing Quiz Structure:**
+
 ```javascript
 {
   id: string,
@@ -105,11 +114,12 @@ const categoryIndicator = this._createCategoryIndicator(categoryResult);
 ```
 
 **Enhanced Category Information:**
+
 ```javascript
 {
   // Original quiz data
   ...quiz,
-  
+
   // Enhanced category data (computed)
   categoryInfo: {
     threeTierCategory: 'daten-prozessanalyse' | 'anwendungsentwicklung' | 'allgemein',
@@ -126,6 +136,7 @@ const categoryIndicator = this._createCategoryIndicator(categoryResult);
 ### Filter Configuration
 
 **Category Filter Definition:**
+
 ```javascript
 {
   id: string, // 'all', 'daten-prozessanalyse', etc.
@@ -142,16 +153,19 @@ const categoryIndicator = this._createCategoryIndicator(categoryResult);
 ### Category Mapping Errors
 
 **Error Types:**
+
 1. **Missing Category Data**: Quiz has no category information
 2. **Invalid Category Format**: Category data is malformed
 3. **Mapping Service Failure**: CategoryMappingService throws error
 4. **Performance Timeout**: Filtering takes too long
 
 **Error Handling Strategy:**
+
 ```javascript
 // Graceful degradation approach
 try {
-  const categoryResult = this.categoryMappingService.mapToThreeTierCategory(quiz);
+  const categoryResult =
+    this.categoryMappingService.mapToThreeTierCategory(quiz);
   return this._createCategoryIndicator(categoryResult);
 } catch (error) {
   console.warn(`Category mapping failed for quiz ${quiz.id}:`, error);
@@ -163,6 +177,7 @@ try {
 ### Filter Operation Errors
 
 **Error Recovery:**
+
 - Log detailed error information for debugging
 - Show user-friendly error message
 - Reset to "All Categories" filter state
@@ -170,6 +185,7 @@ try {
 - Provide retry mechanism
 
 **User Feedback:**
+
 ```javascript
 // Error state display
 if (filterError) {
@@ -179,8 +195,8 @@ if (filterError) {
     message: 'Unable to filter quizzes. Showing all available quizzes.',
     action: {
       label: 'Retry Filter',
-      onClick: () => this._retryFiltering()
-    }
+      onClick: () => this._retryFiltering(),
+    },
   });
 }
 ```
@@ -190,18 +206,21 @@ if (filterError) {
 ### Unit Testing Focus
 
 **CategoryMappingService Integration:**
+
 - Test category mapping for various quiz formats
 - Verify fallback behavior for missing category data
 - Test error handling for malformed data
 - Performance testing for large quiz datasets
 
 **Filter Logic Testing:**
+
 - Test all category filter combinations
 - Verify filter state persistence
 - Test combined category + status filtering
 - Edge cases: empty results, invalid categories
 
 **UI State Management:**
+
 - Test filter button active states
 - Verify ARIA attributes are correctly set
 - Test keyboard navigation
@@ -210,6 +229,7 @@ if (filterError) {
 ### Integration Testing
 
 **End-to-End Filter Scenarios:**
+
 1. User selects "Daten und Prozessanalyse" → Only DPA quizzes shown
 2. User combines category + status filters → Correct intersection shown
 3. Filter results in empty set → Appropriate message displayed
@@ -217,6 +237,7 @@ if (filterError) {
 5. Rapid filter changes → Only final state applied
 
 **Performance Testing:**
+
 - Filter response time under 100ms for 1000+ quizzes
 - Memory usage during filter operations
 - UI responsiveness during filtering
@@ -224,12 +245,14 @@ if (filterError) {
 ### Accessibility Testing
 
 **Screen Reader Compatibility:**
+
 - Filter buttons announce current state
 - Filter changes are announced
 - Empty states are properly communicated
 - Keyboard navigation works correctly
 
 **ARIA Compliance:**
+
 - `aria-pressed` states are accurate
 - `aria-label` provides clear context
 - `role` attributes are appropriate
@@ -240,6 +263,7 @@ if (filterError) {
 ### Phase 1: Core Category Detection Fix
 
 **Priority: High**
+
 - Integrate CategoryMappingService into IHKQuizListView
 - Fix `_getCategoryIndicator()` method to use proper mapping
 - Add error handling for category mapping failures
@@ -248,6 +272,7 @@ if (filterError) {
 ### Phase 2: Filter State Management
 
 **Priority: High**
+
 - Fix filter button active state management
 - Ensure ARIA attributes are properly updated
 - Implement atomic state updates for filter changes
@@ -256,6 +281,7 @@ if (filterError) {
 ### Phase 3: Enhanced Error Handling
 
 **Priority: Medium**
+
 - Add comprehensive error logging
 - Implement graceful degradation strategies
 - Create user-friendly error messages
@@ -264,6 +290,7 @@ if (filterError) {
 ### Phase 4: Performance Optimization
 
 **Priority: Medium**
+
 - Optimize filter operations for large datasets
 - Implement debouncing for rapid filter changes
 - Add performance monitoring
@@ -272,6 +299,7 @@ if (filterError) {
 ### Phase 5: Enhanced User Experience
 
 **Priority: Low**
+
 - Add filter result counts
 - Implement filter combination indicators
 - Add filter reset functionality
@@ -312,17 +340,20 @@ if (filterError) {
 ## Dependencies and Integration Points
 
 ### Required Services
+
 - **CategoryMappingService**: Core category mapping functionality
 - **SpecializationService**: User specialization context
 - **StateManager**: Filter state persistence
 - **IHKContentService**: Quiz data loading
 
 ### External Dependencies
+
 - Three-tier category configuration files
 - Category mapping rules configuration
 - Existing CSS classes for category styling
 
 ### Integration Considerations
+
 - Changes must not break existing SpecializationIndicator functionality
 - Filter state should integrate with existing progress tracking
 - Category changes should trigger appropriate app-wide events
@@ -331,11 +362,13 @@ if (filterError) {
 ## Migration and Rollback Strategy
 
 ### Migration Approach
+
 1. **Backward Compatibility**: Maintain support for existing category fields during transition
 2. **Gradual Rollout**: Deploy changes incrementally with feature flags
 3. **Data Validation**: Ensure all quizzes have valid category mappings before full deployment
 
 ### Rollback Plan
+
 - **Quick Rollback**: Revert to previous filter implementation if critical issues arise
 - **Data Integrity**: Ensure no data corruption during rollback
 - **User Impact**: Minimize disruption to active learning sessions

@@ -9,11 +9,13 @@
 ## Issues Fixed
 
 ### 1. Fractional Rotation Bug
+
 **Problem:** The wheel was using `Math.random() * 2` which created fractional rotations (e.g., 1483.52°), causing the wheel to not complete exact full rotations.
 
 **Solution:** Changed to `Math.floor(3 + Math.random() * 3)` to ensure only complete rotations (3, 4, or 5 full spins).
 
 ### 2. 180° Pointer Offset
+
 **Problem:** After fixing the fractional rotations, the math was correct but the visual alignment was off by 180° - the selected segment appeared on the opposite side of the wheel from the pointer.
 
 **Solution:** Added a 180° offset to both the rotation calculation and verification formula to account for the SVG coordinate system and pointer positioning.
@@ -21,6 +23,7 @@
 ## Technical Changes
 
 ### WheelView.js
+
 ```javascript
 // Rotation calculation with 180° offset
 const targetAngle = 90 - targetSegmentCenter + 180;
@@ -29,12 +32,15 @@ const targetAngle = 90 - targetSegmentCenter + 180;
 const fullRotations = Math.floor(3 + Math.random() * 3);
 
 // Verification formula adjusted for 270° (90° + 180°)
-const segmentAtPointer = Math.round((360 - segmentAngle / 2 - finalRotation) / segmentAngle);
+const segmentAtPointer = Math.round(
+  (360 - segmentAngle / 2 - finalRotation) / segmentAngle
+);
 ```
 
 ## Verification
 
 The wheel now:
+
 - ✅ Completes exact full rotations (no fractional spins)
 - ✅ Aligns the selected segment with the pointer at the top
 - ✅ Shows `✓ Match: YES` in console logs
@@ -64,6 +70,7 @@ The wheel now:
 ## Next Steps
 
 Users should:
+
 1. Visit the deployed site
 2. Clear browser cache if they visited before (Ctrl+Shift+Delete)
 3. Navigate to the wheel feature
@@ -72,6 +79,7 @@ Users should:
 ## Notes
 
 The wheel feature is now production-ready with:
+
 - Accurate segment selection
 - Smooth animations
 - Proper visual alignment

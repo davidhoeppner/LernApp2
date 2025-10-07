@@ -26,50 +26,59 @@ class MigrationToolsIntegration {
    */
   async performCompleteMigration(options = {}) {
     try {
-      console.log('Starting complete migration with monitoring and validation...');
+      console.warn(
+        'Starting complete migration with monitoring and validation...'
+      );
 
       // Step 1: Pre-migration validation
-      console.log('Step 1: Pre-migration validation...');
-      const preValidation = await this.categoryValidationService.validateAllContentCategorization();
-      
+      console.warn('Step 1: Pre-migration validation...');
+      const preValidation =
+        await this.categoryValidationService.validateAllContentCategorization();
+
       if (preValidation.summary.overallStatus === 'error' && !options.force) {
-        throw new Error('Pre-migration validation failed. Use force option to proceed anyway.');
+        throw new Error(
+          'Pre-migration validation failed. Use force option to proceed anyway.'
+        );
       }
 
       // Step 2: Start migration monitoring
-      console.log('Step 2: Starting migration monitoring...');
+      console.warn('Step 2: Starting migration monitoring...');
       const migrationId = this._generateMigrationId();
-      const monitoringResult = this.migrationMonitoringService.startMigrationMonitoring(migrationId, {
-        type: 'complete_migration',
-        options: options,
-        preValidationStatus: preValidation.summary.overallStatus
-      });
+      const monitoringResult =
+        this.migrationMonitoringService.startMigrationMonitoring(migrationId, {
+          type: 'complete_migration',
+          options: options,
+          preValidationStatus: preValidation.summary.overallStatus,
+        });
 
       if (!monitoringResult.success) {
-        throw new Error(`Failed to start monitoring: ${monitoringResult.error}`);
+        throw new Error(
+          `Failed to start monitoring: ${monitoringResult.error}`
+        );
       }
 
       const sessionId = monitoringResult.sessionId;
 
       try {
         // Step 3: Execute migration
-        console.log('Step 3: Executing migration...');
+        console.warn('Step 3: Executing migration...');
         this.migrationMonitoringService.updateMigrationProgress(sessionId, {
           checkpoint: {
             phase: 'migration_start',
-            description: 'Starting user progress migration'
-          }
+            description: 'Starting user progress migration',
+          },
         });
 
-        const migrationResult = await this.progressMigrationService.migrateUserProgress(options);
+        const migrationResult =
+          await this.progressMigrationService.migrateUserProgress(options);
 
         this.migrationMonitoringService.updateMigrationProgress(sessionId, {
           itemsProcessed: migrationResult.summary?.modulesProcessed || 0,
           itemsTotal: migrationResult.summary?.modulesProcessed || 0,
           checkpoint: {
             phase: 'migration_complete',
-            description: 'User progress migration completed'
-          }
+            description: 'User progress migration completed',
+          },
         });
 
         if (!migrationResult.success) {
@@ -77,23 +86,30 @@ class MigrationToolsIntegration {
         }
 
         // Step 4: Post-migration validation
-        console.log('Step 4: Post-migration validation...');
+        console.warn('Step 4: Post-migration validation...');
         this.migrationMonitoringService.updateMigrationProgress(sessionId, {
           checkpoint: {
             phase: 'post_validation_start',
-            description: 'Starting post-migration validation'
-          }
+            description: 'Starting post-migration validation',
+          },
         });
 
-        const postValidationReport = await this.migrationMonitoringService.generatePostMigrationValidationReport(migrationId);
+        const postValidationReport =
+          await this.migrationMonitoringService.generatePostMigrationValidationReport(
+            migrationId
+          );
 
         // Step 5: Complete monitoring
-        console.log('Step 5: Completing monitoring...');
-        const completionResult = this.migrationMonitoringService.completeMigrationMonitoring(sessionId, {
-          success: true,
-          migrationResult,
-          postValidationReport
-        });
+        console.warn('Step 5: Completing monitoring...');
+        const completionResult =
+          this.migrationMonitoringService.completeMigrationMonitoring(
+            sessionId,
+            {
+              success: true,
+              migrationResult,
+              postValidationReport,
+            }
+          );
 
         return {
           success: true,
@@ -108,29 +124,27 @@ class MigrationToolsIntegration {
             completedSteps: 5,
             migrationStatus: 'completed',
             validationStatus: postValidationReport.overallStatus,
-            duration: completionResult.duration
-          }
+            duration: completionResult.duration,
+          },
         };
-
       } catch (migrationError) {
         // Handle migration failure
         console.error('Migration failed:', migrationError);
-        
+
         this.migrationMonitoringService.completeMigrationMonitoring(sessionId, {
           success: false,
-          error: migrationError.message
+          error: migrationError.message,
         });
 
         throw migrationError;
       }
-
     } catch (error) {
       console.error('Complete migration failed:', error);
       return {
         success: false,
         error: error.message,
         migrationId: null,
-        sessionId: null
+        sessionId: null,
       };
     }
   }
@@ -141,20 +155,23 @@ class MigrationToolsIntegration {
    */
   async validateMigrationReadiness() {
     try {
-      console.log('Validating migration readiness...');
+      console.warn('Validating migration readiness...');
 
       const readinessCheck = {
         overall: 'ready',
         checks: {},
         warnings: [],
-        blockers: []
+        blockers: [],
       };
 
       // Check if already migrated
-      const alreadyMigrated = this.progressMigrationService.isProgressMigrated();
+      const alreadyMigrated =
+        this.progressMigrationService.isProgressMigrated();
       readinessCheck.checks.alreadyMigrated = {
         status: alreadyMigrated ? 'warning' : 'pass',
-        message: alreadyMigrated ? 'Progress appears to be already migrated' : 'Progress not yet migrated'
+        message: alreadyMigrated
+          ? 'Progress appears to be already migrated'
+          : 'Progress not yet migrated',
       };
 
       if (alreadyMigrated) {
@@ -162,15 +179,18 @@ class MigrationToolsIntegration {
       }
 
       // Check category mapping service
-      const mappingRulesValidation = this.categoryMappingService.validateMappingRules();
+      const mappingRulesValidation =
+        this.categoryMappingService.validateMappingRules();
       readinessCheck.checks.mappingRules = {
         status: mappingRulesValidation.status === 'success' ? 'pass' : 'fail',
         message: `Mapping rules validation: ${mappingRulesValidation.status}`,
-        details: mappingRulesValidation
+        details: mappingRulesValidation,
       };
 
       if (mappingRulesValidation.status === 'error') {
-        readinessCheck.blockers.push('Category mapping rules validation failed');
+        readinessCheck.blockers.push(
+          'Category mapping rules validation failed'
+        );
         readinessCheck.overall = 'blocked';
       }
 
@@ -180,12 +200,12 @@ class MigrationToolsIntegration {
         this.storageService.removeItem('migration_readiness_test');
         readinessCheck.checks.storage = {
           status: 'pass',
-          message: 'Storage service is available'
+          message: 'Storage service is available',
         };
       } catch (storageError) {
         readinessCheck.checks.storage = {
           status: 'fail',
-          message: `Storage service error: ${storageError.message}`
+          message: `Storage service error: ${storageError.message}`,
         };
         readinessCheck.blockers.push('Storage service is not available');
         readinessCheck.overall = 'blocked';
@@ -196,7 +216,9 @@ class MigrationToolsIntegration {
       const hasProgressData = Object.keys(currentProgress).length > 0;
       readinessCheck.checks.progressData = {
         status: hasProgressData ? 'pass' : 'warning',
-        message: hasProgressData ? 'Progress data found' : 'No progress data found'
+        message: hasProgressData
+          ? 'Progress data found'
+          : 'No progress data found',
       };
 
       if (!hasProgressData) {
@@ -213,9 +235,8 @@ class MigrationToolsIntegration {
       return {
         success: true,
         readiness: readinessCheck,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
-
     } catch (error) {
       console.error('Migration readiness validation failed:', error);
       return {
@@ -225,8 +246,8 @@ class MigrationToolsIntegration {
           overall: 'error',
           checks: {},
           warnings: [],
-          blockers: [`Readiness check failed: ${error.message}`]
-        }
+          blockers: [`Readiness check failed: ${error.message}`],
+        },
       };
     }
   }
@@ -237,9 +258,12 @@ class MigrationToolsIntegration {
    */
   getMigrationStatus() {
     try {
-      const migrationHistory = this.progressMigrationService.getMigrationHistory();
-      const monitoringSessions = this.migrationMonitoringService.getAllMonitoringSessions();
-      const isAlreadyMigrated = this.progressMigrationService.isProgressMigrated();
+      const migrationHistory =
+        this.progressMigrationService.getMigrationHistory();
+      const monitoringSessions =
+        this.migrationMonitoringService.getAllMonitoringSessions();
+      const isAlreadyMigrated =
+        this.progressMigrationService.isProgressMigrated();
 
       return {
         success: true,
@@ -250,23 +274,28 @@ class MigrationToolsIntegration {
             activeSessions: monitoringSessions.active.length,
             completedSessions: monitoringSessions.completed.length,
             failedSessions: monitoringSessions.failed.length,
-            totalSessions: monitoringSessions.total
+            totalSessions: monitoringSessions.total,
           },
-          lastMigration: migrationHistory.completed.length > 0 
-            ? migrationHistory.completed[migrationHistory.completed.length - 1]
-            : null,
-          lastRollback: migrationHistory.rollbacks.length > 0
-            ? migrationHistory.rollbacks[migrationHistory.rollbacks.length - 1]
-            : null
+          lastMigration:
+            migrationHistory.completed.length > 0
+              ? migrationHistory.completed[
+                  migrationHistory.completed.length - 1
+                ]
+              : null,
+          lastRollback:
+            migrationHistory.rollbacks.length > 0
+              ? migrationHistory.rollbacks[
+                  migrationHistory.rollbacks.length - 1
+                ]
+              : null,
         },
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       };
-
     } catch (error) {
       console.error('Failed to get migration status:', error);
       return {
         success: false,
-        error: error.message
+        error: error.message,
       };
     }
   }
@@ -279,22 +308,34 @@ class MigrationToolsIntegration {
    */
   async performMonitoredRollback(migrationId, options = {}) {
     try {
-      console.log(`Starting monitored rollback for migration ${migrationId}...`);
+      console.warn(
+        `Starting monitored rollback for migration ${migrationId}...`
+      );
 
       // Validate rollback request
-      const migrationHistory = this.progressMigrationService.getMigrationHistory();
-      const migrationExists = migrationHistory.completed.some(m => m.migrationId === migrationId);
+      const migrationHistory =
+        this.progressMigrationService.getMigrationHistory();
+      const migrationExists = migrationHistory.completed.some(
+        m => m.migrationId === migrationId
+      );
 
       if (!migrationExists) {
-        throw new Error(`Migration ${migrationId} not found in completed migrations`);
+        throw new Error(
+          `Migration ${migrationId} not found in completed migrations`
+        );
       }
 
       // Execute rollback with monitoring
-      const rollbackResult = await this.migrationMonitoringService.rollbackMigration(migrationId, options);
+      const rollbackResult =
+        await this.migrationMonitoringService.rollbackMigration(
+          migrationId,
+          options
+        );
 
       if (rollbackResult.success) {
         // Generate post-rollback validation
-        const postRollbackValidation = await this.categoryValidationService.validateAllContentCategorization();
+        const postRollbackValidation =
+          await this.categoryValidationService.validateAllContentCategorization();
 
         return {
           success: true,
@@ -305,19 +346,18 @@ class MigrationToolsIntegration {
             rollbackCompleted: true,
             stepsCompleted: rollbackResult.steps?.length || 0,
             verificationPassed: rollbackResult.verificationPassed,
-            validationStatus: postRollbackValidation.summary.overallStatus
-          }
+            validationStatus: postRollbackValidation.summary.overallStatus,
+          },
         };
       } else {
         throw new Error(`Rollback failed: ${rollbackResult.error}`);
       }
-
     } catch (error) {
       console.error('Monitored rollback failed:', error);
       return {
         success: false,
         error: error.message,
-        migrationId
+        migrationId,
       };
     }
   }
@@ -329,25 +369,29 @@ class MigrationToolsIntegration {
    */
   async generateComprehensiveReport(migrationId = null) {
     try {
-      console.log('Generating comprehensive migration report...');
+      console.warn('Generating comprehensive migration report...');
 
       const report = {
         reportId: this._generateReportId(),
         generatedAt: new Date().toISOString(),
-        type: migrationId ? 'specific_migration' : 'system_overview'
+        type: migrationId ? 'specific_migration' : 'system_overview',
       };
 
       // Get migration monitoring report
-      const monitoringReport = this.migrationMonitoringService.generateMigrationReport(migrationId);
+      const monitoringReport =
+        this.migrationMonitoringService.generateMigrationReport(migrationId);
 
       // Get validation report
-      const validationReport = await this.categoryValidationService.validateAllContentCategorization();
+      const validationReport =
+        await this.categoryValidationService.validateAllContentCategorization();
 
       // Get conflict report
-      const conflictReport = await this.categoryValidationService.createConflictReport();
+      const conflictReport =
+        await this.categoryValidationService.createConflictReport();
 
       // Get assignment suggestions
-      const assignmentSuggestions = await this.categoryValidationService.generateAssignmentSuggestions();
+      const assignmentSuggestions =
+        await this.categoryValidationService.generateAssignmentSuggestions();
 
       // Combine all reports
       report.monitoring = monitoringReport;
@@ -360,14 +404,13 @@ class MigrationToolsIntegration {
 
       return {
         success: true,
-        report
+        report,
       };
-
     } catch (error) {
       console.error('Failed to generate comprehensive report:', error);
       return {
         success: false,
-        error: error.message
+        error: error.message,
       };
     }
   }
@@ -408,19 +451,22 @@ class MigrationToolsIntegration {
       keyFindings: [],
       criticalIssues: [],
       recommendations: [],
-      metrics: {}
+      metrics: {},
     };
 
     // Analyze monitoring data
     if (report.monitoring && report.monitoring.summary) {
-      summary.metrics.migrationSuccess = report.monitoring.summary.successRate || 0;
-      summary.metrics.processingRate = report.monitoring.summary.averageProcessingRate || 0;
+      summary.metrics.migrationSuccess =
+        report.monitoring.summary.successRate || 0;
+      summary.metrics.processingRate =
+        report.monitoring.summary.averageProcessingRate || 0;
     }
 
     // Analyze validation data
     if (report.validation && report.validation.summary) {
-      summary.metrics.validationStatus = report.validation.summary.overallStatus;
-      
+      summary.metrics.validationStatus =
+        report.validation.summary.overallStatus;
+
       if (report.validation.summary.overallStatus === 'error') {
         summary.criticalIssues.push('Content validation failed');
         summary.overallStatus = 'error';
@@ -429,19 +475,25 @@ class MigrationToolsIntegration {
 
     // Analyze conflicts
     if (report.conflicts && report.conflicts.conflictSummary) {
-      summary.metrics.totalConflicts = report.conflicts.conflictSummary.totalConflicts || 0;
-      
+      summary.metrics.totalConflicts =
+        report.conflicts.conflictSummary.totalConflicts || 0;
+
       if (summary.metrics.totalConflicts > 0) {
-        summary.keyFindings.push(`${summary.metrics.totalConflicts} category assignment conflicts detected`);
+        summary.keyFindings.push(
+          `${summary.metrics.totalConflicts} category assignment conflicts detected`
+        );
       }
     }
 
     // Analyze suggestions
     if (report.suggestions && report.suggestions.suggestionsCount) {
-      summary.metrics.optimizationOpportunities = report.suggestions.suggestionsCount;
-      
+      summary.metrics.optimizationOpportunities =
+        report.suggestions.suggestionsCount;
+
       if (report.suggestions.suggestionsCount > 0) {
-        summary.recommendations.push(`${report.suggestions.suggestionsCount} optimization opportunities identified`);
+        summary.recommendations.push(
+          `${report.suggestions.suggestionsCount} optimization opportunities identified`
+        );
       }
     }
 

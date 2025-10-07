@@ -130,9 +130,11 @@ class App {
 
     // Router (pass main content container)
     this.services.router = new Router(mainContent);
-    
+
     // Connect specialization service to router for context-aware routing
-    this.services.router.setSpecializationService(this.services.specializationService);
+    this.services.router.setSpecializationService(
+      this.services.specializationService
+    );
 
     // IHK Content service (initialize before ModuleService with specialization and category mapping support)
     this.services.ihkContentService = new IHKContentService(
@@ -202,7 +204,9 @@ class App {
     }
 
     // Migrate existing users to have a default specialization
-    this.services.specializationService.migrateExistingUser('anwendungsentwicklung');
+    this.services.specializationService.migrateExistingUser(
+      'anwendungsentwicklung'
+    );
 
     // Save initial state
     this.services.stateManager.saveToStorage();
@@ -214,7 +218,7 @@ class App {
   initializeTheme() {
     // Initialize the theme manager first
     this.services.themeManager.init();
-    
+
     // Start watching for system preference changes
     this.services.themeManager.watchSystemPreference();
   }
@@ -227,7 +231,7 @@ class App {
       // Always create specialization selector (needed for navigation)
       this.specializationSelector = new SpecializationSelector(
         this.services.specializationService,
-        (specializationId) => {
+        specializationId => {
           // Handle specialization selection
           this.handleSpecializationSelection(specializationId);
         }
@@ -258,7 +262,7 @@ class App {
       // Save state
       this.services.stateManager.saveToStorage();
 
-      console.log(`Specialization selected: ${specializationId}`);
+      console.warn(`Specialization selected: ${specializationId}`);
     } catch (error) {
       console.error('Error handling specialization selection:', error);
     }
@@ -334,6 +338,38 @@ class App {
       })
     );
 
+    // Debug assessment demo route (non-production)
+    router.register(
+      '/assessment-demo',
+      ErrorBoundary.wrap(async () => {
+        const main = document.getElementById('main-content');
+        // Lazy import to avoid bundle cost in production
+        const { default: MicroQuizPanel } = await import(
+          './assessment/components/MicroQuizPanel.js'
+        );
+        const demoContainer = document.createElement('div');
+        demoContainer.id = 'assessment-demo-container';
+        main.appendChild(demoContainer);
+        const panel = new MicroQuizPanel(demoContainer);
+        // Create a minimal quiz fixture
+        const fixture = {
+          id: 'demo-quiz-1',
+          title: 'Demo Micro-Quiz',
+          questions: [
+            {
+              id: 'q1',
+              type: 'single-choice',
+              question: 'Pick A',
+              options: ['A', 'B'],
+              correctAnswer: 'A',
+            },
+          ],
+        };
+        panel.render(fixture);
+        return demoContainer;
+      })
+    );
+
     // Progress route
     router.register(
       '/progress',
@@ -374,11 +410,11 @@ class App {
     });
 
     // Listen for specialization changes to update navigation and refresh content
-    document.addEventListener('specialization-changed', (event) => {
+    document.addEventListener('specialization-changed', event => {
       if (this.navigation) {
         this.navigation._updateSpecializationIndicator();
       }
-      
+
       // Refresh current view to show filtered content
       if (this.services.router) {
         this.services.router.refresh();

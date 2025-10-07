@@ -17,5 +17,12 @@
   "relatedQuizzes": [],
   "resources": [],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand Sicherheit",
+    "Understand Security",
+    "Understand Threats",
+    "Understand Angriffe",
+    "Understand Neu 2025"
+  ]
 }

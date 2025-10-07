@@ -34,6 +34,7 @@
     }
   ],
   "relatedQuizzes": ["fue-01-planning-quiz"],
+  "microQuizzes": ["demo-mq1", "demo-mq2"],
   "resources": [
     {
       "title": "Projektmanagement Grundlagen",
@@ -47,5 +48,12 @@
     }
   ],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand Projektplanung",
+    "Understand Anforderungsanalyse",
+    "Understand Wirtschaftlichkeit",
+    "Understand Kundenanforderungen",
+    "Understand Projektmanagement"
+  ]
 }

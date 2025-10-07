@@ -66,6 +66,7 @@ The Simple Learning App is a single-page application (SPA) built with vanilla Ja
 ### 1. Core Services
 
 #### Router Manager
+
 **Purpose:** Handle navigation and view rendering
 
 ```javascript
@@ -74,7 +75,7 @@ class Router {
     this.routes = new Map();
     this.currentView = null;
   }
-  
+
   register(path, viewFactory);
   navigate(path, params);
   init();
@@ -82,6 +83,7 @@ class Router {
 ```
 
 **Responsibilities:**
+
 - Register route handlers
 - Parse hash-based URLs
 - Render appropriate views
@@ -89,6 +91,7 @@ class Router {
 - Update navigation UI
 
 #### State Manager
+
 **Purpose:** Centralized application state management
 
 ```javascript
@@ -102,7 +105,7 @@ class StateManager {
     };
     this.listeners = new Map();
   }
-  
+
   getState(key);
   setState(key, value);
   subscribe(key, callback);
@@ -112,12 +115,14 @@ class StateManager {
 ```
 
 **Responsibilities:**
+
 - Maintain application state
 - Notify subscribers of changes
 - Persist state to storage
 - Restore state on load
 
 #### Theme Manager
+
 **Purpose:** Handle theme switching and preferences
 
 ```javascript
@@ -125,7 +130,7 @@ class ThemeManager {
   constructor() {
     this.currentTheme = 'light';
   }
-  
+
   setTheme(theme);
   toggleTheme();
   getTheme();
@@ -134,6 +139,7 @@ class ThemeManager {
 ```
 
 **Responsibilities:**
+
 - Apply theme CSS classes
 - Save theme preference
 - Detect system preference
@@ -142,15 +148,18 @@ class ThemeManager {
 ### 2. View Components
 
 #### HomeView
+
 **Purpose:** Landing page with overview and quick actions
 
 **Features:**
+
 - Welcome message
 - Quick stats (modules completed, quiz scores)
 - Recent activity
 - Call-to-action buttons
 
 **Template Structure:**
+
 ```html
 <div class="home-view">
   <header class="hero">
@@ -167,15 +176,18 @@ class ThemeManager {
 ```
 
 #### ModuleListView
+
 **Purpose:** Display all available learning modules
 
 **Features:**
+
 - Grid/list of module cards
 - Progress indicators per module
 - Filter by status (all, completed, in-progress)
 - Search functionality
 
 **Module Card:**
+
 - Title and description
 - Duration estimate
 - Progress bar
@@ -183,9 +195,11 @@ class ThemeManager {
 - Prerequisites indicator
 
 #### ModuleDetailView
+
 **Purpose:** Display module content
 
 **Features:**
+
 - Markdown-rendered content
 - Code syntax highlighting
 - Table of contents
@@ -194,14 +208,17 @@ class ThemeManager {
 - Navigation to related quiz
 
 **Content Rendering:**
+
 - Use `marked` library for markdown parsing
 - Use `highlight.js` for code syntax highlighting
 - Sanitize HTML to prevent XSS
 
 #### QuizView
+
 **Purpose:** Interactive quiz interface
 
 **Features:**
+
 - Question display (one at a time)
 - Answer options (radio buttons for single choice)
 - Submit button
@@ -211,6 +228,7 @@ class ThemeManager {
 - Review mode
 
 **Quiz Flow:**
+
 1. Display question
 2. User selects answer
 3. Submit answer
@@ -221,9 +239,11 @@ class ThemeManager {
 8. Show final results
 
 #### ProgressView
+
 **Purpose:** Comprehensive progress dashboard
 
 **Features:**
+
 - Overall progress percentage
 - Module completion list
 - Quiz history with scores
@@ -233,6 +253,7 @@ class ThemeManager {
 ### 3. Service Layer
 
 #### ModuleService
+
 **Purpose:** Manage learning module data and operations
 
 ```javascript
@@ -245,6 +266,7 @@ class ModuleService {
 ```
 
 **Data Structure:**
+
 ```javascript
 {
   id: 'module-1',
@@ -259,6 +281,7 @@ class ModuleService {
 ```
 
 #### QuizService
+
 **Purpose:** Manage quiz data and scoring
 
 ```javascript
@@ -272,6 +295,7 @@ class QuizService {
 ```
 
 **Data Structure:**
+
 ```javascript
 {
   id: 'quiz-1',
@@ -291,6 +315,7 @@ class QuizService {
 ```
 
 #### ProgressService
+
 **Purpose:** Track and calculate user progress
 
 ```javascript
@@ -304,6 +329,7 @@ class ProgressService {
 ```
 
 **Progress Data:**
+
 ```javascript
 {
   modulesCompleted: 5,
@@ -323,6 +349,7 @@ class ProgressService {
 ```
 
 #### StorageService
+
 **Purpose:** Abstract localStorage operations
 
 ```javascript
@@ -336,6 +363,7 @@ class StorageService {
 ```
 
 **Responsibilities:**
+
 - JSON serialization/deserialization
 - Error handling for storage quota
 - Data validation
@@ -344,6 +372,7 @@ class StorageService {
 ## Data Models
 
 ### Module
+
 ```javascript
 {
   id: string,
@@ -359,6 +388,7 @@ class StorageService {
 ```
 
 ### Quiz
+
 ```javascript
 {
   id: string,
@@ -371,6 +401,7 @@ class StorageService {
 ```
 
 ### Question
+
 ```javascript
 {
   id: string,
@@ -383,6 +414,7 @@ class StorageService {
 ```
 
 ### Progress
+
 ```javascript
 {
   userId: string,
@@ -395,6 +427,7 @@ class StorageService {
 ```
 
 ### QuizAttempt
+
 ```javascript
 {
   quizId: string,
@@ -415,14 +448,15 @@ class StorageService {
 ### Color Palette
 
 **Light Theme:**
+
 ```css
---color-primary: #3b82f6;      /* Blue */
+--color-primary: #3b82f6; /* Blue */
 --color-primary-dark: #2563eb;
 --color-primary-light: #60a5fa;
 
---color-success: #10b981;      /* Green */
---color-warning: #f59e0b;      /* Orange */
---color-error: #ef4444;        /* Red */
+--color-success: #10b981; /* Green */
+--color-warning: #f59e0b; /* Orange */
+--color-error: #ef4444; /* Red */
 
 --color-bg: #ffffff;
 --color-bg-secondary: #f3f4f6;
@@ -436,6 +470,7 @@ class StorageService {
 ```
 
 **Dark Theme:**
+
 ```css
 --color-primary: #60a5fa;
 --color-primary-dark: #3b82f6;
@@ -459,17 +494,18 @@ class StorageService {
 ### Typography
 
 ```css
---font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+--font-family-base:
+  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 --font-family-mono: 'Fira Code', 'Courier New', monospace;
 
---font-size-xs: 0.75rem;    /* 12px */
---font-size-sm: 0.875rem;   /* 14px */
---font-size-base: 1rem;     /* 16px */
---font-size-lg: 1.125rem;   /* 18px */
---font-size-xl: 1.25rem;    /* 20px */
---font-size-2xl: 1.5rem;    /* 24px */
---font-size-3xl: 1.875rem;  /* 30px */
---font-size-4xl: 2.25rem;   /* 36px */
+--font-size-xs: 0.75rem; /* 12px */
+--font-size-sm: 0.875rem; /* 14px */
+--font-size-base: 1rem; /* 16px */
+--font-size-lg: 1.125rem; /* 18px */
+--font-size-xl: 1.25rem; /* 20px */
+--font-size-2xl: 1.5rem; /* 24px */
+--font-size-3xl: 1.875rem; /* 30px */
+--font-size-4xl: 2.25rem; /* 36px */
 
 --font-weight-normal: 400;
 --font-weight-medium: 500;
@@ -484,22 +520,22 @@ class StorageService {
 ### Spacing
 
 ```css
---spacing-xs: 0.25rem;   /* 4px */
---spacing-sm: 0.5rem;    /* 8px */
---spacing-md: 1rem;      /* 16px */
---spacing-lg: 1.5rem;    /* 24px */
---spacing-xl: 2rem;      /* 32px */
---spacing-2xl: 3rem;     /* 48px */
---spacing-3xl: 4rem;     /* 64px */
+--spacing-xs: 0.25rem; /* 4px */
+--spacing-sm: 0.5rem; /* 8px */
+--spacing-md: 1rem; /* 16px */
+--spacing-lg: 1.5rem; /* 24px */
+--spacing-xl: 2rem; /* 32px */
+--spacing-2xl: 3rem; /* 48px */
+--spacing-3xl: 4rem; /* 64px */
 ```
 
 ### Border Radius
 
 ```css
---radius-sm: 0.25rem;    /* 4px */
---radius-md: 0.5rem;     /* 8px */
---radius-lg: 0.75rem;    /* 12px */
---radius-xl: 1rem;       /* 16px */
+--radius-sm: 0.25rem; /* 4px */
+--radius-md: 0.5rem; /* 8px */
+--radius-lg: 0.75rem; /* 12px */
+--radius-xl: 1rem; /* 16px */
 --radius-full: 9999px;
 ```
 
@@ -544,27 +580,26 @@ class StorageService {
 ### Component Patterns
 
 #### Button Styles
+
 - **Primary:** Solid background, white text
 - **Secondary:** Outlined, colored text
 - **Ghost:** Transparent, colored text on hover
 - **Danger:** Red color for destructive actions
 
 #### Card Component
+
 ```html
 <div class="card">
   <div class="card-header">
     <h3 class="card-title">Title</h3>
   </div>
-  <div class="card-body">
-    Content
-  </div>
-  <div class="card-footer">
-    Actions
-  </div>
+  <div class="card-body">Content</div>
+  <div class="card-footer">Actions</div>
 </div>
 ```
 
 #### Progress Bar
+
 ```html
 <div class="progress-bar">
   <div class="progress-fill" style="width: 75%"></div>
@@ -573,6 +608,7 @@ class StorageService {
 ```
 
 #### Badge
+
 ```html
 <span class="badge badge-success">Completed</span>
 <span class="badge badge-warning">In Progress</span>
@@ -594,26 +630,26 @@ class StorageService {
 class ErrorHandler {
   static handle(error, context) {
     console.error(`Error in ${context}:`, error);
-    
+
     // Show user-friendly message
     this.showNotification({
       type: 'error',
       message: this.getUserMessage(error),
-      duration: 5000
+      duration: 5000,
     });
-    
+
     // Log for debugging
     this.logError(error, context);
   }
-  
+
   static getUserMessage(error) {
     const messages = {
-      'NetworkError': 'Unable to load data. Please check your connection.',
-      'StorageError': 'Unable to save progress. Storage may be full.',
-      'ValidationError': 'Please check your input and try again.',
-      'NotFoundError': 'The requested content was not found.'
+      NetworkError: 'Unable to load data. Please check your connection.',
+      StorageError: 'Unable to save progress. Storage may be full.',
+      ValidationError: 'Please check your input and try again.',
+      NotFoundError: 'The requested content was not found.',
     };
-    
+
     return messages[error.name] || 'An unexpected error occurred.';
   }
 }
@@ -631,6 +667,7 @@ class ErrorHandler {
 ### Unit Tests
 
 **Test Coverage:**
+
 - Service layer methods
 - State management logic
 - Data validation functions
@@ -639,13 +676,14 @@ class ErrorHandler {
 **Tools:** Vitest
 
 **Example Tests:**
+
 ```javascript
 describe('ModuleService', () => {
   test('getModuleById returns correct module', async () => {
     const module = await moduleService.getModuleById('module-1');
     expect(module.id).toBe('module-1');
   });
-  
+
   test('markModuleComplete updates progress', async () => {
     await moduleService.markModuleComplete('module-1');
     const progress = await progressService.getModuleProgress('module-1');
@@ -657,6 +695,7 @@ describe('ModuleService', () => {
 ### Integration Tests
 
 **Test Scenarios:**
+
 - Complete user flow: browse → study → quiz → results
 - Navigation between views
 - State persistence across page reloads
@@ -738,6 +777,7 @@ class A11yAnnouncer {
 ### Build Configuration
 
 **Vite Config:**
+
 ```javascript
 export default {
   build: {
@@ -747,12 +787,12 @@ export default {
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['marked', 'highlight.js']
-        }
-      }
-    }
-  }
-}
+          vendor: ['marked', 'highlight.js'],
+        },
+      },
+    },
+  },
+};
 ```
 
 ### Hosting
@@ -774,6 +814,73 @@ While not part of the initial implementation, these features could be added late
 - Offline support with service workers
 - Advanced analytics
 - Content creation tools
+
+## Extended Assessment Layer (Preliminary Scaffold)
+
+This section will be expanded in Phase 3 of quiz gating implementation. It introduces new assessment architecture components.
+
+### Data Model Delta (Summary)
+
+- FinalExamStatus: `"LOCKED" | "READY" | "PASSED" | "OUTDATED" | "COOLDOWN"`
+- MicroQuizState: `{ quizId: string, passed: boolean, bestScore: number, lastAttemptAt: string }`
+- AttemptRetentionPolicy: `{ maxAttemptsStored: number = 20, pruneStrategy: "FIFO" }`
+- EventEnvelope: `{ id: string, name: string, ts: string, payload: object, version: 1 }`
+
+### New Components (To Be Implemented)
+
+- MicroQuizPanel
+- FinalExamGate
+- UnmetCriteriaList
+- AttemptHistoryDrawer
+- ScoreBadge
+- CooldownTimer (placeholder)
+
+### Evaluation Functions (Pure)
+
+```
+evaluateSectionReadable(sectionProgress) -> boolean
+evaluateMicroQuizStart(section, featureFlag) -> { allowed: boolean, reasons: string[] }
+evaluateFinalExamUnlock(moduleState) -> { status: FinalExamStatus, unmetCriteria: Criterion[] }
+deriveUnmetCriteria(moduleState) -> Criterion[]
+```
+
+### Sequence (Micro-Quiz Submit) – Draft
+
+```
+User -> MicroQuizPanel: click Submit
+MicroQuizPanel -> ScoringEngine: compute(questionResponses)
+ScoringEngine -> MicroQuizPanel: score details
+MicroQuizPanel -> AttemptStore: persist raw attempt
+AttemptStore -> RetentionPolicy: prune old attempts
+MicroQuizPanel -> EventBus: emit quiz.submit
+EventBus -> ConsoleLogger (dev): log envelope
+MicroQuizPanel -> A11yAnnouncer: announce results
+```
+
+### State Transition (Final Exam Status) – Draft
+
+```
+LOCKED --(all criteria met)--> READY
+READY --(exam passed)--> PASSED
+PASSED --(module structure change)--> OUTDATED
+OUTDATED --(new criteria satisfied)--> READY
+READY/PASSED --(cooldown policy trigger)--> COOLDOWN --(timer elapsed)--> READY
+```
+
+### i18n Keys (Initial List)
+
+```
+quiz.locked.title
+quiz.locked.reason.SECTION_UNREAD
+quiz.locked.reason.MICRO_NOT_PASSED
+quiz.cooldown.message
+quiz.result.passed
+quiz.result.failed
+```
+
+More keys will be enumerated in Phase 3 expansion.
+
+// End Extended Assessment Layer scaffold
 
 ## Summary
 

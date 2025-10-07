@@ -1,0 +1,223 @@
+{
+  "totalFiles": 36,
+  "validFiles": 36,
+  "invalidFiles": 0,
+  "files": [
+    {
+      "file": "bp-01-conception.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-conception.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-01-documentation.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-documentation.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-01-kerberos.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-kerberos.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-01-monitoring.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-monitoring.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-01-odbc.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-odbc.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-02-cloud-models.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-02-cloud-models.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-02-data-formats.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-02-data-formats.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-02-nas-san.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-02-nas-san.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-03-cps.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-cps.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-03-rest-api.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-rest-api.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-03-software-quality.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-software-quality.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-03-tdd.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-tdd.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-04-architecture-patterns.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-architecture-patterns.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-04-design-patterns.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-design-patterns.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-04-programming-paradigms.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-programming-paradigms.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-04-scrum.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-scrum.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-05-data-structures.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-data-structures.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-05-encapsulation.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-encapsulation.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-05-sorting.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-sorting.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-05-sql-reference.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-sql-reference.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-dpa-01-data-modeling.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-01-data-modeling.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-dpa-02-etl-processes.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-02-etl-processes.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-dpa-03-advanced-process-topics.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-advanced-process-topics.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-dpa-03-bpmn-modeling.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-bpmn-modeling.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "bp-dpa-04-business-intelligence.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-04-business-intelligence.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "fue-01-planning.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-01-planning.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "fue-02-anomalies-redundancies.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-02-anomalies-redundancies.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "fue-02-control-structures.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-02-control-structures.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "fue-02-development.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-02-development.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "fue-03-load-performance-tests.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-03-load-performance-tests.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "fue-03-quality.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-03-quality.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "fue-04-security-threats.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-04-security-threats.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "fue-04-security.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-04-security.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "sql-ddl.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\sql-ddl.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "sql-dml.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\sql-dml.json",
+      "valid": true,
+      "issues": []
+    },
+    {
+      "file": "sql-dql.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\sql-dql.json",
+      "valid": true,
+      "issues": []
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "id": "bp-dpa-05-data-warehousing",
+  "title": "Data Warehousing: Architektur, Modellierung und ETL",
+  "description": "Grundlagen und Architektur von Data Warehouses, dimensionale Modellierung (Star/Snowflake), ETL-Prozesse und Best Practices für Reporting und BI-Systeme.",
+  "category": "BP-DPA-02",
+  "subcategory": "Datenmodelle entwickeln und implementieren",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 75,
+  "prerequisites": ["bp-dpa-01-er-modeling", "bp-dpa-01-normalization"],
+  "tags": [
+    "Data Warehouse",
+    "ETL",
+    "Dimensionale Modellierung",
+    "Star Schema",
+    "Snowflake"
+  ],
+  "content": "# Data Warehousing: Architektur, Modellierung und ETL\n\n## Einf\u00fchrung\nEin Data Warehouse ist eine zentrale, tematenspezifische, integrierte und zeitvariable Sammlung von Daten, die f\u00fcr Analyse- und Reportingzwecke optimiert ist. Data Warehouses unterst\u00fctzen Business Intelligence (BI) und Entscheidungsprozesse.\n\n## Kernkomponenten einer Data-Warehouse-Architektur\n- **Datenquellen:** Operative Systeme, Logdaten, externe Daten\n- **ETL/ELT-Schicht:** Extract, Transform, Load (oder ELT)\n- **Staging Area:** Tempor\u00e4rer Speicher f\u00fcr Rohdaten\n- **Datenmodell (Fakten & Dimensionen):** Star/Snowflake Schemas\n- **OLAP/Analyse-Schicht:** Aggregationen, Cubes, Materialized Views\n- **Reporting/Visualisierung:** Dashboards, Berichte, Self-Service BI\n\n## Dimensionale Modellierung\n- **Fakten (Facts):** Messwerte wie Umsatz, Anzahl, Dauer\n- **Dimensionen (Dimensions):** Kontext (Zeit, Kunde, Produkt)\n- **Star Schema:** Fakten-Tabelle im Zentrum, umgeben von Denormalisierten Dimensionstabellen (schnelle Abfragen)\n- **Snowflake Schema:** Normalisierte Dimensionstabellen (mehr Joins, weniger Redundanz)\n\n### Beispiel Star Schema\n- Fact_Sales (sale_id, date_key, product_key, store_key, sales_amount)\n- Dim_Date (date_key, date, month, quarter, year)\n- Dim_Product (product_key, name, category)\n\n## ETL-Prozesse und Qualit\u00e4tssicherung\n- **Extract:** Daten aus Quellsystemen extrahieren (Batch/Streaming)\n- **Transform:** Daten bereinigen, anreichern, konsolidieren, Datenqualit\u00e4tschecks (NULLs, Duplicates, Typen)\n- **Load:** In Staging/ODS oder direkt in Data Warehouse laden (Full/Incremental loads)\n- **Idempotenz & Fehlerbehandlung:** Wiederholbare Loads, Checkpoints, Dead-letter-Queues\n\n## Performance- und Architekturentscheidungen\n- **Partitionierung:** Zeitbasierte Partitionen f\u00fcr schnelle Abfragen\n- **Indexing & Materialized Views:** \n- **Inkrementelle Verarbeitung vs. Full Reloads**\n- **Nearline / Cold Storage:** Historische Daten kosteng\u00fcnstig archivieren\n\n## Pr\u00fcfungsrelevante Aspekte\n- Dimensionales Modell (Star vs Snowflake) erkennen und unterscheiden\n- Zweck und Ablauf eines ETL-Prozesses beschreiben\n- Datenqualit\u00e4t:\u00fcberpr\u00fcfungen (Einheitlichkeit, Vollst\u00e4ndigkeit, Konsistenz)\n- Vor- und Nachteile von Partitionierung und Materialized Views\n\n## \u00dcbungen\n1. Erstellen Sie ein einfaches Star Schema f\u00fcr einen Online-Shop (Fakten und Dimensionen).\n2. Beschreiben Sie eine ETL-Pipeline, die Bestelldaten aus einem Shop in ein Data Warehouse \u00fcberf\u00fchrt (inkl. Fehlerfallbehandlung).",
+  "learningObjectives": [
+    "Fakten- und Dimensionstabellen unterscheiden und ein Star Schema entwerfen",
+    "ETL-Prozessschritte (Extract, Transform, Load) beschreiben und Fehlerbehandlung benennen",
+    "Partitionierung und Performance-Ma\u00dfnahmen f\u00fcr Data Warehouses erkl\u00e4ren",
+    "Datenqualit\u00e4tschecks und idempotente Load-Strategien anwenden"
+  ],
+  "keyTakeaways": [
+    "Data Warehouses optimieren Daten f\u00fcr Analysezwecke (themenorientiert, historisch)",
+    "Dimensionale Modellierung (Star) vereinfacht Analyseabfragen",
+    "ETL ist zentral f\u00fcr Datenintegration und Qualit\u00e4tssicherung"
+  ],
+  "relatedQuizzes": ["bp-dpa-05-data-warehousing-quiz"],
+  "resources": [
+    {
+      "title": "Kimball - The Data Warehouse Toolkit (concepts)",
+      "url": "https://www.kimballgroup.com/",
+      "type": "article"
+    },
+    {
+      "title": "ETL Best Practices",
+      "url": "https://en.wikipedia.org/wiki/Extract,_transform,_load",
+      "type": "documentation"
+    }
+  ],
+  "lastUpdated": "2025-10-07T00:00:00Z",
+  "version": "1.0"
+}

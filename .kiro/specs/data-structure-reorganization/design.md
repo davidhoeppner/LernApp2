@@ -11,6 +11,7 @@ The design leverages the existing specialization service and category metadata t
 ### Current State Analysis
 
 The existing system has:
+
 - **File Structure**: Organized by content type (`modules/`, `quizzes/`) with mixed categorization
 - **Category System**: Complex hierarchical structure with FÜ (general), BP-AE (application development), and BP-DPA (data analysis) prefixes
 - **Specialization Service**: Already handles content filtering based on relevance
@@ -25,13 +26,13 @@ graph TB
         B --> C[Category Mapper]
         C --> D[In-Memory Cache]
     end
-    
+
     subgraph "Service Layer"
         D --> E[Content Service]
         E --> F[Specialization Service]
         F --> G[Category Service]
     end
-    
+
     subgraph "Presentation Layer"
         G --> H[Three-Tier Categories]
         H --> I[Daten und Prozessanalyse]
@@ -43,7 +44,7 @@ graph TB
 ### Three-Tier Category System
 
 1. **"Daten und Prozessanalyse"** - Content with high relevance for DPA specialization
-2. **"Anwendungsentwicklung"** - Content with high relevance for AE specialization  
+2. **"Anwendungsentwicklung"** - Content with high relevance for AE specialization
 3. **"Allgemein"** - Content relevant for both specializations or general IT knowledge
 
 ## Components and Interfaces
@@ -54,10 +55,13 @@ graph TB
 interface CategoryMappingService {
   // Map existing categories to three-tier system
   mapToThreeTierCategory(contentItem: ContentItem): ThreeTierCategory;
-  
+
   // Get category relevance for specialization
-  getCategoryRelevance(category: string, specialization: string): RelevanceLevel;
-  
+  getCategoryRelevance(
+    category: string,
+    specialization: string
+  ): RelevanceLevel;
+
   // Validate category assignments
   validateCategoryMapping(contentItems: ContentItem[]): ValidationResult;
 }
@@ -76,13 +80,20 @@ interface ThreeTierCategory {
 ```typescript
 interface EnhancedContentService extends IHKContentService {
   // Get content by three-tier category
-  getContentByThreeTierCategory(category: ThreeTierCategory['id']): Promise<ContentItem[]>;
-  
+  getContentByThreeTierCategory(
+    category: ThreeTierCategory['id']
+  ): Promise<ContentItem[]>;
+
   // Get content with category metadata
-  getContentWithCategoryInfo(specializationId?: string): Promise<CategorizedContent>;
-  
+  getContentWithCategoryInfo(
+    specializationId?: string
+  ): Promise<CategorizedContent>;
+
   // Search within specific three-tier category
-  searchInCategory(query: string, category: ThreeTierCategory['id']): Promise<ContentItem[]>;
+  searchInCategory(
+    query: string,
+    category: ThreeTierCategory['id']
+  ): Promise<ContentItem[]>;
 }
 
 interface CategorizedContent {
@@ -91,12 +102,12 @@ interface CategorizedContent {
     quizzes: QuizItem[];
     relevance: RelevanceLevel;
   };
-  'anwendungsentwicklung': {
+  anwendungsentwicklung: {
     modules: ModuleItem[];
     quizzes: QuizItem[];
     relevance: RelevanceLevel;
   };
-  'allgemein': {
+  allgemein: {
     modules: ModuleItem[];
     quizzes: QuizItem[];
     relevance: RelevanceLevel;
@@ -137,16 +148,16 @@ interface MappingCondition {
 interface EnhancedContentItem extends ContentItem {
   // Original category (preserved for backward compatibility)
   category: string;
-  
+
   // New three-tier category assignment
   threeTierCategory: ThreeTierCategory['id'];
-  
+
   // Relevance for each specialization
   specializationRelevance: {
-    'anwendungsentwicklung': RelevanceLevel;
+    anwendungsentwicklung: RelevanceLevel;
     'daten-prozessanalyse': RelevanceLevel;
   };
-  
+
   // Cross-category relationships
   relatedContent?: {
     category: ThreeTierCategory['id'];
@@ -165,7 +176,7 @@ interface CategoryMetadata {
   description: string;
   color: string;
   icon: string;
-  
+
   // Content statistics
   contentStats: {
     totalModules: number;
@@ -176,7 +187,7 @@ interface CategoryMetadata {
       advanced: number;
     };
   };
-  
+
   // Specialization relevance
   specializationRelevance: {
     [specializationId: string]: {
@@ -235,7 +246,7 @@ interface CategoryMetadata {
    - Content with high DPA relevance and low AE relevance
 
 2. **Explicit AE Content**
-   - Content with `bp-ae-*` prefix → "Anwendungsentwicklung"  
+   - Content with `bp-ae-*` prefix → "Anwendungsentwicklung"
    - Content with high AE relevance and low DPA relevance
 
 3. **General Content** (Default)
@@ -251,33 +262,33 @@ const categoryMappingRules: CategoryMappingRule[] = [
   {
     sourceCategory: /^BP-DPA-/,
     targetCategory: 'daten-prozessanalyse',
-    priority: 100
+    priority: 100,
   },
   {
     sourceCategory: /^bp-dpa-/,
-    targetCategory: 'daten-prozessanalyse', 
-    priority: 100
+    targetCategory: 'daten-prozessanalyse',
+    priority: 100,
   },
-  
+
   // AE-specific content
   {
     sourceCategory: /^BP-AE-/,
     targetCategory: 'anwendungsentwicklung',
-    priority: 100
+    priority: 100,
   },
   {
     sourceCategory: /^bp-ae-/,
     targetCategory: 'anwendungsentwicklung',
-    priority: 100
+    priority: 100,
   },
-  
+
   // General content (FÜ prefix)
   {
     sourceCategory: /^FÜ-|^fue-/,
     targetCategory: 'allgemein',
-    priority: 90
+    priority: 90,
   },
-  
+
   // Content by relevance analysis
   {
     sourceCategory: /.*/,
@@ -285,29 +296,29 @@ const categoryMappingRules: CategoryMappingRule[] = [
     condition: {
       specializationRelevance: {
         'daten-prozessanalyse': 'high',
-        'anwendungsentwicklung': 'low'
-      }
+        anwendungsentwicklung: 'low',
+      },
     },
-    priority: 80
+    priority: 80,
   },
   {
     sourceCategory: /.*/,
     targetCategory: 'anwendungsentwicklung',
     condition: {
       specializationRelevance: {
-        'anwendungsentwicklung': 'high',
-        'daten-prozessanalyse': 'low'
-      }
+        anwendungsentwicklung: 'high',
+        'daten-prozessanalyse': 'low',
+      },
     },
-    priority: 80
+    priority: 80,
   },
-  
+
   // Default to general
   {
     sourceCategory: /.*/,
     targetCategory: 'allgemein',
-    priority: 1
-  }
+    priority: 1,
+  },
 ];
 ```
 

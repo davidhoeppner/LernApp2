@@ -56,20 +56,26 @@ class MockSpecializationService {
 
 async function testQuizCategoryMapping() {
   console.log('🧪 Testing Quiz Category Mapping Integration...');
-  
+
   try {
     // Import services
-    const { default: CategoryMappingService } = await import('../src/services/CategoryMappingService.js');
-    const { default: IHKContentService } = await import('../src/services/IHKContentService.js');
-    
+    const { default: CategoryMappingService } = await import(
+      '../src/services/CategoryMappingService.js'
+    );
+    const { default: IHKContentService } = await import(
+      '../src/services/IHKContentService.js'
+    );
+
     // Create mock services
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
     const mockSpecializationService = new MockSpecializationService();
-    
+
     // Create CategoryMappingService
-    const categoryMappingService = new CategoryMappingService(mockSpecializationService);
-    
+    const categoryMappingService = new CategoryMappingService(
+      mockSpecializationService
+    );
+
     // Create IHKContentService with CategoryMappingService
     const ihkContentService = new IHKContentService(
       mockStateManager,
@@ -77,74 +83,101 @@ async function testQuizCategoryMapping() {
       mockSpecializationService,
       categoryMappingService
     );
-    
+
     console.log('✅ Services created successfully');
-    
+
     // Load quizzes
     const quizzes = await ihkContentService.getAllQuizzes();
     console.log(`📊 Loaded ${quizzes.length} quizzes`);
-    
+
     // Check if quizzes have three-tier category mapping
     const quizzesWithThreeTier = quizzes.filter(q => q.threeTierCategory);
-    console.log(`🎯 Quizzes with threeTierCategory: ${quizzesWithThreeTier.length}`);
-    
+    console.log(
+      `🎯 Quizzes with threeTierCategory: ${quizzesWithThreeTier.length}`
+    );
+
     if (quizzesWithThreeTier.length > 0) {
-      console.log('✅ SUCCESS: Quizzes are getting three-tier category mapping!');
-      
+      console.log(
+        '✅ SUCCESS: Quizzes are getting three-tier category mapping!'
+      );
+
       // Show sample quiz structure
       const sampleQuiz = quizzesWithThreeTier[0];
       console.log('\n📋 Sample quiz with three-tier mapping:');
       console.log(`  ID: ${sampleQuiz.id}`);
       console.log(`  Title: ${sampleQuiz.title}`);
-      console.log(`  Original Category: ${sampleQuiz.category || sampleQuiz.categoryId}`);
+      console.log(
+        `  Original Category: ${sampleQuiz.category || sampleQuiz.categoryId}`
+      );
       console.log(`  Three-Tier Category: ${sampleQuiz.threeTierCategory}`);
-      console.log(`  Category Info: ${sampleQuiz.categoryMapping?.categoryInfo?.name || 'N/A'}`);
-      
+      console.log(
+        `  Category Info: ${sampleQuiz.categoryMapping?.categoryInfo?.name || 'N/A'}`
+      );
+
       // Test category distribution
       const categoryDistribution = {};
       quizzesWithThreeTier.forEach(quiz => {
         const category = quiz.threeTierCategory;
-        categoryDistribution[category] = (categoryDistribution[category] || 0) + 1;
+        categoryDistribution[category] =
+          (categoryDistribution[category] || 0) + 1;
       });
-      
+
       console.log('\n📈 Category Distribution:');
       Object.entries(categoryDistribution).forEach(([category, count]) => {
         console.log(`  ${category}: ${count} quizzes`);
       });
-      
+
       // Test filtering functionality
       console.log('\n🔍 Testing filtering functionality...');
-      
-      const dpaQuizzes = quizzes.filter(quiz => quiz.threeTierCategory === 'daten-prozessanalyse');
-      const aeQuizzes = quizzes.filter(quiz => quiz.threeTierCategory === 'anwendungsentwicklung');
-      const generalQuizzes = quizzes.filter(quiz => quiz.threeTierCategory === 'allgemein');
-      
+
+      const dpaQuizzes = quizzes.filter(
+        quiz => quiz.threeTierCategory === 'daten-prozessanalyse'
+      );
+      const aeQuizzes = quizzes.filter(
+        quiz => quiz.threeTierCategory === 'anwendungsentwicklung'
+      );
+      const generalQuizzes = quizzes.filter(
+        quiz => quiz.threeTierCategory === 'allgemein'
+      );
+
       console.log(`  DPA Quizzes: ${dpaQuizzes.length}`);
       console.log(`  AE Quizzes: ${aeQuizzes.length}`);
       console.log(`  General Quizzes: ${generalQuizzes.length}`);
-      
-      if (dpaQuizzes.length > 0 && aeQuizzes.length > 0 && generalQuizzes.length > 0) {
-        console.log('✅ SUCCESS: All three categories have quizzes - filtering should work!');
+
+      if (
+        dpaQuizzes.length > 0 &&
+        aeQuizzes.length > 0 &&
+        generalQuizzes.length > 0
+      ) {
+        console.log(
+          '✅ SUCCESS: All three categories have quizzes - filtering should work!'
+        );
       } else {
-        console.log('⚠️  WARNING: Some categories are empty - check mapping rules');
+        console.log(
+          '⚠️  WARNING: Some categories are empty - check mapping rules'
+        );
       }
-      
     } else {
       console.log('❌ FAILURE: No quizzes have three-tier category mapping');
-      console.log('   This means the CategoryMappingService is not being applied correctly');
-      
+      console.log(
+        '   This means the CategoryMappingService is not being applied correctly'
+      );
+
       // Show sample quiz without mapping
       if (quizzes.length > 0) {
         const sampleQuiz = quizzes[0];
         console.log('\n📋 Sample quiz without three-tier mapping:');
         console.log(`  ID: ${sampleQuiz.id}`);
         console.log(`  Title: ${sampleQuiz.title}`);
-        console.log(`  Category: ${sampleQuiz.category || sampleQuiz.categoryId || 'N/A'}`);
-        console.log(`  Has threeTierCategory: ${!!sampleQuiz.threeTierCategory}`);
+        console.log(
+          `  Category: ${sampleQuiz.category || sampleQuiz.categoryId || 'N/A'}`
+        );
+        console.log(
+          `  Has threeTierCategory: ${!!sampleQuiz.threeTierCategory}`
+        );
         console.log(`  Has categoryMapping: ${!!sampleQuiz.categoryMapping}`);
       }
     }
-    
   } catch (error) {
     console.error('❌ Error during test:', error);
     console.error('Stack trace:', error.stack);

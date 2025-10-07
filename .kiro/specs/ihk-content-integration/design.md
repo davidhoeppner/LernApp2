@@ -147,21 +147,25 @@ Dieses Design-Dokument beschreibt die Architektur und Datenstrukturen für die I
 ### Fachrichtungsübergreifende Inhalte (FÜ)
 
 #### FÜ-01: Planen eines Softwareproduktes
+
 - Kundenanforderungen analysieren
 - Projektplanung
 - Wirtschaftlichkeitsberechnung
 
 #### FÜ-02: Entwickeln und Bereitstellen von Softwareanwendungen
+
 - **NEU 2025**: Anomalien/Redundanzen in Datenbanken erkennen
 - **NEU 2025**: SQL (detailliertes Beiblatt) - siehe separate SQL-Sektion
 - Kontrollstrukturen mit Aktivitätsdiagramm oder Pseudocode
 - **ENTFERNT**: Struktogramm und PAP
 
 #### FÜ-03: Durchführen von qualitätssichernden Maßnahmen
+
 - **NEU 2025**: Last-/Performancetests
 - Software-Test (Black Box, White Box, Review, Extremwertetest)
 
 #### FÜ-04: Sicherstellen der Informationssicherheit
+
 - **NEU 2025**: Bedrohungsszenarien (Man-in-the-Middle, SQL-Injection, DDoS)
 - Technisch Organisatorische Maßnahmen (TOM)
 - Datenschutz und Datensicherheit
@@ -169,6 +173,7 @@ Dieses Design-Dokument beschreibt die Architektur und Datenstrukturen für die I
 ### Berufsprofilgebende Inhalte Anwendungsentwicklung (BP)
 
 #### BP-01: Konzipieren und Umsetzen von kundenspezifischen Softwareanwendungen
+
 - **NEU 2025**: Kerberos (Zugriffskontrolle)
 - **NEU 2025**: ODBC (Datenabruf)
 - **NEU 2025**: Monitoring von Systemen
@@ -176,24 +181,28 @@ Dieses Design-Dokument beschreibt die Architektur und Datenstrukturen für die I
 - Netzwerktopologien und -protokolle
 
 #### BP-02: Sicherstellen der Qualität von Softwareanwendungen
+
 - **NEU 2025**: NAS und SAN
 - Datenaustauschformate (XML, JSON, CSV)
 - Verschlüsselung (z.B. Bitlocker)
 - Cloud-Modelle (SaaS, IaaS, PaaS)
 
 #### BP-03: Entwickeln von Softwareanwendungen
+
 - **NEU 2025**: Softwarequalitätsmerkmale (ISO 25001)
 - **NEU 2025**: Cyber-physische Systeme
 - **NEU 2025**: Test Driven Development (TDD)
 - API-Entwicklung (z.B. REST)
 
 #### BP-04: Projektmanagement und Softwareentwicklungsmethoden
+
 - **NEU 2025**: Scrum (explizit genannt)
 - **NEU 2025**: Architektur-Pattern (zusätzlich zu Design-Pattern)
 - **NEU 2025**: Kapselung in OOP
 - **ENTFERNT**: Programmierparadigmen
 
 #### BP-05: Objektorientierte Programmierung und Algorithmen
+
 - **NEU 2025**: Sortierverfahren (Bubble, Selection, Insertion Sort)
 - **NEU 2025**: SQL mit Verweis auf Beiblatt
 - Objektorientierte Konzepte
@@ -204,6 +213,7 @@ Dieses Design-Dokument beschreibt die Architektur und Datenstrukturen für die I
 Basierend auf dem 2-seitigen Beiblatt, das der Prüfung beiliegt:
 
 ### DDL (Data Definition Language)
+
 ```sql
 -- Tabellenstruktur
 CREATE TABLE table_name (
@@ -224,6 +234,7 @@ ON table_name (column_name);
 ```
 
 ### DML (Data Manipulation Language)
+
 ```sql
 -- INSERT
 INSERT INTO table_name (column1, column2, ...)
@@ -240,6 +251,7 @@ WHERE condition;
 ```
 
 ### DQL (Data Query Language)
+
 ```sql
 -- Projektion
 SELECT column1, column2, ...
@@ -281,6 +293,7 @@ FROM table_name;
 ### 1. Test Driven Development (TDD)
 
 **Module Content:**
+
 - Was ist TDD?
 - Red-Green-Refactor Zyklus
 - Vorteile und Nachteile
@@ -288,6 +301,7 @@ FROM table_name;
 - Praktische Beispiele in Java/Python
 
 **Quiz Topics:**
+
 - TDD-Zyklus erkennen
 - Test-First vs. Test-Last
 - Unit-Test-Frameworks
@@ -296,6 +310,7 @@ FROM table_name;
 ### 2. Scrum
 
 **Module Content:**
+
 - Scrum-Rollen (Product Owner, Scrum Master, Development Team)
 - Scrum-Events (Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective)
 - Scrum-Artefakte (Product Backlog, Sprint Backlog, Increment)
@@ -303,6 +318,7 @@ FROM table_name;
 - User Stories und Story Points
 
 **Quiz Topics:**
+
 - Rollen zuordnen
 - Events identifizieren
 - Artefakte unterscheiden
@@ -311,6 +327,7 @@ FROM table_name;
 ### 3. Sortierverfahren
 
 **Module Content:**
+
 - Bubble Sort (Algorithmus, Komplexität, Visualisierung)
 - Selection Sort (Algorithmus, Komplexität, Visualisierung)
 - Insertion Sort (Algorithmus, Komplexität, Visualisierung)
@@ -318,6 +335,7 @@ FROM table_name;
 - Zeitkomplexität (Best/Average/Worst Case)
 
 **Quiz Topics:**
+
 - Algorithmen erkennen
 - Komplexität berechnen
 - Sortierverfahren anwenden
@@ -326,6 +344,7 @@ FROM table_name;
 ### 4. Cyber-physische Systeme (CPS)
 
 **Module Content:**
+
 - Definition und Beispiele
 - Sensoren und Aktoren
 - Bibliotheken für CPS
@@ -333,6 +352,7 @@ FROM table_name;
 - Zugriff auf Hardware
 
 **Quiz Topics:**
+
 - Sensoren/Aktoren zuordnen
 - CPS-Anwendungen erkennen
 - Bibliotheken auswählen
@@ -340,6 +360,7 @@ FROM table_name;
 ### 5. Architektur-Pattern
 
 **Module Content:**
+
 - Layered Architecture (Schichtenarchitektur)
 - Model-View-Controller (MVC)
 - Model-View-ViewModel (MVVM)
@@ -347,6 +368,7 @@ FROM table_name;
 - Event-Driven Architecture
 
 **Quiz Topics:**
+
 - Pattern erkennen
 - Vor-/Nachteile benennen
 - Anwendungsfälle zuordnen
@@ -354,6 +376,7 @@ FROM table_name;
 ### 6. Sicherheitsbedrohungen
 
 **Module Content:**
+
 - Man-in-the-Middle Angriffe
 - SQL-Injection
 - DDoS-Attacken
@@ -361,6 +384,7 @@ FROM table_name;
 - Best Practices
 
 **Quiz Topics:**
+
 - Angriffsszenarien erkennen
 - Schutzmaßnahmen zuordnen
 - Sicherheitslücken identifizieren
@@ -368,6 +392,7 @@ FROM table_name;
 ### 7. Kapselung in OOP
 
 **Module Content:**
+
 - Private, Protected, Public
 - Getter und Setter
 - Information Hiding
@@ -375,6 +400,7 @@ FROM table_name;
 - Code-Beispiele
 
 **Quiz Topics:**
+
 - Zugriffsmodifikatoren zuordnen
 - Kapselung anwenden
 - Code-Fehler finden
@@ -382,6 +408,7 @@ FROM table_name;
 ## Data Organization Strategy
 
 ### File Structure
+
 ```
 src/data/
 ├── ihk/
@@ -499,24 +526,28 @@ class ExamProgressService {
 ## UI Components
 
 ### CategoryFilter Component
+
 - Filter by FÜ/BP categories
 - Filter by exam relevance
 - Filter by "New in 2025"
 - Filter by difficulty
 
 ### ExamChanges2025 Component
+
 - Highlight new topics
 - Show removed topics
 - Display important changes
 - Link to relevant modules
 
 ### LearningPathView Component
+
 - Display structured learning path
 - Show progress through path
 - Unlock modules based on prerequisites
 - Milestone tracking
 
 ### SQLPlayground Component
+
 - Interactive SQL editor
 - Execute queries against sample database
 - Show query results
@@ -525,18 +556,21 @@ class ExamProgressService {
 ## Testing Strategy
 
 ### Content Validation
+
 - Validate JSON structure
 - Check for broken references
 - Verify category assignments
 - Test search functionality
 
 ### Quiz Validation
+
 - Verify correct answers
 - Check explanation quality
 - Test all question types
 - Validate scoring logic
 
 ### Integration Tests
+
 - Test content loading
 - Test filtering and search
 - Test progress tracking
@@ -545,18 +579,21 @@ class ExamProgressService {
 ## Performance Considerations
 
 ### Content Size Management
+
 - Split large modules into smaller chunks
 - Lazy load code examples
 - Compress JSON data
 - Use pagination for large lists
 
 ### Caching Strategy
+
 - Cache frequently accessed modules
 - Cache quiz results
 - Cache user progress
 - Implement cache invalidation
 
 ### Search Optimization
+
 - Index content for fast search
 - Use debouncing for search input
 - Implement fuzzy search
@@ -565,12 +602,14 @@ class ExamProgressService {
 ## Accessibility
 
 ### Content Accessibility
+
 - Provide alt text for diagrams
 - Ensure code examples are screen-reader friendly
 - Use semantic HTML in markdown
 - Provide keyboard navigation
 
 ### Quiz Accessibility
+
 - Announce quiz progress to screen readers
 - Provide clear focus indicators
 - Support keyboard-only interaction

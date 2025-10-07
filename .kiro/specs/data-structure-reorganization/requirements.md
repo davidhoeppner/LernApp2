@@ -37,7 +37,7 @@ This feature aims to restructure the existing module and quiz data into three cl
 #### Acceptance Criteria
 
 1. WHEN a user selects "Anwendungsentwicklung" specialization THEN the system SHALL prioritize AE-specific content and show relevant general content
-2. WHEN a user selects "Daten und Prozessanalyse" specialization THEN the system SHALL prioritize DPA-specific content and show relevant general content  
+2. WHEN a user selects "Daten und Prozessanalyse" specialization THEN the system SHALL prioritize DPA-specific content and show relevant general content
 3. WHEN displaying content categories THEN the system SHALL show relevance indicators (high/medium/low) for each category based on user's specialization
 4. WHEN no specialization is selected THEN the system SHALL show all three categories with equal prominence
 5. WHEN switching between specializations THEN the system SHALL preserve user progress and adapt the content view accordingly

@@ -71,5 +71,12 @@
     }
   ],
   "lastUpdated": "2025-01-05T10:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand lasttest",
+    "Understand performancetest",
+    "Understand stresstest",
+    "Understand testing",
+    "Understand qualitätssicherung"
+  ]
 }

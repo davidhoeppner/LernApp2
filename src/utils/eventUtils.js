@@ -9,8 +9,8 @@
  *
  * Example usage:
  * attachEventListeners(container, [
- *   { selector: '.btn-primary', event: 'click', handler: () => console.log('clicked') },
- *   { selector: '.input', event: 'input', handler: (e) => console.log(e.target.value) }
+ *   { selector: '.btn-primary', event: 'click', handler: () => console.warn('clicked') },
+ *   { selector: '.input', event: 'input', handler: (e) => console.warn(e.target.value) }
  * ]);
  */
 export function attachEventListeners(container, eventConfigs) {

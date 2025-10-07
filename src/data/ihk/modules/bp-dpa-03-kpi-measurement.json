@@ -1,0 +1,72 @@
+{
+  "id": "bp-dpa-03-kpi-measurement",
+  "title": "Prozess-KPI Messung & Auswertung",
+  "description": "Systematische Definition, Erhebung und Interpretation von Prozess-KPIs zur Steuerung kontinuierlicher Optimierung",
+  "category": "BP-DPA-03",
+  "subcategory": "Geschäftsprozesse analysieren und optimieren",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 60,
+  "prerequisites": ["bp-dpa-03-bpmn-fundamentals", "bp-dpa-03-process-mining"],
+  "tags": [
+    "kpi",
+    "prozesskennzahlen",
+    "durchlaufzeit",
+    "varianz",
+    "performance",
+    "prozessanalyse",
+    "governance"
+  ],
+  "content": "# Prozess-KPI Messung & Auswertung\n\n## Einführung\nKennzahlen (Key Performance Indicators) übersetzen Prozessleistung in objektiv messbare Größen. Aussagekräftige KPIs sind klar definiert (Formel, Datendomäne, Zeitbezug), valide (vertrauenswürdige Quelle) und steuerungsrelevant (beeinflussbar).\n\n## KPI-Rahmenwerk\nPrinzipien: Relevanz > Quantität, Klarheit der Definition, Vergleichbarkeit (Trend, Benchmark), Visualisierung (Kontext), Verantwortlichkeit (Owner).\nKlassifikation: Zeit (Durchlaufzeit, Wartezeit), Qualität (Fehlerrate, Rework), Menge (Durchsatz), Kosten (Kosten je Case), Stabilität (Varianz, Variantenanzahl).\n\n## Definition & Operationalisierung\nStruktur einer KPI-Definition: Name, Ziel (Intent), Formel, Datengrundlage, Erhebungsfrequenz, Grenzwerte (SLA), Verantwortlich.\nBeispiel (Durchlaufzeit): Formel = End-Timestamp − Start-Timestamp (Median statt Mittelwert bei Ausreißern).\n\n| KPI | Formel (vereinfacht) | Interpretation | Risiko falscher Nutzung |\n|-----|----------------------|---------------|------------------------|\n| Durchlaufzeit | Ende - Start | Geschwindigkeit Gesamtprozess | Verzerrung durch Ausreißer |\n| Bearbeitungszeit | Sum(Activity-Dauern) | Arbeitsintensität | Ignoriert Wartezeiten |\n| Wartezeit | Durchlaufzeit - Bearbeitungszeit | Puffer / Stau | Datenlücken |\n| Rework-Quote | Rework-Aktivitäten / Gesamtaktivitäten | Qualitäts-/Datenprobleme | Falsche Aktivitätsklassifikation |\n\n## Datenerhebung & Plattformaspekte\nData Lakehouse Relevanz: Vereinheitlichte Speicherung (ACID für Integrität), Time Travel für Audit / Revisionssicherheit historischer KPI-Stände, Schema Evolution für neue Aktivitäten.\nGovernance: Versionierung von KPI-Definitionen, Auditierbarkeit von Transformationen, Zugriffskontrolle (Least Privilege).\n\n## Auswertung & Interpretation\nVerteilungsanalyse: Median, Quartile, 95. Perzentil statt nur Durchschnitt.\nTrend: Rolling-Windows (z.B. 4 Wochen) zur Glättung.\nVergleich: Vor/Nach Maßnahme (A/B) mit identischer Datengrundlage.\nFehlinterpretationen: Korrelation ≠ Kausalität, Simpson-Paradox bei Segment-Durchschnitt.\n\n## Steuerung & Visualisierung\nDashboard-Prinzipien: Fokus (max 7 Hauptkennzahlen), Drill-Down, Kontextlinien (SLA), Farbkonvention (Grün/Gelb/Rot).\nAmpel-Schwellen sollen datenbasiert kalibriert (Historie) und regelmäßig überprüft werden.\n\n## Prüfungsrelevante Aspekte\n- Bestandteile einer KPI-Definition (Formel, Quelle, Frequenz)\n- Unterschied Durchlaufzeit vs. Bearbeitungszeit\n- Umgang mit Ausreißern (Median)\n- Rolle von Data Lakehouse (ACID, Time Travel) für KPI-Verlässlichkeit\n- Rework-Quote als Qualitätsindikator\n- Governance & Versionierung von KPIs\n",
+  "codeExamples": [
+    {
+      "language": "sql",
+      "title": "Median Durchlaufzeit (Approximation)",
+      "code": "-- Beispiel mit Window-Funktion (vereinfachte Approximation)\nWITH per_case AS (\n  SELECT case_id, TIMESTAMPDIFF(MINUTE, MIN(ts), MAX(ts)) AS cycle_min\n  FROM event_log\n  GROUP BY case_id\n)\nSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY cycle_min) AS median_cycle_min\nFROM per_case;",
+      "explanation": "Berechnung einer robusteren Kennzahl (Median) zur Minimierung von Ausreißereinfluss."
+    },
+    {
+      "language": "python",
+      "title": "Rework-Erkennung (vereinfachtes Pattern)",
+      "code": "import pandas as pd\nlog = pd.read_csv('event_log.csv')\nrework = (log.groupby(['case','activity']).size()>1).reset_index()\nrework_cases = rework[0].sum()\nprint('Rework-Fälle:', rework_cases)",
+      "explanation": "Identifiziert Aktivitäten, die innerhalb eines Cases mehrfach auftreten (potenzielles Rework)."
+    }
+  ],
+  "relatedQuizzes": ["bp-dpa-03-kpi-measurement-quiz"],
+  "resources": [
+    {
+      "title": "BPMN 2.0 Specification",
+      "url": "https://www.omg.org/spec/BPMN/2.0/",
+      "type": "documentation"
+    },
+    {
+      "title": "Process Mining Portal",
+      "url": "https://www.processmining.org/",
+      "type": "article"
+    },
+    {
+      "title": "KPI Grundlagen",
+      "url": "https://www.investopedia.com/terms/k/kpi.asp",
+      "type": "article"
+    }
+  ],
+  "learningObjectives": [
+    "KPI-Definition strukturiert dokumentieren",
+    "Durchlaufzeit, Bearbeitungszeit und Wartezeit abgrenzen",
+    "Median und Perzentile zur Robustheit einsetzen",
+    "Rework-Quote und Varianten als Qualitätsindikatoren interpretieren",
+    "Lakehouse-Konzepte (ACID, Time Travel) für KPI-Verlässlichkeit einordnen"
+  ],
+  "keyTakeaways": [
+    "Klare Definition verhindert KPI-Missinterpretation",
+    "Median reduziert Ausreißereffekt",
+    "Rework signalisiert Qualitäts-/Datenprobleme",
+    "Governance & Versionierung sichern Vergleichbarkeit"
+  ],
+  "lastUpdated": "2025-10-07T00:00:00Z",
+  "version": "1.0",
+  "tracks": ["DPA"]
+}

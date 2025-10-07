@@ -1,4 +1,4 @@
-import categoriesData from '../data/ihk/metadata/categories.json' with { type: 'json' };
+import categoriesData from '../data/ihk/metadata/categories.json';
 
 /**
  * SpecializationService - Manages user specialization preferences and content filtering
@@ -10,7 +10,7 @@ class SpecializationService {
     this.storage = storageService;
     this.categoryMappingService = categoryMappingService;
     this.categoriesData = categoriesData;
-    
+
     // Initialize specialization state if not exists
     this._initializeSpecializationState();
   }
@@ -21,15 +21,15 @@ class SpecializationService {
    */
   _initializeSpecializationState() {
     const currentState = this.stateManager.getState();
-    
+
     if (!currentState.specialization) {
       this.stateManager.setState('specialization', {
         current: null,
         hasSelected: false,
         preferences: {
           showAllContent: false,
-          preferredCategories: []
-        }
+          preferredCategories: [],
+        },
       });
     }
   }
@@ -39,12 +39,14 @@ class SpecializationService {
    * @returns {Array} Array of specialization objects
    */
   getAvailableSpecializations() {
-    const supportedSpecializations = this.categoriesData.supportedSpecializations || [];
-    
+    const supportedSpecializations =
+      this.categoriesData.supportedSpecializations || [];
+
     return supportedSpecializations.map(specializationId => {
       // Find specialization config from categories
-      const config = this._getSpecializationConfigFromCategories(specializationId);
-      
+      const config =
+        this._getSpecializationConfigFromCategories(specializationId);
+
       return {
         id: specializationId,
         name: config.name,
@@ -52,7 +54,7 @@ class SpecializationService {
         description: config.description,
         color: config.color,
         icon: config.icon,
-        examCode: config.examCode
+        examCode: config.examCode,
       };
     });
   }
@@ -66,13 +68,13 @@ class SpecializationService {
   _getSpecializationConfigFromCategories(specializationId) {
     // Default configurations based on the design document
     const defaultConfigs = {
-      'anwendungsentwicklung': {
+      anwendungsentwicklung: {
         name: 'Anwendungsentwicklung',
         shortName: 'AE',
         description: 'Fachinformatiker für Anwendungsentwicklung',
         color: '#10b981',
         icon: '💻',
-        examCode: 'AP2-AE'
+        examCode: 'AP2-AE',
       },
       'daten-prozessanalyse': {
         name: 'Daten- und Prozessanalyse',
@@ -80,18 +82,20 @@ class SpecializationService {
         description: 'Fachinformatiker für Daten- und Prozessanalyse',
         color: '#3b82f6',
         icon: '📊',
-        examCode: 'AP2-DPA'
-      }
+        examCode: 'AP2-DPA',
+      },
     };
 
-    return defaultConfigs[specializationId] || {
-      name: specializationId,
-      shortName: specializationId.toUpperCase(),
-      description: `Fachinformatiker für ${specializationId}`,
-      color: '#6b7280',
-      icon: '⚙️',
-      examCode: 'AP2'
-    };
+    return (
+      defaultConfigs[specializationId] || {
+        name: specializationId,
+        shortName: specializationId.toUpperCase(),
+        description: `Fachinformatiker für ${specializationId}`,
+        color: '#6b7280',
+        icon: '⚙️',
+        examCode: 'AP2',
+      }
+    );
   }
 
   /**
@@ -129,8 +133,10 @@ class SpecializationService {
 
       // Validate that the specialization is supported
       const availableSpecializations = this.getAvailableSpecializations();
-      const isValid = availableSpecializations.some(spec => spec.id === specializationId);
-      
+      const isValid = availableSpecializations.some(
+        spec => spec.id === specializationId
+      );
+
       if (!isValid) {
         throw new Error(`Unsupported specialization: ${specializationId}`);
       }
@@ -138,8 +144,15 @@ class SpecializationService {
       const previousSpecialization = this.getCurrentSpecialization();
 
       // Preserve progress across specialization changes
-      if (preserveProgress && previousSpecialization && previousSpecialization !== specializationId) {
-        this._preserveProgressAcrossSpecializations(previousSpecialization, specializationId);
+      if (
+        preserveProgress &&
+        previousSpecialization &&
+        previousSpecialization !== specializationId
+      ) {
+        this._preserveProgressAcrossSpecializations(
+          previousSpecialization,
+          specializationId
+        );
       }
 
       // Update state
@@ -147,7 +160,10 @@ class SpecializationService {
       this.stateManager.setState('specialization.hasSelected', true);
 
       // Update last activity
-      this.stateManager.setState('progress.lastActivity', new Date().toISOString());
+      this.stateManager.setState(
+        'progress.lastActivity',
+        new Date().toISOString()
+      );
 
       // Log specialization change for analytics
       this._logSpecializationChange(previousSpecialization, specializationId);
@@ -168,7 +184,7 @@ class SpecializationService {
   _preserveProgressAcrossSpecializations(fromSpecialization, toSpecialization) {
     try {
       const currentProgress = this.stateManager.getState('progress') || {};
-      
+
       // Create specialization-specific progress tracking if it doesn't exist
       if (!currentProgress.specializationProgress) {
         currentProgress.specializationProgress = {};
@@ -188,47 +204,63 @@ class SpecializationService {
           lastActivity: currentProgress.lastActivity,
           savedAt: new Date().toISOString(),
           // Add three-tier category breakdown
-          threeTierBreakdown: this._categorizeProgressByThreeTier(currentProgress)
+          threeTierBreakdown:
+            this._categorizeProgressByThreeTier(currentProgress),
         };
 
-        currentProgress.specializationProgress[fromSpecialization] = progressSnapshot;
+        currentProgress.specializationProgress[fromSpecialization] =
+          progressSnapshot;
       }
 
       // Restore progress for the new specialization if it exists
       if (currentProgress.specializationProgress[toSpecialization]) {
-        const savedProgress = currentProgress.specializationProgress[toSpecialization];
-        
+        const savedProgress =
+          currentProgress.specializationProgress[toSpecialization];
+
         // Merge saved progress with current general progress
-        const generalModules = this._getGeneralModules(currentProgress.modulesCompleted || []);
-        const generalInProgress = this._getGeneralModules(currentProgress.modulesInProgress || []);
-        const generalQuizzes = this._getGeneralQuizAttempts(currentProgress.quizAttempts || []);
+        const generalModules = this._getGeneralModules(
+          currentProgress.modulesCompleted || []
+        );
+        const generalInProgress = this._getGeneralModules(
+          currentProgress.modulesInProgress || []
+        );
+        const generalQuizzes = this._getGeneralQuizAttempts(
+          currentProgress.quizAttempts || []
+        );
 
         currentProgress.modulesCompleted = [
           ...generalModules,
-          ...savedProgress.modulesCompleted.filter(id => !generalModules.includes(id))
+          ...savedProgress.modulesCompleted.filter(
+            id => !generalModules.includes(id)
+          ),
         ];
-        
+
         currentProgress.modulesInProgress = [
           ...generalInProgress,
-          ...savedProgress.modulesInProgress.filter(id => !generalInProgress.includes(id))
+          ...savedProgress.modulesInProgress.filter(
+            id => !generalInProgress.includes(id)
+          ),
         ];
-        
+
         currentProgress.quizAttempts = [
           ...generalQuizzes,
-          ...savedProgress.quizAttempts.filter(attempt => 
-            !generalQuizzes.some(general => general.quizId === attempt.quizId)
-          )
+          ...savedProgress.quizAttempts.filter(
+            attempt =>
+              !generalQuizzes.some(general => general.quizId === attempt.quizId)
+          ),
         ];
 
         // Restore three-tier category progress if available
         if (savedProgress.threeTierBreakdown) {
-          this._restoreThreeTierProgress(currentProgress, savedProgress.threeTierBreakdown);
+          this._restoreThreeTierProgress(
+            currentProgress,
+            savedProgress.threeTierBreakdown
+          );
         }
       }
 
       // Update the progress state
       this.stateManager.setState('progress', currentProgress);
-
     } catch (error) {
       console.error('Error preserving progress across specializations:', error);
     }
@@ -243,8 +275,8 @@ class SpecializationService {
   _categorizeProgressByThreeTier(progressData) {
     const breakdown = {
       'daten-prozessanalyse': { modules: [], quizzes: [] },
-      'anwendungsentwicklung': { modules: [], quizzes: [] },
-      'allgemein': { modules: [], quizzes: [] }
+      anwendungsentwicklung: { modules: [], quizzes: [] },
+      allgemein: { modules: [], quizzes: [] },
     };
 
     // Categorize completed modules
@@ -280,15 +312,15 @@ class SpecializationService {
     if (!contentId) return 'allgemein';
 
     const idLower = contentId.toLowerCase();
-    
+
     if (idLower.includes('bp-dpa-') || idLower.includes('dpa-')) {
       return 'daten-prozessanalyse';
     }
-    
+
     if (idLower.includes('bp-ae-') || idLower.includes('ae-')) {
       return 'anwendungsentwicklung';
     }
-    
+
     return 'allgemein';
   }
 
@@ -307,7 +339,7 @@ class SpecializationService {
     Object.keys(threeTierBreakdown).forEach(category => {
       currentProgress.threeTierCategoryProgress[category] = {
         ...threeTierBreakdown[category],
-        lastUpdated: new Date().toISOString()
+        lastUpdated: new Date().toISOString(),
       };
     });
   }
@@ -322,8 +354,11 @@ class SpecializationService {
     return moduleIds.filter(moduleId => {
       // General modules typically don't have specialization prefixes
       // or are marked as general in categories
-      return !moduleId.includes('bp-ae-') && !moduleId.includes('bp-dpa-') || 
-             moduleId.includes('fue-') || moduleId.includes('general-');
+      return (
+        (!moduleId.includes('bp-ae-') && !moduleId.includes('bp-dpa-')) ||
+        moduleId.includes('fue-') ||
+        moduleId.includes('general-')
+      );
     });
   }
 
@@ -336,8 +371,12 @@ class SpecializationService {
   _getGeneralQuizAttempts(quizAttempts) {
     return quizAttempts.filter(attempt => {
       // General quizzes typically don't have specialization prefixes
-      return !attempt.quizId.includes('bp-ae-') && !attempt.quizId.includes('bp-dpa-') ||
-             attempt.quizId.includes('fue-') || attempt.quizId.includes('general-');
+      return (
+        (!attempt.quizId.includes('bp-ae-') &&
+          !attempt.quizId.includes('bp-dpa-')) ||
+        attempt.quizId.includes('fue-') ||
+        attempt.quizId.includes('general-')
+      );
     });
   }
 
@@ -354,20 +393,23 @@ class SpecializationService {
         from: fromSpecialization,
         to: toSpecialization,
         userAgent: navigator.userAgent,
-        sessionId: this._getSessionId()
+        sessionId: this._getSessionId(),
       };
 
       // Store in analytics log (could be sent to analytics service)
-      const currentLogs = this.stateManager.getState('analytics.specializationChanges') || [];
+      const currentLogs =
+        this.stateManager.getState('analytics.specializationChanges') || [];
       currentLogs.push(changeLog);
-      
+
       // Keep only last 10 changes to avoid storage bloat
       if (currentLogs.length > 10) {
         currentLogs.splice(0, currentLogs.length - 10);
       }
-      
-      this.stateManager.setState('analytics.specializationChanges', currentLogs);
-      
+
+      this.stateManager.setState(
+        'analytics.specializationChanges',
+        currentLogs
+      );
     } catch (error) {
       console.error('Error logging specialization change:', error);
     }
@@ -381,7 +423,11 @@ class SpecializationService {
   _getSessionId() {
     let sessionId = this.stateManager.getState('session.id');
     if (!sessionId) {
-      sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substring(2, 11);
+      sessionId =
+        'session_' +
+        Date.now() +
+        '_' +
+        Math.random().toString(36).substring(2, 11);
       this.stateManager.setState('session.id', sessionId);
     }
     return sessionId;
@@ -394,7 +440,10 @@ class SpecializationService {
    */
   getSpecializationConfig(specializationId) {
     const availableSpecializations = this.getAvailableSpecializations();
-    return availableSpecializations.find(spec => spec.id === specializationId) || null;
+    return (
+      availableSpecializations.find(spec => spec.id === specializationId) ||
+      null
+    );
   }
 
   /**
@@ -419,7 +468,11 @@ class SpecializationService {
 
     // Use CategoryMappingService if available for enhanced relevance calculation
     if (this.categoryMappingService) {
-      const threeTierRelevance = this.categoryMappingService.getCategoryRelevance(categoryId, specializationId);
+      const threeTierRelevance =
+        this.categoryMappingService.getCategoryRelevance(
+          categoryId,
+          specializationId
+        );
       if (threeTierRelevance !== 'none') {
         return threeTierRelevance;
       }
@@ -427,7 +480,7 @@ class SpecializationService {
 
     // Fallback to original category system
     const category = this._findCategoryById(categoryId);
-    
+
     if (!category || !category.relevance) {
       // Try to infer relevance from category naming patterns
       return this._inferRelevanceFromCategoryName(categoryId, specializationId);
@@ -443,7 +496,11 @@ class SpecializationService {
    * @returns {boolean} True if it's a three-tier category
    */
   _isThreeTierCategory(categoryId) {
-    const threeTierCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+    const threeTierCategories = [
+      'daten-prozessanalyse',
+      'anwendungsentwicklung',
+      'allgemein',
+    ];
     return threeTierCategories.includes(categoryId);
   }
 
@@ -459,30 +516,48 @@ class SpecializationService {
 
     // High relevance patterns
     if (specializationId === 'daten-prozessanalyse') {
-      if (categoryLower.includes('dpa') || categoryLower.includes('data') || 
-          categoryLower.includes('process') || categoryLower.includes('bi') ||
-          categoryLower.includes('etl') || categoryLower.includes('warehouse')) {
+      if (
+        categoryLower.includes('dpa') ||
+        categoryLower.includes('data') ||
+        categoryLower.includes('process') ||
+        categoryLower.includes('bi') ||
+        categoryLower.includes('etl') ||
+        categoryLower.includes('warehouse')
+      ) {
         return 'high';
       }
     }
 
     if (specializationId === 'anwendungsentwicklung') {
-      if (categoryLower.includes('ae') || categoryLower.includes('app') || 
-          categoryLower.includes('dev') || categoryLower.includes('programming') ||
-          categoryLower.includes('software') || categoryLower.includes('code')) {
+      if (
+        categoryLower.includes('ae') ||
+        categoryLower.includes('app') ||
+        categoryLower.includes('dev') ||
+        categoryLower.includes('programming') ||
+        categoryLower.includes('software') ||
+        categoryLower.includes('code')
+      ) {
         return 'high';
       }
     }
 
     // Medium relevance for general IT topics
-    if (categoryLower.includes('fue') || categoryLower.includes('general') ||
-        categoryLower.includes('grundlagen') || categoryLower.includes('basic')) {
+    if (
+      categoryLower.includes('fue') ||
+      categoryLower.includes('general') ||
+      categoryLower.includes('grundlagen') ||
+      categoryLower.includes('basic')
+    ) {
       return 'medium';
     }
 
     // Low relevance for cross-cutting concerns
-    if (categoryLower.includes('security') || categoryLower.includes('network') ||
-        categoryLower.includes('system') || categoryLower.includes('project')) {
+    if (
+      categoryLower.includes('security') ||
+      categoryLower.includes('network') ||
+      categoryLower.includes('system') ||
+      categoryLower.includes('project')
+    ) {
       return 'low';
     }
 
@@ -509,12 +584,16 @@ class SpecializationService {
     const result = { relevance };
 
     if (includeScore) {
-      const scoreMap = { 'high': 3, 'medium': 2, 'low': 1, 'none': 0 };
+      const scoreMap = { high: 3, medium: 2, low: 1, none: 0 };
       result.score = scoreMap[relevance] || 0;
     }
 
     if (includeReason) {
-      result.reason = this._getRelevanceReason(categoryId, specializationId, relevance);
+      result.reason = this._getRelevanceReason(
+        categoryId,
+        specializationId,
+        relevance
+      );
     }
 
     return result;
@@ -544,7 +623,11 @@ class SpecializationService {
     }
 
     const category = this._findCategoryById(categoryId);
-    if (category && category.relevance && category.relevance[specializationId]) {
+    if (
+      category &&
+      category.relevance &&
+      category.relevance[specializationId]
+    ) {
       return 'Defined in category metadata';
     }
 
@@ -566,16 +649,20 @@ class SpecializationService {
 
     categoryIds.forEach(categoryId => {
       mapping[categoryId] = {};
-      
+
       specializationIds.forEach(specializationId => {
         const relevanceOptions = { useThreeTierCategories };
-        const relevance = this.getCategoryRelevance(categoryId, specializationId, relevanceOptions);
-        
+        const relevance = this.getCategoryRelevance(
+          categoryId,
+          specializationId,
+          relevanceOptions
+        );
+
         if (includeScores) {
-          const scoreMap = { 'high': 3, 'medium': 2, 'low': 1, 'none': 0 };
+          const scoreMap = { high: 3, medium: 2, low: 1, none: 0 };
           mapping[categoryId][specializationId] = {
             relevance,
-            score: scoreMap[relevance] || 0
+            score: scoreMap[relevance] || 0,
           };
         } else {
           mapping[categoryId][specializationId] = relevance;
@@ -596,7 +683,7 @@ class SpecializationService {
     const result = {
       isConsistent: true,
       inconsistencies: [],
-      recommendations: []
+      recommendations: [],
     };
 
     if (!contentItem) {
@@ -606,17 +693,22 @@ class SpecializationService {
     }
 
     const originalCategory = contentItem.category || contentItem.categoryId;
-    const threeTierCategory = contentItem.threeTierCategory || this._inferThreeTierCategory(contentItem);
+    const threeTierCategory =
+      contentItem.threeTierCategory ||
+      this._inferThreeTierCategory(contentItem);
 
     specializationIds.forEach(specializationId => {
-      const originalRelevance = originalCategory 
+      const originalRelevance = originalCategory
         ? this.getCategoryRelevance(originalCategory, specializationId)
         : 'none';
-      
-      const threeTierRelevance = this._getThreeTierCategoryRelevance(threeTierCategory, specializationId);
+
+      const threeTierRelevance = this._getThreeTierCategoryRelevance(
+        threeTierCategory,
+        specializationId
+      );
 
       // Check for major inconsistencies (high vs low, etc.)
-      const relevanceScores = { 'high': 3, 'medium': 2, 'low': 1, 'none': 0 };
+      const relevanceScores = { high: 3, medium: 2, low: 1, none: 0 };
       const originalScore = relevanceScores[originalRelevance] || 0;
       const threeTierScore = relevanceScores[threeTierRelevance] || 0;
       const scoreDifference = Math.abs(originalScore - threeTierScore);
@@ -629,7 +721,7 @@ class SpecializationService {
           originalRelevance,
           threeTierCategory,
           threeTierRelevance,
-          scoreDifference
+          scoreDifference,
         });
 
         // Provide recommendations
@@ -660,7 +752,7 @@ class SpecializationService {
       if (category.id === categoryId) {
         return category;
       }
-      
+
       // Search in subcategories
       if (category.subcategories) {
         for (const subcategory of category.subcategories) {
@@ -670,7 +762,7 @@ class SpecializationService {
         }
       }
     }
-    
+
     return null;
   }
 
@@ -692,14 +784,14 @@ class SpecializationService {
     const {
       minRelevance = 'low',
       includeGeneral = true,
-      useThreeTierCategories = false
+      useThreeTierCategories = false,
     } = options;
 
     const relevanceLevels = {
-      'high': 3,
-      'medium': 2,
-      'low': 1,
-      'none': 0
+      high: 3,
+      medium: 2,
+      low: 1,
+      none: 0,
     };
 
     const minRelevanceScore = relevanceLevels[minRelevance] || 1;
@@ -716,8 +808,11 @@ class SpecializationService {
       if (useThreeTierCategories && item.threeTierCategory) {
         // Use three-tier category system
         categoryId = item.threeTierCategory;
-        relevance = this.categoryMappingService 
-          ? this.categoryMappingService.getCategoryRelevance(categoryId, specializationId)
+        relevance = this.categoryMappingService
+          ? this.categoryMappingService.getCategoryRelevance(
+              categoryId,
+              specializationId
+            )
           : this._getThreeTierCategoryRelevance(categoryId, specializationId);
       } else {
         // Use original category system
@@ -733,7 +828,10 @@ class SpecializationService {
       }
 
       // Include general content if option is enabled
-      if (includeGeneral && this._isGeneralContent(categoryId, useThreeTierCategories)) {
+      if (
+        includeGeneral &&
+        this._isGeneralContent(categoryId, useThreeTierCategories)
+      ) {
         return true;
       }
 
@@ -759,13 +857,14 @@ class SpecializationService {
     const {
       minRelevance = 'low',
       includeGeneral = true,
-      threeTierCategory = null
+      threeTierCategory = null,
     } = options;
 
     // If specific category is requested, filter by that category
     if (threeTierCategory) {
       return content.filter(item => {
-        const itemCategory = item.threeTierCategory || this._inferThreeTierCategory(item);
+        const itemCategory =
+          item.threeTierCategory || this._inferThreeTierCategory(item);
         return itemCategory === threeTierCategory;
       });
     }
@@ -773,7 +872,7 @@ class SpecializationService {
     // Otherwise use general three-tier filtering
     return this.filterContentBySpecialization(content, specializationId, {
       ...options,
-      useThreeTierCategories: true
+      useThreeTierCategories: true,
     });
   }
 
@@ -785,21 +884,22 @@ class SpecializationService {
    */
   _inferThreeTierCategory(item) {
     if (this.categoryMappingService) {
-      const mappingResult = this.categoryMappingService.mapToThreeTierCategory(item);
+      const mappingResult =
+        this.categoryMappingService.mapToThreeTierCategory(item);
       return mappingResult.threeTierCategory;
     }
 
     // Fallback inference based on category patterns
     const category = item.category || item.categoryId || '';
-    
+
     if (/^(BP-DPA-|bp-dpa-)/i.test(category)) {
       return 'daten-prozessanalyse';
     }
-    
+
     if (/^(BP-AE-|bp-ae-)/i.test(category)) {
       return 'anwendungsentwicklung';
     }
-    
+
     return 'allgemein';
   }
 
@@ -817,14 +917,15 @@ class SpecializationService {
     }
 
     const category = this._findCategoryById(categoryId);
-    
+
     if (!category) {
       return false;
     }
 
     // Check if category has high relevance for all supported specializations
-    const supportedSpecializations = this.categoriesData.supportedSpecializations || [];
-    
+    const supportedSpecializations =
+      this.categoriesData.supportedSpecializations || [];
+
     return supportedSpecializations.every(specializationId => {
       const relevance = category.relevance?.[specializationId];
       return relevance === 'high' || relevance === 'medium';
@@ -846,14 +947,11 @@ class SpecializationService {
         totalItems: 0,
         categories: {},
         relevanceDistribution: {},
-        contentTypes: {}
+        contentTypes: {},
       };
     }
 
-    const {
-      useThreeTierCategories = false,
-      includeProgress = false
-    } = options;
+    const { useThreeTierCategories = false, includeProgress = false } = options;
 
     const stats = {
       totalItems: content.length,
@@ -862,13 +960,13 @@ class SpecializationService {
         high: 0,
         medium: 0,
         low: 0,
-        none: 0
+        none: 0,
       },
       contentTypes: {
         modules: 0,
         quizzes: 0,
-        other: 0
-      }
+        other: 0,
+      },
     };
 
     // Get progress data if requested
@@ -880,11 +978,15 @@ class SpecializationService {
     content.forEach(item => {
       // Determine category and relevance
       let categoryId, relevance;
-      
+
       if (useThreeTierCategories) {
-        categoryId = item.threeTierCategory || this._inferThreeTierCategory(item);
-        relevance = this.categoryMappingService 
-          ? this.categoryMappingService.getCategoryRelevance(categoryId, specializationId)
+        categoryId =
+          item.threeTierCategory || this._inferThreeTierCategory(item);
+        relevance = this.categoryMappingService
+          ? this.categoryMappingService.getCategoryRelevance(
+              categoryId,
+              specializationId
+            )
           : this._getThreeTierCategoryRelevance(categoryId, specializationId);
       } else {
         categoryId = item.category || item.categoryId || 'unknown';
@@ -896,18 +998,20 @@ class SpecializationService {
         stats.categories[categoryId] = {
           count: 0,
           relevance: relevance,
-          items: []
+          items: [],
         };
       }
       stats.categories[categoryId].count++;
       stats.categories[categoryId].items.push(item.id || 'unknown');
 
       // Count by relevance
-      stats.relevanceDistribution[relevance] = (stats.relevanceDistribution[relevance] || 0) + 1;
+      stats.relevanceDistribution[relevance] =
+        (stats.relevanceDistribution[relevance] || 0) + 1;
 
       // Count by content type
       const contentType = this._inferContentType(item);
-      stats.contentTypes[contentType] = (stats.contentTypes[contentType] || 0) + 1;
+      stats.contentTypes[contentType] =
+        (stats.contentTypes[contentType] || 0) + 1;
 
       // Add progress information if requested
       if (includeProgress && progressData) {
@@ -915,7 +1019,7 @@ class SpecializationService {
           stats.categories[categoryId].progress = {
             completed: 0,
             inProgress: 0,
-            notStarted: 0
+            notStarted: 0,
           };
         }
 
@@ -932,14 +1036,24 @@ class SpecializationService {
 
     // Calculate additional metrics
     stats.specializationRelevance = {
-      highRelevancePercentage: ((stats.relevanceDistribution.high / stats.totalItems) * 100).toFixed(1),
-      mediumRelevancePercentage: ((stats.relevanceDistribution.medium / stats.totalItems) * 100).toFixed(1),
-      lowRelevancePercentage: ((stats.relevanceDistribution.low / stats.totalItems) * 100).toFixed(1)
+      highRelevancePercentage: (
+        (stats.relevanceDistribution.high / stats.totalItems) *
+        100
+      ).toFixed(1),
+      mediumRelevancePercentage: (
+        (stats.relevanceDistribution.medium / stats.totalItems) *
+        100
+      ).toFixed(1),
+      lowRelevancePercentage: (
+        (stats.relevanceDistribution.low / stats.totalItems) *
+        100
+      ).toFixed(1),
     };
 
     // Add category metadata if using three-tier system
     if (useThreeTierCategories) {
-      stats.categoryMetadata = this._getThreeTierCategoryMetadata(specializationId);
+      stats.categoryMetadata =
+        this._getThreeTierCategoryMetadata(specializationId);
     }
 
     return stats;
@@ -963,7 +1077,7 @@ class SpecializationService {
         icon: category.icon,
         relevance: category.relevance,
         isSpecializationSpecific: category.id === specializationId,
-        isGeneral: category.id === 'allgemein'
+        isGeneral: category.id === 'allgemein',
       };
     });
 
@@ -1004,20 +1118,23 @@ class SpecializationService {
       name: 'Allgemein',
       description: 'Fachrichtungsübergreifende Inhalte',
       color: '#6b7280',
-      relevance: 'high'
+      relevance: 'high',
     });
 
     // Add specialization-specific categories
     for (const category of this.categoriesData.categories) {
-      const relevance = this.getCategoryRelevance(category.id, specializationId);
-      
+      const relevance = this.getCategoryRelevance(
+        category.id,
+        specializationId
+      );
+
       if (relevance !== 'none') {
         categories.push({
           id: category.id,
           name: category.name,
           description: category.description,
           color: category.color,
-          relevance: relevance
+          relevance: relevance,
         });
       }
     }
@@ -1037,15 +1154,19 @@ class SpecializationService {
 
     // Get three-tier categories from CategoryMappingService if available
     if (this.categoryMappingService) {
-      const threeTierCategories = this.categoryMappingService.getThreeTierCategories();
-      
+      const threeTierCategories =
+        this.categoryMappingService.getThreeTierCategories();
+
       return threeTierCategories.map(category => ({
         id: category.id,
         name: category.name,
         description: category.description,
         color: category.color,
         icon: category.icon,
-        relevance: this.categoryMappingService.getCategoryRelevance(category.id, specializationId)
+        relevance: this.categoryMappingService.getCategoryRelevance(
+          category.id,
+          specializationId
+        ),
       }));
     }
 
@@ -1054,29 +1175,35 @@ class SpecializationService {
       {
         id: 'daten-prozessanalyse',
         name: 'Daten und Prozessanalyse',
-        description: 'Inhalte mit hoher Relevanz für die Fachrichtung Daten- und Prozessanalyse',
+        description:
+          'Inhalte mit hoher Relevanz für die Fachrichtung Daten- und Prozessanalyse',
         color: '#3b82f6',
-        icon: '📊'
+        icon: '📊',
       },
       {
         id: 'anwendungsentwicklung',
         name: 'Anwendungsentwicklung',
-        description: 'Inhalte mit hoher Relevanz für die Fachrichtung Anwendungsentwicklung',
+        description:
+          'Inhalte mit hoher Relevanz für die Fachrichtung Anwendungsentwicklung',
         color: '#10b981',
-        icon: '💻'
+        icon: '💻',
       },
       {
         id: 'allgemein',
         name: 'Allgemein',
-        description: 'Fachrichtungsübergreifende Inhalte und Grundlagen für beide Spezialisierungen',
+        description:
+          'Fachrichtungsübergreifende Inhalte und Grundlagen für beide Spezialisierungen',
         color: '#6b7280',
-        icon: '📚'
-      }
+        icon: '📚',
+      },
     ];
 
     return fallbackCategories.map(category => ({
       ...category,
-      relevance: this._getThreeTierCategoryRelevance(category.id, specializationId)
+      relevance: this._getThreeTierCategoryRelevance(
+        category.id,
+        specializationId
+      ),
     }));
   }
 
@@ -1091,16 +1218,16 @@ class SpecializationService {
     const relevanceMap = {
       'daten-prozessanalyse': {
         'daten-prozessanalyse': 'high',
-        'anwendungsentwicklung': 'low'
+        anwendungsentwicklung: 'low',
       },
-      'anwendungsentwicklung': {
-        'anwendungsentwicklung': 'high',
-        'daten-prozessanalyse': 'low'
+      anwendungsentwicklung: {
+        anwendungsentwicklung: 'high',
+        'daten-prozessanalyse': 'low',
       },
-      'allgemein': {
-        'anwendungsentwicklung': 'high',
-        'daten-prozessanalyse': 'high'
-      }
+      allgemein: {
+        anwendungsentwicklung: 'high',
+        'daten-prozessanalyse': 'high',
+      },
     };
 
     return relevanceMap[categoryId]?.[specializationId] || 'none';
@@ -1112,10 +1239,12 @@ class SpecializationService {
    */
   getPreferences() {
     const specializationState = this.stateManager.getState('specialization');
-    return specializationState?.preferences || {
-      showAllContent: false,
-      preferredCategories: []
-    };
+    return (
+      specializationState?.preferences || {
+        showAllContent: false,
+        preferredCategories: [],
+      }
+    );
   }
 
   /**
@@ -1134,10 +1263,13 @@ class SpecializationService {
       const currentPreferences = this.getPreferences();
       const updatedPreferences = {
         ...currentPreferences,
-        ...preferences
+        ...preferences,
       };
 
-      this.stateManager.setState('specialization.preferences', updatedPreferences);
+      this.stateManager.setState(
+        'specialization.preferences',
+        updatedPreferences
+      );
       return true;
     } catch (error) {
       console.error('Error setting preferences:', error);
@@ -1156,10 +1288,10 @@ class SpecializationService {
         hasSelected: false,
         preferences: {
           showAllContent: false,
-          preferredCategories: []
-        }
+          preferredCategories: [],
+        },
       });
-      
+
       return true;
     } catch (error) {
       console.error('Error resetting specialization:', error);
@@ -1176,76 +1308,83 @@ class SpecializationService {
   migrateExistingUser(defaultSpecialization = 'anwendungsentwicklung') {
     try {
       // Check if migration has already been performed
-      const migrationStatus = this.stateManager.getState('migration.specialization');
+      const migrationStatus = this.stateManager.getState(
+        'migration.specialization'
+      );
       if (migrationStatus && migrationStatus.completed) {
         return {
           performed: false,
           reason: 'already_migrated',
           timestamp: migrationStatus.timestamp,
-          version: migrationStatus.version
+          version: migrationStatus.version,
         };
       }
 
       const specializationState = this.stateManager.getState('specialization');
       const progress = this.stateManager.getState('progress');
-      
+
       // Check if user has existing progress but no specialization set
-      const hasExistingProgress = progress && (
-        (progress.modulesCompleted && progress.modulesCompleted.length > 0) ||
-        (progress.modulesInProgress && progress.modulesInProgress.length > 0) ||
-        (progress.quizAttempts && progress.quizAttempts.length > 0)
-      );
+      const hasExistingProgress =
+        progress &&
+        ((progress.modulesCompleted && progress.modulesCompleted.length > 0) ||
+          (progress.modulesInProgress &&
+            progress.modulesInProgress.length > 0) ||
+          (progress.quizAttempts && progress.quizAttempts.length > 0));
 
       // Check if user has any stored preferences or settings (indicates existing user)
       const hasExistingSettings = this._hasExistingUserData();
 
       // Determine if migration is needed
-      const needsMigration = (hasExistingProgress || hasExistingSettings) && 
-                           (!specializationState || !specializationState.hasSelected);
+      const needsMigration =
+        (hasExistingProgress || hasExistingSettings) &&
+        (!specializationState || !specializationState.hasSelected);
 
       if (needsMigration) {
         // Perform migration
         const migrationResult = this._performMigration(defaultSpecialization, {
           hasExistingProgress,
           hasExistingSettings,
-          progressData: progress
+          progressData: progress,
         });
 
         // Record migration status
         this._recordMigrationStatus(migrationResult);
 
-        console.log(`✅ Migrated existing user to specialization: ${defaultSpecialization}`);
-        
+        console.warn(
+          `✅ Migrated existing user to specialization: ${defaultSpecialization}`
+        );
+
         return {
           performed: true,
           reason: 'existing_user_detected',
           specialization: defaultSpecialization,
           preservedProgress: migrationResult.preservedProgress,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         };
       }
 
       // No migration needed - new user or already has specialization
       return {
         performed: false,
-        reason: specializationState?.hasSelected ? 'already_has_specialization' : 'new_user',
-        currentSpecialization: specializationState?.current || null
+        reason: specializationState?.hasSelected
+          ? 'already_has_specialization'
+          : 'new_user',
+        currentSpecialization: specializationState?.current || null,
       };
-
     } catch (error) {
       console.error('❌ Error migrating existing user:', error);
-      
+
       // Record failed migration attempt
       this._recordMigrationStatus({
         success: false,
         error: error.message,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
 
       return {
         performed: false,
         reason: 'migration_error',
-        error: error.message
+        error: error.message,
       };
     }
   }
@@ -1259,18 +1398,24 @@ class SpecializationService {
     try {
       // Check for theme preferences
       const themePreference = this.storage.get('theme-preference');
-      
+
       // Check for any stored state data
       const storedState = this.storage.get('app-state');
-      
+
       // Check for any analytics or session data
       const sessionData = this.stateManager.getState('session');
       const analyticsData = this.stateManager.getState('analytics');
-      
+
       // Check for any exam progress data
       const examProgress = this.stateManager.getState('examProgress');
-      
-      return !!(themePreference || storedState || sessionData || analyticsData || examProgress);
+
+      return !!(
+        themePreference ||
+        storedState ||
+        sessionData ||
+        analyticsData ||
+        examProgress
+      );
     } catch (error) {
       console.warn('Error checking existing user data:', error);
       return false;
@@ -1286,10 +1431,10 @@ class SpecializationService {
    */
   _performMigration(defaultSpecialization, context) {
     const { hasExistingProgress, progressData } = context;
-    
+
     // Set the specialization (this will preserve progress automatically)
-    const success = this.setSpecialization(defaultSpecialization, { 
-      preserveProgress: true 
+    const success = this.setSpecialization(defaultSpecialization, {
+      preserveProgress: true,
     });
 
     if (!success) {
@@ -1314,11 +1459,11 @@ class SpecializationService {
         assignedSpecialization: defaultSpecialization,
         preservedItems: {
           modules: progressAnalysis.totalModules,
-          quizzes: progressAnalysis.totalQuizAttempts
+          quizzes: progressAnalysis.totalQuizAttempts,
         },
-        threeTierMigration: threeTierMigration
+        threeTierMigration: threeTierMigration,
       };
-      
+
       this.stateManager.setState('progress', currentProgress);
     }
 
@@ -1327,7 +1472,7 @@ class SpecializationService {
       preservedProgress: progressAnalysis,
       assignedSpecialization: defaultSpecialization,
       threeTierMigration: threeTierMigration,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
   }
 
@@ -1346,64 +1491,82 @@ class SpecializationService {
       status: 'success',
       migratedItems: 0,
       categoryMapping: {},
-      errors: []
+      errors: [],
     };
 
     try {
       // Create three-tier progress structure
       const threeTierProgress = {
         'daten-prozessanalyse': { modules: [], quizzes: [] },
-        'anwendungsentwicklung': { modules: [], quizzes: [] },
-        'allgemein': { modules: [], quizzes: [] }
+        anwendungsentwicklung: { modules: [], quizzes: [] },
+        allgemein: { modules: [], quizzes: [] },
       };
 
       // Migrate completed modules
       (progressData.modulesCompleted || []).forEach(moduleId => {
         try {
-          const mockItem = { id: moduleId, category: this._extractCategoryFromId(moduleId) };
-          const mappingResult = this.categoryMappingService.mapToThreeTierCategory(mockItem);
+          const mockItem = {
+            id: moduleId,
+            category: this._extractCategoryFromId(moduleId),
+          };
+          const mappingResult =
+            this.categoryMappingService.mapToThreeTierCategory(mockItem);
           const category = mappingResult.threeTierCategory;
-          
+
           threeTierProgress[category].modules.push(moduleId);
           migration.categoryMapping[moduleId] = category;
           migration.migratedItems++;
         } catch (error) {
-          migration.errors.push(`Failed to migrate module ${moduleId}: ${error.message}`);
+          migration.errors.push(
+            `Failed to migrate module ${moduleId}: ${error.message}`
+          );
         }
       });
 
       // Migrate in-progress modules
       (progressData.modulesInProgress || []).forEach(moduleId => {
         try {
-          const mockItem = { id: moduleId, category: this._extractCategoryFromId(moduleId) };
-          const mappingResult = this.categoryMappingService.mapToThreeTierCategory(mockItem);
+          const mockItem = {
+            id: moduleId,
+            category: this._extractCategoryFromId(moduleId),
+          };
+          const mappingResult =
+            this.categoryMappingService.mapToThreeTierCategory(mockItem);
           const category = mappingResult.threeTierCategory;
-          
+
           if (!threeTierProgress[category].modules.includes(moduleId)) {
             threeTierProgress[category].modules.push(moduleId);
           }
-          
+
           if (!migration.categoryMapping[moduleId]) {
             migration.categoryMapping[moduleId] = category;
             migration.migratedItems++;
           }
         } catch (error) {
-          migration.errors.push(`Failed to migrate in-progress module ${moduleId}: ${error.message}`);
+          migration.errors.push(
+            `Failed to migrate in-progress module ${moduleId}: ${error.message}`
+          );
         }
       });
 
       // Migrate quiz attempts
       (progressData.quizAttempts || []).forEach(attempt => {
         try {
-          const mockItem = { id: attempt.quizId, category: this._extractCategoryFromId(attempt.quizId) };
-          const mappingResult = this.categoryMappingService.mapToThreeTierCategory(mockItem);
+          const mockItem = {
+            id: attempt.quizId,
+            category: this._extractCategoryFromId(attempt.quizId),
+          };
+          const mappingResult =
+            this.categoryMappingService.mapToThreeTierCategory(mockItem);
           const category = mappingResult.threeTierCategory;
-          
+
           threeTierProgress[category].quizzes.push(attempt);
           migration.categoryMapping[attempt.quizId] = category;
           migration.migratedItems++;
         } catch (error) {
-          migration.errors.push(`Failed to migrate quiz ${attempt.quizId}: ${error.message}`);
+          migration.errors.push(
+            `Failed to migrate quiz ${attempt.quizId}: ${error.message}`
+          );
         }
       });
 
@@ -1414,11 +1577,13 @@ class SpecializationService {
 
       // Set status based on errors
       if (migration.errors.length > 0) {
-        migration.status = migration.errors.length === migration.migratedItems ? 'failed' : 'partial';
+        migration.status =
+          migration.errors.length === migration.migratedItems
+            ? 'failed'
+            : 'partial';
       }
 
       migration.threeTierProgress = threeTierProgress;
-
     } catch (error) {
       migration.status = 'failed';
       migration.errors.push(`Migration failed: ${error.message}`);
@@ -1438,10 +1603,10 @@ class SpecializationService {
 
     // Extract category from common ID patterns
     const patterns = [
-      /^(BP-[A-Z]+-\d+)/i,  // BP-AE-01, BP-DPA-02
-      /^(bp-[a-z]+-\d+)/i,  // bp-ae-01, bp-dpa-02
-      /^(FÜ-\d+)/i,         // FÜ-01
-      /^(fue-\d+)/i         // fue-01
+      /^(BP-[A-Z]+-\d+)/i, // BP-AE-01, BP-DPA-02
+      /^(bp-[a-z]+-\d+)/i, // bp-ae-01, bp-dpa-02
+      /^(FÜ-\d+)/i, // FÜ-01
+      /^(fue-\d+)/i, // fue-01
     ];
 
     for (const pattern of patterns) {
@@ -1468,7 +1633,7 @@ class SpecializationService {
         totalModules: 0,
         totalQuizAttempts: 0,
         generalContent: 0,
-        specializationContent: 0
+        specializationContent: 0,
       };
     }
 
@@ -1477,34 +1642,40 @@ class SpecializationService {
     const quizAttempts = progressData.quizAttempts || [];
 
     // Categorize modules
-    const allModules = [...new Set([...modulesCompleted, ...modulesInProgress])];
+    const allModules = [
+      ...new Set([...modulesCompleted, ...modulesInProgress]),
+    ];
     const generalModules = this._getGeneralModules(allModules);
-    const specializationModules = allModules.filter(id => !generalModules.includes(id));
+    const specializationModules = allModules.filter(
+      id => !generalModules.includes(id)
+    );
 
     // Categorize quiz attempts
     const generalQuizzes = this._getGeneralQuizAttempts(quizAttempts);
-    const specializationQuizzes = quizAttempts.filter(attempt => 
-      !generalQuizzes.some(general => general.quizId === attempt.quizId)
+    const specializationQuizzes = quizAttempts.filter(
+      attempt =>
+        !generalQuizzes.some(general => general.quizId === attempt.quizId)
     );
 
     return {
       totalModules: allModules.length,
       totalQuizAttempts: quizAttempts.length,
       generalContent: generalModules.length + generalQuizzes.length,
-      specializationContent: specializationModules.length + specializationQuizzes.length,
+      specializationContent:
+        specializationModules.length + specializationQuizzes.length,
       breakdown: {
         modules: {
           completed: modulesCompleted.length,
           inProgress: modulesInProgress.length,
           general: generalModules.length,
-          specialization: specializationModules.length
+          specialization: specializationModules.length,
         },
         quizzes: {
           total: quizAttempts.length,
           general: generalQuizzes.length,
-          specialization: specializationQuizzes.length
-        }
-      }
+          specialization: specializationQuizzes.length,
+        },
+      },
     };
   }
 
@@ -1521,23 +1692,23 @@ class SpecializationService {
         version: '1.0.0', // Migration version for future compatibility
         result: migrationResult,
         userAgent: navigator.userAgent,
-        sessionId: this._getSessionId()
+        sessionId: this._getSessionId(),
       };
 
       // Store migration status
       this.stateManager.setState('migration.specialization', migrationRecord);
 
       // Also add to migration history for analytics
-      const migrationHistory = this.stateManager.getState('migration.history') || [];
+      const migrationHistory =
+        this.stateManager.getState('migration.history') || [];
       migrationHistory.push(migrationRecord);
-      
+
       // Keep only last 5 migration records to avoid storage bloat
       if (migrationHistory.length > 5) {
         migrationHistory.splice(0, migrationHistory.length - 5);
       }
-      
-      this.stateManager.setState('migration.history', migrationHistory);
 
+      this.stateManager.setState('migration.history', migrationHistory);
     } catch (error) {
       console.error('Error recording migration status:', error);
     }
@@ -1572,10 +1743,14 @@ class SpecializationService {
     // Ensure we don't use three-tier categories for legacy calls
     const legacyOptions = {
       ...options,
-      useThreeTierCategories: false
+      useThreeTierCategories: false,
     };
-    
-    return this.filterContentBySpecialization(content, specializationId, legacyOptions);
+
+    return this.filterContentBySpecialization(
+      content,
+      specializationId,
+      legacyOptions
+    );
   }
 
   /**
@@ -1603,13 +1778,14 @@ class SpecializationService {
   getThreeTierMigrationSupport() {
     const currentProgress = this.stateManager.getState('progress') || {};
     const migrationInfo = currentProgress.migrationInfo || {};
-    
+
     return {
       isAvailable: this.isThreeTierSystemAvailable(),
       hasMigrated: !!migrationInfo.threeTierMigration,
-      migrationStatus: migrationInfo.threeTierMigration?.status || 'not_started',
+      migrationStatus:
+        migrationInfo.threeTierMigration?.status || 'not_started',
       lastMigration: migrationInfo.migratedAt || null,
-      progressPreserved: !!currentProgress.threeTierCategoryProgress
+      progressPreserved: !!currentProgress.threeTierCategoryProgress,
     };
   }
 
@@ -1622,19 +1798,19 @@ class SpecializationService {
       status: 'success',
       tests: [],
       errors: [],
-      warnings: []
+      warnings: [],
     };
 
     try {
       // Test 1: Original method signatures still work
       const testSpecialization = 'anwendungsentwicklung';
-      
+
       // Test getAvailableSpecializations
       const specializations = this.getAvailableSpecializations();
       validation.tests.push({
         name: 'getAvailableSpecializations',
         passed: Array.isArray(specializations) && specializations.length > 0,
-        result: `Found ${specializations.length} specializations`
+        result: `Found ${specializations.length} specializations`,
       });
 
       // Test getCurrentSpecialization
@@ -1642,15 +1818,18 @@ class SpecializationService {
       validation.tests.push({
         name: 'getCurrentSpecialization',
         passed: typeof current === 'string' || current === null,
-        result: `Current: ${current}`
+        result: `Current: ${current}`,
       });
 
       // Test getCategoryRelevance with original parameters
-      const relevance = this.getCategoryRelevance('BP-AE-01', testSpecialization);
+      const relevance = this.getCategoryRelevance(
+        'BP-AE-01',
+        testSpecialization
+      );
       validation.tests.push({
         name: 'getCategoryRelevance (legacy)',
         passed: ['high', 'medium', 'low', 'none'].includes(relevance),
-        result: `Relevance: ${relevance}`
+        result: `Relevance: ${relevance}`,
       });
 
       // Test getContentCategories
@@ -1658,49 +1837,61 @@ class SpecializationService {
       validation.tests.push({
         name: 'getContentCategories',
         passed: Array.isArray(categories),
-        result: `Found ${categories.length} categories`
+        result: `Found ${categories.length} categories`,
       });
 
       // Test filterContentBySpecialization with mock data
       const mockContent = [
         { id: 'test1', category: 'BP-AE-01' },
         { id: 'test2', category: 'BP-DPA-01' },
-        { id: 'test3', category: 'FÜ-01' }
+        { id: 'test3', category: 'FÜ-01' },
       ];
-      
-      const filtered = this.filterContentBySpecialization(mockContent, testSpecialization);
+
+      const filtered = this.filterContentBySpecialization(
+        mockContent,
+        testSpecialization
+      );
       validation.tests.push({
         name: 'filterContentBySpecialization',
         passed: Array.isArray(filtered),
-        result: `Filtered ${mockContent.length} to ${filtered.length} items`
+        result: `Filtered ${mockContent.length} to ${filtered.length} items`,
       });
 
       // Check for any failed tests
       const failedTests = validation.tests.filter(test => !test.passed);
       if (failedTests.length > 0) {
         validation.status = 'error';
-        validation.errors.push(`${failedTests.length} backward compatibility tests failed`);
+        validation.errors.push(
+          `${failedTests.length} backward compatibility tests failed`
+        );
       }
 
       // Test three-tier integration if available
       if (this.isThreeTierSystemAvailable()) {
-        const threeTierCategories = this.getThreeTierContentCategories(testSpecialization);
+        const threeTierCategories =
+          this.getThreeTierContentCategories(testSpecialization);
         validation.tests.push({
           name: 'getThreeTierContentCategories',
-          passed: Array.isArray(threeTierCategories) && threeTierCategories.length === 3,
-          result: `Found ${threeTierCategories.length} three-tier categories`
+          passed:
+            Array.isArray(threeTierCategories) &&
+            threeTierCategories.length === 3,
+          result: `Found ${threeTierCategories.length} three-tier categories`,
         });
 
-        const threeTierFiltered = this.filterContentByThreeTierCategory(mockContent, testSpecialization);
+        const threeTierFiltered = this.filterContentByThreeTierCategory(
+          mockContent,
+          testSpecialization
+        );
         validation.tests.push({
           name: 'filterContentByThreeTierCategory',
           passed: Array.isArray(threeTierFiltered),
-          result: `Three-tier filtering works`
+          result: `Three-tier filtering works`,
         });
       } else {
-        validation.warnings.push('Three-tier category system not available - some new features disabled');
+        validation.warnings.push(
+          'Three-tier category system not available - some new features disabled'
+        );
       }
-
     } catch (error) {
       validation.status = 'error';
       validation.errors.push(`Validation failed: ${error.message}`);

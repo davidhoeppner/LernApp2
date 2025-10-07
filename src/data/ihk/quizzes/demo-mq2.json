@@ -1,0 +1,30 @@
+{
+  "id": "demo-mq2",
+  "moduleId": "module-1",
+  "title": "Demo Micro-Quiz: Functions & Arrays",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Which method creates a new array with the results of calling a function on every element?",
+      "options": ["reduce", "filter", "map", "forEach"],
+      "answer": "map"
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "question": "Which of the following are ways to create a function in JS?",
+      "options": [
+        "Function declaration",
+        "Function expression",
+        "Arrow function",
+        "Prototype function"
+      ],
+      "correct": [
+        "Function declaration",
+        "Function expression",
+        "Arrow function"
+      ]
+    }
+  ]
+}

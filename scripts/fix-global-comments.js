@@ -1,6 +1,6 @@
 /**
  * Fix Global Comments Script
- * 
+ *
  * Removes setTimeout/clearTimeout global comments that conflict with ESLint config
  */
 
@@ -17,23 +17,23 @@ const filesToFix = [
   'src/components/ProgressView.js',
   'src/components/WheelView.js',
   'src/components/ToastNotification.js',
-  'src/components/SearchComponent.js'
+  'src/components/SearchComponent.js',
 ];
 
 async function fixGlobalComments() {
   console.log('🔧 Fixing global comments...');
-  
+
   for (const filePath of filesToFix) {
     try {
       const content = await readFile(filePath, 'utf-8');
-      
+
       // Remove various global comment patterns
       let fixedContent = content
         .replace(/\/\* global setTimeout \*\/\n/g, '')
         .replace(/\/\* global setTimeout, clearTimeout \*\/\n/g, '')
         .replace(/\/\* global setTimeout \*\//g, '')
         .replace(/\/\* global setTimeout, clearTimeout \*\//g, '');
-      
+
       if (content !== fixedContent) {
         await writeFile(filePath, fixedContent);
         console.log(`✅ Fixed: ${filePath}`);
@@ -44,7 +44,7 @@ async function fixGlobalComments() {
       console.error(`❌ Error fixing ${filePath}:`, error.message);
     }
   }
-  
+
   console.log('🎉 Global comments fix complete!');
 }
 
