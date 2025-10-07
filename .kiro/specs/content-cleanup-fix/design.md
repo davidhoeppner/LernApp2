@@ -36,33 +36,37 @@ This design outlines the approach to fix UTF-8 encoding issues across all IHK le
 
 **Purpose**: Scan and fix UTF-8 encoding issues in all module JSON files.
 
-**Input**: 
+**Input**:
+
 - Directory path: `src/data/ihk/modules/`
 - Encoding map for common corruptions
 
 **Output**:
+
 - Fixed JSON files with proper UTF-8 encoding
 - Report of all fixes applied
 
 **Encoding Mappings**:
+
 ```javascript
 const encodingFixes = {
-  'Ã¼': 'ü',  // u-umlaut
-  'Ã¶': 'ö',  // o-umlaut
-  'Ã¤': 'ä',  // a-umlaut
-  'ÃŸ': 'ß',  // eszett
-  'Ãœ': 'Ü',  // U-umlaut
-  'Ã–': 'Ö',  // O-umlaut
-  'Ã„': 'Ä',  // A-umlaut
-  'â€œ': '"',  // left double quote
-  'â€': '"',  // right double quote
-  'â€™': "'",  // right single quote
-  'â€"': '–',  // en dash
-  'â€"': '—',  // em dash
+  'Ã¼': 'ü', // u-umlaut
+  'Ã¶': 'ö', // o-umlaut
+  'Ã¤': 'ä', // a-umlaut
+  ÃŸ: 'ß', // eszett
+  Ãœ: 'Ü', // U-umlaut
+  'Ã–': 'Ö', // O-umlaut
+  'Ã„': 'Ä', // A-umlaut
+  'â€œ': '"', // left double quote
+  'â€': '"', // right double quote
+  'â€™': "'", // right single quote
+  'â€"': '–', // en dash
+  'â€"': '—', // em dash
 };
 ```
 
 **Algorithm**:
+
 1. Read all JSON files from modules directory
 2. For each file:
    - Load content as string
@@ -76,6 +80,7 @@ const encodingFixes = {
 **Purpose**: Validate JSON structure, markdown formatting, and required fields.
 
 **Validation Checks**:
+
 - Valid JSON syntax
 - Required fields present: `id`, `title`, `description`, `category`, `content`
 - Markdown syntax in `content` field is well-formed
@@ -84,6 +89,7 @@ const encodingFixes = {
 - Escaped newlines (`\n`) are properly formatted
 
 **Output**:
+
 - Validation report with pass/fail status
 - List of issues found with file paths and line numbers
 
@@ -92,6 +98,7 @@ const encodingFixes = {
 **Purpose**: Identify and fix dead routes and undefined references.
 
 **Process**:
+
 1. **Extract all route definitions** from `Router.js`
 2. **Scan for route references** in:
    - Component files (`src/components/*.js`)
@@ -106,6 +113,7 @@ const encodingFixes = {
    - Add missing route registrations
 
 **Route Registry**:
+
 ```javascript
 {
   registered: ['/ihk', '/ihk/modules/:id', '/ihk/quizzes/:id', ...],
@@ -123,6 +131,7 @@ const encodingFixes = {
 **File Categories**:
 
 **KEEP** (Essential Documentation):
+
 - `README.md` - Project overview
 - `LICENSE` - Legal
 - `DEPLOYMENT.md` - Deployment guide
@@ -133,6 +142,7 @@ const encodingFixes = {
 - Spec files in `.kiro/specs/*/` (requirements.md, design.md, tasks.md)
 
 **REMOVE** (Temporary/Redundant):
+
 - Task summaries: `TASK_*_SUMMARY.md`, `TASK_*_COMPLETE.md`
 - Fix documentation: `*_FIXED.md`, `*_FIX.md`, `FINAL_*.md`
 - Deployment duplicates: `DEPLOYMENT_COMPLETE.md`, `DEPLOYMENT_SUCCESS_*.md`, `GITHUB_*.md`
@@ -144,6 +154,7 @@ const encodingFixes = {
 - Unused code reports: `UNUSED_*.md`, `DUPLICATE_*.md`
 
 **Process**:
+
 1. Scan workspace for all `.md` and `.json` files (excluding node_modules, .git)
 2. Categorize files as KEEP or REMOVE
 3. Generate removal plan with file list and reasons
@@ -155,6 +166,7 @@ const encodingFixes = {
 **Purpose**: Comprehensive validation of all fixes and generation of reports.
 
 **Validation Steps**:
+
 1. **JSON Validation**: All module files parse correctly
 2. **Encoding Validation**: No "Ã" sequences remain
 3. **Content Validation**: All required fields present
@@ -163,6 +175,7 @@ const encodingFixes = {
 6. **File System Validation**: No broken file references in docs
 
 **Report Format**:
+
 ```json
 {
   "timestamp": "2025-01-10T12:00:00Z",
@@ -197,12 +210,13 @@ const encodingFixes = {
 ## Data Models
 
 ### Module Structure (Expected)
+
 ```typescript
 interface Module {
   id: string;
   title: string;
   description: string;
-  category: string;  // e.g., "FÜ-01", "BP-02"
+  category: string; // e.g., "FÜ-01", "BP-02"
   subcategory: string;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   examRelevance: 'low' | 'medium' | 'high';
@@ -210,29 +224,31 @@ interface Module {
   removedIn2025: boolean;
   important: boolean;
   estimatedTime: number;
-  prerequisites: string[];  // Array of module IDs
+  prerequisites: string[]; // Array of module IDs
   tags: string[];
-  content: string;  // Markdown content
+  content: string; // Markdown content
   codeExamples?: CodeExample[];
-  relatedQuizzes: string[];  // Array of quiz IDs
+  relatedQuizzes: string[]; // Array of quiz IDs
   resources?: Resource[];
-  lastUpdated: string;  // ISO date
+  lastUpdated: string; // ISO date
   version: string;
 }
 ```
 
 ### Encoding Fix Record
+
 ```typescript
 interface EncodingFix {
   file: string;
   lineNumber?: number;
   original: string;
   fixed: string;
-  context: string;  // Surrounding text
+  context: string; // Surrounding text
 }
 ```
 
 ### Route Audit Result
+
 ```typescript
 interface RouteAudit {
   registeredRoutes: string[];
@@ -254,15 +270,18 @@ interface RouteAudit {
 ## Error Handling
 
 ### Encoding Fixes
+
 - **Invalid JSON after fix**: Revert to original, log error, continue with next file
 - **File read/write errors**: Log error, skip file, continue processing
 - **Backup strategy**: Create `.backup` copy before modifying
 
 ### Route Fixes
+
 - **Ambiguous references**: Log warning, require manual review
 - **Circular dependencies**: Detect and report, don't auto-fix
 
 ### File Cleanup
+
 - **Protected files**: Never delete files in `.git`, `node_modules`, `src/`
 - **Confirmation required**: Generate plan first, execute after review
 - **Rollback**: Keep list of deleted files for potential recovery
@@ -270,12 +289,14 @@ interface RouteAudit {
 ## Testing Strategy
 
 ### Unit Tests
+
 - Encoding fix function with known corrupted strings
 - JSON validation with valid/invalid samples
 - Route matching logic
 - File categorization logic
 
 ### Integration Tests
+
 1. **End-to-End Encoding Fix**:
    - Create test module with known encoding issues
    - Run fixer
@@ -292,6 +313,7 @@ interface RouteAudit {
    - Verify correct files removed/kept
 
 ### Manual Testing
+
 1. Load application after fixes
 2. Navigate to fue-04-security module
 3. Verify German characters display correctly
@@ -301,35 +323,41 @@ interface RouteAudit {
 ## Implementation Phases
 
 ### Phase 1: Analysis & Backup
+
 1. Create backup of all module files
 2. Run encoding scanner to identify issues
 3. Run route auditor to map all routes
 4. Generate file cleanup plan
 
 ### Phase 2: Encoding Fixes
+
 1. Implement encoding fixer script
 2. Run on all modules
 3. Validate JSON integrity
 4. Generate fix report
 
 ### Phase 3: Content Validation
+
 1. Implement content validator
 2. Check all required fields
 3. Validate markdown syntax
 4. Fix any issues found
 
 ### Phase 4: Route Cleanup
+
 1. Remove dead route references
 2. Fix invalid module/quiz IDs
 3. Update navigation components
 4. Test all routes
 
 ### Phase 5: File Cleanup
+
 1. Execute file removal plan
 2. Create cleanup summary
 3. Verify no broken references
 
 ### Phase 6: Final Validation
+
 1. Run comprehensive validation
 2. Generate final report
 3. Manual testing

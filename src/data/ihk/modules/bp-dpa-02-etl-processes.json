@@ -13,13 +13,28 @@
       "important": true,
       "estimatedTime": 55,
       "prerequisites": [],
-      "tags": ["ETL", "Datenintegration", "Extract", "Transform", "Load", "Data Pipeline"],
+      "tags": [
+        "ETL",
+        "Datenintegration",
+        "Extract",
+        "Transform",
+        "Load",
+        "Data Pipeline"
+      ],
       "content": "# ETL-Prozesse und Datenintegration\n\n## Einführung\n\nETL (Extract, Transform, Load) ist ein fundamentaler Prozess in der Datenverarbeitung, der es ermöglicht, Daten aus verschiedenen Quellen zu extrahieren, zu transformieren und in Zielsysteme zu laden. Für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse ist das Verständnis von ETL-Prozessen essentiell für effektive Datenintegration.\n\n## ETL-Grundlagen\n\n### Definition\n\nETL ist ein dreistufiger Prozess zur Datenintegration: Extract (Extrahieren), Transform (Transformieren), Load (Laden).\n\n## ... (see backup for full content)",
       "codeExamples": [],
       "relatedQuizzes": ["bp-dpa-02-etl-quiz"],
       "resources": [
-        { "title": "Apache Airflow Documentation", "url": "https://airflow.apache.org/docs/", "type": "documentation" },
-        { "title": "Talend Open Studio", "url": "https://www.talend.com/products/talend-open-studio/", "type": "tool" }
+        {
+          "title": "Apache Airflow Documentation",
+          "url": "https://airflow.apache.org/docs/",
+          "type": "documentation"
+        },
+        {
+          "title": "Talend Open Studio",
+          "url": "https://www.talend.com/products/talend-open-studio/",
+          "type": "tool"
+        }
       ],
       "learningObjectives": [
         "ETL-Prozess verstehen und implementieren",

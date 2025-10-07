@@ -10,9 +10,7 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 50,
-  "prerequisites": [
-    "bp-dpa-01-er-modeling"
-  ],
+  "prerequisites": ["bp-dpa-01-er-modeling"],
   "tags": [
     "Normalisierung",
     "Normalformen",
@@ -29,9 +27,7 @@
       "title": "Normalisierung Beispiel"
     }
   ],
-  "relatedQuizzes": [
-    "bp-dpa-01-normalization-quiz"
-  ],
+  "relatedQuizzes": ["bp-dpa-01-normalization-quiz"],
   "resources": [
     {
       "title": "Database Normalization Explained",

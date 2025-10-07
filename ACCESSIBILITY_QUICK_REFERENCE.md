@@ -39,6 +39,7 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 ### ARIA Attributes Checklist
 
 #### Navigation
+
 ```html
 <nav role="navigation" aria-label="Main navigation">
   <a href="#/" aria-current="page">Home</a>
@@ -47,6 +48,7 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 ```
 
 #### Main Content
+
 ```html
 <main id="main-content" role="main" aria-label="Page content">
   <h1>Page Title</h1>
@@ -54,16 +56,19 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 ```
 
 #### Progress Bars
+
 ```html
-<div role="progressbar" 
-     aria-valuenow="50" 
-     aria-valuemin="0" 
-     aria-valuemax="100"
-     aria-label="Progress: 50%">
-</div>
+<div
+  role="progressbar"
+  aria-valuenow="50"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-label="Progress: 50%"
+></div>
 ```
 
 #### Lists
+
 ```html
 <div role="list" aria-label="Module list">
   <article role="listitem">...</article>
@@ -71,6 +76,7 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 ```
 
 #### Buttons
+
 ```html
 <button aria-label="Start learning module: JavaScript Basics">
   Start Module
@@ -78,24 +84,25 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 ```
 
 #### Forms
+
 ```html
 <fieldset>
   <legend>Select your answer</legend>
   <label>
-    <input type="radio" id="option-1" aria-label="Option A">
+    <input type="radio" id="option-1" aria-label="Option A" />
     <span>Option A</span>
   </label>
 </fieldset>
 ```
 
 #### Live Regions
+
 ```html
-<div role="alert" aria-live="polite">
-  Success message
-</div>
+<div role="alert" aria-live="polite">Success message</div>
 ```
 
 #### Decorative Elements
+
 ```html
 <span aria-hidden="true">🎉</span>
 ```
@@ -103,11 +110,13 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 ### CSS Classes
 
 #### Screen Reader Only
+
 ```html
 <span class="sr-only">Additional context for screen readers</span>
 ```
 
 #### Skip Link
+
 ```html
 <a href="#main-content" class="skip-link">Skip to main content</a>
 ```
@@ -116,10 +125,10 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 
 ```html
 <h1>Page Title</h1>
-  <h2>Major Section</h2>
-    <h3>Subsection</h3>
-  <h2>Another Major Section</h2>
-    <h3>Subsection</h3>
+<h2>Major Section</h2>
+<h3>Subsection</h3>
+<h2>Another Major Section</h2>
+<h3>Subsection</h3>
 ```
 
 ## For Testers
@@ -139,6 +148,7 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 ### Screen Reader Testing
 
 #### NVDA (Windows)
+
 1. Download from nvaccess.org
 2. Start NVDA (Ctrl+Alt+N)
 3. Navigate with arrow keys
@@ -146,6 +156,7 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 5. Listen for announcements
 
 #### VoiceOver (Mac)
+
 1. Enable: System Preferences → Accessibility → VoiceOver
 2. Start VoiceOver (Cmd+F5)
 3. Navigate with VO+arrow keys
@@ -180,27 +191,33 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 ## Common Issues and Solutions
 
 ### Issue: Element not keyboard accessible
+
 **Solution:** Add `tabindex="0"` and keyboard event handlers
 
 ### Issue: Screen reader not announcing changes
+
 **Solution:** Use `accessibilityHelper.announce()` or add `aria-live` region
 
 ### Issue: Focus not visible
+
 **Solution:** Check `:focus-visible` styles are applied
 
 ### Issue: Heading hierarchy broken
+
 **Solution:** Ensure h1 → h2 → h3 order without skipping
 
 ### Issue: Form not accessible
+
 **Solution:** Add labels, fieldsets, and ARIA attributes
 
 ### Issue: Images not described
+
 **Solution:** Add alt text or `aria-label`
 
 ## Browser Support
 
 | Browser | Version | Support |
-|---------|---------|---------|
+| ------- | ------- | ------- |
 | Chrome  | 90+     | ✅ Full |
 | Firefox | 88+     | ✅ Full |
 | Safari  | 14+     | ✅ Full |
@@ -216,6 +233,7 @@ const duration = accessibilityHelper.getAnimationDuration(300);
 ## Need Help?
 
 Refer to:
+
 1. `ACCESSIBILITY_FEATURES.md` - Complete feature documentation
 2. `ACCESSIBILITY_IMPLEMENTATION_SUMMARY.md` - Implementation details
 3. `src/utils/AccessibilityHelper.js` - Utility source code

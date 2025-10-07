@@ -10,10 +10,7 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 70,
-  "prerequisites": [
-    "bp-dpa-03-bpmn-fundamentals",
-    "bp-dpa-03-process-mining"
-  ],
+  "prerequisites": ["bp-dpa-03-bpmn-fundamentals", "bp-dpa-03-process-mining"],
   "tags": [
     "automatisierung",
     "rpa",
@@ -38,9 +35,7 @@
       "explanation": "Heuristisches Scoring für Priorisierung von Automatisierungskandidaten."
     }
   ],
-  "relatedQuizzes": [
-    "bp-dpa-03-automation-orchestration-quiz"
-  ],
+  "relatedQuizzes": ["bp-dpa-03-automation-orchestration-quiz"],
   "resources": [
     {
       "title": "BPMN 2.0 Specification",
@@ -68,7 +63,5 @@
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
   "version": "1.0",
-  "tracks": [
-    "DPA"
-  ]
+  "tracks": ["DPA"]
 }

@@ -9,6 +9,7 @@ This document describes the error handling and loading state features implemente
 The `ErrorBoundary` component provides graceful error handling for view components.
 
 **Features:**
+
 - Wraps view render functions to catch errors
 - Displays user-friendly error messages
 - Provides context-specific error handling (storage, network, not found)
@@ -16,18 +17,22 @@ The `ErrorBoundary` component provides graceful error handling for view componen
 - Shows technical details in collapsible section
 
 **Usage:**
+
 ```javascript
 // Wrap a route with error boundary
-router.register('/modules', ErrorBoundary.wrap(async () => {
-  const view = new ModuleListView(services);
-  return await view.render();
-}));
+router.register(
+  '/modules',
+  ErrorBoundary.wrap(async () => {
+    const view = new ModuleListView(services);
+    return await view.render();
+  })
+);
 
 // Use retry wrapper for async operations
 const fetchWithRetry = ErrorBoundary.withRetry(fetchData, {
   maxRetries: 3,
   delay: 1000,
-  backoff: 2
+  backoff: 2,
 });
 ```
 
@@ -36,6 +41,7 @@ const fetchWithRetry = ErrorBoundary.withRetry(fetchData, {
 The `LoadingSpinner` component provides visual feedback during async operations.
 
 **Features:**
+
 - Multiple sizes (small, medium, large)
 - Fullscreen and overlay modes
 - Inline spinners for buttons
@@ -43,11 +49,12 @@ The `LoadingSpinner` component provides visual feedback during async operations.
 - Button loading states
 
 **Usage:**
+
 ```javascript
 // Show loading spinner
 const spinner = LoadingSpinner.create({
   message: 'Loading modules...',
-  size: 'medium'
+  size: 'medium',
 });
 container.appendChild(spinner);
 
@@ -66,6 +73,7 @@ container.appendChild(skeleton);
 The `ToastNotification` system provides user feedback messages.
 
 **Features:**
+
 - Success, error, warning, and info types
 - Auto-dismiss with configurable duration
 - Action buttons
@@ -73,6 +81,7 @@ The `ToastNotification` system provides user feedback messages.
 - Special handlers for storage and network errors
 
 **Usage:**
+
 ```javascript
 // Show success toast
 toastNotification.success('Module completed!');
@@ -82,8 +91,8 @@ toastNotification.error('Failed to save progress', {
   duration: 7000,
   action: {
     label: 'Retry',
-    onClick: () => retryOperation()
-  }
+    onClick: () => retryOperation(),
+  },
 });
 
 // Handle specific errors
@@ -96,12 +105,14 @@ toastNotification.handleNetworkError(error);
 The `EmptyState` component displays user-friendly messages when content is empty.
 
 **Features:**
+
 - Predefined states for common scenarios
 - Custom icons and messages
 - Optional action buttons
 - Context-specific empty states
 
 **Usage:**
+
 ```javascript
 // Show empty state for no modules
 const emptyState = EmptyState.noModules('completed');
@@ -114,8 +125,8 @@ const emptyState = EmptyState.create({
   message: 'Try adjusting your filters',
   action: {
     label: 'Clear Filters',
-    onClick: () => clearFilters()
-  }
+    onClick: () => clearFilters(),
+  },
 });
 ```
 
@@ -124,12 +135,14 @@ const emptyState = EmptyState.create({
 ### StorageService
 
 **Improvements:**
+
 - Fallback to in-memory storage when localStorage unavailable
 - Better quota error handling
 - Storage usage information
 - Graceful degradation
 
 **New Methods:**
+
 ```javascript
 // Get storage information
 const info = storageService.getStorageInfo();
@@ -139,11 +152,13 @@ const info = storageService.getStorageInfo();
 ### StateManager
 
 **Improvements:**
+
 - Custom events for storage quota warnings
 - Minimal state saving when quota exceeded
 - Better error propagation
 
 **Events:**
+
 - `storage-quota-warning`: Fired when minimal state is saved
 - `storage-quota-error`: Fired when save completely fails
 
@@ -161,9 +176,12 @@ The application includes global error handlers in `app.js`:
 ### 1. Always Use Error Boundaries for Routes
 
 ```javascript
-router.register('/path', ErrorBoundary.wrap(async () => {
-  // Your view code
-}));
+router.register(
+  '/path',
+  ErrorBoundary.wrap(async () => {
+    // Your view code
+  })
+);
 ```
 
 ### 2. Show Loading States for Async Operations
@@ -233,6 +251,7 @@ All components use CSS custom properties for theming:
 - Info states use `--color-primary`
 
 Supports:
+
 - Light and dark themes
 - Reduced motion preferences
 - Responsive design

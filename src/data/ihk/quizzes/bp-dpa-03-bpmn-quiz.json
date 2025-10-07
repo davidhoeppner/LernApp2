@@ -59,12 +59,7 @@
       "id": "q4",
       "type": "single-choice",
       "question": "Wie werden Aktivitäten (Tasks) in BPMN dargestellt?",
-      "options": [
-        "Kreis",
-        "Raute",
-        "Abgerundetes Rechteck",
-        "Dreieck"
-      ],
+      "options": ["Kreis", "Raute", "Abgerundetes Rechteck", "Dreieck"],
       "correctAnswer": "Abgerundetes Rechteck",
       "explanation": "Aktivitäten (Tasks) werden als abgerundete Rechtecke dargestellt. Sie repräsentieren atomare Arbeitsschritte im Geschäftsprozess.",
       "points": 1,

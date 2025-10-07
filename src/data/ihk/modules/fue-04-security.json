@@ -10,9 +10,7 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 110,
-  "prerequisites": [
-    "fue-04-security-threats"
-  ],
+  "prerequisites": ["fue-04-security-threats"],
   "tags": [
     "Informationssicherheit",
     "TOM",
@@ -36,9 +34,7 @@
       "explanation": "Role-Based Access Control (RBAC) weist Benutzern Rollen zu, die bestimmte Berechtigungen haben."
     }
   ],
-  "relatedQuizzes": [
-    "fue-04-security-quiz"
-  ],
+  "relatedQuizzes": ["fue-04-security-quiz"],
   "resources": [
     {
       "title": "DSGVO-Gesetzestext",

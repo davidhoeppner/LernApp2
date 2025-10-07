@@ -30,6 +30,7 @@ npm run validate:final
 ```
 
 This generates a final validation report with:
+
 - Executive summary
 - File statistics
 - Validation results
@@ -48,6 +49,7 @@ npm run validate:json
 ```
 
 Checks:
+
 - Valid JSON syntax
 - Required fields present
 - Correct field types
@@ -60,6 +62,7 @@ npm run validate:markdown
 ```
 
 Checks:
+
 - Well-formed headers
 - Proper list formatting
 - Closed code blocks
@@ -72,6 +75,7 @@ npm run validate:encoding
 ```
 
 Checks for encoding issues with German characters:
+
 - ü, ö, ä, ß (lowercase umlauts and eszett)
 - Ü, Ö, Ä (uppercase umlauts)
 
@@ -82,6 +86,7 @@ npm run validate:routes
 ```
 
 Checks:
+
 - All referenced routes are registered
 - Module prerequisites point to existing modules
 - Quiz references point to existing quizzes
@@ -99,6 +104,7 @@ Runs all validators on all module files and generates a comprehensive report.
 ### Console Output
 
 The validation scripts provide color-coded console output:
+
 - ✅ Green: Success, no issues
 - ⚠️ Yellow: Warnings (non-critical issues)
 - ❌ Red: Errors (critical issues that must be fixed)
@@ -145,6 +151,7 @@ Each report contains:
 ### Errors (Critical)
 
 Must be fixed before deployment:
+
 - Invalid JSON syntax
 - Missing required fields
 - Encoding issues (garbled German characters)
@@ -154,6 +161,7 @@ Must be fixed before deployment:
 ### Warnings (Non-Critical)
 
 Should be fixed for better quality but won't break functionality:
+
 - Malformed markdown headers (missing space after #)
 - Malformed list items (missing space after marker)
 - Minor formatting issues
@@ -177,6 +185,7 @@ If you see encoding errors like "Ã¼" instead of "ü":
 4. Run validation again to verify
 
 Or use the automated fix script:
+
 ```bash
 node scripts/fix-utf8-encoding.js
 ```
@@ -215,7 +224,7 @@ You can add validation to your CI/CD pipeline:
 # Example GitHub Actions workflow
 - name: Validate Content
   run: npm run validate
-  
+
 - name: Generate Final Report
   run: npm run validate:final
 ```
@@ -248,6 +257,7 @@ Warnings are non-critical formatting issues. They don't affect functionality but
 ## Support
 
 For issues or questions about the validation system:
+
 1. Check the validation report for detailed error messages
 2. Review this guide for common fixes
 3. Check the design document at `.kiro/specs/content-cleanup-fix/design.md`

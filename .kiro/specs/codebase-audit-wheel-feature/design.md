@@ -7,6 +7,7 @@ This design document outlines the architecture and implementation approach for a
 ### Project Context
 
 The application is a JavaScript-based single-page application (SPA) built with:
+
 - **Frontend**: Vanilla JavaScript (ES6+)
 - **Build Tool**: Vite
 - **Architecture**: Service-oriented with clear separation of concerns
@@ -82,17 +83,19 @@ The audit system will analyze the codebase systematically:
 
 
 ```
+
 ┌─────────────────────────────────────────────────────────────┐
-│                      Audit System                            │
+│ Audit System │
 └───────────────────────┬─────────────────────────────────────┘
-                        │
-        ┌───────────────┼───────────────┬──────────────┐
-        │               │               │              │
-        ▼               ▼               ▼              ▼
+│
+┌───────────────┼───────────────┬──────────────┐
+│ │ │ │
+▼ ▼ ▼ ▼
 ┌──────────────┐ ┌──────────────┐ ┌──────────┐ ┌──────────┐
 │ File Scanner │ │Code Analyzer │ │Dependency│ │ Reporter │
-│              │ │              │ │ Tracker  │ │          │
+│ │ │ │ │ Tracker │ │ │
 └──────────────┘ └──────────────┘ └──────────┘ └──────────┘
+
 ```
 
 #### Audit Components
@@ -166,14 +169,17 @@ The refactoring will be organized into batches by category and risk level:
 
 
 ```
+
 For each batch:
-  1. Identify files to modify
-  2. Create backup (automatic via git)
-  3. Apply changes with REFACTOR comments
-  4. Run linter (npm run lint)
-  5. Test manually (smoke test)
-  6. Commit changes
-  7. Move to next batch
+
+1. Identify files to modify
+2. Create backup (automatic via git)
+3. Apply changes with REFACTOR comments
+4. Run linter (npm run lint)
+5. Test manually (smoke test)
+6. Commit changes
+7. Move to next batch
+
 ```
 
 ### Wheel of Fortune Feature Architecture
@@ -181,34 +187,36 @@ For each batch:
 The new feature will integrate seamlessly into the existing architecture:
 
 ```
+
 ┌─────────────────────────────────────────────────────────────┐
-│                      Navigation                              │
-│  Home | Modules | Quizzes | Progress | 🎯 Lern-Modul       │
+│ Navigation │
+│ Home | Modules | Quizzes | Progress | 🎯 Lern-Modul │
 └───────────────────────┬─────────────────────────────────────┘
-                        │
-                        ▼
+│
+▼
 ┌─────────────────────────────────────────────────────────────┐
-│                   WheelView Component                        │
-│  ┌─────────────────────────────────────────────────────┐   │
-│  │              Wheel Animation Container               │   │
-│  │  ┌─────────────────────────────────────────────┐    │   │
-│  │  │         Module Selection Display            │    │   │
-│  │  └─────────────────────────────────────────────┘    │   │
-│  │  [Rad drehen] [Nochmal] [Zum Modul]                 │   │
-│  └─────────────────────────────────────────────────────┘   │
-│                                                              │
-│  Selected: BP-03: Test-Driven Development (TDD)             │
+│ WheelView Component │
+│ ┌─────────────────────────────────────────────────────┐ │
+│ │ Wheel Animation Container │ │
+│ │ ┌─────────────────────────────────────────────┐ │ │
+│ │ │ Module Selection Display │ │ │
+│ │ └─────────────────────────────────────────────┘ │ │
+│ │ [Rad drehen] [Nochmal] [Zum Modul] │ │
+│ └─────────────────────────────────────────────────────┘ │
+│ │
+│ Selected: BP-03: Test-Driven Development (TDD) │
 └───────────────────────┬─────────────────────────────────────┘
-                        │
-        ┌───────────────┼───────────────┐
-        │               │               │
-        ▼               ▼               ▼
+│
+┌───────────────┼───────────────┐
+│ │ │
+▼ ▼ ▼
 ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
-│StateManager  │ │IHKContent    │ │  Router      │
-│lastWheel     │ │Service       │ │/wheel route  │
-│Module        │ │getModules()  │ │              │
+│StateManager │ │IHKContent │ │ Router │
+│lastWheel │ │Service │ │/wheel route │
+│Module │ │getModules() │ │ │
 └──────────────┘ └──────────────┘ └──────────────┘
-```
+
+````
 
 ## Components and Interfaces
 
@@ -228,18 +236,18 @@ class AuditEngine {
   async runAudit() {
     // Scan files
     const files = await this.fileScanner.scan('src/');
-    
+
     // Analyze code
     const analysis = await this.codeAnalyzer.analyze(files);
-    
+
     // Track dependencies
     const dependencies = await this.dependencyTracker.track(files);
-    
+
     // Generate report
     return this.reporter.generate(analysis, dependencies);
   }
 }
-```
+````
 
 #### FileScanner
 
@@ -281,16 +289,16 @@ class WheelView {
   async render() {
     // Load modules
     await this.loadModules();
-    
+
     // Create container
     const container = this.createContainer();
-    
+
     // Render wheel UI
     this.renderWheel(container);
-    
+
     // Attach event listeners
     this.attachEventListeners(container);
-    
+
     return container;
   }
 
@@ -337,7 +345,7 @@ class ModuleLoader {
 
   async loadModules() {
     if (this.cache) return this.cache;
-    
+
     try {
       // Load from IHKContentService
       const modules = await this.service.getAllModules();
@@ -466,6 +474,7 @@ class ModuleLoader {
 ### Wheel Feature Error Handling
 
 1. **Module Loading Errors**
+
    ```javascript
    try {
      modules = await ihkContentService.getAllModules();
@@ -479,6 +488,7 @@ class ModuleLoader {
    ```
 
 2. **Empty Module List**
+
    ```javascript
    if (!modules || modules.length < 2) {
      return renderEmptyState(
@@ -489,6 +499,7 @@ class ModuleLoader {
    ```
 
 3. **State Save Errors**
+
    ```javascript
    try {
      stateManager.setState('lastWheelModule', selectedModule);
@@ -552,6 +563,7 @@ class ModuleLoader {
 ### Wheel Feature Testing
 
 1. **Unit Tests** (`tests/test-wheel.js`)
+
    ```javascript
    describe('WheelView', () => {
      test('loads modules from IHKContentService', async () => {
@@ -683,29 +695,29 @@ class ModuleLoader {
 
 ### Audit Risks
 
-| Risk | Mitigation |
-|------|------------|
+| Risk                                   | Mitigation                                    |
+| -------------------------------------- | --------------------------------------------- |
 | False positives in dead code detection | Manual review of all findings before deletion |
-| Missing dependencies in analysis | Cross-reference with multiple tools |
-| Large codebase analysis time | Implement caching and incremental analysis |
+| Missing dependencies in analysis       | Cross-reference with multiple tools           |
+| Large codebase analysis time           | Implement caching and incremental analysis    |
 
 ### Refactor Risks
 
-| Risk | Mitigation |
-|------|------------|
+| Risk                            | Mitigation                                  |
+| ------------------------------- | ------------------------------------------- |
 | Breaking existing functionality | Small batches, test after each, git commits |
-| Introducing new bugs | Comprehensive testing, code review |
-| Performance regression | Measure before/after, rollback if needed |
-| Scope creep | Strict adherence to audit findings only |
+| Introducing new bugs            | Comprehensive testing, code review          |
+| Performance regression          | Measure before/after, rollback if needed    |
+| Scope creep                     | Strict adherence to audit findings only     |
 
 ### Feature Risks
 
-| Risk | Mitigation |
-|------|------------|
-| Poor animation performance | Use CSS transforms, respect reduced motion |
-| Module loading failures | Implement fallback static list |
-| State persistence issues | Graceful degradation, non-critical feature |
-| Accessibility gaps | Follow WCAG 2.1 AA, test with screen readers |
+| Risk                       | Mitigation                                   |
+| -------------------------- | -------------------------------------------- |
+| Poor animation performance | Use CSS transforms, respect reduced motion   |
+| Module loading failures    | Implement fallback static list               |
+| State persistence issues   | Graceful degradation, non-critical feature   |
+| Accessibility gaps         | Follow WCAG 2.1 AA, test with screen readers |
 
 ## Success Metrics
 

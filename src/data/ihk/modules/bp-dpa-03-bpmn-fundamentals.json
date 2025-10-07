@@ -27,9 +27,7 @@
       "title": "BPMN XML-Definition"
     }
   ],
-  "relatedQuizzes": [
-    "bp-dpa-03-bpmn-quiz"
-  ],
+  "relatedQuizzes": ["bp-dpa-03-bpmn-quiz"],
   "resources": [
     {
       "title": "BPMN 2.0 Specification",
@@ -57,7 +55,5 @@
   ],
   "lastUpdated": "2025-01-20T00:00:00Z",
   "version": "1.0",
-  "tracks": [
-    "DPA"
-  ]
+  "tracks": ["DPA"]
 }

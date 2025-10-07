@@ -11,6 +11,7 @@ The application has been enhanced with comprehensive accessibility features to e
 ### 1. ARIA Labels and Roles
 
 #### Navigation Component
+
 - **Main navigation** has `role="navigation"` and `aria-label="Main navigation"`
 - **Navigation links** include descriptive `aria-label` attributes
 - **Active page** indicated with `aria-current="page"`
@@ -18,6 +19,7 @@ The application has been enhanced with comprehensive accessibility features to e
 - **Theme toggle** has descriptive `aria-label` that updates based on current theme
 
 #### Home View
+
 - **Main content** has `role="main"` and `id="main-content"` for skip link target
 - **Statistics cards** use `role="list"` and `role="listitem"` with descriptive `aria-label`
 - **Progress bars** have `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax`
@@ -25,18 +27,21 @@ The application has been enhanced with comprehensive accessibility features to e
 - **Decorative icons** marked with `aria-hidden="true"`
 
 #### Module List View
+
 - **Filter buttons** use `aria-pressed` to indicate active state
 - **Module cards** are `<article>` elements with `role="listitem"`
 - **Module grid** has `role="list"` and `aria-label="Learning modules"`
 - **Progress indicators** include proper ARIA attributes
 
 #### Module Detail View
+
 - **Scroll progress** has `role="progressbar"` with live updates
 - **Table of contents** has `aria-label="Table of contents"`
 - **Sidebar** has `role="complementary"` and descriptive label
 - **Action buttons** include context-specific `aria-label` attributes
 
 #### Quiz View
+
 - **Question form** uses `<fieldset>` with `<legend>` for grouping
 - **Radio options** have unique IDs and descriptive labels
 - **Feedback messages** use `role="alert"` and `aria-live="polite"`
@@ -44,6 +49,7 @@ The application has been enhanced with comprehensive accessibility features to e
 - **Results screen** uses `role="status"` for score announcement
 
 #### Progress View
+
 - **Main content** has proper heading hierarchy
 - **Statistics** use semantic list structure with ARIA labels
 - **Tables** include proper `<thead>` and `<th>` elements
@@ -51,11 +57,13 @@ The application has been enhanced with comprehensive accessibility features to e
 ### 2. Keyboard Navigation
 
 #### Global Features
+
 - **Skip link** at top of page (visible on focus) to jump to main content
 - **Focus visible styles** with 3px outline for all interactive elements
 - **Tab order** follows logical reading order throughout the app
 
 #### Component-Specific
+
 - **Navigation menu**: Full keyboard support with Tab/Shift+Tab
 - **Filter buttons**: Keyboard accessible with Enter/Space
 - **Module cards**: Clickable with Enter/Space when focused
@@ -63,6 +71,7 @@ The application has been enhanced with comprehensive accessibility features to e
 - **Table of contents**: Links accessible via keyboard
 
 #### AccessibilityHelper Utility
+
 - `setupListNavigation()`: Adds arrow key navigation to lists
 - `makeKeyboardAccessible()`: Enhances non-button elements with keyboard support
 - `trapFocus()`: Manages focus within modals/menus
@@ -70,11 +79,13 @@ The application has been enhanced with comprehensive accessibility features to e
 ### 3. Focus Management
 
 #### Route Changes
+
 - **Focus automatically set** to main content on navigation
 - **Smooth scroll** to top (respects reduced motion preference)
 - **Screen reader announcement** of page changes
 
 #### Focus Utilities
+
 - `setFocus(element)`: Programmatically set focus to any element
 - `saveFocus()`: Save current focus for restoration
 - `restoreFocus()`: Restore previously saved focus
@@ -91,6 +102,7 @@ h1 - Page title (one per page)
 ```
 
 Examples:
+
 - **Home**: h1 (Welcome) → h2 (Quick Actions, Recent Activity)
 - **Modules**: h1 (Learning Modules) → h3 (Module titles)
 - **Module Detail**: h1 (Module title) → h2 (Table of Contents) → h2/h3 (Content headings)
@@ -108,11 +120,13 @@ Examples:
 ### 6. Screen Reader Support
 
 #### Live Regions
+
 - **Global live region** (`#live-region`) for announcements
 - **Polite announcements** for non-critical updates
 - **Assertive announcements** for important messages
 
 #### Announcements
+
 - Application loaded successfully
 - Page navigation changes
 - Form submission results
@@ -120,6 +134,7 @@ Examples:
 - Success confirmations
 
 #### Screen Reader Only Content
+
 - `.sr-only` class for visually hidden but screen-reader-accessible text
 - Used for:
   - Additional context for icons
@@ -147,6 +162,7 @@ input:focus-visible {
 ```
 
 Features:
+
 - **3px outline** for interactive elements
 - **2px offset** for better visibility
 - **Primary color** for consistency
@@ -171,6 +187,7 @@ Respects user's motion preferences:
 ```
 
 JavaScript support:
+
 - `accessibilityHelper.prefersReducedMotion()`: Check user preference
 - `accessibilityHelper.getAnimationDuration()`: Get appropriate duration
 - **Smooth scroll** disabled when reduced motion preferred
@@ -195,12 +212,14 @@ A comprehensive utility class for managing accessibility features:
 ## Testing Recommendations
 
 ### Keyboard Testing
+
 1. **Tab through entire application** - Ensure logical tab order
 2. **Use only keyboard** - Complete all user flows without mouse
 3. **Test skip link** - Press Tab on page load
 4. **Test all interactive elements** - Buttons, links, forms, etc.
 
 ### Screen Reader Testing
+
 1. **NVDA (Windows)** - Test with Firefox
 2. **JAWS (Windows)** - Test with Chrome/Edge
 3. **VoiceOver (macOS)** - Test with Safari
@@ -208,12 +227,14 @@ A comprehensive utility class for managing accessibility features:
 5. **VoiceOver (iOS)** - Test on iPhone/iPad
 
 ### Visual Testing
+
 1. **Focus indicators** - Verify visibility on all elements
 2. **Color contrast** - Check text against backgrounds (4.5:1 minimum)
 3. **Text scaling** - Test at 200% zoom
 4. **Responsive design** - Test on various screen sizes
 
 ### Automated Testing
+
 1. **axe DevTools** - Browser extension for accessibility auditing
 2. **Lighthouse** - Chrome DevTools accessibility audit
 3. **WAVE** - Web accessibility evaluation tool
@@ -221,12 +242,14 @@ A comprehensive utility class for managing accessibility features:
 ## WCAG 2.1 AA Compliance
 
 ### Perceivable
+
 - ✅ Text alternatives for non-text content
 - ✅ Captions and alternatives for multimedia
 - ✅ Adaptable content structure
 - ✅ Distinguishable content (color contrast, text sizing)
 
 ### Operable
+
 - ✅ Keyboard accessible
 - ✅ Enough time for users to read and use content
 - ✅ No content that causes seizures
@@ -234,11 +257,13 @@ A comprehensive utility class for managing accessibility features:
 - ✅ Input modalities (keyboard, mouse, touch)
 
 ### Understandable
+
 - ✅ Readable text
 - ✅ Predictable navigation and functionality
 - ✅ Input assistance (labels, error messages)
 
 ### Robust
+
 - ✅ Compatible with assistive technologies
 - ✅ Valid HTML and ARIA
 - ✅ Proper semantic markup
@@ -246,6 +271,7 @@ A comprehensive utility class for managing accessibility features:
 ## Browser Support
 
 Accessibility features tested and working in:
+
 - Chrome 90+
 - Firefox 88+
 - Safari 14+
@@ -254,6 +280,7 @@ Accessibility features tested and working in:
 ## Future Enhancements
 
 Potential improvements for even better accessibility:
+
 1. **High contrast mode** support
 2. **Customizable font sizes** in settings
 3. **Voice control** integration

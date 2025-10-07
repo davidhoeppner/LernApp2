@@ -269,7 +269,6 @@
   - _Requirements: 1, 2, 3, 4, 5, 6_
 
 - [x] 8.8 Security-Threats-Quiz erweitern/überarbeiten (FÜ-04) (aktuell 5 Fragen)
-
   - Analysiere bestehendes fue-04-security-threats-quiz.json (5 Fragen, separate von security-threats-quiz.json mit 20 Fragen)
   - Prüfe Fragen-Anzahl und Qualität
   - Erweitere auf 15-20 Fragen oder konsolidiere mit security-threats-quiz.json
@@ -281,9 +280,6 @@
   - _Requirements: 1, 2, 3, 4, 5, 6, 7, 8_
 
 - [x] 9.0 Quality-Assurance-Quiz erstellen (BP-02) (fehlt komplett)
-
-
-
   - Analysiere bp-02-quality-assurance Modul-Inhalt
   - Erstelle 15-20 Fragen zu: Qualitätssicherung, Testing-Strategien, QA-Prozesse, Testarten
   - Verwende korrekte deutsche Fachbegriffe mit UTF-8-Kodierung

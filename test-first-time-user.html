@@ -1,25 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Test First-Time User Flow</title>
-    <link rel="stylesheet" href="src/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
     <div id="app"></div>
-    
+
     <script>
-        // Clear localStorage to simulate first-time user
-        localStorage.clear();
-        console.log('LocalStorage cleared - simulating first-time user');
-        
-        // Load the app
-        import('./src/main.js').then(() => {
-            console.log('App loaded');
-        }).catch(error => {
-            console.error('Error loading app:', error);
+      // Clear localStorage to simulate first-time user
+      localStorage.clear();
+      console.log('LocalStorage cleared - simulating first-time user');
+
+      // Load the app
+      import('./src/main.js')
+        .then(() => {
+          console.log('App loaded');
+        })
+        .catch(error => {
+          console.error('Error loading app:', error);
         });
     </script>
-</body>
+  </body>
 </html>

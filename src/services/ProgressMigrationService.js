@@ -26,7 +26,7 @@ class ProgressMigrationService {
       const migrationId = this._generateMigrationId();
       const startTime = new Date().toISOString();
 
-  console.warn(`Starting progress migration ${migrationId}...`);
+      console.warn(`Starting progress migration ${migrationId}...`);
 
       // Get current progress data
       const currentProgress = this.stateManager.getState('progress') || {};

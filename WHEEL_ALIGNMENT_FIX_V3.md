@@ -3,41 +3,54 @@
 ## Issues Identified
 
 ### Issue 1: Fractional Rotations
+
 The code was using `Math.random() * 2` which produces decimal numbers like 1.483, causing the wheel to rotate by fractional amounts (e.g., 1483.52°). This meant the wheel didn't complete exact full rotations, causing misalignment.
 
 **Before:**
+
 ```javascript
 const fullRotations = 3 + Math.random() * 2; // Could be 3.483, 4.721, etc.
 const totalRotation = fullRotations * 360 + targetAngle; // Not exact!
 ```
 
 **After:**
+
 ```javascript
 const fullRotations = Math.floor(3 + Math.random() * 3); // Always 3, 4, or 5
 const totalRotation = fullRotations * 360 + targetAngle; // Exact rotations!
 ```
 
 ### Issue 2: Incorrect Winner Verification Formula
+
 The verification code that checks which segment is at the pointer had the wrong formula. It wasn't properly accounting for the -90° starting position and the rotation direction.
 
 **Before:**
+
 ```javascript
 const adjustedPointerAngle = (pointerAngle - finalRotation + 360) % 360;
-const segmentAtPointer = Math.floor((adjustedPointerAngle + 90) / segmentAngle) % this.modules.length;
+const segmentAtPointer =
+  Math.floor((adjustedPointerAngle + 90) / segmentAngle) % this.modules.length;
 ```
 
 **After:**
+
 ```javascript
 // Segment i center after rotation: (-90 + i * segmentAngle + segmentAngle/2 + finalRotation) % 360
 // We want this to equal 90° (pointer position)
 // Solving for i: i = (180 - segmentAngle/2 - finalRotation) / segmentAngle
-const segmentAtPointer = Math.round((180 - segmentAngle / 2 - finalRotation) / segmentAngle) % this.modules.length;
-const actualSegmentAtPointer = segmentAtPointer < 0 ? segmentAtPointer + this.modules.length : segmentAtPointer;
+const segmentAtPointer =
+  Math.round((180 - segmentAngle / 2 - finalRotation) / segmentAngle) %
+  this.modules.length;
+const actualSegmentAtPointer =
+  segmentAtPointer < 0
+    ? segmentAtPointer + this.modules.length
+    : segmentAtPointer;
 ```
 
 ## How It Works Now
 
 ### Coordinate System:
+
 1. **Segments**: Start at -90° (bottom, 6 o'clock) and go counter-clockwise
 2. **Pointer**: Fixed at 90° (top, 12 o'clock)
 3. **Rotation**: Clockwise (positive degrees)
@@ -45,6 +58,7 @@ const actualSegmentAtPointer = segmentAtPointer < 0 ? segmentAtPointer + this.mo
 ### Example with 30 modules (12° per segment):
 
 **Selecting index 5:**
+
 1. Segment 5 center is initially at: -90 + 5×12 + 6 = -24°
 2. To align with pointer at 90°: targetAngle = 90 - (-24) = 114°
 3. Add 3-5 complete rotations: totalRotation = (3-5) × 360 + 114°
@@ -52,7 +66,9 @@ const actualSegmentAtPointer = segmentAtPointer < 0 ? segmentAtPointer + this.mo
 5. After rotation, segment 5 is at the pointer ✓
 
 ### Verification:
+
 The new formula correctly calculates which segment ended up at the pointer by:
+
 1. Taking the final rotation angle (mod 360)
 2. Working backwards to find which segment center is now at 90°
 3. Using the formula: `i = (180 - segmentAngle/2 - finalRotation) / segmentAngle`
@@ -69,6 +85,7 @@ After clearing browser cache and reloading:
 ## Debug Output
 
 You should now see logs like:
+
 ```
 🎯 Spinning wheel:
   Selected index: 5

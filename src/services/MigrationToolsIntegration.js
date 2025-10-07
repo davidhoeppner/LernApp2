@@ -31,7 +31,7 @@ class MigrationToolsIntegration {
       );
 
       // Step 1: Pre-migration validation
-  console.warn('Step 1: Pre-migration validation...');
+      console.warn('Step 1: Pre-migration validation...');
       const preValidation =
         await this.categoryValidationService.validateAllContentCategorization();
 
@@ -42,7 +42,7 @@ class MigrationToolsIntegration {
       }
 
       // Step 2: Start migration monitoring
-  console.warn('Step 2: Starting migration monitoring...');
+      console.warn('Step 2: Starting migration monitoring...');
       const migrationId = this._generateMigrationId();
       const monitoringResult =
         this.migrationMonitoringService.startMigrationMonitoring(migrationId, {
@@ -61,7 +61,7 @@ class MigrationToolsIntegration {
 
       try {
         // Step 3: Execute migration
-  console.warn('Step 3: Executing migration...');
+        console.warn('Step 3: Executing migration...');
         this.migrationMonitoringService.updateMigrationProgress(sessionId, {
           checkpoint: {
             phase: 'migration_start',
@@ -86,7 +86,7 @@ class MigrationToolsIntegration {
         }
 
         // Step 4: Post-migration validation
-  console.warn('Step 4: Post-migration validation...');
+        console.warn('Step 4: Post-migration validation...');
         this.migrationMonitoringService.updateMigrationProgress(sessionId, {
           checkpoint: {
             phase: 'post_validation_start',
@@ -100,7 +100,7 @@ class MigrationToolsIntegration {
           );
 
         // Step 5: Complete monitoring
-  console.warn('Step 5: Completing monitoring...');
+        console.warn('Step 5: Completing monitoring...');
         const completionResult =
           this.migrationMonitoringService.completeMigrationMonitoring(
             sessionId,
@@ -155,7 +155,7 @@ class MigrationToolsIntegration {
    */
   async validateMigrationReadiness() {
     try {
-  console.warn('Validating migration readiness...');
+      console.warn('Validating migration readiness...');
 
       const readinessCheck = {
         overall: 'ready',
@@ -308,7 +308,9 @@ class MigrationToolsIntegration {
    */
   async performMonitoredRollback(migrationId, options = {}) {
     try {
-      console.warn(`Starting monitored rollback for migration ${migrationId}...`);
+      console.warn(
+        `Starting monitored rollback for migration ${migrationId}...`
+      );
 
       // Validate rollback request
       const migrationHistory =
@@ -367,7 +369,7 @@ class MigrationToolsIntegration {
    */
   async generateComprehensiveReport(migrationId = null) {
     try {
-  console.warn('Generating comprehensive migration report...');
+      console.warn('Generating comprehensive migration report...');
 
       const report = {
         reportId: this._generateReportId(),

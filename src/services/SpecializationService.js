@@ -1350,7 +1350,7 @@ class SpecializationService {
         // Record migration status
         this._recordMigrationStatus(migrationResult);
 
-  console.warn(
+        console.warn(
           `✅ Migrated existing user to specialization: ${defaultSpecialization}`
         );
 

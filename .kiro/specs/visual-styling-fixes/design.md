@@ -9,6 +9,7 @@ This design outlines a comprehensive approach to auditing and fixing visual and 
 ### Design System Foundation
 
 The application already has a solid design system foundation with CSS custom properties defined in `src/style.css`:
+
 - Color palette (light/dark themes)
 - Typography scale
 - Spacing scale
@@ -21,6 +22,7 @@ The application already has a solid design system foundation with CSS custom pro
 ### Component Styling Strategy
 
 **Layered Approach**:
+
 1. **Base Styles** (`src/style.css`) - Global styles, design tokens, utility classes
 2. **Component Styles** - Component-specific styles using design tokens
 3. **State Styles** - Hover, focus, active, disabled states
@@ -33,6 +35,7 @@ The application already has a solid design system foundation with CSS custom pro
 **Purpose**: Systematically identify styling inconsistencies
 
 **Implementation**:
+
 - Create a script to scan all component files
 - Check for hardcoded colors, spacing, font sizes
 - Identify components not using CSS custom properties
@@ -43,6 +46,7 @@ The application already has a solid design system foundation with CSS custom pro
 ### 2. Component Style Fixes
 
 **Components to Review**:
+
 - Navigation
 - Cards (module cards, quiz cards, stat cards, action cards)
 - Buttons (all variants and sizes)
@@ -56,6 +60,7 @@ The application already has a solid design system foundation with CSS custom pro
 - Badges
 
 **Fixes to Apply**:
+
 - Consistent hover/focus states with proper transitions
 - Uniform border radius across similar components
 - Consistent shadow usage (elevation system)
@@ -65,6 +70,7 @@ The application already has a solid design system foundation with CSS custom pro
 ### 3. Responsive Design System
 
 **Breakpoints**:
+
 ```css
 /* Mobile-first approach */
 - Mobile: < 768px (base styles)
@@ -73,6 +79,7 @@ The application already has a solid design system foundation with CSS custom pro
 ```
 
 **Responsive Patterns**:
+
 - Grid layouts: Auto-fit with minmax for flexible columns
 - Navigation: Hamburger menu on mobile, horizontal on desktop
 - Typography: Fluid font sizes using clamp()
@@ -80,6 +87,7 @@ The application already has a solid design system foundation with CSS custom pro
 - Images: max-width 100%, height auto
 
 **Testing Strategy**:
+
 - Test at 320px (small mobile)
 - Test at 768px (tablet)
 - Test at 1024px (desktop)
@@ -90,12 +98,14 @@ The application already has a solid design system foundation with CSS custom pro
 **Purpose**: Ensure all components properly support light/dark themes
 
 **Implementation**:
+
 - Scan for hardcoded colors
 - Verify all colors use CSS custom properties
 - Test theme switching on all views
 - Check contrast ratios for accessibility
 
 **Color Usage Rules**:
+
 - Text: Use `--color-text`, `--color-text-secondary`, `--color-text-tertiary`
 - Backgrounds: Use `--color-bg`, `--color-bg-secondary`, `--color-bg-tertiary`
 - Borders: Use `--color-border`
@@ -105,12 +115,14 @@ The application already has a solid design system foundation with CSS custom pro
 ### 5. Animation and Transition Polish
 
 **Animation Principles**:
+
 - **Duration**: Fast (150ms), Base (250ms), Slow (350ms)
 - **Easing**: ease-in-out for most transitions
 - **Purpose**: Animations should provide feedback, not distraction
 - **Accessibility**: Respect `prefers-reduced-motion`
 
 **Animations to Review**:
+
 - Page transitions (fadeIn)
 - Button hover/active states
 - Card hover effects
@@ -121,6 +133,7 @@ The application already has a solid design system foundation with CSS custom pro
 - Navigation menu (mobile)
 
 **Implementation**:
+
 ```css
 /* Respect user preferences */
 @media (prefers-reduced-motion: reduce) {
@@ -134,6 +147,7 @@ The application already has a solid design system foundation with CSS custom pro
 ### 6. Spacing and Layout System
 
 **Spacing Scale** (already defined):
+
 - xs: 0.25rem (4px)
 - sm: 0.5rem (8px)
 - md: 1rem (16px)
@@ -143,12 +157,14 @@ The application already has a solid design system foundation with CSS custom pro
 - 3xl: 4rem (64px)
 
 **Layout Patterns**:
+
 - Container: max-width 1280px, centered
 - Section spacing: 2xl-3xl between major sections
 - Component spacing: md-lg within components
 - Element spacing: xs-sm between related elements
 
 **Grid System**:
+
 - Use CSS Grid for complex layouts
 - Use Flexbox for simple alignments
 - Utility classes for common patterns
@@ -192,6 +208,7 @@ The application already has a solid design system foundation with CSS custom pro
 ### Style Validation
 
 **Validation Rules**:
+
 1. All colors must use CSS custom properties
 2. All spacing must use design tokens or utility classes
 3. All interactive elements must have hover/focus states
@@ -199,6 +216,7 @@ The application already has a solid design system foundation with CSS custom pro
 5. All layouts must be responsive
 
 **Error Reporting**:
+
 - Console warnings for style violations (development only)
 - Visual indicators in dev mode
 - Automated tests for critical style rules
@@ -206,11 +224,13 @@ The application already has a solid design system foundation with CSS custom pro
 ### Fallback Strategies
 
 **Theme Switching**:
+
 - If theme fails to load, default to light theme
 - Persist theme preference in localStorage
 - Detect system preference as fallback
 
 **Responsive Breakpoints**:
+
 - Mobile-first approach ensures base functionality
 - Progressive enhancement for larger screens
 - Graceful degradation for older browsers
@@ -220,6 +240,7 @@ The application already has a solid design system foundation with CSS custom pro
 ### Visual Regression Testing
 
 **Manual Testing Checklist**:
+
 1. Test all views in light and dark themes
 2. Test all breakpoints (mobile, tablet, desktop)
 3. Test all interactive states (hover, focus, active, disabled)
@@ -230,6 +251,7 @@ The application already has a solid design system foundation with CSS custom pro
 ### Component Testing
 
 **Test Each Component**:
+
 - Renders correctly in both themes
 - Responds to viewport changes
 - Has proper hover/focus states
@@ -239,6 +261,7 @@ The application already has a solid design system foundation with CSS custom pro
 ### Browser Testing
 
 **Target Browsers**:
+
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
@@ -249,24 +272,28 @@ The application already has a solid design system foundation with CSS custom pro
 ## Implementation Plan
 
 ### Phase 1: Audit and Documentation
+
 1. Run style audit script
 2. Generate comprehensive report
 3. Categorize issues by severity
 4. Document all findings
 
 ### Phase 2: Critical Fixes
+
 1. Fix hardcoded colors
 2. Fix broken responsive layouts
 3. Fix missing hover/focus states
 4. Fix theme switching issues
 
 ### Phase 3: Polish and Enhancement
+
 1. Refine animations and transitions
 2. Improve spacing consistency
 3. Enhance visual hierarchy
 4. Polish component details
 
 ### Phase 4: Testing and Validation
+
 1. Manual testing across devices
 2. Accessibility testing
 3. Performance testing
@@ -275,6 +302,7 @@ The application already has a solid design system foundation with CSS custom pro
 ## Success Metrics
 
 **Quantitative**:
+
 - 0 hardcoded colors in components
 - 100% of interactive elements have hover/focus states
 - All layouts work on mobile (320px+)
@@ -282,6 +310,7 @@ The application already has a solid design system foundation with CSS custom pro
 - WCAG AA contrast ratios met
 
 **Qualitative**:
+
 - Consistent visual language throughout app
 - Smooth, purposeful animations
 - Professional, polished appearance

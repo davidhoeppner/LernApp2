@@ -5,12 +5,14 @@ Eine moderne, interaktive Lern-App zur Vorbereitung auf die IHK-Abschlussprüfun
 ## ✨ Features
 
 ### 📖 Umfangreiche Lerninhalte
+
 - **31 IHK-Module** mit detaillierten Erklärungen
 - **9 interaktive Quizze** zum Testen des Wissens
 - **4 Lernpfade** für strukturiertes Lernen
 - Alle Inhalte basieren auf dem **IHK-Prüfungskatalog 2025**
 
 ### 🎯 Neue Themen 2025
+
 - ✅ Aktivitätsdiagramme und Pseudocode (statt Struktogramme)
 - ✅ Test-Driven Development (TDD)
 - ✅ Scrum und agile Methoden
@@ -18,6 +20,7 @@ Eine moderne, interaktive Lern-App zur Vorbereitung auf die IHK-Abschlussprüfun
 - ✅ Last- und Performancetests
 
 ### 💡 Intelligente Features
+
 - **Fortschrittsverfolgung**: Behalte den Überblick über abgeschlossene Module und Quiz-Versuche
 - **Prüfungsbereitschaft**: Detaillierte Analyse deiner Prüfungsvorbereitung mit Schwachstellenerkennung
 - **Personalisierte Empfehlungen**: Intelligente Vorschläge basierend auf deinem Lernfortschritt
@@ -35,6 +38,7 @@ Eine moderne, interaktive Lern-App zur Vorbereitung auf die IHK-Abschlussprüfun
 ## 🚀 Quick Start
 
 ### Voraussetzungen
+
 - Node.js 20.19+ oder 22.12+
 - npm oder yarn
 
@@ -112,21 +116,26 @@ npm run preview
 ### Module nach Kategorien
 
 #### FÜ-01: Planen eines Softwareproduktes
+
 - Projektplanung und Anforderungsanalyse
 
 #### FÜ-02: Entwickeln und Bereitstellen
+
 - Kontrollstrukturen (Aktivitätsdiagramme, Pseudocode)
 - Datenbank-Anomalien und Normalisierung
 
 #### FÜ-03: Qualitätssicherung
+
 - Software-Tests (Black Box, White Box)
 - Last- und Performancetests (NEU 2025)
 
 #### FÜ-04: Informationssicherheit
+
 - Sicherheitsbedrohungen
 - Technisch-organisatorische Maßnahmen
 
 #### BP-01 bis BP-05: Betriebliche Projektarbeit
+
 - Kerberos, ODBC, NAS/SAN
 - Cloud-Modelle, REST-API
 - TDD (NEU 2025), Scrum (NEU 2025)
@@ -135,6 +144,7 @@ npm run preview
 - SQL (DDL, DML, DQL)
 
 ### Lernpfade
+
 1. **AP2 Komplett** - Vollständige Prüfungsvorbereitung
 2. **SQL Mastery** - Alle SQL-Befehle meistern
 3. **Neue Themen 2025** - TDD, Scrum, Sortierverfahren
@@ -157,6 +167,7 @@ npm run preview
 Die App folgt einer klaren Service-orientierten Architektur:
 
 ### Services
+
 - **IHKContentService**: Zentrale Verwaltung aller IHK-Inhalte (Module, Quizze, Lernpfade)
 - **ExamProgressService**: Fortschrittsanalyse, Schwachstellenerkennung, Prüfungsbereitschaft
 - **StateManager**: Zentrales State Management mit Pub/Sub für reaktive Updates
@@ -166,11 +177,13 @@ Die App folgt einer klaren Service-orientierten Architektur:
 - **ThemeManager**: Dark/Light Mode Management
 
 ### Components
+
 - Alle UI-Komponenten sind eigenständige Klassen
 - Klare Trennung von Darstellung und Logik
 - Wiederverwendbare Komponenten (LoadingSpinner, EmptyState, ErrorBoundary)
 
 ### Data Flow
+
 1. Services laden Daten aus JSON-Dateien (statische Imports für optimales Bundling)
 2. StateManager verwaltet den globalen App-State
 3. Components subscriben zu State-Änderungen
@@ -251,6 +264,7 @@ Alle Quizze verwenden das **einheitliche IHK-Quiz-Format** mit erweiterten Featu
 ```
 
 **Unterstützte Fragetypen:**
+
 - `single-choice` - Eine richtige Antwort
 - `multiple-choice` - Mehrere richtige Antworten
 - `true-false` - Wahr/Falsch-Fragen

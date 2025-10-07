@@ -7,6 +7,7 @@ The Three-Tier Category System is a comprehensive reorganization of the IHK lear
 ## Three-Tier Categories
 
 ### 1. Daten und Prozessanalyse (DPA)
+
 - **ID**: `daten-prozessanalyse`
 - **Icon**: 📊
 - **Color**: `#2563eb`
@@ -14,6 +15,7 @@ The Three-Tier Category System is a comprehensive reorganization of the IHK lear
 - **Target Audience**: Students preparing for the "Daten und Prozessanalyse" specialization
 
 ### 2. Anwendungsentwicklung (AE)
+
 - **ID**: `anwendungsentwicklung`
 - **Icon**: 💻
 - **Color**: `#dc2626`
@@ -21,6 +23,7 @@ The Three-Tier Category System is a comprehensive reorganization of the IHK lear
 - **Target Audience**: Students preparing for the "Anwendungsentwicklung" specialization
 
 ### 3. Allgemein (General)
+
 - **ID**: `allgemein`
 - **Icon**: 📖
 - **Color**: `#059669`
@@ -32,9 +35,11 @@ The Three-Tier Category System is a comprehensive reorganization of the IHK lear
 ### Service Layer
 
 #### IHKContentService
+
 The main service for accessing content with three-tier category support.
 
 **New Methods:**
+
 - `getThreeTierCategories()` - Get all available three-tier categories
 - `getModulesByThreeTierCategory(categoryId)` - Get modules by category
 - `getQuizzesByThreeTierCategory(categoryId)` - Get quizzes by category
@@ -45,13 +50,16 @@ The main service for accessing content with three-tier category support.
 - `getThreeTierCategoryMetadata(categoryId)` - Get category metadata
 
 **Backward Compatibility Methods:**
+
 - `getModulesByLegacyCategory(categoryId)` - ⚠️ Deprecated
 - `searchContentLegacy(query, filters)` - ⚠️ Deprecated
 
 #### CategoryMappingService
+
 Handles the mapping between legacy categories and three-tier categories.
 
 **Key Methods:**
+
 - `mapToThreeTierCategory(contentItem)` - Map content to three-tier category
 - `getThreeTierCategories()` - Get category definitions
 - `getCategoryRelevance(categoryId, specializationId)` - Get relevance for specialization
@@ -59,6 +67,7 @@ Handles the mapping between legacy categories and three-tier categories.
 ### Data Structure
 
 #### Enhanced Content Items
+
 All content items now include three-tier category information:
 
 ```javascript
@@ -67,7 +76,7 @@ All content items now include three-tier category information:
   id: "module-id",
   title: "Module Title",
   category: "BP-DPA-01", // Original category
-  
+
   // New three-tier category fields
   threeTierCategory: "daten-prozessanalyse",
   categoryMapping: {
@@ -81,6 +90,7 @@ All content items now include three-tier category information:
 ```
 
 #### Category Metadata Structure
+
 ```javascript
 {
   id: "daten-prozessanalyse",
@@ -110,20 +120,27 @@ All content items now include three-tier category information:
 
 ```javascript
 // Get all DPA modules
-const dpaModules = await ihkContentService.getModulesByThreeTierCategory('daten-prozessanalyse');
+const dpaModules = await ihkContentService.getModulesByThreeTierCategory(
+  'daten-prozessanalyse'
+);
 
 // Get all AE quizzes
-const aeQuizzes = await ihkContentService.getQuizzesByThreeTierCategory('anwendungsentwicklung');
+const aeQuizzes = await ihkContentService.getQuizzesByThreeTierCategory(
+  'anwendungsentwicklung'
+);
 
 // Get all content in General category
-const generalContent = await ihkContentService.getContentByThreeTierCategory('allgemein');
+const generalContent =
+  await ihkContentService.getContentByThreeTierCategory('allgemein');
 ```
 
 ### Getting Organized Content with Metadata
 
 ```javascript
 // Get content organized by categories for a specific specialization
-const organizedContent = await ihkContentService.getContentWithCategoryInfo('daten-prozessanalyse');
+const organizedContent = await ihkContentService.getContentWithCategoryInfo(
+  'daten-prozessanalyse'
+);
 
 console.log(organizedContent);
 // Output:
@@ -153,14 +170,20 @@ console.log(organizedContent);
 
 ```javascript
 // Search for SQL content in DPA category
-const dpaResults = await ihkContentService.searchInCategory('SQL', 'daten-prozessanalyse');
+const dpaResults = await ihkContentService.searchInCategory(
+  'SQL',
+  'daten-prozessanalyse'
+);
 
 // Advanced search with category filtering
-const searchResults = await ihkContentService.searchThreeTierCategories('database', {
-  categories: ['daten-prozessanalyse', 'allgemein'],
-  contentTypes: ['module', 'quiz'],
-  maxResultsPerCategory: 5
-});
+const searchResults = await ihkContentService.searchThreeTierCategories(
+  'database',
+  {
+    categories: ['daten-prozessanalyse', 'allgemein'],
+    contentTypes: ['module', 'quiz'],
+    maxResultsPerCategory: 5,
+  }
+);
 ```
 
 ### Getting Statistics
@@ -170,16 +193,19 @@ const searchResults = await ihkContentService.searchThreeTierCategories('databas
 const stats = await ihkContentService.getThreeTierCategoryStatistics({
   includeSpecializationRelevance: true,
   includeDifficultyDistribution: true,
-  includeContentTypes: true
+  includeContentTypes: true,
 });
 
 // Get statistics for specific specialization
-const dpaStats = await ihkContentService.getCategoryStatsForSpecialization('daten-prozessanalyse');
+const dpaStats = await ihkContentService.getCategoryStatsForSpecialization(
+  'daten-prozessanalyse'
+);
 ```
 
 ## Component Integration
 
 ### ModuleListView
+
 Updated to use three-tier categories for filtering and display:
 
 ```javascript
@@ -188,40 +214,47 @@ const categories = [
   { id: 'all', name: 'All Categories', icon: '📚' },
   { id: 'daten-prozessanalyse', name: 'Daten und Prozessanalyse', icon: '📊' },
   { id: 'anwendungsentwicklung', name: 'Anwendungsentwicklung', icon: '💻' },
-  { id: 'allgemein', name: 'Allgemein', icon: '📖' }
+  { id: 'allgemein', name: 'Allgemein', icon: '📖' },
 ];
 ```
 
 ### IHKQuizListView
+
 Similarly updated to support three-tier category filtering and display.
 
 ### SpecializationSelector & SpecializationIndicator
+
 Enhanced to trigger category relevance recalculation when specialization changes:
 
 ```javascript
 // Triggers category update when specialization changes
-window.dispatchEvent(new CustomEvent('specialization-changed', { 
-  detail: { 
-    specializationId,
-    updateCategories: true // Signal for category relevance update
-  } 
-}));
+window.dispatchEvent(
+  new CustomEvent('specialization-changed', {
+    detail: {
+      specializationId,
+      updateCategories: true, // Signal for category relevance update
+    },
+  })
+);
 ```
 
 ## Migration and Backward Compatibility
 
 ### Automatic Migration
+
 - All existing content is automatically mapped to three-tier categories during load
 - Original category fields are preserved for backward compatibility
 - User progress is maintained across the transition
 
 ### Legacy Category Mapping Rules
+
 1. **DPA Content**: `BP-DPA-*` → `daten-prozessanalyse`
 2. **AE Content**: `BP-AE-*`, `BP-01` to `BP-05` → `anwendungsentwicklung`
 3. **General Content**: `FÜ-*`, `FUE-*` → `allgemein`
 4. **Default**: Unknown categories → `allgemein`
 
 ### Deprecation Warnings
+
 Legacy methods now show deprecation warnings:
 
 ```javascript
@@ -235,16 +268,19 @@ await ihkContentService.searchContentLegacy('query', { category: 'BP-01' });
 ## Performance Optimizations
 
 ### Caching Strategy
+
 - **Category Metadata**: Cached in memory with refresh on configuration changes
 - **Content Categories**: Cached with content during load
 - **Category Indexes**: Efficient data structures for fast lookups
 
 ### Efficient Filtering
+
 - Indexed data structures for category-based filtering
 - Optimized search algorithms for three-tier categories
 - Sub-100ms response times for category operations
 
 ### Memory Management
+
 - Lazy loading of category metadata
 - Progressive content loading
 - Cache optimization and cleanup utilities
@@ -252,11 +288,13 @@ await ihkContentService.searchContentLegacy('query', { category: 'BP-01' });
 ## Error Handling
 
 ### Category Assignment Validation
+
 - Missing mappings default to "Allgemein" with warnings
 - Conflicting rules resolved by priority
 - Validation reports for content fixes
 
 ### Graceful Degradation
+
 - Fallback to basic categorization for invalid content
 - Preserve existing functionality during errors
 - Comprehensive error reporting
@@ -264,16 +302,19 @@ await ihkContentService.searchContentLegacy('query', { category: 'BP-01' });
 ## Testing
 
 ### Unit Tests
+
 - Category mapping logic with sample content
 - Priority-based rule resolution
 - Edge cases and invalid inputs
 
 ### Integration Tests
+
 - End-to-end content loading pipeline
 - Category assignments for all content
 - Performance with full content set
 
 ### Component Tests
+
 - Three-tier category filtering in UI components
 - Specialization integration
 - User progress preservation
@@ -309,18 +350,21 @@ await ihkContentService.searchContentLegacy('query', { category: 'BP-01' });
 ### Common Issues
 
 #### Content Not Appearing in Expected Category
+
 - Check if content has `threeTierCategory` field
 - Verify category mapping rules
 - Check CategoryMappingService availability
 - Review content metadata and prefixes
 
 #### Performance Issues
+
 - Monitor cache hit rates
 - Check category index efficiency
 - Review memory usage patterns
 - Optimize content loading strategies
 
 #### Backward Compatibility Problems
+
 - Ensure original category fields are preserved
 - Check deprecation warning handling
 - Verify legacy method fallbacks
@@ -342,6 +386,7 @@ const validation = categoryValidationService.validateAllContent();
 ## Future Enhancements
 
 ### Planned Features
+
 - **Dynamic Category Rules**: User-configurable mapping rules
 - **Category Analytics**: Detailed usage and performance metrics
 - **Advanced Filtering**: Multi-category and cross-category filtering
@@ -349,6 +394,7 @@ const validation = categoryValidationService.validateAllContent();
 - **Export/Import**: Category configuration management
 
 ### Extensibility
+
 - **Custom Categories**: Support for additional category tiers
 - **Plugin System**: Third-party category extensions
 - **API Integration**: External category management systems

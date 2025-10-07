@@ -130,7 +130,6 @@
 
 - [x] 10. Suchfunktion und Filterung implementieren
   - [x] 10.1 IHK-Suchkomponente erstellen
-
     - Erstelle SearchComponent für IHK-Inhalte
     - Implementiere Volltextsuche über Module und Quizzes
     - Integriere mit IHKContentService.searchContent()
@@ -145,20 +144,16 @@
     - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5_
 
 - [x] 11. IHK-Fortschritts-Tracking implementieren
-
-
   - [x] 11.1 ExamProgressService erweitern
 
+        - Implementiere getProgressByCategory() für FÜ/BP-Kategorien
+        - Implementiere getWeakAreas() für Schwachstellen-Analyse
+        - Implementiere getExamReadiness() für Prüfungsbereitschaft
+        - Implementiere getRecommendedModules()
 
-    - Implementiere getProgressByCategory() für FÜ/BP-Kategorien
-    - Implementiere getWeakAreas() für Schwachstellen-Analyse
-    - Implementiere getExamReadiness() für Prüfungsbereitschaft
-    - Implementiere getRecommendedModules() 
-für Empfehlungen
-    - _Requirements: 11.1, 11.2, 11.3, 11.4_
+    für Empfehlungen - _Requirements: 11.1, 11.2, 11.3, 11.4_
 
   - [x] 11.2 IHK-Progress-View erstellen
-
     - Erstelle IHKProgressView für IHK-spezifischen Fortschritt
     - Zeige Fortschritt nach Kategorien (FÜ-01 bis BP-05)
     - Zeige Schwachstellen und Empfehlungen an

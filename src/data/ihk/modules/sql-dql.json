@@ -10,10 +10,7 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 60,
-  "prerequisites": [
-    "sql-ddl-2025",
-    "sql-dml-2025"
-  ],
+  "prerequisites": ["sql-ddl-2025", "sql-dml-2025"],
   "tags": [
     "SQL",
     "DQL",
@@ -114,9 +111,7 @@
       "solution": "SELECT DISTINCT m.vorname, m.nachname, m.email\nFROM mitarbeiter m\nINNER JOIN mitarbeiter_projekt mp ON m.mitarbeiter_id = mp.mitarbeiter_id\nWHERE mp.projekt_id IN (\n    SELECT projekt_id\n    FROM projekt\n    WHERE budget > 100000\n)\nORDER BY m.nachname;"
     }
   ],
-  "relatedQuizzes": [
-    "sql-comprehensive-quiz-2025"
-  ],
+  "relatedQuizzes": ["sql-comprehensive-quiz-2025"],
   "resources": [
     {
       "title": "SQL Tutorial - SELECT",

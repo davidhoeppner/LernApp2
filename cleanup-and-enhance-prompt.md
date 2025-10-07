@@ -54,7 +54,7 @@
    - Add visual progress bars for score representation
    - Include performance badges or icons based on score ranges:
      - 90-100%: 🏆 "Excellent"
-     - 80-89%: 🥇 "Very Good" 
+     - 80-89%: 🥇 "Very Good"
      - 70-79%: 🥈 "Good"
      - 60-69%: 🥉 "Pass"
      - Below 60%: 📚 "Needs Review"
@@ -86,24 +86,28 @@
 ### Implementation Guidelines
 
 **Code Quality Standards**:
+
 - Remove all `console.log` statements used for debugging
 - Add proper error handling for all async operations
 - Ensure all functions have proper JSDoc comments
 - Use consistent naming conventions throughout
 
 **Performance Optimizations**:
+
 - Lazy load quiz results data
 - Optimize image and icon loading
 - Minimize DOM manipulations during result display
 - Cache frequently accessed quiz data
 
 **Accessibility Improvements**:
+
 - Ensure all result screens are screen reader friendly
 - Add proper ARIA labels for score indicators
 - Use semantic HTML for result structures
 - Provide keyboard navigation for all interactive elements
 
 **Testing Requirements**:
+
 - Test wheel functionality with various module counts (0, 1, 2, 10+ modules)
 - Verify quiz results display correctly for all score ranges
 - Test navigation flow from quiz completion to next actions
@@ -134,6 +138,7 @@ After completing this cleanup and enhancement:
 ### Files to Focus On
 
 **Primary Files for Cleanup**:
+
 - `src/components/WheelView.js` - Fix empty module issue
 - `src/components/IHKQuizView.js` - Enhance results display
 - `src/services/QuizService.js` - Clean up unused methods
@@ -141,6 +146,7 @@ After completing this cleanup and enhancement:
 - All files in `src/data/ihk/` - Validate module structure
 
 **Secondary Files for Review**:
+
 - `src/app.js` - Remove unused service initializations
 - `src/services/ModuleService.js` - Clean up module loading logic
 - `src/style.css` - Remove unused CSS classes

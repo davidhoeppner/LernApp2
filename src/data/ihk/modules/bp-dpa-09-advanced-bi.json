@@ -10,8 +10,8 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 70,
-  "prerequisites": ["bp-dpa-04-bi-fundamentals","bp-dpa-06-data-quality"],
-  "tags": ["BI","Dashboard","Self-Service","Governance","Datenschutz"],
+  "prerequisites": ["bp-dpa-04-bi-fundamentals", "bp-dpa-06-data-quality"],
+  "tags": ["BI", "Dashboard", "Self-Service", "Governance", "Datenschutz"],
   "content": "# Advanced BI: Dashboards, Self-Service Analytics und Governance\n\n## Dashboard-Design\n- Klarheit und Zielgruppenorientierung: KPI-Fokus, passende Visualisierungen\n- Gestaltungsprinzipien: Hervorhebung wichtiger Kennzahlen, Vermeidung von Chartjunk\n\n## Self-Service Analytics\n- Datenbereitstellung, semantische Layer, Datensicherheit und Rollenmanagement\n- Vorteile: schnellere Erkenntnisse; Risiken: falsche Interpretation ohne Training\n\n## Data Governance und Datenschutz\n- Daten-Ownership, Metadatenmanagement, Zugriffskontrollen\n- DSGVO-relevante Gesichtspunkte: Minimierung personenbezogener Daten, Verarbeitungssicherheit\n\n## Prüfungsrelevante Aspekte\n- Gestaltung einfacher Dashboards nach Best-Practices erklären\n- Vor- und Nachteile von Self-Service Analytics benennen\n- Grundprinzipien von Data Governance und Datenschutz im BI-Kontext beschreiben",
   "learningObjectives": [
     "Grundsätze des Dashboard-Designs anwenden",
@@ -25,7 +25,11 @@
   ],
   "relatedQuizzes": ["bp-dpa-09-advanced-bi-quiz"],
   "resources": [
-    { "title": "Dashboard Design best practices", "url": "https://www.tableau.com/learn/articles/best-dashboard-design", "type": "article" }
+    {
+      "title": "Dashboard Design best practices",
+      "url": "https://www.tableau.com/learn/articles/best-dashboard-design",
+      "type": "article"
+    }
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
   "version": "1.0"

@@ -39,14 +39,14 @@ Updated the `markdownToHtml()` method in `src/components/IHKModuleView.js` to:
 ```javascript
 markdownToHtml(markdown) {
   let html = markdown;
-  
+
   // Headers
   html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
   html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
   html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
-  
+
   // ... basic replacements
-  
+
   return html;
 }
 ```
@@ -55,7 +55,7 @@ markdownToHtml(markdown) {
 
 ### After (Fixed)
 
-```javascript
+````javascript
 markdownToHtml(markdown) {
   if (!markdown) return '';
 
@@ -70,16 +70,17 @@ markdownToHtml(markdown) {
   });
 
   // ... comprehensive markdown processing
-  
+
   return html;
 }
-```
+````
 
 **Solution**: Convert escaped newlines first, then process markdown with proper order of operations.
 
 ## Impact
 
 This fix affects all IHK modules displayed in the application:
+
 - ✅ Headers now render as proper HTML headings
 - ✅ Paragraphs are separated correctly
 - ✅ Lists display as proper `<ul>` elements
@@ -91,13 +92,17 @@ This fix affects all IHK modules displayed in the application:
 ## Testing
 
 ### Before Fix
+
 Content appeared as:
+
 ```
 FÜ-04: Sicherstellen der Informationssicherheit\n\n## Einführung\n\nInformationssicherheit ist ein zentrales Thema...
 ```
 
 ### After Fix
+
 Content renders as:
+
 ```html
 <h1>FÜ-04: Sicherstellen der Informationssicherheit</h1>
 
@@ -113,6 +118,7 @@ Content renders as:
 ## Related Issues
 
 This fix complements the UTF-8 encoding fixes from Task 2. Together, they ensure:
+
 1. German characters display correctly (UTF-8 fix)
 2. Content is properly formatted (Markdown rendering fix)
 

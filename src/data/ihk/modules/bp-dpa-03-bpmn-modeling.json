@@ -13,7 +13,13 @@
       "important": true,
       "estimatedTime": 65,
       "prerequisites": [],
-      "tags": ["BPMN", "Geschäftsprozesse", "Prozessmodellierung", "Workflow", "Prozessoptimierung"],
+      "tags": [
+        "BPMN",
+        "Geschäftsprozesse",
+        "Prozessmodellierung",
+        "Workflow",
+        "Prozessoptimierung"
+      ],
       "content": "# Geschäftsprozessmodellierung mit BPMN\n\n## Einführung\n\nBusiness Process Model and Notation (BPMN) ist ein internationaler Standard zur grafischen Darstellung von Geschäftsprozessen. Für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse ist BPMN ein essentielles Werkzeug zur Analyse, Dokumentation und Optimierung von Geschäftsprozessen.\n\n## BPMN-Grundlagen\n\n### Definition und Zweck\n\n**BPMN (Business Process Model and Notation):**\n- Standardisierte grafische Notation für Geschäftsprozesse\n- Entwickelt von der Object Management Group (OMG)\n- Aktuelle Version: BPMN 2.0\n- Brücke zwischen Geschäftsanalysten und IT-Entwicklern\n\n**Ziele von BPMN:**\n- Einheitliche Darstellung von Geschäftsprozessen\n- Verbesserung der Kommunikation zwischen Stakeholdern\n- Basis für Prozessautomatisierung\n- Dokumentation und Compliance\n\n## BPMN-Grundelemente\n\n### 1. Flussobjekte (Flow Objects)\n\n#### Ereignisse (Events)\n**Start-Ereignisse:**\n- Kreis mit dünnem Rand\n- Auslöser für Prozessbeginn\n- Typen: Nachrichten-, Zeit-, Signal-, Regel-Start\n\n#### Aktivitäten (Activities)\n**Aufgaben (Tasks):**\n- Abgerundetes Rechteck\n- Atomare Arbeitsschritte\n- Typen: Benutzer-, Service-, Skript-, Geschäftsregel-Aufgabe\n\n#### Gateways (Entscheidungen)\n**Exklusives Gateway (XOR):**\n- Raute mit X\n- Entweder-oder-Entscheidung\n- Nur ein ausgehender Pfad wird gewählt\n\n## Prozessmodellierung in der Praxis\n\n### Modellierungsprozess\n\n**Schritt 1: Prozessidentifikation**\n- Prozessgrenzen definieren\n- Start- und Endpunkte bestimmen\n- Stakeholder identifizieren\n\n**Schritt 2: Ist-Analyse**\n- Aktuellen Prozess dokumentieren\n- Interviews mit Prozessbeteiligten\n- Beobachtung und Datensammlung\n\n## Prüfungsrelevante Aspekte\n\n- BPMN-Grundelemente erkennen und verwenden\n- Prozessdiagramme lesen und erstellen\n- Gateways korrekt einsetzen\n- Schwimmbahnen für Verantwortlichkeiten nutzen\n- Prozessoptimierung durch BPMN-Analyse",
       "codeExamples": [],
       "relatedQuizzes": ["bp-dpa-03-bpmn-quiz"],

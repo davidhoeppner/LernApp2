@@ -56,7 +56,6 @@ Simple, practical plan to fix issues and add the Wheel of Fortune feature. No ov
   - _Requirements: 6.11_
 
 - [x] 7. Add wheel to navigation
-
   - Update `src/components/Navigation.js`
   - Add "🎯 Lern-Modul" link
   - Register `/wheel` route in `src/app.js`
@@ -64,18 +63,16 @@ Simple, practical plan to fix issues and add the Wheel of Fortune feature. No ov
   - _Requirements: 5.10, 6.1_
 
 - [x] 8. Add basic accessibility
-
   - Add aria-label to spin button
   - Add aria-live region for announcing result
   - Make sure keyboard navigation works (Tab, Enter)
   - _Requirements: 5.7, 5.8_
 
 ## Test It Works
+
 -
 
 - [x] 9. Manual testing
-
-
   - Click wheel link in navigation
   - Spin wheel 3 times
   - Click "Zum Modul" and verify it navigates
@@ -83,13 +80,6 @@ Simple, practical plan to fix issues and add the Wheel of Fortune feature. No ov
   - Test on phone
   - Test dark mode
   - _Requirements: 8.1, 8.2, 8.3_
-
-
-
-
-
-
-
 
 - [x] 10. Fix any bugs found
   - Fix issues discovered during testing

@@ -10,9 +10,7 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 65,
-  "prerequisites": [
-    "bp-dpa-03-bpmn-fundamentals"
-  ],
+  "prerequisites": ["bp-dpa-03-bpmn-fundamentals"],
   "tags": [
     "process-mining",
     "event-log",
@@ -38,9 +36,7 @@
       "explanation": "Berechnung der Durchlaufzeit je Prozessinstanz (Case) in SQL."
     }
   ],
-  "relatedQuizzes": [
-    "bp-dpa-03-process-mining-quiz"
-  ],
+  "relatedQuizzes": ["bp-dpa-03-process-mining-quiz"],
   "resources": [
     {
       "title": "BPMN 2.0 Specification",
@@ -73,7 +69,5 @@
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
   "version": "1.0",
-  "tracks": [
-    "DPA"
-  ]
+  "tracks": ["DPA"]
 }

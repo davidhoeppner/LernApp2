@@ -138,12 +138,7 @@
       "id": "q9",
       "type": "single-choice",
       "question": "Gegeben ist die Tabelle Bestellposition(BestellNr, ProduktNr, Menge, Produktname, Preis) mit Primärschlüssel (BestellNr, ProduktNr). Welche Normalform ist verletzt?",
-      "options": [
-        "1NF",
-        "2NF",
-        "3NF",
-        "Keine Verletzung"
-      ],
+      "options": ["1NF", "2NF", "3NF", "Keine Verletzung"],
       "correctAnswer": "2NF",
       "explanation": "Die 2NF ist verletzt, da Produktname und Preis nur von ProduktNr abhängig sind, nicht vom gesamten zusammengesetzten Schlüssel (BestellNr, ProduktNr). Dies sind partielle funktionale Abhängigkeiten.",
       "points": 2,
@@ -171,12 +166,7 @@
       "id": "q11",
       "type": "single-choice",
       "question": "Gegeben ist die Tabelle Mitarbeiter(PersonalNr, Name, AbteilungsNr, Abteilungsname). Welche Normalform ist verletzt?",
-      "options": [
-        "1NF",
-        "2NF",
-        "3NF",
-        "Keine Verletzung"
-      ],
+      "options": ["1NF", "2NF", "3NF", "Keine Verletzung"],
       "correctAnswer": "3NF",
       "explanation": "Die 3NF ist verletzt, da eine transitive Abhängigkeit vorliegt: PersonalNr → AbteilungsNr → Abteilungsname. Abteilungsname ist transitiv von PersonalNr abhängig.",
       "points": 2,

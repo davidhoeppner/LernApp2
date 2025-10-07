@@ -164,7 +164,7 @@ class ModuleListView {
    * Render module grid
    */
   _renderModuleGrid(modules) {
-  console.warn(
+    console.warn(
       '🎯 Rendering',
       modules.length,
       'modules with filter:',

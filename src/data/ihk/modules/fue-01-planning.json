@@ -33,9 +33,7 @@
       "explanation": "Eine Wirtschaftlichkeitsberechnung vergleicht Kosten und Nutzen eines Projekts über einen definierten Zeitraum."
     }
   ],
-  "relatedQuizzes": [
-    "fue-01-planning-quiz"
-  ],
+  "relatedQuizzes": ["fue-01-planning-quiz"],
   "microQuizzes": ["demo-mq1", "demo-mq2"],
   "resources": [
     {

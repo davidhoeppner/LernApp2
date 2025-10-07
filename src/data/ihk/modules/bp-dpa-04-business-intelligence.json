@@ -13,14 +13,33 @@
       "important": true,
       "estimatedTime": 70,
       "prerequisites": ["bp-dpa-01-er-modeling", "bp-dpa-02-etl-fundamentals"],
-      "tags": ["Business Intelligence", "BI", "Dashboards", "Datenvisualisierung", "KPIs", "Reporting"],
+      "tags": [
+        "Business Intelligence",
+        "BI",
+        "Dashboards",
+        "Datenvisualisierung",
+        "KPIs",
+        "Reporting"
+      ],
       "content": "# Business Intelligence und Dashboards\n\n## Einführung\n\nBusiness Intelligence (BI) umfasst Technologien, Anwendungen und Praktiken zur Sammlung, Integration, Analyse und Präsentation von Geschäftsinformationen. Für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse ist BI essentiell, um aus Daten verwertbare Erkenntnisse zu gewinnen und datengetriebene Entscheidungen zu ermöglichen.",
       "codeExamples": [],
       "relatedQuizzes": ["bp-dpa-04-bi-quiz"],
       "resources": [
-        { "title": "Microsoft Power BI Documentation", "url": "https://docs.microsoft.com/en-us/power-bi/", "type": "documentation" },
-        { "title": "Tableau Learning Resources", "url": "https://www.tableau.com/learn", "type": "tutorial" },
-        { "title": "The Data Warehouse Toolkit", "url": "https://www.kimballgroup.com/", "type": "book" }
+        {
+          "title": "Microsoft Power BI Documentation",
+          "url": "https://docs.microsoft.com/en-us/power-bi/",
+          "type": "documentation"
+        },
+        {
+          "title": "Tableau Learning Resources",
+          "url": "https://www.tableau.com/learn",
+          "type": "tutorial"
+        },
+        {
+          "title": "The Data Warehouse Toolkit",
+          "url": "https://www.kimballgroup.com/",
+          "type": "book"
+        }
       ],
       "learningObjectives": [
         "BI-Architektur und Komponenten verstehen",

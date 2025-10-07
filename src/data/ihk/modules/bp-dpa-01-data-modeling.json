@@ -13,7 +13,13 @@
       "important": true,
       "estimatedTime": 60,
       "prerequisites": [],
-      "tags": ["ER-Modell", "Datenmodellierung", "Entitäten", "Beziehungen", "Kardinalitäten"],
+      "tags": [
+        "ER-Modell",
+        "Datenmodellierung",
+        "Entitäten",
+        "Beziehungen",
+        "Kardinalitäten"
+      ],
       "content": "# ER-Modellierung und Datenmodellierung\n\n## Einführung\n\nDie Entity-Relationship-Modellierung (ER-Modellierung) ist eine grundlegende Methode zur konzeptionellen Darstellung von Datenstrukturen. Sie bildet die Basis für die Entwicklung relationaler Datenbanken und ist essentiell für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse.\n\n## Grundkonzepte der ER-Modellierung\n\n### 1. Entitäten (Entities)\n\n**Definition:**\n- Objekte oder Konzepte der realen Welt\n- Eindeutig identifizierbar\n- Haben Eigenschaften (Attribute)\n\n**Beispiele:**\n- Kunde, Produkt, Bestellung, Mitarbeiter\n- Darstellung: Rechteck\n\n## ... (see backup for full content)",
       "codeExamples": [],
       "relatedQuizzes": ["bp-dpa-01-er-modeling-quiz"],

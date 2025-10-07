@@ -104,7 +104,7 @@ class WheelView {
     let loadingSource = 'unknown';
 
     try {
-  console.warn('WheelView: Starting module loading...');
+      console.warn('WheelView: Starting module loading...');
 
       // Attempt to load modules from IHKContentService
       try {
@@ -136,7 +136,9 @@ class WheelView {
 
       // Validate and filter modules
       try {
-        console.warn(`WheelView: Validating ${rawModules.length} raw modules...`);
+        console.warn(
+          `WheelView: Validating ${rawModules.length} raw modules...`
+        );
         this.modules = this.validator.filterValidModules(rawModules);
 
         if (this.modules.length === 0) {
@@ -897,8 +899,8 @@ class WheelView {
         selectedAt: new Date().toISOString(),
       };
 
-  this.stateManager.setState('lastWheelModule', stateData);
-  console.warn('WheelView: Successfully saved wheel selection to state');
+      this.stateManager.setState('lastWheelModule', stateData);
+      console.warn('WheelView: Successfully saved wheel selection to state');
     } catch (error) {
       console.error('WheelView: Failed to save wheel state:', error);
       // Non-critical error, log but continue
@@ -926,7 +928,7 @@ class WheelView {
     }
 
     try {
-  console.warn('WheelView: Navigating to module:', this.selectedModule.id);
+      console.warn('WheelView: Navigating to module:', this.selectedModule.id);
       window.location.hash = `#/modules/${this.selectedModule.id}`;
     } catch (error) {
       console.error('WheelView: Navigation failed:', error);

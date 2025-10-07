@@ -10,9 +10,7 @@
   "removedIn2025": false,
   "important": false,
   "estimatedTime": 55,
-  "prerequisites": [
-    "bp-dpa-03-bpmn-fundamentals"
-  ],
+  "prerequisites": ["bp-dpa-03-bpmn-fundamentals"],
   "tags": [
     "lean",
     "six-sigma",
@@ -31,9 +29,7 @@
       "explanation": "Pareto zeigt Fokus auf wenige Fehlerklassen mit größtem Einfluss (80/20 Heuristik)."
     }
   ],
-  "relatedQuizzes": [
-    "bp-dpa-03-lean-six-sigma-quiz"
-  ],
+  "relatedQuizzes": ["bp-dpa-03-lean-six-sigma-quiz"],
   "resources": [
     {
       "title": "Lean Waste Übersicht",
@@ -61,7 +57,5 @@
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
   "version": "1.0",
-  "tracks": [
-    "DPA"
-  ]
+  "tracks": ["DPA"]
 }

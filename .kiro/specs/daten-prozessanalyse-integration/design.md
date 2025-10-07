@@ -55,13 +55,13 @@ A new `SpecializationService` will manage user specialization preferences and co
 ```javascript
 class SpecializationService {
   constructor(stateManager, storageService)
-  
+
   // Core methods
   getAvailableSpecializations()
   getCurrentSpecialization()
   setSpecialization(specializationId)
   getSpecializationConfig(specializationId)
-  
+
   // Content filtering
   filterContentBySpecialization(content, specializationId)
   getCategoryRelevance(categoryId, specializationId)
@@ -73,7 +73,7 @@ class SpecializationService {
 ```javascript
 class SpecializationSelector {
   constructor(specializationService, onSelectionChange)
-  
+
   render()
   handleSpecializationChange(specializationId)
   showSpecializationModal()
@@ -88,7 +88,7 @@ class SpecializationSelector {
 // New methods added to existing ModuleService
 class ModuleService {
   // Existing methods remain unchanged
-  
+
   // New methods for specialization support
   getModulesBySpecialization(specializationId)
   getModulesByCategory(categoryId, specializationId)
@@ -128,7 +128,7 @@ The navigation will include a specialization indicator and selector:
       "examCode": "AP2-AE"
     },
     {
-      "id": "daten-prozessanalyse", 
+      "id": "daten-prozessanalyse",
       "name": "Daten- und Prozessanalyse",
       "shortName": "DPA",
       "description": "Fachinformatiker für Daten- und Prozessanalyse",
@@ -156,7 +156,7 @@ The navigation will include a specialization indicator and selector:
     },
     {
       "id": "BP-AE",
-      "name": "Berufsprofilgebend Anwendungsentwicklung", 
+      "name": "Berufsprofilgebend Anwendungsentwicklung",
       "relevance": {
         "anwendungsentwicklung": "high",
         "daten-prozessanalyse": "none"
@@ -166,7 +166,7 @@ The navigation will include a specialization indicator and selector:
       "id": "BP-DPA",
       "name": "Berufsprofilgebend Daten- und Prozessanalyse",
       "relevance": {
-        "anwendungsentwicklung": "none", 
+        "anwendungsentwicklung": "none",
         "daten-prozessanalyse": "high"
       }
     }
@@ -195,12 +195,14 @@ The navigation will include a specialization indicator and selector:
 ### Core Topic Areas
 
 #### 1. Fachrichtungsübergreifende Inhalte (FÜ)
+
 - **FÜ-01**: Planen eines Softwareproduktes
-- **FÜ-02**: Entwickeln und Bereitstellen von Softwareanwendungen  
+- **FÜ-02**: Entwickeln und Bereitstellen von Softwareanwendungen
 - **FÜ-03**: Durchführen von qualitätssichernden Maßnahmen
 - **FÜ-04**: Sicherstellen der Informationssicherheit
 
 #### 2. Berufsprofilgebende Inhalte Daten- und Prozessanalyse (BP-DPA)
+
 - **BP-DPA-01**: Daten erfassen, aufbereiten und auswerten
   - Datenquellen identifizieren und bewerten
   - ETL-Prozesse (Extract, Transform, Load)
@@ -241,7 +243,7 @@ The navigation will include a specialization indicator and selector:
     "topics": ["ER-Diagramme", "Normalisierung", "Kardinalitäten", "Schlüssel"]
   },
   {
-    "id": "dpa-etl-processes", 
+    "id": "dpa-etl-processes",
     "title": "ETL-Prozesse und Datenintegration",
     "topics": ["Extract", "Transform", "Load", "Datenqualität", "Talend"]
   },

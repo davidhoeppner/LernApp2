@@ -14,8 +14,17 @@
       "id": "q2",
       "type": "multiple-choice",
       "question": "Which of the following are ways to create a function in JS?",
-      "options": ["Function declaration", "Function expression", "Arrow function", "Prototype function"],
-      "correct": ["Function declaration", "Function expression", "Arrow function"]
+      "options": [
+        "Function declaration",
+        "Function expression",
+        "Arrow function",
+        "Prototype function"
+      ],
+      "correct": [
+        "Function declaration",
+        "Function expression",
+        "Arrow function"
+      ]
     }
   ]
 }

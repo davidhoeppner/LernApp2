@@ -9,6 +9,7 @@
 ## Summary
 
 Task 9 requires manual testing of the Wheel feature to verify:
+
 - Navigation link works
 - Wheel can be spun 3 times successfully
 - "Zum Modul" button navigates correctly
@@ -21,10 +22,12 @@ Task 9 requires manual testing of the Wheel feature to verify:
 ## Resources Created
 
 ### 1. WHEEL_MANUAL_TEST_GUIDE.md
+
 **Purpose**: Quick start guide and testing workflow  
 **Use**: Read this first to understand the testing process
 
 **Contents**:
+
 - Quick start instructions
 - Testing workflow (4 phases)
 - Expected behavior descriptions
@@ -33,10 +36,12 @@ Task 9 requires manual testing of the Wheel feature to verify:
 - Success criteria
 
 ### 2. WHEEL_MANUAL_TEST_CHECKLIST.md
+
 **Purpose**: Comprehensive testing checklist  
 **Use**: Follow this step-by-step during testing
 
 **Contents**:
+
 - Pre-testing setup
 - 11 detailed test sections
 - Verification checklists for each test
@@ -45,10 +50,12 @@ Task 9 requires manual testing of the Wheel feature to verify:
 - Sign-off section
 
 ### 3. scripts/manual-test-wheel.js
+
 **Purpose**: Automated helper for manual testing  
 **Use**: Run in browser console for automated checks
 
 **Features**:
+
 - Checks navigation link presence
 - Verifies UI elements exist
 - Checks state persistence
@@ -56,10 +63,12 @@ Task 9 requires manual testing of the Wheel feature to verify:
 - Generates test report
 
 ### 4. scripts/verify-wheel-setup.js
+
 **Purpose**: Pre-test verification  
 **Use**: Run before manual testing to ensure setup is correct
 
 **Features**:
+
 - Verifies all files exist
 - Checks navigation integration
 - Verifies route registration
@@ -73,28 +82,33 @@ Task 9 requires manual testing of the Wheel feature to verify:
 ✅ **All checks passed:**
 
 ### Files
+
 - ✅ src/components/WheelView.js
 - ✅ src/components/Navigation.js
 - ✅ src/app.js
 - ✅ src/style.css
 
 ### Navigation Integration
+
 - ✅ Wheel link present in navigation
 - ✅ Wheel link text/icon present ("🎯 Lern-Modul")
 - ✅ ARIA labels present
 
 ### Route Registration
+
 - ✅ WheelView imported in app.js
 - ✅ /wheel route registered
 - ✅ WheelView instantiated in route
 
 ### Styles
+
 - ✅ .wheel-view styles present
 - ✅ .wheel-container styles present
 - ✅ .wheel-controls styles present
 - ✅ Dark mode styles present (`:root.dark .wheel-*`)
 
 ### Accessibility
+
 - ✅ aria-label attributes present
 - ✅ aria-live region present
 - ✅ ARIA roles present (`role="region"`, `role="status"`)
@@ -111,6 +125,7 @@ npm run dev
 ```
 
 Expected output:
+
 ```
 VITE v5.x.x  ready in xxx ms
 
@@ -164,6 +179,7 @@ As you test, check off items in the checklist and note any issues.
 ### Step 5: Complete Testing
 
 When all tests pass:
+
 - Mark Task 9 as complete in tasks.md
 - Document any minor issues for future improvement
 - Move to Task 10 if bugs were found
@@ -173,11 +189,13 @@ When all tests pass:
 ## Quick Test Commands
 
 ### Verify Setup (before testing)
+
 ```bash
 node scripts/verify-wheel-setup.js
 ```
 
 ### Start Dev Server
+
 ```bash
 npm run dev
 ```
@@ -191,7 +209,8 @@ After opening the app, run these in browser console:
 console.log('Current route:', window.location.hash);
 
 // Check last selected module
-const lastModule = window.app?.services?.stateManager?.getState('lastWheelModule');
+const lastModule =
+  window.app?.services?.stateManager?.getState('lastWheelModule');
 console.log('Last wheel module:', lastModule);
 
 // Check current theme
@@ -203,15 +222,15 @@ console.log('Current theme:', theme);
 
 ## Expected Test Duration
 
-| Phase | Duration | Description |
-|-------|----------|-------------|
-| Setup | 2 min | Start server, open resources |
-| Basic Tests | 10 min | Navigation, spinning, navigation to module |
-| State Test | 5 min | Reload and verify persistence |
-| Responsive | 10 min | Test on multiple device sizes |
-| Dark Mode | 5 min | Toggle and verify styling |
-| Additional | 10 min | Edge cases, accessibility, performance |
-| **Total** | **~40 min** | Complete manual testing |
+| Phase       | Duration    | Description                                |
+| ----------- | ----------- | ------------------------------------------ |
+| Setup       | 2 min       | Start server, open resources               |
+| Basic Tests | 10 min      | Navigation, spinning, navigation to module |
+| State Test  | 5 min       | Reload and verify persistence              |
+| Responsive  | 10 min      | Test on multiple device sizes              |
+| Dark Mode   | 5 min       | Toggle and verify styling                  |
+| Additional  | 10 min      | Edge cases, accessibility, performance     |
+| **Total**   | **~40 min** | Complete manual testing                    |
 
 ---
 
@@ -234,6 +253,7 @@ Task 9 is complete when:
 ## What to Do If Issues Are Found
 
 ### Critical Issues (Must Fix)
+
 - App crashes
 - Feature completely broken
 - Data loss
@@ -242,6 +262,7 @@ Task 9 is complete when:
 **Action**: Document in checklist, fix immediately, re-test
 
 ### Major Issues (Should Fix)
+
 - Feature partially broken
 - Poor user experience
 - Accessibility problems
@@ -250,6 +271,7 @@ Task 9 is complete when:
 **Action**: Document in checklist, prioritize for Task 10
 
 ### Minor Issues (Nice to Fix)
+
 - Visual glitches
 - Minor UX improvements
 - Edge case handling
@@ -277,11 +299,13 @@ Task 9 is complete when:
 ### After Successful Testing
 
 1. Mark Task 9 as complete:
+
    ```markdown
    - [x] 9. Manual testing
    ```
 
 2. Review Task 10:
+
    ```markdown
    - [ ] 10. Fix any bugs found
    ```
@@ -312,16 +336,16 @@ If you encounter issues during testing:
 
 ## Files Reference
 
-| File | Purpose | When to Use |
-|------|---------|-------------|
-| WHEEL_MANUAL_TEST_GUIDE.md | Overview & workflow | Read first |
-| WHEEL_MANUAL_TEST_CHECKLIST.md | Detailed checklist | During testing |
-| scripts/manual-test-wheel.js | Automated checks | In browser console |
-| scripts/verify-wheel-setup.js | Pre-test verification | Before testing |
-| src/components/WheelView.js | Implementation | If issues found |
-| .kiro/specs/.../requirements.md | Requirements | For reference |
-| .kiro/specs/.../design.md | Design spec | For expected behavior |
-| .kiro/specs/.../tasks.md | Task list | Track progress |
+| File                            | Purpose               | When to Use           |
+| ------------------------------- | --------------------- | --------------------- |
+| WHEEL_MANUAL_TEST_GUIDE.md      | Overview & workflow   | Read first            |
+| WHEEL_MANUAL_TEST_CHECKLIST.md  | Detailed checklist    | During testing        |
+| scripts/manual-test-wheel.js    | Automated checks      | In browser console    |
+| scripts/verify-wheel-setup.js   | Pre-test verification | Before testing        |
+| src/components/WheelView.js     | Implementation        | If issues found       |
+| .kiro/specs/.../requirements.md | Requirements          | For reference         |
+| .kiro/specs/.../design.md       | Design spec           | For expected behavior |
+| .kiro/specs/.../tasks.md        | Task list             | Track progress        |
 
 ---
 

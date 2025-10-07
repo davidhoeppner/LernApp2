@@ -13,7 +13,16 @@
       "important": true,
       "estimatedTime": 65,
       "prerequisites": ["bp-dpa-03-bpmn-fundamentals"],
-      "tags": ["process-mining", "event-log", "discovery", "conformance", "enhancement", "prozessanalyse", "kpi", "BPMN"],
+      "tags": [
+        "process-mining",
+        "event-log",
+        "discovery",
+        "conformance",
+        "enhancement",
+        "prozessanalyse",
+        "kpi",
+        "BPMN"
+      ],
       "content": "# Process Mining: Discovery, Conformance & Enhancement\n\n## Einführung\nProcess Mining verbindet Geschäftsprozessmodellierung (z.B. BPMN) mit datenbasierter Analyse realer Ausführungen. Aus Event Logs (Ereignisprotokollen) werden Prozesse automatisch rekonstruiert (Discovery), mit Soll-Modellen verglichen (Conformance) und gezielt verbessert (Enhancement). Es schließt Lücken zwischen modelliertem und gelebtem Prozess und liefert belastbare Kennzahlen (KPIs) wie Durchlaufzeit, Variantenvielfalt und Engpässe."
     },
     {
@@ -28,8 +37,19 @@
       "removedIn2025": false,
       "important": true,
       "estimatedTime": 60,
-      "prerequisites": ["bp-dpa-03-bpmn-fundamentals", "bp-dpa-03-process-mining"],
-      "tags": ["kpi", "prozesskennzahlen", "durchlaufzeit", "varianz", "performance", "prozessanalyse", "governance"],
+      "prerequisites": [
+        "bp-dpa-03-bpmn-fundamentals",
+        "bp-dpa-03-process-mining"
+      ],
+      "tags": [
+        "kpi",
+        "prozesskennzahlen",
+        "durchlaufzeit",
+        "varianz",
+        "performance",
+        "prozessanalyse",
+        "governance"
+      ],
       "content": "# Prozess-KPI Messung & Auswertung\n\n## Einführung\nKennzahlen (Key Performance Indicators) übersetzen Prozessleistung in objektiv messbare Größen. Aussagekräftige KPIs sind klar definiert (Formel, Datendomäne, Zeitbezug), valide (vertrauenswürdige Quelle) und steuerungsrelevant (beeinflussbar)."
     },
     {
@@ -45,7 +65,15 @@
       "important": false,
       "estimatedTime": 55,
       "prerequisites": ["bp-dpa-03-bpmn-fundamentals"],
-      "tags": ["lean", "six-sigma", "dmaic", "verschwendung", "kaizen", "pdca", "prozessoptimierung"],
+      "tags": [
+        "lean",
+        "six-sigma",
+        "dmaic",
+        "verschwendung",
+        "kaizen",
+        "pdca",
+        "prozessoptimierung"
+      ],
       "content": "# Lean & Six Sigma integrierte Prozessverbesserung\n\n## Einführung\nLean fokussiert auf Fluss & Verschwendungsreduktion, Six Sigma auf Variabilität & Fehlerreduktion. Kombiniert ermöglichen sie schnell wirksame (Lean) und nachhaltig stabile (Six Sigma) Verbesserungen."
     },
     {
@@ -60,8 +88,19 @@
       "removedIn2025": false,
       "important": true,
       "estimatedTime": 70,
-      "prerequisites": ["bp-dpa-03-bpmn-fundamentals", "bp-dpa-03-process-mining"],
-      "tags": ["automatisierung", "rpa", "workflow-engine", "orchestrierung", "choreographie", "governance", "prozessoptimierung"],
+      "prerequisites": [
+        "bp-dpa-03-bpmn-fundamentals",
+        "bp-dpa-03-process-mining"
+      ],
+      "tags": [
+        "automatisierung",
+        "rpa",
+        "workflow-engine",
+        "orchestrierung",
+        "choreographie",
+        "governance",
+        "prozessoptimierung"
+      ],
       "content": "# Prozessautomatisierung & Orchestrierung\n\n## Einführung\nAutomatisierung steigert Geschwindigkeit, Konsistenz und Skalierbarkeit. Ziel ist nicht blindes Ersetzen menschlicher Arbeit, sondern Eliminierung repetitiver, regelbasierter Tätigkeiten und verbesserte End-to-End-Steuerbarkeit."
     }
   ]

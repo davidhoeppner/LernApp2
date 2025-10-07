@@ -9,6 +9,7 @@ This design outlines the migration of all quizzes to the superior IHK quiz syste
 ### Migration Strategy
 
 **Three-Phase Approach**:
+
 1. **Data Migration**: Convert regular quizzes to IHK format
 2. **Component Migration**: Update routes and services to use IHK components
 3. **Cleanup**: Remove old quiz system and deprecated code
@@ -16,6 +17,7 @@ This design outlines the migration of all quizzes to the superior IHK quiz syste
 ### System Architecture
 
 **Before (Dual System)**:
+
 ```
 Regular Quizzes:
 - QuizService → quizzes.json
@@ -29,6 +31,7 @@ IHK Quizzes:
 ```
 
 **After (Unified System)**:
+
 ```
 All Quizzes:
 - IHKContentService → ihk/quizzes/*.json
@@ -43,6 +46,7 @@ All Quizzes:
 **Purpose**: Convert regular quiz format to IHK format
 
 **Input Format** (Regular Quiz):
+
 ```json
 {
   "id": "quiz-1",
@@ -64,6 +68,7 @@ All Quizzes:
 ```
 
 **Output Format** (IHK Quiz):
+
 ```json
 {
   "id": "javascript-basics-quiz",
@@ -94,6 +99,7 @@ All Quizzes:
 ```
 
 **Migration Script**:
+
 ```javascript
 class QuizMigrationTool {
   constructor() {
@@ -101,7 +107,7 @@ class QuizMigrationTool {
       'module-1': 'FÜ-02',
       'module-2': 'FÜ-02',
       'module-3': 'FÜ-02',
-      'module-4': 'BP-03'
+      'module-4': 'BP-03',
     };
   }
 
@@ -119,7 +125,7 @@ class QuizMigrationTool {
       passingScore: 70,
       questions: regularQuiz.questions.map(q => this.migrateQuestion(q)),
       tags: this.generateTags(regularQuiz),
-      lastUpdated: new Date().toISOString()
+      lastUpdated: new Date().toISOString(),
     };
   }
 
@@ -132,14 +138,14 @@ class QuizMigrationTool {
       correctAnswer: question.correctAnswer,
       explanation: question.explanation,
       points: 1,
-      category: this.inferQuestionCategory(question.question)
+      category: this.inferQuestionCategory(question.question),
     };
   }
 
   mapQuestionType(type) {
     const typeMap = {
       'multiple-choice': 'single-choice',
-      'true-false': 'true-false'
+      'true-false': 'true-false',
     };
     return typeMap[type] || 'single-choice';
   }
@@ -163,6 +169,7 @@ class QuizMigrationTool {
 **Validation Rules**:
 
 **Quiz Validation**:
+
 ```javascript
 class QuizValidator {
   validate(quiz) {
@@ -203,7 +210,7 @@ class QuizValidator {
 
     return {
       valid: errors.length === 0,
-      errors
+      errors,
     };
   }
 
@@ -215,11 +222,17 @@ class QuizValidator {
     if (!question.id) errors.push(`${prefix}: Missing id`);
     if (!question.type) errors.push(`${prefix}: Missing type`);
     if (!question.question) errors.push(`${prefix}: Missing question text`);
-    if (!question.correctAnswer) errors.push(`${prefix}: Missing correctAnswer`);
+    if (!question.correctAnswer)
+      errors.push(`${prefix}: Missing correctAnswer`);
     if (!question.explanation) errors.push(`${prefix}: Missing explanation`);
 
     // Validate question type
-    const validTypes = ['single-choice', 'multiple-choice', 'true-false', 'code'];
+    const validTypes = [
+      'single-choice',
+      'multiple-choice',
+      'true-false',
+      'code',
+    ];
     if (!validTypes.includes(question.type)) {
       errors.push(`${prefix}: Invalid type: ${question.type}`);
     }
@@ -233,17 +246,23 @@ class QuizValidator {
       // Verify correctAnswer is in options
       if (question.type === 'single-choice') {
         if (!question.options.includes(question.correctAnswer)) {
-          errors.push(`${prefix}: correctAnswer "${question.correctAnswer}" not in options`);
+          errors.push(
+            `${prefix}: correctAnswer "${question.correctAnswer}" not in options`
+          );
         }
       }
 
       if (question.type === 'multiple-choice') {
         if (!Array.isArray(question.correctAnswer)) {
-          errors.push(`${prefix}: correctAnswer must be an array for multiple-choice`);
+          errors.push(
+            `${prefix}: correctAnswer must be an array for multiple-choice`
+          );
         } else {
           question.correctAnswer.forEach(answer => {
             if (!question.options.includes(answer)) {
-              errors.push(`${prefix}: correctAnswer "${answer}" not in options`);
+              errors.push(
+                `${prefix}: correctAnswer "${answer}" not in options`
+              );
             }
           });
         }
@@ -269,7 +288,8 @@ class QuizValidator {
 ```
 
 **Module Validation**:
-```javascript
+
+````javascript
 class ModuleValidator {
   validate(module) {
     const errors = [];
@@ -301,7 +321,7 @@ class ModuleValidator {
 
     return {
       valid: errors.length === 0,
-      errors
+      errors,
     };
   }
 
@@ -327,9 +347,10 @@ class ModuleValidator {
     return errors;
   }
 }
-```
+````
 
 **Learning Path Validation**:
+
 ```javascript
 class LearningPathValidator {
   constructor(allModules) {
@@ -350,7 +371,9 @@ class LearningPathValidator {
     if (learningPath.modules) {
       learningPath.modules.forEach((moduleId, index) => {
         if (!this.allModules.has(moduleId)) {
-          errors.push(`Module ${index + 1}: Referenced module "${moduleId}" does not exist`);
+          errors.push(
+            `Module ${index + 1}: Referenced module "${moduleId}" does not exist`
+          );
         }
       });
     }
@@ -362,7 +385,7 @@ class LearningPathValidator {
 
     return {
       valid: errors.length === 0,
-      errors
+      errors,
     };
   }
 }
@@ -371,6 +394,7 @@ class LearningPathValidator {
 ### 3. Route and Service Updates
 
 **Router Changes** (in `src/app.js`):
+
 ```javascript
 // Before
 router.register('/quizzes', async () => {
@@ -396,6 +420,7 @@ router.register('/quizzes/:id', async params => {
 ```
 
 **Service Consolidation**:
+
 ```javascript
 // Update QuizService to use IHKContentService internally
 class QuizService {
@@ -421,7 +446,7 @@ class QuizService {
     return await this.examProgressService.saveQuizAttempt(quizId, {
       answers,
       score,
-      completedAt: new Date().toISOString()
+      completedAt: new Date().toISOString(),
     });
   }
 }
@@ -432,6 +457,7 @@ class QuizService {
 **Purpose**: Migrate existing quiz progress to new format
 
 **Migration Strategy**:
+
 ```javascript
 class ProgressMigrator {
   async migrateQuizProgress() {
@@ -448,8 +474,8 @@ class ProgressMigrator {
         answers: attempt.answers.map(a => ({
           questionId: this.mapOldQuestionIdToNew(a.questionId),
           userAnswer: a.userAnswer,
-          correct: a.correct
-        }))
+          correct: a.correct,
+        })),
       };
     });
 
@@ -462,7 +488,7 @@ class ProgressMigrator {
       'quiz-1': 'javascript-basics-quiz',
       'quiz-2': 'array-methods-quiz',
       'quiz-3': 'async-javascript-quiz',
-      'quiz-4': 'dom-manipulation-quiz'
+      'quiz-4': 'dom-manipulation-quiz',
     };
     return mapping[oldId] || oldId;
   }
@@ -540,6 +566,7 @@ interface ValidationError {
 ### Migration Errors
 
 **Handling Strategy**:
+
 - Log all migration errors
 - Create backup of original data
 - Allow partial migration (skip failed quizzes)
@@ -548,6 +575,7 @@ interface ValidationError {
 ### Validation Errors
 
 **Handling Strategy**:
+
 - Non-blocking validation (app still works)
 - Log validation errors to console
 - Generate validation report
@@ -556,6 +584,7 @@ interface ValidationError {
 ### Backward Compatibility
 
 **Fallback Strategy**:
+
 - Keep old quiz data as backup
 - Support both old and new quiz IDs temporarily
 - Gradual migration with feature flags
@@ -566,6 +595,7 @@ interface ValidationError {
 ### Migration Testing
 
 **Test Cases**:
+
 1. Migrate single quiz successfully
 2. Migrate all quizzes successfully
 3. Handle missing fields gracefully
@@ -575,6 +605,7 @@ interface ValidationError {
 ### Validation Testing
 
 **Test Cases**:
+
 1. Validate correct quiz data (should pass)
 2. Detect missing required fields
 3. Detect invalid correctAnswer
@@ -584,6 +615,7 @@ interface ValidationError {
 ### Integration Testing
 
 **Test Cases**:
+
 1. Load migrated quizzes in IHKQuizView
 2. Take quiz and submit answers
 3. View quiz results
@@ -593,12 +625,14 @@ interface ValidationError {
 ## Implementation Plan
 
 ### Phase 1: Data Migration
+
 1. Create migration tool
 2. Migrate quiz data to IHK format
 3. Validate migrated data
 4. Store in ihk/quizzes/ directory
 
 ### Phase 2: Data Validation
+
 1. Create validation tools
 2. Validate all quizzes
 3. Validate all modules
@@ -607,12 +641,14 @@ interface ValidationError {
 6. Generate validation report
 
 ### Phase 3: Component Migration
+
 1. Update routes to use IHK components
 2. Update service references
 3. Test all quiz functionality
 4. Migrate progress data
 
 ### Phase 4: Cleanup
+
 1. Remove old QuizView component
 2. Remove old QuizListView component
 3. Remove src/data/quizzes.json
@@ -620,6 +656,7 @@ interface ValidationError {
 5. Update documentation
 
 ### Phase 5: Validation
+
 1. Full regression testing
 2. Verify all quizzes work
 3. Verify progress tracking
@@ -629,6 +666,7 @@ interface ValidationError {
 ## Success Metrics
 
 **Quantitative**:
+
 - 100% of quizzes migrated to IHK format
 - 0 validation errors in quiz data
 - 0 validation errors in module data
@@ -636,6 +674,7 @@ interface ValidationError {
 - No broken routes or components
 
 **Qualitative**:
+
 - Unified quiz experience
 - Better UI/UX for all quizzes
 - Cleaner codebase

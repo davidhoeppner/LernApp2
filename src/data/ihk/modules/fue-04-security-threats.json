@@ -11,13 +11,7 @@
   "important": true,
   "estimatedTime": 45,
   "prerequisites": [],
-  "tags": [
-    "Sicherheit",
-    "Security",
-    "Threats",
-    "Angriffe",
-    "Neu 2025"
-  ],
+  "tags": ["Sicherheit", "Security", "Threats", "Angriffe", "Neu 2025"],
   "content": "# Sicherheitsbedrohungen\n\n## Einführung\n\nSicherheitsbedrohungen sind potenzielle Risiken für IT-Systeme.\n\n## Häufige Bedrohungen\n\n### SQL Injection\n\nAngreifer fügen schädlichen SQL-Code in Eingabefelder ein.\n\n### Cross-Site Scripting (XSS)\n\nAngreifer injizieren schädliche Skripte in Webseiten.",
   "codeExamples": [],
   "relatedQuizzes": [],

@@ -10,20 +10,175 @@
   "timeLimit": 20,
   "passingScore": 70,
   "questions": [
-    {"id":"q1","type":"single-choice","question":"Welches Ziel adressiert Lean primär?","options":["Varianzreduktion","Verschwendungsreduktion","Statistische Signifikanz","Kostenverrechnung"],"correctAnswer":"Verschwendungsreduktion","explanation":"Lean fokussiert auf Eliminierung nicht-wertschöpfender Aktivitäten.","points":1,"category":"Lean"},
-    {"id":"q2","type":"single-choice","question":"Welche Phase folgt in DMAIC nach Analyze?","options":["Measure","Improve","Define","Control"],"correctAnswer":"Improve","explanation":"Reihenfolge: Define, Measure, Analyze, Improve, Control.","points":1,"category":"DMAIC"},
-    {"id":"q3","type":"multiple-choice","question":"Welche gehören zu den klassischen 7 Verschwendungsarten (ohne Skills)?","options":["Überproduktion","Wartezeiten","Transport","Bewegung"],"correctAnswer":["Überproduktion","Wartezeiten","Transport","Bewegung"],"explanation":"Alle vier sind klassische Muda-Kategorien.","points":2,"category":"Muda"},
-    {"id":"q4","type":"single-choice","question":"Welches Werkzeug dient zur Abgrenzung des Prozessumfangs?","options":["SIPOC","5S","Kanban","Poka-Yoke"],"correctAnswer":"SIPOC","explanation":"SIPOC definiert Supplier, Input, Process, Output, Customer.","points":1,"category":"Werkzeuge"},
-    {"id":"q5","type":"multiple-choice","question":"Welche Lean-Werkzeuge unterstützen Flussverbesserung?","options":["Kanban","Value Stream Mapping","5S","Poka-Yoke"],"correctAnswer":["Kanban","Value Stream Mapping","5S"],"explanation":"Poka-Yoke fokussiert Fehlervermeidung, nicht primär Flusssteuerung.","points":2,"category":"Werkzeuge"},
-    {"id":"q6","type":"single-choice","question":"Was kombiniert die Synergie Lean + Six Sigma?","options":["Schnelle Verschwendungsreduktion + variabilitätsfokussierte Stabilisierung","Nur Statistik","Nur visuelle Boards","Nur Qualitätszirkel"],"correctAnswer":"Schnelle Verschwendungsreduktion + variabilitätsfokussierte Stabilisierung","explanation":"Lean liefert Geschwindigkeit, Six Sigma nachhaltige Stabilität.","points":1,"category":"Synergie"},
-    {"id":"q7","type":"single-choice","question":"Welches Anti-Pattern führt zu Strohfeuer-Effekten?","options":["Quick Wins + Control-Phase","Nur kurzfristige Kaizen ohne Control","DMAIC mit Daten","Standardisierte KPI-Nachverfolgung"],"correctAnswer":"Nur kurzfristige Kaizen ohne Control","explanation":"Ohne Control verflüchtigen sich Verbesserungen.","points":1,"category":"Fehler"},
-    {"id":"q8","type":"multiple-choice","question":"Welche Elemente enthält ein Value Stream Mapping typischerweise?","options":["Materialfluss","Informationsfluss","Prozesszeiten","ASCII Art"],"correctAnswer":["Materialfluss","Informationsfluss","Prozesszeiten"],"explanation":"Ziel ist Visualisierung von Fluss & Zeit; ASCII Art ist kein fachliches Element.","points":2,"category":"VSM"},
-    {"id":"q9","type":"single-choice","question":"Welches Ziel verfolgt Poka-Yoke?","options":["Fehlervermeidung durch Design","Visualisierung von WIP","Kapazitätsplanung","Statistische Testplanung"],"correctAnswer":"Fehlervermeidung durch Design","explanation":"Poka-Yoke verhindert oder macht Fehler sofort sichtbar.","points":1,"category":"Qualität"},
-    {"id":"q10","type":"single-choice","question":"Wofür steht das C in DMAIC?","options":["Calculate","Control","Check","Calibrate"],"correctAnswer":"Control","explanation":"Control verankert die erreichten Verbesserungen.","points":1,"category":"DMAIC"},
-    {"id":"q11","type":"multiple-choice","question":"Welche Kennzahlen belegen nachhaltige Lean+Six Sigma Wirkung?","options":["Reduzierte Durchlaufzeit","Sinkende Fehlerrate","Steigende Variantenstabilität","Erhöhte Rework-Quote"],"correctAnswer":["Reduzierte Durchlaufzeit","Sinkende Fehlerrate","Steigende Variantenstabilität"],"explanation":"Rework sollte sinken, nicht steigen.","points":2,"category":"KPIs"},
-    {"id":"q12","type":"single-choice","question":"Welches Werkzeug priorisiert wenige Ursachen mit größtem Effekt?","options":["Pareto Analyse","5S","Kanban","SIPOC"],"correctAnswer":"Pareto Analyse","explanation":"Pareto (80/20) fokussiert auf dominante Ursachen.","points":1,"category":"Analyse"}
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welches Ziel adressiert Lean primär?",
+      "options": [
+        "Varianzreduktion",
+        "Verschwendungsreduktion",
+        "Statistische Signifikanz",
+        "Kostenverrechnung"
+      ],
+      "correctAnswer": "Verschwendungsreduktion",
+      "explanation": "Lean fokussiert auf Eliminierung nicht-wertschöpfender Aktivitäten.",
+      "points": 1,
+      "category": "Lean"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Welche Phase folgt in DMAIC nach Analyze?",
+      "options": ["Measure", "Improve", "Define", "Control"],
+      "correctAnswer": "Improve",
+      "explanation": "Reihenfolge: Define, Measure, Analyze, Improve, Control.",
+      "points": 1,
+      "category": "DMAIC"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche gehören zu den klassischen 7 Verschwendungsarten (ohne Skills)?",
+      "options": ["Überproduktion", "Wartezeiten", "Transport", "Bewegung"],
+      "correctAnswer": [
+        "Überproduktion",
+        "Wartezeiten",
+        "Transport",
+        "Bewegung"
+      ],
+      "explanation": "Alle vier sind klassische Muda-Kategorien.",
+      "points": 2,
+      "category": "Muda"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Welches Werkzeug dient zur Abgrenzung des Prozessumfangs?",
+      "options": ["SIPOC", "5S", "Kanban", "Poka-Yoke"],
+      "correctAnswer": "SIPOC",
+      "explanation": "SIPOC definiert Supplier, Input, Process, Output, Customer.",
+      "points": 1,
+      "category": "Werkzeuge"
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "question": "Welche Lean-Werkzeuge unterstützen Flussverbesserung?",
+      "options": ["Kanban", "Value Stream Mapping", "5S", "Poka-Yoke"],
+      "correctAnswer": ["Kanban", "Value Stream Mapping", "5S"],
+      "explanation": "Poka-Yoke fokussiert Fehlervermeidung, nicht primär Flusssteuerung.",
+      "points": 2,
+      "category": "Werkzeuge"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was kombiniert die Synergie Lean + Six Sigma?",
+      "options": [
+        "Schnelle Verschwendungsreduktion + variabilitätsfokussierte Stabilisierung",
+        "Nur Statistik",
+        "Nur visuelle Boards",
+        "Nur Qualitätszirkel"
+      ],
+      "correctAnswer": "Schnelle Verschwendungsreduktion + variabilitätsfokussierte Stabilisierung",
+      "explanation": "Lean liefert Geschwindigkeit, Six Sigma nachhaltige Stabilität.",
+      "points": 1,
+      "category": "Synergie"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Welches Anti-Pattern führt zu Strohfeuer-Effekten?",
+      "options": [
+        "Quick Wins + Control-Phase",
+        "Nur kurzfristige Kaizen ohne Control",
+        "DMAIC mit Daten",
+        "Standardisierte KPI-Nachverfolgung"
+      ],
+      "correctAnswer": "Nur kurzfristige Kaizen ohne Control",
+      "explanation": "Ohne Control verflüchtigen sich Verbesserungen.",
+      "points": 1,
+      "category": "Fehler"
+    },
+    {
+      "id": "q8",
+      "type": "multiple-choice",
+      "question": "Welche Elemente enthält ein Value Stream Mapping typischerweise?",
+      "options": [
+        "Materialfluss",
+        "Informationsfluss",
+        "Prozesszeiten",
+        "ASCII Art"
+      ],
+      "correctAnswer": ["Materialfluss", "Informationsfluss", "Prozesszeiten"],
+      "explanation": "Ziel ist Visualisierung von Fluss & Zeit; ASCII Art ist kein fachliches Element.",
+      "points": 2,
+      "category": "VSM"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Welches Ziel verfolgt Poka-Yoke?",
+      "options": [
+        "Fehlervermeidung durch Design",
+        "Visualisierung von WIP",
+        "Kapazitätsplanung",
+        "Statistische Testplanung"
+      ],
+      "correctAnswer": "Fehlervermeidung durch Design",
+      "explanation": "Poka-Yoke verhindert oder macht Fehler sofort sichtbar.",
+      "points": 1,
+      "category": "Qualität"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Wofür steht das C in DMAIC?",
+      "options": ["Calculate", "Control", "Check", "Calibrate"],
+      "correctAnswer": "Control",
+      "explanation": "Control verankert die erreichten Verbesserungen.",
+      "points": 1,
+      "category": "DMAIC"
+    },
+    {
+      "id": "q11",
+      "type": "multiple-choice",
+      "question": "Welche Kennzahlen belegen nachhaltige Lean+Six Sigma Wirkung?",
+      "options": [
+        "Reduzierte Durchlaufzeit",
+        "Sinkende Fehlerrate",
+        "Steigende Variantenstabilität",
+        "Erhöhte Rework-Quote"
+      ],
+      "correctAnswer": [
+        "Reduzierte Durchlaufzeit",
+        "Sinkende Fehlerrate",
+        "Steigende Variantenstabilität"
+      ],
+      "explanation": "Rework sollte sinken, nicht steigen.",
+      "points": 2,
+      "category": "KPIs"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Welches Werkzeug priorisiert wenige Ursachen mit größtem Effekt?",
+      "options": ["Pareto Analyse", "5S", "Kanban", "SIPOC"],
+      "correctAnswer": "Pareto Analyse",
+      "explanation": "Pareto (80/20) fokussiert auf dominante Ursachen.",
+      "points": 1,
+      "category": "Analyse"
+    }
   ],
-  "tags": ["lean","six-sigma","dmaic","verschwendung","vsm","kaizen","poka-yoke"],
+  "tags": [
+    "lean",
+    "six-sigma",
+    "dmaic",
+    "verschwendung",
+    "vsm",
+    "kaizen",
+    "poka-yoke"
+  ],
   "lastUpdated": "2025-10-07T00:00:00Z",
   "tracks": ["DPA"]
 }

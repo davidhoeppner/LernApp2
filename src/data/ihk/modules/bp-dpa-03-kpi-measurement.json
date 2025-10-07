@@ -10,10 +10,7 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 60,
-  "prerequisites": [
-    "bp-dpa-03-bpmn-fundamentals",
-    "bp-dpa-03-process-mining"
-  ],
+  "prerequisites": ["bp-dpa-03-bpmn-fundamentals", "bp-dpa-03-process-mining"],
   "tags": [
     "kpi",
     "prozesskennzahlen",
@@ -38,9 +35,7 @@
       "explanation": "Identifiziert Aktivitäten, die innerhalb eines Cases mehrfach auftreten (potenzielles Rework)."
     }
   ],
-  "relatedQuizzes": [
-    "bp-dpa-03-kpi-measurement-quiz"
-  ],
+  "relatedQuizzes": ["bp-dpa-03-kpi-measurement-quiz"],
   "resources": [
     {
       "title": "BPMN 2.0 Specification",
@@ -73,7 +68,5 @@
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
   "version": "1.0",
-  "tracks": [
-    "DPA"
-  ]
+  "tracks": ["DPA"]
 }

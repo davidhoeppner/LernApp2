@@ -28,9 +28,7 @@
       "title": "ETL Pipeline in Python"
     }
   ],
-  "relatedQuizzes": [
-    "bp-dpa-02-etl-quiz"
-  ],
+  "relatedQuizzes": ["bp-dpa-02-etl-quiz"],
   "resources": [
     {
       "title": "Apache Airflow Documentation",
@@ -58,7 +56,5 @@
   ],
   "lastUpdated": "2025-01-20T00:00:00Z",
   "version": "1.0",
-  "tracks": [
-    "DPA"
-  ]
+  "tracks": ["DPA"]
 }

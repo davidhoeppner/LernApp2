@@ -72,7 +72,7 @@ class PerformanceIntegrationService {
       }
 
       this.isInitialized = true;
-  console.warn('Performance integration initialized successfully');
+      console.warn('Performance integration initialized successfully');
     } catch (error) {
       console.error('Error initializing performance integration:', error);
     }
@@ -403,7 +403,9 @@ class PerformanceIntegrationService {
             },
           });
 
-          console.warn('Auto-tuning: Increased cache sizes due to low hit rate');
+          console.warn(
+            'Auto-tuning: Increased cache sizes due to low hit rate'
+          );
         }
       }
 
@@ -452,7 +454,7 @@ class PerformanceIntegrationService {
         this.advancedCachingService.invalidateAll();
       }
 
-  console.warn('All performance caches invalidated');
+      console.warn('All performance caches invalidated');
     } catch (error) {
       console.error('Error invalidating caches:', error);
     }
@@ -543,7 +545,7 @@ class PerformanceIntegrationService {
       this.advancedCachingService.destroy();
     }
 
-  console.warn('Performance integration destroyed');
+    console.warn('Performance integration destroyed');
   }
 }
 

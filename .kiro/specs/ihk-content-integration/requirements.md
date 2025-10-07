@@ -152,4 +152,3 @@ Dieses Dokument beschreibt die Anforderungen für die Integration von umfassende
 3. WHEN Fortschritt offline gespeichert wird THEN SHALL er bei Verbindung synchronisiert werden
 4. WHEN neue Inhalte verfügbar sind THEN SHALL eine Update-Benachrichtigung angezeigt werden
 5. WHEN Speicherplatz knapp wird THEN SHALL eine Warnung mit Optionen angezeigt werden
-

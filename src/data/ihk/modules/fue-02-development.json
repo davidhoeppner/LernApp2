@@ -34,9 +34,7 @@
       "explanation": "Durch Normalisierung werden Redundanzen eliminiert und Anomalien vermieden. Jede Entität hat ihre eigene Tabelle, und Beziehungen werden über Fremdschlüssel hergestellt."
     }
   ],
-  "relatedQuizzes": [
-    "fue-02-development-quiz"
-  ],
+  "relatedQuizzes": ["fue-02-development-quiz"],
   "resources": [
     {
       "title": "UML Aktivitätsdiagramme",

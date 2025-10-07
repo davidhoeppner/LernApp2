@@ -3,6 +3,7 @@
 ## Problem
 
 You're seeing content like this in the browser:
+
 ```
 FÜ-04: Sicherstellen der Informationssicherheit\n\n## Einführung\n\n...
 ```
@@ -12,9 +13,11 @@ The `\n` characters are still visible, which means the browser is using **cached
 ## Verification
 
 The fix IS correctly applied in the code:
+
 ```bash
 node scripts/verify-markdown-fix.js
 ```
+
 Result: ✅ VERIFICATION PASSED
 
 ## Solution: Clear Browser Cache
@@ -22,10 +25,12 @@ Result: ✅ VERIFICATION PASSED
 ### Method 1: Hard Refresh (Recommended)
 
 **Windows/Linux:**
+
 - Press `Ctrl + Shift + R`
 - OR `Ctrl + F5`
 
 **Mac:**
+
 - Press `Cmd + Shift + R`
 
 ### Method 2: Clear Cache via DevTools
@@ -50,17 +55,21 @@ Result: ✅ VERIFICATION PASSED
 ## Step-by-Step Testing Process
 
 1. **Stop the dev server** if it's running:
+
    ```bash
    Ctrl+C
    ```
 
 2. **Verify the fix is in the code**:
+
    ```bash
    node scripts/verify-markdown-fix.js
    ```
+
    Should show: ✅ VERIFICATION PASSED
 
 3. **Start the dev server**:
+
    ```bash
    npm run dev
    ```
@@ -82,11 +91,13 @@ Result: ✅ VERIFICATION PASSED
 ## What You Should See After Cache Clear
 
 ### Before (Cached):
+
 ```html
 <h1>FÜ-04: Sicherstellen der Informationssicherheit\n\n## Einführung\n\n...</h1>
 ```
 
 ### After (Fixed):
+
 ```html
 <h1>FÜ-04: Sicherstellen der Informationssicherheit</h1>
 <h2>Einführung</h2>
@@ -123,6 +134,7 @@ Result: ✅ VERIFICATION PASSED
 ### Verify in Browser Console
 
 Open the browser console (F12) and run:
+
 ```javascript
 // Check if the method exists
 console.log(typeof window.ihkModuleView);
@@ -138,6 +150,7 @@ Look for the line: `html.replace(/\\n/g, '\n')` in the output.
 ## Why This Happens
 
 Browsers aggressively cache JavaScript files for performance. When you update the code:
+
 1. The file on disk changes
 2. The dev server serves the new file
 3. But the browser still uses the old cached version

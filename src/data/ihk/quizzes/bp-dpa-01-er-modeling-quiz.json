@@ -29,12 +29,7 @@
       "id": "q2",
       "type": "single-choice",
       "question": "Wie wird eine Beziehung (Relationship) in einem ER-Diagramm dargestellt?",
-      "options": [
-        "Als Rechteck",
-        "Als Ellipse",
-        "Als Raute",
-        "Als Kreis"
-      ],
+      "options": ["Als Rechteck", "Als Ellipse", "Als Raute", "Als Kreis"],
       "correctAnswer": "Als Raute",
       "explanation": "Beziehungen (Relationships) werden in ER-Diagrammen als Rauten dargestellt. Sie beschreiben Zusammenhänge zwischen Entitäten, z.B. 'Kunde bestellt Produkt'.",
       "points": 1,

@@ -11,6 +11,7 @@
 User feedback: "The wheel needs to be bigger and the text should be actually in the slices of the wheel, but yeah the wheel is visible now but its not readable"
 
 The initial SVG wheel implementation had:
+
 - Small wheel size (300px)
 - Tiny text (font-size: 10px)
 - Short text truncation (20 characters)
@@ -28,6 +29,7 @@ Significantly increased the wheel size and improved text readability throughout.
 #### 1. Wheel Dimensions (Doubled)
 
 **Before:**
+
 ```javascript
 const radius = 140;
 const centerX = 150;
@@ -36,8 +38,9 @@ const centerY = 150;
 ```
 
 **After:**
+
 ```javascript
-const radius = 280;  // Doubled
+const radius = 280; // Doubled
 const centerX = 300; // Doubled
 const centerY = 300; // Doubled
 // SVG: 600x600, viewBox: 0 0 600 600
@@ -46,12 +49,14 @@ const centerY = 300; // Doubled
 #### 2. Text Size and Readability
 
 **Before:**
+
 ```javascript
 font-size="10"  // Very small
 title.length > 20 ? truncate : full  // Too short
 ```
 
 **After:**
+
 ```javascript
 font-size="16"  // 60% larger
 title.length > 30 ? truncate : full  // More generous
@@ -60,11 +65,13 @@ title.length > 30 ? truncate : full  // More generous
 #### 3. Stroke Width
 
 **Before:**
+
 ```javascript
 stroke-width="2"  // Thin lines
 ```
 
 **After:**
+
 ```javascript
 stroke-width="3"  // Thicker, more visible
 ```
@@ -72,6 +79,7 @@ stroke-width="3"  // Thicker, more visible
 #### 4. Center Circle and Icon
 
 **Before:**
+
 ```javascript
 r="20"           // Small circle
 font-size="24"   // Small icon
@@ -79,6 +87,7 @@ stroke-width="3"
 ```
 
 **After:**
+
 ```javascript
 r="40"           // Doubled
 font-size="48"   // Doubled
@@ -88,19 +97,23 @@ stroke-width="4" // Thicker
 #### 5. Container Sizes (CSS)
 
 **Desktop:**
+
 - Container: 300px → 500px
 - Min-height: 400px → 600px
 - Max-width: 600px → 800px
 
 **Mobile (≤768px):**
+
 - Container: 250px → 350px
 
 **Tablet (769-1024px):**
+
 - Container: 220px → 300px
 
 #### 6. Visual Effects
 
 **Enhanced drop shadow:**
+
 ```css
 /* Before */
 filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
@@ -114,6 +127,7 @@ filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
 ## Visual Comparison
 
 ### Before
+
 ```
 ┌─────────────────────────┐
 │         ▼               │
@@ -126,6 +140,7 @@ filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
 ```
 
 ### After
+
 ```
 ┌──────────────────────────────────┐
 │              ▼                   │
@@ -178,22 +193,26 @@ filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
 ## Responsive Behavior
 
 ### Desktop (>1024px)
+
 - Wheel: 500x500px
 - Text: 16px
 - Fully readable from normal distance
 
 ### Tablet (769-1024px)
+
 - Wheel: 300x300px
 - Text: 16px (scales with SVG)
 - Still very readable
 
 ### Mobile (≤768px)
+
 - Wheel: 350x350px
 - Text: 16px (scales with SVG)
 - Readable on phone screens
 - No horizontal scroll
 
 ### Small Mobile (≤375px)
+
 - Wheel scales down proportionally
 - SVG maintains aspect ratio
 - Text remains readable due to vector scaling
@@ -203,12 +222,14 @@ filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
 ## Performance Impact
 
 ### Positive
+
 - ✅ SVG scales perfectly at any size
 - ✅ No additional images or assets
 - ✅ Hardware-accelerated rendering
 - ✅ Smooth animations maintained
 
 ### Neutral
+
 - File size increase: Minimal (~1KB)
 - Render time: Negligible difference
 - Memory usage: Slightly higher but insignificant
@@ -218,12 +239,14 @@ filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
 ## Accessibility
 
 ### Maintained
+
 - ✅ Screen reader compatibility
 - ✅ Keyboard navigation
 - ✅ ARIA labels
 - ✅ Color contrast (WCAG AA)
 
 ### Improved
+
 - ✅ Better visual clarity for low vision users
 - ✅ Easier to see from distance
 - ✅ Reduced eye strain
@@ -234,6 +257,7 @@ filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
 ## Browser Compatibility
 
 Tested and working in:
+
 - ✅ Chrome/Edge (latest)
 - ✅ Firefox (latest)
 - ✅ Safari (latest)
@@ -246,12 +270,14 @@ SVG scaling works perfectly across all browsers.
 ## User Experience
 
 ### Before
+
 - ❌ Wheel too small
 - ❌ Text unreadable
 - ❌ Looked unprofessional
 - ❌ Hard to use
 
 ### After
+
 - ✅ Wheel is prominent
 - ✅ Text is clear and readable
 - ✅ Professional appearance
@@ -278,6 +304,7 @@ SVG scaling works perfectly across all browsers.
 ## Future Considerations
 
 ### Potential Enhancements
+
 1. **Dynamic sizing**: Adjust wheel size based on number of modules
 2. **Font scaling**: Smaller font for many modules, larger for few
 3. **Multi-line text**: Wrap long titles across multiple lines
@@ -285,6 +312,7 @@ SVG scaling works perfectly across all browsers.
 5. **Full-screen mode**: Maximize wheel for better visibility
 
 ### Advanced Features
+
 - Responsive font sizing based on segment size
 - Adaptive text positioning for narrow segments
 - Icon/emoji support in segment labels
@@ -296,6 +324,7 @@ SVG scaling works perfectly across all browsers.
 ## Files Modified
 
 ### Components
+
 - `src/components/WheelView.js`
   - Doubled radius (140 → 280)
   - Doubled center coordinates (150 → 300)
@@ -306,6 +335,7 @@ SVG scaling works perfectly across all browsers.
   - Doubled center icon (24 → 48)
 
 ### Styles
+
 - `src/style.css`
   - Desktop container: 300px → 500px
   - Mobile container: 250px → 350px

@@ -10,10 +10,7 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 70,
-  "prerequisites": [
-    "bp-dpa-01-er-modeling",
-    "bp-dpa-02-etl-fundamentals"
-  ],
+  "prerequisites": ["bp-dpa-01-er-modeling", "bp-dpa-02-etl-fundamentals"],
   "tags": [
     "Business Intelligence",
     "BI",
@@ -37,9 +34,7 @@
       "title": "KPI Dashboard mit Python"
     }
   ],
-  "relatedQuizzes": [
-    "bp-dpa-04-bi-quiz"
-  ],
+  "relatedQuizzes": ["bp-dpa-04-bi-quiz"],
   "resources": [
     {
       "title": "Microsoft Power BI Documentation",

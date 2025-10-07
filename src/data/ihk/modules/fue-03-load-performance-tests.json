@@ -10,9 +10,7 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 50,
-  "prerequisites": [
-    "fue-03-quality"
-  ],
+  "prerequisites": ["fue-03-quality"],
   "tags": [
     "lasttest",
     "performancetest",
@@ -49,9 +47,7 @@
       "explanation": "Python-Tool zur Analyse von Performance-Test-Ergebnissen. Berechnet Percentiles, Durchsatz, Fehlerrate und prüft SLA-Compliance."
     }
   ],
-  "relatedQuizzes": [
-    "fue-03-load-performance-tests-quiz"
-  ],
+  "relatedQuizzes": ["fue-03-load-performance-tests-quiz"],
   "resources": [
     {
       "title": "Apache JMeter Documentation",

@@ -68,7 +68,10 @@ class ModuleService {
             );
           }
 
-          console.warn('Valid IHK modules after filtering:', validModules.length);
+          console.warn(
+            'Valid IHK modules after filtering:',
+            validModules.length
+          );
           return validModules;
         } catch (error) {
           console.error('Could not load IHK modules:', error);

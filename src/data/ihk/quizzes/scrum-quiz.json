@@ -29,12 +29,7 @@
       "id": "scrum-q2",
       "type": "single-choice",
       "question": "Wie viele Rollen gibt es in Scrum?",
-      "options": [
-        "3 Rollen",
-        "5 Rollen",
-        "2 Rollen",
-        "4 Rollen"
-      ],
+      "options": ["3 Rollen", "5 Rollen", "2 Rollen", "4 Rollen"],
       "correctAnswer": "3 Rollen",
       "explanation": "Scrum definiert genau 3 Rollen: Product Owner, Scrum Master und Development Team. Alle anderen Personen sind Stakeholder.",
       "points": 1,
@@ -119,12 +114,7 @@
       "id": "scrum-q8",
       "type": "single-choice",
       "question": "Wie lange dauert das Daily Scrum maximal?",
-      "options": [
-        "15 Minuten",
-        "30 Minuten",
-        "1 Stunde",
-        "5 Minuten"
-      ],
+      "options": ["15 Minuten", "30 Minuten", "1 Stunde", "5 Minuten"],
       "correctAnswer": "15 Minuten",
       "explanation": "Das Daily Scrum ist ein 15-minütiges Event für das Development Team, um den Fortschritt zu synchronisieren und den Plan für die nächsten 24 Stunden zu erstellen.",
       "points": 1,

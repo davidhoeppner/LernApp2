@@ -45,7 +45,7 @@ class MigrationMonitoringService {
       // Initialize monitoring metrics
       this._initializeMetrics(monitoringSession.sessionId);
 
-  console.warn(`Migration monitoring started for ${migrationId}`);
+      console.warn(`Migration monitoring started for ${migrationId}`);
       return {
         success: true,
         sessionId: monitoringSession.sessionId,
@@ -279,7 +279,7 @@ class MigrationMonitoringService {
    */
   async rollbackMigration(migrationId, rollbackOptions = {}) {
     try {
-  console.warn(`Starting rollback for migration ${migrationId}...`);
+      console.warn(`Starting rollback for migration ${migrationId}...`);
 
       // Start rollback monitoring
       const rollbackSessionId = this._generateSessionId();
@@ -382,7 +382,9 @@ class MigrationMonitoringService {
   async generatePostMigrationValidationReport(migrationId) {
     try {
       const reportId = this._generateReportId();
-  console.warn(`Generating post-migration validation report ${reportId}...`);
+      console.warn(
+        `Generating post-migration validation report ${reportId}...`
+      );
 
       // Get migration details
       const migrationHistory =

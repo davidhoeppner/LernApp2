@@ -16,7 +16,7 @@
     },
     {
       "id": "daten-prozessanalyse",
-      "name": "Daten- und Prozessanalyse", 
+      "name": "Daten- und Prozessanalyse",
       "shortName": "DPA",
       "fullName": "Fachinformatiker für Daten- und Prozessanalyse",
       "description": "Analyse und Optimierung von Daten und Geschäftsprozessen, Business Intelligence und Data Analytics",
@@ -37,7 +37,7 @@
       "priority": 1
     },
     "ae-specific": {
-      "id": "ae-specific", 
+      "id": "ae-specific",
       "name": "Anwendungsentwicklung",
       "description": "Spezifische Inhalte für Fachinformatiker Anwendungsentwicklung",
       "color": "#10b981",
@@ -46,7 +46,7 @@
     },
     "dpa-specific": {
       "id": "dpa-specific",
-      "name": "Daten- und Prozessanalyse", 
+      "name": "Daten- und Prozessanalyse",
       "description": "Spezifische Inhalte für Fachinformatiker Daten- und Prozessanalyse",
       "color": "#3b82f6",
       "icon": "🟦",
@@ -60,13 +60,13 @@
       "weight": 3
     },
     "medium": {
-      "name": "Mittel", 
+      "name": "Mittel",
       "description": "Teilweise relevant für diese Spezialisierung",
       "weight": 2
     },
     "low": {
       "name": "Niedrig",
-      "description": "Wenig relevant für diese Spezialisierung", 
+      "description": "Wenig relevant für diese Spezialisierung",
       "weight": 1
     },
     "none": {

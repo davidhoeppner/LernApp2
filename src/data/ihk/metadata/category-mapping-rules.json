@@ -150,7 +150,11 @@
       "targetCategory": "anwendungsentwicklung",
       "priority": 55,
       "description": "Content with programming and development keywords",
-      "examples": ["oop-fundamentals", "design-patterns", "architecture-patterns"],
+      "examples": [
+        "oop-fundamentals",
+        "design-patterns",
+        "architecture-patterns"
+      ],
       "conditions": null,
       "active": true
     },

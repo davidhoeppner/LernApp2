@@ -10,9 +10,7 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 45,
-  "prerequisites": [
-    "fue-04-security"
-  ],
+  "prerequisites": ["fue-04-security"],
   "tags": [
     "kerberos",
     "authentifizierung",
@@ -44,9 +42,7 @@
       "explanation": "Java-Implementierung für Kerberos-Authentifizierung mit JAAS und GSS-API. Zeigt Login, Service-Ticket-Anforderung und Ticket-Validierung."
     }
   ],
-  "relatedQuizzes": [
-    "kerberos-quiz"
-  ],
+  "relatedQuizzes": ["kerberos-quiz"],
   "resources": [
     {
       "title": "RFC 4120 - The Kerberos Network Authentication Service (V5)",

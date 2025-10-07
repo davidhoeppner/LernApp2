@@ -3,6 +3,7 @@
 ## Issue Discovered
 
 After fixing the fractional rotation bug, the math was working correctly (✓ Match: YES), but there was a visual mismatch:
+
 - The calculation said segment 10 was at the pointer
 - But visually, segment 10 was at the BOTTOM of the wheel
 - The segment at the TOP (where the arrow points) was the opposite segment
@@ -12,10 +13,12 @@ With 30 modules, segment 10 and segment 25 are exactly opposite (180° apart).
 ## Root Cause
 
 The pointer arrow is positioned at the TOP of the wheel (`top: -10px` in CSS), pointing downward. However, the way segments are drawn and rotated created a 180° offset between:
+
 1. Where we calculate the segment should be (90°, top)
 2. Where it actually appears visually (270°, bottom)
 
 This is likely due to the combination of:
+
 - SVG coordinate system starting at -90° (bottom)
 - CSS rotation direction
 - How the segments are drawn counter-clockwise
@@ -25,6 +28,7 @@ This is likely due to the combination of:
 Added a 180° offset to both the rotation calculation AND the verification formula:
 
 ### Rotation Calculation:
+
 ```javascript
 // Before:
 const targetAngle = 90 - targetSegmentCenter;
@@ -34,12 +38,17 @@ const targetAngle = 90 - targetSegmentCenter + 180;
 ```
 
 ### Verification Formula:
+
 ```javascript
 // Before: Looking for segment at 90° (top)
-const segmentAtPointer = Math.round((180 - segmentAngle / 2 - finalRotation) / segmentAngle);
+const segmentAtPointer = Math.round(
+  (180 - segmentAngle / 2 - finalRotation) / segmentAngle
+);
 
 // After: Looking for segment at 270° (top with 180° offset)
-const segmentAtPointer = Math.round((360 - segmentAngle / 2 - finalRotation) / segmentAngle);
+const segmentAtPointer = Math.round(
+  (360 - segmentAngle / 2 - finalRotation) / segmentAngle
+);
 ```
 
 ## How It Works Now

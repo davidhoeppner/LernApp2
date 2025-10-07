@@ -41,9 +41,7 @@
       "explanation": "Eine Sprint Retrospective dokumentiert, was gut lief, was verbessert werden kann und definiert konkrete Action Items mit Verantwortlichkeiten für den nächsten Sprint."
     }
   ],
-  "relatedQuizzes": [
-    "scrum-quiz-2025"
-  ],
+  "relatedQuizzes": ["scrum-quiz-2025"],
   "resources": [
     {
       "title": "Scrum Guide (offiziell)",

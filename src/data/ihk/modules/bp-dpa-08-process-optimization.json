@@ -11,7 +11,7 @@
   "important": true,
   "estimatedTime": 80,
   "prerequisites": ["bp-dpa-03-bpmn-fundamentals"],
-  "tags": ["BPMN","Process Mining","Lean","KPI","Optimierung"],
+  "tags": ["BPMN", "Process Mining", "Lean", "KPI", "Optimierung"],
   "content": "# Prozessoptimierung: Analyse, Kennzahlen und Maßnahmen\n\n## Prozessanalyse mit BPMN und Process Mining\n- BPMN: Prozesse modellieren (Pools, Tasks, Gateways, Events)\n- Process Mining: Event-Log-Analyse zur Identifikation von Engpässen und Varianten\n\n## Lean-Prinzipien und Verbesserungstechniken\n- Verschwendung identifizieren (7 Verschwendungsarten)\n- Kaizen, 5S, Value Stream Mapping\n\n## KPI-Definition und Performance-Messung\n- Durchsatz, Durchlaufzeit, First-Pass-Rate, Fehlerquote\n- Zielgrößen und Soll/Ist-Vergleiche\n\n## Maßnahmenplanung und Umsetzung\n- Ursachenanalyse (5-Why, Ishikawa)\n- Pilottests und Erfolgsmessung (A/B-Tests, Before/After)\n\n## Prüfungsrelevante Aspekte\n- BPMN-Grundelemente erkennen und beschreiben\n- Grundidee des Process Mining und dessen Nutzen erklären\n- Kennzahlen zur Prozessbewertung benennen (Durchsatz, Durchlaufzeit, Fehlerquote)",
   "learningObjectives": [
     "BPMN-Grundelemente und deren Einsatz in Prozessmodellen erklären",
@@ -25,7 +25,11 @@
   ],
   "relatedQuizzes": ["bp-dpa-08-process-optimization-quiz"],
   "resources": [
-    { "title": "Introduction to Process Mining", "url": "https://www.processmining.org/", "type": "article" }
+    {
+      "title": "Introduction to Process Mining",
+      "url": "https://www.processmining.org/",
+      "type": "article"
+    }
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
   "version": "1.0"
