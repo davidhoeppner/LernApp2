@@ -1,0 +1,78 @@
+{
+  "version": "2025.1",
+  "lastUpdated": "2025-01-20",
+  "specializations": [
+    {
+      "id": "anwendungsentwicklung",
+      "name": "Anwendungsentwicklung",
+      "shortName": "AE",
+      "fullName": "Fachinformatiker für Anwendungsentwicklung",
+      "description": "Entwicklung und Programmierung von Software-Anwendungen, Datenbanken und Benutzeroberflächen",
+      "color": "#10b981",
+      "icon": "💻",
+      "examCode": "AP2-AE",
+      "isDefault": true,
+      "active": true
+    },
+    {
+      "id": "daten-prozessanalyse",
+      "name": "Daten- und Prozessanalyse", 
+      "shortName": "DPA",
+      "fullName": "Fachinformatiker für Daten- und Prozessanalyse",
+      "description": "Analyse und Optimierung von Daten und Geschäftsprozessen, Business Intelligence und Data Analytics",
+      "color": "#3b82f6",
+      "icon": "📊",
+      "examCode": "AP2-DPA",
+      "isDefault": false,
+      "active": true
+    }
+  ],
+  "contentCategories": {
+    "general": {
+      "id": "general",
+      "name": "Fachrichtungsübergreifend",
+      "description": "Inhalte, die für alle Fachinformatiker-Spezialisierungen relevant sind",
+      "color": "#6b7280",
+      "icon": "🔵",
+      "priority": 1
+    },
+    "ae-specific": {
+      "id": "ae-specific", 
+      "name": "Anwendungsentwicklung",
+      "description": "Spezifische Inhalte für Fachinformatiker Anwendungsentwicklung",
+      "color": "#10b981",
+      "icon": "🟢",
+      "priority": 2
+    },
+    "dpa-specific": {
+      "id": "dpa-specific",
+      "name": "Daten- und Prozessanalyse", 
+      "description": "Spezifische Inhalte für Fachinformatiker Daten- und Prozessanalyse",
+      "color": "#3b82f6",
+      "icon": "🟦",
+      "priority": 2
+    }
+  },
+  "relevanceLevels": {
+    "high": {
+      "name": "Hoch",
+      "description": "Sehr relevant für diese Spezialisierung",
+      "weight": 3
+    },
+    "medium": {
+      "name": "Mittel", 
+      "description": "Teilweise relevant für diese Spezialisierung",
+      "weight": 2
+    },
+    "low": {
+      "name": "Niedrig",
+      "description": "Wenig relevant für diese Spezialisierung", 
+      "weight": 1
+    },
+    "none": {
+      "name": "Nicht relevant",
+      "description": "Nicht relevant für diese Spezialisierung",
+      "weight": 0
+    }
+  }
+}

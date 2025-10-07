@@ -1,0 +1,349 @@
+{
+  "id": "bp-dpa-03-bpmn-quiz",
+  "moduleId": "bp-dpa-03-bpmn-fundamentals",
+  "title": "Geschäftsprozessmodellierung mit BPMN",
+  "description": "Umfassendes Quiz zu BPMN-Notation, Prozessmodellierung und Geschäftsprozessoptimierung",
+  "category": "BP-DPA-03",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 30,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Wofür steht die Abkürzung BPMN?",
+      "options": [
+        "Business Process Management Notation",
+        "Business Process Model and Notation",
+        "Business Process Modeling Network",
+        "Business Process Management Network"
+      ],
+      "correctAnswer": "Business Process Model and Notation",
+      "explanation": "BPMN steht für Business Process Model and Notation. Es ist ein internationaler Standard zur grafischen Darstellung von Geschäftsprozessen, entwickelt von der Object Management Group (OMG).",
+      "points": 1,
+      "category": "BPMN Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Wie werden Start-Ereignisse in BPMN dargestellt?",
+      "options": [
+        "Kreis mit dickem Rand",
+        "Kreis mit dünnem Rand",
+        "Kreis mit doppeltem Rand",
+        "Rechteck"
+      ],
+      "correctAnswer": "Kreis mit dünnem Rand",
+      "explanation": "Start-Ereignisse werden als Kreis mit dünnem Rand dargestellt. Sie markieren den Beginn eines Geschäftsprozesses und können verschiedene Auslöser haben (Nachrichten, Zeit, Signal, etc.).",
+      "points": 1,
+      "category": "BPMN Notation"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Wie werden End-Ereignisse in BPMN dargestellt?",
+      "options": [
+        "Kreis mit dünnem Rand",
+        "Kreis mit dickem Rand",
+        "Kreis mit doppeltem Rand",
+        "Raute"
+      ],
+      "correctAnswer": "Kreis mit dickem Rand",
+      "explanation": "End-Ereignisse werden als Kreis mit dickem Rand dargestellt. Sie markieren das Ende eines Geschäftsprozesses oder eines Prozesszweigs.",
+      "points": 1,
+      "category": "BPMN Notation"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Wie werden Aktivitäten (Tasks) in BPMN dargestellt?",
+      "options": [
+        "Kreis",
+        "Raute",
+        "Abgerundetes Rechteck",
+        "Dreieck"
+      ],
+      "correctAnswer": "Abgerundetes Rechteck",
+      "explanation": "Aktivitäten (Tasks) werden als abgerundete Rechtecke dargestellt. Sie repräsentieren atomare Arbeitsschritte im Geschäftsprozess.",
+      "points": 1,
+      "category": "BPMN Notation"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Was ist ein exklusives Gateway (XOR)?",
+      "options": [
+        "Alle ausgehenden Pfade werden parallel ausgeführt",
+        "Ein oder mehrere Pfade werden gewählt",
+        "Genau ein ausgehender Pfad wird gewählt",
+        "Kein Pfad wird gewählt"
+      ],
+      "correctAnswer": "Genau ein ausgehender Pfad wird gewählt",
+      "explanation": "Ein exklusives Gateway (XOR, dargestellt als Raute mit X) ist eine Entweder-oder-Entscheidung. Genau ein ausgehender Pfad wird basierend auf einer Bedingung gewählt.",
+      "points": 1,
+      "category": "Gateways"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist ein paralleles Gateway (AND)?",
+      "options": [
+        "Genau ein Pfad wird gewählt",
+        "Ein oder mehrere Pfade werden gewählt",
+        "Alle ausgehenden Pfade werden parallel ausgeführt",
+        "Kein Pfad wird ausgeführt"
+      ],
+      "correctAnswer": "Alle ausgehenden Pfade werden parallel ausgeführt",
+      "explanation": "Ein paralleles Gateway (AND, dargestellt als Raute mit Plus) führt alle ausgehenden Pfade parallel aus. Bei der Zusammenführung wird auf alle Pfade gewartet (Synchronisation).",
+      "points": 1,
+      "category": "Gateways"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen Sequenzfluss und Nachrichtenfluss?",
+      "options": [
+        "Kein Unterschied",
+        "Sequenzfluss ist innerhalb eines Pools, Nachrichtenfluss zwischen Pools",
+        "Nachrichtenfluss ist innerhalb eines Pools, Sequenzfluss zwischen Pools",
+        "Beide sind identisch"
+      ],
+      "correctAnswer": "Sequenzfluss ist innerhalb eines Pools, Nachrichtenfluss zwischen Pools",
+      "explanation": "Sequenzfluss (durchgezogener Pfeil) zeigt die Reihenfolge der Aktivitäten innerhalb eines Pools. Nachrichtenfluss (gestrichelter Pfeil) zeigt Kommunikation zwischen verschiedenen Pools/Organisationen.",
+      "points": 1,
+      "category": "Verbindungsobjekte"
+    },
+    {
+      "id": "q8",
+      "type": "multiple-choice",
+      "question": "Welche Arten von Tasks gibt es in BPMN?",
+      "options": [
+        "Benutzer-Task (User Task)",
+        "Service-Task",
+        "Skript-Task",
+        "Geschäftsregel-Task (Business Rule Task)"
+      ],
+      "correctAnswer": [
+        "Benutzer-Task (User Task)",
+        "Service-Task",
+        "Skript-Task",
+        "Geschäftsregel-Task (Business Rule Task)"
+      ],
+      "explanation": "BPMN definiert verschiedene Task-Typen: Benutzer-Task (manuell), Service-Task (automatisch), Skript-Task (Code), Geschäftsregel-Task (Regeln), Sende-Task, Empfangs-Task und weitere.",
+      "points": 2,
+      "category": "Task-Typen"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was ist ein Pool in BPMN?",
+      "options": [
+        "Eine Aktivität",
+        "Ein Gateway",
+        "Ein Container für einen Teilnehmer/Organisation",
+        "Ein Ereignis"
+      ],
+      "correctAnswer": "Ein Container für einen Teilnehmer/Organisation",
+      "explanation": "Ein Pool ist ein rechteckiger Container, der einen Teilnehmer oder eine Organisation repräsentiert. Pools können mehrere Lanes enthalten und zeigen, wer für welche Aktivitäten verantwortlich ist.",
+      "points": 1,
+      "category": "Schwimmbahnen"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was sind Lanes in BPMN?",
+      "options": [
+        "Unterteilungen von Pools für Rollen oder Abteilungen",
+        "Verbindungslinien",
+        "Ereignisse",
+        "Gateways"
+      ],
+      "correctAnswer": "Unterteilungen von Pools für Rollen oder Abteilungen",
+      "explanation": "Lanes sind Unterteilungen von Pools, die verschiedene Rollen, Abteilungen oder Verantwortlichkeiten innerhalb einer Organisation darstellen.",
+      "points": 1,
+      "category": "Schwimmbahnen"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Wie wird ein Teilprozess (Sub-Process) in BPMN dargestellt?",
+      "options": [
+        "Abgerundetes Rechteck mit Plus-Symbol",
+        "Kreis",
+        "Raute",
+        "Normales Rechteck"
+      ],
+      "correctAnswer": "Abgerundetes Rechteck mit Plus-Symbol",
+      "explanation": "Ein Teilprozess wird als abgerundetes Rechteck mit einem Plus-Symbol dargestellt. Er fasst mehrere Aktivitäten zusammen und kann kollabiert oder erweitert dargestellt werden.",
+      "points": 1,
+      "category": "Teilprozesse"
+    },
+    {
+      "id": "q12",
+      "type": "multiple-choice",
+      "question": "Welche BPMN-Diagrammtypen gibt es?",
+      "options": [
+        "Prozessdiagramm",
+        "Kollaborationsdiagramm",
+        "Choreografie-Diagramm",
+        "Datenflussdiagramm"
+      ],
+      "correctAnswer": [
+        "Prozessdiagramm",
+        "Kollaborationsdiagramm",
+        "Choreografie-Diagramm"
+      ],
+      "explanation": "BPMN definiert drei Hauptdiagrammtypen: Prozessdiagramm (Aktivitäten und Reihenfolge), Kollaborationsdiagramm (Interaktion zwischen Teilnehmern), Choreografie-Diagramm (Nachrichtenaustausch). Datenflussdiagramm ist kein BPMN-Typ.",
+      "points": 2,
+      "category": "Diagrammtypen"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ist ein inklusives Gateway (OR)?",
+      "options": [
+        "Genau ein Pfad wird gewählt",
+        "Alle Pfade werden gewählt",
+        "Ein oder mehrere Pfade werden gewählt",
+        "Kein Pfad wird gewählt"
+      ],
+      "correctAnswer": "Ein oder mehrere Pfade werden gewählt",
+      "explanation": "Ein inklusives Gateway (OR, dargestellt als Raute mit Kreis) ermöglicht die Auswahl von einem oder mehreren ausgehenden Pfaden. Mindestens ein Pfad muss gewählt werden.",
+      "points": 1,
+      "category": "Gateways"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Wie werden Zwischen-Ereignisse (Intermediate Events) dargestellt?",
+      "options": [
+        "Kreis mit dünnem Rand",
+        "Kreis mit dickem Rand",
+        "Kreis mit doppeltem Rand",
+        "Rechteck"
+      ],
+      "correctAnswer": "Kreis mit doppeltem Rand",
+      "explanation": "Zwischen-Ereignisse werden als Kreis mit doppeltem Rand dargestellt. Sie treten während des Prozesses auf und können fangend (Catch) oder werfend (Throw) sein.",
+      "points": 1,
+      "category": "BPMN Notation"
+    },
+    {
+      "id": "q15",
+      "type": "multiple-choice",
+      "question": "Welche Schritte gehören zum Prozessmodellierungsprozess?",
+      "options": [
+        "Prozessidentifikation",
+        "Ist-Analyse",
+        "Modellierung",
+        "Validierung"
+      ],
+      "correctAnswer": [
+        "Prozessidentifikation",
+        "Ist-Analyse",
+        "Modellierung",
+        "Validierung"
+      ],
+      "explanation": "Der Prozessmodellierungsprozess umfasst: 1) Prozessidentifikation (Grenzen definieren), 2) Ist-Analyse (aktuellen Prozess dokumentieren), 3) Modellierung (BPMN-Diagramm erstellen), 4) Validierung (mit Stakeholdern prüfen), 5) Optimierung.",
+      "points": 2,
+      "category": "Modellierungsprozess"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist ein Timer-Ereignis?",
+      "options": [
+        "Ein Ereignis, das durch eine Nachricht ausgelöst wird",
+        "Ein zeitgesteuertes Ereignis (Uhr-Symbol)",
+        "Ein Fehler-Ereignis",
+        "Ein End-Ereignis"
+      ],
+      "correctAnswer": "Ein zeitgesteuertes Ereignis (Uhr-Symbol)",
+      "explanation": "Ein Timer-Ereignis (dargestellt mit Uhr-Symbol) ist zeitgesteuert und kann Prozesse zu bestimmten Zeiten auslösen, Timeouts implementieren oder Fristen überwachen.",
+      "points": 1,
+      "category": "Ereignistypen"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was ist ein Fehler-Ereignis?",
+      "options": [
+        "Ein normales End-Ereignis",
+        "Ein Ereignis zur Behandlung von Ausnahmesituationen (Blitz-Symbol)",
+        "Ein Start-Ereignis",
+        "Ein Timer-Ereignis"
+      ],
+      "correctAnswer": "Ein Ereignis zur Behandlung von Ausnahmesituationen (Blitz-Symbol)",
+      "explanation": "Ein Fehler-Ereignis (dargestellt mit Blitz-Symbol) behandelt Ausnahmesituationen und Fehler im Prozess. Es kann als Start-, Zwischen- oder End-Ereignis auftreten.",
+      "points": 1,
+      "category": "Ereignistypen"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Welche KPIs sind für Prozessanalyse wichtig?",
+      "options": [
+        "Durchlaufzeit",
+        "Bearbeitungszeit",
+        "Kosten pro Prozessinstanz",
+        "Fehlerrate"
+      ],
+      "correctAnswer": [
+        "Durchlaufzeit",
+        "Bearbeitungszeit",
+        "Kosten pro Prozessinstanz",
+        "Fehlerrate"
+      ],
+      "explanation": "Wichtige Prozess-KPIs sind: Durchlaufzeit (Start bis Ende), Bearbeitungszeit (reine Arbeitszeit), Kosten pro Prozessinstanz, Fehlerrate, Kundenzufriedenheit und Ressourcenauslastung.",
+      "points": 2,
+      "category": "Prozess-KPIs"
+    },
+    {
+      "id": "q19",
+      "type": "multiple-choice",
+      "question": "Welche Optimierungsstrategien gibt es für Geschäftsprozesse?",
+      "options": [
+        "Eliminierung überflüssiger Aktivitäten",
+        "Automatisierung manueller Tätigkeiten",
+        "Parallelisierung sequenzieller Aktivitäten",
+        "Standardisierung der Prozessausführung"
+      ],
+      "correctAnswer": [
+        "Eliminierung überflüssiger Aktivitäten",
+        "Automatisierung manueller Tätigkeiten",
+        "Parallelisierung sequenzieller Aktivitäten",
+        "Standardisierung der Prozessausführung"
+      ],
+      "explanation": "Hauptoptimierungsstrategien sind: Eliminierung (überflüssige Aktivitäten entfernen), Automatisierung (manuelle Tätigkeiten automatisieren), Parallelisierung (Durchlaufzeit reduzieren), Standardisierung (einheitliche Ausführung).",
+      "points": 2,
+      "category": "Prozessoptimierung"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist Robotic Process Automation (RPA) im Kontext von BPMN?",
+      "options": [
+        "Manuelle Prozessausführung",
+        "Automatisierung repetitiver, regelbasierter Aufgaben durch Software-Roboter",
+        "Physische Roboter in der Produktion",
+        "Datenbank-Automatisierung"
+      ],
+      "correctAnswer": "Automatisierung repetitiver, regelbasierter Aufgaben durch Software-Roboter",
+      "explanation": "RPA automatisiert repetitive, regelbasierte Aufgaben durch Software-Roboter, die menschliche Interaktionen mit Anwendungen nachahmen. Dies ist eine wichtige Optimierungsstrategie für BPMN-modellierte Prozesse.",
+      "points": 1,
+      "category": "Prozessautomatisierung"
+    }
+  ],
+  "tags": [
+    "BPMN",
+    "Geschäftsprozesse",
+    "Prozessmodellierung",
+    "Workflow",
+    "Gateways",
+    "Events",
+    "Tasks",
+    "Prozessoptimierung"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

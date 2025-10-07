@@ -22,8 +22,8 @@ class HomeView {
     container.setAttribute('aria-label', 'Home page');
 
     try {
-      // Get progress data
-      const progress = this.progressService.getOverallProgress();
+      // Get progress data (now async)
+      const progress = await this.progressService.getOverallProgress();
       const modules = await this.moduleService.getModules();
       const recentActivity = this._getRecentActivity();
 
@@ -75,6 +75,7 @@ class HomeView {
   _renderQuickStats(progress, modules) {
     const completedModules = progress.modulesCompleted || 0;
     const totalModules = progress.totalModules || 0;
+    const totalQuizzes = progress.totalQuizzes || 0;
     const quizzesTaken = progress.quizzesTaken || 0;
     const averageScore = progress.averageQuizScore || 0;
     const inProgressCount = modules.filter(m => m.inProgress).length;
@@ -94,7 +95,7 @@ class HomeView {
           <div class="stat-card" role="listitem">
             <div class="stat-icon" aria-hidden="true">📝</div>
             <div class="stat-content">
-              <div class="stat-value" aria-label="${quizzesTaken} quizzes taken">${quizzesTaken}</div>
+              <div class="stat-value" aria-label="${quizzesTaken} of ${totalQuizzes} quizzes taken">${quizzesTaken}/${totalQuizzes}</div>
               <div class="stat-label">Quizzes Taken</div>
             </div>
           </div>

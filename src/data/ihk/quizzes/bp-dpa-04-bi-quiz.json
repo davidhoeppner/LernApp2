@@ -1,0 +1,444 @@
+{
+  "id": "bp-dpa-04-bi-quiz",
+  "moduleId": "bp-dpa-04-bi-fundamentals",
+  "title": "Business Intelligence und Dashboards",
+  "description": "Umfassendes Quiz zu BI-Systemen, Data Warehousing, OLAP, KPIs und Dashboard-Design",
+  "category": "BP-DPA-04",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 35,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist Business Intelligence (BI)?",
+      "options": [
+        "Eine Programmiersprache",
+        "Sammlung von Strategien und Technologien zur Analyse von Geschäftsdaten",
+        "Eine Datenbank",
+        "Ein Betriebssystem"
+      ],
+      "correctAnswer": "Sammlung von Strategien und Technologien zur Analyse von Geschäftsdaten",
+      "explanation": "Business Intelligence (BI) umfasst Technologien, Anwendungen und Praktiken zur Sammlung, Integration, Analyse und Präsentation von Geschäftsinformationen zur Unterstützung datengetriebener Entscheidungen.",
+      "points": 1,
+      "category": "BI Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen Data Warehouse und Data Lake?",
+      "options": [
+        "Data Warehouse ist größer als Data Lake",
+        "Data Warehouse speichert strukturierte, bereinigte Daten; Data Lake speichert Rohdaten in verschiedenen Formaten",
+        "Data Lake ist teurer als Data Warehouse",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Data Warehouse speichert strukturierte, bereinigte Daten; Data Lake speichert Rohdaten in verschiedenen Formaten",
+      "explanation": "Data Warehouse speichert strukturierte, bereinigte Daten mit Schema-on-Write für Reporting. Data Lake speichert Rohdaten in verschiedenen Formaten mit Schema-on-Read für flexible Exploration.",
+      "points": 1,
+      "category": "Datenarchitektur"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Was ist ein Star Schema?",
+      "options": [
+        "Ein Netzwerk-Topologie",
+        "Ein dimensionales Datenmodell mit zentraler Faktentabelle und umgebenden Dimensionstabellen",
+        "Eine Programmiersprache",
+        "Ein Dashboard-Layout"
+      ],
+      "correctAnswer": "Ein dimensionales Datenmodell mit zentraler Faktentabelle und umgebenden Dimensionstabellen",
+      "explanation": "Ein Star Schema ist ein dimensionales Datenmodell mit einer zentralen Faktentabelle (enthält Kennzahlen) und umgebenden Dimensionstabellen (enthalten beschreibende Attribute). Es ähnelt einem Stern.",
+      "points": 1,
+      "category": "Dimensionale Modellierung"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Was enthalten Faktentabellen hauptsächlich?",
+      "options": [
+        "Beschreibende Attribute",
+        "Kennzahlen (Measures) und Fremdschlüssel",
+        "Nur Primärschlüssel",
+        "Metadaten"
+      ],
+      "correctAnswer": "Kennzahlen (Measures) und Fremdschlüssel",
+      "explanation": "Faktentabellen enthalten hauptsächlich Kennzahlen (Measures) wie Umsatz, Menge, Kosten und Fremdschlüssel zu den Dimensionstabellen. Sie sind optimiert für Aggregationen.",
+      "points": 1,
+      "category": "Dimensionale Modellierung"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen Snowflake und Star Schema?",
+      "options": [
+        "Snowflake hat normalisierte Dimensionstabellen, Star Schema hat denormalisierte",
+        "Star Schema hat normalisierte Dimensionstabellen, Snowflake hat denormalisierte",
+        "Es gibt keinen Unterschied",
+        "Snowflake ist nur für Cloud-Datenbanken"
+      ],
+      "correctAnswer": "Snowflake hat normalisierte Dimensionstabellen, Star Schema hat denormalisierte",
+      "explanation": "Snowflake Schema hat normalisierte Dimensionstabellen (reduzierte Redundanz, komplexere Abfragen), während Star Schema denormalisierte Dimensionstabellen hat (einfachere Abfragen, mehr Redundanz).",
+      "points": 1,
+      "category": "Dimensionale Modellierung"
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "question": "Welche OLAP-Operationen gibt es?",
+      "options": [
+        "Drill-Down",
+        "Roll-Up",
+        "Slice",
+        "Dice"
+      ],
+      "correctAnswer": [
+        "Drill-Down",
+        "Roll-Up",
+        "Slice",
+        "Dice"
+      ],
+      "explanation": "Die wichtigsten OLAP-Operationen sind: Drill-Down (zu Details), Roll-Up (zu Aggregaten), Slice (eine Dimension auswählen), Dice (mehrere Dimensionen auswählen) und Pivot (Rotation der Ansicht).",
+      "points": 2,
+      "category": "OLAP"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was bedeutet Drill-Down in OLAP?",
+      "options": [
+        "Von detaillierten zu aggregierten Daten",
+        "Von aggregierten zu detaillierten Daten",
+        "Auswahl einer Dimension",
+        "Rotation der Datenansicht"
+      ],
+      "correctAnswer": "Von aggregierten zu detaillierten Daten",
+      "explanation": "Drill-Down bedeutet von aggregierten zu detaillierten Daten zu navigieren, z.B. von Jahr zu Quartal zu Monat. Roll-Up ist die umgekehrte Operation.",
+      "points": 1,
+      "category": "OLAP"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was ist MOLAP?",
+      "options": [
+        "Multidimensional OLAP mit vorgenerierte Würfeln",
+        "Relational OLAP",
+        "Hybrid OLAP",
+        "Mobile OLAP"
+      ],
+      "correctAnswer": "Multidimensional OLAP mit vorgenerierte Würfeln",
+      "explanation": "MOLAP (Multidimensional OLAP) verwendet vorberechnete, multidimensionale Würfel (Cubes) für sehr schnelle Abfragen, benötigt aber mehr Speicherplatz.",
+      "points": 1,
+      "category": "OLAP"
+    },
+    {
+      "id": "q9",
+      "type": "multiple-choice",
+      "question": "Welche SMART-Kriterien gelten für KPIs?",
+      "options": [
+        "Specific (Spezifisch)",
+        "Measurable (Messbar)",
+        "Achievable (Erreichbar)",
+        "Time-bound (Zeitlich definiert)"
+      ],
+      "correctAnswer": [
+        "Specific (Spezifisch)",
+        "Measurable (Messbar)",
+        "Achievable (Erreichbar)",
+        "Time-bound (Zeitlich definiert)"
+      ],
+      "explanation": "SMART-Kriterien für KPIs: Specific (spezifisch), Measurable (messbar), Achievable (erreichbar), Relevant (relevant für Geschäftsziele), Time-bound (zeitlich definiert).",
+      "points": 2,
+      "category": "KPIs"
+    },
+    {
+      "id": "q10",
+      "type": "multiple-choice",
+      "question": "Welche KPI-Kategorien gibt es?",
+      "options": [
+        "Finanz-KPIs (Umsatz, ROI)",
+        "Operative KPIs (Durchlaufzeit, Qualität)",
+        "Kunden-KPIs (NPS, Churn Rate)",
+        "Mitarbeiter-KPIs (Produktivität, Fluktuation)"
+      ],
+      "correctAnswer": [
+        "Finanz-KPIs (Umsatz, ROI)",
+        "Operative KPIs (Durchlaufzeit, Qualität)",
+        "Kunden-KPIs (NPS, Churn Rate)",
+        "Mitarbeiter-KPIs (Produktivität, Fluktuation)"
+      ],
+      "explanation": "KPI-Kategorien umfassen: Finanz-KPIs (Umsatz, Gewinn, ROI), Operative KPIs (Durchlaufzeit, Qualität), Kunden-KPIs (NPS, Churn Rate, CLV), Mitarbeiter-KPIs (Produktivität, Fluktuation).",
+      "points": 2,
+      "category": "KPIs"
+    },
+    {
+      "id": "q11",
+      "type": "multiple-choice",
+      "question": "Welche Dashboard-Typen gibt es?",
+      "options": [
+        "Strategische Dashboards",
+        "Operative Dashboards",
+        "Analytische Dashboards",
+        "Mobile Dashboards"
+      ],
+      "correctAnswer": [
+        "Strategische Dashboards",
+        "Operative Dashboards",
+        "Analytische Dashboards"
+      ],
+      "explanation": "Dashboard-Typen: Strategische (langfristige Trends für Führungskräfte), Operative (Tagesgeschäft, Real-time), Analytische (Detailanalysen für Analysten). Mobile ist ein Bereitstellungsformat, kein Typ.",
+      "points": 2,
+      "category": "Dashboard-Design"
+    },
+    {
+      "id": "q12",
+      "type": "multiple-choice",
+      "question": "Welche Design-Prinzipien gelten für Dashboards?",
+      "options": [
+        "Klarheit und Einfachheit",
+        "Visuelle Hierarchie",
+        "Interaktivität",
+        "Maximale Informationsdichte"
+      ],
+      "correctAnswer": [
+        "Klarheit und Einfachheit",
+        "Visuelle Hierarchie",
+        "Interaktivität"
+      ],
+      "explanation": "Dashboard-Design-Prinzipien: Klarheit und Einfachheit (Fokus auf Wesentliches), Visuelle Hierarchie (wichtigste KPIs prominent), Interaktivität (Filter, Drill-Down). Maximale Informationsdichte führt zu Überladung.",
+      "points": 2,
+      "category": "Dashboard-Design"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Welche Visualisierung ist am besten für Trends geeignet?",
+      "options": [
+        "Kreisdiagramm",
+        "Liniendiagramm",
+        "Balkendiagramm",
+        "Treemap"
+      ],
+      "correctAnswer": "Liniendiagramm",
+      "explanation": "Liniendiagramme sind am besten für die Darstellung von Trends über Zeit geeignet, da sie Entwicklungen und Muster klar visualisieren. Kreisdiagramme zeigen Anteile, Balkendiagramme Vergleiche.",
+      "points": 1,
+      "category": "Datenvisualisierung"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Welche Visualisierung ist am besten für Anteile/Zusammensetzung geeignet?",
+      "options": [
+        "Liniendiagramm",
+        "Kreisdiagramm",
+        "Scatter-Plot",
+        "Histogramm"
+      ],
+      "correctAnswer": "Kreisdiagramm",
+      "explanation": "Kreisdiagramme (Pie Charts) sind am besten für die Darstellung von Anteilen und Zusammensetzung geeignet, da sie zeigen, wie sich ein Ganzes in Teile aufteilt.",
+      "points": 1,
+      "category": "Datenvisualisierung"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist Self-Service BI?",
+      "options": [
+        "BI nur für IT-Abteilungen",
+        "Endbenutzer erstellen eigene Berichte ohne IT-Abhängigkeit",
+        "Automatische BI-Systeme",
+        "Cloud-basierte BI"
+      ],
+      "correctAnswer": "Endbenutzer erstellen eigene Berichte ohne IT-Abhängigkeit",
+      "explanation": "Self-Service BI ermöglicht es Endbenutzern, eigene Berichte und Analysen zu erstellen, ohne auf die IT-Abteilung angewiesen zu sein. Dies erhöht Agilität und reduziert IT-Belastung.",
+      "points": 1,
+      "category": "Self-Service BI"
+    },
+    {
+      "id": "q16",
+      "type": "multiple-choice",
+      "question": "Welche Herausforderungen hat Self-Service BI?",
+      "options": [
+        "Datenqualität und -konsistenz",
+        "Governance und Compliance",
+        "Schulungsbedarf",
+        "Sicherheit und Zugriffskontrolle"
+      ],
+      "correctAnswer": [
+        "Datenqualität und -konsistenz",
+        "Governance und Compliance",
+        "Schulungsbedarf",
+        "Sicherheit und Zugriffskontrolle"
+      ],
+      "explanation": "Self-Service BI Herausforderungen: Datenqualität (inkonsistente Definitionen), Governance (Standards), Schulungsbedarf (Benutzer-Training), Sicherheit (Datenschutz, Zugriffskontrolle).",
+      "points": 2,
+      "category": "Self-Service BI"
+    },
+    {
+      "id": "q17",
+      "type": "multiple-choice",
+      "question": "Welche BI-Tools sind weit verbreitet?",
+      "options": [
+        "Microsoft Power BI",
+        "Tableau",
+        "QlikView/QlikSense",
+        "Apache Superset"
+      ],
+      "correctAnswer": [
+        "Microsoft Power BI",
+        "Tableau",
+        "QlikView/QlikSense",
+        "Apache Superset"
+      ],
+      "explanation": "Verbreitete BI-Tools: Microsoft Power BI (Microsoft-Integration), Tableau (starke Visualisierung), QlikView/QlikSense (assoziative Modellierung), Apache Superset (Open Source).",
+      "points": 2,
+      "category": "BI-Tools"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Welche Datenqualitätsdimensionen gibt es?",
+      "options": [
+        "Vollständigkeit",
+        "Genauigkeit",
+        "Konsistenz",
+        "Aktualität"
+      ],
+      "correctAnswer": [
+        "Vollständigkeit",
+        "Genauigkeit",
+        "Konsistenz",
+        "Aktualität"
+      ],
+      "explanation": "Datenqualitätsdimensionen: Vollständigkeit (keine fehlenden Werte), Genauigkeit (korrekte Werte), Konsistenz (einheitliche Formate), Aktualität (zeitnahe Daten), Eindeutigkeit (keine Duplikate).",
+      "points": 2,
+      "category": "Datenqualität"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist Data Lineage?",
+      "options": [
+        "Die Geschwindigkeit der Datenverarbeitung",
+        "Die Nachverfolgung der Datenherkunft und -transformation",
+        "Die Größe der Datenbank",
+        "Die Anzahl der Benutzer"
+      ],
+      "correctAnswer": "Die Nachverfolgung der Datenherkunft und -transformation",
+      "explanation": "Data Lineage ist die Nachverfolgung der Datenherkunft und aller Transformationsschritte. Dies ist wichtig für Compliance, Debugging und Impact-Analysen bei Änderungen.",
+      "points": 1,
+      "category": "Data Governance"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist eine Balanced Scorecard?",
+      "options": [
+        "Ein Dashboard-Tool",
+        "Ein strategisches Management-Framework mit vier Perspektiven",
+        "Eine Datenbank",
+        "Ein Visualisierungstyp"
+      ],
+      "correctAnswer": "Ein strategisches Management-Framework mit vier Perspektiven",
+      "explanation": "Die Balanced Scorecard ist ein strategisches Management-Framework mit vier Perspektiven: Finanzperspektive, Kundenperspektive, Prozessperspektive und Lern-/Entwicklungsperspektive.",
+      "points": 1,
+      "category": "Strategische KPIs"
+    },
+    {
+      "id": "q21",
+      "type": "single-choice",
+      "question": "Was ist ein Data Mart?",
+      "options": [
+        "Ein kleines, themenspezifisches Data Warehouse",
+        "Ein BI-Tool",
+        "Eine Visualisierung",
+        "Ein Dashboard"
+      ],
+      "correctAnswer": "Ein kleines, themenspezifisches Data Warehouse",
+      "explanation": "Ein Data Mart ist ein kleines, themenspezifisches Data Warehouse, das auf die Bedürfnisse einer bestimmten Abteilung oder eines Geschäftsbereichs zugeschnitten ist.",
+      "points": 1,
+      "category": "Datenarchitektur"
+    },
+    {
+      "id": "q22",
+      "type": "single-choice",
+      "question": "Was ist der Hauptvorteil von In-Memory-Technologie in BI?",
+      "options": [
+        "Geringere Kosten",
+        "Deutlich schnellere Abfragen durch Speicherung im RAM",
+        "Bessere Sicherheit",
+        "Einfachere Bedienung"
+      ],
+      "correctAnswer": "Deutlich schnellere Abfragen durch Speicherung im RAM",
+      "explanation": "In-Memory-Technologie speichert Daten im Arbeitsspeicher (RAM) statt auf Festplatten, was zu deutlich schnelleren Abfragen und interaktiven Analysen führt.",
+      "points": 1,
+      "category": "BI-Technologie"
+    },
+    {
+      "id": "q23",
+      "type": "multiple-choice",
+      "question": "Welche Mobile BI Features sind wichtig?",
+      "options": [
+        "Responsive Design",
+        "Touch-optimierte Bedienung",
+        "Offline-Funktionalität",
+        "Push-Benachrichtigungen"
+      ],
+      "correctAnswer": [
+        "Responsive Design",
+        "Touch-optimierte Bedienung",
+        "Offline-Funktionalität",
+        "Push-Benachrichtigungen"
+      ],
+      "explanation": "Mobile BI Features: Responsive Design (Anpassung an Bildschirmgrößen), Touch-Optimierung, Offline-Funktionalität (lokale Daten), Push-Benachrichtigungen (Alerts), Standortbasierte Analysen.",
+      "points": 2,
+      "category": "Mobile BI"
+    },
+    {
+      "id": "q24",
+      "type": "single-choice",
+      "question": "Was ist ein KPI-Dashboard?",
+      "options": [
+        "Eine Datenbank",
+        "Eine visuelle Darstellung wichtiger Kennzahlen auf einen Blick",
+        "Ein Berichtstool",
+        "Eine Programmiersprache"
+      ],
+      "correctAnswer": "Eine visuelle Darstellung wichtiger Kennzahlen auf einen Blick",
+      "explanation": "Ein KPI-Dashboard ist eine visuelle Darstellung der wichtigsten Kennzahlen (Key Performance Indicators) auf einen Blick, um schnelle Entscheidungen zu ermöglichen.",
+      "points": 1,
+      "category": "Dashboard-Design"
+    },
+    {
+      "id": "q25",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen ROLAP und MOLAP?",
+      "options": [
+        "ROLAP ist schneller als MOLAP",
+        "MOLAP speichert Daten in Cubes, ROLAP in relationalen Tabellen",
+        "ROLAP ist teurer als MOLAP",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "MOLAP speichert Daten in Cubes, ROLAP in relationalen Tabellen",
+      "explanation": "MOLAP (Multidimensional OLAP) speichert Daten in vorberechneten Cubes für schnelle Abfragen. ROLAP (Relational OLAP) nutzt relationale Datenbanken und ist flexibler, aber langsamer.",
+      "points": 1,
+      "category": "OLAP"
+    }
+  ],
+  "tags": [
+    "Business Intelligence",
+    "BI",
+    "Data Warehouse",
+    "OLAP",
+    "KPIs",
+    "Dashboards",
+    "Datenvisualisierung",
+    "Self-Service BI",
+    "Star Schema"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

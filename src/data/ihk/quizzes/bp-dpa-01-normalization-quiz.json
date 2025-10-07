@@ -1,0 +1,346 @@
+{
+  "id": "bp-dpa-01-normalization-quiz",
+  "moduleId": "bp-dpa-01-normalization",
+  "title": "Normalisierung von Datenbanken",
+  "description": "Umfassendes Quiz zu Normalformen, funktionalen Abhängigkeiten und Normalisierungsprozess",
+  "category": "BP-DPA-02",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 30,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist das Hauptziel der Normalisierung?",
+      "options": [
+        "Datenbank-Performance verbessern",
+        "Redundanzen minimieren und Anomalien vermeiden",
+        "Speicherplatz maximieren",
+        "Abfragen vereinfachen"
+      ],
+      "correctAnswer": "Redundanzen minimieren und Anomalien vermeiden",
+      "explanation": "Das Hauptziel der Normalisierung ist die Minimierung von Redundanzen und die Vermeidung von Anomalien (Einfüge-, Änderungs- und Löschanomalien), um Datenintegrität zu gewährleisten.",
+      "points": 1,
+      "category": "Normalisierung Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "question": "Welche Arten von Anomalien können durch schlechtes Datenbankdesign entstehen?",
+      "options": [
+        "Einfügeanomalie",
+        "Änderungsanomalie",
+        "Löschanomalie",
+        "Abfrageanomalie"
+      ],
+      "correctAnswer": [
+        "Einfügeanomalie",
+        "Änderungsanomalie",
+        "Löschanomalie"
+      ],
+      "explanation": "Die drei Hauptanomalien sind: Einfügeanomalie (Daten können nicht eingefügt werden ohne andere Daten), Änderungsanomalie (Änderungen müssen an mehreren Stellen vorgenommen werden), Löschanomalie (beim Löschen gehen ungewollt andere Daten verloren).",
+      "points": 2,
+      "category": "Anomalien"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Was bedeutet die funktionale Abhängigkeit A → B?",
+      "options": [
+        "A ist abhängig von B",
+        "B ist funktional abhängig von A (A bestimmt B)",
+        "A und B sind unabhängig",
+        "A und B sind identisch"
+      ],
+      "correctAnswer": "B ist funktional abhängig von A (A bestimmt B)",
+      "explanation": "Die Notation A → B bedeutet, dass B funktional abhängig von A ist, d.h. zu jedem Wert von A gehört genau ein Wert von B. A bestimmt B eindeutig.",
+      "points": 1,
+      "category": "Funktionale Abhängigkeiten"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Welche Bedingung muss für die 1. Normalform (1NF) erfüllt sein?",
+      "options": [
+        "Keine partiellen Abhängigkeiten",
+        "Keine transitiven Abhängigkeiten",
+        "Alle Attributwerte sind atomar (unteilbar)",
+        "Jedes Attribut ist vom gesamten Schlüssel abhängig"
+      ],
+      "correctAnswer": "Alle Attributwerte sind atomar (unteilbar)",
+      "explanation": "Die 1. Normalform (1NF) erfordert, dass alle Attributwerte atomar (unteilbar) sind. Es dürfen keine mehrwertigen Attribute oder Wiederholungsgruppen existieren.",
+      "points": 1,
+      "category": "1. Normalform"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Eine Tabelle ist in 2NF, wenn sie in 1NF ist und zusätzlich:",
+      "options": [
+        "Keine transitiven Abhängigkeiten hat",
+        "Keine partiellen funktionalen Abhängigkeiten hat",
+        "Nur einen Primärschlüssel hat",
+        "Keine Fremdschlüssel hat"
+      ],
+      "correctAnswer": "Keine partiellen funktionalen Abhängigkeiten hat",
+      "explanation": "Die 2. Normalform (2NF) erfordert, dass die Tabelle in 1NF ist und keine partiellen funktionalen Abhängigkeiten hat. Jedes Nicht-Schlüssel-Attribut muss vollständig vom gesamten Primärschlüssel abhängig sein.",
+      "points": 1,
+      "category": "2. Normalform"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist eine partielle funktionale Abhängigkeit?",
+      "options": [
+        "Ein Attribut ist von einem Teil des zusammengesetzten Schlüssels abhängig",
+        "Ein Attribut ist von allen Teilen des Schlüssels abhängig",
+        "Ein Attribut ist von einem anderen Nicht-Schlüssel-Attribut abhängig",
+        "Ein Attribut ist von sich selbst abhängig"
+      ],
+      "correctAnswer": "Ein Attribut ist von einem Teil des zusammengesetzten Schlüssels abhängig",
+      "explanation": "Eine partielle funktionale Abhängigkeit liegt vor, wenn ein Nicht-Schlüssel-Attribut nur von einem Teil eines zusammengesetzten Primärschlüssels abhängig ist, nicht vom gesamten Schlüssel.",
+      "points": 1,
+      "category": "Funktionale Abhängigkeiten"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Eine Tabelle ist in 3NF, wenn sie in 2NF ist und zusätzlich:",
+      "options": [
+        "Keine partiellen Abhängigkeiten hat",
+        "Keine transitiven Abhängigkeiten hat",
+        "Nur atomare Werte hat",
+        "Keine Fremdschlüssel hat"
+      ],
+      "correctAnswer": "Keine transitiven Abhängigkeiten hat",
+      "explanation": "Die 3. Normalform (3NF) erfordert, dass die Tabelle in 2NF ist und keine transitiven Abhängigkeiten hat. Kein Nicht-Schlüssel-Attribut darf transitiv vom Primärschlüssel abhängig sein.",
+      "points": 1,
+      "category": "3. Normalform"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was ist eine transitive Abhängigkeit?",
+      "options": [
+        "A → B und B → A",
+        "A → B und B → C, dann A → C",
+        "A → B und A → C",
+        "A → A"
+      ],
+      "correctAnswer": "A → B und B → C, dann A → C",
+      "explanation": "Eine transitive Abhängigkeit liegt vor, wenn A → B und B → C gilt, dann folgt daraus A → C. Das bedeutet, A bestimmt C indirekt über B als Zwischenattribut.",
+      "points": 1,
+      "category": "Funktionale Abhängigkeiten"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Gegeben ist die Tabelle Bestellposition(BestellNr, ProduktNr, Menge, Produktname, Preis) mit Primärschlüssel (BestellNr, ProduktNr). Welche Normalform ist verletzt?",
+      "options": [
+        "1NF",
+        "2NF",
+        "3NF",
+        "Keine Verletzung"
+      ],
+      "correctAnswer": "2NF",
+      "explanation": "Die 2NF ist verletzt, da Produktname und Preis nur von ProduktNr abhängig sind, nicht vom gesamten zusammengesetzten Schlüssel (BestellNr, ProduktNr). Dies sind partielle funktionale Abhängigkeiten.",
+      "points": 2,
+      "category": "Normalisierung Anwendung"
+    },
+    {
+      "id": "q10",
+      "type": "multiple-choice",
+      "question": "Wie würde die Tabelle aus der vorherigen Frage korrekt normalisiert (2NF)?",
+      "options": [
+        "Bestellposition(BestellNr, ProduktNr, Menge)",
+        "Produkt(ProduktNr, Produktname, Preis)",
+        "Bestellung(BestellNr, Datum, KundenNr)",
+        "BestellungProdukt(BestellNr, ProduktNr, Menge, Produktname, Preis)"
+      ],
+      "correctAnswer": [
+        "Bestellposition(BestellNr, ProduktNr, Menge)",
+        "Produkt(ProduktNr, Produktname, Preis)"
+      ],
+      "explanation": "Zur Erreichung der 2NF werden die partiell abhängigen Attribute in eine separate Tabelle ausgelagert: Bestellposition behält nur die vollständig abhängigen Attribute, Produkt erhält die nur von ProduktNr abhängigen Attribute.",
+      "points": 2,
+      "category": "Normalisierung Anwendung"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Gegeben ist die Tabelle Mitarbeiter(PersonalNr, Name, AbteilungsNr, Abteilungsname). Welche Normalform ist verletzt?",
+      "options": [
+        "1NF",
+        "2NF",
+        "3NF",
+        "Keine Verletzung"
+      ],
+      "correctAnswer": "3NF",
+      "explanation": "Die 3NF ist verletzt, da eine transitive Abhängigkeit vorliegt: PersonalNr → AbteilungsNr → Abteilungsname. Abteilungsname ist transitiv von PersonalNr abhängig.",
+      "points": 2,
+      "category": "Normalisierung Anwendung"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist die Boyce-Codd-Normalform (BCNF)?",
+      "options": [
+        "Identisch mit 3NF",
+        "Eine Verschärfung der 3NF für Tabellen mit mehreren Kandidatenschlüsseln",
+        "Eine Abschwächung der 3NF",
+        "Eine Alternative zur 1NF"
+      ],
+      "correctAnswer": "Eine Verschärfung der 3NF für Tabellen mit mehreren Kandidatenschlüsseln",
+      "explanation": "BCNF ist eine Verschärfung der 3NF. Sie erfordert, dass jede funktionale Abhängigkeit einen Superschlüssel als Determinante hat. Dies ist besonders relevant bei mehreren Kandidatenschlüsseln.",
+      "points": 1,
+      "category": "BCNF"
+    },
+    {
+      "id": "q13",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile hat die Normalisierung?",
+      "options": [
+        "Reduzierte Redundanz",
+        "Vermeidung von Anomalien",
+        "Bessere Datenintegrität",
+        "Immer bessere Performance"
+      ],
+      "correctAnswer": [
+        "Reduzierte Redundanz",
+        "Vermeidung von Anomalien",
+        "Bessere Datenintegrität"
+      ],
+      "explanation": "Normalisierung reduziert Redundanz, vermeidet Anomalien und verbessert die Datenintegrität. Performance ist nicht immer besser, da mehr JOINs erforderlich sein können.",
+      "points": 2,
+      "category": "Vor- und Nachteile"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Nachteile kann Normalisierung haben?",
+      "options": [
+        "Komplexere Abfragen durch mehr JOINs",
+        "Potentiell schlechtere Performance",
+        "Höhere Komplexität der Datenbankstruktur",
+        "Weniger Speicherplatz"
+      ],
+      "correctAnswer": [
+        "Komplexere Abfragen durch mehr JOINs",
+        "Potentiell schlechtere Performance",
+        "Höhere Komplexität der Datenbankstruktur"
+      ],
+      "explanation": "Nachteile der Normalisierung können komplexere Abfragen (mehr JOINs), potentiell schlechtere Performance und höhere Komplexität der Datenbankstruktur sein. Normalisierung spart normalerweise Speicherplatz.",
+      "points": 2,
+      "category": "Vor- und Nachteile"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Wann ist Denormalisierung sinnvoll?",
+      "options": [
+        "Immer zur Performance-Verbesserung",
+        "Bei performance-kritischen Anwendungen mit read-heavy Workloads",
+        "Niemals",
+        "Nur bei kleinen Datenbanken"
+      ],
+      "correctAnswer": "Bei performance-kritischen Anwendungen mit read-heavy Workloads",
+      "explanation": "Denormalisierung ist sinnvoll bei performance-kritischen Anwendungen mit read-heavy Workloads, Data Warehouse Systemen oder Reporting-Datenbanken, wo Abfragegeschwindigkeit wichtiger ist als Speicherplatz.",
+      "points": 1,
+      "category": "Denormalisierung"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Welche Tabelle verletzt die 1NF?",
+      "options": [
+        "Kunde(KundenNr, Name, Adresse)",
+        "Kunde(KundenNr, Name, Telefon1, Telefon2)",
+        "Kunde(KundenNr, Name, 'Telefon: 030-123, 0171-456')",
+        "Kunde(KundenNr, Name, PLZ, Ort)"
+      ],
+      "correctAnswer": "Kunde(KundenNr, Name, 'Telefon: 030-123, 0171-456')",
+      "explanation": "Die dritte Tabelle verletzt die 1NF, da das Telefon-Attribut mehrere Werte in einem Feld enthält (nicht atomar). Die korrekte Lösung wäre eine separate Telefon-Tabelle oder separate Attribute.",
+      "points": 1,
+      "category": "1. Normalform"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was ist eine vollständige funktionale Abhängigkeit?",
+      "options": [
+        "B ist von der gesamten Attributkombination A abhängig",
+        "B ist nur von einem Teil von A abhängig",
+        "A ist von B abhängig",
+        "A und B sind unabhängig"
+      ],
+      "correctAnswer": "B ist von der gesamten Attributkombination A abhängig",
+      "explanation": "Eine vollständige funktionale Abhängigkeit liegt vor, wenn B von der gesamten Attributkombination A abhängig ist und die Entfernung eines Attributs aus A die Abhängigkeit aufheben würde.",
+      "points": 1,
+      "category": "Funktionale Abhängigkeiten"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Welcher Normalisierungsschritt ist korrekt für die Tabelle Ausleihe(AusleihNr, LeserNr, LeserName, ISBN, Buchtitel, Datum)?",
+      "options": [
+        "Keine Normalisierung nötig",
+        "Aufteilen in: Ausleihe(AusleihNr, LeserNr, ISBN, Datum), Leser(LeserNr, LeserName), Buch(ISBN, Buchtitel)",
+        "Nur Leser-Daten auslagern",
+        "Nur Buch-Daten auslagern"
+      ],
+      "correctAnswer": "Aufteilen in: Ausleihe(AusleihNr, LeserNr, ISBN, Datum), Leser(LeserNr, LeserName), Buch(ISBN, Buchtitel)",
+      "explanation": "Die Tabelle hat transitive Abhängigkeiten (AusleihNr → LeserNr → LeserName und AusleihNr → ISBN → Buchtitel). Zur Erreichung der 3NF müssen diese in separate Tabellen ausgelagert werden.",
+      "points": 2,
+      "category": "Normalisierung Anwendung"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist die 4. Normalform (4NF)?",
+      "options": [
+        "Identisch mit BCNF",
+        "Eliminiert mehrwertige Abhängigkeiten",
+        "Eliminiert Verbundabhängigkeiten",
+        "Eine Alternative zur 3NF"
+      ],
+      "correctAnswer": "Eliminiert mehrwertige Abhängigkeiten",
+      "explanation": "Die 4NF eliminiert mehrwertige Abhängigkeiten. Sie ist erreicht, wenn die Tabelle in BCNF ist und keine mehrwertigen Abhängigkeiten hat, bei denen ein Attribut mehrere unabhängige Wertemengen bestimmt.",
+      "points": 1,
+      "category": "4. Normalform"
+    },
+    {
+      "id": "q20",
+      "type": "multiple-choice",
+      "question": "Welche Schritte gehören zum Normalisierungsprozess?",
+      "options": [
+        "Ausgangstabelle analysieren und funktionale Abhängigkeiten identifizieren",
+        "1NF erreichen durch Eliminierung mehrwertiger Attribute",
+        "2NF erreichen durch Eliminierung partieller Abhängigkeiten",
+        "3NF erreichen durch Eliminierung transitiver Abhängigkeiten"
+      ],
+      "correctAnswer": [
+        "Ausgangstabelle analysieren und funktionale Abhängigkeiten identifizieren",
+        "1NF erreichen durch Eliminierung mehrwertiger Attribute",
+        "2NF erreichen durch Eliminierung partieller Abhängigkeiten",
+        "3NF erreichen durch Eliminierung transitiver Abhängigkeiten"
+      ],
+      "explanation": "Der Normalisierungsprozess umfasst: 1) Analyse der Ausgangstabelle, 2) 1NF durch atomare Werte, 3) 2NF durch Eliminierung partieller Abhängigkeiten, 4) 3NF durch Eliminierung transitiver Abhängigkeiten.",
+      "points": 2,
+      "category": "Normalisierungsprozess"
+    }
+  ],
+  "tags": [
+    "Normalisierung",
+    "Normalformen",
+    "Funktionale Abhängigkeiten",
+    "Anomalien",
+    "Datenbankdesign",
+    "1NF",
+    "2NF",
+    "3NF",
+    "BCNF"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

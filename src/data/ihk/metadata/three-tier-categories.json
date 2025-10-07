@@ -1,0 +1,70 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-01-20",
+  "description": "Three-tier category system for IHK content organization",
+  "categories": [
+    {
+      "id": "daten-prozessanalyse",
+      "name": "Daten und Prozessanalyse",
+      "shortName": "DPA",
+      "description": "Inhalte mit hoher Relevanz für die Fachrichtung Daten- und Prozessanalyse",
+      "color": "#3b82f6",
+      "icon": "📊",
+      "examCode": "AP2-DPA",
+      "contentTypes": ["modules", "quizzes"],
+      "specializationRelevance": {
+        "daten-prozessanalyse": "high",
+        "anwendungsentwicklung": "low"
+      },
+      "metadata": {
+        "primarySpecialization": "daten-prozessanalyse",
+        "crossRelevance": false,
+        "examWeight": "high"
+      }
+    },
+    {
+      "id": "anwendungsentwicklung",
+      "name": "Anwendungsentwicklung",
+      "shortName": "AE",
+      "description": "Inhalte mit hoher Relevanz für die Fachrichtung Anwendungsentwicklung",
+      "color": "#10b981",
+      "icon": "💻",
+      "examCode": "AP2-AE",
+      "contentTypes": ["modules", "quizzes"],
+      "specializationRelevance": {
+        "anwendungsentwicklung": "high",
+        "daten-prozessanalyse": "low"
+      },
+      "metadata": {
+        "primarySpecialization": "anwendungsentwicklung",
+        "crossRelevance": false,
+        "examWeight": "high"
+      }
+    },
+    {
+      "id": "allgemein",
+      "name": "Allgemein",
+      "shortName": "FÜ",
+      "description": "Fachrichtungsübergreifende Inhalte und Grundlagen für beide Spezialisierungen",
+      "color": "#6b7280",
+      "icon": "📚",
+      "examCode": "AP2-FÜ",
+      "contentTypes": ["modules", "quizzes"],
+      "specializationRelevance": {
+        "anwendungsentwicklung": "high",
+        "daten-prozessanalyse": "high"
+      },
+      "metadata": {
+        "primarySpecialization": null,
+        "crossRelevance": true,
+        "examWeight": "high"
+      }
+    }
+  ],
+  "mappingConfiguration": {
+    "defaultCategory": "allgemein",
+    "conflictResolution": "priority-based",
+    "validationRequired": true,
+    "preserveOriginalCategory": true
+  }
+}

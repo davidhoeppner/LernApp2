@@ -1,0 +1,353 @@
+{
+  "id": "bp-dpa-06-data-quality-quiz",
+  "moduleId": "bp-dpa-06-data-quality",
+  "title": "Datenqualität und Data Governance",
+  "description": "Umfassendes Quiz zu Datenqualitätsdimensionen, Data Profiling, Datenbereinigung und Governance-Strategien",
+  "category": "BP-DPA-01",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 25,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple-choice",
+      "question": "Welche sind die wichtigsten Datenqualitätsdimensionen?",
+      "options": [
+        "Vollständigkeit (Completeness)",
+        "Genauigkeit (Accuracy)",
+        "Konsistenz (Consistency)",
+        "Geschwindigkeit (Speed)"
+      ],
+      "correctAnswer": [
+        "Vollständigkeit (Completeness)",
+        "Genauigkeit (Accuracy)",
+        "Konsistenz (Consistency)"
+      ],
+      "explanation": "Die wichtigsten Datenqualitätsdimensionen sind Vollständigkeit (keine fehlenden Werte), Genauigkeit (korrekte Werte), Konsistenz (einheitliche Formate), Aktualität und Eindeutigkeit. Geschwindigkeit ist eine Performance-Metrik, keine Qualitätsdimension.",
+      "points": 2,
+      "category": "Datenqualitätsdimensionen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Was bedeutet Datenaktualität (Timeliness)?",
+      "options": [
+        "Daten sind korrekt",
+        "Daten sind vollständig",
+        "Daten sind zeitnah und aktuell verfügbar",
+        "Daten sind eindeutig"
+      ],
+      "correctAnswer": "Daten sind zeitnah und aktuell verfügbar",
+      "explanation": "Datenaktualität (Timeliness) bedeutet, dass Daten zeitnah verfügbar sind und den aktuellen Zustand der realen Welt widerspiegeln. Veraltete Daten können zu falschen Entscheidungen führen.",
+      "points": 1,
+      "category": "Datenqualitätsdimensionen"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Was ist Data Profiling?",
+      "options": [
+        "Erstellung von Benutzerprofilen",
+        "Analyse und Bewertung der Datenqualität durch statistische Untersuchung",
+        "Datensicherung",
+        "Datenvisualisierung"
+      ],
+      "correctAnswer": "Analyse und Bewertung der Datenqualität durch statistische Untersuchung",
+      "explanation": "Data Profiling ist die systematische Analyse von Daten zur Bewertung ihrer Qualität, Struktur und Inhalte durch statistische Methoden und Mustererkennungsverfahren.",
+      "points": 1,
+      "category": "Data Profiling"
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "question": "Welche Techniken werden beim Data Profiling eingesetzt?",
+      "options": [
+        "Statistische Analyse (Min, Max, Durchschnitt)",
+        "Musteranalyse (Pattern Analysis)",
+        "Duplikatserkennung",
+        "Datenvisualisierung"
+      ],
+      "correctAnswer": [
+        "Statistische Analyse (Min, Max, Durchschnitt)",
+        "Musteranalyse (Pattern Analysis)",
+        "Duplikatserkennung"
+      ],
+      "explanation": "Data Profiling umfasst statistische Analyse (Verteilungen, Ausreißer), Musteranalyse (Formate, Strukturen), Duplikatserkennung und Beziehungsanalyse. Datenvisualisierung ist ein Ergebnis, keine Profiling-Technik.",
+      "points": 2,
+      "category": "Data Profiling Techniken"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Was sind Datenanomalien?",
+      "options": [
+        "Normale Datenwerte",
+        "Abweichungen von erwarteten Datenmustern oder -werten",
+        "Große Datenmengen",
+        "Schnelle Datenverarbeitung"
+      ],
+      "correctAnswer": "Abweichungen von erwarteten Datenmustern oder -werten",
+      "explanation": "Datenanomalien sind unerwartete Abweichungen von normalen Datenmustern, wie Ausreißer, ungewöhnliche Werte oder Inkonsistenzen, die auf Datenqualitätsprobleme hinweisen können.",
+      "points": 1,
+      "category": "Datenanomalien"
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "question": "Welche Arten von Datenfehlern gibt es?",
+      "options": [
+        "Syntaktische Fehler (Format, Datentyp)",
+        "Semantische Fehler (Bedeutung, Geschäftsregeln)",
+        "Referentielle Fehler (Beziehungen zwischen Tabellen)",
+        "Performance-Fehler"
+      ],
+      "correctAnswer": [
+        "Syntaktische Fehler (Format, Datentyp)",
+        "Semantische Fehler (Bedeutung, Geschäftsregeln)",
+        "Referentielle Fehler (Beziehungen zwischen Tabellen)"
+      ],
+      "explanation": "Datenfehler-Kategorien: Syntaktische Fehler (Format/Struktur), Semantische Fehler (Bedeutung/Geschäftslogik), Referentielle Fehler (Beziehungsintegrität). Performance-Fehler sind technische, keine Datenqualitätsfehler.",
+      "points": 2,
+      "category": "Datenfehler-Typen"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist Fuzzy Matching?",
+      "options": [
+        "Exakte Übereinstimmung von Datensätzen",
+        "Ungefähre Übereinstimmung zur Erkennung ähnlicher Datensätze",
+        "Schnelle Datensuche",
+        "Datenvisualisierung"
+      ],
+      "correctAnswer": "Ungefähre Übereinstimmung zur Erkennung ähnlicher Datensätze",
+      "explanation": "Fuzzy Matching erkennt ähnliche, aber nicht exakt übereinstimmende Datensätze durch Algorithmen wie Levenshtein-Distanz, um Duplikate und Variationen zu identifizieren.",
+      "points": 1,
+      "category": "Duplikatserkennung"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was ist Data Lineage?",
+      "options": [
+        "Die Geschwindigkeit der Datenverarbeitung",
+        "Die Nachverfolgung der Datenherkunft und -transformation",
+        "Die Größe der Datenbank",
+        "Die Anzahl der Benutzer"
+      ],
+      "correctAnswer": "Die Nachverfolgung der Datenherkunft und -transformation",
+      "explanation": "Data Lineage dokumentiert den Weg der Daten von der Quelle bis zum Ziel, einschließlich aller Transformationsschritte. Dies ist wichtig für Compliance, Debugging und Impact-Analysen.",
+      "points": 1,
+      "category": "Data Lineage"
+    },
+    {
+      "id": "q9",
+      "type": "multiple-choice",
+      "question": "Welche Datenbereinigungsstrategien gibt es?",
+      "options": [
+        "Standardisierung (Format vereinheitlichen)",
+        "Validierung (Geschäftsregeln prüfen)",
+        "Deduplizierung (Duplikate entfernen)",
+        "Komprimierung (Dateigröße reduzieren)"
+      ],
+      "correctAnswer": [
+        "Standardisierung (Format vereinheitlichen)",
+        "Validierung (Geschäftsregeln prüfen)",
+        "Deduplizierung (Duplikate entfernen)"
+      ],
+      "explanation": "Datenbereinigungsstrategien umfassen Standardisierung (einheitliche Formate), Validierung (Geschäftsregeln), Deduplizierung (Duplikate entfernen) und Anreicherung. Komprimierung ist eine Speicheroptimierung.",
+      "points": 2,
+      "category": "Datenbereinigung"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was ist ein Data Quality Score?",
+      "options": [
+        "Die Anzahl der Datensätze",
+        "Eine quantitative Bewertung der Datenqualität",
+        "Die Verarbeitungsgeschwindigkeit",
+        "Die Speichergröße"
+      ],
+      "correctAnswer": "Eine quantitative Bewertung der Datenqualität",
+      "explanation": "Ein Data Quality Score ist eine numerische Bewertung der Datenqualität, oft als Prozentsatz, der verschiedene Qualitätsdimensionen kombiniert und messbar macht.",
+      "points": 1,
+      "category": "Qualitätsmessung"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist Data Governance?",
+      "options": [
+        "Technische Datenverwaltung",
+        "Strategische Verwaltung von Daten als Unternehmensressource",
+        "Datensicherung",
+        "Datenvisualisierung"
+      ],
+      "correctAnswer": "Strategische Verwaltung von Daten als Unternehmensressource",
+      "explanation": "Data Governance ist die strategische Verwaltung von Daten als Unternehmensressource, einschließlich Richtlinien, Prozessen, Rollen und Verantwortlichkeiten für Datenqualität und -nutzung.",
+      "points": 1,
+      "category": "Data Governance"
+    },
+    {
+      "id": "q12",
+      "type": "multiple-choice",
+      "question": "Welche Rollen gibt es in der Data Governance?",
+      "options": [
+        "Data Owner (Datenverantwortlicher)",
+        "Data Steward (Datenverwalter)",
+        "Data Custodian (Datenpfleger)",
+        "Data Viewer (Datenbetrachter)"
+      ],
+      "correctAnswer": [
+        "Data Owner (Datenverantwortlicher)",
+        "Data Steward (Datenverwalter)",
+        "Data Custodian (Datenpfleger)"
+      ],
+      "explanation": "Wichtige Data Governance Rollen: Data Owner (geschäftliche Verantwortung), Data Steward (operative Verwaltung), Data Custodian (technische Pflege). Data Viewer ist keine Standard-Governance-Rolle.",
+      "points": 2,
+      "category": "Governance-Rollen"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ist ein Data Quality Rule?",
+      "options": [
+        "Eine Sicherheitsrichtlinie",
+        "Eine definierte Bedingung zur Bewertung der Datenqualität",
+        "Ein Backup-Verfahren",
+        "Eine Visualisierungsregel"
+      ],
+      "correctAnswer": "Eine definierte Bedingung zur Bewertung der Datenqualität",
+      "explanation": "Data Quality Rules sind definierte Bedingungen oder Geschäftsregeln, die automatisch prüfen, ob Daten bestimmte Qualitätskriterien erfüllen, z.B. 'E-Mail muss @-Zeichen enthalten'.",
+      "points": 1,
+      "category": "Quality Rules"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist Master Data Management (MDM)?",
+      "options": [
+        "Verwaltung aller Unternehmensdaten",
+        "Zentrale Verwaltung kritischer Stammdaten",
+        "Backup-Management",
+        "Performance-Optimierung"
+      ],
+      "correctAnswer": "Zentrale Verwaltung kritischer Stammdaten",
+      "explanation": "Master Data Management (MDM) ist die zentrale Verwaltung kritischer Stammdaten (wie Kunden, Produkte, Lieferanten) zur Sicherstellung von Konsistenz und Qualität über alle Systeme hinweg.",
+      "points": 1,
+      "category": "Master Data Management"
+    },
+    {
+      "id": "q15",
+      "type": "multiple-choice",
+      "question": "Welche Metriken werden zur Datenqualitätsmessung verwendet?",
+      "options": [
+        "Vollständigkeitsrate (% nicht-leere Felder)",
+        "Genauigkeitsrate (% korrekte Werte)",
+        "Duplikatsrate (% doppelte Datensätze)",
+        "Verarbeitungsgeschwindigkeit"
+      ],
+      "correctAnswer": [
+        "Vollständigkeitsrate (% nicht-leere Felder)",
+        "Genauigkeitsrate (% korrekte Werte)",
+        "Duplikatsrate (% doppelte Datensätze)"
+      ],
+      "explanation": "Wichtige Datenqualitätsmetriken: Vollständigkeitsrate, Genauigkeitsrate, Duplikatsrate, Konsistenzrate und Aktualitätsrate. Verarbeitungsgeschwindigkeit ist eine Performance-, keine Qualitätsmetrik.",
+      "points": 2,
+      "category": "Qualitätsmetriken"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist Data Cataloging?",
+      "options": [
+        "Datensicherung",
+        "Inventarisierung und Dokumentation verfügbarer Datenbestände",
+        "Datenvisualisierung",
+        "Performance-Optimierung"
+      ],
+      "correctAnswer": "Inventarisierung und Dokumentation verfügbarer Datenbestände",
+      "explanation": "Data Cataloging ist die systematische Inventarisierung und Dokumentation aller verfügbaren Datenbestände mit Metadaten, um Auffindbarkeit und Verständnis zu verbessern.",
+      "points": 1,
+      "category": "Data Cataloging"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was sind Referenzdaten (Reference Data)?",
+      "options": [
+        "Alle Unternehmensdaten",
+        "Statische Daten zur Klassifizierung und Validierung anderer Daten",
+        "Transaktionsdaten",
+        "Backup-Daten"
+      ],
+      "correctAnswer": "Statische Daten zur Klassifizierung und Validierung anderer Daten",
+      "explanation": "Referenzdaten sind relativ statische Daten, die zur Klassifizierung, Kategorisierung und Validierung anderer Daten verwendet werden, z.B. Ländercodes, Währungen, Produktkategorien.",
+      "points": 1,
+      "category": "Referenzdaten"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Welche Tools werden für Datenqualitätsmanagement eingesetzt?",
+      "options": [
+        "Data Profiling Tools (z.B. Talend Data Preparation)",
+        "Data Quality Tools (z.B. Informatica Data Quality)",
+        "Master Data Management Tools (z.B. SAP MDG)",
+        "Nur Excel"
+      ],
+      "correctAnswer": [
+        "Data Profiling Tools (z.B. Talend Data Preparation)",
+        "Data Quality Tools (z.B. Informatica Data Quality)",
+        "Master Data Management Tools (z.B. SAP MDG)"
+      ],
+      "explanation": "Professionelle DQ-Tools umfassen Data Profiling Tools, spezialisierte Data Quality Suites und MDM-Plattformen. Excel ist für einfache Analysen geeignet, aber nicht für Enterprise-DQ-Management.",
+      "points": 2,
+      "category": "DQ-Tools"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist ein Data Quality Dashboard?",
+      "options": [
+        "Ein Backup-System",
+        "Eine visuelle Darstellung von Datenqualitätsmetriken und -trends",
+        "Eine Datenbank",
+        "Ein ETL-Tool"
+      ],
+      "correctAnswer": "Eine visuelle Darstellung von Datenqualitätsmetriken und -trends",
+      "explanation": "Ein Data Quality Dashboard visualisiert Datenqualitätsmetriken, Trends und Alerts in Echtzeit, um Stakeholdern einen schnellen Überblick über den Zustand der Datenqualität zu geben.",
+      "points": 1,
+      "category": "DQ-Monitoring"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen Data Quality und Data Integrity?",
+      "options": [
+        "Es gibt keinen Unterschied",
+        "Data Quality bezieht sich auf Geschäftsregeln, Data Integrity auf technische Konsistenz",
+        "Data Integrity ist wichtiger als Data Quality",
+        "Data Quality ist nur für große Unternehmen relevant"
+      ],
+      "correctAnswer": "Data Quality bezieht sich auf Geschäftsregeln, Data Integrity auf technische Konsistenz",
+      "explanation": "Data Quality bezieht sich auf die Eignung der Daten für Geschäftszwecke (Vollständigkeit, Genauigkeit), während Data Integrity die technische Konsistenz und Korrektheit der Datenstrukturen sicherstellt.",
+      "points": 1,
+      "category": "Konzeptabgrenzung"
+    }
+  ],
+  "tags": [
+    "Datenqualität",
+    "Data Quality",
+    "Data Profiling",
+    "Data Governance",
+    "Datenbereinigung",
+    "Master Data Management",
+    "Data Lineage",
+    "Qualitätsmetriken"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

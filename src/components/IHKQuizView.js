@@ -24,6 +24,11 @@ class IHKQuizView {
     this.showResults = false;
     this.startTime = null;
     this.endTime = null;
+    
+    // Timer properties
+    this.timerInterval = null;
+    this.timeRemaining = 0; // in seconds
+    this.timerStarted = false;
   }
 
   /**
@@ -55,8 +60,18 @@ class IHKQuizView {
         }
 
         this.startTime = Date.now();
+        
+        // Initialize timer if quiz has time limit
+        if (this.quiz.timeLimit) {
+          this.initializeTimer();
+        }
+        
         container.innerHTML = '';
         container.appendChild(this.renderContent());
+        
+        // Set up page visibility handling for timer
+        this.setupPageVisibilityHandling();
+        
         accessibilityHelper.announce(`Quiz loaded: ${this.quiz.title}`);
       } catch (error) {
         console.error('Error loading quiz:', error);
@@ -196,8 +211,8 @@ class IHKQuizView {
         ${
           this.quiz.timeLimit
             ? `
-          <span class="time-remaining" id="time-remaining">
-            Zeit: ${this.quiz.timeLimit}:00
+          <span class="time-remaining" id="time-remaining" role="timer" aria-live="polite">
+            Zeit: ${this.getFormattedTimeRemaining() || this.quiz.timeLimit + ':00'}
           </span>
         `
             : ''
@@ -495,6 +510,9 @@ class IHKQuizView {
    * Submit quiz
    */
   async submitQuiz() {
+    // Stop the timer
+    this.stopTimer();
+    
     this.endTime = Date.now();
     this.showResults = true;
 
@@ -606,6 +624,169 @@ class IHKQuizView {
       advanced: 'Experte',
     };
     return labels[difficulty] || difficulty;
+  }
+
+  /**
+   * Initialize the quiz timer
+   */
+  initializeTimer() {
+    if (!this.quiz.timeLimit || this.timerStarted) return;
+    
+    // Convert minutes to seconds
+    this.timeRemaining = this.quiz.timeLimit * 60;
+    this.timerStarted = true;
+    
+    // Start the timer
+    this.startTimer();
+  }
+
+  /**
+   * Start the countdown timer
+   */
+  startTimer() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
+
+    this.timerInterval = setInterval(() => {
+      this.timeRemaining--;
+      this.updateTimerDisplay();
+
+      // Check if time is up
+      if (this.timeRemaining <= 0) {
+        this.handleTimeUp();
+      }
+      
+      // Warning when 5 minutes remaining
+      if (this.timeRemaining === 300) {
+        toastNotification.warning('Nur noch 5 Minuten verbleibend!');
+        accessibilityHelper.announce('Warning: 5 minutes remaining');
+      }
+      
+      // Warning when 1 minute remaining
+      if (this.timeRemaining === 60) {
+        toastNotification.warning('Nur noch 1 Minute verbleibend!');
+        accessibilityHelper.announce('Warning: 1 minute remaining');
+      }
+      
+      // Warning when 30 seconds remaining
+      if (this.timeRemaining === 30) {
+        toastNotification.error('Nur noch 30 Sekunden!');
+        accessibilityHelper.announce('Warning: 30 seconds remaining');
+      }
+    }, 1000);
+  }
+
+  /**
+   * Update the timer display
+   */
+  updateTimerDisplay() {
+    const timerElement = document.getElementById('time-remaining');
+    if (!timerElement) return;
+
+    const minutes = Math.floor(this.timeRemaining / 60);
+    const seconds = this.timeRemaining % 60;
+    const timeString = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    
+    timerElement.textContent = `Zeit: ${timeString}`;
+    
+    // Add visual warning when time is running low
+    if (this.timeRemaining <= 300) { // 5 minutes
+      timerElement.classList.add('time-warning');
+    }
+    
+    if (this.timeRemaining <= 60) { // 1 minute
+      timerElement.classList.add('time-critical');
+    }
+  }
+
+  /**
+   * Handle timer expiration
+   */
+  handleTimeUp() {
+    this.stopTimer();
+    toastNotification.error('Zeit abgelaufen! Quiz wird automatisch beendet.');
+    accessibilityHelper.announce('Time is up! Quiz will be submitted automatically.');
+    
+    // Auto-submit the quiz
+    setTimeout(() => {
+      this.submitQuiz();
+    }, 2000);
+  }
+
+  /**
+   * Stop the timer
+   */
+  stopTimer() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+  }
+
+  /**
+   * Pause the timer (for when user navigates away)
+   */
+  pauseTimer() {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+      this.timerInterval = null;
+    }
+  }
+
+  /**
+   * Resume the timer
+   */
+  resumeTimer() {
+    if (this.timerStarted && !this.timerInterval && this.timeRemaining > 0) {
+      this.startTimer();
+    }
+  }
+
+  /**
+   * Get formatted time remaining
+   */
+  getFormattedTimeRemaining() {
+    const minutes = Math.floor(this.timeRemaining / 60);
+    const seconds = this.timeRemaining % 60;
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  }
+
+  /**
+   * Setup page visibility handling to pause/resume timer
+   */
+  setupPageVisibilityHandling() {
+    // Handle page visibility changes
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        // Page is hidden, pause timer
+        this.pauseTimer();
+      } else {
+        // Page is visible, resume timer
+        this.resumeTimer();
+      }
+    });
+
+    // Handle window focus/blur
+    window.addEventListener('blur', () => {
+      this.pauseTimer();
+    });
+
+    window.addEventListener('focus', () => {
+      this.resumeTimer();
+    });
+  }
+
+  /**
+   * Cleanup timer when component is destroyed
+   */
+  cleanup() {
+    this.stopTimer();
+    
+    // Remove event listeners
+    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+    window.removeEventListener('blur', this.handleWindowBlur);
+    window.removeEventListener('focus', this.handleWindowFocus);
   }
 }
 

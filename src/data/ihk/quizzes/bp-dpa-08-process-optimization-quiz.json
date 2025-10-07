@@ -1,0 +1,344 @@
+{
+  "id": "bp-dpa-08-process-optimization-quiz",
+  "moduleId": "bp-dpa-08-process-optimization",
+  "title": "Prozessoptimierung und Lean Management",
+  "description": "Umfassendes Quiz zu Prozessoptimierungsstrategien, Lean Management, Six Sigma und kontinuierlicher Verbesserung",
+  "category": "BP-DPA-03",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 25,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist das Hauptziel der Prozessoptimierung?",
+      "options": [
+        "Mehr Mitarbeiter einstellen",
+        "Effizienz steigern und Verschwendung reduzieren",
+        "Neue Software kaufen",
+        "Mehr Meetings abhalten"
+      ],
+      "correctAnswer": "Effizienz steigern und Verschwendung reduzieren",
+      "explanation": "Das Hauptziel der Prozessoptimierung ist die Steigerung der Effizienz durch Reduzierung von Verschwendung, Verkürzung von Durchlaufzeiten und Verbesserung der Qualität.",
+      "points": 1,
+      "category": "Prozessoptimierung Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "question": "Welche sind die 7 Arten der Verschwendung (Muda) im Lean Management?",
+      "options": [
+        "Überproduktion",
+        "Wartezeiten",
+        "Transport",
+        "Überbearbeitung"
+      ],
+      "correctAnswer": [
+        "Überproduktion",
+        "Wartezeiten",
+        "Transport",
+        "Überbearbeitung"
+      ],
+      "explanation": "Die 7 Mudas sind: Überproduktion, Wartezeiten, Transport, Überbearbeitung, Bestände, Bewegung und Fehler. Später wurde als 8. Muda die ungenutzte Kreativität der Mitarbeiter hinzugefügt.",
+      "points": 2,
+      "category": "Lean Management"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Was bedeutet 'Kaizen'?",
+      "options": [
+        "Große, revolutionäre Veränderungen",
+        "Kontinuierliche, kleine Verbesserungen",
+        "Kostensenkung",
+        "Qualitätskontrolle"
+      ],
+      "correctAnswer": "Kontinuierliche, kleine Verbesserungen",
+      "explanation": "Kaizen bedeutet 'Veränderung zum Besseren' und steht für kontinuierliche, kleine Verbesserungen durch alle Mitarbeiter, anstatt großer, revolutionärer Veränderungen.",
+      "points": 1,
+      "category": "Kaizen"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Was ist der PDCA-Zyklus?",
+      "options": [
+        "Plan-Do-Check-Act",
+        "Process-Design-Control-Analyze",
+        "Prepare-Develop-Create-Apply",
+        "Plan-Develop-Control-Assess"
+      ],
+      "correctAnswer": "Plan-Do-Check-Act",
+      "explanation": "Der PDCA-Zyklus (Plan-Do-Check-Act) ist ein iterativer Verbesserungsprozess: Planen, Umsetzen, Überprüfen, Handeln. Er ist fundamental für kontinuierliche Verbesserung.",
+      "points": 1,
+      "category": "PDCA-Zyklus"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Was ist Six Sigma?",
+      "options": [
+        "Eine Software",
+        "Eine Qualitätsmanagement-Methodik zur Reduzierung von Fehlern",
+        "Ein Mitarbeitertyp",
+        "Eine Organisationsstruktur"
+      ],
+      "correctAnswer": "Eine Qualitätsmanagement-Methodik zur Reduzierung von Fehlern",
+      "explanation": "Six Sigma ist eine datengetriebene Qualitätsmanagement-Methodik, die darauf abzielt, Prozessvariationen zu reduzieren und die Fehlerrate auf maximal 3,4 Fehler pro Million Möglichkeiten zu senken.",
+      "points": 1,
+      "category": "Six Sigma"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was bedeutet DMAIC in Six Sigma?",
+      "options": [
+        "Define-Measure-Analyze-Improve-Control",
+        "Design-Make-Analyze-Implement-Check",
+        "Develop-Monitor-Assess-Integrate-Complete",
+        "Data-Method-Analysis-Implementation-Conclusion"
+      ],
+      "correctAnswer": "Define-Measure-Analyze-Improve-Control",
+      "explanation": "DMAIC ist die strukturierte Problemlösungsmethodik in Six Sigma: Define (Definieren), Measure (Messen), Analyze (Analysieren), Improve (Verbessern), Control (Kontrollieren).",
+      "points": 1,
+      "category": "DMAIC"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist ein Wertstrom (Value Stream)?",
+      "options": [
+        "Der Geldfluss im Unternehmen",
+        "Die Abfolge aller Aktivitäten zur Erstellung eines Produkts oder einer Dienstleistung",
+        "Die Mitarbeiterstruktur",
+        "Das IT-System"
+      ],
+      "correctAnswer": "Die Abfolge aller Aktivitäten zur Erstellung eines Produkts oder einer Dienstleistung",
+      "explanation": "Ein Wertstrom umfasst alle Aktivitäten (wertschöpfend und nicht-wertschöpfend), die zur Erstellung eines Produkts oder einer Dienstleistung vom Rohstoff bis zum Kunden erforderlich sind.",
+      "points": 1,
+      "category": "Value Stream Mapping"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was ist Value Stream Mapping (VSM)?",
+      "options": [
+        "Eine Finanzanalyse",
+        "Eine visuelle Darstellung des Wertstroms zur Identifikation von Verschwendung",
+        "Eine Mitarbeiterbewertung",
+        "Eine Marktanalyse"
+      ],
+      "correctAnswer": "Eine visuelle Darstellung des Wertstroms zur Identifikation von Verschwendung",
+      "explanation": "Value Stream Mapping ist eine Lean-Technik zur visuellen Darstellung des Material- und Informationsflusses, um Verschwendung zu identifizieren und Verbesserungsmöglichkeiten aufzuzeigen.",
+      "points": 1,
+      "category": "Value Stream Mapping"
+    },
+    {
+      "id": "q9",
+      "type": "multiple-choice",
+      "question": "Welche Kennzahlen sind wichtig für die Prozessoptimierung?",
+      "options": [
+        "Durchlaufzeit (Lead Time)",
+        "Zykluszeit (Cycle Time)",
+        "Durchsatz (Throughput)",
+        "Mitarbeiteranzahl"
+      ],
+      "correctAnswer": [
+        "Durchlaufzeit (Lead Time)",
+        "Zykluszeit (Cycle Time)",
+        "Durchsatz (Throughput)"
+      ],
+      "explanation": "Wichtige Kennzahlen sind: Durchlaufzeit (Zeit von Start bis Ende), Zykluszeit (Zeit für eine Einheit), Durchsatz (Einheiten pro Zeit), Qualitätsrate und Kapazitätsauslastung. Mitarbeiteranzahl allein ist keine Prozessleistungskennzahl.",
+      "points": 2,
+      "category": "Prozesskennzahlen"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was ist ein Engpass (Bottleneck)?",
+      "options": [
+        "Ein defektes Gerät",
+        "Die Aktivität mit der geringsten Kapazität, die den Gesamtdurchsatz begrenzt",
+        "Ein Qualitätsproblem",
+        "Ein Mitarbeitermangel"
+      ],
+      "correctAnswer": "Die Aktivität mit der geringsten Kapazität, die den Gesamtdurchsatz begrenzt",
+      "explanation": "Ein Engpass ist die Aktivität oder Ressource mit der geringsten Kapazität in einem Prozess, die den Gesamtdurchsatz des Systems begrenzt. Nach der Theory of Constraints bestimmt der Engpass die Systemleistung.",
+      "points": 1,
+      "category": "Engpasstheorie"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist die 5S-Methodik?",
+      "options": [
+        "Ein Qualitätsstandard",
+        "Eine Arbeitsplatzorganisationsmethode",
+        "Ein Finanzmodell",
+        "Eine Personalstrategie"
+      ],
+      "correctAnswer": "Eine Arbeitsplatzorganisationsmethode",
+      "explanation": "5S ist eine Methodik zur Arbeitsplatzorganisation: Seiri (Sortieren), Seiton (Systematisieren), Seiso (Säubern), Seiketsu (Standardisieren), Shitsuke (Selbstdisziplin).",
+      "points": 1,
+      "category": "5S-Methodik"
+    },
+    {
+      "id": "q12",
+      "type": "multiple-choice",
+      "question": "Welche Optimierungsstrategien gibt es?",
+      "options": [
+        "Eliminierung (Eliminate)",
+        "Automatisierung (Automate)",
+        "Parallelisierung (Parallelize)",
+        "Komplizierung (Complicate)"
+      ],
+      "correctAnswer": [
+        "Eliminierung (Eliminate)",
+        "Automatisierung (Automate)",
+        "Parallelisierung (Parallelize)"
+      ],
+      "explanation": "Hauptoptimierungsstrategien sind: Eliminierung (überflüssige Schritte entfernen), Automatisierung (manuelle Arbeit automatisieren), Parallelisierung (gleichzeitige Ausführung), Standardisierung und Integration. Komplizierung ist keine Optimierungsstrategie.",
+      "points": 2,
+      "category": "Optimierungsstrategien"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ist Poka-Yoke?",
+      "options": [
+        "Ein japanisches Spiel",
+        "Ein Prinzip zur Fehlervermeidung durch Design",
+        "Eine Kostensenkungsmethode",
+        "Ein Managementstil"
+      ],
+      "correctAnswer": "Ein Prinzip zur Fehlervermeidung durch Design",
+      "explanation": "Poka-Yoke (\"Fehler vermeiden\") ist ein Lean-Prinzip, das darauf abzielt, Fehler durch intelligentes Design von Prozessen und Produkten zu verhindern oder sofort erkennbar zu machen.",
+      "points": 1,
+      "category": "Poka-Yoke"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist Takt Time?",
+      "options": [
+        "Die Zeit für eine Pause",
+        "Die verfügbare Zeit geteilt durch die Kundennachfrage",
+        "Die Arbeitszeit pro Tag",
+        "Die Rüstzeit einer Maschine"
+      ],
+      "correctAnswer": "Die verfügbare Zeit geteilt durch die Kundennachfrage",
+      "explanation": "Takt Time ist die verfügbare Arbeitszeit geteilt durch die Kundennachfrage. Sie gibt den Rhythmus vor, in dem Produkte hergestellt werden müssen, um die Nachfrage zu erfüllen.",
+      "points": 1,
+      "category": "Takt Time"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist ein Kanban-System?",
+      "options": [
+        "Ein Computerprogramm",
+        "Ein Pull-System zur Steuerung der Produktion basierend auf tatsächlicher Nachfrage",
+        "Ein Qualitätskontrollsystem",
+        "Ein Mitarbeiterbewertungssystem"
+      ],
+      "correctAnswer": "Ein Pull-System zur Steuerung der Produktion basierend auf tatsächlicher Nachfrage",
+      "explanation": "Kanban ist ein Pull-System, das die Produktion basierend auf tatsächlicher Nachfrage steuert. Signalkarten zeigen an, wann und wie viel produziert werden soll, um Überproduktion zu vermeiden.",
+      "points": 1,
+      "category": "Kanban"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen Push- und Pull-System?",
+      "options": [
+        "Push produziert auf Vorrat, Pull produziert auf Nachfrage",
+        "Pull produziert auf Vorrat, Push produziert auf Nachfrage",
+        "Beide sind identisch",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Push produziert auf Vorrat, Pull produziert auf Nachfrage",
+      "explanation": "Push-Systeme produzieren auf Vorrat basierend auf Prognosen. Pull-Systeme produzieren nur auf tatsächliche Nachfrage, was Bestände reduziert und Flexibilität erhöht.",
+      "points": 1,
+      "category": "Push vs Pull"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was ist Total Productive Maintenance (TPM)?",
+      "options": [
+        "Nur Reparaturen durchführen",
+        "Präventive Wartung zur Maximierung der Anlageneffektivität",
+        "Neue Maschinen kaufen",
+        "Wartung outsourcen"
+      ],
+      "correctAnswer": "Präventive Wartung zur Maximierung der Anlageneffektivität",
+      "explanation": "TPM ist ein ganzheitlicher Ansatz zur Wartung, der darauf abzielt, die Gesamtanlageneffektivität (OEE) durch präventive Wartung, autonome Wartung durch Bediener und kontinuierliche Verbesserung zu maximieren.",
+      "points": 1,
+      "category": "TPM"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was ist OEE (Overall Equipment Effectiveness)?",
+      "options": [
+        "Ein Mitarbeiter-KPI",
+        "Eine Kennzahl für die Gesamtanlageneffektivität",
+        "Ein Qualitätsstandard",
+        "Ein Kostenfaktor"
+      ],
+      "correctAnswer": "Eine Kennzahl für die Gesamtanlageneffektivität",
+      "explanation": "OEE misst die Gesamtanlageneffektivität als Produkt aus Verfügbarkeit, Leistung und Qualität. Es ist eine wichtige Kennzahl zur Bewertung der Produktionseffizienz.",
+      "points": 1,
+      "category": "OEE"
+    },
+    {
+      "id": "q19",
+      "type": "multiple-choice",
+      "question": "Welche Faktoren beeinflussen die OEE?",
+      "options": [
+        "Verfügbarkeit (Availability)",
+        "Leistung (Performance)",
+        "Qualität (Quality)",
+        "Kosten (Cost)"
+      ],
+      "correctAnswer": [
+        "Verfügbarkeit (Availability)",
+        "Leistung (Performance)",
+        "Qualität (Quality)"
+      ],
+      "explanation": "OEE = Verfügbarkeit × Leistung × Qualität. Verfügbarkeit berücksichtigt Ausfälle, Leistung die Geschwindigkeit im Vergleich zur Idealgeschwindigkeit, Qualität den Anteil fehlerfreier Produkte. Kosten sind nicht Teil der OEE-Berechnung.",
+      "points": 2,
+      "category": "OEE-Faktoren"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist Change Management im Kontext der Prozessoptimierung?",
+      "options": [
+        "Geld wechseln",
+        "Systematische Herangehensweise zur Einführung von Veränderungen",
+        "Mitarbeiter austauschen",
+        "Software aktualisieren"
+      ],
+      "correctAnswer": "Systematische Herangehensweise zur Einführung von Veränderungen",
+      "explanation": "Change Management ist die systematische Herangehensweise zur Planung, Einführung und Verankerung von Veränderungen, um Widerstand zu minimieren und Akzeptanz zu fördern.",
+      "points": 1,
+      "category": "Change Management"
+    }
+  ],
+  "tags": [
+    "Prozessoptimierung",
+    "Lean Management",
+    "Six Sigma",
+    "Kaizen",
+    "PDCA",
+    "Value Stream Mapping",
+    "5S",
+    "Kanban",
+    "TPM",
+    "OEE"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

@@ -1,12 +1,50 @@
 /**
- * Navigation - Header navigation component with theme toggle
+ * Navigation - Header navigation component with theme toggle and specialization support
  */
 class Navigation {
-  constructor(themeManager, router) {
+  constructor(themeManager, router, specializationService = null, specializationSelector = null) {
     this.themeManager = themeManager;
     this.router = router;
+    this.specializationService = specializationService;
+    this.specializationSelector = specializationSelector;
     this.element = null;
     this.mobileMenuOpen = false;
+  }
+
+  /**
+   * Render specialization indicator
+   */
+  _renderSpecializationIndicator() {
+    if (!this.specializationService) {
+      return '';
+    }
+
+    const currentSpecialization = this.specializationService.getCurrentSpecialization();
+    const hasSelected = this.specializationService.hasSelectedSpecialization();
+
+    if (!hasSelected || !currentSpecialization) {
+      return `
+        <button class="specialization-selector no-selection" aria-label="Select your specialization" title="Select your specialization">
+          <span class="specialization-icon" aria-hidden="true">⚙️</span>
+          <span class="specialization-text">Select Specialization</span>
+        </button>
+      `;
+    }
+
+    const config = this.specializationService.getSpecializationConfig(currentSpecialization);
+    if (!config) {
+      return '';
+    }
+
+    return `
+      <div class="specialization-indicator">
+        <button class="specialization-selector" aria-label="Change specialization: ${config.name}" title="Change specialization">
+          <span class="specialization-icon" aria-hidden="true">${config.icon}</span>
+          <span class="specialization-text">${config.shortName}</span>
+          <span class="specialization-dropdown-icon" aria-hidden="true">▼</span>
+        </button>
+      </div>
+    `;
   }
 
   /**
@@ -46,6 +84,7 @@ class Navigation {
           </ul>
 
           <div class="nav-actions">
+            ${this._renderSpecializationIndicator()}
             <button class="theme-toggle" aria-label="${themeLabel}" title="${themeLabel}">
               <span class="theme-icon" aria-hidden="true">${themeIcon}</span>
               <span class="sr-only">${themeLabel}</span>
@@ -69,29 +108,132 @@ class Navigation {
     const themeToggle = this.element.querySelector('.theme-toggle');
     themeToggle.addEventListener('click', () => this._handleThemeToggle());
 
+    // Specialization selector
+    const specializationSelector = this.element.querySelector('.specialization-selector');
+    if (specializationSelector) {
+      specializationSelector.addEventListener('click', () => this._handleSpecializationSelector());
+    }
+
     // Mobile menu toggle
     const navToggle = this.element.querySelector('.nav-toggle');
     navToggle.addEventListener('click', () => this._toggleMobileMenu());
 
-    // Close mobile menu when clicking a link
+    // Close mobile menu when clicking any navigation link
     const navLinks = this.element.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-      link.addEventListener('click', () => {
+      link.addEventListener('click', (e) => {
+        // Only handle mobile menu closure if menu is open
         if (this.mobileMenuOpen) {
-          this._toggleMobileMenu();
+          // Prevent default navigation temporarily
+          e.preventDefault();
+          
+          // Force immediate menu close
+          const navMenu = this.element.querySelector('.nav-menu');
+          const navToggle = this.element.querySelector('.nav-toggle');
+          
+          if (navMenu) navMenu.classList.remove('active');
+          if (navToggle) {
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+          }
+          
+          this.mobileMenuOpen = false;
+          document.body.style.overflow = '';
+          
+          // Navigate after a small delay to ensure menu is closed
+          setTimeout(() => {
+            window.location.href = link.href;
+          }, 100);
         }
       });
     });
 
+    // Also close menu when clicking the logo/brand link
+    const navLogo = this.element.querySelector('.nav-logo');
+    if (navLogo) {
+      navLogo.addEventListener('click', () => {
+        this._closeMobileMenu();
+      });
+    }
+
+    // Additional safety: close menu on any link click within nav-menu
+    const navMenu = this.element.querySelector('.nav-menu');
+    if (navMenu) {
+      navMenu.addEventListener('click', (e) => {
+        // Check if clicked element is a link (a tag)
+        const clickedLink = e.target.tagName === 'A' ? e.target : e.target.closest('a');
+        if (clickedLink && this.mobileMenuOpen) {
+          // Prevent default navigation temporarily
+          e.preventDefault();
+          
+          // Force immediate menu close
+          navMenu.classList.remove('active');
+          const navToggle = this.element.querySelector('.nav-toggle');
+          if (navToggle) {
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+          }
+          this.mobileMenuOpen = false;
+          document.body.style.overflow = '';
+          
+          // Navigate after ensuring menu is closed
+          setTimeout(() => {
+            window.location.href = clickedLink.href;
+          }, 100);
+        }
+      });
+    }
+
     // Close mobile menu when clicking outside
     document.addEventListener('click', e => {
       if (this.mobileMenuOpen && !this.element.contains(e.target)) {
-        this._toggleMobileMenu();
+        this._closeMobileMenu();
       }
     });
 
-    // Listen for route changes to update active link
-    window.addEventListener('hashchange', () => this._updateActiveLink());
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && this.mobileMenuOpen) {
+        this._closeMobileMenu();
+      }
+    });
+
+    // Handle window resize - close menu if switching to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && this.mobileMenuOpen) {
+        this._closeMobileMenu();
+      }
+    });
+
+    // Listen for route changes to update active link and close mobile menu
+    window.addEventListener('hashchange', () => {
+      this._updateActiveLink();
+      // Always close mobile menu when route changes
+      this._closeMobileMenu();
+    });
+
+    // Emergency fix: Force close menu on any navigation
+    document.addEventListener('click', (e) => {
+      const clickedLink = e.target.tagName === 'A' ? e.target : e.target.closest('a');
+      if (clickedLink && clickedLink.href && clickedLink.href.includes('#') && this.mobileMenuOpen) {
+        // Force immediate visual closure
+        const navMenu = this.element.querySelector('.nav-menu');
+        const navToggle = this.element.querySelector('.nav-toggle');
+        
+        if (navMenu) {
+          navMenu.classList.remove('active');
+          navMenu.style.transform = 'translateX(-100%)';
+          navMenu.style.visibility = 'hidden';
+        }
+        if (navToggle) {
+          navToggle.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+        
+        this.mobileMenuOpen = false;
+        document.body.style.overflow = '';
+      }
+    });
 
     // Listen for theme changes
     window.addEventListener('themechange', e => {
@@ -101,6 +243,31 @@ class Navigation {
         themeIconEl.textContent = themeIcon;
       }
     });
+
+    // Listen for specialization changes
+    window.addEventListener('specialization-changed', () => {
+      this._updateSpecializationIndicator();
+    });
+  }
+
+  /**
+   * Handle specialization selector click
+   */
+  _handleSpecializationSelector() {
+    if (!this.specializationSelector) {
+      console.warn('SpecializationSelector not available');
+      return;
+    }
+
+    const hasSelected = this.specializationService?.hasSelectedSpecialization();
+    
+    if (hasSelected) {
+      // If user has already selected a specialization, show the modal to change it
+      this.specializationSelector.showSpecializationModal(false);
+    } else {
+      // If no specialization selected, show the selection modal
+      this.specializationSelector.showSpecializationModal(false);
+    }
   }
 
   /**
@@ -138,11 +305,69 @@ class Navigation {
       navToggle.classList.add('active');
       navToggle.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
+      
+      // Focus management for accessibility
+      const firstLink = navMenu.querySelector('.nav-link');
+      if (firstLink) {
+        setTimeout(() => firstLink.focus(), 100);
+      }
     } else {
       navMenu.classList.remove('active');
       navToggle.classList.remove('active');
       navToggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+    }
+  }
+
+  /**
+   * Close mobile menu
+   */
+  _closeMobileMenu() {
+    if (this.mobileMenuOpen) {
+      this.mobileMenuOpen = false;
+      const navMenu = this.element.querySelector('.nav-menu');
+      const navToggle = this.element.querySelector('.nav-toggle');
+      
+      // Remove active classes immediately
+      if (navMenu) navMenu.classList.remove('active');
+      if (navToggle) {
+        navToggle.classList.remove('active');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+      document.body.style.overflow = '';
+    }
+  }
+
+  /**
+   * Update specialization indicator
+   */
+  _updateSpecializationIndicator() {
+    if (!this.specializationService) {
+      return;
+    }
+
+    const navActions = this.element.querySelector('.nav-actions');
+    if (!navActions) {
+      return;
+    }
+
+    // Find and replace the specialization indicator
+    const existingIndicator = navActions.querySelector('.specialization-indicator, .specialization-selector');
+    if (existingIndicator) {
+      const newIndicatorHTML = this._renderSpecializationIndicator();
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = newIndicatorHTML;
+      const newIndicator = tempDiv.firstElementChild;
+      
+      if (newIndicator) {
+        existingIndicator.replaceWith(newIndicator);
+        
+        // Re-attach event listener
+        const specializationSelector = navActions.querySelector('.specialization-selector');
+        if (specializationSelector) {
+          specializationSelector.addEventListener('click', () => this._handleSpecializationSelector());
+        }
+      }
     }
   }
 
@@ -168,6 +393,13 @@ class Navigation {
         link.removeAttribute('aria-current');
       }
     });
+  }
+
+  /**
+   * Update specialization display
+   */
+  updateSpecialization(specializationId) {
+    this._updateSpecializationIndicator();
   }
 
   /**

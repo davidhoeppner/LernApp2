@@ -21,6 +21,11 @@
     "validate:routes": "node scripts/audit-routes.js",
     "validate:all": "node scripts/validate-all-modules.js",
     "test:pre-manual": "node scripts/pre-manual-test-check.js",
+    "test:integration": "node scripts/run-all-integration-tests.js",
+    "test:three-tier": "node scripts/test-three-tier-integration.js",
+    "test:migration": "node scripts/test-migration-integration.js",
+    "test:content-discovery": "node scripts/test-content-discovery-features.js",
+    "test:category-mapping": "node scripts/test-category-mapping-service.js",
     "verify:markdown-fix": "node scripts/verify-markdown-fix.js"
   },
   "devDependencies": {

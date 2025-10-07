@@ -124,6 +124,8 @@
   - _Requirements: 6.1_
 
 - [ ] 5.3 Audit package.json dependencies
+
+
   - Identify unused npm packages
   - Document which packages can be removed
   - Remove unused dependencies

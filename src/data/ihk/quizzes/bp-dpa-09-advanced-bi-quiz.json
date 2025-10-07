@@ -1,0 +1,377 @@
+{
+  "id": "bp-dpa-09-advanced-bi-quiz",
+  "moduleId": "bp-dpa-09-advanced-bi",
+  "title": "Erweiterte Business Intelligence und Analytics",
+  "description": "Umfassendes Quiz zu fortgeschrittenen BI-Konzepten, Predictive Analytics, Machine Learning und Big Data Analytics",
+  "category": "BP-DPA-04",
+  "difficulty": "advanced",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 35,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen deskriptiver, prädiktiver und präskriptiver Analytics?",
+      "options": [
+        "Alle sind identisch",
+        "Deskriptiv: Was ist passiert, Prädiktiv: Was wird passieren, Präskriptiv: Was sollte getan werden",
+        "Nur deskriptive Analytics ist wichtig",
+        "Es gibt nur deskriptive Analytics"
+      ],
+      "correctAnswer": "Deskriptiv: Was ist passiert, Prädiktiv: Was wird passieren, Präskriptiv: Was sollte getan werden",
+      "explanation": "Deskriptive Analytics beschreibt vergangene Ereignisse, Prädiktive Analytics sagt zukünftige Ereignisse vorher, Präskriptive Analytics empfiehlt Handlungen zur Optimierung von Ergebnissen.",
+      "points": 1,
+      "category": "Analytics-Typen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Was ist Predictive Analytics?",
+      "options": [
+        "Analyse vergangener Daten",
+        "Verwendung statistischer Modelle zur Vorhersage zukünftiger Ereignisse",
+        "Echtzeit-Monitoring",
+        "Datenvisualisierung"
+      ],
+      "correctAnswer": "Verwendung statistischer Modelle zur Vorhersage zukünftiger Ereignisse",
+      "explanation": "Predictive Analytics nutzt historische Daten, statistische Algorithmen und Machine Learning-Techniken, um die Wahrscheinlichkeit zukünftiger Ereignisse vorherzusagen.",
+      "points": 1,
+      "category": "Predictive Analytics"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Machine Learning-Ansätze gibt es?",
+      "options": [
+        "Supervised Learning (Überwachtes Lernen)",
+        "Unsupervised Learning (Unüberwachtes Lernen)",
+        "Reinforcement Learning (Verstärkendes Lernen)",
+        "Emotional Learning"
+      ],
+      "correctAnswer": [
+        "Supervised Learning (Überwachtes Lernen)",
+        "Unsupervised Learning (Unüberwachtes Lernen)",
+        "Reinforcement Learning (Verstärkendes Lernen)"
+      ],
+      "explanation": "Die drei Hauptansätze sind: Supervised Learning (mit Trainingsdaten), Unsupervised Learning (Muster in Daten finden), Reinforcement Learning (Lernen durch Belohnung). Emotional Learning ist kein Standard-ML-Ansatz.",
+      "points": 2,
+      "category": "Machine Learning"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Was ist ein Data Lake?",
+      "options": [
+        "Ein strukturiertes Data Warehouse",
+        "Ein Repository für Rohdaten in verschiedenen Formaten",
+        "Eine Datenbank nur für strukturierte Daten",
+        "Ein Backup-System"
+      ],
+      "correctAnswer": "Ein Repository für Rohdaten in verschiedenen Formaten",
+      "explanation": "Ein Data Lake speichert große Mengen von Rohdaten in ihrem nativen Format (strukturiert, semi-strukturiert, unstrukturiert) und ermöglicht flexible Analysen mit Schema-on-Read.",
+      "points": 1,
+      "category": "Data Lake"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Was bedeutet 'Schema-on-Read' vs. 'Schema-on-Write'?",
+      "options": [
+        "Schema-on-Read definiert Struktur beim Lesen, Schema-on-Write beim Schreiben",
+        "Schema-on-Write definiert Struktur beim Lesen, Schema-on-Read beim Schreiben",
+        "Beide sind identisch",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Schema-on-Read definiert Struktur beim Lesen, Schema-on-Write beim Schreiben",
+      "explanation": "Schema-on-Write (Data Warehouse) definiert die Datenstruktur beim Laden. Schema-on-Read (Data Lake) definiert die Struktur erst beim Zugriff, was mehr Flexibilität bietet.",
+      "points": 1,
+      "category": "Schema-Ansätze"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist Big Data charakterisiert durch die 5 V's?",
+      "options": [
+        "Volume, Velocity, Variety, Veracity, Value",
+        "Vision, Voice, Video, Virtual, Vertical",
+        "Vendor, Version, Validation, Verification, View",
+        "Variable, Vector, Vertex, Vertical, Virtual"
+      ],
+      "correctAnswer": "Volume, Velocity, Variety, Veracity, Value",
+      "explanation": "Die 5 V's von Big Data sind: Volume (Datenmenge), Velocity (Geschwindigkeit), Variety (Vielfalt), Veracity (Wahrhaftigkeit/Qualität), Value (Wert).",
+      "points": 1,
+      "category": "Big Data"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist Apache Spark?",
+      "options": [
+        "Eine Datenbank",
+        "Ein verteiltes Computing-Framework für Big Data-Verarbeitung",
+        "Ein Visualisierungstool",
+        "Ein ETL-Tool"
+      ],
+      "correctAnswer": "Ein verteiltes Computing-Framework für Big Data-Verarbeitung",
+      "explanation": "Apache Spark ist ein schnelles, verteiltes Computing-Framework für Big Data-Verarbeitung mit In-Memory-Computing-Fähigkeiten, das Batch- und Stream-Processing unterstützt.",
+      "points": 1,
+      "category": "Big Data Tools"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was ist ein Recommendation System?",
+      "options": [
+        "Ein System zur Mitarbeiterempfehlung",
+        "Ein System, das Benutzern relevante Inhalte oder Produkte vorschlägt",
+        "Ein Qualitätsmanagementsystem",
+        "Ein Backup-System"
+      ],
+      "correctAnswer": "Ein System, das Benutzern relevante Inhalte oder Produkte vorschlägt",
+      "explanation": "Recommendation Systems analysieren Benutzerverhalten und -präferenzen, um personalisierte Empfehlungen für Produkte, Inhalte oder Services zu geben (z.B. Netflix, Amazon).",
+      "points": 1,
+      "category": "Recommendation Systems"
+    },
+    {
+      "id": "q9",
+      "type": "multiple-choice",
+      "question": "Welche Arten von Recommendation Systems gibt es?",
+      "options": [
+        "Content-based Filtering",
+        "Collaborative Filtering",
+        "Hybrid Systems",
+        "Random Filtering"
+      ],
+      "correctAnswer": [
+        "Content-based Filtering",
+        "Collaborative Filtering",
+        "Hybrid Systems"
+      ],
+      "explanation": "Haupttypen sind: Content-based (basierend auf Artikeleigenschaften), Collaborative Filtering (basierend auf Nutzerverhalten), Hybrid (Kombination beider Ansätze). Random Filtering ist kein systematischer Ansatz.",
+      "points": 2,
+      "category": "Recommendation Types"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was ist A/B Testing?",
+      "options": [
+        "Ein Softwaretest",
+        "Ein experimenteller Ansatz zum Vergleich zweier Versionen",
+        "Ein Qualitätstest",
+        "Ein Sicherheitstest"
+      ],
+      "correctAnswer": "Ein experimenteller Ansatz zum Vergleich zweier Versionen",
+      "explanation": "A/B Testing ist eine experimentelle Methode, bei der zwei Versionen (A und B) einer Webseite, App oder Kampagne gleichzeitig getestet werden, um zu bestimmen, welche besser performt.",
+      "points": 1,
+      "category": "A/B Testing"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist Customer Lifetime Value (CLV)?",
+      "options": [
+        "Das Alter eines Kunden",
+        "Der prognostizierte Gesamtwert eines Kunden über die gesamte Geschäftsbeziehung",
+        "Die Anzahl der Käufe",
+        "Die Kundenzufriedenheit"
+      ],
+      "correctAnswer": "Der prognostizierte Gesamtwert eines Kunden über die gesamte Geschäftsbeziehung",
+      "explanation": "CLV ist eine Kennzahl, die den prognostizierten Gesamtwert (Umsatz minus Kosten) eines Kunden über die gesamte Dauer der Geschäftsbeziehung berechnet.",
+      "points": 1,
+      "category": "Customer Analytics"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist Churn Analysis?",
+      "options": [
+        "Analyse der Kundenzufriedenheit",
+        "Analyse der Kundenabwanderung und deren Vorhersage",
+        "Analyse der Verkaufszahlen",
+        "Analyse der Mitarbeiterleistung"
+      ],
+      "correctAnswer": "Analyse der Kundenabwanderung und deren Vorhersage",
+      "explanation": "Churn Analysis identifiziert Kunden, die wahrscheinlich abwandern werden, und analysiert die Faktoren, die zur Kundenabwanderung führen, um Retention-Strategien zu entwickeln.",
+      "points": 1,
+      "category": "Churn Analysis"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ist Real-time Analytics?",
+      "options": [
+        "Analyse historischer Daten",
+        "Sofortige Analyse von Daten bei deren Entstehung",
+        "Wöchentliche Berichte",
+        "Manuelle Datenanalyse"
+      ],
+      "correctAnswer": "Sofortige Analyse von Daten bei deren Entstehung",
+      "explanation": "Real-time Analytics verarbeitet und analysiert Daten sofort bei deren Entstehung, um sofortige Einblicke und Reaktionen zu ermöglichen (z.B. Fraud Detection, Live-Dashboards).",
+      "points": 1,
+      "category": "Real-time Analytics"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Technologien werden für Real-time Analytics verwendet?",
+      "options": [
+        "Apache Kafka (Streaming)",
+        "Apache Storm (Stream Processing)",
+        "Apache Spark Streaming",
+        "Traditional Batch Processing"
+      ],
+      "correctAnswer": [
+        "Apache Kafka (Streaming)",
+        "Apache Storm (Stream Processing)",
+        "Apache Spark Streaming"
+      ],
+      "explanation": "Real-time Analytics nutzt Streaming-Technologien wie Apache Kafka (Message Streaming), Apache Storm, Spark Streaming und Flink. Traditional Batch Processing ist nicht für Real-time geeignet.",
+      "points": 2,
+      "category": "Streaming Technologies"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist Natural Language Processing (NLP) in BI?",
+      "options": [
+        "Programmierung in natürlicher Sprache",
+        "Analyse und Verarbeitung menschlicher Sprache durch Computer",
+        "Übersetzung von Programmcode",
+        "Spracherkennung für Meetings"
+      ],
+      "correctAnswer": "Analyse und Verarbeitung menschlicher Sprache durch Computer",
+      "explanation": "NLP ermöglicht es Computern, menschliche Sprache zu verstehen, zu interpretieren und zu generieren. In BI wird es für Textanalyse, Sentiment Analysis und natürlichsprachliche Abfragen verwendet.",
+      "points": 1,
+      "category": "NLP"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist Sentiment Analysis?",
+      "options": [
+        "Analyse von Verkaufszahlen",
+        "Analyse der emotionalen Einstellung in Texten",
+        "Analyse von Webseitenbesuchen",
+        "Analyse von Mitarbeiterdaten"
+      ],
+      "correctAnswer": "Analyse der emotionalen Einstellung in Texten",
+      "explanation": "Sentiment Analysis verwendet NLP-Techniken, um die emotionale Einstellung (positiv, negativ, neutral) in Texten wie Social Media Posts, Bewertungen oder Kommentaren zu identifizieren.",
+      "points": 1,
+      "category": "Sentiment Analysis"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was ist ein Data Scientist?",
+      "options": [
+        "Ein Datenbankadministrator",
+        "Ein Experte, der Daten analysiert, um Geschäftserkenntnisse zu gewinnen",
+        "Ein Softwareentwickler",
+        "Ein Netzwerkadministrator"
+      ],
+      "correctAnswer": "Ein Experte, der Daten analysiert, um Geschäftserkenntnisse zu gewinnen",
+      "explanation": "Ein Data Scientist kombiniert Statistik, Programmierung und Domänenwissen, um aus großen Datenmengen verwertbare Geschäftserkenntnisse zu extrahieren und Vorhersagemodelle zu entwickeln.",
+      "points": 1,
+      "category": "Data Science Rollen"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Welche Fähigkeiten benötigt ein Data Scientist?",
+      "options": [
+        "Statistik und Mathematik",
+        "Programmierung (Python, R, SQL)",
+        "Domänenwissen",
+        "Nur Excel-Kenntnisse"
+      ],
+      "correctAnswer": [
+        "Statistik und Mathematik",
+        "Programmierung (Python, R, SQL)",
+        "Domänenwissen"
+      ],
+      "explanation": "Data Scientists benötigen: Statistik/Mathematik (für Modelle), Programmierung (Python, R, SQL), Domänenwissen (Geschäftsverständnis), Datenvisualisierung und Kommunikationsfähigkeiten. Excel allein reicht nicht aus.",
+      "points": 2,
+      "category": "Data Science Skills"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist AutoML (Automated Machine Learning)?",
+      "options": [
+        "Manuelle Modellerstellung",
+        "Automatisierung des Machine Learning-Prozesses",
+        "Nur für Experten geeignet",
+        "Ein spezifischer Algorithmus"
+      ],
+      "correctAnswer": "Automatisierung des Machine Learning-Prozesses",
+      "explanation": "AutoML automatisiert den Machine Learning-Prozess, einschließlich Feature Engineering, Modellauswahl, Hyperparameter-Tuning und Modellbewertung, um ML für Nicht-Experten zugänglicher zu machen.",
+      "points": 1,
+      "category": "AutoML"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist Edge Analytics?",
+      "options": [
+        "Analyse in der Cloud",
+        "Datenanalyse am Rand des Netzwerks, nahe der Datenquelle",
+        "Analyse auf dem Server",
+        "Manuelle Analyse"
+      ],
+      "correctAnswer": "Datenanalyse am Rand des Netzwerks, nahe der Datenquelle",
+      "explanation": "Edge Analytics verarbeitet Daten lokal an der Datenquelle (IoT-Geräte, Sensoren) statt in der Cloud, um Latenz zu reduzieren und Echtzeitentscheidungen zu ermöglichen.",
+      "points": 1,
+      "category": "Edge Analytics"
+    },
+    {
+      "id": "q21",
+      "type": "single-choice",
+      "question": "Was ist ein Digital Twin in der Datenanalyse?",
+      "options": [
+        "Eine Kopie der Datenbank",
+        "Ein digitales Abbild eines physischen Objekts oder Prozesses",
+        "Ein Backup-System",
+        "Eine Visualisierung"
+      ],
+      "correctAnswer": "Ein digitales Abbild eines physischen Objekts oder Prozesses",
+      "explanation": "Ein Digital Twin ist eine digitale Repräsentation eines physischen Objekts, Prozesses oder Systems, die Echtzeitdaten nutzt, um Verhalten zu simulieren, zu überwachen und zu optimieren.",
+      "points": 1,
+      "category": "Digital Twin"
+    },
+    {
+      "id": "q22",
+      "type": "multiple-choice",
+      "question": "Welche Herausforderungen gibt es bei Big Data Analytics?",
+      "options": [
+        "Datenqualität und -integration",
+        "Skalierbarkeit und Performance",
+        "Datenschutz und Compliance",
+        "Einfache Implementierung"
+      ],
+      "correctAnswer": [
+        "Datenqualität und -integration",
+        "Skalierbarkeit und Performance",
+        "Datenschutz und Compliance"
+      ],
+      "explanation": "Hauptherausforderungen sind: Datenqualität (verschiedene Quellen), Skalierbarkeit (große Datenmengen), Performance (schnelle Verarbeitung), Datenschutz (DSGVO), Kosten und Fachkräftemangel. Einfache Implementierung ist keine Herausforderung, sondern ein Ziel.",
+      "points": 2,
+      "category": "Big Data Challenges"
+    }
+  ],
+  "tags": [
+    "Advanced BI",
+    "Predictive Analytics",
+    "Machine Learning",
+    "Big Data",
+    "Data Science",
+    "Real-time Analytics",
+    "NLP",
+    "Recommendation Systems",
+    "AutoML",
+    "Edge Analytics"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

@@ -2,20 +2,30 @@
   "version": "2025.1",
   "lastUpdated": "2025-01-20",
   "examType": "AP2",
-  "profession": "Fachinformatiker Anwendungsentwicklung",
+  "profession": "Fachinformatiker",
+  "supportedSpecializations": ["anwendungsentwicklung", "daten-prozessanalyse"],
   "categories": [
     {
       "id": "FUE",
       "code": "FÜ",
       "name": "Fachrichtungsübergreifende berufsprofilgebende Fertigkeiten, Kenntnisse und Fähigkeiten",
       "description": "Inhalte, die für alle IT-Berufe relevant sind",
-      "color": "#3b82f6",
+      "color": "#6b7280",
+      "contentCategory": "general",
+      "relevance": {
+        "anwendungsentwicklung": "high",
+        "daten-prozessanalyse": "high"
+      },
       "subcategories": [
         {
           "id": "FUE-01",
           "code": "FÜ-01",
           "name": "Planen eines Softwareproduktes",
           "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "high",
+            "daten-prozessanalyse": "high"
+          },
           "topics": [
             "Kundenanforderungen analysieren",
             "Projektplanung",
@@ -28,6 +38,10 @@
           "code": "FÜ-02",
           "name": "Entwickeln und Bereitstellen von Softwareanwendungen",
           "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "high",
+            "daten-prozessanalyse": "medium"
+          },
           "topics": [
             "Kontrollstrukturen (Aktivitätsdiagramm, Pseudocode)",
             "Anomalien/Redundanzen in Datenbanken",
@@ -57,6 +71,10 @@
           "code": "FÜ-03",
           "name": "Durchführen von qualitätssichernden Maßnahmen",
           "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "high",
+            "daten-prozessanalyse": "high"
+          },
           "topics": [
             "Software-Test (Black Box, White Box, Review)",
             "Last- und Performancetests",
@@ -75,6 +93,10 @@
           "code": "FÜ-04",
           "name": "Sicherstellen der Informationssicherheit",
           "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "high",
+            "daten-prozessanalyse": "high"
+          },
           "topics": [
             "Technisch Organisatorische Maßnahmen (TOM)",
             "Bedrohungsszenarien (Man-in-the-Middle, SQL-Injection, DDoS)",
@@ -91,17 +113,26 @@
       ]
     },
     {
-      "id": "BP",
-      "code": "BP",
+      "id": "BP-AE",
+      "code": "BP-AE",
       "name": "Berufsprofilgebende Fertigkeiten, Kenntnisse und Fähigkeiten in der Fachrichtung Anwendungsentwicklung",
       "description": "Spezifische Inhalte für Fachinformatiker Anwendungsentwicklung",
       "color": "#10b981",
+      "contentCategory": "ae-specific",
+      "relevance": {
+        "anwendungsentwicklung": "high",
+        "daten-prozessanalyse": "none"
+      },
       "subcategories": [
         {
-          "id": "BP-01",
-          "code": "BP-01",
+          "id": "BP-AE-01",
+          "code": "BP-AE-01",
           "name": "Konzipieren und Umsetzen von kundenspezifischen Softwareanwendungen",
           "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "high",
+            "daten-prozessanalyse": "low"
+          },
           "topics": [
             "Netzwerktopologien und Protokolle",
             "Zugriffskontrolle (RADIUS, Kerberos)",
@@ -137,10 +168,14 @@
           ]
         },
         {
-          "id": "BP-02",
-          "code": "BP-02",
+          "id": "BP-AE-02",
+          "code": "BP-AE-02",
           "name": "Sicherstellen der Qualität von Softwareanwendungen",
           "examRelevance": "medium",
+          "relevance": {
+            "anwendungsentwicklung": "high",
+            "daten-prozessanalyse": "medium"
+          },
           "topics": [
             "NAS und SAN",
             "Datenaustauschformate (XML, JSON, CSV)",
@@ -160,10 +195,14 @@
           ]
         },
         {
-          "id": "BP-03",
-          "code": "BP-03",
+          "id": "BP-AE-03",
+          "code": "BP-AE-03",
           "name": "Entwickeln von Softwareanwendungen",
           "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "high",
+            "daten-prozessanalyse": "low"
+          },
           "topics": [
             "Softwarequalitätsmerkmale (ISO 25001)",
             "Cyber-physische Systeme",
@@ -190,10 +229,14 @@
           ]
         },
         {
-          "id": "BP-04",
-          "code": "BP-04",
+          "id": "BP-AE-04",
+          "code": "BP-AE-04",
           "name": "Projektmanagement und Softwareentwicklungsmethoden",
           "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "high",
+            "daten-prozessanalyse": "medium"
+          },
           "topics": [
             "Scrum (Rollen, Events, Artefakte)",
             "Architektur-Pattern (MVC, Layered, Microservices)",
@@ -223,10 +266,14 @@
           ]
         },
         {
-          "id": "BP-05",
-          "code": "BP-05",
+          "id": "BP-AE-05",
+          "code": "BP-AE-05",
           "name": "Objektorientierte Programmierung und Algorithmen",
           "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "high",
+            "daten-prozessanalyse": "low"
+          },
           "topics": [
             "Objektorientierte Konzepte (Kapselung, Vererbung, Polymorphie)",
             "Sortierverfahren (Bubble, Selection, Insertion Sort)",
@@ -249,6 +296,105 @@
               "description": "SQL mit Verweis auf Beiblatt (detaillierter)",
               "important": true
             }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BP-DPA",
+      "code": "BP-DPA", 
+      "name": "Berufsprofilgebende Fertigkeiten, Kenntnisse und Fähigkeiten in der Fachrichtung Daten- und Prozessanalyse",
+      "description": "Spezifische Inhalte für Fachinformatiker Daten- und Prozessanalyse",
+      "color": "#3b82f6",
+      "contentCategory": "dpa-specific",
+      "relevance": {
+        "anwendungsentwicklung": "none",
+        "daten-prozessanalyse": "high"
+      },
+      "subcategories": [
+        {
+          "id": "BP-DPA-01",
+          "code": "BP-DPA-01",
+          "name": "Daten erfassen, aufbereiten und auswerten",
+          "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "low",
+            "daten-prozessanalyse": "high"
+          },
+          "topics": [
+            "Datenquellen identifizieren und bewerten",
+            "ETL-Prozesse (Extract, Transform, Load)",
+            "Datenqualität sicherstellen",
+            "Statistische Grundlagen",
+            "Datenbereinigung und -validierung"
+          ]
+        },
+        {
+          "id": "BP-DPA-02",
+          "code": "BP-DPA-02",
+          "name": "Datenmodelle entwickeln und implementieren",
+          "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "medium",
+            "daten-prozessanalyse": "high"
+          },
+          "topics": [
+            "ER-Modellierung und Normalisierung",
+            "Dimensionale Modellierung (Star/Snowflake Schema)",
+            "NoSQL-Datenmodelle",
+            "Data Warehouse Konzepte",
+            "Datenarchitektur-Patterns"
+          ]
+        },
+        {
+          "id": "BP-DPA-03",
+          "code": "BP-DPA-03",
+          "name": "Geschäftsprozesse analysieren und optimieren",
+          "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "low",
+            "daten-prozessanalyse": "high"
+          },
+          "topics": [
+            "Prozessmodellierung (BPMN)",
+            "Workflow-Analyse",
+            "KPI-Definition und -Messung",
+            "Process Mining",
+            "Prozessoptimierung und -automatisierung"
+          ]
+        },
+        {
+          "id": "BP-DPA-04",
+          "code": "BP-DPA-04",
+          "name": "Datenvisualisierung und Reporting",
+          "examRelevance": "high",
+          "relevance": {
+            "anwendungsentwicklung": "low",
+            "daten-prozessanalyse": "high"
+          },
+          "topics": [
+            "Dashboard-Design",
+            "Business Intelligence Tools",
+            "Datenvisualisierung Best Practices",
+            "Self-Service Analytics",
+            "Reporting-Automatisierung"
+          ]
+        },
+        {
+          "id": "BP-DPA-05",
+          "code": "BP-DPA-05",
+          "name": "Big Data und Analytics",
+          "examRelevance": "medium",
+          "relevance": {
+            "anwendungsentwicklung": "low",
+            "daten-prozessanalyse": "high"
+          },
+          "topics": [
+            "Big Data Technologien (Hadoop, Spark)",
+            "Machine Learning Grundlagen",
+            "Predictive Analytics",
+            "Data Lakes vs. Data Warehouses",
+            "Cloud-basierte Analytics-Plattformen"
           ]
         }
       ]

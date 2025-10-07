@@ -1,0 +1,210 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-01-20",
+  "description": "Priority-based mapping rules for converting existing categories to three-tier system",
+  "mappingRules": [
+    {
+      "id": "dpa-explicit-prefix",
+      "name": "DPA Explicit Prefix Mapping",
+      "sourcePattern": "^(BP-DPA-|bp-dpa-)",
+      "targetCategory": "daten-prozessanalyse",
+      "priority": 100,
+      "description": "Content with explicit DPA prefix (BP-DPA- or bp-dpa-)",
+      "examples": ["BP-DPA-01", "bp-dpa-01-data-modeling", "BP-DPA-04"],
+      "conditions": null,
+      "active": true
+    },
+    {
+      "id": "ae-explicit-prefix",
+      "name": "AE Explicit Prefix Mapping",
+      "sourcePattern": "^(BP-AE-|bp-ae-)",
+      "targetCategory": "anwendungsentwicklung",
+      "priority": 100,
+      "description": "Content with explicit AE prefix (BP-AE- or bp-ae-)",
+      "examples": ["BP-AE-01", "bp-ae-01-conception", "BP-AE-05"],
+      "conditions": null,
+      "active": true
+    },
+    {
+      "id": "general-fue-prefix",
+      "name": "General FÜ Prefix Mapping",
+      "sourcePattern": "^(FÜ-|FUE-|fue-)",
+      "targetCategory": "allgemein",
+      "priority": 90,
+      "description": "General content with FÜ/FUE prefix",
+      "examples": ["FÜ-01", "FUE-02", "fue-03-quality"],
+      "conditions": null,
+      "active": true
+    },
+    {
+      "id": "dpa-high-relevance",
+      "name": "DPA High Relevance Content",
+      "sourcePattern": ".*",
+      "targetCategory": "daten-prozessanalyse",
+      "priority": 80,
+      "description": "Content with high DPA relevance and low/no AE relevance",
+      "examples": ["data-warehousing", "etl-processes", "bpmn-modeling"],
+      "conditions": {
+        "specializationRelevance": {
+          "daten-prozessanalyse": "high",
+          "anwendungsentwicklung": ["low", "none"]
+        }
+      },
+      "active": true
+    },
+    {
+      "id": "ae-high-relevance",
+      "name": "AE High Relevance Content",
+      "sourcePattern": ".*",
+      "targetCategory": "anwendungsentwicklung",
+      "priority": 80,
+      "description": "Content with high AE relevance and low/no DPA relevance",
+      "examples": ["design-patterns", "tdd", "architecture-patterns"],
+      "conditions": {
+        "specializationRelevance": {
+          "anwendungsentwicklung": "high",
+          "daten-prozessanalyse": ["low", "none"]
+        }
+      },
+      "active": true
+    },
+    {
+      "id": "cross-specialization-high",
+      "name": "Cross-Specialization High Relevance",
+      "sourcePattern": ".*",
+      "targetCategory": "allgemein",
+      "priority": 75,
+      "description": "Content with high relevance for both specializations",
+      "examples": ["sql-reference", "security", "quality-assurance"],
+      "conditions": {
+        "specializationRelevance": {
+          "anwendungsentwicklung": "high",
+          "daten-prozessanalyse": "high"
+        }
+      },
+      "active": true
+    },
+    {
+      "id": "bp-ae-content",
+      "name": "BP Content for Anwendungsentwicklung",
+      "sourcePattern": "^(BP-0[1-5]|bp-0[1-5])",
+      "targetCategory": "anwendungsentwicklung",
+      "priority": 85,
+      "description": "BP-01 through BP-05 content primarily relevant for Anwendungsentwicklung",
+      "examples": ["BP-01", "BP-02", "BP-03", "BP-04", "BP-05"],
+      "conditions": null,
+      "active": true
+    },
+    {
+      "id": "legacy-bp-general",
+      "name": "Legacy BP General Content",
+      "sourcePattern": "^(BP-|bp-)",
+      "targetCategory": "allgemein",
+      "priority": 70,
+      "description": "Legacy BP content without specific specialization indicators",
+      "examples": ["BP-06", "bp-07-other", "BP-08"],
+      "conditions": {
+        "not": {
+          "sourcePattern": "^(BP-DPA-|BP-AE-|bp-dpa-|bp-ae-|BP-0[1-5]|bp-0[1-5])"
+        }
+      },
+      "active": true
+    },
+    {
+      "id": "sql-content",
+      "name": "SQL Content Mapping",
+      "sourcePattern": "(sql|SQL)",
+      "targetCategory": "allgemein",
+      "priority": 65,
+      "description": "SQL-related content (relevant for both specializations)",
+      "examples": ["sql-ddl", "sql-dml", "sql-comprehensive"],
+      "conditions": null,
+      "active": true
+    },
+    {
+      "id": "scrum-agile-content",
+      "name": "Scrum and Agile Content",
+      "sourcePattern": "(scrum|agile|tdd)",
+      "targetCategory": "anwendungsentwicklung",
+      "priority": 60,
+      "description": "Scrum, Agile, and TDD content (primarily AE relevant)",
+      "examples": ["scrum", "tdd", "agile-methods"],
+      "conditions": null,
+      "active": true
+    },
+    {
+      "id": "data-analysis-keywords",
+      "name": "Data Analysis Keywords",
+      "sourcePattern": "(data|etl|bi|warehouse|analytics|bpmn|process)",
+      "targetCategory": "daten-prozessanalyse",
+      "priority": 55,
+      "description": "Content with data analysis related keywords",
+      "examples": ["data-structures", "etl-quiz", "bi-tools"],
+      "conditions": null,
+      "active": true
+    },
+    {
+      "id": "programming-keywords",
+      "name": "Programming Keywords",
+      "sourcePattern": "(oop|design-pattern|architecture|programming|development)",
+      "targetCategory": "anwendungsentwicklung",
+      "priority": 55,
+      "description": "Content with programming and development keywords",
+      "examples": ["oop-fundamentals", "design-patterns", "architecture-patterns"],
+      "conditions": null,
+      "active": true
+    },
+    {
+      "id": "security-content",
+      "name": "Security Content",
+      "sourcePattern": "(security|kerberos|encryption|threats)",
+      "targetCategory": "allgemein",
+      "priority": 50,
+      "description": "Security-related content (relevant for both specializations)",
+      "examples": ["security-threats", "kerberos", "encryption"],
+      "conditions": null,
+      "active": true
+    },
+    {
+      "id": "default-fallback",
+      "name": "Default Fallback",
+      "sourcePattern": ".*",
+      "targetCategory": "allgemein",
+      "priority": 1,
+      "description": "Default fallback for unmapped content",
+      "examples": ["any-unmapped-content"],
+      "conditions": null,
+      "active": true
+    }
+  ],
+  "validationRules": [
+    {
+      "id": "no-empty-category",
+      "description": "Content must have a valid category assignment",
+      "rule": "targetCategory !== null && targetCategory !== ''"
+    },
+    {
+      "id": "valid-target-category",
+      "description": "Target category must be one of the three-tier categories",
+      "rule": "targetCategory in ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein']"
+    },
+    {
+      "id": "priority-uniqueness",
+      "description": "Mapping rules should have unique priorities for deterministic resolution",
+      "rule": "unique(mappingRules.map(rule => rule.priority))"
+    }
+  ],
+  "statistics": {
+    "totalRules": 14,
+    "activeRules": 14,
+    "priorityRange": {
+      "min": 1,
+      "max": 100
+    },
+    "categoryCoverage": {
+      "daten-prozessanalyse": 4,
+      "anwendungsentwicklung": 5,
+      "allgemein": 5
+    }
+  }
+}

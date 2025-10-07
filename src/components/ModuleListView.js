@@ -3,14 +3,16 @@ import LoadingSpinner from './LoadingSpinner.js';
 import toastNotification from './ToastNotification.js';
 
 /**
- * ModuleListView - Display all available learning modules
+ * ModuleListView - Display all available learning modules with specialization support
  */
 class ModuleListView {
   constructor(services) {
     this.moduleService = services.moduleService;
     this.progressService = services.progressService;
+    this.specializationService = services.specializationService;
     this.router = services.router;
     this.currentFilter = 'all';
+    this.currentCategoryFilter = 'all';
   }
 
   /**
@@ -31,6 +33,10 @@ class ModuleListView {
     container.appendChild(loadingSpinner);
 
     try {
+      // Get current specialization for filtering
+      this.currentSpecialization = this.specializationService.getCurrentSpecialization();
+      
+      // Get all modules (let category filters handle the filtering)
       const modules = await this.moduleService.getModules();
       this.modules = modules;
 
@@ -44,6 +50,7 @@ class ModuleListView {
         </div>
 
         ${this._renderFilters()}
+        ${this._renderCategoryFilters()}
         ${this._renderModuleGrid(modules)}
       `;
 
@@ -86,10 +93,75 @@ class ModuleListView {
   }
 
   /**
+   * Render category filter buttons
+   */
+  _renderCategoryFilters() {
+    const categories = this._getCategoryFilters();
+    
+    const categoryButtons = categories.map(category => `
+      <button 
+        class="category-filter-btn ${category.id === 'all' ? 'active' : ''}" 
+        data-category="${category.id}" 
+        aria-pressed="${category.id === 'all' ? 'true' : 'false'}"
+        aria-label="Show ${category.name} modules"
+        style="--category-color: ${category.color}"
+      >
+        <span class="category-icon" aria-hidden="true">${category.icon}</span>
+        <span class="category-name">${category.name}</span>
+      </button>
+    `).join('');
+
+    return `
+      <div class="module-category-filters" role="group" aria-label="Filter modules by category">
+        <h3 class="category-filters-title">Filter by Category</h3>
+        <div class="category-filters-buttons">
+          ${categoryButtons}
+        </div>
+      </div>
+    `;
+  }
+
+  /**
+   * Get category filters - show all available three-tier categories
+   */
+  _getCategoryFilters() {
+    const categories = [
+      {
+        id: 'all',
+        name: 'All Categories',
+        icon: '📚',
+        color: '#6b7280'
+      },
+      {
+        id: 'daten-prozessanalyse',
+        name: 'Daten und Prozessanalyse',
+        icon: '📊',
+        color: '#2563eb'
+      },
+      {
+        id: 'anwendungsentwicklung',
+        name: 'Anwendungsentwicklung',
+        icon: '💻',
+        color: '#dc2626'
+      },
+      {
+        id: 'allgemein',
+        name: 'Allgemein',
+        icon: '📖',
+        color: '#059669'
+      }
+    ];
+
+    return categories;
+  }
+
+  /**
    * Render module grid
    */
   _renderModuleGrid(modules) {
+    console.log('🎯 Rendering', modules.length, 'modules with filter:', this.currentCategoryFilter);
     const filteredModules = this._filterModules(modules);
+    console.log('🎯 After filtering:', filteredModules.length, 'modules remain');
 
     if (filteredModules.length === 0) {
       const emptyState = EmptyState.noModules(this.currentFilter);
@@ -124,6 +196,7 @@ class ModuleListView {
     
     const progress = module.completed ? 100 : module.inProgress ? 50 : 0;
     const statusBadge = this._getStatusBadge(module);
+    const categoryIndicator = this._getCategoryIndicator(module);
     const prerequisites =
       module.prerequisites && module.prerequisites.length > 0
         ? `<div class="module-prerequisites">
@@ -139,9 +212,12 @@ class ModuleListView {
         : 'Start';
 
     return `
-      <article class="module-card" data-module-id="${module.id}" role="listitem" aria-labelledby="module-title-${module.id}">
+      <article class="module-card ${categoryIndicator.cssClass}" data-module-id="${module.id}" data-category="${categoryIndicator.category}" role="listitem" aria-labelledby="module-title-${module.id}">
         <div class="module-card-header">
-          <div class="module-category">${category}</div>
+          <div class="module-category-display">
+            <span class="category-indicator" style="background-color: ${categoryIndicator.color}" aria-hidden="true">${categoryIndicator.icon}</span>
+            <span class="category-text">${categoryIndicator.displayName}</span>
+          </div>
           ${statusBadge}
         </div>
 
@@ -161,7 +237,7 @@ class ModuleListView {
             <div class="progress-bar" role="progressbar" aria-valuenow="${progress}" aria-valuemin="0" aria-valuemax="100" aria-label="Module progress: ${progress} percent">
               <div class="progress-fill" style="width: ${progress}%"></div>
             </div>
-            <span class="progress-text" aria-hidden="true">${progress}% complete</span>
+            <div class="progress-text" aria-hidden="true">${progress}% complete</div>
           </div>
         </div>
 
@@ -172,6 +248,66 @@ class ModuleListView {
         </div>
       </article>
     `;
+  }
+
+  /**
+   * Get category indicator for module using three-tier category system
+   */
+  _getCategoryIndicator(module) {
+    // First check if module has three-tier category information
+    if (module.threeTierCategory) {
+      return this._getThreeTierCategoryIndicator(module.threeTierCategory);
+    }
+
+    // Fallback to legacy category mapping
+    const categoryId = module.category || module.categoryId;
+    
+    if (!categoryId) {
+      return this._getThreeTierCategoryIndicator('allgemein');
+    }
+
+    // Map legacy categories to three-tier system
+    if (categoryId.includes('BP-DPA') || categoryId.includes('bp-dpa')) {
+      return this._getThreeTierCategoryIndicator('daten-prozessanalyse');
+    } else if (categoryId.includes('BP-AE') || categoryId.includes('bp-ae') ||
+               categoryId === 'BP-01' || categoryId === 'BP-02' || categoryId === 'BP-03' || 
+               categoryId === 'BP-04' || categoryId === 'BP-05') {
+      return this._getThreeTierCategoryIndicator('anwendungsentwicklung');
+    } else {
+      return this._getThreeTierCategoryIndicator('allgemein');
+    }
+  }
+
+  /**
+   * Get three-tier category indicator configuration
+   * @private
+   */
+  _getThreeTierCategoryIndicator(threeTierCategoryId) {
+    const categoryConfigs = {
+      'daten-prozessanalyse': {
+        category: 'daten-prozessanalyse',
+        cssClass: 'module-daten-prozessanalyse',
+        icon: '📊',
+        color: '#2563eb',
+        displayName: 'Daten und Prozessanalyse'
+      },
+      'anwendungsentwicklung': {
+        category: 'anwendungsentwicklung',
+        cssClass: 'module-anwendungsentwicklung',
+        icon: '💻',
+        color: '#dc2626',
+        displayName: 'Anwendungsentwicklung'
+      },
+      'allgemein': {
+        category: 'allgemein',
+        cssClass: 'module-allgemein',
+        icon: '📖',
+        color: '#059669',
+        displayName: 'Allgemein'
+      }
+    };
+
+    return categoryConfigs[threeTierCategoryId] || categoryConfigs['allgemein'];
   }
 
   /**
@@ -188,32 +324,66 @@ class ModuleListView {
   }
 
   /**
-   * Filter modules based on current filter
+   * Filter modules based on current filters
    */
   _filterModules(modules) {
+    let filteredModules = modules;
+
+    // Apply status filter
     switch (this.currentFilter) {
       case 'completed':
-        return modules.filter(m => m.completed);
+        filteredModules = filteredModules.filter(m => m.completed);
+        break;
       case 'in-progress':
-        return modules.filter(m => m.inProgress && !m.completed);
+        filteredModules = filteredModules.filter(m => m.inProgress && !m.completed);
+        break;
       case 'not-started':
-        return modules.filter(m => !m.completed && !m.inProgress);
+        filteredModules = filteredModules.filter(m => !m.completed && !m.inProgress);
+        break;
       case 'all':
       default:
-        return modules;
+        // No status filtering
+        break;
     }
+
+    // Apply category filter
+    if (this.currentCategoryFilter !== 'all') {
+      filteredModules = filteredModules.filter(module => {
+        const categoryIndicator = this._getCategoryIndicator(module);
+        return categoryIndicator.category === this.currentCategoryFilter;
+      });
+    }
+
+    return filteredModules;
   }
 
   /**
    * Attach event listeners
    */
   _attachEventListeners(container) {
-    // Filter buttons
+    // Status filter buttons
     const filterButtons = container.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => {
       btn.addEventListener('click', e => {
         const filter = e.target.dataset.filter;
         this._handleFilterChange(filter, container);
+      });
+    });
+
+    // Category filter buttons
+    const categoryFilterButtons = container.querySelectorAll('.category-filter-btn');
+    categoryFilterButtons.forEach((btn, index) => {
+      
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Find the button element (in case we clicked on a child element)
+        const button = e.target.closest('.category-filter-btn');
+        const category = button ? button.dataset.category : btn.dataset.category;
+        
+        // console.log('🖱️ Category button clicked:', category);
+        this._handleCategoryFilterChange(category, container);
       });
     });
 
@@ -262,44 +432,81 @@ class ModuleListView {
       }
     });
 
-    // Re-render module grid
-    const moduleGridContainer =
-      container.querySelector('.module-grid')?.parentElement;
-    if (moduleGridContainer) {
-      moduleGridContainer.innerHTML = this._renderModuleGrid(this.modules);
+    this._refreshModuleGrid(container);
+  }
 
-      // Re-attach event listeners for new module cards
-      const viewButtons = moduleGridContainer.querySelectorAll(
-        '[data-action="view-module"]'
-      );
-      viewButtons.forEach(btn => {
-        btn.addEventListener('click', e => {
-          const moduleId = e.target.dataset.moduleId;
-          window.location.hash = `#/modules/${moduleId}`;
+  /**
+   * Handle category filter change
+   */
+  _handleCategoryFilterChange(category, container) {
+    this.currentCategoryFilter = category;
+
+    // Update active category filter button
+    const categoryFilterButtons = container.querySelectorAll('.category-filter-btn');
+    categoryFilterButtons.forEach(btn => {
+      if (btn.dataset.category === category) {
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    });
+
+    this._refreshModuleGrid(container);
+  }
+
+  /**
+   * Refresh module grid with current filters
+   */
+  _refreshModuleGrid(container) {
+    // Find the existing module grid
+    const existingModuleGrid = container.querySelector('.module-grid');
+    
+    if (existingModuleGrid) {
+      // Replace just the module grid content
+      const newModuleGridHTML = this._renderModuleGrid(this.modules);
+      
+      // Create a temporary container to parse the HTML
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = newModuleGridHTML;
+      const newModuleGrid = tempDiv.querySelector('.module-grid');
+      
+      if (newModuleGrid) {
+        // Replace the existing grid with the new one
+        existingModuleGrid.parentNode.replaceChild(newModuleGrid, existingModuleGrid);
+        
+        // Re-attach event listeners for new module cards
+        const viewButtons = newModuleGrid.querySelectorAll('[data-action="view-module"]');
+        viewButtons.forEach(btn => {
+          btn.addEventListener('click', e => {
+            const moduleId = e.target.dataset.moduleId;
+            window.location.hash = `#/modules/${moduleId}`;
+          });
         });
-      });
 
-      const moduleCards = moduleGridContainer.querySelectorAll('.module-card');
-      moduleCards.forEach(card => {
-        card.addEventListener('click', e => {
-          if (e.target.closest('button')) return;
-          const moduleId = card.dataset.moduleId;
-          window.location.hash = `#/modules/${moduleId}`;
-        });
-        card.style.cursor = 'pointer';
-        card.setAttribute('tabindex', '0');
+        const moduleCards = newModuleGrid.querySelectorAll('.module-card');
+        moduleCards.forEach(card => {
+          card.addEventListener('click', e => {
+            if (e.target.closest('button')) return;
+            const moduleId = card.dataset.moduleId;
+            window.location.hash = `#/modules/${moduleId}`;
+          });
+          card.style.cursor = 'pointer';
+          card.setAttribute('tabindex', '0');
 
-        // Add keyboard support for card click
-        card.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            if (!e.target.closest('button')) {
-              e.preventDefault();
-              const moduleId = card.dataset.moduleId;
-              window.location.hash = `#/modules/${moduleId}`;
+          // Add keyboard support for card click
+          card.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              if (!e.target.closest('button')) {
+                e.preventDefault();
+                const moduleId = card.dataset.moduleId;
+                window.location.hash = `#/modules/${moduleId}`;
+              }
             }
-          }
+          });
         });
-      });
+      }
     }
   }
 

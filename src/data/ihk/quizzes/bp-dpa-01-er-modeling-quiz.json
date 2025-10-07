@@ -1,0 +1,347 @@
+{
+  "id": "bp-dpa-01-er-modeling-quiz",
+  "moduleId": "bp-dpa-01-er-modeling",
+  "title": "ER-Modellierung und Datenmodellierung",
+  "description": "Umfassendes Quiz zu Entity-Relationship-Modellierung, Kardinalitäten, Schlüsseln und Datenbankdesign",
+  "category": "BP-DPA-02",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 25,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist eine Entität in der ER-Modellierung?",
+      "options": [
+        "Eine Beziehung zwischen zwei Objekten",
+        "Ein Objekt oder Konzept der realen Welt, das eindeutig identifizierbar ist",
+        "Ein Attribut einer Datenbanktabelle",
+        "Eine Abfrage in SQL"
+      ],
+      "correctAnswer": "Ein Objekt oder Konzept der realen Welt, das eindeutig identifizierbar ist",
+      "explanation": "Eine Entität ist ein Objekt oder Konzept der realen Welt (z.B. Kunde, Produkt, Bestellung), das eindeutig identifizierbar ist und Eigenschaften (Attribute) besitzt. Entitäten werden in ER-Diagrammen als Rechtecke dargestellt.",
+      "points": 1,
+      "category": "ER-Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Wie wird eine Beziehung (Relationship) in einem ER-Diagramm dargestellt?",
+      "options": [
+        "Als Rechteck",
+        "Als Ellipse",
+        "Als Raute",
+        "Als Kreis"
+      ],
+      "correctAnswer": "Als Raute",
+      "explanation": "Beziehungen (Relationships) werden in ER-Diagrammen als Rauten dargestellt. Sie beschreiben Zusammenhänge zwischen Entitäten, z.B. 'Kunde bestellt Produkt'.",
+      "points": 1,
+      "category": "ER-Notation"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Arten von Attributen gibt es in der ER-Modellierung?",
+      "options": [
+        "Einfache Attribute",
+        "Zusammengesetzte Attribute",
+        "Mehrwertige Attribute",
+        "Abgeleitete Attribute"
+      ],
+      "correctAnswer": [
+        "Einfache Attribute",
+        "Zusammengesetzte Attribute",
+        "Mehrwertige Attribute",
+        "Abgeleitete Attribute"
+      ],
+      "explanation": "Es gibt vier Hauptarten von Attributen: Einfache (nicht weiter zerlegbar), Zusammengesetzte (aus Teilattributen bestehend), Mehrwertige (mehrere Werte möglich) und Abgeleitete (aus anderen Attributen berechenbar).",
+      "points": 2,
+      "category": "Attribute"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Was bedeutet die Kardinalität 1:N in einer Beziehung?",
+      "options": [
+        "Eine Entität steht mit genau einer anderen in Beziehung",
+        "Eine Entität steht mit mehreren anderen in Beziehung, aber jede andere nur mit einer",
+        "Mehrere Entitäten stehen mit mehreren anderen in Beziehung",
+        "Keine Beziehung zwischen den Entitäten"
+      ],
+      "correctAnswer": "Eine Entität steht mit mehreren anderen in Beziehung, aber jede andere nur mit einer",
+      "explanation": "1:N (Eins-zu-Viele) bedeutet, dass eine Entität der ersten Art mit mehreren Entitäten der zweiten Art in Beziehung stehen kann, aber jede Entität der zweiten Art nur mit einer der ersten. Beispiel: Ein Kunde kann mehrere Bestellungen haben, aber jede Bestellung gehört nur zu einem Kunden.",
+      "points": 1,
+      "category": "Kardinalitäten"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Welche Kardinalität erfordert bei der Umsetzung in relationale Tabellen eine Zwischentabelle?",
+      "options": [
+        "1:1 (Eins-zu-Eins)",
+        "1:N (Eins-zu-Viele)",
+        "N:M (Viele-zu-Viele)",
+        "Alle Kardinalitäten"
+      ],
+      "correctAnswer": "N:M (Viele-zu-Viele)",
+      "explanation": "N:M-Beziehungen (Viele-zu-Viele) erfordern eine Zwischentabelle, da sie nicht direkt in relationalen Tabellen dargestellt werden können. Die Zwischentabelle enthält die Primärschlüssel beider beteiligten Entitäten als Fremdschlüssel.",
+      "points": 1,
+      "category": "Kardinalitäten"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist ein Primärschlüssel?",
+      "options": [
+        "Ein Attribut, das in mehreren Tabellen vorkommt",
+        "Ein Attribut oder eine Attributkombination, die eine Entität eindeutig identifiziert",
+        "Ein Attribut, das aus anderen Attributen berechnet wird",
+        "Ein Attribut, das mehrere Werte haben kann"
+      ],
+      "correctAnswer": "Ein Attribut oder eine Attributkombination, die eine Entität eindeutig identifiziert",
+      "explanation": "Ein Primärschlüssel ist ein Attribut oder eine Kombination von Attributen, die jede Entität in einer Tabelle eindeutig identifiziert. Er darf nicht NULL sein und sollte unveränderlich sein.",
+      "points": 1,
+      "category": "Schlüssel"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen einem Entitätstyp und einer Entitätsausprägung?",
+      "options": [
+        "Es gibt keinen Unterschied",
+        "Entitätstyp ist die allgemeine Beschreibung, Entitätsausprägung ist eine konkrete Instanz",
+        "Entitätsausprägung ist die allgemeine Beschreibung, Entitätstyp ist eine konkrete Instanz",
+        "Beide Begriffe beschreiben dasselbe"
+      ],
+      "correctAnswer": "Entitätstyp ist die allgemeine Beschreibung, Entitätsausprägung ist eine konkrete Instanz",
+      "explanation": "Ein Entitätstyp ist die allgemeine Beschreibung (z.B. 'Kunde'), während eine Entitätsausprägung eine konkrete Instanz dieses Typs ist (z.B. 'Max Mustermann').",
+      "points": 1,
+      "category": "ER-Grundlagen"
+    },
+    {
+      "id": "q8",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen über Fremdschlüssel sind korrekt?",
+      "options": [
+        "Sie verweisen auf den Primärschlüssel einer anderen Tabelle",
+        "Sie stellen Beziehungen zwischen Entitäten her",
+        "Sie müssen immer eindeutig sein",
+        "Sie können NULL-Werte enthalten"
+      ],
+      "correctAnswer": [
+        "Sie verweisen auf den Primärschlüssel einer anderen Tabelle",
+        "Sie stellen Beziehungen zwischen Entitäten her",
+        "Sie können NULL-Werte enthalten"
+      ],
+      "explanation": "Fremdschlüssel verweisen auf Primärschlüssel anderer Tabellen und stellen Beziehungen her. Sie müssen nicht eindeutig sein (mehrere Datensätze können denselben Fremdschlüssel haben) und können NULL-Werte enthalten, wenn die Beziehung optional ist.",
+      "points": 2,
+      "category": "Schlüssel"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was bedeutet die Min-Max-Notation (1,*) bei einer Kardinalität?",
+      "options": [
+        "Mindestens eine, höchstens eine Beziehung",
+        "Mindestens eine, beliebig viele Beziehungen",
+        "Keine bis eine Beziehung",
+        "Genau eine Beziehung"
+      ],
+      "correctAnswer": "Mindestens eine, beliebig viele Beziehungen",
+      "explanation": "Die Min-Max-Notation (1,*) bedeutet mindestens eine (1) und höchstens beliebig viele (*) Beziehungen. Das bedeutet, dass die Beziehung verpflichtend ist (mindestens eine) und nach oben unbegrenzt.",
+      "points": 1,
+      "category": "Kardinalitäten"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was ist eine schwache Entität?",
+      "options": [
+        "Eine Entität mit wenigen Attributen",
+        "Eine Entität, die nicht allein durch eigene Attribute identifiziert werden kann",
+        "Eine Entität ohne Beziehungen",
+        "Eine Entität mit nur einem Attribut"
+      ],
+      "correctAnswer": "Eine Entität, die nicht allein durch eigene Attribute identifiziert werden kann",
+      "explanation": "Eine schwache Entität kann nicht allein durch ihre eigenen Attribute eindeutig identifiziert werden und benötigt eine Beziehung zu einer starken Entität. Beispiel: Zimmer (abhängig von Hotel). Sie wird mit doppeltem Rechteck dargestellt.",
+      "points": 1,
+      "category": "Erweiterte Konzepte"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Welche Transformationsregel gilt für 1:N-Beziehungen bei der Umsetzung in relationale Tabellen?",
+      "options": [
+        "Separate Zwischentabelle erstellen",
+        "Fremdschlüssel in die N-Seite einfügen",
+        "Fremdschlüssel in die 1-Seite einfügen",
+        "Beide Tabellen zusammenfassen"
+      ],
+      "correctAnswer": "Fremdschlüssel in die N-Seite einfügen",
+      "explanation": "Bei 1:N-Beziehungen wird der Primärschlüssel der 1-Seite als Fremdschlüssel in die Tabelle der N-Seite eingefügt. Beispiel: Kunde (1) - Bestellung (N) → Kundennummer wird Fremdschlüssel in der Bestelltabelle.",
+      "points": 1,
+      "category": "Transformation"
+    },
+    {
+      "id": "q12",
+      "type": "multiple-choice",
+      "question": "Welche Elemente gehören zu einem vollständigen ER-Diagramm?",
+      "options": [
+        "Entitäten (Rechtecke)",
+        "Attribute (Ellipsen)",
+        "Beziehungen (Rauten)",
+        "Kardinalitäten"
+      ],
+      "correctAnswer": [
+        "Entitäten (Rechtecke)",
+        "Attribute (Ellipsen)",
+        "Beziehungen (Rauten)",
+        "Kardinalitäten"
+      ],
+      "explanation": "Ein vollständiges ER-Diagramm enthält Entitäten (Rechtecke), Attribute (Ellipsen), Beziehungen (Rauten) und Kardinalitäten, die die Anzahl der möglichen Beziehungen zwischen Entitäten angeben.",
+      "points": 2,
+      "category": "ER-Notation"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ist ein Kandidatenschlüssel?",
+      "options": [
+        "Ein Schlüssel, der als Primärschlüssel gewählt werden könnte",
+        "Ein Fremdschlüssel",
+        "Ein zusammengesetzter Schlüssel",
+        "Ein abgeleiteter Schlüssel"
+      ],
+      "correctAnswer": "Ein Schlüssel, der als Primärschlüssel gewählt werden könnte",
+      "explanation": "Ein Kandidatenschlüssel ist ein Attribut oder eine Attributkombination, die als Primärschlüssel geeignet wäre (eindeutig und nicht NULL). Aus allen Kandidatenschlüsseln wird einer als Primärschlüssel ausgewählt.",
+      "points": 1,
+      "category": "Schlüssel"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Wie werden abgeleitete Attribute in ER-Diagrammen dargestellt?",
+      "options": [
+        "Als normale Ellipse",
+        "Als gestrichelte Ellipse",
+        "Als Rechteck",
+        "Als Raute"
+      ],
+      "correctAnswer": "Als gestrichelte Ellipse",
+      "explanation": "Abgeleitete Attribute, die aus anderen Attributen berechnet werden können (z.B. Alter aus Geburtsdatum), werden als gestrichelte Ellipsen dargestellt, um zu zeigen, dass sie nicht gespeichert werden müssen.",
+      "points": 1,
+      "category": "ER-Notation"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was beschreibt eine ISA-Beziehung (Spezialisierung/Generalisierung)?",
+      "options": [
+        "Eine normale Beziehung zwischen zwei Entitäten",
+        "Eine 'ist-ein'-Beziehung zwischen einer allgemeinen und einer speziellen Entität",
+        "Eine Aggregation",
+        "Eine N:M-Beziehung"
+      ],
+      "correctAnswer": "Eine 'ist-ein'-Beziehung zwischen einer allgemeinen und einer speziellen Entität",
+      "explanation": "Eine ISA-Beziehung (\"ist ein\") beschreibt Spezialisierung/Generalisierung, z.B. 'Kunde ist eine Person' oder 'PKW ist ein Fahrzeug'. Die spezialisierte Entität erbt alle Attribute der allgemeinen Entität.",
+      "points": 1,
+      "category": "Erweiterte Konzepte"
+    },
+    {
+      "id": "q16",
+      "type": "multiple-choice",
+      "question": "Welche Schritte gehören zum ER-Modellierungsprozess?",
+      "options": [
+        "Anforderungsanalyse",
+        "Entitäten identifizieren",
+        "Attribute bestimmen",
+        "Beziehungen modellieren"
+      ],
+      "correctAnswer": [
+        "Anforderungsanalyse",
+        "Entitäten identifizieren",
+        "Attribute bestimmen",
+        "Beziehungen modellieren"
+      ],
+      "explanation": "Der ER-Modellierungsprozess umfasst: 1) Anforderungsanalyse, 2) Entitäten identifizieren, 3) Attribute bestimmen, 4) Beziehungen modellieren, 5) Validierung. Jeder Schritt baut auf dem vorherigen auf.",
+      "points": 2,
+      "category": "Modellierungsprozess"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was ist ein Superschlüssel?",
+      "options": [
+        "Der wichtigste Primärschlüssel",
+        "Eine Attributkombination, die Entitäten eindeutig identifiziert (kann redundante Attribute enthalten)",
+        "Ein Fremdschlüssel",
+        "Ein zusammengesetzter Primärschlüssel"
+      ],
+      "correctAnswer": "Eine Attributkombination, die Entitäten eindeutig identifiziert (kann redundante Attribute enthalten)",
+      "explanation": "Ein Superschlüssel ist eine Attributkombination, die Entitäten eindeutig identifiziert, aber redundante Attribute enthalten kann. Kandidatenschlüssel sind minimale Superschlüssel (ohne redundante Attribute).",
+      "points": 1,
+      "category": "Schlüssel"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Welcher Modellierungsfehler liegt vor, wenn ein Attribut als eigene Entität modelliert wird, obwohl es nur eine einfache Eigenschaft ist?",
+      "options": [
+        "Untermodellierung",
+        "Übermodellierung",
+        "Falsche Kardinalität",
+        "Fehlende Beziehung"
+      ],
+      "correctAnswer": "Übermodellierung",
+      "explanation": "Übermodellierung liegt vor, wenn einfache Attribute fälschlicherweise als eigene Entitäten modelliert werden. Regel: Wenn keine weiteren Attribute für das Objekt relevant sind, sollte es ein Attribut bleiben.",
+      "points": 1,
+      "category": "Modellierungsfehler"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "In welchem Fall sollte ein Attribut als eigene Entität modelliert werden?",
+      "options": [
+        "Wenn es einen einfachen Wert hat",
+        "Wenn weitere Attribute für dieses Objekt relevant sind",
+        "Wenn es ein Primärschlüssel ist",
+        "Wenn es ein Fremdschlüssel ist"
+      ],
+      "correctAnswer": "Wenn weitere Attribute für dieses Objekt relevant sind",
+      "explanation": "Ein Attribut sollte als eigene Entität modelliert werden, wenn weitere Attribute für dieses Objekt relevant sind. Beispiel: 'Adresse' als Entität mit Attributen Straße, PLZ, Ort statt als einfaches Attribut.",
+      "points": 1,
+      "category": "Modellierungsentscheidungen"
+    },
+    {
+      "id": "q20",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet die ER-Modellierung?",
+      "options": [
+        "Verbesserte Kommunikation zwischen Stakeholdern",
+        "Systematisches Datenbankdesign",
+        "Dokumentation der Datenstruktur",
+        "Automatische Code-Generierung"
+      ],
+      "correctAnswer": [
+        "Verbesserte Kommunikation zwischen Stakeholdern",
+        "Systematisches Datenbankdesign",
+        "Dokumentation der Datenstruktur"
+      ],
+      "explanation": "ER-Modellierung verbessert die Kommunikation zwischen Stakeholdern durch visuelle Darstellung, ermöglicht systematisches Datenbankdesign und dokumentiert die Datenstruktur. Automatische Code-Generierung ist möglich, aber nicht der Hauptvorteil.",
+      "points": 2,
+      "category": "Vorteile"
+    }
+  ],
+  "tags": [
+    "ER-Modellierung",
+    "Entitäten",
+    "Attribute",
+    "Beziehungen",
+    "Kardinalitäten",
+    "Schlüssel",
+    "Datenbankdesign"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

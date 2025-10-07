@@ -1,0 +1,384 @@
+{
+  "id": "bp-dpa-02-etl-quiz",
+  "moduleId": "bp-dpa-02-etl-fundamentals",
+  "title": "ETL-Prozesse und Datenintegration",
+  "description": "Umfassendes Quiz zu Extract, Transform, Load-Prozessen, Datenqualität und ETL-Tools",
+  "category": "BP-DPA-01",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 35,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Wofür steht die Abkürzung ETL?",
+      "options": [
+        "Extract, Transfer, Load",
+        "Extract, Transform, Load",
+        "Export, Transform, Link",
+        "Extract, Translate, Load"
+      ],
+      "correctAnswer": "Extract, Transform, Load",
+      "explanation": "ETL steht für Extract (Extrahieren), Transform (Transformieren) und Load (Laden). Dies sind die drei Hauptphasen der Datenintegration.",
+      "points": 1,
+      "category": "ETL Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen ETL und ELT?",
+      "options": [
+        "ETL ist schneller als ELT",
+        "Bei ETL wird vor dem Laden transformiert, bei ELT nach dem Laden",
+        "ELT ist nur für kleine Datenmengen geeignet",
+        "ETL und ELT sind identisch"
+      ],
+      "correctAnswer": "Bei ETL wird vor dem Laden transformiert, bei ELT nach dem Laden",
+      "explanation": "Der Hauptunterschied liegt im Zeitpunkt der Transformation: ETL transformiert die Daten vor dem Laden ins Zielsystem, ELT lädt die Rohdaten zuerst und transformiert sie dann im Zielsystem.",
+      "points": 1,
+      "category": "ETL vs ELT"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Datenquellen können in ETL-Prozessen verwendet werden?",
+      "options": [
+        "Relationale Datenbanken",
+        "CSV/Excel-Dateien",
+        "REST APIs",
+        "NoSQL-Datenbanken"
+      ],
+      "correctAnswer": [
+        "Relationale Datenbanken",
+        "CSV/Excel-Dateien",
+        "REST APIs",
+        "NoSQL-Datenbanken"
+      ],
+      "explanation": "ETL-Prozesse können Daten aus verschiedensten Quellen extrahieren: relationale Datenbanken, Dateien (CSV, Excel, XML, JSON), APIs, NoSQL-Datenbanken, Streaming-Daten und viele weitere.",
+      "points": 2,
+      "category": "Datenquellen"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Was ist eine Full Extraction?",
+      "options": [
+        "Extraktion nur der geänderten Daten",
+        "Extraktion aller Daten aus der Quelle",
+        "Extraktion nur der neuen Daten",
+        "Extraktion nur der gelöschten Daten"
+      ],
+      "correctAnswer": "Extraktion aller Daten aus der Quelle",
+      "explanation": "Full Extraction bedeutet die komplette Extraktion aller Daten aus der Quelle. Dies ist einfach zu implementieren, aber ressourcenintensiv bei großen Datenmengen.",
+      "points": 1,
+      "category": "Extraktionsstrategien"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Welche Extraktionsstrategie ist bei großen Datenmengen effizienter?",
+      "options": [
+        "Full Extraction",
+        "Incremental Extraction",
+        "Random Extraction",
+        "Parallel Extraction"
+      ],
+      "correctAnswer": "Incremental Extraction",
+      "explanation": "Incremental Extraction ist bei großen Datenmengen effizienter, da nur geänderte oder neue Daten extrahiert werden. Dies reduziert Ressourcenverbrauch und Verarbeitungszeit erheblich.",
+      "points": 1,
+      "category": "Extraktionsstrategien"
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "question": "Welche Datenqualitätsprobleme können in der Transform-Phase behandelt werden?",
+      "options": [
+        "Fehlende Werte (NULL)",
+        "Duplikate",
+        "Formatfehler",
+        "Ausreißer"
+      ],
+      "correctAnswer": [
+        "Fehlende Werte (NULL)",
+        "Duplikate",
+        "Formatfehler",
+        "Ausreißer"
+      ],
+      "explanation": "In der Transform-Phase können verschiedene Datenqualitätsprobleme behandelt werden: fehlende Werte, Duplikate, Formatfehler, Tippfehler, Ausreißer und Inkonsistenzen.",
+      "points": 2,
+      "category": "Datentransformation"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was ist Change Data Capture (CDC)?",
+      "options": [
+        "Eine Methode zur Datensicherung",
+        "Eine Technik zur Identifikation von Datenänderungen",
+        "Ein Datenformat",
+        "Eine Datenbank-Engine"
+      ],
+      "correctAnswer": "Eine Technik zur Identifikation von Datenänderungen",
+      "explanation": "Change Data Capture (CDC) ist eine Technik zur Identifikation und Erfassung von Datenänderungen in Quellsystemen, um nur geänderte Daten zu extrahieren und zu verarbeiten.",
+      "points": 1,
+      "category": "Extraktionstechniken"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was ist SCD Type 1?",
+      "options": [
+        "Historisierung von Änderungen",
+        "Überschreiben der aktuellen Werte",
+        "Zusätzliche Spalte für vorherigen Wert",
+        "Keine Änderungen erlaubt"
+      ],
+      "correctAnswer": "Überschreiben der aktuellen Werte",
+      "explanation": "SCD (Slowly Changing Dimension) Type 1 überschreibt die aktuellen Werte mit den neuen Werten. Die Historie geht dabei verloren, aber es ist die einfachste Implementierung.",
+      "points": 1,
+      "category": "Slowly Changing Dimensions"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Welcher SCD-Typ behält die komplette Historie bei?",
+      "options": [
+        "SCD Type 1",
+        "SCD Type 2",
+        "SCD Type 3",
+        "SCD Type 4"
+      ],
+      "correctAnswer": "SCD Type 2",
+      "explanation": "SCD Type 2 behält die komplette Historie bei, indem für jede Änderung ein neuer Datensatz mit Gültigkeitszeiträumen erstellt wird. Dies ermöglicht historische Analysen.",
+      "points": 1,
+      "category": "Slowly Changing Dimensions"
+    },
+    {
+      "id": "q10",
+      "type": "multiple-choice",
+      "question": "Welche ETL-Tools sind Open Source?",
+      "options": [
+        "Apache Airflow",
+        "Talend Open Studio",
+        "Pentaho Data Integration",
+        "Microsoft SSIS"
+      ],
+      "correctAnswer": [
+        "Apache Airflow",
+        "Talend Open Studio",
+        "Pentaho Data Integration"
+      ],
+      "explanation": "Apache Airflow, Talend Open Studio und Pentaho Data Integration (Kettle) sind Open Source ETL-Tools. Microsoft SSIS ist ein kommerzielles Tool.",
+      "points": 2,
+      "category": "ETL-Tools"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist ein Data Lake?",
+      "options": [
+        "Eine strukturierte Datenbank",
+        "Ein Repository für Rohdaten in verschiedenen Formaten",
+        "Ein ETL-Tool",
+        "Eine Visualisierungssoftware"
+      ],
+      "correctAnswer": "Ein Repository für Rohdaten in verschiedenen Formaten",
+      "explanation": "Ein Data Lake ist ein Repository, das große Mengen von Rohdaten in ihrem nativen Format speichert - strukturiert, semi-strukturiert und unstrukturiert. Schema-on-Read Ansatz.",
+      "points": 1,
+      "category": "Datenarchitektur"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was bedeutet 'Schema-on-Write'?",
+      "options": [
+        "Schema wird beim Lesen definiert",
+        "Schema wird beim Schreiben definiert",
+        "Kein Schema erforderlich",
+        "Schema wird automatisch erkannt"
+      ],
+      "correctAnswer": "Schema wird beim Schreiben definiert",
+      "explanation": "Schema-on-Write bedeutet, dass die Datenstruktur (Schema) bereits beim Schreiben/Laden der Daten definiert wird. Dies ist der traditionelle Data Warehouse Ansatz.",
+      "points": 1,
+      "category": "Datenarchitektur"
+    },
+    {
+      "id": "q13",
+      "type": "multiple-choice",
+      "question": "Welche Datenqualitätsdimensionen gibt es?",
+      "options": [
+        "Vollständigkeit",
+        "Genauigkeit",
+        "Konsistenz",
+        "Aktualität"
+      ],
+      "correctAnswer": [
+        "Vollständigkeit",
+        "Genauigkeit",
+        "Konsistenz",
+        "Aktualität"
+      ],
+      "explanation": "Die wichtigsten Datenqualitätsdimensionen sind: Vollständigkeit (keine fehlenden Werte), Genauigkeit (korrekte Werte), Konsistenz (einheitliche Formate), Aktualität (zeitnahe Daten) und Eindeutigkeit (keine Duplikate).",
+      "points": 2,
+      "category": "Datenqualität"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist ein Upsert-Operation?",
+      "options": [
+        "Nur Einfügen von Daten",
+        "Nur Aktualisieren von Daten",
+        "Einfügen oder Aktualisieren je nach Existenz",
+        "Löschen von Daten"
+      ],
+      "correctAnswer": "Einfügen oder Aktualisieren je nach Existenz",
+      "explanation": "Upsert (Update + Insert) ist eine Operation, die Daten einfügt, wenn sie nicht existieren, oder aktualisiert, wenn sie bereits vorhanden sind. Sehr nützlich für inkrementelle Loads.",
+      "points": 1,
+      "category": "Ladestrategien"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Welche Architektur verarbeitet sowohl Batch- als auch Stream-Daten?",
+      "options": [
+        "Lambda-Architektur",
+        "Kappa-Architektur",
+        "Medallion-Architektur",
+        "Star-Architektur"
+      ],
+      "correctAnswer": "Lambda-Architektur",
+      "explanation": "Die Lambda-Architektur verarbeitet sowohl Batch-Daten (Batch Layer) als auch Stream-Daten (Speed Layer) parallel und kombiniert die Ergebnisse im Serving Layer.",
+      "points": 1,
+      "category": "Datenarchitektur"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist der Vorteil der Kappa-Architektur gegenüber Lambda?",
+      "options": [
+        "Bessere Performance",
+        "Einfacherer Aufbau durch nur einen Stream-Processing-Pfad",
+        "Geringere Kosten",
+        "Bessere Skalierbarkeit"
+      ],
+      "correctAnswer": "Einfacherer Aufbau durch nur einen Stream-Processing-Pfad",
+      "explanation": "Die Kappa-Architektur ist einfacher als Lambda, da sie nur einen Stream-Processing-Pfad hat. Batch-Verarbeitung wird als Replay des Streams behandelt, was die Komplexität reduziert.",
+      "points": 1,
+      "category": "Datenarchitektur"
+    },
+    {
+      "id": "q17",
+      "type": "multiple-choice",
+      "question": "Welche Metriken sind wichtig für ETL-Pipeline-Monitoring?",
+      "options": [
+        "Durchsatz (Records/Sekunde)",
+        "Latenz (Ende-zu-Ende Zeit)",
+        "Fehlerrate",
+        "Datenqualität"
+      ],
+      "correctAnswer": [
+        "Durchsatz (Records/Sekunde)",
+        "Latenz (Ende-zu-Ende Zeit)",
+        "Fehlerrate",
+        "Datenqualität"
+      ],
+      "explanation": "Wichtige ETL-Monitoring-Metriken sind: Durchsatz (verarbeitete Records pro Zeit), Latenz (Gesamtverarbeitungszeit), Fehlerrate (fehlgeschlagene Records) und Datenqualitätsmetriken.",
+      "points": 2,
+      "category": "Pipeline-Monitoring"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was ist Apache Spark hauptsächlich optimiert für?",
+      "options": [
+        "Disk-basierte Verarbeitung",
+        "In-Memory-Verarbeitung",
+        "Netzwerk-Übertragung",
+        "Datenspeicherung"
+      ],
+      "correctAnswer": "In-Memory-Verarbeitung",
+      "explanation": "Apache Spark ist hauptsächlich für In-Memory-Verarbeitung optimiert, was deutlich schnellere Datenverarbeitung ermöglicht als traditionelle disk-basierte Systeme wie Hadoop MapReduce.",
+      "points": 1,
+      "category": "Big Data ETL"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist die Medallion-Architektur?",
+      "options": [
+        "Bronze (Raw) → Silver (Cleaned) → Gold (Aggregated)",
+        "Extract → Transform → Load",
+        "Batch → Stream → Serving",
+        "Source → Target → Archive"
+      ],
+      "correctAnswer": "Bronze (Raw) → Silver (Cleaned) → Gold (Aggregated)",
+      "explanation": "Die Medallion-Architektur organisiert Daten in drei Schichten: Bronze (Rohdaten), Silver (bereinigte/validierte Daten) und Gold (aggregierte/business-ready Daten).",
+      "points": 1,
+      "category": "Datenarchitektur"
+    },
+    {
+      "id": "q20",
+      "type": "multiple-choice",
+      "question": "Welche Cloud ETL-Services gibt es?",
+      "options": [
+        "AWS Glue",
+        "Azure Data Factory",
+        "Google Cloud Dataflow",
+        "Apache Airflow"
+      ],
+      "correctAnswer": [
+        "AWS Glue",
+        "Azure Data Factory",
+        "Google Cloud Dataflow"
+      ],
+      "explanation": "AWS Glue, Azure Data Factory und Google Cloud Dataflow sind Cloud-basierte ETL-Services. Apache Airflow ist ein Open Source Workflow-Orchestrierungstool, das auch in der Cloud eingesetzt werden kann.",
+      "points": 2,
+      "category": "Cloud ETL"
+    },
+    {
+      "id": "q21",
+      "type": "single-choice",
+      "question": "Was ist Data Lineage?",
+      "options": [
+        "Die Geschwindigkeit der Datenverarbeitung",
+        "Die Nachverfolgung der Datenherkunft und -transformation",
+        "Die Größe der Datenmengen",
+        "Die Qualität der Daten"
+      ],
+      "correctAnswer": "Die Nachverfolgung der Datenherkunft und -transformation",
+      "explanation": "Data Lineage ist die Nachverfolgung der Datenherkunft und aller Transformationsschritte, die Daten durchlaufen haben. Dies ist wichtig für Compliance, Debugging und Impact-Analysen.",
+      "points": 1,
+      "category": "Data Governance"
+    },
+    {
+      "id": "q22",
+      "type": "single-choice",
+      "question": "Welche Fehlerbehandlungsstrategie ist in ETL-Pipelines üblich?",
+      "options": [
+        "Alle Fehler ignorieren",
+        "Bei ersten Fehler stoppen",
+        "Fehlerhafte Records in Reject-Tabelle schreiben und weitermachen",
+        "Fehlerhafte Records automatisch korrigieren"
+      ],
+      "correctAnswer": "Fehlerhafte Records in Reject-Tabelle schreiben und weitermachen",
+      "explanation": "Eine übliche Strategie ist, fehlerhafte Records in eine Reject-Tabelle zu schreiben und mit der Verarbeitung fortzufahren. Dies ermöglicht spätere Analyse und Korrektur der Fehler ohne Pipeline-Stopp.",
+      "points": 1,
+      "category": "Fehlerbehandlung"
+    }
+  ],
+  "tags": [
+    "ETL",
+    "ELT",
+    "Datenintegration",
+    "Extraktion",
+    "Transformation",
+    "Laden",
+    "Datenqualität",
+    "SCD",
+    "Data Pipeline"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

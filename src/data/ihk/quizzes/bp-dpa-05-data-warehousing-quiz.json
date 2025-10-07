@@ -1,0 +1,345 @@
+{
+  "id": "bp-dpa-05-data-warehousing-quiz",
+  "moduleId": "bp-dpa-05-data-warehousing",
+  "title": "Data Warehousing und dimensionale Modellierung",
+  "description": "Umfassendes Quiz zu Data Warehouse Konzepten, dimensionaler Modellierung und OLAP-Systemen",
+  "category": "BP-DPA-02",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 30,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist der Hauptunterschied zwischen einem Data Warehouse und einer operativen Datenbank?",
+      "options": [
+        "Data Warehouse ist kleiner als operative Datenbanken",
+        "Data Warehouse ist für Analysen optimiert, operative DB für Transaktionen",
+        "Data Warehouse verwendet nur NoSQL-Technologien",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Data Warehouse ist für Analysen optimiert, operative DB für Transaktionen",
+      "explanation": "Data Warehouses sind für analytische Abfragen (OLAP) optimiert mit denormalisierten Strukturen, während operative Datenbanken für Transaktionen (OLTP) mit normalisierten Strukturen optimiert sind.",
+      "points": 1,
+      "category": "Data Warehouse Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Was charakterisiert ein Star Schema?",
+      "options": [
+        "Alle Tabellen sind normalisiert",
+        "Eine zentrale Faktentabelle umgeben von Dimensionstabellen",
+        "Nur eine große Tabelle mit allen Daten",
+        "Mehrere Faktentabellen ohne Dimensionen"
+      ],
+      "correctAnswer": "Eine zentrale Faktentabelle umgeben von Dimensionstabellen",
+      "explanation": "Ein Star Schema hat eine zentrale Faktentabelle mit Kennzahlen und umgebende Dimensionstabellen mit beschreibenden Attributen. Die Struktur ähnelt einem Stern.",
+      "points": 1,
+      "category": "Dimensionale Modellierung"
+    },
+    {
+      "id": "q3",
+      "type": "single-choice",
+      "question": "Was enthalten Faktentabellen hauptsächlich?",
+      "options": [
+        "Nur Primärschlüssel",
+        "Beschreibende Attribute wie Namen und Adressen",
+        "Kennzahlen (Measures) und Fremdschlüssel zu Dimensionen",
+        "Nur Metadaten"
+      ],
+      "correctAnswer": "Kennzahlen (Measures) und Fremdschlüssel zu Dimensionen",
+      "explanation": "Faktentabellen enthalten quantitative Kennzahlen (wie Umsatz, Menge) und Fremdschlüssel zu den Dimensionstabellen. Sie sind optimiert für Aggregationen und Berechnungen.",
+      "points": 1,
+      "category": "Faktentabellen"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen Snowflake und Star Schema?",
+      "options": [
+        "Snowflake hat normalisierte Dimensionen, Star Schema denormalisierte",
+        "Star Schema hat normalisierte Dimensionen, Snowflake denormalisierte",
+        "Beide sind identisch",
+        "Snowflake verwendet nur Cloud-Technologien"
+      ],
+      "correctAnswer": "Snowflake hat normalisierte Dimensionen, Star Schema denormalisierte",
+      "explanation": "Snowflake Schema normalisiert die Dimensionstabellen (weniger Redundanz, komplexere Abfragen), während Star Schema denormalisierte Dimensionen hat (einfachere Abfragen, mehr Redundanz).",
+      "points": 1,
+      "category": "Schema-Typen"
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "question": "Welche Arten von Faktentabellen gibt es?",
+      "options": [
+        "Transaktions-Fakten (Transaction Facts)",
+        "Snapshot-Fakten (Periodic Snapshot Facts)",
+        "Akkumulations-Fakten (Accumulating Snapshot Facts)",
+        "Master-Fakten (Master Facts)"
+      ],
+      "correctAnswer": [
+        "Transaktions-Fakten (Transaction Facts)",
+        "Snapshot-Fakten (Periodic Snapshot Facts)",
+        "Akkumulations-Fakten (Accumulating Snapshot Facts)"
+      ],
+      "explanation": "Es gibt drei Haupttypen von Faktentabellen: Transaktions-Fakten (einzelne Ereignisse), Snapshot-Fakten (regelmäßige Momentaufnahmen) und Akkumulations-Fakten (Prozess-Lebenszyklus). Master-Fakten ist kein Standard-Typ.",
+      "points": 2,
+      "category": "Faktentabellen-Typen"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist ein Data Mart?",
+      "options": [
+        "Ein großes, unternehmensweites Data Warehouse",
+        "Ein kleines, themenspezifisches Data Warehouse für eine Abteilung",
+        "Eine operative Datenbank",
+        "Ein ETL-Tool"
+      ],
+      "correctAnswer": "Ein kleines, themenspezifisches Data Warehouse für eine Abteilung",
+      "explanation": "Ein Data Mart ist ein kleineres, themenspezifisches Data Warehouse, das auf die Bedürfnisse einer bestimmten Abteilung oder eines Geschäftsbereichs zugeschnitten ist.",
+      "points": 1,
+      "category": "Data Mart"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was bedeutet 'Grain' (Granularität) in einer Faktentabelle?",
+      "options": [
+        "Die Anzahl der Spalten",
+        "Die Größe der Tabelle",
+        "Das niedrigste Detaillevel der gespeicherten Daten",
+        "Die Anzahl der Dimensionen"
+      ],
+      "correctAnswer": "Das niedrigste Detaillevel der gespeicherten Daten",
+      "explanation": "Grain (Granularität) definiert das niedrigste Detaillevel der Daten in einer Faktentabelle, z.B. 'eine Zeile pro Verkaufstransaktion' oder 'eine Zeile pro Tag und Produkt'.",
+      "points": 1,
+      "category": "Granularität"
+    },
+    {
+      "id": "q8",
+      "type": "multiple-choice",
+      "question": "Welche Dimensionstypen gibt es?",
+      "options": [
+        "Konformierte Dimensionen (Conformed Dimensions)",
+        "Degenerierte Dimensionen (Degenerate Dimensions)",
+        "Junk-Dimensionen (Junk Dimensions)",
+        "Master-Dimensionen (Master Dimensions)"
+      ],
+      "correctAnswer": [
+        "Konformierte Dimensionen (Conformed Dimensions)",
+        "Degenerierte Dimensionen (Degenerate Dimensions)",
+        "Junk-Dimensionen (Junk Dimensions)"
+      ],
+      "explanation": "Wichtige Dimensionstypen sind: Konformierte Dimensionen (konsistent über Data Marts), Degenerierte Dimensionen (Dimension als Attribut in Faktentabelle), Junk-Dimensionen (für verschiedene Flags/Indikatoren). Master-Dimensionen ist kein Standard-Begriff.",
+      "points": 2,
+      "category": "Dimensionstypen"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Was ist eine Surrogate Key?",
+      "options": [
+        "Der natürliche Geschäftsschlüssel",
+        "Ein künstlich generierter, eindeutiger Schlüssel für das Data Warehouse",
+        "Ein zusammengesetzter Schlüssel",
+        "Ein Fremdschlüssel"
+      ],
+      "correctAnswer": "Ein künstlich generierter, eindeutiger Schlüssel für das Data Warehouse",
+      "explanation": "Ein Surrogate Key ist ein künstlich generierter, eindeutiger Schlüssel (meist Integer), der unabhängig von Geschäftsschlüsseln ist und Stabilität sowie Performance im Data Warehouse gewährleistet.",
+      "points": 1,
+      "category": "Schlüssel-Konzepte"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was ist der Zweck einer Bridge-Tabelle?",
+      "options": [
+        "Verbindung zwischen zwei Faktentabellen",
+        "Auflösung von Many-to-Many Beziehungen zwischen Fakten und Dimensionen",
+        "Speicherung von Metadaten",
+        "Backup-Zwecke"
+      ],
+      "correctAnswer": "Auflösung von Many-to-Many Beziehungen zwischen Fakten und Dimensionen",
+      "explanation": "Bridge-Tabellen lösen Many-to-Many Beziehungen zwischen Faktentabellen und Dimensionen auf, z.B. wenn ein Bankkonto mehrere Kontoinhaber hat.",
+      "points": 1,
+      "category": "Bridge-Tabellen"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist ein Cube in OLAP?",
+      "options": [
+        "Eine dreidimensionale Darstellung von Daten",
+        "Eine multidimensionale Datenstruktur für schnelle Analysen",
+        "Eine spezielle Datenbank",
+        "Ein Visualisierungstool"
+      ],
+      "correctAnswer": "Eine multidimensionale Datenstruktur für schnelle Analysen",
+      "explanation": "Ein OLAP-Cube ist eine multidimensionale Datenstruktur, die Daten für schnelle analytische Abfragen voraggregiert und organisiert. Trotz des Namens kann er mehr als drei Dimensionen haben.",
+      "points": 1,
+      "category": "OLAP-Cubes"
+    },
+    {
+      "id": "q12",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet ein Data Warehouse?",
+      "options": [
+        "Zentrale Datenhaltung für Analysen",
+        "Historische Daten für Trendanalysen",
+        "Optimierte Performance für Abfragen",
+        "Echtzeitverarbeitung von Transaktionen"
+      ],
+      "correctAnswer": [
+        "Zentrale Datenhaltung für Analysen",
+        "Historische Daten für Trendanalysen",
+        "Optimierte Performance für Abfragen"
+      ],
+      "explanation": "Data Warehouses bieten zentrale Datenhaltung, historische Daten für Trends und optimierte Performance für Analysen. Echtzeitverarbeitung von Transaktionen ist Aufgabe operativer Systeme.",
+      "points": 2,
+      "category": "Data Warehouse Vorteile"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was ist eine Slowly Changing Dimension Type 6?",
+      "options": [
+        "Kombination aus Type 1, 2 und 3",
+        "Nur historische Daten",
+        "Nur aktuelle Daten",
+        "Gibt es nicht"
+      ],
+      "correctAnswer": "Kombination aus Type 1, 2 und 3",
+      "explanation": "SCD Type 6 (auch Hybrid genannt) kombiniert die Ansätze von Type 1 (Überschreiben), Type 2 (Historisierung) und Type 3 (zusätzliche Spalte) für maximale Flexibilität.",
+      "points": 1,
+      "category": "SCD-Typen"
+    },
+    {
+      "id": "q14",
+      "type": "single-choice",
+      "question": "Was ist ein Operational Data Store (ODS)?",
+      "options": [
+        "Ein Data Warehouse",
+        "Eine Zwischenschicht zwischen operativen Systemen und Data Warehouse",
+        "Eine Backup-Datenbank",
+        "Ein OLAP-Cube"
+      ],
+      "correctAnswer": "Eine Zwischenschicht zwischen operativen Systemen und Data Warehouse",
+      "explanation": "Ein ODS ist eine Zwischenschicht, die aktuelle, integrierte operative Daten für taktische Entscheidungen bereitstellt, bevor sie ins Data Warehouse gelangen.",
+      "points": 1,
+      "category": "ODS"
+    },
+    {
+      "id": "q15",
+      "type": "multiple-choice",
+      "question": "Welche Herausforderungen gibt es beim Data Warehouse Design?",
+      "options": [
+        "Datenqualität und -konsistenz",
+        "Performance bei großen Datenmengen",
+        "Komplexe ETL-Prozesse",
+        "Einfache Benutzeroberflächen"
+      ],
+      "correctAnswer": [
+        "Datenqualität und -konsistenz",
+        "Performance bei großen Datenmengen",
+        "Komplexe ETL-Prozesse"
+      ],
+      "explanation": "Hauptherausforderungen sind Datenqualität (Integration verschiedener Quellen), Performance (große Datenmengen) und komplexe ETL-Prozesse. Einfache Benutzeroberflächen sind ein Ziel, keine Herausforderung.",
+      "points": 2,
+      "category": "Design-Herausforderungen"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist ein Factless Fact Table?",
+      "options": [
+        "Eine Faktentabelle ohne Daten",
+        "Eine Faktentabelle ohne numerische Measures, nur zur Ereigniserfassung",
+        "Eine Dimensionstabelle",
+        "Eine fehlerhafte Tabelle"
+      ],
+      "correctAnswer": "Eine Faktentabelle ohne numerische Measures, nur zur Ereigniserfassung",
+      "explanation": "Eine Factless Fact Table enthält keine numerischen Measures, sondern erfasst nur das Auftreten von Ereignissen oder Beziehungen zwischen Dimensionen, z.B. Anwesenheit von Studenten in Kursen.",
+      "points": 1,
+      "category": "Spezielle Faktentabellen"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was bedeutet 'Conformed Dimension'?",
+      "options": [
+        "Eine normalisierte Dimension",
+        "Eine Dimension, die konsistent über mehrere Data Marts verwendet wird",
+        "Eine große Dimension",
+        "Eine zeitabhängige Dimension"
+      ],
+      "correctAnswer": "Eine Dimension, die konsistent über mehrere Data Marts verwendet wird",
+      "explanation": "Conformed Dimensions sind Dimensionen, die identisch über mehrere Data Marts oder Faktentabellen verwendet werden, um konsistente Analysen und Drill-Across-Abfragen zu ermöglichen.",
+      "points": 1,
+      "category": "Konformierte Dimensionen"
+    },
+    {
+      "id": "q18",
+      "type": "multiple-choice",
+      "question": "Welche Indexierungsstrategien sind für Data Warehouses wichtig?",
+      "options": [
+        "Bitmap-Indizes für niedrige Kardinalität",
+        "B-Tree-Indizes für hohe Kardinalität",
+        "Columnstore-Indizes für Analysen",
+        "Unique-Indizes für alle Spalten"
+      ],
+      "correctAnswer": [
+        "Bitmap-Indizes für niedrige Kardinalität",
+        "B-Tree-Indizes für hohe Kardinalität",
+        "Columnstore-Indizes für Analysen"
+      ],
+      "explanation": "Wichtige Indexstrategien: Bitmap-Indizes für Spalten mit wenigen Werten, B-Tree für eindeutige Werte, Columnstore für analytische Abfragen. Unique-Indizes auf allen Spalten wären ineffizient.",
+      "points": 2,
+      "category": "Indexierung"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist Partitionierung in Data Warehouses?",
+      "options": [
+        "Aufteilen großer Tabellen in kleinere, verwaltbare Teile",
+        "Normalisierung von Tabellen",
+        "Erstellung von Indizes",
+        "Backup-Strategie"
+      ],
+      "correctAnswer": "Aufteilen großer Tabellen in kleinere, verwaltbare Teile",
+      "explanation": "Partitionierung teilt große Tabellen in kleinere, verwaltbare Teile auf (z.B. nach Datum), um Performance zu verbessern und Wartung zu vereinfachen.",
+      "points": 1,
+      "category": "Partitionierung"
+    },
+    {
+      "id": "q20",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen Top-Down und Bottom-Up Ansatz beim Data Warehouse Design?",
+      "options": [
+        "Top-Down startet mit Data Marts, Bottom-Up mit Enterprise Data Warehouse",
+        "Bottom-Up startet mit Data Marts, Top-Down mit Enterprise Data Warehouse",
+        "Beide Ansätze sind identisch",
+        "Es gibt nur den Top-Down Ansatz"
+      ],
+      "correctAnswer": "Bottom-Up startet mit Data Marts, Top-Down mit Enterprise Data Warehouse",
+      "explanation": "Bottom-Up (Kimball) startet mit Data Marts und integriert diese später. Top-Down (Inmon) beginnt mit einem zentralen Enterprise Data Warehouse und erstellt dann Data Marts.",
+      "points": 1,
+      "category": "Design-Ansätze"
+    }
+  ],
+  "tags": [
+    "Data Warehouse",
+    "Dimensionale Modellierung",
+    "Star Schema",
+    "Snowflake Schema",
+    "Faktentabellen",
+    "Dimensionstabellen",
+    "OLAP",
+    "Data Mart"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

@@ -1,0 +1,338 @@
+{
+  "id": "bp-dpa-07-statistical-analysis-quiz",
+  "moduleId": "bp-dpa-07-statistical-analysis",
+  "title": "Statistische Analyse und Datenauswertung",
+  "description": "Umfassendes Quiz zu statistischen Grundlagen, deskriptiver und inferenzieller Statistik für die Datenanalyse",
+  "category": "BP-DPA-01",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "timeLimit": 30,
+  "passingScore": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist der Unterschied zwischen deskriptiver und inferenzieller Statistik?",
+      "options": [
+        "Deskriptive Statistik beschreibt Daten, inferenzielle schließt auf Grundgesamtheit",
+        "Inferenzielle Statistik beschreibt Daten, deskriptive schließt auf Grundgesamtheit",
+        "Beide sind identisch",
+        "Es gibt keinen Unterschied"
+      ],
+      "correctAnswer": "Deskriptive Statistik beschreibt Daten, inferenzielle schließt auf Grundgesamtheit",
+      "explanation": "Deskriptive Statistik beschreibt und zusammenfasst vorhandene Daten. Inferenzielle Statistik zieht Schlüsse von einer Stichprobe auf die Grundgesamtheit und testet Hypothesen.",
+      "points": 1,
+      "category": "Statistische Grundlagen"
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "question": "Was ist der Median?",
+      "options": [
+        "Der häufigste Wert in einem Datensatz",
+        "Der mittlere Wert einer sortierten Datenreihe",
+        "Der Durchschnitt aller Werte",
+        "Die Differenz zwischen größtem und kleinstem Wert"
+      ],
+      "correctAnswer": "Der mittlere Wert einer sortierten Datenreihe",
+      "explanation": "Der Median ist der mittlere Wert einer nach Größe sortierten Datenreihe. Bei gerader Anzahl von Werten ist es der Durchschnitt der beiden mittleren Werte.",
+      "points": 1,
+      "category": "Lagemaße"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Lagemaße (Maße der zentralen Tendenz) gibt es?",
+      "options": [
+        "Arithmetisches Mittel (Durchschnitt)",
+        "Median (Zentralwert)",
+        "Modus (häufigster Wert)",
+        "Standardabweichung"
+      ],
+      "correctAnswer": [
+        "Arithmetisches Mittel (Durchschnitt)",
+        "Median (Zentralwert)",
+        "Modus (häufigster Wert)"
+      ],
+      "explanation": "Die drei wichtigsten Lagemaße sind: Arithmetisches Mittel (Durchschnitt), Median (mittlerer Wert) und Modus (häufigster Wert). Die Standardabweichung ist ein Streuungsmaß.",
+      "points": 2,
+      "category": "Lagemaße"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Was ist die Standardabweichung?",
+      "options": [
+        "Der Durchschnitt aller Werte",
+        "Ein Maß für die Streuung der Daten um den Mittelwert",
+        "Der häufigste Wert",
+        "Die Summe aller Werte"
+      ],
+      "correctAnswer": "Ein Maß für die Streuung der Daten um den Mittelwert",
+      "explanation": "Die Standardabweichung misst, wie stark die einzelnen Werte um den Mittelwert streuen. Eine kleine Standardabweichung bedeutet, dass die Werte nahe am Mittelwert liegen.",
+      "points": 1,
+      "category": "Streuungsmaße"
+    },
+    {
+      "id": "q5",
+      "type": "single-choice",
+      "question": "Was sind Quartile?",
+      "options": [
+        "Vier gleich große Gruppen von Daten",
+        "Werte, die einen Datensatz in vier gleiche Teile teilen",
+        "Die vier häufigsten Werte",
+        "Vier verschiedene Mittelwerte"
+      ],
+      "correctAnswer": "Werte, die einen Datensatz in vier gleiche Teile teilen",
+      "explanation": "Quartile teilen einen sortierten Datensatz in vier gleiche Teile: Q1 (25%), Q2 (50% = Median), Q3 (75%). Sie sind wichtig für die Beschreibung der Datenverteilung.",
+      "points": 1,
+      "category": "Quantile"
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "question": "Was ist eine Normalverteilung?",
+      "options": [
+        "Eine gleichmäßige Verteilung",
+        "Eine glockenförmige, symmetrische Verteilung",
+        "Eine schiefe Verteilung",
+        "Eine diskrete Verteilung"
+      ],
+      "correctAnswer": "Eine glockenförmige, symmetrische Verteilung",
+      "explanation": "Die Normalverteilung ist eine glockenförmige, symmetrische Verteilung, bei der die meisten Werte um den Mittelwert konzentriert sind. Sie ist fundamental für viele statistische Verfahren.",
+      "points": 1,
+      "category": "Verteilungen"
+    },
+    {
+      "id": "q7",
+      "type": "single-choice",
+      "question": "Was besagt die 68-95-99.7-Regel bei der Normalverteilung?",
+      "options": [
+        "68% der Werte liegen innerhalb einer Standardabweichung vom Mittelwert",
+        "95% der Werte liegen innerhalb von zwei Standardabweichungen",
+        "99.7% der Werte liegen innerhalb von drei Standardabweichungen",
+        "Alle genannten Aussagen sind korrekt"
+      ],
+      "correctAnswer": "Alle genannten Aussagen sind korrekt",
+      "explanation": "Die 68-95-99.7-Regel (Empirische Regel) besagt: 68% der Werte liegen innerhalb ±1σ, 95% innerhalb ±2σ und 99.7% innerhalb ±3σ vom Mittelwert.",
+      "points": 1,
+      "category": "Normalverteilung"
+    },
+    {
+      "id": "q8",
+      "type": "single-choice",
+      "question": "Was ist eine Korrelation?",
+      "options": [
+        "Ein Maß für die Ursache-Wirkung-Beziehung",
+        "Ein Maß für den linearen Zusammenhang zwischen zwei Variablen",
+        "Der Durchschnitt zweier Variablen",
+        "Die Differenz zwischen zwei Variablen"
+      ],
+      "correctAnswer": "Ein Maß für den linearen Zusammenhang zwischen zwei Variablen",
+      "explanation": "Korrelation misst die Stärke und Richtung des linearen Zusammenhangs zwischen zwei Variablen. Wichtig: Korrelation bedeutet nicht Kausalität!",
+      "points": 1,
+      "category": "Korrelation"
+    },
+    {
+      "id": "q9",
+      "type": "single-choice",
+      "question": "Welche Werte kann der Korrelationskoeffizient nach Pearson annehmen?",
+      "options": [
+        "0 bis 1",
+        "-1 bis +1",
+        "0 bis 100",
+        "Beliebige positive Werte"
+      ],
+      "correctAnswer": "-1 bis +1",
+      "explanation": "Der Pearson-Korrelationskoeffizient r liegt zwischen -1 und +1. -1 bedeutet perfekte negative Korrelation, +1 perfekte positive Korrelation, 0 keine lineare Korrelation.",
+      "points": 1,
+      "category": "Korrelationskoeffizient"
+    },
+    {
+      "id": "q10",
+      "type": "single-choice",
+      "question": "Was ist eine Hypothese in der Statistik?",
+      "options": [
+        "Eine bewiesene Tatsache",
+        "Eine Vermutung über einen Parameter der Grundgesamtheit",
+        "Ein Messwert",
+        "Eine Grafik"
+      ],
+      "correctAnswer": "Eine Vermutung über einen Parameter der Grundgesamtheit",
+      "explanation": "Eine statistische Hypothese ist eine Vermutung oder Annahme über einen Parameter (z.B. Mittelwert) der Grundgesamtheit, die mit Hilfe von Stichprobendaten getestet wird.",
+      "points": 1,
+      "category": "Hypothesentests"
+    },
+    {
+      "id": "q11",
+      "type": "single-choice",
+      "question": "Was ist die Nullhypothese (H₀)?",
+      "options": [
+        "Die Hypothese, die wir beweisen wollen",
+        "Die Hypothese, die keinen Effekt oder Unterschied annimmt",
+        "Eine falsche Hypothese",
+        "Eine unwichtige Hypothese"
+      ],
+      "correctAnswer": "Die Hypothese, die keinen Effekt oder Unterschied annimmt",
+      "explanation": "Die Nullhypothese (H₀) nimmt an, dass kein Effekt, Unterschied oder Zusammenhang existiert. Sie wird getestet und entweder verworfen oder beibehalten.",
+      "points": 1,
+      "category": "Hypothesentests"
+    },
+    {
+      "id": "q12",
+      "type": "single-choice",
+      "question": "Was ist ein p-Wert?",
+      "options": [
+        "Die Wahrscheinlichkeit, dass die Nullhypothese wahr ist",
+        "Die Wahrscheinlichkeit, die beobachteten Daten zu erhalten, wenn H₀ wahr ist",
+        "Die Wahrscheinlichkeit eines Fehlers",
+        "Ein Prozentsatz der Stichprobe"
+      ],
+      "correctAnswer": "Die Wahrscheinlichkeit, die beobachteten Daten zu erhalten, wenn H₀ wahr ist",
+      "explanation": "Der p-Wert ist die Wahrscheinlichkeit, die beobachteten (oder extremere) Daten zu erhalten, unter der Annahme, dass die Nullhypothese wahr ist.",
+      "points": 1,
+      "category": "p-Wert"
+    },
+    {
+      "id": "q13",
+      "type": "single-choice",
+      "question": "Was bedeutet ein Signifikanzniveau von α = 0.05?",
+      "options": [
+        "5% der Daten sind falsch",
+        "Wir akzeptieren ein 5%iges Risiko, die Nullhypothese fälschlicherweise zu verwerfen",
+        "95% der Hypothesen sind wahr",
+        "Der Test ist zu 95% genau"
+      ],
+      "correctAnswer": "Wir akzeptieren ein 5%iges Risiko, die Nullhypothese fälschlicherweise zu verwerfen",
+      "explanation": "Das Signifikanzniveau α = 0.05 bedeutet, dass wir ein 5%iges Risiko für einen Fehler 1. Art (fälschliche Verwerfung der wahren Nullhypothese) akzeptieren.",
+      "points": 1,
+      "category": "Signifikanzniveau"
+    },
+    {
+      "id": "q14",
+      "type": "multiple-choice",
+      "question": "Welche Arten von Fehlern gibt es bei Hypothesentests?",
+      "options": [
+        "Fehler 1. Art (α-Fehler): H₀ wird fälschlicherweise verworfen",
+        "Fehler 2. Art (β-Fehler): H₀ wird fälschlicherweise beibehalten",
+        "Fehler 3. Art: Falsche Daten verwendet",
+        "Fehler 4. Art: Falsche Methode gewählt"
+      ],
+      "correctAnswer": [
+        "Fehler 1. Art (α-Fehler): H₀ wird fälschlicherweise verworfen",
+        "Fehler 2. Art (β-Fehler): H₀ wird fälschlicherweise beibehalten"
+      ],
+      "explanation": "Es gibt zwei Hauptfehlertypen: Fehler 1. Art (α-Fehler) - wahre H₀ wird verworfen, Fehler 2. Art (β-Fehler) - falsche H₀ wird beibehalten. Fehler 3. und 4. Art sind keine Standard-Begriffe.",
+      "points": 2,
+      "category": "Testfehler"
+    },
+    {
+      "id": "q15",
+      "type": "single-choice",
+      "question": "Was ist ein t-Test?",
+      "options": [
+        "Ein Test für Korrelationen",
+        "Ein Test zum Vergleich von Mittelwerten",
+        "Ein Test für Verteilungen",
+        "Ein Test für Varianzen"
+      ],
+      "correctAnswer": "Ein Test zum Vergleich von Mittelwerten",
+      "explanation": "Der t-Test wird verwendet, um Mittelwerte zu vergleichen - entweder einen Stichprobenmittelwert mit einem bekannten Wert oder Mittelwerte zweier Gruppen.",
+      "points": 1,
+      "category": "Statistische Tests"
+    },
+    {
+      "id": "q16",
+      "type": "single-choice",
+      "question": "Was ist ein Chi-Quadrat-Test?",
+      "options": [
+        "Ein Test für Mittelwerte",
+        "Ein Test für Unabhängigkeit oder Anpassungsgüte bei kategorialen Daten",
+        "Ein Test für Korrelationen",
+        "Ein Test für Normalverteilung"
+      ],
+      "correctAnswer": "Ein Test für Unabhängigkeit oder Anpassungsgüte bei kategorialen Daten",
+      "explanation": "Der Chi-Quadrat-Test wird für kategoriale Daten verwendet, um Unabhängigkeit zwischen Variablen zu testen oder die Anpassungsgüte an eine erwartete Verteilung zu prüfen.",
+      "points": 1,
+      "category": "Statistische Tests"
+    },
+    {
+      "id": "q17",
+      "type": "single-choice",
+      "question": "Was ist ein Konfidenzintervall?",
+      "options": [
+        "Ein Bereich, der den wahren Parameter mit einer bestimmten Wahrscheinlichkeit enthält",
+        "Der Bereich aller möglichen Werte",
+        "Die Standardabweichung",
+        "Der Mittelwert plus/minus Fehler"
+      ],
+      "correctAnswer": "Ein Bereich, der den wahren Parameter mit einer bestimmten Wahrscheinlichkeit enthält",
+      "explanation": "Ein Konfidenzintervall ist ein Bereich um eine Schätzung, der den wahren Parameter der Grundgesamtheit mit einer bestimmten Wahrscheinlichkeit (z.B. 95%) enthält.",
+      "points": 1,
+      "category": "Konfidenzintervalle"
+    },
+    {
+      "id": "q18",
+      "type": "single-choice",
+      "question": "Was ist eine Regression?",
+      "options": [
+        "Ein Verfahren zur Vorhersage einer abhängigen Variable",
+        "Ein Mittelwert",
+        "Eine Korrelation",
+        "Eine Verteilung"
+      ],
+      "correctAnswer": "Ein Verfahren zur Vorhersage einer abhängigen Variable",
+      "explanation": "Regression ist ein statistisches Verfahren zur Modellierung der Beziehung zwischen einer abhängigen Variable und einer oder mehreren unabhängigen Variablen für Vorhersagezwecke.",
+      "points": 1,
+      "category": "Regression"
+    },
+    {
+      "id": "q19",
+      "type": "single-choice",
+      "question": "Was ist R² (Bestimmtheitsmaß) in der Regression?",
+      "options": [
+        "Der Korrelationskoeffizient",
+        "Der Anteil der erklärten Varianz der abhängigen Variable",
+        "Die Standardabweichung",
+        "Der p-Wert"
+      ],
+      "correctAnswer": "Der Anteil der erklärten Varianz der abhängigen Variable",
+      "explanation": "R² (Bestimmtheitsmaß) gibt an, welcher Anteil der Varianz der abhängigen Variable durch das Regressionsmodell erklärt wird. Werte zwischen 0 und 1, höhere Werte bedeuten bessere Anpassung.",
+      "points": 1,
+      "category": "Regressionsanalyse"
+    },
+    {
+      "id": "q20",
+      "type": "multiple-choice",
+      "question": "Welche Annahmen gelten für die lineare Regression?",
+      "options": [
+        "Linearität der Beziehung",
+        "Normalverteilung der Residuen",
+        "Homoskedastizität (konstante Varianz)",
+        "Unabhängigkeit der Beobachtungen"
+      ],
+      "correctAnswer": [
+        "Linearität der Beziehung",
+        "Normalverteilung der Residuen",
+        "Homoskedastizität (konstante Varianz)",
+        "Unabhängigkeit der Beobachtungen"
+      ],
+      "explanation": "Die wichtigsten Annahmen der linearen Regression sind: Linearität, Normalverteilung der Residuen, Homoskedastizität (konstante Varianz der Fehler) und Unabhängigkeit der Beobachtungen.",
+      "points": 2,
+      "category": "Regressionsannahmen"
+    }
+  ],
+  "tags": [
+    "Statistik",
+    "Deskriptive Statistik",
+    "Inferenzielle Statistik",
+    "Hypothesentests",
+    "Korrelation",
+    "Regression",
+    "Normalverteilung",
+    "t-Test",
+    "Chi-Quadrat"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z"
+}

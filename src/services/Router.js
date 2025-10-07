@@ -2,6 +2,7 @@ import accessibilityHelper from '../utils/AccessibilityHelper.js';
 
 /**
  * Router - Hash-based routing for single-page application
+ * Enhanced with specialization context support while maintaining backward compatibility
  */
 class Router {
   constructor(appContainer) {
@@ -10,6 +11,15 @@ class Router {
     this.currentView = null;
     this.currentRoute = null;
     this.notFoundHandler = null;
+    this.specializationService = null; // Will be set by app initialization
+  }
+
+  /**
+   * Set specialization service for context-aware routing
+   * @param {SpecializationService} specializationService - The specialization service
+   */
+  setSpecializationService(specializationService) {
+    this.specializationService = specializationService;
   }
 
   /**
@@ -47,10 +57,24 @@ class Router {
 
   /**
    * Navigate to a route programmatically
+   * @param {string} path - The route path
+   * @param {Object} params - Query parameters
+   * @param {Object} options - Navigation options
+   * @param {boolean} options.preserveSpecialization - Whether to preserve specialization context
    */
-  navigate(path, params = {}) {
+  navigate(path, params = {}, options = {}) {
     if (!path) {
       path = '/';
+    }
+
+    const { preserveSpecialization = true } = options;
+
+    // Add specialization context if available and requested
+    if (preserveSpecialization && this.specializationService) {
+      const currentSpecialization = this.specializationService.getCurrentSpecialization();
+      if (currentSpecialization && !params.specialization) {
+        params.specialization = currentSpecialization;
+      }
     }
 
     // Build hash with parameters
@@ -82,6 +106,7 @@ class Router {
 
   /**
    * Parse current hash into path and params
+   * Enhanced to handle specialization context while maintaining backward compatibility
    */
   _parseHash() {
     const hash = window.location.hash.slice(1) || '/';
@@ -101,10 +126,79 @@ class Router {
     // Parse path parameters (e.g., /module/:id)
     const pathParams = this._extractPathParams(path);
 
+    // Handle specialization context from URL
+    this._handleSpecializationContext(params);
+
     return {
       path: path || '/',
       params: { ...params, ...pathParams },
     };
+  }
+
+  /**
+   * Handle specialization context from URL parameters
+   * Provides fallback for legacy URLs without breaking existing functionality
+   * @private
+   * @param {Object} params - URL parameters
+   */
+  _handleSpecializationContext(params) {
+    if (!this.specializationService) {
+      return;
+    }
+
+    // If URL contains specialization parameter, validate and apply it
+    if (params.specialization) {
+      const availableSpecializations = this.specializationService.getAvailableSpecializations();
+      const isValidSpecialization = availableSpecializations.some(
+        spec => spec.id === params.specialization
+      );
+
+      if (isValidSpecialization) {
+        const currentSpecialization = this.specializationService.getCurrentSpecialization();
+        
+        // Only update if different from current specialization
+        if (currentSpecialization !== params.specialization) {
+          console.log(`🔄 Switching specialization from URL: ${params.specialization}`);
+          this.specializationService.setSpecialization(params.specialization, {
+            preserveProgress: true
+          });
+        }
+      } else {
+        // Invalid specialization in URL - remove it but don't break navigation
+        console.warn(`⚠️ Invalid specialization in URL: ${params.specialization}`);
+        delete params.specialization;
+        
+        // Optionally redirect to clean URL (without invalid specialization)
+        this._cleanupInvalidSpecializationUrl();
+      }
+    } else {
+      // No specialization in URL - this is fine for backward compatibility
+      // Legacy URLs will continue to work with user's current specialization
+    }
+  }
+
+  /**
+   * Clean up URL with invalid specialization parameter
+   * @private
+   */
+  _cleanupInvalidSpecializationUrl() {
+    try {
+      const currentHash = window.location.hash;
+      const [path, queryString] = currentHash.slice(1).split('?');
+      
+      if (queryString) {
+        const searchParams = new URLSearchParams(queryString);
+        searchParams.delete('specialization');
+        
+        const cleanQueryString = searchParams.toString();
+        const cleanHash = cleanQueryString ? `#${path}?${cleanQueryString}` : `#${path}`;
+        
+        // Replace current URL without triggering navigation
+        window.history.replaceState(null, '', cleanHash);
+      }
+    } catch (error) {
+      console.error('Error cleaning up invalid specialization URL:', error);
+    }
   }
 
   /**
@@ -330,6 +424,59 @@ class Router {
    */
   getCurrentRoute() {
     return this.currentRoute;
+  }
+
+  /**
+   * Refresh the current route (useful after specialization changes)
+   */
+  refresh() {
+    this._handleRouteChange();
+  }
+
+  /**
+   * Generate URL with specialization context
+   * @param {string} path - The route path
+   * @param {Object} params - Additional parameters
+   * @param {boolean} includeSpecialization - Whether to include current specialization
+   * @returns {string} Complete URL hash
+   */
+  generateUrl(path, params = {}, includeSpecialization = true) {
+    const urlParams = { ...params };
+
+    // Add current specialization if requested and available
+    if (includeSpecialization && this.specializationService) {
+      const currentSpecialization = this.specializationService.getCurrentSpecialization();
+      if (currentSpecialization && !urlParams.specialization) {
+        urlParams.specialization = currentSpecialization;
+      }
+    }
+
+    // Build URL
+    let url = `#${path}`;
+    if (Object.keys(urlParams).length > 0) {
+      const queryString = new URLSearchParams(urlParams).toString();
+      url += `?${queryString}`;
+    }
+
+    return url;
+  }
+
+  /**
+   * Check if current URL has specialization context
+   * @returns {boolean} True if URL contains specialization parameter
+   */
+  hasSpecializationContext() {
+    const { params } = this._parseHash();
+    return !!params.specialization;
+  }
+
+  /**
+   * Get specialization from current URL
+   * @returns {string|null} Specialization ID from URL or null
+   */
+  getUrlSpecialization() {
+    const { params } = this._parseHash();
+    return params.specialization || null;
   }
 
   /**

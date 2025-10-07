@@ -4,12 +4,14 @@
  */
 
 // Import services
+import CategoryMappingService from './services/CategoryMappingService.js';
 import ExamProgressService from './services/ExamProgressService.js';
 import IHKContentService from './services/IHKContentService.js';
 import ModuleService from './services/ModuleService.js';
 import ProgressService from './services/ProgressService.js';
 import QuizService from './services/QuizService.js';
 import Router from './services/Router.js';
+import SpecializationService from './services/SpecializationService.js';
 import StateManager from './services/StateManager.js';
 import StorageService from './services/StorageService.js';
 import ThemeManager from './services/ThemeManager.js';
@@ -31,6 +33,7 @@ import IHKQuizView from './components/IHKQuizView.js';
 import ProgressView from './components/ProgressView.js';
 import WheelView from './components/WheelView.js';
 import NotFoundView from './components/NotFoundView.js';
+import SpecializationSelector from './components/SpecializationSelector.js';
 
 // Note: Using IHK quiz components for all quizzes (superior UI/UX)
 
@@ -66,11 +69,17 @@ class App {
       // Initialize theme
       this.initializeTheme();
 
+      // Initialize specialization selection (must be before navigation)
+      await this.initializeSpecializationSelection();
+
       // Create navigation
       this.createNavigation();
 
       // Register routes
       this.registerRoutes();
+
+      // Set up global event listeners
+      this.setupGlobalEventListeners();
 
       // Start router
       this.services.router.init();
@@ -105,36 +114,56 @@ class App {
     // State manager
     this.services.stateManager = new StateManager(this.services.storageService);
 
+    // Specialization service (initialize early for content filtering)
+    this.services.specializationService = new SpecializationService(
+      this.services.stateManager,
+      this.services.storageService
+    );
+
+    // Category mapping service (initialize after specialization service)
+    this.services.categoryMappingService = new CategoryMappingService(
+      this.services.specializationService
+    );
+
     // Theme manager
     this.services.themeManager = new ThemeManager(this.services.storageService);
 
     // Router (pass main content container)
     this.services.router = new Router(mainContent);
+    
+    // Connect specialization service to router for context-aware routing
+    this.services.router.setSpecializationService(this.services.specializationService);
 
-    // IHK Content service (initialize before ModuleService)
+    // IHK Content service (initialize before ModuleService with specialization and category mapping support)
     this.services.ihkContentService = new IHKContentService(
       this.services.stateManager,
-      this.services.storageService
+      this.services.storageService,
+      this.services.specializationService,
+      this.services.categoryMappingService
     );
 
-    // Module service (now includes IHK modules)
+    // Module service (now includes IHK modules with specialization filtering)
     this.services.moduleService = new ModuleService(
       this.services.stateManager,
       this.services.storageService,
-      this.services.ihkContentService
+      this.services.ihkContentService,
+      this.services.specializationService
     );
 
-    // Quiz service (now includes IHK quizzes)
+    // Quiz service (now includes IHK quizzes with specialization filtering)
     this.services.quizService = new QuizService(
       this.services.stateManager,
       this.services.storageService,
-      this.services.ihkContentService
+      this.services.ihkContentService,
+      this.services.specializationService
     );
 
     // Progress service
     this.services.progressService = new ProgressService(
       this.services.stateManager,
-      this.services.storageService
+      this.services.storageService,
+      this.services.moduleService,
+      this.services.quizService
     );
 
     // Exam Progress service
@@ -172,6 +201,9 @@ class App {
       });
     }
 
+    // Migrate existing users to have a default specialization
+    this.services.specializationService.migrateExistingUser('anwendungsentwicklung');
+
     // Save initial state
     this.services.stateManager.saveToStorage();
   }
@@ -188,12 +220,59 @@ class App {
   }
 
   /**
+   * Initialize specialization selection for first-time users
+   */
+  async initializeSpecializationSelection() {
+    try {
+      // Always create specialization selector (needed for navigation)
+      this.specializationSelector = new SpecializationSelector(
+        this.services.specializationService,
+        (specializationId) => {
+          // Handle specialization selection
+          this.handleSpecializationSelection(specializationId);
+        }
+      );
+
+      // Initialize the selector (this will show the modal for first-time users)
+      await this.specializationSelector.init();
+    } catch (error) {
+      console.error('Error initializing specialization selection:', error);
+    }
+  }
+
+  /**
+   * Handle specialization selection from the selector
+   */
+  handleSpecializationSelection(specializationId) {
+    try {
+      // Update navigation if it exists
+      if (this.navigation) {
+        this.navigation.updateSpecialization(specializationId);
+      }
+
+      // Refresh current view to show relevant content
+      if (this.services.router) {
+        this.services.router.refresh();
+      }
+
+      // Save state
+      this.services.stateManager.saveToStorage();
+
+      console.log(`Specialization selected: ${specializationId}`);
+    } catch (error) {
+      console.error('Error handling specialization selection:', error);
+    }
+  }
+
+  /**
    * Create navigation component
    */
   createNavigation() {
     this.navigation = new Navigation(
       this.services.themeManager,
-      this.services.router
+      this.services.router,
+      this.services.specializationService,
+      this.specializationSelector
     );
     const appContainer = document.getElementById('app');
     const mainContent = document.getElementById('main-content');
@@ -280,6 +359,30 @@ class App {
     router.registerNotFound(() => {
       const view = new NotFoundView(this.services);
       return view.render();
+    });
+  }
+
+  /**
+   * Set up global event listeners
+   */
+  setupGlobalEventListeners() {
+    // Listen for specialization modal requests from navigation
+    document.addEventListener('showSpecializationModal', () => {
+      if (this.specializationSelector) {
+        this.specializationSelector.showSpecializationModal(false);
+      }
+    });
+
+    // Listen for specialization changes to update navigation and refresh content
+    document.addEventListener('specialization-changed', (event) => {
+      if (this.navigation) {
+        this.navigation._updateSpecializationIndicator();
+      }
+      
+      // Refresh current view to show filtered content
+      if (this.services.router) {
+        this.services.router.refresh();
+      }
     });
   }
 
