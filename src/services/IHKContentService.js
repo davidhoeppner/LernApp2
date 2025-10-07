@@ -1466,7 +1466,7 @@ class IHKContentService {
         await this.getContentByThreeTierCategory(categoryId);
 
       // Apply text search
-      const searchTerm = query.toLowerCase().trim();
+      const searchTerm = query.toLowerCase().trim(); // kept (used below)
       const results = categoryContent.filter(item => {
         // Search in title
         if (item.title && item.title.toLowerCase().includes(searchTerm)) {
