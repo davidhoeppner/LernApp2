@@ -7,8 +7,8 @@ const modulesDir = path.join(root, 'src', 'data', 'ihk', 'modules');
 function readJson(file) {
   try {
     return JSON.parse(fs.readFileSync(file, 'utf8'));
-  } catch (e) {
-    return null;
+  } catch {
+    return null; // swallow JSON parse errors
   }
 }
 
@@ -39,7 +39,7 @@ for (const f of files) {
   if (!objectives && typeof mod.content === 'string') {
     const content = mod.content;
     // try to find Prüfunsgrelevante section (German)
-    const re = /Pr\w*fungsrelevante[\s\S]{0,1000}?\n([\s\S]*)/i;
+  // const _re = /Pr\w*fungsrelevante[\s\S]{0,1000}?\n([\s\S]*)/i; // retained for potential future refinement
     const match = content.match(/Pr\w*fungsrelevante[^\n]*\n([\s\S]+)/i);
     if (match) {
       // take first few lines that look like bullets
@@ -78,8 +78,8 @@ for (const f of files) {
 }
 
 if (updated.length === 0) {
-  console.log('No modules updated');
+  console.warn('No modules updated');
   process.exit(0);
 }
-console.log('Updated modules:', updated.map(u => u.file).join(', '));
+console.warn('Updated modules:', updated.map(u => u.file).join(', '));
 process.exit(0);
