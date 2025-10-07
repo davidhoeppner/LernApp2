@@ -36,7 +36,9 @@
       "explanation": "Lasttests simulieren viele gleichzeitige Benutzer und messen die Systemleistung. K6 ermöglicht realistische Lastszenarien mit JavaScript."
     }
   ],
-  "relatedQuizzes": ["fue-03-quality-quiz"],
+  "relatedQuizzes": [
+    "fue-03-quality-quiz"
+  ],
   "resources": [
     {
       "title": "ISTQB Foundation Level",
@@ -50,5 +52,12 @@
     }
   ],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand Software-Tests",
+    "Understand Black Box",
+    "Understand White Box",
+    "Understand Review",
+    "Understand Extremwertetest"
+  ]
 }

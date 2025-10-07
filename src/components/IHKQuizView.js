@@ -24,7 +24,7 @@ class IHKQuizView {
     this.showResults = false;
     this.startTime = null;
     this.endTime = null;
-    
+
     // Timer properties
     this.timerInterval = null;
     this.timeRemaining = 0; // in seconds
@@ -60,18 +60,18 @@ class IHKQuizView {
         }
 
         this.startTime = Date.now();
-        
+
         // Initialize timer if quiz has time limit
         if (this.quiz.timeLimit) {
           this.initializeTimer();
         }
-        
+
         container.innerHTML = '';
         container.appendChild(this.renderContent());
-        
+
         // Set up page visibility handling for timer
         this.setupPageVisibilityHandling();
-        
+
         accessibilityHelper.announce(`Quiz loaded: ${this.quiz.title}`);
       } catch (error) {
         console.error('Error loading quiz:', error);
@@ -419,9 +419,11 @@ class IHKQuizView {
         <div class="status-icon">${passed ? '🎉' : '📚'}</div>
         <h1>${passed ? 'Congratulations! You Passed!' : 'Keep Learning!'}</h1>
         <p class="status-message">
-          ${passed 
-            ? 'Great job! You have successfully completed this quiz.' 
-            : 'Don\'t worry, review the explanations and try again.'}
+          ${
+            passed
+              ? 'Great job! You have successfully completed this quiz.'
+              : "Don't worry, review the explanations and try again."
+          }
         </p>
         ${timeTaken > 0 ? `<p class="time-taken">Completed in ${timeTaken} minutes</p>` : ''}
       </div>
@@ -430,15 +432,15 @@ class IHKQuizView {
 
     // Enhanced results display
     const resultsDisplay = QuizResultsDisplay.create(
-      score.earned, 
-      this.quiz.questions.length, 
+      score.earned,
+      this.quiz.questions.length,
       score.total
     );
     results.appendChild(resultsDisplay);
 
     // Answer review section
     const answerReview = AnswerReviewSection.create(
-      this.quiz.questions, 
+      this.quiz.questions,
       this.answers
     );
     results.appendChild(answerReview);
@@ -454,8 +456,6 @@ class IHKQuizView {
 
     return results;
   }
-
-
 
   /**
    * Save single answer
@@ -512,7 +512,7 @@ class IHKQuizView {
   async submitQuiz() {
     // Stop the timer
     this.stopTimer();
-    
+
     this.endTime = Date.now();
     this.showResults = true;
 
@@ -631,11 +631,11 @@ class IHKQuizView {
    */
   initializeTimer() {
     if (!this.quiz.timeLimit || this.timerStarted) return;
-    
+
     // Convert minutes to seconds
     this.timeRemaining = this.quiz.timeLimit * 60;
     this.timerStarted = true;
-    
+
     // Start the timer
     this.startTimer();
   }
@@ -656,19 +656,19 @@ class IHKQuizView {
       if (this.timeRemaining <= 0) {
         this.handleTimeUp();
       }
-      
+
       // Warning when 5 minutes remaining
       if (this.timeRemaining === 300) {
         toastNotification.warning('Nur noch 5 Minuten verbleibend!');
         accessibilityHelper.announce('Warning: 5 minutes remaining');
       }
-      
+
       // Warning when 1 minute remaining
       if (this.timeRemaining === 60) {
         toastNotification.warning('Nur noch 1 Minute verbleibend!');
         accessibilityHelper.announce('Warning: 1 minute remaining');
       }
-      
+
       // Warning when 30 seconds remaining
       if (this.timeRemaining === 30) {
         toastNotification.error('Nur noch 30 Sekunden!');
@@ -687,15 +687,17 @@ class IHKQuizView {
     const minutes = Math.floor(this.timeRemaining / 60);
     const seconds = this.timeRemaining % 60;
     const timeString = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    
+
     timerElement.textContent = `Zeit: ${timeString}`;
-    
+
     // Add visual warning when time is running low
-    if (this.timeRemaining <= 300) { // 5 minutes
+    if (this.timeRemaining <= 300) {
+      // 5 minutes
       timerElement.classList.add('time-warning');
     }
-    
-    if (this.timeRemaining <= 60) { // 1 minute
+
+    if (this.timeRemaining <= 60) {
+      // 1 minute
       timerElement.classList.add('time-critical');
     }
   }
@@ -706,8 +708,10 @@ class IHKQuizView {
   handleTimeUp() {
     this.stopTimer();
     toastNotification.error('Zeit abgelaufen! Quiz wird automatisch beendet.');
-    accessibilityHelper.announce('Time is up! Quiz will be submitted automatically.');
-    
+    accessibilityHelper.announce(
+      'Time is up! Quiz will be submitted automatically.'
+    );
+
     // Auto-submit the quiz
     setTimeout(() => {
       this.submitQuiz();
@@ -782,9 +786,12 @@ class IHKQuizView {
    */
   cleanup() {
     this.stopTimer();
-    
+
     // Remove event listeners
-    document.removeEventListener('visibilitychange', this.handleVisibilityChange);
+    document.removeEventListener(
+      'visibilitychange',
+      this.handleVisibilityChange
+    );
     window.removeEventListener('blur', this.handleWindowBlur);
     window.removeEventListener('focus', this.handleWindowFocus);
   }

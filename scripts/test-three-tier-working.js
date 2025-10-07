@@ -7,7 +7,7 @@
 const testResults = {
   passed: 0,
   failed: 0,
-  tests: []
+  tests: [],
 };
 
 // Helper function to log test results
@@ -35,9 +35,9 @@ class MockStateManager {
         hasSelected: false,
         preferences: {
           showAllContent: false,
-          preferredCategories: []
-        }
-      }
+          preferredCategories: [],
+        },
+      },
     };
   }
 
@@ -77,17 +77,22 @@ class MockStorageService {
  */
 async function testCategoryMappingService() {
   console.log('\n📊 Testing Category Mapping Service...');
-  
+
   try {
     // Import the service
-    const { default: CategoryMappingService } = await import('../src/services/CategoryMappingService.js');
+    const { default: CategoryMappingService } = await import(
+      '../src/services/CategoryMappingService.js'
+    );
     const mockSpecializationService = { getCategoryRelevance: () => 'medium' };
-    const categoryMappingService = new CategoryMappingService(mockSpecializationService);
+    const categoryMappingService = new CategoryMappingService(
+      mockSpecializationService
+    );
 
     // Test 1: Service initialization
     logTest(
       'CategoryMappingService initializes correctly',
-      categoryMappingService !== null && categoryMappingService.threeTierCategories !== null
+      categoryMappingService !== null &&
+        categoryMappingService.threeTierCategories !== null
     );
 
     // Test 2: Three-tier categories are loaded
@@ -100,7 +105,8 @@ async function testCategoryMappingService() {
 
     // Test 3: Category mapping for DPA content
     const dpaContent = { category: 'bp-dpa-01', id: 'test-dpa' };
-    const dpaMapping = categoryMappingService.mapToThreeTierCategory(dpaContent);
+    const dpaMapping =
+      categoryMappingService.mapToThreeTierCategory(dpaContent);
     logTest(
       'DPA content maps to correct category',
       typeof dpaMapping === 'string' || typeof dpaMapping === 'object',
@@ -109,18 +115,14 @@ async function testCategoryMappingService() {
 
     // Test 4: Validation functionality
     const testContent = [dpaContent];
-    const validationResult = categoryMappingService.validateCategoryMapping(testContent);
+    const validationResult =
+      categoryMappingService.validateCategoryMapping(testContent);
     logTest(
       'Category mapping validation works',
       validationResult && typeof validationResult === 'object'
     );
-
   } catch (error) {
-    logTest(
-      'CategoryMappingService tests',
-      false,
-      `Error: ${error.message}`
-    );
+    logTest('CategoryMappingService tests', false, `Error: ${error.message}`);
   }
 }
 
@@ -129,21 +131,23 @@ async function testCategoryMappingService() {
  */
 async function testContentServiceIntegration() {
   console.log('\n📚 Testing Content Service Integration...');
-  
+
   try {
     // Import services
-    const { default: IHKContentService } = await import('../src/services/IHKContentService.js');
-    
+    const { default: IHKContentService } = await import(
+      '../src/services/IHKContentService.js'
+    );
+
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
-    
-    const contentService = new IHKContentService(mockStateManager, mockStorageService);
+
+    const contentService = new IHKContentService(
+      mockStateManager,
+      mockStorageService
+    );
 
     // Test 1: Content service initializes
-    logTest(
-      'IHKContentService initializes correctly',
-      contentService !== null
-    );
+    logTest('IHKContentService initializes correctly', contentService !== null);
 
     // Test 2: Get all modules (backward compatibility)
     const allModules = await contentService.getAllModules();
@@ -167,7 +171,6 @@ async function testContentServiceIntegration() {
       'getContentStats returns statistics object',
       stats && typeof stats === 'object'
     );
-
   } catch (error) {
     logTest(
       'Content Service Integration tests',
@@ -182,15 +185,20 @@ async function testContentServiceIntegration() {
  */
 async function testSpecializationServiceIntegration() {
   console.log('\n🎯 Testing Specialization Service Integration...');
-  
+
   try {
     // Import services
-    const { default: SpecializationService } = await import('../src/services/SpecializationService.js');
-    
+    const { default: SpecializationService } = await import(
+      '../src/services/SpecializationService.js'
+    );
+
     const mockStateManager = new MockStateManager();
     const mockStorageService = new MockStorageService();
-    
-    const specializationService = new SpecializationService(mockStateManager, mockStorageService);
+
+    const specializationService = new SpecializationService(
+      mockStateManager,
+      mockStorageService
+    );
 
     // Test 1: Specialization service initializes
     logTest(
@@ -199,7 +207,8 @@ async function testSpecializationServiceIntegration() {
     );
 
     // Test 2: Get available specializations
-    const availableSpecializations = specializationService.getAvailableSpecializations();
+    const availableSpecializations =
+      specializationService.getAvailableSpecializations();
     logTest(
       'getAvailableSpecializations returns array',
       Array.isArray(availableSpecializations),
@@ -210,15 +219,15 @@ async function testSpecializationServiceIntegration() {
     if (availableSpecializations.length > 0) {
       const firstSpecialization = availableSpecializations[0].id;
       specializationService.setSpecialization(firstSpecialization);
-      
-      const currentSpecialization = specializationService.getCurrentSpecialization();
+
+      const currentSpecialization =
+        specializationService.getCurrentSpecialization();
       logTest(
         'setSpecialization and getCurrentSpecialization work',
         currentSpecialization === firstSpecialization,
         `Expected ${firstSpecialization}, got ${currentSpecialization}`
       );
     }
-
   } catch (error) {
     logTest(
       'Specialization Service Integration tests',
@@ -235,17 +244,18 @@ function generateTestReport() {
   console.log('\n' + '='.repeat(80));
   console.log('📋 THREE-TIER CATEGORY SYSTEM INTEGRATION TEST REPORT');
   console.log('='.repeat(80));
-  
+
   // Overall results
   const totalTests = testResults.passed + testResults.failed;
-  const successRate = totalTests > 0 ? ((testResults.passed / totalTests) * 100).toFixed(1) : 0;
-  
+  const successRate =
+    totalTests > 0 ? ((testResults.passed / totalTests) * 100).toFixed(1) : 0;
+
   console.log(`\n📊 OVERALL RESULTS:`);
   console.log(`   Total Tests: ${totalTests}`);
   console.log(`   Passed: ${testResults.passed}`);
   console.log(`   Failed: ${testResults.failed}`);
   console.log(`   Success Rate: ${successRate}%`);
-  
+
   // Failed tests details
   if (testResults.failed > 0) {
     console.log(`\n❌ FAILED TESTS:`);
@@ -258,11 +268,13 @@ function generateTestReport() {
         }
       });
   }
-  
+
   // Recommendations
   console.log(`\n💡 RECOMMENDATIONS:`);
   if (testResults.failed === 0) {
-    console.log('   ✅ All tests passed! The three-tier category system is working correctly.');
+    console.log(
+      '   ✅ All tests passed! The three-tier category system is working correctly.'
+    );
     console.log('   ✅ Service integrations are functioning as expected.');
     console.log('   ✅ System is ready for production use.');
   } else {
@@ -270,15 +282,15 @@ function generateTestReport() {
     console.log('   ⚠️  Check service configurations and data integrity.');
     console.log('   ⚠️  Verify that all required files are present and valid.');
   }
-  
+
   console.log('\n' + '='.repeat(80));
-  
+
   return {
     success: testResults.failed === 0,
     totalTests,
     passed: testResults.passed,
     failed: testResults.failed,
-    successRate: parseFloat(successRate)
+    successRate: parseFloat(successRate),
   };
 }
 
@@ -289,25 +301,24 @@ async function runAllTests() {
   console.log('╔════════════════════════════════════════════════════════════╗');
   console.log('║  Three-Tier Category System End-to-End Integration Tests  ║');
   console.log('╚════════════════════════════════════════════════════════════╝');
-  
+
   const startTime = performance.now();
-  
+
   try {
     // Run all test suites
     await testCategoryMappingService();
     await testContentServiceIntegration();
     await testSpecializationServiceIntegration();
-    
   } catch (error) {
     console.error('❌ Critical error during test execution:', error);
     logTest('Test Suite Execution', false, error.message);
   }
-  
+
   const endTime = performance.now();
   const totalTime = ((endTime - startTime) / 1000).toFixed(2);
-  
+
   console.log(`\n⏱️  Total execution time: ${totalTime}s`);
-  
+
   // Generate and return comprehensive report
   return generateTestReport();
 }
@@ -315,7 +326,7 @@ async function runAllTests() {
 // Run tests if this script is executed directly
 if (import.meta.url === `file://${process.argv[1]}`) {
   console.log('🚀 Starting three-tier integration tests...');
-  
+
   runAllTests()
     .then(report => {
       console.log('\n✅ Test execution completed');

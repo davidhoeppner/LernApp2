@@ -1,0 +1,74 @@
+{
+  "id": "bp-dpa-03-automation-orchestration",
+  "title": "Prozessautomatisierung & Orchestrierung",
+  "description": "Identifikation, Bewertung und Umsetzung von Automatisierungspotenzialen (RPA, Workflow Engines, Orchestrierung vs. Choreographie)",
+  "category": "BP-DPA-03",
+  "subcategory": "Geschäftsprozesse analysieren und optimieren",
+  "difficulty": "advanced",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 70,
+  "prerequisites": [
+    "bp-dpa-03-bpmn-fundamentals",
+    "bp-dpa-03-process-mining"
+  ],
+  "tags": [
+    "automatisierung",
+    "rpa",
+    "workflow-engine",
+    "orchestrierung",
+    "choreographie",
+    "governance",
+    "prozessoptimierung"
+  ],
+  "content": "# Prozessautomatisierung & Orchestrierung\n\n## Einführung\nAutomatisierung steigert Geschwindigkeit, Konsistenz und Skalierbarkeit. Ziel ist nicht blindes Ersetzen menschlicher Arbeit, sondern Eliminierung repetitiver, regelbasierter Tätigkeiten und verbesserte End-to-End-Steuerbarkeit.\n\n## Identifikation von Automatisierungspotenzialen\nKriterien: Hohe Volumen, Regelbasiertheit, Niedrige Ausnahmenquote, Strukturierte Daten, Stabiler Prozess. Ausschluss: Häufige Regeländerungen, Hoher Interpretationsbedarf, Unklare Datenqualität.\nScoring (vereinfachtes Schema 1–5): Volumen, Stabilität, Datenqualität, Komplexität (invertiert), Ausnahmequote (invertiert).\n\n## Technologien & Abgrenzung\n| Technologie | Fokus | Stärken | Grenzen |\n|------------|-------|--------|---------|\n| RPA | UI-Interaktion | Schnelle Umsetzung | Fragil bei UI-Änderungen |\n| Workflow Engine | Ausführbare Modelle (BPMN/CMMN) | Transparenz, Skalierung | Modellierungskompetenz nötig |\n| Scripting | Ad-hoc Automatisierung | Flexibel | Wartung / Governance |\n| API-Orchestrierung | Service-Kopplung | Robust, Wiederverwendbar | Abhängigkeit API-Reife |\n\n## Orchestrierung vs. Choreographie\nOrchestrierung: Zentrale Steuerinstanz (Engine) koordiniert Abläufe (BPMN-Prozess).\nChoreographie: Teilnehmer koordinieren sich durch Nachrichten (dezentral), Fokus Kollaboration.\nAuswahl: Hohe zentrale Kontrollanforderung → Orchestrierung; Multi-Organisation & loser Kopplungsgrad → Choreographie.\n\n## Governance & Betriebsaspekte\nVersionierung von Prozessdefinitionen, Deployment-Workflows (Test → Staging → Produktion), Monitoring (SLA, Fehlerrate, Retries), Audit Logs. Security: Least Privilege für Service-Accounts, Geheimnisverwaltung (Secrets).\nMetriken Post-Go-Live: Automatisierungsquote, Fehlerrate, MTTR (Mean Time To Recovery).\n\n## Kontinuierliche Verbesserung & Feedback-Loops\nProcess Mining auf automatisierten Prozessen zur Validierung geplanter Zeiteinsparung. KPI-Vergleich Vor/Nach Automation. Regressionen früh erkennen (Alerting).\nAnti-Pattern: \"Automate the chaos\" – instabile Prozesse nicht vor Re-Design automatisieren.\n\n## Prüfungsrelevante Aspekte\n- Kriterien zur Auswahl von Automatisierungskandidaten\n- Unterschied RPA vs. Workflow Engine\n- Orchestrierung vs. Choreographie\n- Bedeutung von Governance (Versionierung, Monitoring)\n- Risiko fragiler UI-Skripte\n- Rolle Process Mining zur Erfolgsmessung\n",
+  "codeExamples": [
+    {
+      "language": "xml",
+      "title": "BPMN Ausschnitt Service Task + User Task",
+      "code": "<process id=\"loanProc\" isExecutable=\"true\">\n  <startEvent id=\"start\"/>\n  <serviceTask id=\"checkCredit\" name=\"Bonität prüfen\" camunda:topic=\"creditCheck\"/>\n  <userTask id=\"approve\" name=\"Genehmigen\"/>\n  <endEvent id=\"end\"/>\n  <sequenceFlow id=\"f1\" sourceRef=\"start\" targetRef=\"checkCredit\"/>\n  <sequenceFlow id=\"f2\" sourceRef=\"checkCredit\" targetRef=\"approve\"/>\n  <sequenceFlow id=\"f3\" sourceRef=\"approve\" targetRef=\"end\"/>\n</process>",
+      "explanation": "Einfaches Beispiel für Kombination automatisierter (Service Task) und menschlicher (User Task) Arbeitsschritte."
+    },
+    {
+      "language": "python",
+      "title": "RPA Kandidatenscoring (Pseudocode)",
+      "code": "def score(volumen, stabilitaet, datenqual, komplexitaet, ausnahmequote):\n    # komplexitaet & ausnahmequote wirken negativ\n    return volumen + stabilitaet + datenqual + (6-komplexitaet) + (6-ausnahmequote)\n\nprint(score(5,4,4,2,2))  # Beispielscore",
+      "explanation": "Heuristisches Scoring für Priorisierung von Automatisierungskandidaten."
+    }
+  ],
+  "relatedQuizzes": [
+    "bp-dpa-03-automation-orchestration-quiz"
+  ],
+  "resources": [
+    {
+      "title": "BPMN 2.0 Specification",
+      "url": "https://www.omg.org/spec/BPMN/2.0/",
+      "type": "documentation"
+    },
+    {
+      "title": "Orchestrierung vs Choreographie Überblick",
+      "url": "https://camunda.com/bpmn/reference/",
+      "type": "tutorial"
+    }
+  ],
+  "learningObjectives": [
+    "Automatisierungskandidaten systematisch bewerten",
+    "RPA und Workflow Engine unterscheiden",
+    "Orchestrierung und Choreographie abgrenzen",
+    "Governance-Anforderungen für Prozessautomation definieren",
+    "Metriken zur Erfolgskontrolle auswählen"
+  ],
+  "keyTakeaways": [
+    "Automatisierung braucht stabiles Prozessfundament",
+    "RPA schnell – aber fragiler bei UI-Änderungen",
+    "Workflow Engines bieten Transparenz & Governance",
+    "Conformance & KPIs sichern nachhaltigen Nutzen"
+  ],
+  "lastUpdated": "2025-10-07T00:00:00Z",
+  "version": "1.0",
+  "tracks": [
+    "DPA"
+  ]
+}

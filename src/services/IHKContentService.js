@@ -1,108 +1,121 @@
 import StorageService from './StorageService.js';
 
 // Import metadata
-import categoriesData from '../data/ihk/metadata/categories.json' with { type: 'json' };
-import examChangesData from '../data/ihk/metadata/exam-changes-2025.json' with { type: 'json' };
+import categoriesData from '../data/ihk/metadata/categories.json';
+import examChangesData from '../data/ihk/metadata/exam-changes-2025.json';
 
 // Import learning paths
-import ap2Path from '../data/ihk/learning-paths/ap2-complete-path.json' with { type: 'json' };
-import sqlPath from '../data/ihk/learning-paths/sql-mastery-path.json' with { type: 'json' };
-import newTopicsPath from '../data/ihk/learning-paths/new-topics-2025-path.json' with { type: 'json' };
-import oopPath from '../data/ihk/learning-paths/oop-fundamentals-path.json' with { type: 'json' };
+import ap2Path from '../data/ihk/learning-paths/ap2-complete-path.json';
+import sqlPath from '../data/ihk/learning-paths/sql-mastery-path.json';
+import newTopicsPath from '../data/ihk/learning-paths/new-topics-2025-path.json';
+import oopPath from '../data/ihk/learning-paths/oop-fundamentals-path.json';
 
 // Import all IHK modules directly
-import fue01 from '../data/ihk/modules/fue-01-planning.json' with { type: 'json' };
-import fue02dev from '../data/ihk/modules/fue-02-development.json' with { type: 'json' };
-import fue02anom from '../data/ihk/modules/fue-02-anomalies-redundancies.json' with { type: 'json' };
-import fue02ctrl from '../data/ihk/modules/fue-02-control-structures.json' with { type: 'json' };
-import fue03 from '../data/ihk/modules/fue-03-quality.json' with { type: 'json' };
-import fue03load from '../data/ihk/modules/fue-03-load-performance-tests.json' with { type: 'json' };
-import fue04 from '../data/ihk/modules/fue-04-security.json' with { type: 'json' };
-import fue04threats from '../data/ihk/modules/fue-04-security-threats.json' with { type: 'json' };
-import bp01conc from '../data/ihk/modules/bp-01-conception.json' with { type: 'json' };
-import bp01doc from '../data/ihk/modules/bp-01-documentation.json' with { type: 'json' };
-import bp01kerb from '../data/ihk/modules/bp-01-kerberos.json' with { type: 'json' };
-import bp01mon from '../data/ihk/modules/bp-01-monitoring.json' with { type: 'json' };
-import bp02cloud from '../data/ihk/modules/bp-02-cloud-models.json' with { type: 'json' };
-import bp02data from '../data/ihk/modules/bp-02-data-formats.json' with { type: 'json' };
-import bp02nas from '../data/ihk/modules/bp-02-nas-san.json' with { type: 'json' };
-import bp03cps from '../data/ihk/modules/bp-03-cps.json' with { type: 'json' };
-import bp03rest from '../data/ihk/modules/bp-03-rest-api.json' with { type: 'json' };
-import bp03sq from '../data/ihk/modules/bp-03-software-quality.json' with { type: 'json' };
-import bp03tdd from '../data/ihk/modules/bp-03-tdd.json' with { type: 'json' };
-import bp04arch from '../data/ihk/modules/bp-04-architecture-patterns.json' with { type: 'json' };
-import bp04design from '../data/ihk/modules/bp-04-design-patterns.json' with { type: 'json' };
-import bp04prog from '../data/ihk/modules/bp-04-programming-paradigms.json' with { type: 'json' };
-import bp04scrum from '../data/ihk/modules/bp-04-scrum.json' with { type: 'json' };
-import bp05data from '../data/ihk/modules/bp-05-data-structures.json' with { type: 'json' };
-import bp05enc from '../data/ihk/modules/bp-05-encapsulation.json' with { type: 'json' };
-import bp05sort from '../data/ihk/modules/bp-05-sorting.json' with { type: 'json' };
-import bp05sql from '../data/ihk/modules/bp-05-sql-reference.json' with { type: 'json' };
-import sqlDdl from '../data/ihk/modules/sql-ddl.json' with { type: 'json' };
-import sqlDml from '../data/ihk/modules/sql-dml.json' with { type: 'json' };
-import sqlDql from '../data/ihk/modules/sql-dql.json' with { type: 'json' };
+import fue01 from '../data/ihk/modules/fue-01-planning.json';
+import fue02dev from '../data/ihk/modules/fue-02-development.json';
+import fue02anom from '../data/ihk/modules/fue-02-anomalies-redundancies.json';
+import fue02ctrl from '../data/ihk/modules/fue-02-control-structures.json';
+import fue03 from '../data/ihk/modules/fue-03-quality.json';
+import fue03load from '../data/ihk/modules/fue-03-load-performance-tests.json';
+import fue04 from '../data/ihk/modules/fue-04-security.json';
+import fue04threats from '../data/ihk/modules/fue-04-security-threats.json';
+import bp01conc from '../data/ihk/modules/bp-01-conception.json';
+import bp01doc from '../data/ihk/modules/bp-01-documentation.json';
+import bp01kerb from '../data/ihk/modules/bp-01-kerberos.json';
+import bp01mon from '../data/ihk/modules/bp-01-monitoring.json';
+import bp02cloud from '../data/ihk/modules/bp-02-cloud-models.json';
+import bp02data from '../data/ihk/modules/bp-02-data-formats.json';
+import bp02nas from '../data/ihk/modules/bp-02-nas-san.json';
+import bp03cps from '../data/ihk/modules/bp-03-cps.json';
+import bp03rest from '../data/ihk/modules/bp-03-rest-api.json';
+import bp03sq from '../data/ihk/modules/bp-03-software-quality.json';
+import bp03tdd from '../data/ihk/modules/bp-03-tdd.json';
+import bp04arch from '../data/ihk/modules/bp-04-architecture-patterns.json';
+import bp04design from '../data/ihk/modules/bp-04-design-patterns.json';
+import bp04prog from '../data/ihk/modules/bp-04-programming-paradigms.json';
+import bp04scrum from '../data/ihk/modules/bp-04-scrum.json';
+import bp05data from '../data/ihk/modules/bp-05-data-structures.json';
+import bp05enc from '../data/ihk/modules/bp-05-encapsulation.json';
+import bp05sort from '../data/ihk/modules/bp-05-sorting.json';
+import bp05sql from '../data/ihk/modules/bp-05-sql-reference.json';
+import sqlDdl from '../data/ihk/modules/sql-ddl.json';
+import sqlDml from '../data/ihk/modules/sql-dml.json';
+import sqlDql from '../data/ihk/modules/sql-dql.json';
 
 // Import DPA-specific modules
-import bpDpa01 from '../data/ihk/modules/bp-dpa-01-data-modeling.json' with { type: 'json' };
-import bpDpa02 from '../data/ihk/modules/bp-dpa-02-etl-processes.json' with { type: 'json' };
-import bpDpa03 from '../data/ihk/modules/bp-dpa-03-bpmn-modeling.json' with { type: 'json' };
-import bpDpa04 from '../data/ihk/modules/bp-dpa-04-business-intelligence.json' with { type: 'json' };
+import bpDpa01 from '../data/ihk/modules/bp-dpa-01-data-modeling.json';
+import bpDpa02 from '../data/ihk/modules/bp-dpa-02-etl-processes.json';
+import bpDpa03 from '../data/ihk/modules/bp-dpa-03-bpmn-modeling.json';
+import bpDpa03Adv from '../data/ihk/modules/bp-dpa-03-advanced-process-topics.json';
+import bpDpa04 from '../data/ihk/modules/bp-dpa-04-business-intelligence.json';
 
 // Import all IHK quizzes (including migrated ones)
-import bp01ConceptionQuiz from '../data/ihk/quizzes/bp-01-conception-quiz.json' with { type: 'json' };
-import bp01DocumentationQuiz from '../data/ihk/quizzes/bp-01-documentation-quiz.json' with { type: 'json' };
-import bp01MonitoringQuiz from '../data/ihk/quizzes/bp-01-monitoring-quiz.json' with { type: 'json' };
-import bp01OdbcQuiz from '../data/ihk/quizzes/bp-01-odbc-quiz.json' with { type: 'json' };
-import bp02CloudModelsQuiz from '../data/ihk/quizzes/bp-02-cloud-models-quiz.json' with { type: 'json' };
-import bp02DataFormatsQuiz from '../data/ihk/quizzes/bp-02-data-formats-quiz.json' with { type: 'json' };
-import bp02NasSanQuiz from '../data/ihk/quizzes/bp-02-nas-san-quiz.json' with { type: 'json' };
-import bp02QualityAssuranceQuiz from '../data/ihk/quizzes/bp-02-quality-assurance-quiz.json' with { type: 'json' };
-import bp03CpsQuiz from '../data/ihk/quizzes/bp-03-cps-quiz.json' with { type: 'json' };
-import bp03RestApiQuiz from '../data/ihk/quizzes/bp-03-rest-api-quiz.json' with { type: 'json' };
-import bp03SoftwareQualityQuiz from '../data/ihk/quizzes/bp-03-software-quality-quiz.json' with { type: 'json' };
-import bp03TddQuiz from '../data/ihk/quizzes/bp-03-tdd-quiz.json' with { type: 'json' };
-import bp04ArchitecturePatternsQuiz from '../data/ihk/quizzes/bp-04-architecture-patterns-quiz.json' with { type: 'json' };
-import bp04DesignPatternsQuiz from '../data/ihk/quizzes/bp-04-design-patterns-quiz.json' with { type: 'json' };
-import bp04ProgrammingParadigmsQuiz from '../data/ihk/quizzes/bp-04-programming-paradigms-quiz.json' with { type: 'json' };
-import bp04ScrumQuiz from '../data/ihk/quizzes/bp-04-scrum-quiz.json' with { type: 'json' };
-import bp05DataStructuresQuiz from '../data/ihk/quizzes/bp-05-data-structures-quiz.json' with { type: 'json' };
-import bp05EncapsulationQuiz from '../data/ihk/quizzes/bp-05-encapsulation-quiz.json' with { type: 'json' };
-import bp05SortingQuiz from '../data/ihk/quizzes/bp-05-sorting-quiz.json' with { type: 'json' };
-import bp05SqlReferenceQuiz from '../data/ihk/quizzes/bp-05-sql-reference-quiz.json' with { type: 'json' };
-import fue01PlanningQuiz from '../data/ihk/quizzes/fue-01-planning-quiz.json' with { type: 'json' };
-import fue02AnomaliesRedundanciesQuiz from '../data/ihk/quizzes/fue-02-anomalies-redundancies-quiz.json' with { type: 'json' };
-import fue02ControlStructuresQuiz from '../data/ihk/quizzes/fue-02-control-structures-quiz.json' with { type: 'json' };
-import fue02DevelopmentQuiz from '../data/ihk/quizzes/fue-02-development-quiz.json' with { type: 'json' };
-import fue03LoadPerformanceTestsQuiz from '../data/ihk/quizzes/fue-03-load-performance-tests-quiz.json' with { type: 'json' };
-import fue03QualityQuiz from '../data/ihk/quizzes/fue-03-quality-quiz.json' with { type: 'json' };
-import fue04SecurityQuiz from '../data/ihk/quizzes/fue-04-security-quiz.json' with { type: 'json' };
-import fue04SecurityThreatsQuiz from '../data/ihk/quizzes/fue-04-security-threats-quiz.json' with { type: 'json' };
-import kerberosQuiz from '../data/ihk/quizzes/kerberos-quiz.json' with { type: 'json' };
-import scrumQuiz from '../data/ihk/quizzes/scrum-quiz.json' with { type: 'json' };
-import sortingAlgorithmsQuiz from '../data/ihk/quizzes/sorting-algorithms-quiz.json' with { type: 'json' };
-import sqlComprehensiveQuiz from '../data/ihk/quizzes/sql-comprehensive-quiz.json' with { type: 'json' };
-import sqlDdl2025Quiz from '../data/ihk/quizzes/sql-ddl-2025-quiz.json' with { type: 'json' };
-import sqlDml2025Quiz from '../data/ihk/quizzes/sql-dml-2025-quiz.json' with { type: 'json' };
-import tddQuiz from '../data/ihk/quizzes/tdd-quiz.json' with { type: 'json' };
+import bp01ConceptionQuiz from '../data/ihk/quizzes/bp-01-conception-quiz.json';
+import bp01DocumentationQuiz from '../data/ihk/quizzes/bp-01-documentation-quiz.json';
+import bp01MonitoringQuiz from '../data/ihk/quizzes/bp-01-monitoring-quiz.json';
+import bp01OdbcQuiz from '../data/ihk/quizzes/bp-01-odbc-quiz.json';
+import bp02CloudModelsQuiz from '../data/ihk/quizzes/bp-02-cloud-models-quiz.json';
+import bp02DataFormatsQuiz from '../data/ihk/quizzes/bp-02-data-formats-quiz.json';
+import bp02NasSanQuiz from '../data/ihk/quizzes/bp-02-nas-san-quiz.json';
+import bp02QualityAssuranceQuiz from '../data/ihk/quizzes/bp-02-quality-assurance-quiz.json';
+import bp03CpsQuiz from '../data/ihk/quizzes/bp-03-cps-quiz.json';
+import bp03RestApiQuiz from '../data/ihk/quizzes/bp-03-rest-api-quiz.json';
+import bp03SoftwareQualityQuiz from '../data/ihk/quizzes/bp-03-software-quality-quiz.json';
+import bp03TddQuiz from '../data/ihk/quizzes/bp-03-tdd-quiz.json';
+import bp04ArchitecturePatternsQuiz from '../data/ihk/quizzes/bp-04-architecture-patterns-quiz.json';
+import bp04DesignPatternsQuiz from '../data/ihk/quizzes/bp-04-design-patterns-quiz.json';
+import bp04ProgrammingParadigmsQuiz from '../data/ihk/quizzes/bp-04-programming-paradigms-quiz.json';
+import bp04ScrumQuiz from '../data/ihk/quizzes/bp-04-scrum-quiz.json';
+import bp05DataStructuresQuiz from '../data/ihk/quizzes/bp-05-data-structures-quiz.json';
+import bp05EncapsulationQuiz from '../data/ihk/quizzes/bp-05-encapsulation-quiz.json';
+import bp05SortingQuiz from '../data/ihk/quizzes/bp-05-sorting-quiz.json';
+import bp05SqlReferenceQuiz from '../data/ihk/quizzes/bp-05-sql-reference-quiz.json';
+import fue01PlanningQuiz from '../data/ihk/quizzes/fue-01-planning-quiz.json';
+import fue02AnomaliesRedundanciesQuiz from '../data/ihk/quizzes/fue-02-anomalies-redundancies-quiz.json';
+import fue02ControlStructuresQuiz from '../data/ihk/quizzes/fue-02-control-structures-quiz.json';
+import fue02DevelopmentQuiz from '../data/ihk/quizzes/fue-02-development-quiz.json';
+import fue03LoadPerformanceTestsQuiz from '../data/ihk/quizzes/fue-03-load-performance-tests-quiz.json';
+import fue03QualityQuiz from '../data/ihk/quizzes/fue-03-quality-quiz.json';
+import fue04SecurityQuiz from '../data/ihk/quizzes/fue-04-security-quiz.json';
+import fue04SecurityThreatsQuiz from '../data/ihk/quizzes/fue-04-security-threats-quiz.json';
+import kerberosQuiz from '../data/ihk/quizzes/kerberos-quiz.json';
+import scrumQuiz from '../data/ihk/quizzes/scrum-quiz.json';
+import sortingAlgorithmsQuiz from '../data/ihk/quizzes/sorting-algorithms-quiz.json';
+import sqlComprehensiveQuiz from '../data/ihk/quizzes/sql-comprehensive-quiz.json';
+import sqlDdl2025Quiz from '../data/ihk/quizzes/sql-ddl-2025-quiz.json';
+import sqlDml2025Quiz from '../data/ihk/quizzes/sql-dml-2025-quiz.json';
+import tddQuiz from '../data/ihk/quizzes/tdd-quiz.json';
 
 // Import DPA-specific quizzes
-import bpDpa01ErModelingQuiz from '../data/ihk/quizzes/bp-dpa-01-er-modeling-quiz.json' with { type: 'json' };
-import bpDpa01NormalizationQuiz from '../data/ihk/quizzes/bp-dpa-01-normalization-quiz.json' with { type: 'json' };
-import bpDpa02EtlQuiz from '../data/ihk/quizzes/bp-dpa-02-etl-quiz.json' with { type: 'json' };
-import bpDpa03BpmnQuiz from '../data/ihk/quizzes/bp-dpa-03-bpmn-quiz.json' with { type: 'json' };
-import bpDpa04BiQuiz from '../data/ihk/quizzes/bp-dpa-04-bi-quiz.json' with { type: 'json' };
-import bpDpa05DataWarehousingQuiz from '../data/ihk/quizzes/bp-dpa-05-data-warehousing-quiz.json' with { type: 'json' };
-import bpDpa06DataQualityQuiz from '../data/ihk/quizzes/bp-dpa-06-data-quality-quiz.json' with { type: 'json' };
-import bpDpa07StatisticalAnalysisQuiz from '../data/ihk/quizzes/bp-dpa-07-statistical-analysis-quiz.json' with { type: 'json' };
-import bpDpa08ProcessOptimizationQuiz from '../data/ihk/quizzes/bp-dpa-08-process-optimization-quiz.json' with { type: 'json' };
-import bpDpa09AdvancedBiQuiz from '../data/ihk/quizzes/bp-dpa-09-advanced-bi-quiz.json' with { type: 'json' };
+import bpDpa01ErModelingQuiz from '../data/ihk/quizzes/bp-dpa-01-er-modeling-quiz.json';
+import bpDpa01NormalizationQuiz from '../data/ihk/quizzes/bp-dpa-01-normalization-quiz.json';
+import bpDpa02EtlQuiz from '../data/ihk/quizzes/bp-dpa-02-etl-quiz.json';
+import bpDpa03BpmnQuiz from '../data/ihk/quizzes/bp-dpa-03-bpmn-quiz.json';
+import bpDpa04BiQuiz from '../data/ihk/quizzes/bp-dpa-04-bi-quiz.json';
+import bpDpa05DataWarehousingQuiz from '../data/ihk/quizzes/bp-dpa-05-data-warehousing-quiz.json';
+import bpDpa06DataQualityQuiz from '../data/ihk/quizzes/bp-dpa-06-data-quality-quiz.json';
+import bpDpa07StatisticalAnalysisQuiz from '../data/ihk/quizzes/bp-dpa-07-statistical-analysis-quiz.json';
+import bpDpa08ProcessOptimizationQuiz from '../data/ihk/quizzes/bp-dpa-08-process-optimization-quiz.json';
+import bpDpa09AdvancedBiQuiz from '../data/ihk/quizzes/bp-dpa-09-advanced-bi-quiz.json';
+// Newly added DPA 2025 quizzes
+import bpDpa03ProcessMiningQuiz from '../data/ihk/quizzes/bp-dpa-03-process-mining-quiz.json';
+import bpDpa03KpiMeasurementQuiz from '../data/ihk/quizzes/bp-dpa-03-kpi-measurement-quiz.json';
+import bpDpa03LeanSixSigmaQuiz from '../data/ihk/quizzes/bp-dpa-03-lean-six-sigma-quiz.json';
+import bpDpa03AutomationOrchestrationQuiz from '../data/ihk/quizzes/bp-dpa-03-automation-orchestration-quiz.json';
 
 /**
  * IHKContentService - Manages IHK exam content (modules, quizzes, learning paths)
  * Handles loading, filtering, and searching of IHK-specific content
  */
 class IHKContentService {
-  constructor(stateManager, storageService, specializationService, categoryMappingService, performanceOptimizationService, performanceMonitoringService) {
+  constructor(
+    stateManager,
+    storageService,
+    specializationService,
+    categoryMappingService,
+    performanceOptimizationService,
+    performanceMonitoringService
+  ) {
     this.stateManager = stateManager;
     this.storage = storageService || new StorageService('ihk-content');
     this.specializationService = specializationService;
@@ -158,7 +171,7 @@ class IHKContentService {
 
       // Filter modules by category
       const modules = Array.from(this.modules.values()).filter(
-        module => module.category === categoryId
+        module => module.categoryId === categoryId
       );
 
       // Enrich with progress data
@@ -179,7 +192,7 @@ class IHKContentService {
 
       // Filter modules marked as new in 2025
       const newModules = Array.from(this.modules.values()).filter(
-        module => module.newIn2025 === true
+        module => module.newIn2025 === true && module.categoryId !== undefined
       );
 
       // Sort by importance and exam relevance
@@ -437,6 +450,7 @@ class IHKContentService {
         bpDpa01,
         bpDpa02,
         bpDpa03,
+        bpDpa03Adv,
         bpDpa04,
       ];
 
@@ -458,12 +472,13 @@ class IHKContentService {
       flattenedModules.forEach(module => {
         // Preserve original category for backward compatibility
         const originalCategory = module.category || module.categoryId;
-        
+
         // Apply three-tier category mapping if service is available
         if (this.categoryMappingService) {
           try {
-            const mappingResult = this.categoryMappingService.mapToThreeTierCategory(module);
-            
+            const mappingResult =
+              this.categoryMappingService.mapToThreeTierCategory(module);
+
             // Add three-tier category information while preserving original
             const enhancedModule = {
               ...module,
@@ -477,13 +492,16 @@ class IHKContentService {
                 categoryInfo: mappingResult.categoryInfo,
                 mappingRule: mappingResult.appliedRule,
                 mappingReason: mappingResult.reason,
-                mappingTimestamp: mappingResult.timestamp
-              }
+                mappingTimestamp: mappingResult.timestamp,
+              },
             };
-            
+
             this.modules.set(module.id, enhancedModule);
           } catch (mappingError) {
-            console.warn(`Failed to map module ${module.id} to three-tier category:`, mappingError);
+            console.warn(
+              `Failed to map module ${module.id} to three-tier category:`,
+              mappingError
+            );
             // Fallback: store module with original category only
             this.modules.set(module.id, {
               ...module,
@@ -494,8 +512,8 @@ class IHKContentService {
                 threeTierCategory: 'allgemein',
                 mappingRule: null,
                 mappingReason: 'Mapping failed, using default',
-                mappingTimestamp: new Date().toISOString()
-              }
+                mappingTimestamp: new Date().toISOString(),
+              },
             });
           }
         } else {
@@ -503,14 +521,13 @@ class IHKContentService {
           this.modules.set(module.id, {
             ...module,
             category: originalCategory,
-            categoryId: originalCategory
+            categoryId: originalCategory,
           });
         }
       });
 
       // Clear categorized content cache since modules have been reloaded
       this.clearCategorizedContentCache();
-
     } catch (error) {
       console.error('Error loading modules:', error);
       throw new Error('Failed to load IHK modules');
@@ -717,18 +734,24 @@ class IHKContentService {
       bpDpa07StatisticalAnalysisQuiz,
       bpDpa08ProcessOptimizationQuiz,
       bpDpa09AdvancedBiQuiz,
+      // Newly added DPA 2025 quizzes
+      bpDpa03ProcessMiningQuiz,
+      bpDpa03KpiMeasurementQuiz,
+      bpDpa03LeanSixSigmaQuiz,
+      bpDpa03AutomationOrchestrationQuiz,
     ];
 
     // Apply three-tier category mapping to each quiz
     allQuizzes.forEach(quiz => {
       // Preserve original category for backward compatibility
       const originalCategory = quiz.category || quiz.categoryId;
-      
+
       // Apply three-tier category mapping if service is available
       if (this.categoryMappingService) {
         try {
-          const mappingResult = this.categoryMappingService.mapToThreeTierCategory(quiz);
-          
+          const mappingResult =
+            this.categoryMappingService.mapToThreeTierCategory(quiz);
+
           // Add three-tier category information while preserving original
           const enhancedQuiz = {
             ...quiz,
@@ -742,13 +765,16 @@ class IHKContentService {
               categoryInfo: mappingResult.categoryInfo,
               mappingRule: mappingResult.appliedRule,
               mappingReason: mappingResult.reason,
-              mappingTimestamp: mappingResult.timestamp
-            }
+              mappingTimestamp: mappingResult.timestamp,
+            },
           };
-          
+
           this.quizzes.set(quiz.id, enhancedQuiz);
         } catch (mappingError) {
-          console.warn(`Failed to map quiz ${quiz.id} to three-tier category:`, mappingError);
+          console.warn(
+            `Failed to map quiz ${quiz.id} to three-tier category:`,
+            mappingError
+          );
           // Fallback: store quiz with original category only
           this.quizzes.set(quiz.id, {
             ...quiz,
@@ -759,8 +785,8 @@ class IHKContentService {
               threeTierCategory: 'allgemein',
               mappingRule: null,
               mappingReason: 'Mapping failed, using default',
-              mappingTimestamp: new Date().toISOString()
-            }
+              mappingTimestamp: new Date().toISOString(),
+            },
           });
         }
       } else {
@@ -768,7 +794,7 @@ class IHKContentService {
         this.quizzes.set(quiz.id, {
           ...quiz,
           category: originalCategory,
-          categoryId: originalCategory
+          categoryId: originalCategory,
         });
       }
     });
@@ -800,7 +826,7 @@ class IHKContentService {
         includeDifficultyDistribution = true,
         includeContentTypes = true,
         includeProgressStats = false,
-        specializationId = null
+        specializationId = null,
       } = options;
 
       // Ensure all content is loaded
@@ -816,25 +842,29 @@ class IHKContentService {
           totalContent: allContent.length,
           totalModules: allModules.length,
           totalQuizzes: allQuizzes.length,
-          generatedAt: new Date().toISOString()
+          generatedAt: new Date().toISOString(),
         },
-        categories: {}
+        categories: {},
       };
 
       // Calculate stats for each three-tier category
-      const categories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
-      
+      const categories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
+
       for (const categoryId of categories) {
-        const categoryContent = allContent.filter(item => 
-          item.threeTierCategory === categoryId
+        const categoryContent = allContent.filter(
+          item => item.threeTierCategory === categoryId
         );
 
-        const categoryModules = categoryContent.filter(item => 
-          item.type === 'module' || !item.questions
+        const categoryModules = categoryContent.filter(
+          item => item.type === 'module' || !item.questions
         );
 
-        const categoryQuizzes = categoryContent.filter(item => 
-          item.type === 'quiz' || item.questions
+        const categoryQuizzes = categoryContent.filter(
+          item => item.type === 'quiz' || item.questions
         );
 
         const categoryStats = {
@@ -843,33 +873,38 @@ class IHKContentService {
             total: categoryContent.length,
             modules: categoryModules.length,
             quizzes: categoryQuizzes.length,
-            percentage: allContent.length > 0 ? 
-              Math.round((categoryContent.length / allContent.length) * 100) : 0
-          }
+            percentage:
+              allContent.length > 0
+                ? Math.round((categoryContent.length / allContent.length) * 100)
+                : 0,
+          },
         };
 
         // Add difficulty distribution if requested
         if (includeDifficultyDistribution) {
-          categoryStats.difficultyDistribution = this._calculateDifficultyDistribution(categoryContent);
+          categoryStats.difficultyDistribution =
+            this._calculateDifficultyDistribution(categoryContent);
         }
 
         // Add content type breakdown if requested
         if (includeContentTypes) {
-          categoryStats.contentTypes = this._calculateContentTypeBreakdown(categoryContent);
+          categoryStats.contentTypes =
+            this._calculateContentTypeBreakdown(categoryContent);
         }
 
         // Add specialization relevance if requested
         if (includeSpecializationRelevance) {
-          categoryStats.specializationRelevance = this._calculateSpecializationRelevance(
-            categoryContent, 
-            specializationId
-          );
+          categoryStats.specializationRelevance =
+            this._calculateSpecializationRelevance(
+              categoryContent,
+              specializationId
+            );
         }
 
         // Add progress statistics if requested and specialization provided
         if (includeProgressStats && specializationId) {
           categoryStats.progressStats = await this._calculateProgressStats(
-            categoryContent, 
+            categoryContent,
             specializationId
           );
         }
@@ -881,7 +916,6 @@ class IHKContentService {
       stats.insights = this._generateCategoryInsights(stats.categories);
 
       return stats;
-
     } catch (error) {
       console.error('Error calculating three-tier category stats:', error);
       throw error;
@@ -904,23 +938,22 @@ class IHKContentService {
         includeDifficultyDistribution: true,
         includeContentTypes: true,
         includeProgressStats: true,
-        specializationId: specializationId
+        specializationId: specializationId,
       });
 
       // Add specialization-specific insights
       stats.specializationInsights = this._generateSpecializationInsights(
-        stats.categories, 
+        stats.categories,
         specializationId
       );
 
       // Rank categories by relevance for this specialization
       stats.categoryRanking = this._rankCategoriesByRelevance(
-        stats.categories, 
+        stats.categories,
         specializationId
       );
 
       return stats;
-
     } catch (error) {
       console.error('Error calculating specialization category stats:', error);
       throw error;
@@ -945,23 +978,29 @@ class IHKContentService {
 
       // If no specialization service available, return all modules
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning all modules');
+        console.warn(
+          'SpecializationService not available, returning all modules'
+        );
         return this._enrichModulesWithProgress(allModules);
       }
 
       // Filter modules by specialization
-      const filteredModules = this.specializationService.filterContentBySpecialization(
-        allModules,
-        specializationId,
-        {
-          minRelevance: options.minRelevance || 'low',
-          includeGeneral: options.includeGeneral !== false
-        }
-      );
+      const filteredModules =
+        this.specializationService.filterContentBySpecialization(
+          allModules,
+          specializationId,
+          {
+            minRelevance: options.minRelevance || 'low',
+            includeGeneral: options.includeGeneral !== false,
+          }
+        );
 
       return this._enrichModulesWithProgress(filteredModules);
     } catch (error) {
-      console.error(`Error getting modules by specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting modules by specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -984,23 +1023,29 @@ class IHKContentService {
 
       // If no specialization service available, return all quizzes
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning all quizzes');
+        console.warn(
+          'SpecializationService not available, returning all quizzes'
+        );
         return allQuizzes;
       }
 
       // Filter quizzes by specialization
-      const filteredQuizzes = this.specializationService.filterContentBySpecialization(
-        allQuizzes,
-        specializationId,
-        {
-          minRelevance: options.minRelevance || 'low',
-          includeGeneral: options.includeGeneral !== false
-        }
-      );
+      const filteredQuizzes =
+        this.specializationService.filterContentBySpecialization(
+          allQuizzes,
+          specializationId,
+          {
+            minRelevance: options.minRelevance || 'low',
+            includeGeneral: options.includeGeneral !== false,
+          }
+        );
 
       return filteredQuizzes;
     } catch (error) {
-      console.error(`Error getting quizzes by specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting quizzes by specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -1028,17 +1073,19 @@ class IHKContentService {
         modules: {
           total: allModules.length,
           byRelevance: { high: 0, medium: 0, low: 0, none: 0 },
-          byCategory: {}
+          byCategory: {},
         },
         quizzes: {
           total: allQuizzes.length,
           byRelevance: { high: 0, medium: 0, low: 0, none: 0 },
-          byCategory: {}
-        }
+          byCategory: {},
+        },
       };
 
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning basic statistics');
+        console.warn(
+          'SpecializationService not available, returning basic statistics'
+        );
         return stats;
       }
 
@@ -1046,8 +1093,11 @@ class IHKContentService {
       allModules.forEach(module => {
         const categoryId = module.category || module.categoryId;
         if (categoryId) {
-          const relevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
-          
+          const relevance = this.specializationService.getCategoryRelevance(
+            categoryId,
+            specializationId
+          );
+
           // Count by relevance
           if (stats.modules.byRelevance[relevance] !== undefined) {
             stats.modules.byRelevance[relevance]++;
@@ -1055,7 +1105,10 @@ class IHKContentService {
 
           // Count by category
           if (!stats.modules.byCategory[categoryId]) {
-            stats.modules.byCategory[categoryId] = { count: 0, relevance: relevance };
+            stats.modules.byCategory[categoryId] = {
+              count: 0,
+              relevance: relevance,
+            };
           }
           stats.modules.byCategory[categoryId].count++;
         } else {
@@ -1067,8 +1120,11 @@ class IHKContentService {
       allQuizzes.forEach(quiz => {
         const categoryId = quiz.category || quiz.categoryId;
         if (categoryId) {
-          const relevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
-          
+          const relevance = this.specializationService.getCategoryRelevance(
+            categoryId,
+            specializationId
+          );
+
           // Count by relevance
           if (stats.quizzes.byRelevance[relevance] !== undefined) {
             stats.quizzes.byRelevance[relevance]++;
@@ -1076,7 +1132,10 @@ class IHKContentService {
 
           // Count by category
           if (!stats.quizzes.byCategory[categoryId]) {
-            stats.quizzes.byCategory[categoryId] = { count: 0, relevance: relevance };
+            stats.quizzes.byCategory[categoryId] = {
+              count: 0,
+              relevance: relevance,
+            };
           }
           stats.quizzes.byCategory[categoryId].count++;
         } else {
@@ -1086,7 +1145,10 @@ class IHKContentService {
 
       return stats;
     } catch (error) {
-      console.error(`Error getting content statistics for specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting content statistics for specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -1112,7 +1174,7 @@ class IHKContentService {
       const result = {
         high: { modules: [], quizzes: [] },
         medium: { modules: [], quizzes: [] },
-        low: { modules: [], quizzes: [] }
+        low: { modules: [], quizzes: [] },
       };
 
       if (!this.specializationService) {
@@ -1124,7 +1186,10 @@ class IHKContentService {
       allModules.forEach(module => {
         const categoryId = module.category || module.categoryId;
         if (categoryId) {
-          const relevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
+          const relevance = this.specializationService.getCategoryRelevance(
+            categoryId,
+            specializationId
+          );
           if (result[relevance]) {
             result[relevance].modules.push(module);
           }
@@ -1135,7 +1200,10 @@ class IHKContentService {
       allQuizzes.forEach(quiz => {
         const categoryId = quiz.category || quiz.categoryId;
         if (categoryId) {
-          const relevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
+          const relevance = this.specializationService.getCategoryRelevance(
+            categoryId,
+            specializationId
+          );
           if (result[relevance]) {
             result[relevance].quizzes.push(quiz);
           }
@@ -1144,12 +1212,17 @@ class IHKContentService {
 
       // Enrich modules with progress data
       Object.keys(result).forEach(relevance => {
-        result[relevance].modules = this._enrichModulesWithProgress(result[relevance].modules);
+        result[relevance].modules = this._enrichModulesWithProgress(
+          result[relevance].modules
+        );
       });
 
       return result;
     } catch (error) {
-      console.error(`Error getting content by relevance for specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting content by relevance for specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -1165,9 +1238,15 @@ class IHKContentService {
         throw new Error('Invalid three-tier category ID');
       }
 
-      const validCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+      const validCategories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
       if (!validCategories.includes(categoryId)) {
-        throw new Error(`Invalid three-tier category: ${categoryId}. Must be one of: ${validCategories.join(', ')}`);
+        throw new Error(
+          `Invalid three-tier category: ${categoryId}. Must be one of: ${validCategories.join(', ')}`
+        );
       }
 
       // Check cache first
@@ -1189,7 +1268,7 @@ class IHKContentService {
         contentIds.forEach(contentId => {
           const module = this.modules.get(contentId);
           const quiz = this.quizzes.get(contentId);
-          
+
           if (module && module.threeTierCategory === categoryId) {
             categorizedContent.push({ ...module, contentType: 'module' });
           } else if (quiz && quiz.threeTierCategory === categoryId) {
@@ -1199,29 +1278,34 @@ class IHKContentService {
       } else {
         // Fallback to full scan if indexes not available or category mapping service missing
         if (!this.categoryMappingService) {
-          console.warn('CategoryMappingService not available, returning empty array');
+          console.warn(
+            'CategoryMappingService not available, returning empty array'
+          );
           return [];
         }
 
         const allContent = [
           ...Array.from(this.modules.values()),
-          ...Array.from(this.quizzes.values())
+          ...Array.from(this.quizzes.values()),
         ];
 
         // Filter content by three-tier category
-        categorizedContent = allContent.filter(item => {
-          // Use pre-computed three-tier category if available
-          if (item.threeTierCategory) {
-            return item.threeTierCategory === categoryId;
-          }
-          
-          // Fallback to mapping service
-          const mappingResult = this.categoryMappingService.mapToThreeTierCategory(item);
-          return mappingResult.threeTierCategory === categoryId;
-        }).map(item => ({
-          ...item,
-          contentType: (item.content || item.sections) ? 'module' : 'quiz'
-        }));
+        categorizedContent = allContent
+          .filter(item => {
+            // Use pre-computed three-tier category if available
+            if (item.threeTierCategory) {
+              return item.threeTierCategory === categoryId;
+            }
+
+            // Fallback to mapping service
+            const mappingResult =
+              this.categoryMappingService.mapToThreeTierCategory(item);
+            return mappingResult.threeTierCategory === categoryId;
+          })
+          .map(item => ({
+            ...item,
+            contentType: item.content || item.sections ? 'module' : 'quiz',
+          }));
       }
 
       // Enrich modules with progress data
@@ -1239,7 +1323,10 @@ class IHKContentService {
 
       return enrichedContent;
     } catch (error) {
-      console.error(`Error getting content by three-tier category ${categoryId}:`, error);
+      console.error(
+        `Error getting content by three-tier category ${categoryId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -1256,7 +1343,9 @@ class IHKContentService {
       await this._loadAllQuizzes();
 
       if (!this.categoryMappingService) {
-        console.warn('CategoryMappingService not available, returning empty structure');
+        console.warn(
+          'CategoryMappingService not available, returning empty structure'
+        );
         return this._getEmptyCategorizedContent();
       }
 
@@ -1269,69 +1358,75 @@ class IHKContentService {
           modules: [],
           quizzes: [],
           relevance: 'none',
-          metadata: null
+          metadata: null,
         },
-        'anwendungsentwicklung': {
+        anwendungsentwicklung: {
           modules: [],
           quizzes: [],
           relevance: 'none',
-          metadata: null
+          metadata: null,
         },
-        'allgemein': {
+        allgemein: {
           modules: [],
           quizzes: [],
           relevance: 'none',
-          metadata: null
-        }
+          metadata: null,
+        },
       };
 
       // Get category metadata
-      const threeTierCategories = this.categoryMappingService.getThreeTierCategories();
+      const threeTierCategories =
+        this.categoryMappingService.getThreeTierCategories();
       threeTierCategories.forEach(category => {
         if (result[category.id]) {
           result[category.id].metadata = category;
-          
+
           // Calculate relevance for specialization if provided
           if (specializationId && this.categoryMappingService) {
-            result[category.id].relevance = this.categoryMappingService.getCategoryRelevance(
-              category.id, 
-              specializationId
-            );
+            result[category.id].relevance =
+              this.categoryMappingService.getCategoryRelevance(
+                category.id,
+                specializationId
+              );
           }
         }
       });
 
       // Categorize modules
       allModules.forEach(module => {
-        const mappingResult = this.categoryMappingService.mapToThreeTierCategory(module);
+        const mappingResult =
+          this.categoryMappingService.mapToThreeTierCategory(module);
         const categoryId = mappingResult.threeTierCategory;
-        
+
         if (result[categoryId]) {
           result[categoryId].modules.push({
             ...module,
             threeTierCategory: categoryId,
-            mappingInfo: mappingResult
+            mappingInfo: mappingResult,
           });
         }
       });
 
       // Categorize quizzes
       allQuizzes.forEach(quiz => {
-        const mappingResult = this.categoryMappingService.mapToThreeTierCategory(quiz);
+        const mappingResult =
+          this.categoryMappingService.mapToThreeTierCategory(quiz);
         const categoryId = mappingResult.threeTierCategory;
-        
+
         if (result[categoryId]) {
           result[categoryId].quizzes.push({
             ...quiz,
             threeTierCategory: categoryId,
-            mappingInfo: mappingResult
+            mappingInfo: mappingResult,
           });
         }
       });
 
       // Enrich modules with progress data
       Object.keys(result).forEach(categoryId => {
-        result[categoryId].modules = this._enrichModulesWithProgress(result[categoryId].modules);
+        result[categoryId].modules = this._enrichModulesWithProgress(
+          result[categoryId].modules
+        );
       });
 
       return result;
@@ -1357,13 +1452,18 @@ class IHKContentService {
         throw new Error('Invalid category ID');
       }
 
-      const validCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+      const validCategories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
       if (!validCategories.includes(categoryId)) {
         throw new Error(`Invalid three-tier category: ${categoryId}`);
       }
 
       // Get all content in the specified category
-      const categoryContent = await this.getContentByThreeTierCategory(categoryId);
+      const categoryContent =
+        await this.getContentByThreeTierCategory(categoryId);
 
       // Apply text search
       const searchTerm = query.toLowerCase().trim();
@@ -1374,7 +1474,10 @@ class IHKContentService {
         }
 
         // Search in description
-        if (item.description && item.description.toLowerCase().includes(searchTerm)) {
+        if (
+          item.description &&
+          item.description.toLowerCase().includes(searchTerm)
+        ) {
           return true;
         }
 
@@ -1392,8 +1495,10 @@ class IHKContentService {
 
         // Search in questions (for quizzes)
         if (item.questions && Array.isArray(item.questions)) {
-          return item.questions.some(question => 
-            question.question && question.question.toLowerCase().includes(searchTerm)
+          return item.questions.some(
+            question =>
+              question.question &&
+              question.question.toLowerCase().includes(searchTerm)
           );
         }
 
@@ -1401,11 +1506,12 @@ class IHKContentService {
       });
 
       // Add search relevance score
-      return results.map(item => ({
-        ...item,
-        searchRelevance: this._calculateSearchRelevance(item, searchTerm)
-      })).sort((a, b) => b.searchRelevance - a.searchRelevance);
-
+      return results
+        .map(item => ({
+          ...item,
+          searchRelevance: this._calculateSearchRelevance(item, searchTerm),
+        }))
+        .sort((a, b) => b.searchRelevance - a.searchRelevance);
     } catch (error) {
       console.error(`Error searching in category ${categoryId}:`, error);
       throw error;
@@ -1421,13 +1527,17 @@ class IHKContentService {
   async searchWithCategoryFiltering(query, options = {}) {
     try {
       const {
-        categories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'],
+        categories = [
+          'daten-prozessanalyse',
+          'anwendungsentwicklung',
+          'allgemein',
+        ],
         contentTypes = ['module', 'quiz'],
         maxResultsPerCategory = 10,
         minRelevanceScore = 1,
         includeMetadata = true,
         sortBy = 'relevance', // 'relevance', 'title', 'difficulty'
-        specializationId = null
+        specializationId = null,
       } = options;
 
       if (!query || typeof query !== 'string') {
@@ -1439,14 +1549,17 @@ class IHKContentService {
         query: query,
         totalResults: 0,
         categories: {},
-        suggestions: []
+        suggestions: [],
       };
 
       // Search in each requested category
       for (const categoryId of categories) {
         try {
-          const categoryResults = await this.searchInCategory(query, categoryId);
-          
+          const categoryResults = await this.searchInCategory(
+            query,
+            categoryId
+          );
+
           // Filter by content type
           let filteredResults = categoryResults.filter(item => {
             const itemType = item.type || (item.questions ? 'quiz' : 'module');
@@ -1454,15 +1567,18 @@ class IHKContentService {
           });
 
           // Filter by minimum relevance score
-          filteredResults = filteredResults.filter(item => 
-            (item.searchRelevance || 0) >= minRelevanceScore
+          filteredResults = filteredResults.filter(
+            item => (item.searchRelevance || 0) >= minRelevanceScore
           );
 
           // Apply specialization relevance boost if specified
           if (specializationId) {
             filteredResults = filteredResults.map(item => ({
               ...item,
-              searchRelevance: this._boostRelevanceForSpecialization(item, specializationId)
+              searchRelevance: this._boostRelevanceForSpecialization(
+                item,
+                specializationId
+              ),
             }));
           }
 
@@ -1475,7 +1591,7 @@ class IHKContentService {
           // Add category metadata if requested
           const categoryData = {
             results: filteredResults,
-            totalFound: filteredResults.length
+            totalFound: filteredResults.length,
           };
 
           if (includeMetadata) {
@@ -1484,13 +1600,15 @@ class IHKContentService {
 
           results.categories[categoryId] = categoryData;
           results.totalResults += filteredResults.length;
-
         } catch (categoryError) {
-          console.warn(`Error searching in category ${categoryId}:`, categoryError);
+          console.warn(
+            `Error searching in category ${categoryId}:`,
+            categoryError
+          );
           results.categories[categoryId] = {
             results: [],
             totalFound: 0,
-            error: categoryError.message
+            error: categoryError.message,
           };
         }
       }
@@ -1501,7 +1619,6 @@ class IHKContentService {
       }
 
       return results;
-
     } catch (error) {
       console.error('Error in enhanced search:', error);
       throw error;
@@ -1519,12 +1636,12 @@ class IHKContentService {
       const {
         maxResults = 20,
         groupByCategory = true,
-        includeEmptyCategories = false
+        includeEmptyCategories = false,
       } = options;
 
       const searchResults = await this.searchWithCategoryFiltering(query, {
         ...options,
-        maxResultsPerCategory: Math.ceil(maxResults / 3) // Distribute across categories
+        maxResultsPerCategory: Math.ceil(maxResults / 3), // Distribute across categories
       });
 
       if (!groupByCategory) {
@@ -1542,12 +1659,19 @@ class IHKContentService {
 
       // Return grouped results
       const groupedResults = [];
-      const categoryOrder = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+      const categoryOrder = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
 
       for (const categoryId of categoryOrder) {
         const categoryData = searchResults.categories[categoryId];
-        
-        if (!categoryData || (!includeEmptyCategories && categoryData.totalFound === 0)) {
+
+        if (
+          !categoryData ||
+          (!includeEmptyCategories && categoryData.totalFound === 0)
+        ) {
           continue;
         }
 
@@ -1555,12 +1679,11 @@ class IHKContentService {
           category: categoryId,
           categoryName: this._getCategoryMetadata(categoryId).name,
           results: categoryData.results || [],
-          totalFound: categoryData.totalFound || 0
+          totalFound: categoryData.totalFound || 0,
         });
       }
 
       return groupedResults;
-
     } catch (error) {
       console.error('Error in searchAllCategories:', error);
       return [];
@@ -1583,23 +1706,24 @@ class IHKContentService {
 
       const allContent = [
         ...Array.from(this.modules.values()),
-        ...Array.from(this.quizzes.values())
+        ...Array.from(this.quizzes.values()),
       ];
 
       // Find similar terms in titles and descriptions
       const similarTerms = new Set();
-      
+
       allContent.forEach(item => {
         // Extract words from title and description
-        const text = `${item.title || ''} ${item.description || ''}`.toLowerCase();
+        const text =
+          `${item.title || ''} ${item.description || ''}`.toLowerCase();
         const words = text.split(/\s+/).filter(word => word.length > 2);
-        
+
         words.forEach(word => {
           // Find words that are similar to search term
           if (word.includes(searchTerm) || searchTerm.includes(word)) {
             similarTerms.add(word);
           }
-          
+
           // Find words that start with search term
           if (word.startsWith(searchTerm) && word !== searchTerm) {
             similarTerms.add(word);
@@ -1613,23 +1737,26 @@ class IHKContentService {
         .forEach(term => {
           suggestions.push({
             text: term,
-            type: 'similar_term'
+            type: 'similar_term',
           });
         });
 
       // Add category-based suggestions
-      const categories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+      const categories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
       categories.forEach(categoryId => {
         const metadata = this._getCategoryMetadata(categoryId);
         suggestions.push({
           text: `${query} in ${metadata.name}`,
           type: 'category_filter',
-          categoryId: categoryId
+          categoryId: categoryId,
         });
       });
 
       return suggestions.slice(0, 8); // Limit total suggestions
-
     } catch (error) {
       console.error('Error generating search suggestions:', error);
       return [];
@@ -1656,13 +1783,18 @@ class IHKContentService {
     }
 
     // Description matches get medium score
-    if (item.description && item.description.toLowerCase().includes(searchTerm)) {
+    if (
+      item.description &&
+      item.description.toLowerCase().includes(searchTerm)
+    ) {
       score += 5;
     }
 
     // Tag matches get medium score
     if (item.tags && Array.isArray(item.tags)) {
-      const tagMatches = item.tags.filter(tag => tag.toLowerCase().includes(searchTerm)).length;
+      const tagMatches = item.tags.filter(tag =>
+        tag.toLowerCase().includes(searchTerm)
+      ).length;
       score += tagMatches * 3;
     }
 
@@ -1673,8 +1805,8 @@ class IHKContentService {
 
     // Question matches for quizzes
     if (item.questions && Array.isArray(item.questions)) {
-      const questionMatches = item.questions.filter(q => 
-        q.question && q.question.toLowerCase().includes(searchTerm)
+      const questionMatches = item.questions.filter(
+        q => q.question && q.question.toLowerCase().includes(searchTerm)
       ).length;
       score += questionMatches * 2;
     }
@@ -1692,7 +1824,10 @@ class IHKContentService {
   _boostRelevanceForSpecialization(item, specializationId) {
     let boostedScore = item.searchRelevance || 0;
 
-    if (item.specializationRelevance && item.specializationRelevance[specializationId]) {
+    if (
+      item.specializationRelevance &&
+      item.specializationRelevance[specializationId]
+    ) {
       const relevance = item.specializationRelevance[specializationId];
       const boost = relevance === 'high' ? 5 : relevance === 'medium' ? 3 : 1;
       boostedScore += boost;
@@ -1711,19 +1846,24 @@ class IHKContentService {
   _sortSearchResults(results, sortBy) {
     switch (sortBy) {
       case 'title':
-        return results.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
-      
-      case 'difficulty':
-        const difficultyOrder = { 'beginner': 1, 'intermediate': 2, 'advanced': 3 };
+        return results.sort((a, b) =>
+          (a.title || '').localeCompare(b.title || '')
+        );
+
+      case 'difficulty': {
+        const difficultyOrder = { beginner: 1, intermediate: 2, advanced: 3 };
         return results.sort((a, b) => {
           const aDiff = difficultyOrder[a.difficulty] || 2;
           const bDiff = difficultyOrder[b.difficulty] || 2;
           return aDiff - bDiff;
         });
-      
+      }
+
       case 'relevance':
       default:
-        return results.sort((a, b) => (b.searchRelevance || 0) - (a.searchRelevance || 0));
+        return results.sort(
+          (a, b) => (b.searchRelevance || 0) - (a.searchRelevance || 0)
+        );
     }
   }
 
@@ -1738,24 +1878,26 @@ class IHKContentService {
       'daten-prozessanalyse': {
         id: 'daten-prozessanalyse',
         name: 'Daten und Prozessanalyse',
-        description: 'Inhalte mit hoher Relevanz für die Fachrichtung Daten- und Prozessanalyse',
+        description:
+          'Inhalte mit hoher Relevanz für die Fachrichtung Daten- und Prozessanalyse',
         color: '#3b82f6',
-        icon: '📊'
+        icon: '📊',
       },
-      'anwendungsentwicklung': {
+      anwendungsentwicklung: {
         id: 'anwendungsentwicklung',
         name: 'Anwendungsentwicklung',
-        description: 'Inhalte mit hoher Relevanz für die Fachrichtung Anwendungsentwicklung',
+        description:
+          'Inhalte mit hoher Relevanz für die Fachrichtung Anwendungsentwicklung',
         color: '#10b981',
-        icon: '💻'
+        icon: '💻',
       },
-      'allgemein': {
+      allgemein: {
         id: 'allgemein',
         name: 'Allgemein',
         description: 'Allgemeine Inhalte relevant für beide Fachrichtungen',
         color: '#6b7280',
-        icon: '📚'
-      }
+        icon: '📚',
+      },
     };
 
     return metadata[categoryId] || metadata['allgemein'];
@@ -1772,12 +1914,12 @@ class IHKContentService {
       beginner: 0,
       intermediate: 0,
       advanced: 0,
-      unknown: 0
+      unknown: 0,
     };
 
     content.forEach(item => {
       const difficulty = item.difficulty || 'unknown';
-      if (distribution.hasOwnProperty(difficulty)) {
+      if (Object.prototype.hasOwnProperty.call(distribution, difficulty)) {
         distribution[difficulty]++;
       } else {
         distribution.unknown++;
@@ -1788,13 +1930,14 @@ class IHKContentService {
     const total = content.length;
     const percentages = {};
     Object.keys(distribution).forEach(level => {
-      percentages[level] = total > 0 ? Math.round((distribution[level] / total) * 100) : 0;
+      percentages[level] =
+        total > 0 ? Math.round((distribution[level] / total) * 100) : 0;
     });
 
     return {
       counts: distribution,
       percentages: percentages,
-      total: total
+      total: total,
     };
   }
 
@@ -1808,7 +1951,7 @@ class IHKContentService {
     const breakdown = {
       modules: 0,
       quizzes: 0,
-      other: 0
+      other: 0,
     };
 
     content.forEach(item => {
@@ -1824,13 +1967,14 @@ class IHKContentService {
     const total = content.length;
     const percentages = {};
     Object.keys(breakdown).forEach(type => {
-      percentages[type] = total > 0 ? Math.round((breakdown[type] / total) * 100) : 0;
+      percentages[type] =
+        total > 0 ? Math.round((breakdown[type] / total) * 100) : 0;
     });
 
     return {
       counts: breakdown,
       percentages: percentages,
-      total: total
+      total: total,
     };
   }
 
@@ -1843,8 +1987,8 @@ class IHKContentService {
    */
   _calculateSpecializationRelevance(content, specializationId = null) {
     const relevanceBreakdown = {
-      'anwendungsentwicklung': { high: 0, medium: 0, low: 0, none: 0 },
-      'daten-prozessanalyse': { high: 0, medium: 0, low: 0, none: 0 }
+      anwendungsentwicklung: { high: 0, medium: 0, low: 0, none: 0 },
+      'daten-prozessanalyse': { high: 0, medium: 0, low: 0, none: 0 },
     };
 
     content.forEach(item => {
@@ -1870,17 +2014,18 @@ class IHKContentService {
     Object.keys(relevanceBreakdown).forEach(specId => {
       const counts = relevanceBreakdown[specId];
       const total = content.length;
-      
+
       const percentages = {};
       Object.keys(counts).forEach(level => {
-        percentages[level] = total > 0 ? Math.round((counts[level] / total) * 100) : 0;
+        percentages[level] =
+          total > 0 ? Math.round((counts[level] / total) * 100) : 0;
       });
 
       result[specId] = {
         counts: counts,
         percentages: percentages,
         total: total,
-        isCurrentSpecialization: specId === specializationId
+        isCurrentSpecialization: specId === specializationId,
       };
     });
 
@@ -1906,14 +2051,14 @@ class IHKContentService {
           total: 0,
           completed: 0,
           inProgress: 0,
-          notStarted: 0
+          notStarted: 0,
         },
         quizzes: {
           total: 0,
           attempted: 0,
           passed: 0,
-          notAttempted: 0
-        }
+          notAttempted: 0,
+        },
       };
 
       content.forEach(item => {
@@ -1948,24 +2093,53 @@ class IHKContentService {
       const quizTotal = stats.quizzes.total;
 
       stats.modules.percentages = {
-        completed: moduleTotal > 0 ? Math.round((stats.modules.completed / moduleTotal) * 100) : 0,
-        inProgress: moduleTotal > 0 ? Math.round((stats.modules.inProgress / moduleTotal) * 100) : 0,
-        notStarted: moduleTotal > 0 ? Math.round((stats.modules.notStarted / moduleTotal) * 100) : 0
+        completed:
+          moduleTotal > 0
+            ? Math.round((stats.modules.completed / moduleTotal) * 100)
+            : 0,
+        inProgress:
+          moduleTotal > 0
+            ? Math.round((stats.modules.inProgress / moduleTotal) * 100)
+            : 0,
+        notStarted:
+          moduleTotal > 0
+            ? Math.round((stats.modules.notStarted / moduleTotal) * 100)
+            : 0,
       };
 
       stats.quizzes.percentages = {
-        attempted: quizTotal > 0 ? Math.round((stats.quizzes.attempted / quizTotal) * 100) : 0,
-        passed: quizTotal > 0 ? Math.round((stats.quizzes.passed / quizTotal) * 100) : 0,
-        notAttempted: quizTotal > 0 ? Math.round((stats.quizzes.notAttempted / quizTotal) * 100) : 0
+        attempted:
+          quizTotal > 0
+            ? Math.round((stats.quizzes.attempted / quizTotal) * 100)
+            : 0,
+        passed:
+          quizTotal > 0
+            ? Math.round((stats.quizzes.passed / quizTotal) * 100)
+            : 0,
+        notAttempted:
+          quizTotal > 0
+            ? Math.round((stats.quizzes.notAttempted / quizTotal) * 100)
+            : 0,
       };
 
       return stats;
-
     } catch (error) {
       console.error('Error calculating progress stats:', error);
       return {
-        modules: { total: 0, completed: 0, inProgress: 0, notStarted: 0, percentages: {} },
-        quizzes: { total: 0, attempted: 0, passed: 0, notAttempted: 0, percentages: {} }
+        modules: {
+          total: 0,
+          completed: 0,
+          inProgress: 0,
+          notStarted: 0,
+          percentages: {},
+        },
+        quizzes: {
+          total: 0,
+          attempted: 0,
+          passed: 0,
+          notAttempted: 0,
+          percentages: {},
+        },
       };
     }
   }
@@ -1981,7 +2155,7 @@ class IHKContentService {
       mostPopulousCategory: null,
       mostDiverseCategory: null,
       recommendedStartingCategory: null,
-      categoryBalance: 'balanced' // balanced, skewed, heavily_skewed
+      categoryBalance: 'balanced', // balanced, skewed, heavily_skewed
     };
 
     // Find most populous category
@@ -1993,18 +2167,23 @@ class IHKContentService {
         insights.mostPopulousCategory = {
           id: categoryId,
           name: categories[categoryId].metadata.name,
-          count: count
+          count: count,
         };
       }
     });
 
     // Calculate category balance
-    const counts = Object.values(categories).map(cat => cat.contentCounts.total);
+    const counts = Object.values(categories).map(
+      cat => cat.contentCounts.total
+    );
     const total = counts.reduce((sum, count) => sum + count, 0);
     const average = total / counts.length;
-    const variance = counts.reduce((sum, count) => sum + Math.pow(count - average, 2), 0) / counts.length;
+    const variance =
+      counts.reduce((sum, count) => sum + Math.pow(count - average, 2), 0) /
+      counts.length;
     const standardDeviation = Math.sqrt(variance);
-    const coefficientOfVariation = average > 0 ? standardDeviation / average : 0;
+    const coefficientOfVariation =
+      average > 0 ? standardDeviation / average : 0;
 
     if (coefficientOfVariation < 0.2) {
       insights.categoryBalance = 'balanced';
@@ -2017,23 +2196,28 @@ class IHKContentService {
     // Find most diverse category (most even difficulty distribution)
     let mostDiverse = null;
     let lowestVariance = Infinity;
-    
+
     Object.keys(categories).forEach(categoryId => {
       const category = categories[categoryId];
       if (category.difficultyDistribution) {
-        const diffCounts = Object.values(category.difficultyDistribution.counts);
+        const diffCounts = Object.values(
+          category.difficultyDistribution.counts
+        );
         const diffTotal = diffCounts.reduce((sum, count) => sum + count, 0);
         if (diffTotal > 0) {
           const diffAverage = diffTotal / diffCounts.length;
-          const diffVariance = diffCounts.reduce((sum, count) => 
-            sum + Math.pow(count - diffAverage, 2), 0) / diffCounts.length;
-          
+          const diffVariance =
+            diffCounts.reduce(
+              (sum, count) => sum + Math.pow(count - diffAverage, 2),
+              0
+            ) / diffCounts.length;
+
           if (diffVariance < lowestVariance) {
             lowestVariance = diffVariance;
             mostDiverse = {
               id: categoryId,
               name: category.metadata.name,
-              variance: diffVariance
+              variance: diffVariance,
             };
           }
         }
@@ -2047,13 +2231,14 @@ class IHKContentService {
     Object.keys(categories).forEach(categoryId => {
       const category = categories[categoryId];
       if (category.difficultyDistribution) {
-        const beginnerPercentage = category.difficultyDistribution.percentages.beginner || 0;
+        const beginnerPercentage =
+          category.difficultyDistribution.percentages.beginner || 0;
         if (beginnerPercentage > maxBeginnerPercentage) {
           maxBeginnerPercentage = beginnerPercentage;
           insights.recommendedStartingCategory = {
             id: categoryId,
             name: category.metadata.name,
-            beginnerPercentage: beginnerPercentage
+            beginnerPercentage: beginnerPercentage,
           };
         }
       }
@@ -2074,7 +2259,7 @@ class IHKContentService {
       primaryCategory: null,
       secondaryCategories: [],
       contentDistribution: {},
-      recommendedFocus: []
+      recommendedFocus: [],
     };
 
     // Calculate relevance scores for each category
@@ -2082,43 +2267,58 @@ class IHKContentService {
     Object.keys(categories).forEach(categoryId => {
       const category = categories[categoryId];
       let score = 0;
-      
-      if (category.specializationRelevance && category.specializationRelevance[specializationId]) {
+
+      if (
+        category.specializationRelevance &&
+        category.specializationRelevance[specializationId]
+      ) {
         const relevance = category.specializationRelevance[specializationId];
-        score = (relevance.counts.high * 3) + (relevance.counts.medium * 2) + (relevance.counts.low * 1);
+        score =
+          relevance.counts.high * 3 +
+          relevance.counts.medium * 2 +
+          relevance.counts.low * 1;
       }
-      
+
       categoryScores[categoryId] = {
         score: score,
         name: category.metadata.name,
-        totalContent: category.contentCounts.total
+        totalContent: category.contentCounts.total,
       };
     });
 
     // Sort categories by relevance score
-    const sortedCategories = Object.keys(categoryScores)
-      .sort((a, b) => categoryScores[b].score - categoryScores[a].score);
+    const sortedCategories = Object.keys(categoryScores).sort(
+      (a, b) => categoryScores[b].score - categoryScores[a].score
+    );
 
     if (sortedCategories.length > 0) {
       insights.primaryCategory = {
         id: sortedCategories[0],
-        ...categoryScores[sortedCategories[0]]
+        ...categoryScores[sortedCategories[0]],
       };
 
-      insights.secondaryCategories = sortedCategories.slice(1).map(categoryId => ({
-        id: categoryId,
-        ...categoryScores[categoryId]
-      }));
+      insights.secondaryCategories = sortedCategories
+        .slice(1)
+        .map(categoryId => ({
+          id: categoryId,
+          ...categoryScores[categoryId],
+        }));
     }
 
     // Generate content distribution insights
-    const totalContent = Object.values(categoryScores).reduce((sum, cat) => sum + cat.totalContent, 0);
+    const totalContent = Object.values(categoryScores).reduce(
+      (sum, cat) => sum + cat.totalContent,
+      0
+    );
     Object.keys(categoryScores).forEach(categoryId => {
       const category = categoryScores[categoryId];
       insights.contentDistribution[categoryId] = {
-        percentage: totalContent > 0 ? Math.round((category.totalContent / totalContent) * 100) : 0,
+        percentage:
+          totalContent > 0
+            ? Math.round((category.totalContent / totalContent) * 100)
+            : 0,
         relevanceScore: category.score,
-        name: category.name
+        name: category.name,
       };
     });
 
@@ -2127,16 +2327,17 @@ class IHKContentService {
       insights.recommendedFocus.push({
         category: insights.primaryCategory.id,
         reason: 'Highest relevance for your specialization',
-        priority: 'high'
+        priority: 'high',
       });
     }
 
     insights.secondaryCategories.forEach((category, index) => {
-      if (category.score > 0 && index < 2) { // Top 2 secondary categories
+      if (category.score > 0 && index < 2) {
+        // Top 2 secondary categories
         insights.recommendedFocus.push({
           category: category.id,
           reason: 'Complementary content for your specialization',
-          priority: index === 0 ? 'medium' : 'low'
+          priority: index === 0 ? 'medium' : 'low',
         });
       }
     });
@@ -2159,9 +2360,15 @@ class IHKContentService {
       let relevanceScore = 0;
       let highRelevanceCount = 0;
 
-      if (category.specializationRelevance && category.specializationRelevance[specializationId]) {
+      if (
+        category.specializationRelevance &&
+        category.specializationRelevance[specializationId]
+      ) {
         const relevance = category.specializationRelevance[specializationId];
-        relevanceScore = (relevance.counts.high * 3) + (relevance.counts.medium * 2) + (relevance.counts.low * 1);
+        relevanceScore =
+          relevance.counts.high * 3 +
+          relevance.counts.medium * 2 +
+          relevance.counts.low * 1;
         highRelevanceCount = relevance.counts.high;
       }
 
@@ -2171,8 +2378,12 @@ class IHKContentService {
         relevanceScore: relevanceScore,
         highRelevanceCount: highRelevanceCount,
         totalContent: category.contentCounts.total,
-        relevancePercentage: category.contentCounts.total > 0 ? 
-          Math.round((relevanceScore / (category.contentCounts.total * 3)) * 100) : 0
+        relevancePercentage:
+          category.contentCounts.total > 0
+            ? Math.round(
+                (relevanceScore / (category.contentCounts.total * 3)) * 100
+              )
+            : 0,
       });
     });
 
@@ -2194,35 +2405,38 @@ class IHKContentService {
         metadata: {
           id: 'daten-prozessanalyse',
           name: 'Daten und Prozessanalyse',
-          description: 'Inhalte mit hoher Relevanz für die Fachrichtung Daten- und Prozessanalyse',
+          description:
+            'Inhalte mit hoher Relevanz für die Fachrichtung Daten- und Prozessanalyse',
           color: '#3b82f6',
-          icon: '📊'
-        }
+          icon: '📊',
+        },
       },
-      'anwendungsentwicklung': {
+      anwendungsentwicklung: {
         modules: [],
         quizzes: [],
         relevance: 'none',
         metadata: {
           id: 'anwendungsentwicklung',
           name: 'Anwendungsentwicklung',
-          description: 'Inhalte mit hoher Relevanz für die Fachrichtung Anwendungsentwicklung',
+          description:
+            'Inhalte mit hoher Relevanz für die Fachrichtung Anwendungsentwicklung',
           color: '#10b981',
-          icon: '💻'
-        }
+          icon: '💻',
+        },
       },
-      'allgemein': {
+      allgemein: {
         modules: [],
         quizzes: [],
         relevance: 'none',
         metadata: {
           id: 'allgemein',
           name: 'Allgemein',
-          description: 'Fachrichtungsübergreifende Inhalte und Grundlagen für beide Spezialisierungen',
+          description:
+            'Fachrichtungsübergreifende Inhalte und Grundlagen für beide Spezialisierungen',
           color: '#6b7280',
-          icon: '📚'
-        }
-      }
+          icon: '📚',
+        },
+      },
     };
   }
 
@@ -2248,8 +2462,8 @@ class IHKContentService {
       // Initialize indexes for each three-tier category
       const categoryIndexes = {
         'daten-prozessanalyse': { modules: new Set(), quizzes: new Set() },
-        'anwendungsentwicklung': { modules: new Set(), quizzes: new Set() },
-        'allgemein': { modules: new Set(), quizzes: new Set() }
+        anwendungsentwicklung: { modules: new Set(), quizzes: new Set() },
+        allgemein: { modules: new Set(), quizzes: new Set() },
       };
 
       // Index modules by three-tier category
@@ -2270,19 +2484,24 @@ class IHKContentService {
 
       // Store indexes in cache
       Object.keys(categoryIndexes).forEach(categoryId => {
-        this.categoryIndexCache.set(`modules-${categoryId}`, categoryIndexes[categoryId].modules);
-        this.categoryIndexCache.set(`quizzes-${categoryId}`, categoryIndexes[categoryId].quizzes);
+        this.categoryIndexCache.set(
+          `modules-${categoryId}`,
+          categoryIndexes[categoryId].modules
+        );
+        this.categoryIndexCache.set(
+          `quizzes-${categoryId}`,
+          categoryIndexes[categoryId].quizzes
+        );
       });
 
       // Store combined content indexes
       Object.keys(categoryIndexes).forEach(categoryId => {
         const combinedIds = new Set([
           ...categoryIndexes[categoryId].modules,
-          ...categoryIndexes[categoryId].quizzes
+          ...categoryIndexes[categoryId].quizzes,
         ]);
         this.categoryIndexCache.set(`content-${categoryId}`, combinedIds);
       });
-
     } catch (error) {
       console.error('Error building category indexes:', error);
     }
@@ -2297,7 +2516,7 @@ class IHKContentService {
    */
   _getCategoryContentIds(categoryId, contentType = 'content') {
     this._buildCategoryIndexes();
-    
+
     const cacheKey = `${contentType}-${categoryId}`;
     return this.categoryIndexCache.get(cacheKey) || new Set();
   }
@@ -2333,14 +2552,18 @@ class IHKContentService {
       this._buildCategoryIndexes();
 
       // Preload content for each category
-      const categories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
-      
+      const categories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
+
       for (const categoryId of categories) {
         // This will populate the cache
         await this.getContentByThreeTierCategory(categoryId);
       }
 
-      console.log('Categorized content preloaded successfully');
+      console.warn('Categorized content preloaded successfully');
     } catch (error) {
       console.error('Error preloading categorized content:', error);
     }
@@ -2354,27 +2577,29 @@ class IHKContentService {
     return {
       modules: {
         total: this.modules.size,
-        cached: this.modules.size
+        cached: this.modules.size,
       },
       quizzes: {
         total: this.quizzes.size,
-        cached: this.quizzes.size
+        cached: this.quizzes.size,
       },
       categorizedContent: {
         cacheSize: this.categorizedContentCache.size,
-        cachedCategories: Array.from(this.categorizedContentCache.keys())
+        cachedCategories: Array.from(this.categorizedContentCache.keys()),
       },
       categoryIndexes: {
         indexCount: this.categoryIndexCache.size,
-        indexes: Array.from(this.categoryIndexCache.keys())
+        indexes: Array.from(this.categoryIndexCache.keys()),
       },
       memoryUsage: {
         // Rough estimation of memory usage
         modulesMemory: this._estimateMapMemoryUsage(this.modules),
         quizzesMemory: this._estimateMapMemoryUsage(this.quizzes),
-        categorizedCacheMemory: this._estimateMapMemoryUsage(this.categorizedContentCache),
-        indexCacheMemory: this._estimateMapMemoryUsage(this.categoryIndexCache)
-      }
+        categorizedCacheMemory: this._estimateMapMemoryUsage(
+          this.categorizedContentCache
+        ),
+        indexCacheMemory: this._estimateMapMemoryUsage(this.categoryIndexCache),
+      },
     };
   }
 
@@ -2388,7 +2613,7 @@ class IHKContentService {
     try {
       const jsonString = JSON.stringify(Array.from(map.entries()));
       const bytes = new Blob([jsonString]).size;
-      
+
       if (bytes < 1024) return `${bytes} B`;
       if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
       return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
@@ -2409,8 +2634,8 @@ class IHKContentService {
       // Remove stale categorized content cache entries
       const validCacheKeys = [
         'three-tier-daten-prozessanalyse',
-        'three-tier-anwendungsentwicklung', 
-        'three-tier-allgemein'
+        'three-tier-anwendungsentwicklung',
+        'three-tier-allgemein',
       ];
 
       const currentKeys = Array.from(this.categorizedContentCache.keys());
@@ -2420,7 +2645,7 @@ class IHKContentService {
         }
       });
 
-      console.log('Cache optimization completed');
+      console.warn('Cache optimization completed');
     } catch (error) {
       console.error('Error optimizing cache:', error);
     }
@@ -2439,7 +2664,9 @@ class IHKContentService {
   async getThreeTierCategories() {
     try {
       if (!this.categoryMappingService) {
-        console.warn('CategoryMappingService not available, returning default categories');
+        console.warn(
+          'CategoryMappingService not available, returning default categories'
+        );
         return this._getDefaultThreeTierCategories();
       }
 
@@ -2461,21 +2688,30 @@ class IHKContentService {
         throw new Error('Invalid three-tier category ID');
       }
 
-      const validCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+      const validCategories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
       if (!validCategories.includes(categoryId)) {
-        throw new Error(`Invalid three-tier category: ${categoryId}. Must be one of: ${validCategories.join(', ')}`);
+        throw new Error(
+          `Invalid three-tier category: ${categoryId}. Must be one of: ${validCategories.join(', ')}`
+        );
       }
 
       // Get all content in category and filter for modules only
-      const categoryContent = await this.getContentByThreeTierCategory(categoryId);
-      const modules = categoryContent.filter(item => 
-        item.contentType === 'module' || 
-        (item.content || item.sections) // Modules have content/sections, quizzes have questions
+      const categoryContent =
+        await this.getContentByThreeTierCategory(categoryId);
+      const modules = categoryContent.filter(
+        item => item.contentType === 'module' || item.content || item.sections // Modules have content/sections, quizzes have questions
       );
 
       return modules;
     } catch (error) {
-      console.error(`Error getting modules by three-tier category ${categoryId}:`, error);
+      console.error(
+        `Error getting modules by three-tier category ${categoryId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -2491,21 +2727,30 @@ class IHKContentService {
         throw new Error('Invalid three-tier category ID');
       }
 
-      const validCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+      const validCategories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
       if (!validCategories.includes(categoryId)) {
-        throw new Error(`Invalid three-tier category: ${categoryId}. Must be one of: ${validCategories.join(', ')}`);
+        throw new Error(
+          `Invalid three-tier category: ${categoryId}. Must be one of: ${validCategories.join(', ')}`
+        );
       }
 
       // Get all content in category and filter for quizzes only
-      const categoryContent = await this.getContentByThreeTierCategory(categoryId);
-      const quizzes = categoryContent.filter(item => 
-        item.contentType === 'quiz' || 
-        item.questions // Quizzes have questions array
+      const categoryContent =
+        await this.getContentByThreeTierCategory(categoryId);
+      const quizzes = categoryContent.filter(
+        item => item.contentType === 'quiz' || item.questions // Quizzes have questions array
       );
 
       return quizzes;
     } catch (error) {
-      console.error(`Error getting quizzes by three-tier category ${categoryId}:`, error);
+      console.error(
+        `Error getting quizzes by three-tier category ${categoryId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -2536,19 +2781,25 @@ class IHKContentService {
         throw new Error('Invalid three-tier category ID');
       }
 
-      const validCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+      const validCategories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
       if (!validCategories.includes(categoryId)) {
         throw new Error(`Invalid three-tier category: ${categoryId}`);
       }
 
       if (!this.categoryMappingService) {
-        console.warn('CategoryMappingService not available, returning default metadata');
+        console.warn(
+          'CategoryMappingService not available, returning default metadata'
+        );
         return this._getDefaultCategoryMetadata(categoryId);
       }
 
       const categories = this.categoryMappingService.getThreeTierCategories();
       const category = categories.find(cat => cat.id === categoryId);
-      
+
       if (!category) {
         throw new Error(`Category metadata not found for: ${categoryId}`);
       }
@@ -2557,16 +2808,19 @@ class IHKContentService {
       const contentStats = await this.getThreeTierCategoryStats({
         includeSpecializationRelevance: true,
         includeDifficultyDistribution: true,
-        includeContentTypes: true
+        includeContentTypes: true,
       });
 
       return {
         ...category,
         statistics: contentStats.categories[categoryId] || null,
-        lastUpdated: new Date().toISOString()
+        lastUpdated: new Date().toISOString(),
       };
     } catch (error) {
-      console.error(`Error getting three-tier category metadata for ${categoryId}:`, error);
+      console.error(
+        `Error getting three-tier category metadata for ${categoryId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -2580,13 +2834,23 @@ class IHKContentService {
   async searchThreeTierCategories(query, options = {}) {
     try {
       const {
-        categories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'],
+        categories = [
+          'daten-prozessanalyse',
+          'anwendungsentwicklung',
+          'allgemein',
+        ],
         ...searchOptions
       } = options;
 
       // Validate categories
-      const validCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
-      const filteredCategories = categories.filter(cat => validCategories.includes(cat));
+      const validCategories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
+      const filteredCategories = categories.filter(cat =>
+        validCategories.includes(cat)
+      );
 
       if (filteredCategories.length === 0) {
         throw new Error('No valid three-tier categories specified for search');
@@ -2595,7 +2859,7 @@ class IHKContentService {
       // Use existing enhanced search with category filtering
       return await this.searchWithCategoryFiltering(query, {
         categories: filteredCategories,
-        ...searchOptions
+        ...searchOptions,
       });
     } catch (error) {
       console.error('Error searching three-tier categories:', error);
@@ -2618,7 +2882,7 @@ class IHKContentService {
       const {
         maxRelatedPerCategory = 3,
         includeAllCategories = true,
-        relationshipTypes = ['prerequisite', 'related', 'advanced']
+        relationshipTypes = ['prerequisite', 'related', 'advanced'],
       } = options;
 
       // Get the source content item
@@ -2633,32 +2897,34 @@ class IHKContentService {
       // Use ContentRelationshipService if available
       if (this.contentRelationshipService) {
         return await this.contentRelationshipService.getRelatedContentAcrossCategories(
-          contentId, 
+          contentId,
           options
         );
       }
 
       // Fallback implementation
-      console.warn('ContentRelationshipService not available, using basic relationship detection');
-      
+      console.warn(
+        'ContentRelationshipService not available, using basic relationship detection'
+      );
+
       const result = {
         sourceContent: sourceContent,
         relatedContent: {
           'daten-prozessanalyse': [],
-          'anwendungsentwicklung': [],
-          'allgemein': []
+          anwendungsentwicklung: [],
+          allgemein: [],
         },
         relationshipSummary: {
           totalRelated: 0,
           byType: {},
-          byCategory: {}
-        }
+          byCategory: {},
+        },
       };
 
       // Basic relationship detection based on tags and categories
       const allContent = [
         ...Array.from(this.modules.values()),
-        ...Array.from(this.quizzes.values())
+        ...Array.from(this.quizzes.values()),
       ];
 
       const sourceTags = sourceContent.tags || [];
@@ -2669,31 +2935,37 @@ class IHKContentService {
 
         const itemCategory = item.threeTierCategory || 'allgemein';
         const itemTags = item.tags || [];
-        
+
         // Calculate relationship score based on tag overlap
         const commonTags = sourceTags.filter(tag => itemTags.includes(tag));
         const relationshipScore = commonTags.length;
 
-        if (relationshipScore > 0 && result.relatedContent[itemCategory].length < maxRelatedPerCategory) {
+        if (
+          relationshipScore > 0 &&
+          result.relatedContent[itemCategory].length < maxRelatedPerCategory
+        ) {
           result.relatedContent[itemCategory].push({
             ...item,
             relationshipScore: relationshipScore,
             relationshipType: 'related',
-            commonTags: commonTags
+            commonTags: commonTags,
           });
         }
       });
 
       // Sort by relationship score
       Object.keys(result.relatedContent).forEach(categoryId => {
-        result.relatedContent[categoryId].sort((a, b) => b.relationshipScore - a.relationshipScore);
+        result.relatedContent[categoryId].sort(
+          (a, b) => b.relationshipScore - a.relationshipScore
+        );
       });
 
       // Calculate summary statistics
       Object.keys(result.relatedContent).forEach(categoryId => {
         const categoryRelated = result.relatedContent[categoryId];
         result.relationshipSummary.totalRelated += categoryRelated.length;
-        result.relationshipSummary.byCategory[categoryId] = categoryRelated.length;
+        result.relationshipSummary.byCategory[categoryId] =
+          categoryRelated.length;
       });
 
       return result;
@@ -2714,21 +2986,29 @@ class IHKContentService {
    * Get modules by legacy category - maintained for backward compatibility
    */
   async getModulesByLegacyCategory(categoryId) {
-    console.warn('getModulesByLegacyCategory() is deprecated. Use getModulesByThreeTierCategory() instead.');
-    
+    console.warn(
+      'getModulesByLegacyCategory() is deprecated. Use getModulesByThreeTierCategory() instead.'
+    );
+
     try {
       // Map legacy category to three-tier category if possible
       if (this.categoryMappingService) {
-        const mappingResult = this.categoryMappingService.mapLegacyCategoryToThreeTier(categoryId);
+        const mappingResult =
+          this.categoryMappingService.mapLegacyCategoryToThreeTier(categoryId);
         if (mappingResult) {
-          return await this.getModulesByThreeTierCategory(mappingResult.threeTierCategory);
+          return await this.getModulesByThreeTierCategory(
+            mappingResult.threeTierCategory
+          );
         }
       }
 
       // Fallback to existing method
       return await this.getModulesByCategory(categoryId);
     } catch (error) {
-      console.error(`Error in legacy category method for ${categoryId}:`, error);
+      console.error(
+        `Error in legacy category method for ${categoryId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -2738,16 +3018,21 @@ class IHKContentService {
    * Legacy search method - maintained for backward compatibility
    */
   async searchContentLegacy(query, filters = {}) {
-    console.warn('searchContentLegacy() is deprecated. Use searchThreeTierCategories() instead.');
-    
+    console.warn(
+      'searchContentLegacy() is deprecated. Use searchThreeTierCategories() instead.'
+    );
+
     try {
       // Convert legacy filters to new format if possible
       const newOptions = {};
-      
+
       if (filters.category) {
         // Try to map legacy category to three-tier
         if (this.categoryMappingService) {
-          const mappingResult = this.categoryMappingService.mapLegacyCategoryToThreeTier(filters.category);
+          const mappingResult =
+            this.categoryMappingService.mapLegacyCategoryToThreeTier(
+              filters.category
+            );
           if (mappingResult) {
             newOptions.categories = [mappingResult.threeTierCategory];
           }
@@ -2782,22 +3067,22 @@ class IHKContentService {
         name: 'Daten und Prozessanalyse',
         description: 'Inhalte mit hoher Relevanz für die DPA-Spezialisierung',
         color: '#2563eb',
-        icon: 'database'
+        icon: 'database',
       },
       {
         id: 'anwendungsentwicklung',
         name: 'Anwendungsentwicklung',
         description: 'Inhalte mit hoher Relevanz für die AE-Spezialisierung',
         color: '#dc2626',
-        icon: 'code'
+        icon: 'code',
       },
       {
         id: 'allgemein',
         name: 'Allgemein',
         description: 'Allgemeine IT-Inhalte für beide Spezialisierungen',
         color: '#059669',
-        icon: 'book'
-      }
+        icon: 'book',
+      },
     ];
   }
 
@@ -2810,14 +3095,16 @@ class IHKContentService {
   _getDefaultCategoryMetadata(categoryId) {
     const defaultCategories = this._getDefaultThreeTierCategories();
     const category = defaultCategories.find(cat => cat.id === categoryId);
-    
-    return category || {
-      id: categoryId,
-      name: categoryId,
-      description: 'Category metadata not available',
-      color: '#6b7280',
-      icon: 'folder'
-    };
+
+    return (
+      category || {
+        id: categoryId,
+        name: categoryId,
+        description: 'Category metadata not available',
+        color: '#6b7280',
+        icon: 'folder',
+      }
+    );
   }
 
   /**
@@ -2828,28 +3115,31 @@ class IHKContentService {
    */
   async getContentByThreeTierCategoryOptimized(categoryId, options = {}) {
     const startTime = performance.now();
-    
+
     try {
       // Use performance optimization service if available
       if (this.performanceOptimizationService) {
-        const result = await this.performanceOptimizationService.getContentByThreeTierCategory(categoryId, options);
-        
+        const result =
+          await this.performanceOptimizationService.getContentByThreeTierCategory(
+            categoryId,
+            options
+          );
+
         // Record performance metrics
         if (this.performanceMonitoringService) {
           this.performanceMonitoringService.recordMetric('categoryFilter', {
             duration: performance.now() - startTime,
             parameters: { categoryId, ...options },
             resultCount: result.length,
-            cacheHit: true // Optimization service uses caching
+            cacheHit: true, // Optimization service uses caching
           });
         }
-        
+
         return result;
       }
-      
+
       // Fallback to original implementation
       return this.getContentByThreeTierCategory(categoryId, options);
-      
     } catch (error) {
       // Record error metrics
       if (this.performanceMonitoringService) {
@@ -2858,10 +3148,10 @@ class IHKContentService {
           parameters: { categoryId, ...options },
           resultCount: 0,
           error: true,
-          errorMessage: error.message
+          errorMessage: error.message,
         });
       }
-      
+
       console.error('Error in optimized category filtering:', error);
       throw error;
     }
@@ -2876,40 +3166,52 @@ class IHKContentService {
    */
   async searchInCategoryOptimized(query, categoryId, options = {}) {
     const startTime = performance.now();
-    
+
     try {
       // Use performance optimization service if available
       if (this.performanceOptimizationService) {
-        const result = await this.performanceOptimizationService.searchInCategory(query, categoryId, options);
-        
+        const result =
+          await this.performanceOptimizationService.searchInCategory(
+            query,
+            categoryId,
+            options
+          );
+
         // Record performance metrics
         if (this.performanceMonitoringService) {
           this.performanceMonitoringService.recordMetric('categorySearch', {
             duration: performance.now() - startTime,
-            parameters: { query: query?.substring(0, 50), categoryId, ...options },
+            parameters: {
+              query: query?.substring(0, 50),
+              categoryId,
+              ...options,
+            },
             resultCount: result.length,
-            cacheHit: true // Optimization service uses caching
+            cacheHit: true, // Optimization service uses caching
           });
         }
-        
+
         return result;
       }
-      
+
       // Fallback to original implementation
       return this.searchInCategory(query, categoryId, options);
-      
     } catch (error) {
       // Record error metrics
       if (this.performanceMonitoringService) {
         this.performanceMonitoringService.recordMetric('categorySearch', {
           duration: performance.now() - startTime,
-          parameters: { query: query?.substring(0, 50), categoryId, ...options },
+          parameters: {
+            query: query?.substring(0, 50),
+            categoryId,
+            ...options,
+          },
           resultCount: 0,
           error: true,
-          errorMessage: error.message
+          errorMessage: error.message,
         });
       }
-      
+
       console.error('Error in optimized category search:', error);
       throw error;
     }
@@ -2923,11 +3225,11 @@ class IHKContentService {
     if (this.performanceMonitoringService) {
       return this.performanceMonitoringService.getDashboardData();
     }
-    
+
     return {
       message: 'Performance monitoring not available',
       optimizationService: !!this.performanceOptimizationService,
-      monitoringService: !!this.performanceMonitoringService
+      monitoringService: !!this.performanceMonitoringService,
     };
   }
 
@@ -2940,11 +3242,11 @@ class IHKContentService {
     if (this.performanceMonitoringService) {
       return this.performanceMonitoringService.getPerformanceReport(options);
     }
-    
+
     return {
       message: 'Performance monitoring not available',
       generatedAt: Date.now(),
-      options
+      options,
     };
   }
 
@@ -2955,7 +3257,7 @@ class IHKContentService {
     if (this.performanceOptimizationService) {
       await this.performanceOptimizationService.invalidateCache();
     }
-    
+
     // Also clear local caches
     this.clearCategorizedContentCache();
   }
@@ -2968,11 +3270,11 @@ class IHKContentService {
     if (this.performanceOptimizationService) {
       this.performanceOptimizationService.configure(config);
     }
-    
+
     if (this.performanceMonitoringService && config.monitoring) {
       this.performanceMonitoringService.configureMonitoring(config.monitoring);
     }
-    
+
     if (config.thresholds && this.performanceMonitoringService) {
       this.performanceMonitoringService.updateThresholds(config.thresholds);
     }

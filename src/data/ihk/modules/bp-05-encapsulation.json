@@ -11,11 +11,22 @@
   "important": true,
   "estimatedTime": 30,
   "prerequisites": [],
-  "tags": ["OOP", "Kapselung", "Encapsulation", "Information Hiding"],
+  "tags": [
+    "OOP",
+    "Kapselung",
+    "Encapsulation",
+    "Information Hiding"
+  ],
   "content": "# Kapselung (Encapsulation)\n\n## Einführung\n\nKapselung ist ein grundlegendes Prinzip der objektorientierten Programmierung.\n\n## Konzept\n\nKapselung bedeutet, dass Daten und Methoden in einer Klasse zusammengefasst werden und der Zugriff kontrolliert wird.",
   "codeExamples": [],
   "relatedQuizzes": [],
   "resources": [],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand OOP",
+    "Understand Kapselung",
+    "Understand Encapsulation",
+    "Understand Information Hiding"
+  ]
 }

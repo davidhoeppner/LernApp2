@@ -1,4 +1,4 @@
-/* global Blob, URL */
+/* global URL */
 import modulesData from '../data/modules.json';
 
 import StorageService from './StorageService.js';
@@ -8,7 +8,13 @@ import { EXAM, PROGRESS_WEIGHTS, PROGRESS_STATUS } from '../utils/constants.js';
  * ProgressService - Tracks and calculates user progress with specialization support
  */
 class ProgressService {
-  constructor(stateManager, storageService, moduleService, quizService, specializationService) {
+  constructor(
+    stateManager,
+    storageService,
+    moduleService,
+    quizService,
+    specializationService
+  ) {
     this.stateManager = stateManager;
     this.storage = storageService || new StorageService();
     this.moduleService = moduleService;
@@ -22,9 +28,12 @@ class ProgressService {
    */
   async getOverallProgress(specializationId = null) {
     try {
-      const currentSpecialization = specializationId || 
-        (this.specializationService ? this.specializationService.getCurrentSpecialization() : null);
-      
+      const currentSpecialization =
+        specializationId ||
+        (this.specializationService
+          ? this.specializationService.getCurrentSpecialization()
+          : null);
+
       const progress = this.stateManager.getState('progress') || {};
       const modulesCompleted = progress.modulesCompleted || [];
       const quizAttempts = progress.quizAttempts || [];
@@ -39,14 +48,15 @@ class ProgressService {
         if (this.moduleService) {
           const modules = await this.moduleService.getModules();
           totalModules = modules.length;
-          
+
           // Filter modules by specialization if available
           if (currentSpecialization && this.specializationService) {
-            relevantModules = this.specializationService.filterContentBySpecialization(
-              modules, 
-              currentSpecialization,
-              { minRelevance: 'low', includeGeneral: true }
-            );
+            relevantModules =
+              this.specializationService.filterContentBySpecialization(
+                modules,
+                currentSpecialization,
+                { minRelevance: 'low', includeGeneral: true }
+              );
           } else {
             relevantModules = modules;
           }
@@ -59,14 +69,15 @@ class ProgressService {
         if (this.quizService) {
           const quizzes = await this.quizService.getQuizzes();
           totalQuizzes = quizzes.length;
-          
+
           // Filter quizzes by specialization if available
           if (currentSpecialization && this.specializationService) {
-            relevantQuizzes = this.specializationService.filterContentBySpecialization(
-              quizzes,
-              currentSpecialization,
-              { minRelevance: 'low', includeGeneral: true }
-            );
+            relevantQuizzes =
+              this.specializationService.filterContentBySpecialization(
+                quizzes,
+                currentSpecialization,
+                { minRelevance: 'low', includeGeneral: true }
+              );
           } else {
             relevantQuizzes = quizzes;
           }
@@ -78,11 +89,11 @@ class ProgressService {
       // Filter completed modules and quiz attempts by relevance
       const relevantModuleIds = relevantModules.map(m => m.id);
       const relevantQuizIds = relevantQuizzes.map(q => q.id);
-      
-      const relevantCompletedModules = modulesCompleted.filter(id => 
+
+      const relevantCompletedModules = modulesCompleted.filter(id =>
         relevantModuleIds.includes(id)
       );
-      
+
       const relevantQuizAttempts = quizAttempts.filter(attempt =>
         relevantQuizIds.includes(attempt.quizId)
       );
@@ -90,7 +101,9 @@ class ProgressService {
       // Calculate module completion percentage
       const moduleCompletionPercentage =
         relevantModules.length > 0
-          ? Math.round((relevantCompletedModules.length / relevantModules.length) * 100)
+          ? Math.round(
+              (relevantCompletedModules.length / relevantModules.length) * 100
+            )
           : 0;
 
       // Calculate average quiz score
@@ -120,7 +133,11 @@ class ProgressService {
         lastActivity: progress.lastActivity || null,
         specialization: currentSpecialization,
         // Additional specialization-specific stats
-        categoryBreakdown: this._getCategoryBreakdown(relevantCompletedModules, relevantQuizAttempts, currentSpecialization)
+        categoryBreakdown: this._getCategoryBreakdown(
+          relevantCompletedModules,
+          relevantQuizAttempts,
+          currentSpecialization
+        ),
       };
     } catch (error) {
       console.error('Error getting overall progress:', error);
@@ -296,7 +313,8 @@ class ProgressService {
     }
 
     try {
-      const categories = this.specializationService.getContentCategories(specializationId);
+      const categories =
+        this.specializationService.getContentCategories(specializationId);
       const breakdown = {};
 
       categories.forEach(category => {
@@ -314,10 +332,16 @@ class ProgressService {
           name: category.name,
           modulesCompleted: categoryModules.length,
           quizzesTaken: categoryQuizzes.length,
-          averageQuizScore: categoryQuizzes.length > 0 
-            ? Math.round(categoryQuizzes.reduce((sum, attempt) => sum + attempt.score, 0) / categoryQuizzes.length)
-            : 0,
-          relevance: category.relevance
+          averageQuizScore:
+            categoryQuizzes.length > 0
+              ? Math.round(
+                  categoryQuizzes.reduce(
+                    (sum, attempt) => sum + attempt.score,
+                    0
+                  ) / categoryQuizzes.length
+                )
+              : 0,
+          relevance: category.relevance,
         };
       });
 
@@ -338,18 +362,21 @@ class ProgressService {
   _isModuleInCategory(moduleId, categoryId) {
     // Simple heuristic based on module ID patterns
     if (categoryId === 'general') {
-      return moduleId.includes('fue-') || moduleId.includes('general-') || 
-             (!moduleId.includes('bp-ae-') && !moduleId.includes('bp-dpa-'));
+      return (
+        moduleId.includes('fue-') ||
+        moduleId.includes('general-') ||
+        (!moduleId.includes('bp-ae-') && !moduleId.includes('bp-dpa-'))
+      );
     }
-    
+
     if (categoryId.includes('BP-AE') || categoryId.includes('ae')) {
       return moduleId.includes('bp-ae-') || moduleId.includes('ae-');
     }
-    
+
     if (categoryId.includes('BP-DPA') || categoryId.includes('dpa')) {
       return moduleId.includes('bp-dpa-') || moduleId.includes('dpa-');
     }
-    
+
     return false;
   }
 
@@ -363,18 +390,21 @@ class ProgressService {
   _isQuizInCategory(quizId, categoryId) {
     // Simple heuristic based on quiz ID patterns
     if (categoryId === 'general') {
-      return quizId.includes('fue-') || quizId.includes('general-') || 
-             (!quizId.includes('bp-ae-') && !quizId.includes('bp-dpa-'));
+      return (
+        quizId.includes('fue-') ||
+        quizId.includes('general-') ||
+        (!quizId.includes('bp-ae-') && !quizId.includes('bp-dpa-'))
+      );
     }
-    
+
     if (categoryId.includes('BP-AE') || categoryId.includes('ae')) {
       return quizId.includes('bp-ae-') || quizId.includes('ae-');
     }
-    
+
     if (categoryId.includes('BP-DPA') || categoryId.includes('dpa')) {
       return quizId.includes('bp-dpa-') || quizId.includes('dpa-');
     }
-    
+
     return false;
   }
 
@@ -391,21 +421,24 @@ class ProgressService {
 
       const progress = this.stateManager.getState('progress') || {};
       const specializationProgress = progress.specializationProgress || {};
-      
+
       // Get saved progress for this specialization
       const savedProgress = specializationProgress[specializationId];
-      
+
       // Get current overall progress for this specialization
       const currentProgress = await this.getOverallProgress(specializationId);
-      
+
       return {
         specializationId,
         current: currentProgress,
         saved: savedProgress || null,
-        lastSwitched: savedProgress?.savedAt || null
+        lastSwitched: savedProgress?.savedAt || null,
       };
     } catch (error) {
-      console.error(`Error getting specialization progress for ${specializationId}:`, error);
+      console.error(
+        `Error getting specialization progress for ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -420,14 +453,20 @@ class ProgressService {
         return {};
       }
 
-      const availableSpecializations = this.specializationService.getAvailableSpecializations();
+      const availableSpecializations =
+        this.specializationService.getAvailableSpecializations();
       const comparison = {};
 
       for (const specialization of availableSpecializations) {
         try {
-          comparison[specialization.id] = await this.getSpecializationProgress(specialization.id);
+          comparison[specialization.id] = await this.getSpecializationProgress(
+            specialization.id
+          );
         } catch (error) {
-          console.warn(`Could not get progress for ${specialization.id}:`, error);
+          console.warn(
+            `Could not get progress for ${specialization.id}:`,
+            error
+          );
           comparison[specialization.id] = null;
         }
       }
@@ -449,7 +488,7 @@ class ProgressService {
   preserveProgressAcrossSpecializations(fromSpecialization, toSpecialization) {
     try {
       const progress = this.stateManager.getState('progress') || {};
-      
+
       // Create specialization-specific progress tracking if it doesn't exist
       if (!progress.specializationProgress) {
         progress.specializationProgress = {};
@@ -462,40 +501,51 @@ class ProgressService {
           modulesInProgress: [...(progress.modulesInProgress || [])],
           quizAttempts: [...(progress.quizAttempts || [])],
           lastActivity: progress.lastActivity,
-          savedAt: new Date().toISOString()
+          savedAt: new Date().toISOString(),
         };
       }
 
       // Restore progress for the new specialization if it exists
       if (progress.specializationProgress[toSpecialization]) {
         const savedProgress = progress.specializationProgress[toSpecialization];
-        
+
         // Merge saved progress with current general progress
-        const generalModules = this._getGeneralModules(progress.modulesCompleted || []);
-        const generalInProgress = this._getGeneralModules(progress.modulesInProgress || []);
-        const generalQuizzes = this._getGeneralQuizAttempts(progress.quizAttempts || []);
+        const generalModules = this._getGeneralModules(
+          progress.modulesCompleted || []
+        );
+        const generalInProgress = this._getGeneralModules(
+          progress.modulesInProgress || []
+        );
+        const generalQuizzes = this._getGeneralQuizAttempts(
+          progress.quizAttempts || []
+        );
 
         progress.modulesCompleted = [
           ...generalModules,
-          ...savedProgress.modulesCompleted.filter(id => !generalModules.includes(id))
+          ...savedProgress.modulesCompleted.filter(
+            id => !generalModules.includes(id)
+          ),
         ];
-        
+
         progress.modulesInProgress = [
           ...generalInProgress,
-          ...savedProgress.modulesInProgress.filter(id => !generalInProgress.includes(id))
+          ...savedProgress.modulesInProgress.filter(
+            id => !generalInProgress.includes(id)
+          ),
         ];
-        
+
         progress.quizAttempts = [
           ...generalQuizzes,
-          ...savedProgress.quizAttempts.filter(attempt => 
-            !generalQuizzes.some(general => general.quizId === attempt.quizId)
-          )
+          ...savedProgress.quizAttempts.filter(
+            attempt =>
+              !generalQuizzes.some(general => general.quizId === attempt.quizId)
+          ),
         ];
       }
 
       // Update the progress state
       this.stateManager.setState('progress', progress);
-      
+
       return true;
     } catch (error) {
       console.error('Error preserving progress across specializations:', error);
@@ -512,8 +562,11 @@ class ProgressService {
   _getGeneralModules(moduleIds) {
     return moduleIds.filter(moduleId => {
       // General modules typically don't have specialization prefixes
-      return !moduleId.includes('bp-ae-') && !moduleId.includes('bp-dpa-') || 
-             moduleId.includes('fue-') || moduleId.includes('general-');
+      return (
+        (!moduleId.includes('bp-ae-') && !moduleId.includes('bp-dpa-')) ||
+        moduleId.includes('fue-') ||
+        moduleId.includes('general-')
+      );
     });
   }
 
@@ -526,8 +579,12 @@ class ProgressService {
   _getGeneralQuizAttempts(quizAttempts) {
     return quizAttempts.filter(attempt => {
       // General quizzes typically don't have specialization prefixes
-      return !attempt.quizId.includes('bp-ae-') && !attempt.quizId.includes('bp-dpa-') ||
-             attempt.quizId.includes('fue-') || attempt.quizId.includes('general-');
+      return (
+        (!attempt.quizId.includes('bp-ae-') &&
+          !attempt.quizId.includes('bp-dpa-')) ||
+        attempt.quizId.includes('fue-') ||
+        attempt.quizId.includes('general-')
+      );
     });
   }
 
@@ -544,7 +601,7 @@ class ProgressService {
 
       const progress = await this.getOverallProgress(specializationId);
       const categoryBreakdown = progress.categoryBreakdown || {};
-      
+
       // Calculate statistics
       const stats = {
         specializationId,
@@ -555,33 +612,47 @@ class ProgressService {
         totalQuizzesTaken: progress.quizzesTaken,
         categoryStats: {},
         strengths: [],
-        improvementAreas: []
+        improvementAreas: [],
       };
 
       // Analyze category performance
-      Object.entries(categoryBreakdown).forEach(([categoryId, categoryData]) => {
-        const categoryCompletion = categoryData.modulesCompleted > 0 ? 
-          Math.round((categoryData.modulesCompleted / (categoryData.modulesCompleted + 1)) * 100) : 0;
-        
-        stats.categoryStats[categoryId] = {
-          name: categoryData.name,
-          completion: categoryCompletion,
-          averageQuizScore: categoryData.averageQuizScore,
-          modulesCompleted: categoryData.modulesCompleted,
-          quizzesTaken: categoryData.quizzesTaken
-        };
+      Object.entries(categoryBreakdown).forEach(
+        ([categoryId, categoryData]) => {
+          const categoryCompletion =
+            categoryData.modulesCompleted > 0
+              ? Math.round(
+                  (categoryData.modulesCompleted /
+                    (categoryData.modulesCompleted + 1)) *
+                    100
+                )
+              : 0;
 
-        // Identify strengths and improvement areas
-        if (categoryData.averageQuizScore >= 80) {
-          stats.strengths.push(categoryData.name);
-        } else if (categoryData.averageQuizScore > 0 && categoryData.averageQuizScore < 60) {
-          stats.improvementAreas.push(categoryData.name);
+          stats.categoryStats[categoryId] = {
+            name: categoryData.name,
+            completion: categoryCompletion,
+            averageQuizScore: categoryData.averageQuizScore,
+            modulesCompleted: categoryData.modulesCompleted,
+            quizzesTaken: categoryData.quizzesTaken,
+          };
+
+          // Identify strengths and improvement areas
+          if (categoryData.averageQuizScore >= 80) {
+            stats.strengths.push(categoryData.name);
+          } else if (
+            categoryData.averageQuizScore > 0 &&
+            categoryData.averageQuizScore < 60
+          ) {
+            stats.improvementAreas.push(categoryData.name);
+          }
         }
-      });
+      );
 
       return stats;
     } catch (error) {
-      console.error(`Error getting specialization statistics for ${specializationId}:`, error);
+      console.error(
+        `Error getting specialization statistics for ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -592,12 +663,14 @@ class ProgressService {
   async exportProgress() {
     try {
       const progress = this.stateManager.getState('progress') || {};
-      const currentSpecialization = this.specializationService ? 
-        this.specializationService.getCurrentSpecialization() : null;
-      
+      const currentSpecialization = this.specializationService
+        ? this.specializationService.getCurrentSpecialization()
+        : null;
+
       const overallProgress = await this.getOverallProgress();
-      const specializationProgress = currentSpecialization ? 
-        await this.getSpecializationProgress(currentSpecialization) : null;
+      const specializationProgress = currentSpecialization
+        ? await this.getSpecializationProgress(currentSpecialization)
+        : null;
 
       const exportData = {
         exportDate: new Date().toISOString(),
@@ -609,7 +682,7 @@ class ProgressService {
           modulesInProgress: progress.modulesInProgress || [],
           quizAttempts: progress.quizAttempts || [],
           lastActivity: progress.lastActivity,
-          specializationProgress: progress.specializationProgress || {}
+          specializationProgress: progress.specializationProgress || {},
         },
       };
 

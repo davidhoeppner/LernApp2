@@ -79,7 +79,9 @@
       "solution": "CREATE TABLE autor (\n    autor_id INT PRIMARY KEY,\n    name VARCHAR(100) NOT NULL\n);\n\nCREATE TABLE buch (\n    buch_id INT PRIMARY KEY,\n    titel VARCHAR(200) NOT NULL,\n    isbn VARCHAR(20) UNIQUE NOT NULL,\n    erscheinungsjahr INT,\n    autor_id INT,\n    FOREIGN KEY (autor_id) REFERENCES autor(autor_id)\n);\n\nCREATE TABLE ausleihe (\n    ausleihe_id INT PRIMARY KEY,\n    buch_id INT NOT NULL,\n    ausleih_datum DATE NOT NULL,\n    rueckgabe_datum DATE,\n    CHECK (rueckgabe_datum >= ausleih_datum),\n    FOREIGN KEY (buch_id) REFERENCES buch(buch_id)\n);\n\nCREATE INDEX idx_buch_titel ON buch(titel);\nCREATE INDEX idx_buch_autor ON buch(autor_id);\nCREATE INDEX idx_ausleihe_buch ON ausleihe(buch_id);"
     }
   ],
-  "relatedQuizzes": ["sql-comprehensive-quiz-2025"],
+  "relatedQuizzes": [
+    "sql-comprehensive-quiz-2025"
+  ],
   "resources": [
     {
       "title": "SQL Tutorial - DDL",
@@ -88,5 +90,12 @@
     }
   ],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand SQL",
+    "Understand DDL",
+    "Understand CREATE TABLE",
+    "Understand ALTER TABLE",
+    "Understand CREATE INDEX"
+  ]
 }

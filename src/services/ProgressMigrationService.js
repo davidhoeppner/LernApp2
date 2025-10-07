@@ -3,7 +3,12 @@
  * Ensures no data loss during category system transition and preserves all user achievements
  */
 class ProgressMigrationService {
-  constructor(progressService, categoryMappingService, storageService, stateManager) {
+  constructor(
+    progressService,
+    categoryMappingService,
+    storageService,
+    stateManager
+  ) {
     this.progressService = progressService;
     this.categoryMappingService = categoryMappingService;
     this.storageService = storageService;
@@ -20,14 +25,17 @@ class ProgressMigrationService {
     try {
       const migrationId = this._generateMigrationId();
       const startTime = new Date().toISOString();
-      
-      console.log(`Starting progress migration ${migrationId}...`);
+
+  console.warn(`Starting progress migration ${migrationId}...`);
 
       // Get current progress data
       const currentProgress = this.stateManager.getState('progress') || {};
-      
+
       // Create backup before migration
-      const backupResult = await this._createProgressBackup(currentProgress, migrationId);
+      const backupResult = await this._createProgressBackup(
+        currentProgress,
+        migrationId
+      );
       if (!backupResult.success) {
         throw new Error(`Backup creation failed: ${backupResult.error}`);
       }
@@ -35,34 +43,41 @@ class ProgressMigrationService {
       // Validate current progress structure
       const validationResult = this._validateCurrentProgress(currentProgress);
       if (!validationResult.isValid && !options.force) {
-        throw new Error(`Progress validation failed: ${validationResult.errors.join(', ')}`);
+        throw new Error(
+          `Progress validation failed: ${validationResult.errors.join(', ')}`
+        );
       }
 
       // Perform the migration
-      const migrationResult = await this._performProgressMigration(currentProgress, migrationId);
-      
+      const migrationResult = await this._performProgressMigration(
+        currentProgress,
+        migrationId
+      );
+
       // Verify migration integrity
       const verificationResult = await this._verifyMigrationIntegrity(
-        currentProgress, 
+        currentProgress,
         migrationResult.migratedProgress
       );
 
       if (!verificationResult.isValid && !options.force) {
         // Rollback on verification failure
         await this._rollbackMigration(migrationId);
-        throw new Error(`Migration verification failed: ${verificationResult.errors.join(', ')}`);
+        throw new Error(
+          `Migration verification failed: ${verificationResult.errors.join(', ')}`
+        );
       }
 
       // Apply migrated progress
       this.stateManager.setState('progress', migrationResult.migratedProgress);
-      
+
       // Mark migration as completed
       await this._markMigrationCompleted(migrationId, {
         startTime,
         endTime: new Date().toISOString(),
         originalItemCount: migrationResult.originalItemCount,
         migratedItemCount: migrationResult.migratedItemCount,
-        backupId: backupResult.backupId
+        backupId: backupResult.backupId,
       });
 
       return {
@@ -71,21 +86,24 @@ class ProgressMigrationService {
         summary: {
           modulesProcessed: migrationResult.modulesProcessed,
           quizzesProcessed: migrationResult.quizzesProcessed,
-          specializationProgressPreserved: migrationResult.specializationProgressPreserved,
+          specializationProgressPreserved:
+            migrationResult.specializationProgressPreserved,
           backupCreated: backupResult.backupId,
-          verificationPassed: verificationResult.isValid
+          verificationPassed: verificationResult.isValid,
         },
         details: migrationResult,
-        warnings: [...validationResult.warnings, ...verificationResult.warnings]
+        warnings: [
+          ...validationResult.warnings,
+          ...verificationResult.warnings,
+        ],
       };
-
     } catch (error) {
       console.error('Progress migration failed:', error);
       return {
         success: false,
         error: error.message,
         migrationId: null,
-        summary: null
+        summary: null,
       };
     }
   }
@@ -105,8 +123,8 @@ class ProgressMigrationService {
         migrationId,
         migratedAt: new Date().toISOString(),
         originalStructure: 'legacy-categories',
-        targetStructure: 'three-tier-categories'
-      }
+        targetStructure: 'three-tier-categories',
+      },
     };
 
     let modulesProcessed = 0;
@@ -138,26 +156,30 @@ class ProgressMigrationService {
 
     // Migrate specialization-specific progress
     if (currentProgress.specializationProgress) {
-      migratedProgress.specializationProgress = await this._migrateSpecializationProgress(
-        currentProgress.specializationProgress
-      );
-      specializationProgressPreserved = Object.keys(migratedProgress.specializationProgress).length;
+      migratedProgress.specializationProgress =
+        await this._migrateSpecializationProgress(
+          currentProgress.specializationProgress
+        );
+      specializationProgressPreserved = Object.keys(
+        migratedProgress.specializationProgress
+      ).length;
     }
 
     // Add three-tier category progress tracking
-    migratedProgress.threeTierCategoryProgress = await this._generateThreeTierCategoryProgress(
-      migratedProgress
-    );
+    migratedProgress.threeTierCategoryProgress =
+      await this._generateThreeTierCategoryProgress(migratedProgress);
 
     return {
       migratedProgress,
-      originalItemCount: (currentProgress.modulesCompleted?.length || 0) + 
-                        (currentProgress.quizAttempts?.length || 0),
-      migratedItemCount: (migratedProgress.modulesCompleted?.length || 0) + 
-                        (migratedProgress.quizAttempts?.length || 0),
+      originalItemCount:
+        (currentProgress.modulesCompleted?.length || 0) +
+        (currentProgress.quizAttempts?.length || 0),
+      migratedItemCount:
+        (migratedProgress.modulesCompleted?.length || 0) +
+        (migratedProgress.quizAttempts?.length || 0),
       modulesProcessed,
       quizzesProcessed,
-      specializationProgressPreserved
+      specializationProgressPreserved,
     };
   }
 
@@ -176,31 +198,32 @@ class ProgressMigrationService {
         const moduleProgress = {
           id: moduleId,
           originalId: moduleId, // Preserve original for rollback
-          migratedAt: new Date().toISOString()
+          migratedAt: new Date().toISOString(),
         };
 
         // Try to get module metadata for category mapping
         const moduleMetadata = await this._getModuleMetadata(moduleId);
         if (moduleMetadata) {
-          const mappingResult = this.categoryMappingService.mapToThreeTierCategory(moduleMetadata);
+          const mappingResult =
+            this.categoryMappingService.mapToThreeTierCategory(moduleMetadata);
           moduleProgress.threeTierCategory = mappingResult.threeTierCategory;
           moduleProgress.categoryMappingInfo = {
             appliedRule: mappingResult.appliedRule,
             originalCategory: moduleMetadata.category,
-            mappingReason: mappingResult.reason
+            mappingReason: mappingResult.reason,
           };
         } else {
           // Fallback category assignment based on ID patterns
-          moduleProgress.threeTierCategory = this._inferCategoryFromId(moduleId);
+          moduleProgress.threeTierCategory =
+            this._inferCategoryFromId(moduleId);
           moduleProgress.categoryMappingInfo = {
             appliedRule: null,
             originalCategory: null,
-            mappingReason: 'Inferred from module ID pattern'
+            mappingReason: 'Inferred from module ID pattern',
           };
         }
 
         migratedModules.push(moduleProgress);
-
       } catch (error) {
         console.warn(`Failed to migrate module ${moduleId}:`, error);
         // Preserve original entry with error info
@@ -209,7 +232,7 @@ class ProgressMigrationService {
           originalId: moduleId,
           threeTierCategory: 'allgemein', // Safe fallback
           migrationError: error.message,
-          migratedAt: new Date().toISOString()
+          migratedAt: new Date().toISOString(),
         });
       }
     }
@@ -231,40 +254,45 @@ class ProgressMigrationService {
         const migratedAttempt = {
           ...attempt,
           originalQuizId: attempt.quizId, // Preserve original for rollback
-          migratedAt: new Date().toISOString()
+          migratedAt: new Date().toISOString(),
         };
 
         // Try to get quiz metadata for category mapping
         const quizMetadata = await this._getQuizMetadata(attempt.quizId);
         if (quizMetadata) {
-          const mappingResult = this.categoryMappingService.mapToThreeTierCategory(quizMetadata);
+          const mappingResult =
+            this.categoryMappingService.mapToThreeTierCategory(quizMetadata);
           migratedAttempt.threeTierCategory = mappingResult.threeTierCategory;
           migratedAttempt.categoryMappingInfo = {
             appliedRule: mappingResult.appliedRule,
             originalCategory: quizMetadata.category,
-            mappingReason: mappingResult.reason
+            mappingReason: mappingResult.reason,
           };
         } else {
           // Fallback category assignment based on ID patterns
-          migratedAttempt.threeTierCategory = this._inferCategoryFromId(attempt.quizId);
+          migratedAttempt.threeTierCategory = this._inferCategoryFromId(
+            attempt.quizId
+          );
           migratedAttempt.categoryMappingInfo = {
             appliedRule: null,
             originalCategory: null,
-            mappingReason: 'Inferred from quiz ID pattern'
+            mappingReason: 'Inferred from quiz ID pattern',
           };
         }
 
         migratedAttempts.push(migratedAttempt);
-
       } catch (error) {
-        console.warn(`Failed to migrate quiz attempt ${attempt.quizId}:`, error);
+        console.warn(
+          `Failed to migrate quiz attempt ${attempt.quizId}:`,
+          error
+        );
         // Preserve original entry with error info
         migratedAttempts.push({
           ...attempt,
           originalQuizId: attempt.quizId,
           threeTierCategory: 'allgemein', // Safe fallback
           migrationError: error.message,
-          migratedAt: new Date().toISOString()
+          migratedAt: new Date().toISOString(),
         });
       }
     }
@@ -281,39 +309,48 @@ class ProgressMigrationService {
   async _migrateSpecializationProgress(specializationProgress) {
     const migratedSpecializationProgress = {};
 
-    for (const [specializationId, progressData] of Object.entries(specializationProgress)) {
+    for (const [specializationId, progressData] of Object.entries(
+      specializationProgress
+    )) {
       try {
         migratedSpecializationProgress[specializationId] = {
           ...progressData,
           migratedAt: new Date().toISOString(),
           originalStructure: 'legacy-categories',
-          
+
           // Migrate modules within specialization progress
-          modulesCompleted: progressData.modulesCompleted ? 
-            await this._migrateModuleProgress(progressData.modulesCompleted) : [],
-          
-          modulesInProgress: progressData.modulesInProgress ?
-            await this._migrateModuleProgress(progressData.modulesInProgress) : [],
-          
+          modulesCompleted: progressData.modulesCompleted
+            ? await this._migrateModuleProgress(progressData.modulesCompleted)
+            : [],
+
+          modulesInProgress: progressData.modulesInProgress
+            ? await this._migrateModuleProgress(progressData.modulesInProgress)
+            : [],
+
           // Migrate quiz attempts within specialization progress
-          quizAttempts: progressData.quizAttempts ?
-            await this._migrateQuizAttempts(progressData.quizAttempts) : []
+          quizAttempts: progressData.quizAttempts
+            ? await this._migrateQuizAttempts(progressData.quizAttempts)
+            : [],
         };
 
         // Add three-tier category breakdown for this specialization
-        migratedSpecializationProgress[specializationId].threeTierCategoryBreakdown = 
+        migratedSpecializationProgress[
+          specializationId
+        ].threeTierCategoryBreakdown =
           await this._generateSpecializationCategoryBreakdown(
-            migratedSpecializationProgress[specializationId], 
+            migratedSpecializationProgress[specializationId],
             specializationId
           );
-
       } catch (error) {
-        console.warn(`Failed to migrate specialization progress for ${specializationId}:`, error);
+        console.warn(
+          `Failed to migrate specialization progress for ${specializationId}:`,
+          error
+        );
         // Preserve original with error info
         migratedSpecializationProgress[specializationId] = {
           ...progressData,
           migrationError: error.message,
-          migratedAt: new Date().toISOString()
+          migratedAt: new Date().toISOString(),
         };
       }
     }
@@ -333,20 +370,20 @@ class ProgressMigrationService {
         modulesCompleted: 0,
         quizzesTaken: 0,
         averageQuizScore: 0,
-        lastActivity: null
+        lastActivity: null,
       },
-      'anwendungsentwicklung': {
+      anwendungsentwicklung: {
         modulesCompleted: 0,
         quizzesTaken: 0,
         averageQuizScore: 0,
-        lastActivity: null
+        lastActivity: null,
       },
-      'allgemein': {
+      allgemein: {
         modulesCompleted: 0,
         quizzesTaken: 0,
         averageQuizScore: 0,
-        lastActivity: null
-      }
+        lastActivity: null,
+      },
     };
 
     // Count modules by category
@@ -363,8 +400,8 @@ class ProgressMigrationService {
     if (migratedProgress.quizAttempts) {
       const categoryQuizScores = {
         'daten-prozessanalyse': [],
-        'anwendungsentwicklung': [],
-        'allgemein': []
+        anwendungsentwicklung: [],
+        allgemein: [],
       };
 
       migratedProgress.quizAttempts.forEach(attempt => {
@@ -372,10 +409,13 @@ class ProgressMigrationService {
         if (categoryProgress[category]) {
           categoryProgress[category].quizzesTaken++;
           categoryQuizScores[category].push(attempt.score);
-          
+
           // Update last activity
-          if (!categoryProgress[category].lastActivity || 
-              new Date(attempt.date) > new Date(categoryProgress[category].lastActivity)) {
+          if (
+            !categoryProgress[category].lastActivity ||
+            new Date(attempt.date) >
+              new Date(categoryProgress[category].lastActivity)
+          ) {
             categoryProgress[category].lastActivity = attempt.date;
           }
         }
@@ -385,8 +425,9 @@ class ProgressMigrationService {
       Object.keys(categoryQuizScores).forEach(category => {
         const scores = categoryQuizScores[category];
         if (scores.length > 0) {
-          categoryProgress[category].averageQuizScore = 
-            Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length);
+          categoryProgress[category].averageQuizScore = Math.round(
+            scores.reduce((sum, score) => sum + score, 0) / scores.length
+          );
         }
       });
     }
@@ -394,7 +435,7 @@ class ProgressMigrationService {
     return {
       summary: categoryProgress,
       generatedAt: new Date().toISOString(),
-      totalCategories: Object.keys(categoryProgress).length
+      totalCategories: Object.keys(categoryProgress).length,
     };
   }
 
@@ -405,14 +446,22 @@ class ProgressMigrationService {
    * @param {string} specializationId - Specialization identifier
    * @returns {Object} Category breakdown for specialization
    */
-  async _generateSpecializationCategoryBreakdown(specializationProgress, specializationId) {
+  async _generateSpecializationCategoryBreakdown(
+    specializationProgress,
+    specializationId
+  ) {
     // Similar to _generateThreeTierCategoryProgress but specialization-specific
-    const breakdown = await this._generateThreeTierCategoryProgress(specializationProgress);
-    
+    const breakdown = await this._generateThreeTierCategoryProgress(
+      specializationProgress
+    );
+
     // Add specialization-specific relevance information
     const categories = this.categoryMappingService.getThreeTierCategories();
     categories.forEach(category => {
-      const relevance = this.categoryMappingService.getCategoryRelevance(category.id, specializationId);
+      const relevance = this.categoryMappingService.getCategoryRelevance(
+        category.id,
+        specializationId
+      );
       if (breakdown.summary[category.id]) {
         breakdown.summary[category.id].relevanceForSpecialization = relevance;
       }
@@ -434,11 +483,11 @@ class ProgressMigrationService {
         const modules = await this.moduleService.getModules();
         return modules.find(module => module.id === moduleId);
       }
-      
+
       // Fallback: create minimal metadata from ID
       return {
         id: moduleId,
-        category: this._extractCategoryFromId(moduleId)
+        category: this._extractCategoryFromId(moduleId),
       };
     } catch (error) {
       console.warn(`Could not get metadata for module ${moduleId}:`, error);
@@ -459,11 +508,11 @@ class ProgressMigrationService {
         const quizzes = await this.quizService.getQuizzes();
         return quizzes.find(quiz => quiz.id === quizId);
       }
-      
+
       // Fallback: create minimal metadata from ID
       return {
         id: quizId,
-        category: this._extractCategoryFromId(quizId)
+        category: this._extractCategoryFromId(quizId),
       };
     } catch (error) {
       console.warn(`Could not get metadata for quiz ${quizId}:`, error);
@@ -479,7 +528,7 @@ class ProgressMigrationService {
    */
   _extractCategoryFromId(contentId) {
     if (!contentId) return '';
-    
+
     // Match common category patterns
     const patterns = [
       /^(BP-DPA-\d+)/i,
@@ -488,7 +537,7 @@ class ProgressMigrationService {
       /^(FUE-\d+)/i,
       /^(bp-dpa-)/i,
       /^(bp-ae-)/i,
-      /^(fue-)/i
+      /^(fue-)/i,
     ];
 
     for (const pattern of patterns) {
@@ -511,15 +560,15 @@ class ProgressMigrationService {
     if (!contentId) return 'allgemein';
 
     const id = contentId.toLowerCase();
-    
+
     if (id.includes('bp-dpa') || id.includes('dpa-')) {
       return 'daten-prozessanalyse';
     }
-    
+
     if (id.includes('bp-ae') || id.includes('ae-')) {
       return 'anwendungsentwicklung';
     }
-    
+
     return 'allgemein';
   }
 
@@ -549,7 +598,7 @@ class ProgressMigrationService {
         createdAt: new Date().toISOString(),
         migrationId,
         originalProgress: JSON.parse(JSON.stringify(currentProgress)), // Deep copy
-        backupVersion: this.migrationVersion
+        backupVersion: this.migrationVersion,
       };
 
       // Store backup in localStorage with special key
@@ -557,26 +606,26 @@ class ProgressMigrationService {
       this.storageService.setItem(backupKey, backupData);
 
       // Also store backup reference in migration history
-      const migrationHistory = this.storageService.getItem('migration_history') || [];
+      const migrationHistory =
+        this.storageService.getItem('migration_history') || [];
       migrationHistory.push({
         migrationId,
         backupId,
         createdAt: backupData.createdAt,
-        type: 'progress_migration'
+        type: 'progress_migration',
       });
       this.storageService.setItem('migration_history', migrationHistory);
 
       return {
         success: true,
         backupId,
-        backupKey
+        backupKey,
       };
-
     } catch (error) {
       console.error('Failed to create progress backup:', error);
       return {
         success: false,
-        error: error.message
+        error: error.message,
       };
     }
   }
@@ -591,7 +640,7 @@ class ProgressMigrationService {
     const result = {
       isValid: true,
       errors: [],
-      warnings: []
+      warnings: [],
     };
 
     // Check basic structure
@@ -602,19 +651,28 @@ class ProgressMigrationService {
     }
 
     // Validate modules completed
-    if (currentProgress.modulesCompleted && !Array.isArray(currentProgress.modulesCompleted)) {
+    if (
+      currentProgress.modulesCompleted &&
+      !Array.isArray(currentProgress.modulesCompleted)
+    ) {
       result.isValid = false;
       result.errors.push('modulesCompleted is not an array');
     }
 
     // Validate modules in progress
-    if (currentProgress.modulesInProgress && !Array.isArray(currentProgress.modulesInProgress)) {
+    if (
+      currentProgress.modulesInProgress &&
+      !Array.isArray(currentProgress.modulesInProgress)
+    ) {
       result.isValid = false;
       result.errors.push('modulesInProgress is not an array');
     }
 
     // Validate quiz attempts
-    if (currentProgress.quizAttempts && !Array.isArray(currentProgress.quizAttempts)) {
+    if (
+      currentProgress.quizAttempts &&
+      !Array.isArray(currentProgress.quizAttempts)
+    ) {
       result.isValid = false;
       result.errors.push('quizAttempts is not an array');
     } else if (currentProgress.quizAttempts) {
@@ -648,35 +706,47 @@ class ProgressMigrationService {
     const result = {
       isValid: true,
       errors: [],
-      warnings: []
+      warnings: [],
     };
 
     try {
       // Verify no data loss in modules completed
-      const originalModulesCount = originalProgress.modulesCompleted?.length || 0;
-      const migratedModulesCount = migratedProgress.modulesCompleted?.length || 0;
-      
+      const originalModulesCount =
+        originalProgress.modulesCompleted?.length || 0;
+      const migratedModulesCount =
+        migratedProgress.modulesCompleted?.length || 0;
+
       if (migratedModulesCount < originalModulesCount) {
         result.isValid = false;
-        result.errors.push(`Module data loss: ${originalModulesCount} -> ${migratedModulesCount}`);
+        result.errors.push(
+          `Module data loss: ${originalModulesCount} -> ${migratedModulesCount}`
+        );
       }
 
       // Verify no data loss in quiz attempts
       const originalQuizzesCount = originalProgress.quizAttempts?.length || 0;
       const migratedQuizzesCount = migratedProgress.quizAttempts?.length || 0;
-      
+
       if (migratedQuizzesCount < originalQuizzesCount) {
         result.isValid = false;
-        result.errors.push(`Quiz data loss: ${originalQuizzesCount} -> ${migratedQuizzesCount}`);
+        result.errors.push(
+          `Quiz data loss: ${originalQuizzesCount} -> ${migratedQuizzesCount}`
+        );
       }
 
       // Verify specialization progress preservation
       if (originalProgress.specializationProgress) {
-        const originalSpecCount = Object.keys(originalProgress.specializationProgress).length;
-        const migratedSpecCount = Object.keys(migratedProgress.specializationProgress || {}).length;
-        
+        const originalSpecCount = Object.keys(
+          originalProgress.specializationProgress
+        ).length;
+        const migratedSpecCount = Object.keys(
+          migratedProgress.specializationProgress || {}
+        ).length;
+
         if (migratedSpecCount < originalSpecCount) {
-          result.warnings.push(`Specialization progress count changed: ${originalSpecCount} -> ${migratedSpecCount}`);
+          result.warnings.push(
+            `Specialization progress count changed: ${originalSpecCount} -> ${migratedSpecCount}`
+          );
         }
       }
 
@@ -686,7 +756,9 @@ class ProgressMigrationService {
           module => !module.threeTierCategory
         );
         if (unassignedModules.length > 0) {
-          result.warnings.push(`${unassignedModules.length} modules without three-tier category assignment`);
+          result.warnings.push(
+            `${unassignedModules.length} modules without three-tier category assignment`
+          );
         }
       }
 
@@ -695,7 +767,9 @@ class ProgressMigrationService {
           attempt => !attempt.threeTierCategory
         );
         if (unassignedQuizzes.length > 0) {
-          result.warnings.push(`${unassignedQuizzes.length} quiz attempts without three-tier category assignment`);
+          result.warnings.push(
+            `${unassignedQuizzes.length} quiz attempts without three-tier category assignment`
+          );
         }
       }
 
@@ -703,7 +777,6 @@ class ProgressMigrationService {
       if (!migratedProgress.migrationInfo) {
         result.warnings.push('Migration metadata missing');
       }
-
     } catch (error) {
       result.isValid = false;
       result.errors.push(`Verification failed: ${error.message}`);
@@ -720,12 +793,13 @@ class ProgressMigrationService {
    */
   async _markMigrationCompleted(migrationId, migrationSummary) {
     try {
-      const completedMigrations = this.storageService.getItem('completed_migrations') || [];
+      const completedMigrations =
+        this.storageService.getItem('completed_migrations') || [];
       completedMigrations.push({
         migrationId,
         completedAt: new Date().toISOString(),
         version: this.migrationVersion,
-        summary: migrationSummary
+        summary: migrationSummary,
       });
       this.storageService.setItem('completed_migrations', completedMigrations);
     } catch (error) {
@@ -742,7 +816,7 @@ class ProgressMigrationService {
     try {
       const backupId = `backup-${migrationId}`;
       const backupKey = `progress_backup_${backupId}`;
-      
+
       const backupData = this.storageService.getItem(backupKey);
       if (!backupData) {
         throw new Error(`Backup not found for migration ${migrationId}`);
@@ -752,11 +826,12 @@ class ProgressMigrationService {
       this.stateManager.setState('progress', backupData.originalProgress);
 
       // Mark rollback in history
-      const rollbackHistory = this.storageService.getItem('rollback_history') || [];
+      const rollbackHistory =
+        this.storageService.getItem('rollback_history') || [];
       rollbackHistory.push({
         migrationId,
         rolledBackAt: new Date().toISOString(),
-        backupId
+        backupId,
       });
       this.storageService.setItem('rollback_history', rollbackHistory);
 
@@ -764,14 +839,13 @@ class ProgressMigrationService {
         success: true,
         migrationId,
         backupId,
-        message: 'Migration successfully rolled back'
+        message: 'Migration successfully rolled back',
       };
-
     } catch (error) {
       console.error('Migration rollback failed:', error);
       return {
         success: false,
-        error: error.message
+        error: error.message,
       };
     }
   }
@@ -785,14 +859,14 @@ class ProgressMigrationService {
       return {
         completed: this.storageService.getItem('completed_migrations') || [],
         rollbacks: this.storageService.getItem('rollback_history') || [],
-        backups: this.storageService.getItem('migration_history') || []
+        backups: this.storageService.getItem('migration_history') || [],
       };
     } catch (error) {
       console.error('Failed to get migration history:', error);
       return {
         completed: [],
         rollbacks: [],
-        backups: []
+        backups: [],
       };
     }
   }
@@ -804,8 +878,11 @@ class ProgressMigrationService {
   isProgressMigrated() {
     try {
       const currentProgress = this.stateManager.getState('progress') || {};
-      return !!(currentProgress.migrationInfo && 
-                currentProgress.migrationInfo.targetStructure === 'three-tier-categories');
+      return !!(
+        currentProgress.migrationInfo &&
+        currentProgress.migrationInfo.targetStructure ===
+          'three-tier-categories'
+      );
     } catch (error) {
       console.error('Failed to check migration status:', error);
       return false;

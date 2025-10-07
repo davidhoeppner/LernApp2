@@ -27,21 +27,25 @@ class ProgressView {
     container.setAttribute('aria-label', 'Progress tracking page');
 
     try {
-      const currentSpecialization = this.specializationService ? 
-        this.specializationService.getCurrentSpecialization() : null;
-      
+      const currentSpecialization = this.specializationService
+        ? this.specializationService.getCurrentSpecialization()
+        : null;
+
       const overallProgress = await this.progressService.getOverallProgress();
       const modules = await this.moduleService.getModules();
       const quizHistory = this.progressService.getQuizHistory();
       const quizzes = await this.ihkContentService.getAllQuizzes();
-      
+
       // Get specialization-specific data if available
       let specializationStats = null;
       let categoryBreakdown = null;
-      
+
       if (currentSpecialization && this.specializationService) {
         try {
-          specializationStats = await this.progressService.getSpecializationStatistics(currentSpecialization);
+          specializationStats =
+            await this.progressService.getSpecializationStatistics(
+              currentSpecialization
+            );
           categoryBreakdown = overallProgress.categoryBreakdown || {};
         } catch (error) {
           console.warn('Could not load specialization statistics:', error);
@@ -76,8 +80,9 @@ class ProgressView {
    */
   _renderSpecializationHeader(specializationId) {
     if (!this.specializationService) return '';
-    
-    const config = this.specializationService.getSpecializationConfig(specializationId);
+
+    const config =
+      this.specializationService.getSpecializationConfig(specializationId);
     if (!config) return '';
 
     return `
@@ -99,11 +104,14 @@ class ProgressView {
       ? formatDate(progress.lastActivity)
       : 'No activity yet';
 
-    const specializationInfo = specializationStats ? `
+    const specializationInfo = specializationStats
+      ? `
       <div class="specialization-progress-info">
         <h3 class="specialization-progress-title">Specialization Progress</h3>
         <div class="specialization-stats">
-          ${specializationStats.strengths.length > 0 ? `
+          ${
+            specializationStats.strengths.length > 0
+              ? `
             <div class="stat-item strengths">
               <span class="stat-icon">💪</span>
               <div class="stat-content">
@@ -111,8 +119,12 @@ class ProgressView {
                 <div class="stat-value">${specializationStats.strengths.join(', ')}</div>
               </div>
             </div>
-          ` : ''}
-          ${specializationStats.improvementAreas.length > 0 ? `
+          `
+              : ''
+          }
+          ${
+            specializationStats.improvementAreas.length > 0
+              ? `
             <div class="stat-item improvements">
               <span class="stat-icon">📈</span>
               <div class="stat-content">
@@ -120,10 +132,13 @@ class ProgressView {
                 <div class="stat-value">${specializationStats.improvementAreas.join(', ')}</div>
               </div>
             </div>
-          ` : ''}
+          `
+              : ''
+          }
         </div>
       </div>
-    ` : '';
+    `
+      : '';
 
     return `
       <section class="overall-progress-section">
@@ -200,13 +215,20 @@ class ProgressView {
       return '';
     }
 
-    const categories = Object.entries(categoryBreakdown).map(([categoryId, data]) => {
-      const completionRate = data.modulesCompleted > 0 ? 
-        Math.round((data.modulesCompleted / Math.max(data.modulesCompleted + 1, 1)) * 100) : 0;
-      
-      const relevanceColor = this._getRelevanceColor(data.relevance);
-      
-      return `
+    const categories = Object.entries(categoryBreakdown)
+      .map(([categoryId, data]) => {
+        const completionRate =
+          data.modulesCompleted > 0
+            ? Math.round(
+                (data.modulesCompleted /
+                  Math.max(data.modulesCompleted + 1, 1)) *
+                  100
+              )
+            : 0;
+
+        const relevanceColor = this._getRelevanceColor(data.relevance);
+
+        return `
         <div class="category-item">
           <div class="category-header">
             <div class="category-info">
@@ -231,16 +253,21 @@ class ProgressView {
               <span class="stat-icon">📝</span>
               <span class="stat-text">${data.quizzesTaken} quizzes</span>
             </div>
-            ${data.averageQuizScore > 0 ? `
+            ${
+              data.averageQuizScore > 0
+                ? `
               <div class="category-stat">
                 <span class="stat-icon">⭐</span>
                 <span class="stat-text">${data.averageQuizScore}% avg</span>
               </div>
-            ` : ''}
+            `
+                : ''
+            }
           </div>
         </div>
       `;
-    }).join('');
+      })
+      .join('');
 
     return `
       <section class="category-breakdown-section">
@@ -257,10 +284,10 @@ class ProgressView {
    */
   _getRelevanceColor(relevance) {
     const colors = {
-      'high': '#10b981',
-      'medium': '#f59e0b', 
-      'low': '#6b7280',
-      'none': '#9ca3af'
+      high: '#10b981',
+      medium: '#f59e0b',
+      low: '#6b7280',
+      none: '#9ca3af',
     };
     return colors[relevance] || colors.none;
   }
@@ -281,18 +308,25 @@ class ProgressView {
       categorizedModules = this._categorizeModules(modules, specializationId);
     }
 
-    const categoryTabs = Object.keys(categorizedModules).length > 0 ? `
+    const categoryTabs =
+      Object.keys(categorizedModules).length > 0
+        ? `
       <div class="category-filter-tabs">
         <button class="category-tab active" data-category="all">
           All Categories
         </button>
-        ${Object.entries(categorizedModules).map(([categoryId, categoryModules]) => `
+        ${Object.entries(categorizedModules)
+          .map(
+            ([categoryId, categoryModules]) => `
           <button class="category-tab" data-category="${categoryId}">
             ${this._getCategoryDisplayName(categoryId)} (${categoryModules.length})
           </button>
-        `).join('')}
+        `
+          )
+          .join('')}
       </div>
-    ` : '';
+    `
+        : '';
 
     return `
       <section class="module-completion-section">
@@ -331,11 +365,15 @@ class ProgressView {
           ${this._renderModuleList(notStartedModules, specializationId)}
         </div>
 
-        ${Object.entries(categorizedModules).map(([categoryId, categoryModules]) => `
+        ${Object.entries(categorizedModules)
+          .map(
+            ([categoryId, categoryModules]) => `
           <div class="module-list hidden" data-category-content="${categoryId}">
             ${this._renderModuleList(categoryModules, specializationId)}
           </div>
-        `).join('')}
+        `
+          )
+          .join('')}
       </section>
     `;
   }
@@ -347,18 +385,21 @@ class ProgressView {
     if (!this.specializationService) return {};
 
     const categories = {};
-    
+
     modules.forEach(module => {
       const categoryId = this._getModuleCategoryId(module);
-      const relevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
-      
+      const relevance = this.specializationService.getCategoryRelevance(
+        categoryId,
+        specializationId
+      );
+
       let categoryKey = 'general';
       if (relevance === 'high' && categoryId.includes('BP-AE')) {
         categoryKey = 'anwendungsentwicklung';
       } else if (relevance === 'high' && categoryId.includes('BP-DPA')) {
         categoryKey = 'daten-prozessanalyse';
       }
-      
+
       if (!categories[categoryKey]) {
         categories[categoryKey] = [];
       }
@@ -374,11 +415,11 @@ class ProgressView {
   _getModuleCategoryId(module) {
     // Extract category from module ID or use category property
     if (module.category) return module.category;
-    
+
     if (module.id.includes('bp-ae-')) return 'BP-AE';
     if (module.id.includes('bp-dpa-')) return 'BP-DPA';
     if (module.id.includes('fue-')) return 'FUE';
-    
+
     return 'general';
   }
 
@@ -387,9 +428,9 @@ class ProgressView {
    */
   _getCategoryDisplayName(categoryId) {
     const names = {
-      'general': 'General',
-      'anwendungsentwicklung': 'Anwendungsentwicklung',
-      'daten-prozessanalyse': 'Daten- und Prozessanalyse'
+      general: 'General',
+      anwendungsentwicklung: 'Anwendungsentwicklung',
+      'daten-prozessanalyse': 'Daten- und Prozessanalyse',
     };
     return names[categoryId] || categoryId;
   }
@@ -403,14 +444,18 @@ class ProgressView {
     }
 
     return modules
-      .map(
-        module => {
-          const categoryId = this._getModuleCategoryId(module);
-          const relevance = specializationId && this.specializationService ? 
-            this.specializationService.getCategoryRelevance(categoryId, specializationId) : 'medium';
-          const relevanceColor = this._getRelevanceColor(relevance);
-          
-          return `
+      .map(module => {
+        const categoryId = this._getModuleCategoryId(module);
+        const relevance =
+          specializationId && this.specializationService
+            ? this.specializationService.getCategoryRelevance(
+                categoryId,
+                specializationId
+              )
+            : 'medium';
+        const relevanceColor = this._getRelevanceColor(relevance);
+
+        return `
             <div class="module-progress-item">
               <div class="module-info">
                 <div class="module-header">
@@ -419,11 +464,15 @@ class ProgressView {
                     <span class="module-category" style="background-color: ${relevanceColor}20; color: ${relevanceColor}">
                       ${this._getCategoryDisplayName(this._getModuleCategoryId(module))}
                     </span>
-                    ${relevance !== 'medium' ? `
+                    ${
+                      relevance !== 'medium'
+                        ? `
                       <span class="relevance-indicator" style="background-color: ${relevanceColor}20; color: ${relevanceColor}">
                         ${relevance}
                       </span>
-                    ` : ''}
+                    `
+                        : ''
+                    }
                   </div>
                 </div>
                 ${module.description ? `<p class="module-description">${module.description}</p>` : ''}
@@ -433,8 +482,7 @@ class ProgressView {
               </div>
             </div>
           `;
-        }
-      )
+      })
       .join('');
   }
 
@@ -622,7 +670,9 @@ class ProgressView {
     });
 
     // Hide category content when switching status tabs
-    const categoryContents = container.querySelectorAll('[data-category-content]');
+    const categoryContents = container.querySelectorAll(
+      '[data-category-content]'
+    );
     categoryContents.forEach(content => {
       content.classList.add('hidden');
     });
@@ -656,7 +706,9 @@ class ProgressView {
       });
 
       // Show category-specific content
-      const categoryContents = container.querySelectorAll('[data-category-content]');
+      const categoryContents = container.querySelectorAll(
+        '[data-category-content]'
+      );
       categoryContents.forEach(content => {
         if (content.dataset.categoryContent === categoryName) {
           content.classList.remove('hidden');

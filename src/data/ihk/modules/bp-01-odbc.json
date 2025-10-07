@@ -10,8 +10,17 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 40,
-  "prerequisites": ["sql-ddl-2025", "sql-dql-2025"],
-  "tags": ["ODBC", "Datenbank", "API", "Schnittstelle", "Neu 2025"],
+  "prerequisites": [
+    "sql-ddl-2025",
+    "sql-dql-2025"
+  ],
+  "tags": [
+    "ODBC",
+    "Datenbank",
+    "API",
+    "Schnittstelle",
+    "Neu 2025"
+  ],
   "content": "# ODBC - Open Database Connectivity\n\n## Einführung\n\nODBC (Open Database Connectivity) ist eine standardisierte Programmierschnittstelle für den Zugriff auf Datenbankmanagementsysteme (DBMS). ODBC ermöglicht es Anwendungen, unabhängig vom verwendeten DBMS auf Datenbanken zuzugreifen.\n\n**Neu ab 2025**: ODBC ist explizit im neuen Prüfungskatalog aufgeführt.\n\n## Architektur\n\n### Komponenten\n\n```\nAnwendung\n    |\n    v\nODBC Driver Manager\n    |\n    v\nODBC-Treiber (z.B. MySQL, PostgreSQL, Oracle)\n    |\n    v\nDatenbank\n```\n\n1. **Anwendung**: Nutzt ODBC-API für Datenbankzugriff\n2. **Driver Manager**: Verwaltet Treiber und Verbindungen\n3. **ODBC-Treiber**: Datenbankspezifische Implementierung\n4. **Datenquelle (DSN)**: Konfiguration der Datenbankverbindung\n\n## Vorteile von ODBC\n\n### 1. Plattformunabhängigkeit\n- Gleicher Code für verschiedene Datenbanken\n- Wechsel des DBMS ohne Code-Änderung\n\n### 2. Standardisierung\n- Einheitliche API\n- Herstellerunabhängig\n\n### 3. Flexibilität\n- Verschiedene Programmiersprachen unterstützt\n- Verschiedene Datenbanken unterstützt\n\n## DSN (Data Source Name)\n\n### Typen\n\n**User DSN:**\n- Nur für aktuellen Benutzer verfügbar\n- Gespeichert in Benutzerprofil\n\n**System DSN:**\n- Für alle Benutzer verfügbar\n- Gespeichert in Systemkonfiguration\n\n**File DSN:**\n- Dateibasiert\n- Portabel zwischen Systemen\n\n### Konfiguration\n\n```\nDSN-Name: MyDatabase\nTreiber: MySQL ODBC Driver\nServer: localhost\nPort: 3306\nDatenbank: mydb\nBenutzer: dbuser\nPasswort: ********\n```\n\n## ODBC-Funktionen\n\n### Verbindungsaufbau\n\n```c\n// Umgebung erstellen\nSQLAllocHandle(SQL_HANDLE_ENV, SQL_NULL_HANDLE, &hEnv);\n\n// Verbindung erstellen\nSQLAllocHandle(SQL_HANDLE_DBC, hEnv, &hDbc);\n\n// Verbinden\nSQLConnect(hDbc, (SQLCHAR*)\"MyDSN\", SQL_NTS,\n           (SQLCHAR*)\"user\", SQL_NTS,\n           (SQLCHAR*)\"password\", SQL_NTS);\n```\n\n### SQL-Abfragen\n\n```c\n// Statement erstellen\nSQLAllocHandle(SQL_HANDLE_STMT, hDbc, &hStmt);\n\n// Query ausführen\nSQLExecDirect(hStmt, (SQLCHAR*)\"SELECT * FROM users\", SQL_NTS);\n\n// Ergebnisse abrufen\nwhile (SQLFetch(hStmt) == SQL_SUCCESS) {\n    SQLGetData(hStmt, 1, SQL_C_CHAR, buffer, sizeof(buffer), NULL);\n    // Daten verarbeiten\n}\n```\n\n### Verbindung schließen\n\n```c\nSQLFreeHandle(SQL_HANDLE_STMT, hStmt);\nSQLDisconnect(hDbc);\nSQLFreeHandle(SQL_HANDLE_DBC, hDbc);\nSQLFreeHandle(SQL_HANDLE_ENV, hEnv);\n```\n\n## ODBC in verschiedenen Sprachen\n\n### Python (pyodbc)\n\n```python\nimport pyodbc\n\n# Verbindung herstellen\nconn = pyodbc.connect(\n    'DRIVER={MySQL ODBC Driver};'\n    'SERVER=localhost;'\n    'DATABASE=mydb;'\n    'UID=user;'\n    'PWD=password'\n)\n\n# Cursor erstellen\ncursor = conn.cursor()\n\n# Query ausführen\ncursor.execute('SELECT * FROM users WHERE age > ?', (18,))\n\n# Ergebnisse abrufen\nfor row in cursor:\n    print(row.name, row.email)\n\n# Verbindung schließen\nconn.close()\n```\n\n### Java (JDBC-ODBC Bridge)\n\n```java\nimport java.sql.*;\n\npublic class ODBCExample {\n    public static void main(String[] args) {\n        try {\n            // Verbindung herstellen\n            Connection conn = DriverManager.getConnection(\n                \"jdbc:odbc:MyDSN\", \"user\", \"password\"\n            );\n            \n            // Statement erstellen\n            Statement stmt = conn.createStatement();\n            \n            // Query ausführen\n            ResultSet rs = stmt.executeQuery(\n                \"SELECT * FROM users\"\n            );\n            \n            // Ergebnisse verarbeiten\n            while (rs.next()) {\n                System.out.println(rs.getString(\"name\"));\n            }\n            \n            // Ressourcen freigeben\n            rs.close();\n            stmt.close();\n            conn.close();\n        } catch (SQLException e) {\n            e.printStackTrace();\n        }\n    }\n}\n```\n\n## ODBC vs. Native Treiber\n\n### ODBC\n**Vorteile:**\n- Plattformunabhängig\n- Standardisiert\n- Einfacher Datenbankwechsel\n\n**Nachteile:**\n- Zusätzliche Abstraktionsschicht\n- Möglicherweise geringere Performance\n- Nicht alle datenbankspezifischen Features verfügbar\n\n### Native Treiber\n**Vorteile:**\n- Optimale Performance\n- Alle datenbankspezifischen Features\n- Direkte Kommunikation\n\n**Nachteile:**\n- Datenbankabhängig\n- Code-Änderungen bei Datenbankwechsel\n\n## Connection Pooling\n\n```python\n# Connection Pool erstellen\nfrom pyodbc import pooling\n\npool = pooling.ConnectionPool(\n    'DRIVER={MySQL ODBC Driver};SERVER=localhost;DATABASE=mydb',\n    min_size=5,\n    max_size=20\n)\n\n# Verbindung aus Pool holen\nconn = pool.get_connection()\n\n# Verwenden...\n\n# Zurück in Pool\nconn.close()  # Gibt Verbindung zurück, schließt nicht wirklich\n```\n\n## Fehlerbehandlung\n\n```python\nimport pyodbc\n\ntry:\n    conn = pyodbc.connect('DSN=MyDatabase')\n    cursor = conn.cursor()\n    cursor.execute('SELECT * FROM users')\nexcept pyodbc.Error as e:\n    print(f\"Datenbankfehler: {e}\")\n    # SQLSTATE und Fehlermeldung\n    print(f\"SQLSTATE: {e.args[0]}\")\n    print(f\"Message: {e.args[1]}\")\nfinally:\n    if conn:\n        conn.close()\n```\n\n## Prüfungsrelevante Aspekte\n\n- ODBC-Architektur und Komponenten kennen\n- Vorteile von ODBC verstehen\n- DSN-Typen unterscheiden\n- Grundlegende ODBC-Funktionen kennen\n- ODBC vs. Native Treiber vergleichen\n- Anwendungsfälle identifizieren",
   "codeExamples": [
     {
@@ -30,5 +39,12 @@
     }
   ],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand ODBC",
+    "Understand Datenbank",
+    "Understand API",
+    "Understand Schnittstelle",
+    "Understand Neu 2025"
+  ]
 }

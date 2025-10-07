@@ -1,0 +1,13 @@
+{
+  "quiz.locked.title": "Final exam locked",
+  "quiz.locked.reason.SECTION_UNREAD": "Some required sections are not sufficiently read.",
+  "quiz.locked.reason.MICRO_NOT_PASSED": "All micro-quizzes must be passed.",
+  "quiz.cooldown.message": "Please wait until the cooldown ends before retrying the final exam.",
+  "quiz.result.passed": "Passed",
+  "quiz.result.failed": "Not passed"
+  ,"quiz.extra.enOnly": "This key exists only in English",
+  "quiz.resultsAvailable": "Quiz results available",
+  "quiz.submissionPending": "Quiz submission pending",
+  "quiz.submit.button": "Submit",
+  "quiz.result.label": "Result"
+}

@@ -10,7 +10,9 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 40,
-  "prerequisites": ["sql-ddl-2025"],
+  "prerequisites": [
+    "sql-ddl-2025"
+  ],
   "tags": [
     "SQL",
     "DML",
@@ -85,7 +87,9 @@
       "solution": "INSERT INTO top_kunden (kunde_id, name, email, anzahl_bestellungen)\nSELECT k.kunde_id, k.name, k.email, COUNT(b.bestellung_id)\nFROM kunde k\nJOIN bestellung b ON k.kunde_id = b.kunde_id\nGROUP BY k.kunde_id, k.name, k.email\nHAVING COUNT(b.bestellung_id) > 5;"
     }
   ],
-  "relatedQuizzes": ["sql-comprehensive-quiz-2025"],
+  "relatedQuizzes": [
+    "sql-comprehensive-quiz-2025"
+  ],
   "resources": [
     {
       "title": "SQL Tutorial - DML",
@@ -94,5 +98,12 @@
     }
   ],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand SQL",
+    "Understand DML",
+    "Understand INSERT",
+    "Understand UPDATE",
+    "Understand DELETE"
+  ]
 }

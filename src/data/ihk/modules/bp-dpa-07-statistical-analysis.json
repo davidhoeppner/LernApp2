@@ -1,0 +1,32 @@
+{
+  "id": "bp-dpa-07-statistical-analysis",
+  "title": "Statistical Analysis: Grundlagen für Daten- und Prozessanalyse",
+  "description": "Einführung in grundlegende Statistik für Datenanalysten: deskriptive Statistik, Kennzahlen, Wahrscheinlichkeitsbegriffe, Hypothesentests und einfache Auswertungsverfahren für Geschäftsprozesse.",
+  "category": "BP-DPA-01",
+  "subcategory": "Daten erfassen, aufbereiten und auswerten",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 70,
+  "prerequisites": [],
+  "tags": ["Statistik","Deskriptive Statistik","Hypothesentests","Metriken"],
+  "content": "# Statistische Grundlagen für Daten- und Prozessanalyse\n\n## Deskriptive Statistik\n- Lageparameter: Mittelwert, Median, Modus\n- Streuungsmaße: Varianz, Standardabweichung, Interquartilsabstand (IQR)\n- Verteilungen: Normalverteilung, Schiefe, Kurtosis\n\n## Wahrscheinlichkeitsbegriffe\n- Zufallsvariablen, Erwartungswert, Varianz\n- Diskrete vs. kontinuierliche Verteilungen\n\n## Hypothesentests (Grundprinzipien)\n- Nullhypothese und Alternativhypothese\n- p-Wert und Signifikanzniveau (z. B. 5%)\n- t-Test (Mittelwertvergleich), Chi-Quadrat-Test (Korrelation kategorialer Daten)\n\n## Praktische Anwendung in Prozessen\n- KPI-Analyse und Trendbewertung\n- Signifikanz von Prozessänderungen prüfen (Before/After-Tests)\n- Stichprobenplanung und Fehlerabschätzung\n\n## Prüfungsrelevante Aspekte\n- Grundbegriffe der deskriptiven Statistik benennen\n- Einfache Hypothesentests erklären und Ergebnisinterpretation\n- Relevanz von Streuungsmaßen und Konfidenzintervallen erläutern",
+  "learningObjectives": [
+    "Mittelwert, Median und Streuungsmaße berechnen und interpretieren",
+    "Grundprinzipien von Hypothesentests und p-Werten erklären",
+    "Einfache statistische Tests auf Prozessdaten anwenden (t-Test, Chi-Quadrat)"
+  ],
+  "keyTakeaways": [
+    "Deskriptive Statistik liefert erste Einblicke in Daten und Prozesse",
+    "Hypothesentests helfen zu entscheiden, ob beobachtete Effekte signifikant sind",
+    "KPI-Analysen benötigen Kenntnis von Streuungsmaßen und Fehlergrenzen"
+  ],
+  "relatedQuizzes": ["bp-dpa-07-statistical-analysis-quiz"],
+  "resources": [
+    { "title": "Basic Statistics (tutorial)", "url": "https://stattrek.com/", "type": "article" }
+  ],
+  "lastUpdated": "2025-10-07T00:00:00Z",
+  "version": "1.0"
+}

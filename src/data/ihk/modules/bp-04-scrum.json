@@ -41,7 +41,9 @@
       "explanation": "Eine Sprint Retrospective dokumentiert, was gut lief, was verbessert werden kann und definiert konkrete Action Items mit Verantwortlichkeiten für den nächsten Sprint."
     }
   ],
-  "relatedQuizzes": ["scrum-quiz-2025"],
+  "relatedQuizzes": [
+    "scrum-quiz-2025"
+  ],
   "resources": [
     {
       "title": "Scrum Guide (offiziell)",
@@ -55,5 +57,12 @@
     }
   ],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand Scrum",
+    "Understand Agile",
+    "Understand Projektmanagement",
+    "Understand Sprint",
+    "Understand Product Owner"
+  ]
 }

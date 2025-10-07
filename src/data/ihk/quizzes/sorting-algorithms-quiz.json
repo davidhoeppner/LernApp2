@@ -1,6 +1,6 @@
 {
   "id": "sorting-algorithms-quiz-2025",
-  "moduleId": "bp-05-sorting-2025",
+  "moduleId": "bp-05-sorting",
   "title": "Sortierverfahren Quiz",
   "description": "Umfassendes Quiz zu Sortieralgorithmen mit 17 Fragen zu Bubble Sort, Selection Sort, Insertion Sort, Komplexität und Code-Lücken.",
   "category": "BP-05",
@@ -76,7 +76,12 @@
       "id": "sort-q5",
       "type": "single-choice",
       "question": "Was ist die Zeitkomplexität von Bubble Sort im schlechtesten Fall?",
-      "options": ["O(n²)", "O(n)", "O(log n)", "O(n log n)"],
+      "options": [
+        "O(n²)",
+        "O(n)",
+        "O(log n)",
+        "O(n log n)"
+      ],
       "correctAnswer": "O(n²)",
       "explanation": "Bubble Sort hat im schlechtesten Fall (umgekehrt sortierte Liste) eine Zeitkomplexität von O(n²), da jedes Element mit jedem verglichen werden muss.",
       "points": 2,
@@ -212,7 +217,12 @@
       "question": "Fülle die Lücke für Bubble Sort:\n\nfor (int i = 0; i < n-1; i++) {\n    for (int j = 0; j < n-i-1; j++) {\n        if (arr[j] ___ arr[j+1]) {\n            swap(arr, j, j+1);\n        }\n    }\n}",
       "code": "for (int i = 0; i < n-1; i++) {\n    for (int j = 0; j < n-i-1; j++) {\n        if (arr[j] ___ arr[j+1]) {\n            swap(arr, j, j+1);\n        }\n    }\n}",
       "language": "java",
-      "options": [">", "<", "==", "!="],
+      "options": [
+        ">",
+        "<",
+        "==",
+        "!="
+      ],
       "correctAnswer": ">",
       "explanation": "Für aufsteigende Sortierung: if (arr[j] > arr[j+1]) - wenn das linke Element größer ist, tauschen. Für absteigende Sortierung würde man < verwenden.",
       "points": 2,

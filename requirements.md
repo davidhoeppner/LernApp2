@@ -79,3 +79,88 @@ A simplified, modern learning application that helps users study through interac
 3. WHEN viewing any page THEN the system SHALL highlight the current section in the navigation
 4. WHEN the user accesses an invalid route THEN the system SHALL redirect to the home page
 5. WHEN navigating between views THEN the system SHALL maintain scroll position appropriately
+
+### Requirement 7: Assessment Layer & Quiz Gating
+
+// Additive requirements (EARS syntax). Previous sections may be clarified by cross-reference (Updated by 7.x) without alteration.
+
+#### 7.1 Gating Core
+
+1. WHEN a learner opens a locked final exam THEN the system SHALL display an unmet criteria list with reason codes (SECTION_UNREAD, MICRO_NOT_PASSED).
+2. The system SHALL PREVENT starting a micro-quiz before its related section progress is ≥ 85% read OR explicitly marked as read.
+3. IF feature.quizGating ENABLED THEN the system SHALL replace legacy quiz direct links with gating overlays for locked content.
+4. The system SHALL represent final exam status as one of: LOCKED | READY | PASSED | OUTDATED | COOLDOWN.
+5. WHEN final exam status is OUTDATED THEN the system SHALL display a revalidation prompt explaining newly required items.
+6. The system SHALL PREVENT starting a final exam while status is LOCKED, OUTDATED, or COOLDOWN.
+
+#### 7.2 Micro-Quiz Interaction
+
+1. WHEN a micro-quiz is submitted THEN the system SHALL compute score and display pass/fail plus rationales for incorrect responses only after submission.
+2. The system SHALL limit micro-quiz length to ≤ 5 questions.
+3. The system SHALL target a median completion time ≤ 2 minutes (informational metric recorded; not enforced hard stop).
+4. The system SHALL PREVENT navigation away during active submission processing (disable submit until resolved).
+5. WHEN micro-quiz results are displayed THEN the system SHALL provide a retry button only if not yet passed.
+
+#### 7.3 Final Exam Unlocking
+
+1. WHEN all required micro-quizzes are passed AND all required sections are read THEN the system SHALL unlock the final exam (status READY).
+2. WHILE a module structure changes after a final exam pass THEN the system SHALL mark final exam status OUTDATED until new mandatory items satisfied.
+3. WHEN final exam status transitions to READY THEN the system SHALL emit event quiz.final.ready with moduleId.
+4. The system SHALL PREVENT unlocking if any micro-quiz is pending evaluation.
+
+#### 7.4 Attempts & Retention
+
+1. The system SHALL store at most the last 20 attempts per quiz and SHALL prune older attempts FIFO beyond this limit.
+2. IF an attempt submission fails due to simulated network failure THEN the system SHALL retry up to 3 times with exponential backoff (1s, 3s, 7s) before marking status PENDING_SYNC.
+3. WHILE an attempt is PENDING_SYNC THEN the system SHALL PREVENT a new submission for the same quiz unless user cancels sync.
+4. The system SHALL log pruning activity via analytics event quiz.attempt.pruned.
+
+#### 7.5 Scoring & Partial Credit
+
+1. The system SHALL implement multi-select partial credit formula: partial = max(0, (CorrectSelected / TotalCorrect) − (IncorrectSelected / TotalOptionsNonCorrect)).
+2. The system SHALL clamp partial credit between 0 and 1 prior to weighting.
+3. The system SHALL compute totalQuestionScore = partial _ weight _ 100% (capped at 100%).
+4. The system SHALL round total quiz score to 1 decimal place using half-up rounding.
+5. The system SHALL derive aggregate score on demand from raw answers (no trusting client-stored aggregates) (Integrity – see 7.10).
+6. The system SHALL support ordering question scoring: ScoreFraction = (#items in correct relative position) / totalItems (method documented in design) (future extension placeholder).
+
+#### 7.6 Accessibility
+
+1. WHEN a quiz result becomes available THEN the system SHALL move keyboard focus to a results heading announced via a polite live region.
+2. The system SHALL ensure each question group uses <fieldset><legend> for semantic grouping.
+3. The system SHALL provide ARIA attributes for expandable/collapsible quiz panels reflecting expanded state.
+4. The system SHALL provide a "Skip to Final Exam Status" anchor link when exam is locked.
+
+#### 7.7 Analytics
+
+1. WHEN quiz lifecycle events occur (quiz.view, quiz.start, quiz.submit, quiz.locked.view, progression.module.status) THEN the system SHALL record them through emitEvent(eventName, payload).
+2. The system SHALL include timestamp (ISO8601 UTC) and UUID in each event envelope (version 1 schema).
+3. The system SHALL batch (in-memory) events for optional future flush (currently console log in dev, noop in prod).
+
+#### 7.8 Internationalization (i18n)
+
+1. The system SHALL externalize all learner-facing quiz gating strings into i18n/assessment.<locale>.json.
+2. IF a string key is missing in current locale THEN the system SHALL fallback to en locale.
+3. IF key missing in en THEN the system SHALL display the key identifier and emit analytics warning event i18n.missing.
+
+#### 7.9 Performance
+
+1. The system SHALL lazy-load final exam questions only when the learner explicitly opens the unlocked exam view.
+2. The system SHALL keep incremental DOM re-render time per answered question under 50ms on baseline hardware (logged metric).
+3. The system SHALL measure panel expand (micro-quiz open) using performance.now() and record metric quiz.ui.expand.
+4. Bundle size increase from assessment layer SHALL be ≤ +15KB gzip (excluding content JSON).
+
+#### 7.10 Security / Integrity
+
+1. The system SHALL PREVENT exposure of correct answers before submission.
+2. The system SHALL recompute scores deterministically from raw answers each view render.
+3. The system SHALL PREVENT tampering by ignoring client-modified aggregates (only raw attempts persisted).
+4. The system SHALL obscure (not store) rationales in localStorage prior to submission.
+
+#### 7.11 Feature Flag
+
+1. IF feature.quizGating DISABLED THEN the system SHALL display legacy quiz entry points without gating overlays.
+2. IF feature.quizGating DISABLED THEN the system SHALL bypass gating evaluators (direct access) while still recording attempts.
+3. WHEN feature.quizGating toggled from false to true THEN the system SHALL recompute gating status for the currently viewed module.
+
+// End Section 7

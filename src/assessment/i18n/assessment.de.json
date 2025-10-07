@@ -1,0 +1,12 @@
+{
+  "quiz.locked.title": "Abschlussprüfung gesperrt",
+  "quiz.locked.reason.SECTION_UNREAD": "Einige erforderliche Abschnitte sind nicht ausreichend gelesen.",
+  "quiz.locked.reason.MICRO_NOT_PASSED": "Alle Mikro-Quizze müssen bestanden sein.",
+  "quiz.cooldown.message": "Bitte warte bis die Abkühlphase endet bevor du die Abschlussprüfung erneut versuchst.",
+  "quiz.result.passed": "Bestanden",
+  "quiz.result.failed": "Nicht bestanden"
+  ,"quiz.resultsAvailable": "Quiz-Ergebnisse sind verfügbar",
+  "quiz.submissionPending": "Quizübermittlung ausstehend",
+  "quiz.submit.button": "Abschicken",
+  "quiz.result.label": "Ergebnis"
+}

@@ -16,7 +16,7 @@ export function initializeMigrationServices(dependencies) {
     ihkContentService,
     specializationService,
     moduleService,
-    quizService
+    quizService,
   } = dependencies;
 
   // Import services dynamically to avoid circular dependencies
@@ -58,7 +58,7 @@ export function initializeMigrationServices(dependencies) {
     progressMigrationService,
     categoryValidationService,
     migrationMonitoringService,
-    migrationToolsIntegration
+    migrationToolsIntegration,
   };
 }
 
@@ -70,16 +70,21 @@ export function initializeMigrationServices(dependencies) {
 export function isMigrationNeeded(stateManager) {
   try {
     const currentProgress = stateManager.getState('progress') || {};
-    
+
     // Check if progress has migration info indicating it's already migrated
-    const hasMigrationInfo = currentProgress.migrationInfo && 
-                            currentProgress.migrationInfo.targetStructure === 'three-tier-categories';
-    
+    const hasMigrationInfo =
+      currentProgress.migrationInfo &&
+      currentProgress.migrationInfo.targetStructure === 'three-tier-categories';
+
     // Check if there's any progress data to migrate
-    const hasProgressData = (currentProgress.modulesCompleted && currentProgress.modulesCompleted.length > 0) ||
-                           (currentProgress.quizAttempts && currentProgress.quizAttempts.length > 0) ||
-                           (currentProgress.specializationProgress && Object.keys(currentProgress.specializationProgress).length > 0);
-    
+    const hasProgressData =
+      (currentProgress.modulesCompleted &&
+        currentProgress.modulesCompleted.length > 0) ||
+      (currentProgress.quizAttempts &&
+        currentProgress.quizAttempts.length > 0) ||
+      (currentProgress.specializationProgress &&
+        Object.keys(currentProgress.specializationProgress).length > 0);
+
     return hasProgressData && !hasMigrationInfo;
   } catch (error) {
     console.error('Error checking migration need:', error);
@@ -105,8 +110,8 @@ export async function quickReadinessCheck(migrationServices) {
         overall: 'error',
         checks: {},
         warnings: [],
-        blockers: [`Readiness check failed: ${error.message}`]
-      }
+        blockers: [`Readiness check failed: ${error.message}`],
+      },
     };
   }
 }
@@ -118,34 +123,45 @@ export async function quickReadinessCheck(migrationServices) {
  * @param {Object} options - Migration options
  * @returns {Promise<Object>} Migration result
  */
-export async function executeMigrationWithProgress(migrationServices, progressCallback, options = {}) {
+export async function executeMigrationWithProgress(
+  migrationServices,
+  progressCallback,
+  options = {}
+) {
   try {
     const { migrationToolsIntegration } = migrationServices;
-    
+
     // Start migration
     if (progressCallback) {
-      progressCallback({ phase: 'starting', progress: 0, message: 'Starting migration...' });
+      progressCallback({
+        phase: 'starting',
+        progress: 0,
+        message: 'Starting migration...',
+      });
     }
 
-    const result = await migrationToolsIntegration.performCompleteMigration(options);
+    const result =
+      await migrationToolsIntegration.performCompleteMigration(options);
 
     if (progressCallback) {
-      progressCallback({ 
-        phase: 'completed', 
-        progress: 100, 
-        message: result.success ? 'Migration completed successfully' : 'Migration failed',
-        result 
+      progressCallback({
+        phase: 'completed',
+        progress: 100,
+        message: result.success
+          ? 'Migration completed successfully'
+          : 'Migration failed',
+        result,
       });
     }
 
     return result;
   } catch (error) {
     if (progressCallback) {
-      progressCallback({ 
-        phase: 'error', 
-        progress: 0, 
+      progressCallback({
+        phase: 'error',
+        progress: 0,
         message: `Migration failed: ${error.message}`,
-        error: error.message 
+        error: error.message,
       });
     }
     throw error;
@@ -158,12 +174,16 @@ export async function executeMigrationWithProgress(migrationServices, progressCa
  * @param {string} migrationId - Optional migration ID
  * @returns {Promise<Object>} Summary report
  */
-export async function generateMigrationSummary(migrationServices, migrationId = null) {
+export async function generateMigrationSummary(
+  migrationServices,
+  migrationId = null
+) {
   try {
     const { migrationToolsIntegration } = migrationServices;
-    
-    const comprehensiveReport = await migrationToolsIntegration.generateComprehensiveReport(migrationId);
-    
+
+    const comprehensiveReport =
+      await migrationToolsIntegration.generateComprehensiveReport(migrationId);
+
     if (!comprehensiveReport.success) {
       throw new Error(comprehensiveReport.error);
     }
@@ -174,26 +194,35 @@ export async function generateMigrationSummary(migrationServices, migrationId = 
       generatedAt: comprehensiveReport.report.generatedAt,
       executiveSummary: comprehensiveReport.report.executiveSummary,
       keyMetrics: {
-        migrationSuccess: comprehensiveReport.report.executiveSummary?.metrics?.migrationSuccess || 0,
-        validationStatus: comprehensiveReport.report.executiveSummary?.metrics?.validationStatus || 'unknown',
-        totalConflicts: comprehensiveReport.report.executiveSummary?.metrics?.totalConflicts || 0,
-        optimizationOpportunities: comprehensiveReport.report.executiveSummary?.metrics?.optimizationOpportunities || 0
+        migrationSuccess:
+          comprehensiveReport.report.executiveSummary?.metrics
+            ?.migrationSuccess || 0,
+        validationStatus:
+          comprehensiveReport.report.executiveSummary?.metrics
+            ?.validationStatus || 'unknown',
+        totalConflicts:
+          comprehensiveReport.report.executiveSummary?.metrics
+            ?.totalConflicts || 0,
+        optimizationOpportunities:
+          comprehensiveReport.report.executiveSummary?.metrics
+            ?.optimizationOpportunities || 0,
       },
-      recommendations: comprehensiveReport.report.executiveSummary?.recommendations || [],
-      criticalIssues: comprehensiveReport.report.executiveSummary?.criticalIssues || []
+      recommendations:
+        comprehensiveReport.report.executiveSummary?.recommendations || [],
+      criticalIssues:
+        comprehensiveReport.report.executiveSummary?.criticalIssues || [],
     };
 
     return {
       success: true,
       summary,
-      fullReport: comprehensiveReport.report
+      fullReport: comprehensiveReport.report,
     };
-
   } catch (error) {
     console.error('Failed to generate migration summary:', error);
     return {
       success: false,
-      error: error.message
+      error: error.message,
     };
   }
 }
@@ -204,10 +233,13 @@ export async function generateMigrationSummary(migrationServices, migrationId = 
  * @param {Array} contentItems - Content items to validate (optional)
  * @returns {Promise<Object>} Validation result
  */
-export async function validateCategoryAssignments(migrationServices, contentItems = null) {
+export async function validateCategoryAssignments(
+  migrationServices,
+  contentItems = null
+) {
   try {
     const { categoryValidationService } = migrationServices;
-    
+
     if (contentItems) {
       // Validate specific content items
       return categoryValidationService.validateCategoryMapping(contentItems);
@@ -225,7 +257,7 @@ export async function validateCategoryAssignments(migrationServices, contentItem
       invalidItems: 0,
       warnings: [],
       errors: [error.message],
-      details: []
+      details: [],
     };
   }
 }
@@ -243,7 +275,7 @@ export function getMigrationStatusFormatted(migrationServices) {
     if (!status.success) {
       return {
         success: false,
-        error: status.error
+        error: status.error,
       };
     }
 
@@ -255,12 +287,12 @@ export function getMigrationStatusFormatted(migrationServices) {
         totalRollbacks: status.status.history.rollbacks.length,
         activeSessions: status.status.monitoring.activeSessions,
         lastMigrationDate: status.status.lastMigration?.completedAt || null,
-        lastRollbackDate: status.status.lastRollback?.rolledBackAt || null
+        lastRollbackDate: status.status.lastRollback?.rolledBackAt || null,
       },
       status: status.status.isMigrated ? 'migrated' : 'not_migrated',
-      message: status.status.isMigrated 
+      message: status.status.isMigrated
         ? 'Progress has been migrated to three-tier category system'
-        : 'Progress has not been migrated yet'
+        : 'Progress has not been migrated yet',
     };
 
     return formatted;
@@ -268,7 +300,7 @@ export function getMigrationStatusFormatted(migrationServices) {
     console.error('Failed to get formatted migration status:', error);
     return {
       success: false,
-      error: error.message
+      error: error.message,
     };
   }
 }
@@ -281,25 +313,34 @@ export function getMigrationStatusFormatted(migrationServices) {
  * @param {Object} options - Rollback options
  * @returns {Promise<Object>} Rollback result
  */
-export async function rollbackMigrationWithConfirmation(migrationServices, migrationId, confirmed = false, options = {}) {
+export async function rollbackMigrationWithConfirmation(
+  migrationServices,
+  migrationId,
+  confirmed = false,
+  options = {}
+) {
   try {
     if (!confirmed) {
       return {
         success: false,
         requiresConfirmation: true,
-        message: 'Rollback requires explicit confirmation. This will restore previous progress state.',
-        migrationId
+        message:
+          'Rollback requires explicit confirmation. This will restore previous progress state.',
+        migrationId,
       };
     }
 
     const { migrationToolsIntegration } = migrationServices;
-    return await migrationToolsIntegration.performMonitoredRollback(migrationId, options);
+    return await migrationToolsIntegration.performMonitoredRollback(
+      migrationId,
+      options
+    );
   } catch (error) {
     console.error('Rollback failed:', error);
     return {
       success: false,
       error: error.message,
-      migrationId
+      migrationId,
     };
   }
 }
@@ -315,5 +356,5 @@ export default {
   generateMigrationSummary,
   validateCategoryAssignments,
   getMigrationStatusFormatted,
-  rollbackMigrationWithConfirmation
+  rollbackMigrationWithConfirmation,
 };

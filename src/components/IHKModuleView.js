@@ -149,7 +149,7 @@ class IHKModuleView {
         ${badges.join('')}
       </div>
       <h1>${this.module.title}</h1>
-      <p class="module-description">${this.module.description}</p>
+      <p class="module-description">${this.formatInlineText(this.module.description)}</p>
       <div class="module-metadata">
         <span class="meta-item">
           <strong>Kategorie:</strong> ${this.module.category}
@@ -182,6 +182,19 @@ class IHKModuleView {
     `;
 
     return header;
+  }
+
+  /**
+   * Format inline text fields (escape HTML and convert escaped/newline characters to <br>)
+   */
+  formatInlineText(text) {
+    if (!text) return '';
+    // First, convert literal backslash-n sequences into real newlines
+    let t = String(text).replace(/\\n/g, '\n');
+    // Escape HTML to avoid injection
+    const escaped = this.escapeHtml(t);
+    // Replace actual newlines with <br> for inline display
+    return escaped.replace(/\n/g, '<br>');
   }
 
   /**

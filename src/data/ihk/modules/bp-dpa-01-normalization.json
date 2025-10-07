@@ -1,0 +1,57 @@
+{
+  "id": "bp-dpa-01-normalization",
+  "title": "Normalisierung von Datenbanken",
+  "description": "Normalformen und Normalisierungsprozess zur Vermeidung von Redundanzen und Anomalien",
+  "category": "BP-DPA-02",
+  "subcategory": "Datenmodelle entwickeln und implementieren",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 50,
+  "prerequisites": [
+    "bp-dpa-01-er-modeling"
+  ],
+  "tags": [
+    "Normalisierung",
+    "Normalformen",
+    "Redundanz",
+    "Anomalien",
+    "Datenbankdesign"
+  ],
+  "content": "# Normalisierung von Datenbanken\n\n## Einführung\n\nNormalisierung ist ein systematischer Prozess zur Strukturierung relationaler Datenbanken, um Redundanzen zu minimieren und Datenintegrität zu gewährleisten. Für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse ist das Verständnis der Normalformen essentiell für effizientes Datenbankdesign.\n\n## Ziele der Normalisierung\n\n### 1. Redundanz minimieren\n- Vermeidung doppelt gespeicherter Daten\n- Reduzierung des Speicherbedarfs\n- Konsistenz der Daten sicherstellen\n\n### 2. Anomalien vermeiden\n- **Einfügeanomalie**: Daten können nicht eingefügt werden ohne andere Daten\n- **Änderungsanomalie**: Änderungen müssen an mehreren Stellen vorgenommen werden\n- **Löschanomalie**: Beim Löschen gehen ungewollt andere Daten verloren\n\n### 3. Datenintegrität gewährleisten\n- Konsistente Datenstrukturen\n- Eindeutige Beziehungen\n- Referentielle Integrität\n\n## Funktionale Abhängigkeiten\n\n### Definition\nEin Attribut B ist funktional abhängig von Attribut A, wenn zu jedem Wert von A genau ein Wert von B gehört.\n\n**Notation:** A → B (\"A bestimmt B\")\n\n### Beispiele\n- PersonalNr → Name (Personalnummer bestimmt Namen)\n- ISBN → Buchtitel (ISBN bestimmt Buchtitel)\n- KundenNr → Adresse (Kundennummer bestimmt Adresse)\n\n### Arten funktionaler Abhängigkeiten\n\n**Vollständige funktionale Abhängigkeit:**\n- B ist von der gesamten Attributkombination A abhängig\n- Entfernung eines Attributs aus A würde Abhängigkeit aufheben\n\n**Partielle funktionale Abhängigkeit:**\n- B ist nur von einem Teil der Attributkombination A abhängig\n- Verletzt die 2. Normalform\n\n**Transitive Abhängigkeit:**\n- A → B und B → C, dann A → C\n- Indirekte Abhängigkeit über Zwischenattribut\n- Verletzt die 3. Normalform\n\n## Die Normalformen\n\n### 1. Normalform (1NF)\n\n**Bedingung:**\n- Alle Attributwerte sind atomar (unteilbar)\n- Keine mehrwertigen Attribute\n- Keine Wiederholungsgruppen\n\n**Beispiel - Nicht in 1NF:**\n```\nKunde (KundenNr, Name, Telefon)\n1, \"Max Müller\", \"030-123456, 0171-987654\"\n```\n\n**Beispiel - In 1NF:**\n```\nKunde (KundenNr, Name)\n1, \"Max Müller\"\n\nTelefon (KundenNr, Telefonnummer)\n1, \"030-123456\"\n1, \"0171-987654\"\n```\n\n### 2. Normalform (2NF)\n\n**Bedingungen:**\n- Tabelle ist in 1NF\n- Jedes Nicht-Schlüssel-Attribut ist vollständig funktional abhängig vom Primärschlüssel\n- Keine partiellen Abhängigkeiten\n\n**Beispiel - Nicht in 2NF:**\n```\nBestellposition (BestellNr, ProduktNr, Menge, Produktname, Preis)\nPrimärschlüssel: (BestellNr, ProduktNr)\n```\n\nProblem: Produktname und Preis sind nur von ProduktNr abhängig, nicht vom gesamten Schlüssel.\n\n**Lösung - In 2NF:**\n```\nBestellposition (BestellNr, ProduktNr, Menge)\nProdukt (ProduktNr, Produktname, Preis)\n```\n\n### 3. Normalform (3NF)\n\n**Bedingungen:**\n- Tabelle ist in 2NF\n- Kein Nicht-Schlüssel-Attribut ist transitiv abhängig vom Primärschlüssel\n- Keine transitiven Abhängigkeiten\n\n**Beispiel - Nicht in 3NF:**\n```\nMitarbeiter (PersonalNr, Name, AbteilungsNr, Abteilungsname)\n```\n\nProblem: Abteilungsname ist transitiv abhängig (PersonalNr → AbteilungsNr → Abteilungsname)\n\n**Lösung - In 3NF:**\n```\nMitarbeiter (PersonalNr, Name, AbteilungsNr)\nAbteilung (AbteilungsNr, Abteilungsname)\n```\n\n### Boyce-Codd-Normalform (BCNF)\n\n**Bedingung:**\n- Tabelle ist in 3NF\n- Jede funktionale Abhängigkeit hat einen Superschlüssel als Determinante\n- Verschärfung der 3NF\n\n**Anwendung:**\n- Bei mehreren Kandidatenschlüsseln\n- Seltener in der Praxis relevant\n\n### 4. Normalform (4NF)\n\n**Bedingung:**\n- Tabelle ist in BCNF\n- Keine mehrwertigen Abhängigkeiten\n\n**Beispiel:**\n```\nStudent-Kurs-Hobby (StudentNr, Kurs, Hobby)\n```\n\nProblem: Kurse und Hobbys sind unabhängig voneinander mehrwertig.\n\n**Lösung:**\n```\nStudent-Kurs (StudentNr, Kurs)\nStudent-Hobby (StudentNr, Hobby)\n```\n\n### 5. Normalform (5NF)\n\n**Bedingung:**\n- Tabelle ist in 4NF\n- Keine Verbundabhängigkeiten\n- Sehr selten in der Praxis relevant\n\n## Normalisierungsprozess\n\n### Schritt 1: Ausgangstabelle analysieren\n- Funktionale Abhängigkeiten identifizieren\n- Primärschlüssel bestimmen\n- Anomalien erkennen\n\n### Schritt 2: 1NF erreichen\n- Mehrwertige Attribute auflösen\n- Wiederholungsgruppen eliminieren\n- Atomare Werte sicherstellen\n\n### Schritt 3: 2NF erreichen\n- Partielle Abhängigkeiten identifizieren\n- Betroffene Attribute in neue Tabellen auslagern\n- Fremdschlüssel-Beziehungen erstellen\n\n### Schritt 4: 3NF erreichen\n- Transitive Abhängigkeiten identifizieren\n- Zwischentabellen für transitive Beziehungen erstellen\n- Referentielle Integrität sicherstellen\n\n## Praktisches Beispiel: Bibliothekssystem\n\n### Ausgangstabelle (nicht normalisiert):\n```\nAusleihe (\n  AusleihNr, \n  Datum, \n  LeserNr, \n  LeserName, \n  LeserAdresse,\n  ISBN, \n  Buchtitel, \n  Autor, \n  Verlag,\n  Rückgabedatum\n)\n```\n\n### Funktionale Abhängigkeiten:\n- AusleihNr → Datum, LeserNr, ISBN, Rückgabedatum\n- LeserNr → LeserName, LeserAdresse\n- ISBN → Buchtitel, Autor, Verlag\n\n### Nach Normalisierung (3NF):\n```\nAusleihe (AusleihNr, Datum, LeserNr, ISBN, Rückgabedatum)\nLeser (LeserNr, LeserName, LeserAdresse)\nBuch (ISBN, Buchtitel, Autor, Verlag)\n```\n\n## Vor- und Nachteile der Normalisierung\n\n### Vorteile:\n- Reduzierte Redundanz\n- Vermeidung von Anomalien\n- Bessere Datenintegrität\n- Flexiblere Datenstruktur\n- Geringerer Speicherbedarf\n\n### Nachteile:\n- Komplexere Abfragen (mehr JOINs)\n- Potentiell schlechtere Performance\n- Höhere Komplexität der Datenbankstruktur\n\n## Denormalisierung\n\n### Wann sinnvoll?\n- Performance-kritische Anwendungen\n- Read-heavy Workloads\n- Data Warehouse Systeme\n- Reporting-Datenbanken\n\n### Strategien:\n- Kontrollierte Redundanz\n- Materialized Views\n- Berechnete Felder\n- Zusammenfassung häufig abgefragter Daten\n\n## Prüfungsrelevante Aspekte\n\n- Normalformen 1NF bis 3NF sicher beherrschen\n- Funktionale Abhängigkeiten erkennen\n- Anomalien identifizieren\n- Normalisierungsprozess durchführen\n- Vor- und Nachteile der Normalisierung kennen\n- Praktische Beispiele normalisieren können",
+  "codeExamples": [
+    {
+      "language": "sql",
+      "code": "-- Beispiel: Nicht normalisierte Tabelle\nCREATE TABLE bestellung_nicht_normalisiert (\n    bestell_nr INT,\n    kunde_nr INT,\n    kunde_name VARCHAR(100),\n    kunde_adresse VARCHAR(200),\n    produkt_nr INT,\n    produkt_name VARCHAR(100),\n    preis DECIMAL(10,2),\n    menge INT\n);\n\n-- Nach Normalisierung (3NF):\nCREATE TABLE kunde (\n    kunde_nr INT PRIMARY KEY,\n    kunde_name VARCHAR(100),\n    kunde_adresse VARCHAR(200)\n);\n\nCREATE TABLE produkt (\n    produkt_nr INT PRIMARY KEY,\n    produkt_name VARCHAR(100),\n    preis DECIMAL(10,2)\n);\n\nCREATE TABLE bestellung (\n    bestell_nr INT PRIMARY KEY,\n    kunde_nr INT,\n    FOREIGN KEY (kunde_nr) REFERENCES kunde(kunde_nr)\n);\n\nCREATE TABLE bestellposition (\n    bestell_nr INT,\n    produkt_nr INT,\n    menge INT,\n    PRIMARY KEY (bestell_nr, produkt_nr),\n    FOREIGN KEY (bestell_nr) REFERENCES bestellung(bestell_nr),\n    FOREIGN KEY (produkt_nr) REFERENCES produkt(produkt_nr)\n);",
+      "explanation": "Beispiel für Normalisierung einer Bestelltabelle von unnormalisiert zu 3NF",
+      "title": "Normalisierung Beispiel"
+    }
+  ],
+  "relatedQuizzes": [
+    "bp-dpa-01-normalization-quiz"
+  ],
+  "resources": [
+    {
+      "title": "Database Normalization Explained",
+      "url": "https://www.studytonight.com/dbms/database-normalization.php",
+      "type": "article"
+    }
+  ],
+  "learningObjectives": [
+    "Normalformen 1NF bis 3NF verstehen und anwenden",
+    "Funktionale Abhängigkeiten identifizieren",
+    "Anomalien erkennen und vermeiden",
+    "Normalisierungsprozess durchführen",
+    "Vor- und Nachteile der Normalisierung bewerten"
+  ],
+  "keyTakeaways": [
+    "Normalisierung reduziert Redundanz und Anomalien",
+    "Funktionale Abhängigkeiten bestimmen die Normalformen",
+    "3NF ist meist ausreichend für praktische Anwendungen",
+    "Denormalisierung kann für Performance sinnvoll sein"
+  ],
+  "lastUpdated": "2025-01-20T00:00:00Z",
+  "version": "1.0"
+}

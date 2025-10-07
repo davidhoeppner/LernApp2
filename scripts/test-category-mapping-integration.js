@@ -32,8 +32,8 @@ class MockStateManager {
       return {
         quizAttempts: [
           { quizId: 'test-quiz-1', score: 85 },
-          { quizId: 'test-quiz-2', score: 65 }
-        ]
+          { quizId: 'test-quiz-2', score: 65 },
+        ],
       };
     }
     return {};
@@ -49,15 +49,15 @@ class MockIHKContentService {
         description: 'Test quiz for DPA',
         category: 'BP-DPA-01',
         questions: [{ id: 1, text: 'Test question' }],
-        difficulty: 'intermediate'
+        difficulty: 'intermediate',
       },
       {
-        id: 'test-quiz-2', 
+        id: 'test-quiz-2',
         title: 'AE Test Quiz',
         description: 'Test quiz for AE',
         categoryId: 'BP-01',
         questions: [{ id: 1, text: 'Test question' }],
-        difficulty: 'beginner'
+        difficulty: 'beginner',
       },
       {
         id: 'test-quiz-3',
@@ -65,40 +65,52 @@ class MockIHKContentService {
         description: 'General test quiz',
         threeTierCategory: 'allgemein',
         questions: [{ id: 1, text: 'Test question' }],
-        difficulty: 'advanced'
-      }
+        difficulty: 'advanced',
+      },
     ];
   }
 }
 
 async function testCategoryMappingIntegration() {
-  console.log('🧪 Testing CategoryMappingService Integration in IHKQuizListView\n');
+  console.log(
+    '🧪 Testing CategoryMappingService Integration in IHKQuizListView\n'
+  );
 
   try {
     // Import required modules using file URLs for Windows compatibility
-    const { default: CategoryMappingService } = await import(`file:///${join(projectRoot, 'src/services/CategoryMappingService.js').replace(/\\/g, '/')}`);
-    const { default: IHKQuizListView } = await import(`file:///${join(projectRoot, 'src/components/IHKQuizListView.js').replace(/\\/g, '/')}`);
+    const { default: CategoryMappingService } = await import(
+      `file:///${join(projectRoot, 'src/services/CategoryMappingService.js').replace(/\\/g, '/')}`
+    );
+    const { default: IHKQuizListView } = await import(
+      `file:///${join(projectRoot, 'src/components/IHKQuizListView.js').replace(/\\/g, '/')}`
+    );
 
     // Create mock services
     const mockSpecializationService = new MockSpecializationService();
-    const categoryMappingService = new CategoryMappingService(mockSpecializationService);
-    
+    const categoryMappingService = new CategoryMappingService(
+      mockSpecializationService
+    );
+
     const services = {
       categoryMappingService,
       specializationService: mockSpecializationService,
       stateManager: new MockStateManager(),
       ihkContentService: new MockIHKContentService(),
-      router: { navigate: () => {} }
+      router: { navigate: () => {} },
     };
 
     // Create IHKQuizListView instance
     const quizListView = new IHKQuizListView(services);
 
-    console.log('✅ Successfully created IHKQuizListView with CategoryMappingService');
+    console.log(
+      '✅ Successfully created IHKQuizListView with CategoryMappingService'
+    );
 
     // Test that categoryMappingService is accessible
     if (!quizListView.categoryMappingService) {
-      throw new Error('CategoryMappingService not accessible in IHKQuizListView');
+      throw new Error(
+        'CategoryMappingService not accessible in IHKQuizListView'
+      );
     }
     console.log('✅ CategoryMappingService is accessible in constructor');
 
@@ -108,23 +120,28 @@ async function testCategoryMappingIntegration() {
 
     // Test category indicator generation for each quiz
     console.log('\n📊 Testing category indicator generation:');
-    
+
     for (const quiz of quizListView.quizzes) {
       try {
         const categoryIndicator = quizListView._getCategoryIndicator(quiz);
-        
+
         console.log(`  Quiz: ${quiz.title}`);
-        console.log(`    Original category: ${quiz.category || quiz.categoryId || quiz.threeTierCategory || 'none'}`);
+        console.log(
+          `    Original category: ${quiz.category || quiz.categoryId || quiz.threeTierCategory || 'none'}`
+        );
         console.log(`    Mapped to: ${categoryIndicator.category}`);
         console.log(`    Display name: ${categoryIndicator.displayName}`);
         console.log(`    Icon: ${categoryIndicator.icon}`);
         console.log('');
 
         // Verify required properties exist
-        if (!categoryIndicator.category || !categoryIndicator.displayName || !categoryIndicator.icon) {
+        if (
+          !categoryIndicator.category ||
+          !categoryIndicator.displayName ||
+          !categoryIndicator.icon
+        ) {
           throw new Error(`Invalid category indicator for quiz ${quiz.id}`);
         }
-
       } catch (error) {
         console.error(`❌ Error processing quiz ${quiz.id}:`, error.message);
         throw error;
@@ -133,10 +150,10 @@ async function testCategoryMappingIntegration() {
 
     // Test error handling with invalid quiz data
     console.log('🛡️ Testing error handling:');
-    
+
     const invalidQuiz = { id: 'invalid-quiz' }; // Missing category data
     const fallbackIndicator = quizListView._getCategoryIndicator(invalidQuiz);
-    
+
     if (fallbackIndicator.category !== 'allgemein') {
       throw new Error('Error handling failed - should fallback to allgemein');
     }
@@ -151,9 +168,11 @@ async function testCategoryMappingIntegration() {
 
     console.log('\n🎉 All CategoryMappingService integration tests passed!');
     return true;
-
   } catch (error) {
-    console.error('\n❌ CategoryMappingService integration test failed:', error);
+    console.error(
+      '\n❌ CategoryMappingService integration test failed:',
+      error
+    );
     console.error('Stack trace:', error.stack);
     return false;
   }
@@ -164,8 +183,10 @@ async function testCategoryMappingService() {
   console.log('\n🔧 Testing CategoryMappingService directly:\n');
 
   try {
-    const { default: CategoryMappingService } = await import(`file:///${join(projectRoot, 'src/services/CategoryMappingService.js').replace(/\\/g, '/')}`);
-    
+    const { default: CategoryMappingService } = await import(
+      `file:///${join(projectRoot, 'src/services/CategoryMappingService.js').replace(/\\/g, '/')}`
+    );
+
     const mockSpecializationService = new MockSpecializationService();
     const service = new CategoryMappingService(mockSpecializationService);
 
@@ -175,22 +196,25 @@ async function testCategoryMappingService() {
       { id: 'quiz-2', categoryId: 'BP-01', title: 'AE Quiz' },
       { id: 'quiz-3', threeTierCategory: 'allgemein', title: 'General Quiz' },
       { id: 'quiz-4', title: 'No Category Quiz' },
-      { id: 'quiz-5', category: 'FÜ-01', title: 'General Content' }
+      { id: 'quiz-5', category: 'FÜ-01', title: 'General Content' },
     ];
 
     for (const quiz of testQuizzes) {
       const result = service.mapToThreeTierCategory(quiz);
       console.log(`Quiz: ${quiz.title}`);
-      console.log(`  Input: ${quiz.category || quiz.categoryId || quiz.threeTierCategory || 'none'}`);
+      console.log(
+        `  Input: ${quiz.category || quiz.categoryId || quiz.threeTierCategory || 'none'}`
+      );
       console.log(`  Mapped to: ${result.threeTierCategory}`);
-      console.log(`  Rule applied: ${result.appliedRule?.description || 'none'}`);
+      console.log(
+        `  Rule applied: ${result.appliedRule?.description || 'none'}`
+      );
       console.log(`  Reason: ${result.reason}`);
       console.log('');
     }
 
     console.log('✅ CategoryMappingService direct tests passed!');
     return true;
-
   } catch (error) {
     console.error('❌ CategoryMappingService direct test failed:', error);
     return false;
@@ -200,10 +224,10 @@ async function testCategoryMappingService() {
 // Run all tests
 async function runAllTests() {
   console.log('🚀 Starting CategoryMappingService Integration Tests\n');
-  
+
   const serviceTest = await testCategoryMappingService();
   const integrationTest = await testCategoryMappingIntegration();
-  
+
   if (serviceTest && integrationTest) {
     console.log('\n🎉 All tests passed successfully!');
     process.exit(0);

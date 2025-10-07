@@ -21,29 +21,89 @@ class ModuleDetailView {
    */
   async _loadDependencies() {
     if (!this.marked || !this.hljs) {
-      const [markedModule, hljsModule] = await Promise.all([
-        import('marked'),
-        import('highlight.js'),
-      ]);
+      try {
+        const [markedModule, hljsModule] = await Promise.all([
+          import('marked'),
+          import('highlight.js'),
+        ]);
 
-      this.marked = markedModule.marked;
-      this.hljs = hljsModule.default;
+        this.marked = markedModule.marked;
+        this.hljs = hljsModule.default;
 
-      // Configure marked
-      this.marked.setOptions({
-        highlight: (code, lang) => {
-          if (lang && this.hljs.getLanguage(lang)) {
-            try {
-              return this.hljs.highlight(code, { language: lang }).value;
-            } catch (err) {
-              console.error('Highlight error:', err);
+        // Configure marked
+        this.marked.setOptions({
+          highlight: (code, lang) => {
+            if (lang && this.hljs.getLanguage && this.hljs.getLanguage(lang)) {
+              try {
+                return this.hljs.highlight(code, { language: lang }).value;
+              } catch (err) {
+                console.warn('Highlight error:', err);
+              }
             }
-          }
-          return this.hljs.highlightAuto(code).value;
-        },
-        breaks: true,
-        gfm: true,
-      });
+            if (this.hljs && typeof this.hljs.highlightAuto === 'function') {
+              return this.hljs.highlightAuto(code).value;
+            }
+            // last-resort: escape and wrap
+            return this._escapeHtml(code);
+          },
+          breaks: true,
+          gfm: true,
+        });
+      } catch (err) {
+        // If imports fail (dev server hiccup, network), provide a tiny fallback parser
+        // so the view can still render and inline micro-quiz hosts can be mounted.
+
+        console.warn(
+          'Failed to load markdown/highlight dependencies; using fallback parser',
+          err
+        );
+
+        this.hljs = {
+          getLanguage: () => false,
+          highlightAuto: code => ({ value: this._escapeHtml(code) }),
+        };
+
+        // Minimal markdown fallback: headings, code fences, inline code, links, paragraphs
+        this.marked = {
+          parse: md => {
+            if (!md) return '';
+            // Basic escape
+            let out = String(md);
+
+            // Code fences ```lang\n...\n```
+            out = out.replace(
+              /```([a-zA-Z0-9-_]*)\n([\s\S]*?)```/g,
+              (m, lang, code) => {
+                return `<pre><code>${this._escapeHtml(code)}</code></pre>`;
+              }
+            );
+
+            // Headings (#, ##, ###)
+            out = out.replace(/^###\s*(.*)$/gm, '<h3>$1</h3>');
+            out = out.replace(/^##\s*(.*)$/gm, '<h2>$1</h2>');
+            out = out.replace(/^#\s*(.*)$/gm, '<h1>$1</h1>');
+
+            // Inline code `code`
+            out = out.replace(
+              /`([^`]+)`/g,
+              (m, code) => `<code>${this._escapeHtml(code)}</code>`
+            );
+
+            // Links [text](url)
+            out = out.replace(
+              /\[([^\]]+)\]\(([^)]+)\)/g,
+              '<a href="$2">$1</a>'
+            );
+
+            // Paragraphs: split on two newlines
+            const parts = out
+              .split(/\n\s*\n/)
+              .map(p => p.trim())
+              .filter(Boolean);
+            return parts.map(p => `<p>${p}</p>`).join('\n');
+          },
+        };
+      }
     }
   }
 
@@ -76,8 +136,136 @@ class ModuleDetailView {
       `;
 
       this._attachEventListeners(container);
+      // Mount micro-quiz panel into sidebar if module defines microQuizzes and feature flag enabled
+      try {
+        const { isFeatureEnabled } = await import('../config/featureFlags.js');
+        if (
+          isFeatureEnabled &&
+          isFeatureEnabled('quizGating') &&
+          this.module.microQuizzes &&
+          this.module.microQuizzes.length > 0
+        ) {
+          const { default: MicroQuizPanel } = await import(
+            '../assessment/components/MicroQuizPanel.js'
+          );
+          const sidebarActions = container.querySelector('.sidebar-actions');
+          if (sidebarActions) {
+            // Create host for micro quiz panel
+            const mqHost = document.createElement('div');
+            mqHost.className = 'micro-quiz-host';
+            sidebarActions.insertBefore(mqHost, sidebarActions.firstChild);
+            this._microQuizPanel = new MicroQuizPanel(mqHost);
+            // Render first micro-quiz (assume array of micro quiz ids or objects)
+            const mq = this.module.microQuizzes[0];
+            // If the micro-quiz is an id, try to resolve it via ihkContentService
+            let quizObj = mq;
+            if (typeof mq === 'string') {
+              try {
+                quizObj = await this.ihkContentService.getQuizById(mq);
+              } catch (e) {
+                quizObj = null;
+              }
+            }
+            if (quizObj)
+              this._microQuizPanel.render(quizObj, {
+                requiredSections: this.module.requiredSections || [],
+              });
+          }
+        }
+      } catch (e) {
+        // Best-effort: do not fail rendering the whole view
+
+        console.warn('MicroQuizPanel mount failed', e);
+      }
       this._generateTableOfContents(container);
       this._setupScrollTracking(container);
+      // If no explicit inline markers are present but the module defines microQuizzes,
+      // insert an inline host into the rendered markdown so users can answer questions
+      // in-context (best-effort, non-destructive).
+      try {
+        const contentEl = container.querySelector('.markdown-content');
+        if (
+          contentEl &&
+          this.module.microQuizzes &&
+          this.module.microQuizzes.length > 0
+        ) {
+          const hasInline = contentEl.querySelector('.micro-quiz-inline');
+          if (!hasInline) {
+            const host = document.createElement('div');
+            host.className = 'micro-quiz-inline';
+            host.dataset.quizId = this.module.microQuizzes[0];
+
+            // Prefer inserting after the first code block (<pre>), otherwise after first heading, otherwise append
+            const afterNode =
+              contentEl.querySelector('pre') ||
+              contentEl.querySelector('h2') ||
+              contentEl.querySelector('h3');
+            if (afterNode && afterNode.parentNode) {
+              afterNode.parentNode.insertBefore(host, afterNode.nextSibling);
+            } else {
+              contentEl.appendChild(host);
+            }
+          }
+        }
+      } catch (e) {
+        // non-fatal
+        console.warn('Failed to inject inline micro-quiz host', e);
+      }
+      // Mount inline micro-quiz panels within the content (markers: <!-- micro-quiz:quizId -->)
+      try {
+        const inlineHosts = container.querySelectorAll('.micro-quiz-inline');
+        if (inlineHosts && inlineHosts.length > 0) {
+          const { default: MicroQuizPanel } = await import(
+            '../assessment/components/MicroQuizPanel.js'
+          );
+          this._inlineMicroQuizPanels = this._inlineMicroQuizPanels || [];
+          for (const host of Array.from(inlineHosts)) {
+            const quizId = host.dataset.quizId;
+            if (!quizId) continue;
+            let quizObj = null;
+            try {
+              // Primary resolution via content service
+              quizObj = await this.ihkContentService.getQuizById(quizId);
+            } catch (_) {
+              // resolution failed; try fallback import below
+              quizObj = null;
+            }
+
+            // Fallback: try dynamic import directly if content service couldn't resolve (best-effort)
+            if (!quizObj) {
+              try {
+                // dynamic import relative to this module file
+                const mod = await import(`../data/ihk/quizzes/${quizId}.json`);
+                quizObj = mod && mod.default ? mod.default : mod;
+              } catch (_) {
+                quizObj = null;
+              }
+            }
+
+            if (quizObj) {
+              const panel = new MicroQuizPanel(host);
+              panel.render(quizObj, {
+                requiredSections: this.module.requiredSections || [],
+              });
+              this._inlineMicroQuizPanels.push(panel);
+            } else {
+              // unable to resolve this quiz id - continue without failing the view
+              console.debug &&
+                console.warn(
+                  '[ModuleDetailView] unresolved micro-quiz id',
+                  quizId
+                );
+            }
+          }
+        }
+      } catch (e) {
+        // best-effort: mounting inline quizzes should not break module rendering
+        console.warn &&
+          console.warn(
+            'Failed to mount inline micro quizzes',
+            e && e.message ? e.message : e
+          );
+      }
     } catch (error) {
       console.error('Error rendering module detail:', error);
       container.innerHTML = this._renderError(error.message);
@@ -120,7 +308,7 @@ class ModuleDetailView {
           </div>
 
           <h1 class="module-detail-title">${this.module.title}</h1>
-          <p class="module-detail-description">${this.module.description}</p>
+          <p class="module-detail-description">${this.formatInlineText(this.module.description)}</p>
 
           <div class="module-header-info" role="list">
             <div class="info-item" role="listitem">
@@ -132,6 +320,37 @@ class ModuleDetailView {
         </div>
       </header>
     `;
+  }
+
+  /**
+   * Normalize content that may contain literal backslash-n sequences
+   * and return a string suitable for markdown parsing.
+   */
+  _normalizeContent(text) {
+    if (!text) return '';
+    // Convert literal backslash-n and backslash-r\n sequences to real newlines
+    return String(text)
+      .replace(/\\r\\n/g, '\n')
+      .replace(/\\n/g, '\n');
+  }
+
+  /**
+   * Format inline text fields (escape HTML and convert newlines to <br>)
+   */
+  formatInlineText(text) {
+    if (!text) return '';
+    const t = String(text).replace(/\\n/g, '\n');
+    const escaped = this._escapeHtml(t);
+    return escaped.replace(/\n/g, '<br>');
+  }
+
+  /**
+   * Escape HTML (internal helper for ModuleDetailView)
+   */
+  _escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
   }
 
   /**
@@ -179,9 +398,18 @@ class ModuleDetailView {
    * Render module content
    */
   _renderContent() {
-    const htmlContent = this.marked.parse(
-      this.module.content || '# No content available'
+    const raw = this.module.content || '# No content available';
+    const normalized = this._normalizeContent(raw);
+    // Convert inline micro-quiz markers in the markdown into host divs
+    // Marker syntax: <!-- micro-quiz:quizId -->
+    const replaced = String(normalized).replace(
+      /<!--\s*micro-quiz:([a-zA-Z0-9-_]+)\s*-->/g,
+      (m, id) => {
+        return `<div class="micro-quiz-inline" data-quiz-id="${id}"></div>`;
+      }
     );
+
+    const htmlContent = this.marked.parse(replaced);
 
     return `
       <div class="module-content" role="region" aria-label="Module content">
@@ -404,6 +632,16 @@ class ModuleDetailView {
   cleanup() {
     if (this.scrollHandler) {
       window.removeEventListener('scroll', this.scrollHandler);
+    }
+    // cleanup micro-quiz panel if mounted
+    try {
+      if (
+        this._microQuizPanel &&
+        typeof this._microQuizPanel.destroy === 'function'
+      )
+        this._microQuizPanel.destroy();
+    } catch (e) {
+      // swallow
     }
   }
 }

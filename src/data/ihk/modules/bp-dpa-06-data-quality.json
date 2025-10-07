@@ -1,0 +1,32 @@
+{
+  "id": "bp-dpa-06-data-quality",
+  "title": "Data Quality: Methoden, Metriken und Bereinigung",
+  "description": "Prinzipien der Datenqualität, gängige Metriken, Strategien zur Datenbereinigung und Tools zur Sicherstellung qualitativ hochwertiger Daten in Analysesystemen.",
+  "category": "BP-DPA-01",
+  "subcategory": "Daten erfassen, aufbereiten und auswerten",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 60,
+  "prerequisites": ["bp-dpa-01-normalization"],
+  "tags": ["Datenqualität","ETL","Bereinigung","Validierung","Profiling"],
+  "content": "# Datenqualität: Methoden, Metriken und Bereinigung\n\n## Einführung\nDatenqualität beschreibt, wie gut Daten die Anforderungen der jeweiligen Nutzung erfüllen. Wichtige Dimensionen: Vollständigkeit, Genauigkeit, Konsistenz, Aktualität, Einzigartigkeit und Validität.\n\n## Wichtige Metriken und Checks\n- **Vollständigkeit:** Anteil nicht-leerer Pflichtfelder\n- **Genauigkeit:** Abgleich mit externen Referenzen (z. B. Postleitzahlen)\n- **Konsistenz:** Keine widersprüchlichen Werte in verknüpften Datensätzen\n- **Duplikate:** Erkennung und Zusammenführung (Record Linkage)\n- **Integrität:** Fremdschlüssel-Verweise intakt\n\n## Strategien der Datenbereinigung\n- **Standardisierung:** Formate vereinheitlichen (Datum, Telefonnummern)\n- **Validierung:** Regeln (Regex, Typchecks), Lookup-Tabellen\n- **Imputation:** Fehlende Werte sinnvoll ersetzen (z. B. Median oder Domänenwerte)\n- **Fuzzy Matching & Deduplication:** Abstandsmessungen (Levenshtein) und heuristische Regeln\n\n## Operationalisierung von Data Quality\n- **Data Profiling:** Statistische Analyse zur Erkennung von Anomalien\n- **Data Quality Dashboards:** Metriken & Alerts zur Beobachtung\n- **Governance & Owners:** Zuständigkeiten und SLAs definieren\n\n## Prüfungsrelevante Aspekte\n- Nennen und beschreiben Sie die Hauptdimensionen der Datenqualität\n- Erläutern Sie typische Schritte eines Data Profilings\n- Grundlegende Methoden zur Duplikaterkennung beschreiben (Levenshtein, Fingerprints)",
+  "learningObjectives": [
+    "Die Dimensionen der Datenqualität (Vollständigkeit, Genauigkeit, Konsistenz etc.) definieren",
+    "Grundlegende Data-Profiling-Techniken anwenden",
+    "Methoden zur Duplikaterkennung und Standardisierung beschreiben"
+  ],
+  "keyTakeaways": [
+    "Data Quality ist eine Grundlage für verlässliche Analysen",
+    "Profiling und Dashboards helfen, Qualitätsprobleme frühzeitig zu erkennen",
+    "Deduplication und Standardisierung verbessern Konsistenz"
+  ],
+  "relatedQuizzes": ["bp-dpa-06-data-quality-quiz"],
+  "resources": [
+    { "title": "Data Quality Fundamentals", "url": "https://en.wikipedia.org/wiki/Data_quality", "type": "article" }
+  ],
+  "lastUpdated": "2025-10-07T00:00:00Z",
+  "version": "1.0"
+}

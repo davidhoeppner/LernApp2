@@ -1,0 +1,67 @@
+{
+  "id": "bp-dpa-03-lean-six-sigma",
+  "title": "Lean & Six Sigma integrierte Prozessverbesserung",
+  "description": "Kombination von Lean-Verschwendungsreduktion und Six Sigma-Variabilitätskontrolle für nachhaltige Prozessoptimierung",
+  "category": "BP-DPA-03",
+  "subcategory": "Geschäftsprozesse analysieren und optimieren",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "removedIn2025": false,
+  "important": false,
+  "estimatedTime": 55,
+  "prerequisites": [
+    "bp-dpa-03-bpmn-fundamentals"
+  ],
+  "tags": [
+    "lean",
+    "six-sigma",
+    "dmaic",
+    "verschwendung",
+    "kaizen",
+    "pdca",
+    "prozessoptimierung"
+  ],
+  "content": "# Lean & Six Sigma integrierte Prozessverbesserung\n\n## Einführung\nLean fokussiert auf Fluss & Verschwendungsreduktion, Six Sigma auf Variabilität & Fehlerreduktion. Kombiniert ermöglichen sie schnell wirksame (Lean) und nachhaltig stabile (Six Sigma) Verbesserungen.\n\n## Lean Grundlagen\n8 Verschwendungsarten (TIMWOODS): Transport, Inventory (Bestände), Motion (Bewegung), Waiting, Overproduction, Overprocessing (Überbearbeitung), Defects (Fehler), Skills (ungenutztes Potenzial).\nValue Stream Mapping (VSM) visualisiert Material- & Informationsfluss zur Identifikation nicht-wertschöpfender Schritte.\n\n## Six Sigma Überblick\nDMAIC-Phasen: Define (Problem & CTQ), Measure (Ist-Leistung), Analyze (Ursachen), Improve (Lösungen), Control (Verankerung). Fokus im Kontext BP-DPA: Strukturierter, datengetriebener Problemlösungsrahmen ohne tiefgehende Statistik.\n\n## Integration Lean + Six Sigma\n| Lean Fokus | Six Sigma Fokus | Synergie |\n|-----------|----------------|---------|\n| Verschwendung minimieren | Varianz reduzieren | Stabiler, schneller Prozess |\n| Fluss & Pull | Statistische Ursachenanalyse | Nachhaltige Fehlervermeidung |\n| Schnelle Kaizen-Workshops | Strukturierte DMAIC-Projekte | Priorisierung & Nachhaltigkeit |\n\nTypische Reihenfolge: 1) Lean scoping (Verschwendung sichtbar), 2) Kurze Quick Wins, 3) Six Sigma tiefergehende Ursachenanalyse.\n\n## Werkzeuge & Auswahl\nLean: 5S, Kanban, VSM, Poka-Yoke.\nSix Sigma (vereinfachte Auswahl): SIPOC (Scope), CTQ-Matrix (Kundenanforderung), Ursache-Wirkungs-Diagramm.\nFehler: Verwechselung von Variation (Varianz) und Verschwendung (Muda); isolierte Einzelmaßnahmen ohne Control-Phase.\n\n## Kontinuierliche Verbesserung\nPDCA-Zyklus unterstützt kulturelle Verankerung. Kaizen Events: klarer Zeitrahmen, definierter Zielzustand, messbare Nachverfolgung (Baseline vs. Nachher).\nKPIs zur Wirksamkeitsprüfung: Durchlaufzeit ↓, Fehlerrate ↓, Variantenstabilität ↑.\n\n## Prüfungsrelevante Aspekte\n- 8 Verschwendungsarten (inkl. Skills)\n- Grundidee DMAIC-Phasen\n- Unterschied Variation vs. Verschwendung\n- Rolle von VSM und SIPOC\n- Kombination schneller Lean-Wins + nachhaltiger Six Sigma-Stabilisierung\n- PDCA als Verstetigungsmechanismus\n",
+  "codeExamples": [
+    {
+      "language": "python",
+      "title": "Pareto Analyse (vereinfachtes Beispiel)",
+      "code": "from collections import Counter\nfehler = ['TypA','TypB','TypA','TypC','TypA','TypB']\ncounts = Counter(fehler)\ngesamt = sum(counts.values())\npareto = []\nkum = 0\nfor k,v in counts.most_common():\n    kum += v\n    pareto.append({'fehler': k, 'anteil_prozent': round(v/gesamt*100,1), 'kumuliert_prozent': round(kum/gesamt*100,1)})\nprint(pareto)",
+      "explanation": "Pareto zeigt Fokus auf wenige Fehlerklassen mit größtem Einfluss (80/20 Heuristik)."
+    }
+  ],
+  "relatedQuizzes": [
+    "bp-dpa-03-lean-six-sigma-quiz"
+  ],
+  "resources": [
+    {
+      "title": "Lean Waste Übersicht",
+      "url": "https://lean.org",
+      "type": "article"
+    },
+    {
+      "title": "DMAIC Überblick",
+      "url": "https://asq.org/quality-resources/dmaic",
+      "type": "article"
+    }
+  ],
+  "learningObjectives": [
+    "8 Verschwendungsarten identifizieren",
+    "DMAIC-Phasen in Grundzügen erläutern",
+    "Lean- und Six-Sigma-Ziele abgrenzen",
+    "Value Stream Mapping als Analysewerkzeug einordnen",
+    "PDCA zur Verstetigung anwenden"
+  ],
+  "keyTakeaways": [
+    "Lean eliminiert Verschwendung, Six Sigma stabilisiert Qualität",
+    "DMAIC liefert strukturierten Verbesserungsrahmen",
+    "Kombination vermeidet Strohfeuer-Effekte",
+    "Kontinuierliche Verbesserung benötigt Metriken"
+  ],
+  "lastUpdated": "2025-10-07T00:00:00Z",
+  "version": "1.0",
+  "tracks": [
+    "DPA"
+  ]
+}

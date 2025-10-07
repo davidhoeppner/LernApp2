@@ -18,7 +18,12 @@ import StorageService from './StorageService.js';
  * - Quiz business logic → Implemented here
  */
 class QuizService {
-  constructor(stateManager, storageService, ihkContentService, specializationService) {
+  constructor(
+    stateManager,
+    storageService,
+    ihkContentService,
+    specializationService
+  ) {
     this.stateManager = stateManager;
     this.storage = storageService || new StorageService();
     this.ihkContentService = ihkContentService;
@@ -223,23 +228,29 @@ class QuizService {
 
       // If no specialization service available, return all quizzes
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning all quizzes');
+        console.warn(
+          'SpecializationService not available, returning all quizzes'
+        );
         return allQuizzes;
       }
 
       // Filter quizzes by specialization
-      const filteredQuizzes = this.specializationService.filterContentBySpecialization(
-        allQuizzes,
-        specializationId,
-        {
-          minRelevance: options.minRelevance || 'low',
-          includeGeneral: options.includeGeneral !== false // default to true
-        }
-      );
+      const filteredQuizzes =
+        this.specializationService.filterContentBySpecialization(
+          allQuizzes,
+          specializationId,
+          {
+            minRelevance: options.minRelevance || 'low',
+            includeGeneral: options.includeGeneral !== false, // default to true
+          }
+        );
 
       return filteredQuizzes;
     } catch (error) {
-      console.error(`Error getting quizzes by specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting quizzes by specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -260,12 +271,15 @@ class QuizService {
 
       // If no specialization service available, return quizzes under 'all' category
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning uncategorized quizzes');
+        console.warn(
+          'SpecializationService not available, returning uncategorized quizzes'
+        );
         return { all: allQuizzes };
       }
 
       // Get content categories for this specialization
-      const categories = this.specializationService.getContentCategories(specializationId);
+      const categories =
+        this.specializationService.getContentCategories(specializationId);
       const categorizedQuizzes = {};
 
       // Initialize categories
@@ -279,11 +293,14 @@ class QuizService {
       // Categorize quizzes
       allQuizzes.forEach(quiz => {
         const categoryId = quiz.category || quiz.categoryId;
-        
+
         if (categoryId) {
           // Get relevance for this category and specialization
-          const relevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
-          
+          const relevance = this.specializationService.getCategoryRelevance(
+            categoryId,
+            specializationId
+          );
+
           // Add to appropriate category based on relevance
           if (relevance === 'high' || relevance === 'medium') {
             // Find the category this quiz belongs to
@@ -310,7 +327,10 @@ class QuizService {
 
       return categorizedQuizzes;
     } catch (error) {
-      console.error(`Error getting categorized quizzes for specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting categorized quizzes for specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -342,23 +362,29 @@ class QuizService {
 
       // If no specialization service available, return category quizzes as-is
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning unfiltered category quizzes');
+        console.warn(
+          'SpecializationService not available, returning unfiltered category quizzes'
+        );
         return categoryQuizzes;
       }
 
       // Further filter by specialization relevance
-      const filteredQuizzes = this.specializationService.filterContentBySpecialization(
-        categoryQuizzes,
-        specializationId,
-        {
-          minRelevance: 'low',
-          includeGeneral: true
-        }
-      );
+      const filteredQuizzes =
+        this.specializationService.filterContentBySpecialization(
+          categoryQuizzes,
+          specializationId,
+          {
+            minRelevance: 'low',
+            includeGeneral: true,
+          }
+        );
 
       return filteredQuizzes;
     } catch (error) {
-      console.error(`Error getting quizzes by category ${categoryId} for specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting quizzes by category ${categoryId} for specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -387,18 +413,24 @@ class QuizService {
   async getCurrentSpecializationQuizzes(options = {}) {
     try {
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning all quizzes');
+        console.warn(
+          'SpecializationService not available, returning all quizzes'
+        );
         return await this.getQuizzes();
       }
 
-      const currentSpecialization = this.specializationService.getCurrentSpecialization();
-      
+      const currentSpecialization =
+        this.specializationService.getCurrentSpecialization();
+
       if (!currentSpecialization) {
         // No specialization selected, return all quizzes
         return await this.getQuizzes();
       }
 
-      return await this.getQuizzesBySpecialization(currentSpecialization, options);
+      return await this.getQuizzesBySpecialization(
+        currentSpecialization,
+        options
+      );
     } catch (error) {
       console.error('Error getting current specialization quizzes:', error);
       throw error;
@@ -423,24 +455,29 @@ class QuizService {
           high: 0,
           medium: 0,
           low: 0,
-          none: 0
+          none: 0,
         },
         byCategory: {},
-        specialization: specializationId
+        specialization: specializationId,
       };
 
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning basic statistics');
+        console.warn(
+          'SpecializationService not available, returning basic statistics'
+        );
         return stats;
       }
 
       // Calculate statistics
       allQuizzes.forEach(quiz => {
         const categoryId = quiz.category || quiz.categoryId;
-        
+
         if (categoryId) {
-          const relevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
-          
+          const relevance = this.specializationService.getCategoryRelevance(
+            categoryId,
+            specializationId
+          );
+
           // Count by relevance
           if (stats.byRelevance[relevance] !== undefined) {
             stats.byRelevance[relevance]++;
@@ -450,7 +487,7 @@ class QuizService {
           if (!stats.byCategory[categoryId]) {
             stats.byCategory[categoryId] = {
               count: 0,
-              relevance: relevance
+              relevance: relevance,
             };
           }
           stats.byCategory[categoryId].count++;
@@ -462,7 +499,10 @@ class QuizService {
 
       return stats;
     } catch (error) {
-      console.error(`Error getting quiz statistics for specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting quiz statistics for specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }
@@ -483,14 +523,16 @@ class QuizService {
       const allAttempts = progress.quizAttempts || [];
 
       if (!this.specializationService) {
-        console.warn('SpecializationService not available, returning all quiz attempts');
+        console.warn(
+          'SpecializationService not available, returning all quiz attempts'
+        );
         return allAttempts;
       }
 
       // Get all quizzes to check their categories
       const allQuizzes = await this.getQuizzes();
       const quizCategoryMap = {};
-      
+
       // Build a map of quiz ID to category
       allQuizzes.forEach(quiz => {
         quizCategoryMap[quiz.id] = quiz.category || quiz.categoryId;
@@ -499,20 +541,29 @@ class QuizService {
       // Filter attempts by specialization relevance
       const filteredAttempts = allAttempts.filter(attempt => {
         const categoryId = quizCategoryMap[attempt.quizId];
-        
+
         if (!categoryId) {
           return true; // Include attempts for quizzes without category
         }
 
-        const relevance = this.specializationService.getCategoryRelevance(categoryId, specializationId);
-        
+        const relevance = this.specializationService.getCategoryRelevance(
+          categoryId,
+          specializationId
+        );
+
         // Include if relevant or general content
-        return relevance !== 'none' || this.specializationService._isGeneralContent(categoryId);
+        return (
+          relevance !== 'none' ||
+          this.specializationService._isGeneralContent(categoryId)
+        );
       });
 
       return filteredAttempts;
     } catch (error) {
-      console.error(`Error getting quiz attempts by specialization ${specializationId}:`, error);
+      console.error(
+        `Error getting quiz attempts by specialization ${specializationId}:`,
+        error
+      );
       throw error;
     }
   }

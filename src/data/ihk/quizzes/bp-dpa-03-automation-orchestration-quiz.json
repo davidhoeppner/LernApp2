@@ -1,0 +1,30 @@
+{
+  "id": "bp-dpa-03-automation-orchestration-quiz",
+  "moduleId": "bp-dpa-03-automation-orchestration",
+  "title": "Prozessautomatisierung & Orchestrierung",
+  "description": "Quiz zu Automatisierungskriterien, Technologien, Orchestrierung vs Choreographie und Governance",
+  "category": "BP-DPA-03",
+  "difficulty": "advanced",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "timeLimit": 25,
+  "passingScore": 70,
+  "questions": [
+    {"id":"q1","type":"single-choice","question":"Welches Kriterium spricht typischerweise FÜR RPA?","options":["Hoher Interpretationsbedarf","Stark schwankender Prozess","Regelbasiert und hohes Volumen","Unstrukturierte handschriftliche Dokumente"],"correctAnswer":"Regelbasiert und hohes Volumen","explanation":"RPA zielt auf repetitive, regelbasierte Tätigkeiten mit Volumen.","points":1,"category":"Kriterien"},
+    {"id":"q2","type":"single-choice","question":"Was unterscheidet Orchestrierung von Choreographie?","options":["Orchestrierung ist dezentral, Choreographie zentral","Orchestrierung hat zentrale Steuerung, Choreographie verteilt","Beide identisch","Choreographie benötigt zwingend RPA"],"correctAnswer":"Orchestrierung hat zentrale Steuerung, Choreographie verteilt","explanation":"Orchestrierung = zentrale Engine; Choreographie = verteilte Koordination via Nachrichten.","points":1,"category":"Architektur"},
+    {"id":"q3","type":"multiple-choice","question":"Welche Risiken bestehen bei ungeplanter RPA-Einführung?","options":["Fragile UI-Skripte","Skalierungsprobleme","Technische Schulden","Automatische Prozessstabilisierung"],"correctAnswer":["Fragile UI-Skripte","Skalierungsprobleme","Technische Schulden"],"explanation":"Ohne Governance entstehen Wartungsaufwand und Instabilität; Stabilisierung ist nicht garantiert.","points":2,"category":"Risiken"},
+    {"id":"q4","type":"single-choice","question":"Welche Metrik eignet sich zur Erfolgsmessung nach Automatisierung?","options":["Automatisierungsquote","Anzahl Sitzplätze im Büro","Bürofläche","Kalenderfarben"],"correctAnswer":"Automatisierungsquote","explanation":"Automatisierungsquote zeigt Anteil automatisierter Prozessanteile.","points":1,"category":"Metriken"},
+    {"id":"q5","type":"multiple-choice","question":"Welche Governance-Praktiken sind wesentlich?","options":["Versionierung von Prozessdefinitionen","Monitoring von SLA und Fehlerrate","Audit Logs","Verzicht auf Zugriffskontrolle"],"correctAnswer":["Versionierung von Prozessdefinitionen","Monitoring von SLA und Fehlerrate","Audit Logs"],"explanation":"Zugriffskontrolle bleibt erforderlich; deren Verzicht ist Risiko.","points":2,"category":"Governance"},
+    {"id":"q6","type":"single-choice","question":"Welches Anti-Pattern beschreibt 'Automate the chaos'?","options":["Stabile Prozesse vor Automatisierung prüfen","Instabile Prozesse ohne Redesign automatisieren","Refactoring vor Automatisierung","Konformes Deployment"],"correctAnswer":"Instabile Prozesse ohne Redesign automatisieren","explanation":"Instabile Prozesse verschlimmern sich unter Automatisierung.","points":1,"category":"Fehler"},
+    {"id":"q7","type":"single-choice","question":"Wann bietet eine Workflow Engine Vorteile gegenüber reinem Scripting?","options":["Bei einmaligem Ad-hoc Task","Bei Bedarf an Transparenz, Skalierung, Modellversionierung","Bei völlig unstrukturierten Gesprächen","Wenn keine Prozessdefinition vorhanden ist"],"correctAnswer":"Bei Bedarf an Transparenz, Skalierung, Modellversionierung","explanation":"Engines liefern Modellsteuerung, Monitoring und Governance.","points":1,"category":"Technologie"},
+    {"id":"q8","type":"multiple-choice","question":"Welche Faktoren fließen in ein Automatisierungsscore ein?","options":["Volumen","Stabilität","Ausnahmequote (invertiert)","UI-Farbschema"],"correctAnswer":["Volumen","Stabilität","Ausnahmequote (invertiert)"],"explanation":"Visuelles Farbschema ist irrelevant für Eignung.","points":2,"category":"Scoring"},
+    {"id":"q9","type":"single-choice","question":"Warum kann reine RPA bei UI-Änderungen fehlschlagen?","options":["Weil RPA semantisch abstrahiert","Weil Selektoren brechen","Weil Engines automatisch adaptieren","Weil keine Logiken ausgeführt werden"],"correctAnswer":"Weil Selektoren brechen","explanation":"UI-abhängige Selektoren verlieren Referenz bei Änderungen.","points":1,"category":"Risiken"},
+    {"id":"q10","type":"single-choice","question":"Welche Rolle hat Process Mining nach Automatisierung?","options":["Nachweis der Wirksamkeit durch KPI-Vergleich","Ersetzt Orchestrierung","Reduziert Governance Bedarf auf Null","Entfernt Sicherheitsanforderungen"],"correctAnswer":"Nachweis der Wirksamkeit durch KPI-Vergleich","explanation":"Vergleich Vor/Nach zeigt realisierte Einsparungen & Abweichungen.","points":1,"category":"Monitoring"},
+    {"id":"q11","type":"multiple-choice","question":"Welche Post-Go-Live Metriken sind relevant?","options":["Fehlerrate","MTTR","Automatisierungsquote","Anzahl Kaffeepausen"],"correctAnswer":["Fehlerrate","MTTR","Automatisierungsquote"],"explanation":"Kaffeepausen sind kein Prozessleistungsindikator.","points":2,"category":"Monitoring"},
+    {"id":"q12","type":"single-choice","question":"Wann ist Choreographie besonders geeignet?","options":["Monolith ohne externe Partner","Multi-Organisation mit lose gekoppeltem Nachrichtenaustausch","Einzelnutzer-Skript","Ohne Kommunikationsbedarf"],"correctAnswer":"Multi-Organisation mit lose gekoppeltem Nachrichtenaustausch","explanation":"Choreographie eignet sich bei verteilten Teilnehmern ohne zentrale Kontrolle.","points":1,"category":"Architektur"},
+    {"id":"q13","type":"single-choice","question":"Welche Security-Praxis ist grundlegend?","options":["Least Privilege","Alle Dienste als Admin","Hartcodierte Secrets","Deaktiviertes Logging"],"correctAnswer":"Least Privilege","explanation":"Minimale Berechtigungen reduzieren Angriffsfläche.","points":1,"category":"Security"}
+  ],
+  "tags": ["automatisierung","rpa","workflow","orchestrierung","choreographie","governance","process-mining"],
+  "lastUpdated": "2025-10-07T00:00:00Z",
+  "tracks": ["DPA"]
+}

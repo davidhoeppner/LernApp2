@@ -1,0 +1,40 @@
+{
+  "id": "bp-01-networks-basics",
+  "title": "Netzwerktopologien und Grundlagen",
+  "description": "Grundlegende Netzwerkkonzepte, Topologien und deren Anwendungsfälle",
+  "category": "BP-01",
+  "subcategory": "Netzwerke und Protokolle",
+  "difficulty": "beginner",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 45,
+  "prerequisites": [],
+  "tags": [
+    "Netzwerk",
+    "Topologie",
+    "LAN",
+    "WAN",
+    "Grundlagen"
+  ],
+  "content": "# Netzwerktopologien und Grundlagen\n\n## Einführung\n\nNetzwerktopologien beschreiben die physische oder logische Anordnung von Netzwerkkomponenten. Die Wahl der richtigen Topologie beeinflusst Leistung, Skalierbarkeit und Ausfallsicherheit eines Netzwerks.\n\n## Wichtige Netzwerktopologien\n\n### 1. Stern-Topologie (Star)\n\n**Merkmale:**\n- Alle Geräte sind mit einem zentralen Knotenpunkt (Switch/Hub) verbunden\n- Häufigste Topologie in modernen LANs\n- Einfache Fehlersuche\n\n**Vorteile:**\n- Ausfall eines Endgeräts betrifft nicht das gesamte Netzwerk\n- Einfache Erweiterung\n- Zentrale Verwaltung\n\n**Nachteile:**\n- Single Point of Failure (zentraler Switch)\n- Höherer Kabelaufwand\n\n### 2. Bus-Topologie\n\n**Merkmale:**\n- Alle Geräte sind an ein gemeinsames Übertragungsmedium angeschlossen\n- Früher bei Ethernet (10Base2, 10Base5) verwendet\n\n**Vorteile:**\n- Geringer Kabelaufwand\n- Einfache Installation\n\n**Nachteile:**\n- Kabelbruch betrifft gesamtes Netzwerk\n- Schwierige Fehlersuche\n- Begrenzte Skalierbarkeit\n\n### 3. Ring-Topologie\n\n**Merkmale:**\n- Geräte sind in einem geschlossenen Ring verbunden\n- Daten fließen in eine Richtung (oder bidirektional)\n- Verwendet bei Token Ring, FDDI\n\n**Vorteile:**\n- Gleichmäßige Datenübertragung\n- Keine Kollisionen\n\n**Nachteile:**\n- Ausfall eines Geräts kann Netzwerk unterbrechen\n- Komplexe Fehlersuche\n\n### 4. Vermaschte Topologie (Mesh)\n\n**Merkmale:**\n- Jedes Gerät ist mit mehreren anderen verbunden\n- Vollvermascht: Jedes Gerät mit jedem verbunden\n- Teilvermascht: Nur kritische Verbindungen redundant\n\n**Vorteile:**\n- Hohe Ausfallsicherheit\n- Mehrere Übertragungswege\n- Lastverteilung möglich\n\n**Nachteile:**\n- Hoher Kabel- und Konfigurationsaufwand\n- Teuer\n\n## Netzwerktypen\n\n### LAN (Local Area Network)\n- Lokales Netzwerk (Gebäude, Campus)\n- Hohe Übertragungsraten (1-100 Gbps)\n- Geringe Latenz\n\n### WAN (Wide Area Network)\n- Weitverkehrsnetz (Städte, Länder)\n- Niedrigere Übertragungsraten\n- Höhere Latenz\n\n### MAN (Metropolitan Area Network)\n- Städtisches Netzwerk\n- Zwischen LAN und WAN\n\n### WLAN (Wireless LAN)\n- Drahtloses lokales Netzwerk\n- IEEE 802.11 Standards (WiFi)\n\n## Prüfungsrelevante Aspekte\n\n- Topologien erkennen und zuordnen können\n- Vor- und Nachteile benennen\n- Anwendungsfälle identifizieren\n- Netzwerktypen unterscheiden",
+  "codeExamples": [],
+  "relatedQuizzes": [],
+  "resources": [
+    {
+      "title": "IEEE 802 Standards",
+      "url": "https://www.ieee802.org/",
+      "type": "documentation"
+    }
+  ],
+  "lastUpdated": "2025-01-10T00:00:00Z",
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand Netzwerk",
+    "Understand Topologie",
+    "Understand LAN",
+    "Understand WAN",
+    "Understand Grundlagen"
+  ]
+}

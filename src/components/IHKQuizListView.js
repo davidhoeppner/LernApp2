@@ -19,21 +19,21 @@ class IHKQuizListView {
     this.stateManager = services.stateManager;
     this.router = services.router;
     this.quizzes = [];
-    
+
     // Initialize filter states with proper defaults
     this.currentCategoryFilter = 'all';
     this.currentStatusFilter = 'all';
-    
+
     // Initialize filter state tracking
     this.filterInitialized = false;
-    
+
     // Initialize debounced filter operations
     this.debouncedRefreshQuizGrid = debounce(
-      (container) => this._performQuizGridRefresh(container),
+      container => this._performQuizGridRefresh(container),
       100, // 100ms debounce for responsive feel
       false
     );
-    
+
     // Track filter operation state
     this.filterOperationInProgress = false;
     this.pendingFilterOperations = new Set();
@@ -58,13 +58,13 @@ class IHKQuizListView {
         );
       } catch (error) {
         console.error('Error loading IHK quizzes:', error);
-        
+
         // Get user-friendly error message
         const friendlyMessage = this._getUserFriendlyFilterErrorMessage(error, {
           operation: 'loading',
-          quizCount: this.quizzes?.length || 0
+          quizCount: this.quizzes?.length || 0,
         });
-        
+
         const errorState = EmptyState.create({
           icon: '⚠️',
           title: 'Error Loading Quizzes',
@@ -76,11 +76,13 @@ class IHKQuizListView {
         });
         container.innerHTML = '';
         container.appendChild(errorState);
-        
+
         // Show appropriate notification based on error type
         const errorType = this._categorizeFilterError(error);
         if (errorType === 'network') {
-          toastNotification.error('Network error loading quizzes. Check your connection.');
+          toastNotification.error(
+            'Network error loading quizzes. Check your connection.'
+          );
         } else {
           toastNotification.error('Failed to load IHK quizzes');
         }
@@ -104,7 +106,8 @@ class IHKQuizListView {
       }
 
       // Get current specialization for filtering
-      this.currentSpecialization = this.specializationService.getCurrentSpecialization();
+      this.currentSpecialization =
+        this.specializationService.getCurrentSpecialization();
 
       // Enrich with progress data
       this.enrichQuizzesWithProgress();
@@ -114,21 +117,20 @@ class IHKQuizListView {
       this._showCategoryValidationWarnings(validationReport);
 
       // Log loading success
-      console.log('Quizzes loaded successfully:', {
+      console.warn('Quizzes loaded successfully:', {
         totalQuizzes: this.quizzes.length,
         validQuizzes: validationReport.validQuizzes,
         invalidQuizzes: validationReport.invalidQuizzes,
-        categoryDistribution: validationReport.categoryDistribution
+        categoryDistribution: validationReport.categoryDistribution,
       });
-
     } catch (error) {
       console.error('Error loading quizzes:', error);
-      
+
       // Ensure quizzes array is always valid
       if (!Array.isArray(this.quizzes)) {
         this.quizzes = [];
       }
-      
+
       throw error; // Re-throw to be handled by render method
     }
   }
@@ -191,11 +193,14 @@ class IHKQuizListView {
   renderHeader() {
     const header = document.createElement('div');
     header.className = 'page-header';
-    
+
     // Calculate initial quiz count
     const filteredQuizzes = this._filterQuizzes(this.quizzes);
-    const countDisplay = this._createQuizCountDisplay(filteredQuizzes.length, this.quizzes.length);
-    
+    const countDisplay = this._createQuizCountDisplay(
+      filteredQuizzes.length,
+      this.quizzes.length
+    );
+
     header.innerHTML = `
       <h1>IHK Quizzes</h1>
       <p class="subtitle">Teste dein Wissen mit prüfungsrelevanten Quizzes</p>
@@ -239,12 +244,13 @@ class IHKQuizListView {
       { id: 'all', label: 'All Quizzes' },
       { id: 'completed', label: 'Completed' },
       { id: 'attempted', label: 'Attempted' },
-      { id: 'not-started', label: 'Not Started' }
+      { id: 'not-started', label: 'Not Started' },
     ];
 
-    const statusButtons = statusOptions.map(status => {
-      const isActive = status.id === this.currentStatusFilter;
-      return `
+    const statusButtons = statusOptions
+      .map(status => {
+        const isActive = status.id === this.currentStatusFilter;
+        return `
         <button 
           class="filter-btn ${isActive ? 'active' : ''}" 
           data-status="${status.id}" 
@@ -254,7 +260,8 @@ class IHKQuizListView {
           ${status.label}
         </button>
       `;
-    }).join('');
+      })
+      .join('');
 
     const statusFilters = document.createElement('div');
     statusFilters.className = 'quiz-status-filters';
@@ -272,15 +279,16 @@ class IHKQuizListView {
    */
   renderCategoryFilters() {
     const categories = this._getCategoryFilters();
-    
+
     // Ensure currentCategoryFilter is initialized to 'all' if not set
     if (!this.currentCategoryFilter) {
       this.currentCategoryFilter = 'all';
     }
-    
-    const categoryButtons = categories.map(category => {
-      const isActive = category.id === this.currentCategoryFilter;
-      return `
+
+    const categoryButtons = categories
+      .map(category => {
+        const isActive = category.id === this.currentCategoryFilter;
+        return `
         <button 
           class="category-filter-btn ${isActive ? 'active' : ''}" 
           data-category="${category.id}" 
@@ -292,7 +300,8 @@ class IHKQuizListView {
           <span class="category-name">${category.name}</span>
         </button>
       `;
-    }).join('');
+      })
+      .join('');
 
     const categoryFilters = document.createElement('div');
     categoryFilters.className = 'quiz-category-filters';
@@ -302,7 +311,7 @@ class IHKQuizListView {
         ${categoryButtons}
       </div>
     `;
-    
+
     return categoryFilters;
   }
 
@@ -315,26 +324,26 @@ class IHKQuizListView {
         id: 'all',
         name: 'All Categories',
         icon: '📚',
-        color: '#6b7280'
+        color: '#6b7280',
       },
       {
         id: 'daten-prozessanalyse',
         name: 'Daten und Prozessanalyse',
         icon: '📊',
-        color: '#2563eb'
+        color: '#2563eb',
       },
       {
         id: 'anwendungsentwicklung',
         name: 'Anwendungsentwicklung',
         icon: '💻',
-        color: '#dc2626'
+        color: '#dc2626',
       },
       {
         id: 'allgemein',
         name: 'Allgemein',
         icon: '📖',
-        color: '#059669'
-      }
+        color: '#059669',
+      },
     ];
 
     return categories;
@@ -370,7 +379,9 @@ class IHKQuizListView {
     try {
       // Validate input
       if (!Array.isArray(quizzes)) {
-        console.error('_filterQuizzes: Invalid quizzes input - not an array', { quizzes });
+        console.error('_filterQuizzes: Invalid quizzes input - not an array', {
+          quizzes,
+        });
         return [];
       }
 
@@ -384,7 +395,7 @@ class IHKQuizListView {
         console.error('Error applying status filter:', {
           error: statusError.message,
           currentStatusFilter: this.currentStatusFilter,
-          quizCount: filteredQuizzes.length
+          quizCount: filteredQuizzes.length,
         });
         // Continue with unfiltered quizzes for status
       }
@@ -397,7 +408,7 @@ class IHKQuizListView {
           console.error('Error applying category filter:', {
             error: categoryError.message,
             currentCategoryFilter: this.currentCategoryFilter,
-            quizCount: filteredQuizzes.length
+            quizCount: filteredQuizzes.length,
           });
           // Continue with status-filtered quizzes only
         }
@@ -413,23 +424,22 @@ class IHKQuizListView {
           inputCount: quizzes.length,
           outputCount: filteredQuizzes.length,
           statusFilter: this.currentStatusFilter,
-          categoryFilter: this.currentCategoryFilter
+          categoryFilter: this.currentCategoryFilter,
         });
       }
 
       // Debug logging when enabled
       if (this._isDebugEnabled()) {
-        console.debug('Filter operation completed:', {
+        console.warn('Filter operation completed:', {
           inputCount: quizzes.length,
           outputCount: filteredQuizzes.length,
           duration: `${filterDuration.toFixed(2)}ms`,
           statusFilter: this.currentStatusFilter,
-          categoryFilter: this.currentCategoryFilter
+          categoryFilter: this.currentCategoryFilter,
         });
       }
 
       return filteredQuizzes;
-
     } catch (error) {
       console.error('Critical error in _filterQuizzes:', {
         error: error.message,
@@ -437,7 +447,7 @@ class IHKQuizListView {
         quizCount: quizzes?.length || 0,
         statusFilter: this.currentStatusFilter,
         categoryFilter: this.currentCategoryFilter,
-        timestamp: new Date().toISOString()
+        timestamp: new Date().toISOString(),
       });
 
       // Return all quizzes as fallback
@@ -454,31 +464,46 @@ class IHKQuizListView {
       case 'completed':
         return quizzes.filter(quiz => {
           try {
-            return quiz && typeof quiz.completed === 'boolean' && quiz.completed;
+            return (
+              quiz && typeof quiz.completed === 'boolean' && quiz.completed
+            );
           } catch (error) {
-            console.warn(`Error checking completion status for quiz ${quiz?.id}:`, error);
+            console.warn(
+              `Error checking completion status for quiz ${quiz?.id}:`,
+              error
+            );
             return false;
           }
         });
       case 'attempted':
         return quizzes.filter(quiz => {
           try {
-            return quiz && 
-                   typeof quiz.attempts === 'number' && 
-                   quiz.attempts > 0 && 
-                   (!quiz.completed || quiz.completed === false);
+            return (
+              quiz &&
+              typeof quiz.attempts === 'number' &&
+              quiz.attempts > 0 &&
+              (!quiz.completed || quiz.completed === false)
+            );
           } catch (error) {
-            console.warn(`Error checking attempt status for quiz ${quiz?.id}:`, error);
+            console.warn(
+              `Error checking attempt status for quiz ${quiz?.id}:`,
+              error
+            );
             return false;
           }
         });
       case 'not-started':
         return quizzes.filter(quiz => {
           try {
-            return quiz && 
-                   (typeof quiz.attempts === 'number' ? quiz.attempts === 0 : true);
+            return (
+              quiz &&
+              (typeof quiz.attempts === 'number' ? quiz.attempts === 0 : true)
+            );
           } catch (error) {
-            console.warn(`Error checking not-started status for quiz ${quiz?.id}:`, error);
+            console.warn(
+              `Error checking not-started status for quiz ${quiz?.id}:`,
+              error
+            );
             return false;
           }
         });
@@ -494,25 +519,25 @@ class IHKQuizListView {
    */
   _applyCategoryFilter(quizzes) {
     const categoryErrors = [];
-    
+
     const filteredQuizzes = quizzes.filter(quiz => {
       try {
         const categoryIndicator = this._getCategoryIndicator(quiz);
-        
+
         // Check if this was a fallback category
         if (categoryIndicator._isFallback) {
           categoryErrors.push({
             quizId: quiz?.id,
-            reason: categoryIndicator._fallbackReason
+            reason: categoryIndicator._fallbackReason,
           });
         }
-        
+
         return categoryIndicator.category === this.currentCategoryFilter;
       } catch (error) {
         console.warn(`Error filtering quiz ${quiz?.id} by category:`, {
           error: error.message,
           quizId: quiz?.id,
-          targetCategory: this.currentCategoryFilter
+          targetCategory: this.currentCategoryFilter,
         });
         return false;
       }
@@ -524,7 +549,7 @@ class IHKQuizListView {
         errorCount: categoryErrors.length,
         totalQuizzes: quizzes.length,
         targetCategory: this.currentCategoryFilter,
-        errors: categoryErrors.slice(0, 5) // Log first 5 errors
+        errors: categoryErrors.slice(0, 5), // Log first 5 errors
       });
     }
 
@@ -536,7 +561,7 @@ class IHKQuizListView {
    */
   renderQuizCard(quiz) {
     const categoryIndicator = this._getCategoryIndicator(quiz);
-    
+
     const card = document.createElement('article');
     card.className = `quiz-card ${categoryIndicator.cssClass}`;
     card.setAttribute('data-category', categoryIndicator.category);
@@ -630,19 +655,22 @@ class IHKQuizListView {
       }
 
       // Use CategoryMappingService for consistent category detection
-      const mappingResult = this.categoryMappingService.mapToThreeTierCategory(quiz);
-      
+      const mappingResult =
+        this.categoryMappingService.mapToThreeTierCategory(quiz);
+
       if (mappingResult && mappingResult.threeTierCategory) {
         // Log successful mapping for debugging when enabled
         if (this._isDebugEnabled()) {
-          console.debug(`Category mapping successful for quiz ${quiz.id}:`, {
+          console.warn(`Category mapping successful for quiz ${quiz.id}:`, {
             quizId: quiz.id,
             originalCategory: quiz.category || quiz.categoryId,
             mappedCategory: mappingResult.threeTierCategory,
-            mappingSource: mappingResult.source || 'unknown'
+            mappingSource: mappingResult.source || 'unknown',
           });
         }
-        return this._getThreeTierCategoryIndicator(mappingResult.threeTierCategory);
+        return this._getThreeTierCategoryIndicator(
+          mappingResult.threeTierCategory
+        );
       } else {
         // Enhanced logging for mapping failures
         console.warn(`Category mapping failed for quiz ${quiz.id}:`, {
@@ -652,26 +680,31 @@ class IHKQuizListView {
           originalCategoryId: quiz.categoryId,
           threeTierCategory: quiz.threeTierCategory,
           mappingResult: mappingResult,
-          fallbackApplied: 'allgemein'
+          fallbackApplied: 'allgemein',
         });
         return this._createFallbackCategoryIndicator('Category mapping failed');
       }
     } catch (error) {
       // Comprehensive error logging with context
-      console.error(`Error mapping category for quiz ${quiz?.id || 'unknown'}:`, {
-        error: error.message,
-        stack: error.stack,
-        quizId: quiz?.id,
-        quizTitle: quiz?.title,
-        quizData: quiz ? {
-          category: quiz.category,
-          categoryId: quiz.categoryId,
-          threeTierCategory: quiz.threeTierCategory
-        } : null,
-        timestamp: new Date().toISOString(),
-        fallbackApplied: 'allgemein'
-      });
-      
+      console.error(
+        `Error mapping category for quiz ${quiz?.id || 'unknown'}:`,
+        {
+          error: error.message,
+          stack: error.stack,
+          quizId: quiz?.id,
+          quizTitle: quiz?.title,
+          quizData: quiz
+            ? {
+                category: quiz.category,
+                categoryId: quiz.categoryId,
+                threeTierCategory: quiz.threeTierCategory,
+              }
+            : null,
+          timestamp: new Date().toISOString(),
+          fallbackApplied: 'allgemein',
+        }
+      );
+
       return this._createFallbackCategoryIndicator('Category processing error');
     }
   }
@@ -682,12 +715,12 @@ class IHKQuizListView {
    */
   _createFallbackCategoryIndicator(reason) {
     const fallbackIndicator = this._getThreeTierCategoryIndicator('allgemein');
-    
+
     // Add error context for debugging
     return {
       ...fallbackIndicator,
       _fallbackReason: reason,
-      _isFallback: true
+      _isFallback: true,
     };
   }
 
@@ -697,8 +730,10 @@ class IHKQuizListView {
    */
   _isDebugEnabled() {
     // Check for debug flag in localStorage or URL params
-    return localStorage.getItem('ihk-debug') === 'true' || 
-           new URLSearchParams(window.location.search).has('debug');
+    return (
+      localStorage.getItem('ihk-debug') === 'true' ||
+      new URLSearchParams(window.location.search).has('debug')
+    );
   }
 
   /**
@@ -712,22 +747,22 @@ class IHKQuizListView {
         cssClass: 'quiz-daten-prozessanalyse',
         icon: '📊',
         color: '#2563eb',
-        displayName: 'Daten und Prozessanalyse'
+        displayName: 'Daten und Prozessanalyse',
       },
-      'anwendungsentwicklung': {
+      anwendungsentwicklung: {
         category: 'anwendungsentwicklung',
         cssClass: 'quiz-anwendungsentwicklung',
         icon: '💻',
         color: '#dc2626',
-        displayName: 'Anwendungsentwicklung'
+        displayName: 'Anwendungsentwicklung',
       },
-      'allgemein': {
+      allgemein: {
         category: 'allgemein',
         cssClass: 'quiz-allgemein',
         icon: '📖',
         color: '#059669',
-        displayName: 'Allgemein'
-      }
+        displayName: 'Allgemein',
+      },
     };
 
     return categoryConfigs[threeTierCategoryId] || categoryConfigs['allgemein'];
@@ -774,14 +809,16 @@ class IHKQuizListView {
   _handleStatusFilterChange(status, container) {
     const operationId = `status-filter-${Date.now()}`;
     const startTime = performance.now();
-    
+
     try {
       // Validate input
       if (!status || typeof status !== 'string') {
-        console.warn(`Invalid status parameter received: ${status}. Ignoring filter change.`);
+        console.warn(
+          `Invalid status parameter received: ${status}. Ignoring filter change.`
+        );
         return;
       }
-      
+
       if (!container) {
         throw new Error('Container element is required');
       }
@@ -790,23 +827,30 @@ class IHKQuizListView {
       const previousState = {
         statusFilter: this.currentStatusFilter,
         categoryFilter: this.currentCategoryFilter, // Preserve category filter
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
-      
+
       // Log filter change attempt
       if (this._isDebugEnabled()) {
-        console.debug(`Starting status filter change (${operationId}):`, {
+        console.warn(`Starting status filter change (${operationId}):`, {
           fromStatus: previousState.statusFilter,
           toStatus: status,
           preservedCategoryFilter: previousState.categoryFilter,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
       }
 
       // Validate status exists in available filters
-      const availableStatuses = ['all', 'completed', 'attempted', 'not-started'];
+      const availableStatuses = [
+        'all',
+        'completed',
+        'attempted',
+        'not-started',
+      ];
       if (!availableStatuses.includes(status)) {
-        throw new Error(`Invalid status: ${status}. Available: ${availableStatuses.join(', ')}`);
+        throw new Error(
+          `Invalid status: ${status}. Available: ${availableStatuses.join(', ')}`
+        );
       }
 
       // Atomic update: Update internal state while preserving category filter
@@ -817,7 +861,10 @@ class IHKQuizListView {
       try {
         this._updateStatusFilterVisualState(status, container);
       } catch (visualError) {
-        console.error('Error updating status filter visual state:', visualError);
+        console.error(
+          'Error updating status filter visual state:',
+          visualError
+        );
         // Rollback internal state
         this.currentStatusFilter = previousState.statusFilter;
         throw new Error(`Visual state update failed: ${visualError.message}`);
@@ -827,7 +874,10 @@ class IHKQuizListView {
       try {
         this._refreshQuizGrid(container);
       } catch (gridError) {
-        console.error('Error refreshing quiz grid after status filter change:', gridError);
+        console.error(
+          'Error refreshing quiz grid after status filter change:',
+          gridError
+        );
         // Don't rollback here - visual state is correct, just show fallback
         this._showFilterErrorFallback(container, gridError);
       }
@@ -847,17 +897,16 @@ class IHKQuizListView {
       // Log successful completion
       const duration = performance.now() - startTime;
       if (this._isDebugEnabled()) {
-        console.debug(`Status filter change completed (${operationId}):`, {
+        console.warn(`Status filter change completed (${operationId}):`, {
           status: status,
           preservedCategoryFilter: this.currentCategoryFilter,
           duration: `${duration.toFixed(2)}ms`,
-          success: true
+          success: true,
         });
       }
-
     } catch (error) {
       const duration = performance.now() - startTime;
-      
+
       // Comprehensive error logging
       console.error(`Status filter change failed (${operationId}):`, {
         error: error.message,
@@ -867,17 +916,22 @@ class IHKQuizListView {
         currentCategoryFilter: this.currentCategoryFilter,
         duration: `${duration.toFixed(2)}ms`,
         timestamp: new Date().toISOString(),
-        containerExists: !!container
+        containerExists: !!container,
       });
-      
+
       // Show user-friendly error notification
-      toastNotification.error('Unable to apply status filter. Showing all quizzes.');
-      
+      toastNotification.error(
+        'Unable to apply status filter. Showing all quizzes.'
+      );
+
       // Graceful fallback: Reset to "All" status while preserving category filter
       try {
         this._resetStatusFilterWithFallback(container);
       } catch (fallbackError) {
-        console.error('Critical error: Status filter fallback failed:', fallbackError);
+        console.error(
+          'Critical error: Status filter fallback failed:',
+          fallbackError
+        );
         // Last resort: reload the entire view
         this._handleCriticalFilterError(container);
       }
@@ -890,14 +944,16 @@ class IHKQuizListView {
   _handleCategoryFilterChange(category, container) {
     const operationId = `category-filter-${Date.now()}`;
     const startTime = performance.now();
-    
+
     try {
       // Validate inputs
       if (!category || typeof category !== 'string') {
-        console.warn(`Invalid category parameter received: ${category}. Ignoring filter change.`);
+        console.warn(
+          `Invalid category parameter received: ${category}. Ignoring filter change.`
+        );
         return;
       }
-      
+
       if (!container) {
         throw new Error('Container element is required');
       }
@@ -906,30 +962,34 @@ class IHKQuizListView {
       const previousState = {
         categoryFilter: this.currentCategoryFilter,
         statusFilter: this.currentStatusFilter, // Preserve status filter
-        timestamp: Date.now()
+        timestamp: Date.now(),
       };
 
       // Check if category filters are available (specialization must be selected)
       if (!this.currentSpecialization) {
-        console.debug('Category filter change ignored - no specialization selected');
+        console.warn(
+          'Category filter change ignored - no specialization selected'
+        );
         // Silently ignore category filter changes when no specialization is selected
         return;
       }
-      
+
       // Log filter change attempt
       if (this._isDebugEnabled()) {
-        console.debug(`Starting category filter change (${operationId}):`, {
+        console.warn(`Starting category filter change (${operationId}):`, {
           fromCategory: previousState.categoryFilter,
           toCategory: category,
           preservedStatusFilter: previousState.statusFilter,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
         });
       }
 
       // Validate category exists in available filters
       const availableCategories = this._getCategoryFilters().map(cat => cat.id);
       if (!availableCategories.includes(category)) {
-        throw new Error(`Invalid category: ${category}. Available: ${availableCategories.join(', ')}`);
+        throw new Error(
+          `Invalid category: ${category}. Available: ${availableCategories.join(', ')}`
+        );
       }
 
       // Atomic update: Update internal state while preserving status filter
@@ -961,7 +1021,11 @@ class IHKQuizListView {
       // Announce filter change for accessibility with result count
       try {
         const filteredQuizzes = this._filterQuizzes(this.quizzes);
-        this._announceFilterChange('category', category, filteredQuizzes.length);
+        this._announceFilterChange(
+          'category',
+          category,
+          filteredQuizzes.length
+        );
       } catch (a11yError) {
         console.warn('Failed to announce filter change:', a11yError);
         // Non-critical error, continue
@@ -970,17 +1034,16 @@ class IHKQuizListView {
       // Log successful completion
       const duration = performance.now() - startTime;
       if (this._isDebugEnabled()) {
-        console.debug(`Category filter change completed (${operationId}):`, {
+        console.warn(`Category filter change completed (${operationId}):`, {
           category: category,
           preservedStatusFilter: this.currentStatusFilter,
           duration: `${duration.toFixed(2)}ms`,
-          success: true
+          success: true,
         });
       }
-
     } catch (error) {
       const duration = performance.now() - startTime;
-      
+
       // Comprehensive error logging
       console.error(`Category filter change failed (${operationId}):`, {
         error: error.message,
@@ -989,17 +1052,22 @@ class IHKQuizListView {
         currentCategory: this.currentCategoryFilter,
         duration: `${duration.toFixed(2)}ms`,
         timestamp: new Date().toISOString(),
-        containerExists: !!container
+        containerExists: !!container,
       });
-      
+
       // Show user-friendly error notification
-      toastNotification.error('Unable to apply category filter. Showing all quizzes.');
-      
+      toastNotification.error(
+        'Unable to apply category filter. Showing all quizzes.'
+      );
+
       // Graceful fallback: Reset to "All Categories"
       try {
         this._resetToAllCategoriesWithFallback(container);
       } catch (fallbackError) {
-        console.error('Critical error: Fallback to all categories failed:', fallbackError);
+        console.error(
+          'Critical error: Fallback to all categories failed:',
+          fallbackError
+        );
         // Last resort: reload the entire view
         this._handleCriticalFilterError(container);
       }
@@ -1012,15 +1080,17 @@ class IHKQuizListView {
    */
   _updateCategoryFilterVisualState(category, container) {
     const categoryFilterButtons = container.querySelectorAll('[data-category]');
-    
+
     if (categoryFilterButtons.length === 0) {
       // Category filters may not be rendered if no specialization is selected
-      console.debug('No category filter buttons found - category filters may not be rendered');
+      console.warn(
+        'No category filter buttons found - category filters may not be rendered'
+      );
       return;
     }
 
     const updates = [];
-    
+
     // Prepare all visual updates
     categoryFilterButtons.forEach(btn => {
       const isActive = btn.dataset.category === category;
@@ -1029,7 +1099,7 @@ class IHKQuizListView {
         isActive: isActive,
         shouldAddClass: isActive,
         shouldRemoveClass: !isActive,
-        ariaPressed: isActive ? 'true' : 'false'
+        ariaPressed: isActive ? 'true' : 'false',
       });
     });
 
@@ -1046,7 +1116,7 @@ class IHKQuizListView {
       } catch (btnError) {
         console.warn('Error updating button state:', {
           error: btnError.message,
-          buttonCategory: update.button.dataset.category
+          buttonCategory: update.button.dataset.category,
         });
       }
     });
@@ -1076,28 +1146,28 @@ class IHKQuizListView {
       const friendlyMessage = this._getUserFriendlyFilterErrorMessage(error, {
         operation: 'filtering',
         currentCategoryFilter: this.currentCategoryFilter,
-        currentStatusFilter: this.currentStatusFilter
+        currentStatusFilter: this.currentStatusFilter,
       });
-      
+
       const fallbackState = EmptyState.create({
         icon: '⚠️',
         title: 'Filter Error',
         message: friendlyMessage,
         action: {
           label: 'Reset Filters',
-          onClick: () => this._resetAllFilters(container)
-        }
+          onClick: () => this._resetAllFilters(container),
+        },
       });
-      
+
       quizGridContainer.innerHTML = '';
       quizGridContainer.appendChild(fallbackState);
-      
+
       // Show notification with specific guidance
       const errorType = this._categorizeFilterError(error);
       const guidance = this._getFilterErrorGuidance(errorType, {
-        currentCategoryFilter: this.currentCategoryFilter
+        currentCategoryFilter: this.currentCategoryFilter,
       });
-      
+
       if (guidance) {
         toastNotification.warning(guidance);
       }
@@ -1112,19 +1182,18 @@ class IHKQuizListView {
     // Preserve status filter during category reset
     const preservedStatusFilter = this.currentStatusFilter;
     this.currentCategoryFilter = 'all';
-    
+
     try {
       this._syncCategoryFilterVisualState(container);
       this._refreshQuizGrid(container);
-      
+
       // Ensure status filter is preserved
       this.currentStatusFilter = preservedStatusFilter;
-      
+
       console.log('Category filter reset to "all", status filter preserved:', {
         categoryFilter: this.currentCategoryFilter,
-        statusFilter: this.currentStatusFilter
+        statusFilter: this.currentStatusFilter,
       });
-      
     } catch (error) {
       console.error('Failed to reset to all categories:', error);
       // Restore preserved status filter even on error
@@ -1139,20 +1208,22 @@ class IHKQuizListView {
    */
   _handleCriticalFilterError(container) {
     console.error('Critical filter error - attempting view reload');
-    
+
     // Show loading state
     container.innerHTML = LoadingSpinner.render('Reloading quizzes...');
-    
+
     // Reload the entire view after a short delay
     setTimeout(() => {
-      this.render().then(newContainer => {
-        if (container.parentNode) {
-          container.parentNode.replaceChild(newContainer, container);
-        }
-      }).catch(reloadError => {
-        console.error('Failed to reload view:', reloadError);
-        // Show final fallback message
-        container.innerHTML = `
+      this.render()
+        .then(newContainer => {
+          if (container.parentNode) {
+            container.parentNode.replaceChild(newContainer, container);
+          }
+        })
+        .catch(reloadError => {
+          console.error('Failed to reload view:', reloadError);
+          // Show final fallback message
+          container.innerHTML = `
           <div class="error-state">
             <h3>Unable to Load Quizzes</h3>
             <p>Please refresh the page to try again.</p>
@@ -1161,7 +1232,7 @@ class IHKQuizListView {
             </button>
           </div>
         `;
-      });
+        });
     }, 1000);
   }
 
@@ -1173,11 +1244,11 @@ class IHKQuizListView {
     try {
       this.currentCategoryFilter = 'all';
       this.currentStatusFilter = 'all';
-      
+
       this._syncCategoryFilterVisualState(container);
       this._syncStatusFilterVisualState(container);
       this._refreshQuizGrid(container);
-      
+
       accessibilityHelper.announce('All filters have been reset');
       toastNotification.success('Filters reset successfully');
     } catch (error) {
@@ -1196,7 +1267,7 @@ class IHKQuizListView {
       warnings: [],
       errors: [],
       category: null,
-      confidence: 'low'
+      confidence: 'low',
     };
 
     // Basic quiz validation
@@ -1211,52 +1282,80 @@ class IHKQuizListView {
     }
 
     // Category field validation
-    const hasThreeTierCategory = quiz.threeTierCategory && typeof quiz.threeTierCategory === 'string';
-    const hasLegacyCategory = quiz.category && typeof quiz.category === 'string';
-    const hasLegacyCategoryId = quiz.categoryId && typeof quiz.categoryId === 'string';
+    const hasThreeTierCategory =
+      quiz.threeTierCategory && typeof quiz.threeTierCategory === 'string';
+    const hasLegacyCategory =
+      quiz.category && typeof quiz.category === 'string';
+    const hasLegacyCategoryId =
+      quiz.categoryId && typeof quiz.categoryId === 'string';
 
     if (!hasThreeTierCategory && !hasLegacyCategory && !hasLegacyCategoryId) {
-      validation.warnings.push('Quiz has no category information - will default to "allgemein"');
+      validation.warnings.push(
+        'Quiz has no category information - will default to "allgemein"'
+      );
       validation.category = 'allgemein';
       validation.confidence = 'low';
     } else if (hasThreeTierCategory) {
       // Validate three-tier category format
-      const validThreeTierCategories = ['daten-prozessanalyse', 'anwendungsentwicklung', 'allgemein'];
+      const validThreeTierCategories = [
+        'daten-prozessanalyse',
+        'anwendungsentwicklung',
+        'allgemein',
+      ];
       if (validThreeTierCategories.includes(quiz.threeTierCategory)) {
         validation.isValid = true;
         validation.category = quiz.threeTierCategory;
         validation.confidence = 'high';
       } else {
-        validation.warnings.push(`Invalid threeTierCategory value: "${quiz.threeTierCategory}"`);
+        validation.warnings.push(
+          `Invalid threeTierCategory value: "${quiz.threeTierCategory}"`
+        );
         validation.category = 'allgemein';
         validation.confidence = 'low';
       }
     } else {
       // Has legacy category data - will need mapping
-      validation.warnings.push('Quiz uses legacy category format - mapping required');
+      validation.warnings.push(
+        'Quiz uses legacy category format - mapping required'
+      );
       validation.confidence = 'medium';
-      
+
       // Validate legacy category format
       if (hasLegacyCategory) {
         if (typeof quiz.category !== 'string' || quiz.category.trim() === '') {
           validation.warnings.push('Legacy category field is empty or invalid');
         }
       }
-      
+
       if (hasLegacyCategoryId) {
-        if (typeof quiz.categoryId !== 'string' || quiz.categoryId.trim() === '') {
-          validation.warnings.push('Legacy categoryId field is empty or invalid');
+        if (
+          typeof quiz.categoryId !== 'string' ||
+          quiz.categoryId.trim() === ''
+        ) {
+          validation.warnings.push(
+            'Legacy categoryId field is empty or invalid'
+          );
         }
       }
     }
 
     // Additional data quality checks
-    if (!quiz.title || typeof quiz.title !== 'string' || quiz.title.trim() === '') {
+    if (
+      !quiz.title ||
+      typeof quiz.title !== 'string' ||
+      quiz.title.trim() === ''
+    ) {
       validation.warnings.push('Quiz missing or invalid title');
     }
 
-    if (!quiz.questions || !Array.isArray(quiz.questions) || quiz.questions.length === 0) {
-      validation.warnings.push('Quiz has no questions or invalid questions array');
+    if (
+      !quiz.questions ||
+      !Array.isArray(quiz.questions) ||
+      quiz.questions.length === 0
+    ) {
+      validation.warnings.push(
+        'Quiz has no questions or invalid questions array'
+      );
     }
 
     return validation;
@@ -1274,7 +1373,7 @@ class IHKQuizListView {
         invalidQuizzes: 0,
         warnings: [],
         errors: [],
-        categoryDistribution: {}
+        categoryDistribution: {},
       };
     }
 
@@ -1286,16 +1385,16 @@ class IHKQuizListView {
       errors: [],
       categoryDistribution: {
         'daten-prozessanalyse': 0,
-        'anwendungsentwicklung': 0,
-        'allgemein': 0,
-        'unknown': 0
+        anwendungsentwicklung: 0,
+        allgemein: 0,
+        unknown: 0,
       },
-      validationDetails: []
+      validationDetails: [],
     };
 
     this.quizzes.forEach((quiz, index) => {
       const validation = this._validateQuizCategory(quiz);
-      
+
       if (validation.isValid) {
         report.validQuizzes++;
       } else {
@@ -1307,7 +1406,7 @@ class IHKQuizListView {
         report.warnings.push({
           quizId: quiz.id || `index-${index}`,
           quizTitle: quiz.title || 'Unknown',
-          warning: warning
+          warning: warning,
         });
       });
 
@@ -1315,13 +1414,18 @@ class IHKQuizListView {
         report.errors.push({
           quizId: quiz.id || `index-${index}`,
           quizTitle: quiz.title || 'Unknown',
-          error: error
+          error: error,
         });
       });
 
       // Update category distribution
       const category = validation.category || 'unknown';
-      if (report.categoryDistribution.hasOwnProperty(category)) {
+      if (
+        Object.prototype.hasOwnProperty.call(
+          report.categoryDistribution,
+          category
+        )
+      ) {
         report.categoryDistribution[category]++;
       } else {
         report.categoryDistribution['unknown']++;
@@ -1330,7 +1434,7 @@ class IHKQuizListView {
       // Store detailed validation info for debugging
       report.validationDetails.push({
         quizId: quiz.id,
-        validation: validation
+        validation: validation,
       });
     });
 
@@ -1342,7 +1446,11 @@ class IHKQuizListView {
    * @private
    */
   _showCategoryValidationWarnings(validationReport) {
-    if (!validationReport || (validationReport.warnings.length === 0 && validationReport.errors.length === 0)) {
+    if (
+      !validationReport ||
+      (validationReport.warnings.length === 0 &&
+        validationReport.errors.length === 0)
+    ) {
       return;
     }
 
@@ -1353,7 +1461,7 @@ class IHKQuizListView {
       console.error('Category validation errors found:', {
         errorCount: errorCount,
         totalQuizzes: validationReport.totalQuizzes,
-        errors: validationReport.errors.slice(0, 3) // Show first 3 errors
+        errors: validationReport.errors.slice(0, 3), // Show first 3 errors
       });
 
       toastNotification.error(
@@ -1365,7 +1473,7 @@ class IHKQuizListView {
       console.warn('Category validation warnings found:', {
         warningCount: warningCount,
         totalQuizzes: validationReport.totalQuizzes,
-        warnings: validationReport.warnings.slice(0, 5) // Show first 5 warnings
+        warnings: validationReport.warnings.slice(0, 5), // Show first 5 warnings
       });
 
       // Only show warning notification if there are many warnings
@@ -1378,13 +1486,13 @@ class IHKQuizListView {
 
     // Log summary for debugging
     if (this._isDebugEnabled()) {
-      console.debug('Category validation summary:', {
+      console.warn('Category validation summary:', {
         totalQuizzes: validationReport.totalQuizzes,
         validQuizzes: validationReport.validQuizzes,
         invalidQuizzes: validationReport.invalidQuizzes,
         errorCount: errorCount,
         warningCount: warningCount,
-        categoryDistribution: validationReport.categoryDistribution
+        categoryDistribution: validationReport.categoryDistribution,
       });
     }
   }
@@ -1395,20 +1503,23 @@ class IHKQuizListView {
    */
   _getUserFriendlyFilterErrorMessage(error, context = {}) {
     const errorType = this._categorizeFilterError(error);
-    
+
     const messages = {
-      'category-mapping': 'Unable to determine quiz categories. Showing all quizzes.',
-      'data-validation': 'Some quiz data is invalid. Showing available quizzes.',
-      'performance': 'Filtering is taking longer than expected. Please wait...',
-      'network': 'Connection issue while filtering. Please try again.',
-      'unknown': 'An unexpected error occurred while filtering. Showing all quizzes.'
+      'category-mapping':
+        'Unable to determine quiz categories. Showing all quizzes.',
+      'data-validation':
+        'Some quiz data is invalid. Showing available quizzes.',
+      performance: 'Filtering is taking longer than expected. Please wait...',
+      network: 'Connection issue while filtering. Please try again.',
+      unknown:
+        'An unexpected error occurred while filtering. Showing all quizzes.',
     };
 
     const baseMessage = messages[errorType] || messages['unknown'];
-    
+
     // Add context-specific guidance
     const guidance = this._getFilterErrorGuidance(errorType, context);
-    
+
     return guidance ? `${baseMessage} ${guidance}` : baseMessage;
   }
 
@@ -1422,23 +1533,23 @@ class IHKQuizListView {
     }
 
     const message = error.message.toLowerCase();
-    
+
     if (message.includes('category') || message.includes('mapping')) {
       return 'category-mapping';
     }
-    
+
     if (message.includes('validation') || message.includes('invalid')) {
       return 'data-validation';
     }
-    
+
     if (message.includes('timeout') || message.includes('performance')) {
       return 'performance';
     }
-    
+
     if (message.includes('network') || message.includes('fetch')) {
       return 'network';
     }
-    
+
     return 'unknown';
   }
 
@@ -1467,10 +1578,10 @@ class IHKQuizListView {
    */
   _getCategoryDisplayName(categoryId) {
     const categoryMap = {
-      'all': 'All Categories',
+      all: 'All Categories',
       'daten-prozessanalyse': 'Daten und Prozessanalyse',
-      'anwendungsentwicklung': 'Anwendungsentwicklung',
-      'allgemein': 'Allgemein'
+      anwendungsentwicklung: 'Anwendungsentwicklung',
+      allgemein: 'Allgemein',
     };
     return categoryMap[categoryId] || categoryId;
   }
@@ -1498,8 +1609,9 @@ class IHKQuizListView {
       this.filterInitialized = true;
 
       // Announce initial state for accessibility
-      accessibilityHelper.announce('Filters initialized. All categories and all statuses are shown.');
-
+      accessibilityHelper.announce(
+        'Filters initialized. All categories and all statuses are shown.'
+      );
     } catch (error) {
       console.error('Error initializing filter states:', error);
       toastNotification.error('Failed to initialize filters');
@@ -1557,17 +1669,17 @@ class IHKQuizListView {
   _performQuizGridRefresh(container) {
     const operationId = `refresh-${Date.now()}`;
     const startTime = performance.now();
-    
+
     try {
       // Prevent concurrent refresh operations
       if (this.filterOperationInProgress) {
-        console.debug('Filter operation already in progress, queuing refresh');
+        console.warn('Filter operation already in progress, queuing refresh');
         this.pendingFilterOperations.add(operationId);
         return;
       }
-      
+
       this.filterOperationInProgress = true;
-      
+
       const quizGridContainer = container.querySelector('.quiz-grid');
       if (!quizGridContainer) {
         throw new Error('Quiz grid container not found');
@@ -1575,15 +1687,15 @@ class IHKQuizListView {
 
       // Add loading state to prevent layout flicker
       quizGridContainer.classList.add('refreshing');
-      
+
       // Use requestAnimationFrame for smooth rendering
       requestAnimationFrame(() => {
         try {
           const filteredQuizzes = this._filterQuizzes(this.quizzes);
-          
+
           // Clear existing content
           quizGridContainer.innerHTML = '';
-          
+
           // Add content directly to the existing grid container
           if (filteredQuizzes.length === 0) {
             const emptyState = this._createEnhancedEmptyState();
@@ -1594,26 +1706,25 @@ class IHKQuizListView {
               quizGridContainer.appendChild(card);
             });
           }
-          
+
           quizGridContainer.classList.remove('refreshing');
-          
+
           // Update quiz count display with feedback
           this._updateQuizCountDisplay(container);
-          
+
           const duration = performance.now() - startTime;
-          
+
           // Log performance metrics
           if (this._isDebugEnabled()) {
-            console.debug(`Quiz grid refresh completed (${operationId}):`, {
+            console.warn(`Quiz grid refresh completed (${operationId}):`, {
               duration: `${duration.toFixed(2)}ms`,
               quizCount: this.quizzes.length,
-              filteredCount: filteredQuizzes.length
+              filteredCount: filteredQuizzes.length,
             });
           }
-          
+
           // Process any pending operations
           this._processPendingFilterOperations(container);
-          
         } catch (renderError) {
           console.error('Error during quiz grid rendering:', renderError);
           quizGridContainer.classList.remove('refreshing');
@@ -1622,7 +1733,6 @@ class IHKQuizListView {
           this.filterOperationInProgress = false;
         }
       });
-      
     } catch (error) {
       console.error(`Quiz grid refresh failed (${operationId}):`, error);
       this.filterOperationInProgress = false;
@@ -1636,9 +1746,11 @@ class IHKQuizListView {
    */
   _processPendingFilterOperations(container) {
     if (this.pendingFilterOperations.size > 0) {
-      console.debug(`Processing ${this.pendingFilterOperations.size} pending filter operations`);
+      console.warn(
+        `Processing ${this.pendingFilterOperations.size} pending filter operations`
+      );
       this.pendingFilterOperations.clear();
-      
+
       // Trigger one more refresh for any changes that occurred during the last operation
       setTimeout(() => {
         if (!this.filterOperationInProgress) {
@@ -1654,13 +1766,13 @@ class IHKQuizListView {
    */
   _updateStatusFilterVisualState(status, container) {
     const statusFilterButtons = container.querySelectorAll('[data-status]');
-    
+
     if (statusFilterButtons.length === 0) {
       throw new Error('No status filter buttons found in container');
     }
 
     const updates = [];
-    
+
     // Prepare all visual updates
     statusFilterButtons.forEach(btn => {
       const isActive = btn.dataset.status === status;
@@ -1669,7 +1781,7 @@ class IHKQuizListView {
         isActive: isActive,
         shouldAddClass: isActive,
         shouldRemoveClass: !isActive,
-        ariaPressed: isActive ? 'true' : 'false'
+        ariaPressed: isActive ? 'true' : 'false',
       });
     });
 
@@ -1686,7 +1798,7 @@ class IHKQuizListView {
       } catch (btnError) {
         console.warn('Error updating status button state:', {
           error: btnError.message,
-          buttonStatus: update.button.dataset.status
+          buttonStatus: update.button.dataset.status,
         });
       }
     });
@@ -1698,10 +1810,10 @@ class IHKQuizListView {
    */
   _getStatusDisplayName(status) {
     const statusNames = {
-      'all': 'All Quizzes',
-      'completed': 'Completed',
-      'attempted': 'Attempted',
-      'not-started': 'Not Started'
+      all: 'All Quizzes',
+      completed: 'Completed',
+      attempted: 'Attempted',
+      'not-started': 'Not Started',
     };
     return statusNames[status] || status;
   }
@@ -1710,15 +1822,7 @@ class IHKQuizListView {
    * Get display name for category filter
    * @private
    */
-  _getCategoryDisplayName(category) {
-    const categoryNames = {
-      'all': 'All Categories',
-      'daten-prozessanalyse': 'Daten und Prozessanalyse',
-      'anwendungsentwicklung': 'Anwendungsentwicklung',
-      'allgemein': 'Allgemein'
-    };
-    return categoryNames[category] || category;
-  }
+  // Duplicate method removed - use the other _getCategoryDisplayName implementation earlier in the file
 
   /**
    * Create enhanced empty state with specific messages based on current filter combination
@@ -1726,27 +1830,32 @@ class IHKQuizListView {
    * @private
    */
   _createEnhancedEmptyState() {
-    const hasFilters = this.currentCategoryFilter !== 'all' || this.currentStatusFilter !== 'all';
-    
+    const hasFilters =
+      this.currentCategoryFilter !== 'all' ||
+      this.currentStatusFilter !== 'all';
+
     if (!hasFilters) {
       // No filters applied - general empty state
       return EmptyState.create({
         icon: '📚',
         title: 'No IHK Quizzes Available',
-        message: 'There are currently no IHK quizzes available. Please check back later or contact support if this seems incorrect.',
+        message:
+          'There are currently no IHK quizzes available. Please check back later or contact support if this seems incorrect.',
         action: {
           label: 'Browse Modules',
           onClick: () => {
             window.location.hash = '#/modules';
-          }
-        }
+          },
+        },
       });
     }
 
     // Filters are applied - create specific message
-    const categoryName = this._getCategoryDisplayName(this.currentCategoryFilter);
+    const categoryName = this._getCategoryDisplayName(
+      this.currentCategoryFilter
+    );
     const statusName = this._getStatusDisplayName(this.currentStatusFilter);
-    
+
     // Build filter description
     const filterParts = [];
     if (this.currentCategoryFilter !== 'all') {
@@ -1755,17 +1864,17 @@ class IHKQuizListView {
     if (this.currentStatusFilter !== 'all') {
       filterParts.push(`status "${statusName}"`);
     }
-    
+
     const filterDescription = filterParts.join(' and ');
     const totalQuizzes = this.quizzes ? this.quizzes.length : 0;
-    
+
     // Create specific message based on filter combination
     let message = `No quizzes match your current filters (${filterDescription}).`;
-    
+
     if (totalQuizzes > 0) {
       message += ` There are ${totalQuizzes} total quizzes available.`;
     }
-    
+
     // Add guidance on adjusting filters
     const suggestions = this._getFilterAdjustmentSuggestions();
     if (suggestions.length > 0) {
@@ -1781,8 +1890,8 @@ class IHKQuizListView {
         label: 'Clear All Filters',
         onClick: () => {
           this._resetAllFilters();
-        }
-      }
+        },
+      },
     });
   }
 
@@ -1792,37 +1901,44 @@ class IHKQuizListView {
    */
   _getFilterAdjustmentSuggestions() {
     const suggestions = [];
-    
+
     if (this.currentCategoryFilter !== 'all') {
       suggestions.push('selecting "All Categories"');
     }
-    
+
     if (this.currentStatusFilter !== 'all') {
       suggestions.push('selecting "All Quizzes"');
     }
-    
+
     // Add specific suggestions based on available data
     if (this.quizzes && this.quizzes.length > 0) {
       const availableCategories = this._getAvailableCategories();
       const availableStatuses = this._getAvailableStatuses();
-      
-      if (this.currentCategoryFilter !== 'all' && availableCategories.length > 1) {
-        const otherCategories = availableCategories.filter(cat => cat !== this.currentCategoryFilter);
+
+      if (
+        this.currentCategoryFilter !== 'all' &&
+        availableCategories.length > 1
+      ) {
+        const otherCategories = availableCategories.filter(
+          cat => cat !== this.currentCategoryFilter
+        );
         if (otherCategories.length > 0) {
           const categoryName = this._getCategoryDisplayName(otherCategories[0]);
           suggestions.push(`trying "${categoryName}"`);
         }
       }
-      
+
       if (this.currentStatusFilter !== 'all' && availableStatuses.length > 1) {
-        const otherStatuses = availableStatuses.filter(status => status !== this.currentStatusFilter);
+        const otherStatuses = availableStatuses.filter(
+          status => status !== this.currentStatusFilter
+        );
         if (otherStatuses.length > 0) {
           const statusName = this._getStatusDisplayName(otherStatuses[0]);
           suggestions.push(`trying "${statusName}"`);
         }
       }
     }
-    
+
     return suggestions.slice(0, 3); // Limit to 3 suggestions to avoid overwhelming
   }
 
@@ -1832,7 +1948,7 @@ class IHKQuizListView {
    */
   _getAvailableCategories() {
     if (!this.quizzes || this.quizzes.length === 0) return [];
-    
+
     const categories = new Set();
     this.quizzes.forEach(quiz => {
       try {
@@ -1844,7 +1960,7 @@ class IHKQuizListView {
         // Skip quizzes with category errors
       }
     });
-    
+
     return Array.from(categories);
   }
 
@@ -1854,7 +1970,7 @@ class IHKQuizListView {
    */
   _getAvailableStatuses() {
     if (!this.quizzes || this.quizzes.length === 0) return [];
-    
+
     const statuses = new Set();
     this.quizzes.forEach(quiz => {
       if (quiz.completed) {
@@ -1865,7 +1981,7 @@ class IHKQuizListView {
         statuses.add('not-started');
       }
     });
-    
+
     return Array.from(statuses);
   }
 
@@ -1873,35 +1989,7 @@ class IHKQuizListView {
    * Reset all filters to default state
    * @private
    */
-  _resetAllFilters() {
-    try {
-      // Find the container
-      const container = document.querySelector('.ihk-quiz-list-view');
-      if (!container) {
-        console.error('Cannot reset filters: container not found');
-        return;
-      }
-
-      // Reset both filters to 'all'
-      this.currentCategoryFilter = 'all';
-      this.currentStatusFilter = 'all';
-
-      // Update visual states
-      this._updateCategoryFilterVisualState('all', container);
-      this._updateStatusFilterVisualState('all', container);
-
-      // Refresh the quiz grid
-      this._refreshQuizGrid(container);
-      
-      // Announce the change
-      accessibilityHelper.announce('All filters have been reset');
-      toastNotification.success('Filters reset successfully');
-      
-    } catch (error) {
-      console.error('Error resetting filters:', error);
-      toastNotification.error('Unable to reset filters');
-    }
-  }
+  // Duplicate method removed - the earlier _resetAllFilters(container) implementation is used
 
   /**
    * Create quiz count display text
@@ -1930,16 +2018,18 @@ class IHKQuizListView {
       }
 
       const filteredQuizzes = this._filterQuizzes(this.quizzes);
-      const newCountDisplay = this._createQuizCountDisplay(filteredQuizzes.length, this.quizzes.length);
-      
+      const newCountDisplay = this._createQuizCountDisplay(
+        filteredQuizzes.length,
+        this.quizzes.length
+      );
+
       countDisplay.innerHTML = newCountDisplay;
-      
+
       // Add visual feedback animation
       countDisplay.classList.add('updating');
       setTimeout(() => {
         countDisplay.classList.remove('updating');
       }, 300);
-      
     } catch (error) {
       console.error('Error updating quiz count display:', error);
     }
@@ -1953,7 +2043,9 @@ class IHKQuizListView {
   _showFilterOperationFeedback(container, operation = 'filtering') {
     try {
       // Add loading state to filter buttons
-      const filterButtons = container.querySelectorAll('.filter-btn, .category-filter-btn');
+      const filterButtons = container.querySelectorAll(
+        '.filter-btn, .category-filter-btn'
+      );
       filterButtons.forEach(btn => {
         btn.classList.add('filtering');
         btn.disabled = true;
@@ -1971,12 +2063,11 @@ class IHKQuizListView {
           btn.classList.remove('filtering');
           btn.disabled = false;
         });
-        
+
         if (quizGrid) {
           quizGrid.classList.remove('updating');
         }
       }, 150); // Short delay for visual feedback
-      
     } catch (error) {
       console.error('Error showing filter operation feedback:', error);
     }
@@ -1989,20 +2080,22 @@ class IHKQuizListView {
    */
   _announceFilterChange(filterType, newValue, resultCount) {
     try {
-      const categoryName = this._getCategoryDisplayName(this.currentCategoryFilter);
+      const categoryName = this._getCategoryDisplayName(
+        this.currentCategoryFilter
+      );
       const statusName = this._getStatusDisplayName(this.currentStatusFilter);
-      
+
       let announcement = '';
-      
+
       if (filterType === 'category') {
         announcement = `Category filter changed to ${this._getCategoryDisplayName(newValue)}. `;
       } else if (filterType === 'status') {
         announcement = `Status filter changed to ${this._getStatusDisplayName(newValue)}. `;
       }
-      
+
       // Add current filter state
       announcement += `Current filters: ${categoryName} and ${statusName}. `;
-      
+
       // Add result count
       if (resultCount === 0) {
         announcement += 'No quizzes match these filters.';
@@ -2011,9 +2104,8 @@ class IHKQuizListView {
       } else {
         announcement += `${resultCount} quizzes match these filters.`;
       }
-      
+
       accessibilityHelper.announce(announcement);
-      
     } catch (error) {
       console.error('Error announcing filter change:', error);
     }
@@ -2028,18 +2120,17 @@ class IHKQuizListView {
       // Reset to "all" status while preserving category filter
       const preservedCategoryFilter = this.currentCategoryFilter;
       this.currentStatusFilter = 'all';
-      
+
       this._updateStatusFilterVisualState('all', container);
       this._refreshQuizGrid(container);
-      
+
       // Ensure category filter is preserved
       this.currentCategoryFilter = preservedCategoryFilter;
-      
+
       console.log('Status filter reset to "all", category filter preserved:', {
         statusFilter: this.currentStatusFilter,
-        categoryFilter: this.currentCategoryFilter
+        categoryFilter: this.currentCategoryFilter,
       });
-      
     } catch (error) {
       console.error('Failed to reset status filter:', error);
       throw error;

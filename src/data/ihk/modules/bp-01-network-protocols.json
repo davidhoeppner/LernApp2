@@ -1,0 +1,47 @@
+{
+  "id": "bp-01-network-protocols",
+  "title": "Netzwerkprotokolle (TCP/IP, HTTP, DNS)",
+  "description": "Wichtige Netzwerkprotokolle und ihre Funktionsweise im OSI-Modell",
+  "category": "BP-01",
+  "subcategory": "Netzwerke und Protokolle",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": false,
+  "removedIn2025": false,
+  "important": true,
+  "estimatedTime": 60,
+  "prerequisites": [
+    "bp-01-networks-basics"
+  ],
+  "tags": [
+    "Protokolle",
+    "TCP/IP",
+    "HTTP",
+    "DNS",
+    "OSI-Modell"
+  ],
+  "content": "# Netzwerkprotokolle\n\n## OSI-Modell und TCP/IP-Modell\n\n### OSI-Modell (7 Schichten)\n\n1. **Anwendungsschicht (Application Layer)**: HTTP, FTP, SMTP, DNS\n2. **Darstellungsschicht (Presentation Layer)**: Datenkodierung, Verschlüsselung\n3. **Sitzungsschicht (Session Layer)**: Sitzungsverwaltung\n4. **Transportschicht (Transport Layer)**: TCP, UDP\n5. **Vermittlungsschicht (Network Layer)**: IP, ICMP, Routing\n6. **Sicherungsschicht (Data Link Layer)**: Ethernet, MAC-Adressen\n7. **Bitübertragungsschicht (Physical Layer)**: Kabel, Signale\n\n### TCP/IP-Modell (4 Schichten)\n\n1. **Anwendungsschicht**: HTTP, FTP, SMTP, DNS\n2. **Transportschicht**: TCP, UDP\n3. **Internetschicht**: IP, ICMP\n4. **Netzzugangsschicht**: Ethernet, WiFi\n\n## Wichtige Protokolle\n\n### TCP (Transmission Control Protocol)\n\n**Eigenschaften:**\n- Verbindungsorientiert\n- Zuverlässig (Bestätigung, Neuübertragung)\n- Reihenfolge garantiert\n- Flusskontrolle\n\n**Verwendung:**\n- HTTP/HTTPS\n- FTP\n- SMTP\n- SSH\n\n**Three-Way-Handshake:**\n```\nClient -> Server: SYN\nServer -> Client: SYN-ACK\nClient -> Server: ACK\n```\n\n### UDP (User Datagram Protocol)\n\n**Eigenschaften:**\n- Verbindungslos\n- Unzuverlässig (keine Bestätigung)\n- Keine Reihenfolgegarantie\n- Geringer Overhead\n\n**Verwendung:**\n- DNS\n- DHCP\n- Streaming (Video, Audio)\n- Online-Gaming\n\n### IP (Internet Protocol)\n\n**IPv4:**\n- 32-Bit-Adressen (z.B. 192.168.1.1)\n- Adressknappheit\n- NAT zur Adresserweiterung\n\n**IPv6:**\n- 128-Bit-Adressen (z.B. 2001:0db8:85a3::8a2e:0370:7334)\n- Praktisch unbegrenzte Adressen\n- Vereinfachter Header\n\n### HTTP/HTTPS (Hypertext Transfer Protocol)\n\n**HTTP-Methoden:**\n- GET: Daten abrufen\n- POST: Daten senden\n- PUT: Daten aktualisieren\n- DELETE: Daten löschen\n- PATCH: Teilweise aktualisieren\n\n**Status-Codes:**\n- 2xx: Erfolg (200 OK, 201 Created)\n- 3xx: Umleitung (301 Moved Permanently, 302 Found)\n- 4xx: Client-Fehler (400 Bad Request, 404 Not Found)\n- 5xx: Server-Fehler (500 Internal Server Error)\n\n**HTTPS:**\n- HTTP über TLS/SSL\n- Verschlüsselte Übertragung\n- Authentifizierung\n\n### DNS (Domain Name System)\n\n**Funktion:**\n- Auflösung von Domainnamen zu IP-Adressen\n- Hierarchisches System\n\n**DNS-Record-Typen:**\n- A: IPv4-Adresse\n- AAAA: IPv6-Adresse\n- CNAME: Alias\n- MX: Mail-Server\n- TXT: Textinformationen\n\n**DNS-Abfrage:**\n```\n1. Client fragt lokalen DNS-Server\n2. Rekursive Abfrage durch DNS-Hierarchie\n3. Root-Server -> TLD-Server -> Autoritativer Server\n4. Antwort wird gecacht\n```\n\n### DHCP (Dynamic Host Configuration Protocol)\n\n**Funktion:**\n- Automatische IP-Adressvergabe\n- Konfiguration von Netzwerkparametern\n\n**DHCP-Prozess:**\n```\n1. DHCP Discover (Client sucht Server)\n2. DHCP Offer (Server bietet Konfiguration)\n3. DHCP Request (Client akzeptiert)\n4. DHCP Acknowledge (Server bestätigt)\n```\n\n## Ports\n\n**Well-Known Ports (0-1023):**\n- 20/21: FTP\n- 22: SSH\n- 23: Telnet\n- 25: SMTP\n- 53: DNS\n- 80: HTTP\n- 443: HTTPS\n- 3306: MySQL\n- 5432: PostgreSQL\n\n## Prüfungsrelevante Aspekte\n\n- OSI-Modell und TCP/IP-Modell kennen\n- Protokolle den Schichten zuordnen\n- TCP vs. UDP unterscheiden\n- HTTP-Methoden und Status-Codes kennen\n- DNS-Funktionsweise verstehen\n- Standard-Ports kennen",
+  "codeExamples": [],
+  "relatedQuizzes": [],
+  "resources": [
+    {
+      "title": "RFC 791 - Internet Protocol",
+      "url": "https://tools.ietf.org/html/rfc791",
+      "type": "documentation"
+    },
+    {
+      "title": "RFC 793 - TCP",
+      "url": "https://tools.ietf.org/html/rfc793",
+      "type": "documentation"
+    }
+  ],
+  "lastUpdated": "2025-01-10T00:00:00Z",
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand Protokolle",
+    "Understand TCP/IP",
+    "Understand HTTP",
+    "Understand DNS",
+    "Understand OSI-Modell"
+  ]
+}

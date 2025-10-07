@@ -16,15 +16,27 @@ class WheelModuleValidator {
     }
 
     // Check required properties
-    if (!module.id || typeof module.id !== 'string' || module.id.trim() === '') {
+    if (
+      !module.id ||
+      typeof module.id !== 'string' ||
+      module.id.trim() === ''
+    ) {
       return false;
     }
 
-    if (!module.title || typeof module.title !== 'string' || module.title.trim() === '') {
+    if (
+      !module.title ||
+      typeof module.title !== 'string' ||
+      module.title.trim() === ''
+    ) {
       return false;
     }
 
-    if (!module.category || typeof module.category !== 'string' || module.category.trim() === '') {
+    if (
+      !module.category ||
+      typeof module.category !== 'string' ||
+      module.category.trim() === ''
+    ) {
       return false;
     }
 
@@ -38,19 +50,26 @@ class WheelModuleValidator {
    */
   filterValidModules(modules) {
     if (!Array.isArray(modules)) {
-      console.warn('WheelModuleValidator: modules is not an array, returning empty array');
+      console.warn(
+        'WheelModuleValidator: modules is not an array, returning empty array'
+      );
       return [];
     }
 
     const validModules = modules.filter(module => {
       const isValid = this.validateModule(module);
       if (!isValid) {
-        console.warn('WheelModuleValidator: Invalid module filtered out:', module);
+        console.warn(
+          'WheelModuleValidator: Invalid module filtered out:',
+          module
+        );
       }
       return isValid;
     });
 
-    console.log(`WheelModuleValidator: Filtered ${modules.length} modules to ${validModules.length} valid modules`);
+    console.log(
+      `WheelModuleValidator: Filtered ${modules.length} modules to ${validModules.length} valid modules`
+    );
     return validModules;
   }
 
@@ -63,41 +82,45 @@ class WheelModuleValidator {
       {
         id: 'intro-basics',
         title: 'Introduction to Basics',
-        category: 'fundamentals'
+        category: 'fundamentals',
       },
       {
         id: 'getting-started',
         title: 'Getting Started',
-        category: 'basics'
+        category: 'basics',
       },
       {
         id: 'bp-03-tdd',
         title: 'Test-Driven Development (TDD)',
-        category: 'BP-03'
+        category: 'BP-03',
       },
       {
         id: 'bp-04-scrum',
         title: 'Scrum',
-        category: 'BP-04'
+        category: 'BP-04',
       },
       {
         id: 'bp-05-sorting',
         title: 'Sortierverfahren',
-        category: 'BP-05'
-      }
+        category: 'BP-05',
+      },
     ];
 
     // Validate fallback modules to ensure they're correct
     const validFallbacks = this.filterValidModules(fallbacks);
-    
+
     if (validFallbacks.length === 0) {
-      console.error('WheelModuleValidator: All fallback modules are invalid! This should never happen.');
+      console.error(
+        'WheelModuleValidator: All fallback modules are invalid! This should never happen.'
+      );
       // Return minimal valid module as last resort
-      return [{
-        id: 'emergency-fallback',
-        title: 'Learning Module',
-        category: 'general'
-      }];
+      return [
+        {
+          id: 'emergency-fallback',
+          title: 'Learning Module',
+          category: 'general',
+        },
+      ];
     }
 
     return validFallbacks;
@@ -112,7 +135,7 @@ class WheelModuleValidator {
     console.warn('WheelModuleValidator: Validation failed', {
       module: module,
       reason: reason,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     });
   }
 
@@ -123,22 +146,46 @@ class WheelModuleValidator {
    */
   validateModuleWithLogging(module) {
     if (!module || typeof module !== 'object') {
-      this.logValidationFailure(module, 'Module is null, undefined, or not an object');
+      this.logValidationFailure(
+        module,
+        'Module is null, undefined, or not an object'
+      );
       return false;
     }
 
-    if (!module.id || typeof module.id !== 'string' || module.id.trim() === '') {
-      this.logValidationFailure(module, 'Module id is missing, not a string, or empty');
+    if (
+      !module.id ||
+      typeof module.id !== 'string' ||
+      module.id.trim() === ''
+    ) {
+      this.logValidationFailure(
+        module,
+        'Module id is missing, not a string, or empty'
+      );
       return false;
     }
 
-    if (!module.title || typeof module.title !== 'string' || module.title.trim() === '') {
-      this.logValidationFailure(module, 'Module title is missing, not a string, or empty');
+    if (
+      !module.title ||
+      typeof module.title !== 'string' ||
+      module.title.trim() === ''
+    ) {
+      this.logValidationFailure(
+        module,
+        'Module title is missing, not a string, or empty'
+      );
       return false;
     }
 
-    if (!module.category || typeof module.category !== 'string' || module.category.trim() === '') {
-      this.logValidationFailure(module, 'Module category is missing, not a string, or empty');
+    if (
+      !module.category ||
+      typeof module.category !== 'string' ||
+      module.category.trim() === ''
+    ) {
+      this.logValidationFailure(
+        module,
+        'Module category is missing, not a string, or empty'
+      );
       return false;
     }
 

@@ -11,11 +11,22 @@
   "important": false,
   "estimatedTime": 30,
   "prerequisites": [],
-  "tags": ["Programmierparadigmen", "OOP", "Funktional", "Veraltet"],
+  "tags": [
+    "Programmierparadigmen",
+    "OOP",
+    "Funktional",
+    "Veraltet"
+  ],
   "content": "# Programmierparadigmen\n\n## âš ï¸ Hinweis: Nicht mehr prüfungsrelevant ab 2025\n\nDieses Thema wurde aus dem Prüfungskatalog 2025 gestrichen. Die Inhalte dienen nur noch als Hintergrundwissen.\n\n## Übersicht\n\nProgrammierparadigmen sind grundlegende Programmierstile, die bestimmen, wie Code strukturiert und organisiert wird.\n\n### Hauptparadigmen\n\n1. **Imperativ**: Befehle, die den Programmzustand ändern\n2. **Deklarativ**: Beschreibung des gewünschten Ergebnisses\n3. **Objektorientiert**: Organisation in Objekten\n4. **Funktional**: Funktionen als zentrale Bausteine\n\n## Imperative Programmierung\n\n**Eigenschaften:**\n- Sequenz von Befehlen\n- Zustandsänderungen\n- Kontrollstrukturen (if, for, while)\n\n```python\n# Imperativ\nnumbers = [1, 2, 3, 4, 5]\nsum = 0\nfor num in numbers:\n    sum += num\nprint(sum)  # 15\n```\n\n## Deklarative Programmierung\n\n**Eigenschaften:**\n- Beschreibung des \"Was\", nicht \"Wie\"\n- Keine expliziten Zustandsänderungen\n\n```sql\n-- Deklarativ (SQL)\nSELECT SUM(price) FROM products WHERE category = 'Electronics';\n```\n\n## Objektorientierte Programmierung (OOP)\n\n**Eigenschaften:**\n- Kapselung\n- Vererbung\n- Polymorphie\n\n```java\nclass Animal {\n    void makeSound() {\n        System.out.println(\"Some sound\");\n    }\n}\n\nclass Dog extends Animal {\n    void makeSound() {\n        System.out.println(\"Woof!\");\n    }\n}\n```\n\n## Funktionale Programmierung\n\n**Eigenschaften:**\n- Funktionen als First-Class Citizens\n- Immutability\n- Pure Functions\n\n```python\n# Funktional\nnumbers = [1, 2, 3, 4, 5]\nsum = reduce(lambda x, y: x + y, numbers)\nprint(sum)  # 15\n```\n\n## Prüfungshinweis\n\nDieses Thema ist **nicht mehr prüfungsrelevant ab 2025**. Fokussieren Sie stattdessen auf:\n- Design Patterns\n- Architektur-Pattern\n- Scrum\n- TDD",
   "codeExamples": [],
   "relatedQuizzes": [],
   "resources": [],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand Programmierparadigmen",
+    "Understand OOP",
+    "Understand Funktional",
+    "Understand Veraltet"
+  ]
 }

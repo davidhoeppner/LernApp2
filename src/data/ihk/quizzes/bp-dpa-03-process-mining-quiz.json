@@ -1,0 +1,30 @@
+{
+  "id": "bp-dpa-03-process-mining-quiz",
+  "moduleId": "bp-dpa-03-process-mining",
+  "title": "Process Mining Discovery & Conformance",
+  "description": "Quiz zu Event Logs, Discovery-, Conformance- und Enhancement-Konzepten sowie KPI-Auswertung",
+  "category": "BP-DPA-03",
+  "difficulty": "intermediate",
+  "examRelevance": "high",
+  "newIn2025": true,
+  "timeLimit": 25,
+  "passingScore": 70,
+  "questions": [
+    {"id":"q1","type":"single-choice","question":"Welche Minimalfelder benötigt ein Event Log für grundlegendes Process Mining?","options":["Case ID, Activity, Timestamp","Activity, Resource","Case ID, Kostenstelle","Timestamp, Kosten"],"correctAnswer":"Case ID, Activity, Timestamp","explanation":"Die drei Kernfelder Case (Instanz), Activity (Schritt) und Timestamp (Zeit) sind Grundlage für Sequenz und Zeitberechnungen.","points":1,"category":"Event Log"},
+    {"id":"q2","type":"multiple-choice","question":"Welche Ziele hat Conformance Checking?","options":["Abgleich Soll vs. Ist","Erkennen nicht zugelassener Pfade","Optimierte Ressourcenallokation automatisch umsetzen","Identifikation fehlender Aktivitäten"],"correctAnswer":["Abgleich Soll vs. Ist","Erkennen nicht zugelassener Pfade","Identifikation fehlender Aktivitäten"],"explanation":"Conformance prüft Übereinstimmung. Automatische Ressourcenoptimierung ist kein direktes Ziel.","points":2,"category":"Conformance"},
+    {"id":"q3","type":"single-choice","question":"Welches Kriterium beschreibt wie gut ein modelliertes Prozessmodell die beobachteten Log-Daten abdeckt?","options":["Präzision","Einfachheit","Fitness","Generalisierung"],"correctAnswer":"Fitness","explanation":"Fitness misst den Grad, zu dem die Log-Ereignisse im Modell abspielbar sind.","points":1,"category":"Qualitätskriterien"},
+    {"id":"q4","type":"single-choice","question":"Welcher Ansatz ist robuster gegenüber Rauschen bei der Modellentdeckung?","options":["Alpha-Miner","Heuristics Miner","Inductive Miner (balanciert)","Zufallsbasierter Miner"],"correctAnswer":"Inductive Miner (balanciert)","explanation":"Der Inductive Miner bietet robuste Balance zwischen Präzision und Generalisierung.","points":1,"category":"Discovery"},
+    {"id":"q5","type":"multiple-choice","question":"Welche typischen Datenqualitätsprobleme führen zu verfälschten Variantenanalysen?","options":["Inkonsistente Aktivitätslabels","Doppelte Events","Fehlende Timestamps","UTF-8 Kodierung"],"correctAnswer":["Inkonsistente Aktivitätslabels","Doppelte Events","Fehlende Timestamps"],"explanation":"Diese Probleme verzerren Sequenzen und Zeitberechnungen. UTF-8 ist hier irrelevant sofern korrekt decodiert.","points":2,"category":"Datenqualität"},
+    {"id":"q6","type":"single-choice","question":"Welche KPI beschreibt die Zeit vom ersten bis zum letzten Event einer Instanz?","options":["Aktivitätsdauer","Durchlaufzeit","Wartezeit","Service Level"],"correctAnswer":"Durchlaufzeit","explanation":"Durchlaufzeit (Lead/Cycle Time im Kontext Gesamtablauf) misst Start bis Ende.","points":1,"category":"KPIs"},
+    {"id":"q7","type":"single-choice","question":"Was kennzeichnet eine hohe Variantenanzahl?","options":["Hohe Standardisierung","Geringe Prozessstabilität","Immer bessere Performance","Zwangsläufig niedrige Fehlerrate"],"correctAnswer":"Geringe Prozessstabilität","explanation":"Viele Varianten weisen häufig auf mangelnde Standardisierung hin.","points":1,"category":"Varianten"},
+    {"id":"q8","type":"multiple-choice","question":"Welche Nutzen liefert Enhancement im Process Mining?","options":["Performancekennzahlen ins Modell integrieren","Engpassvisualisierung","Automatische Personalentlassung","Zeitliche SLA-Analyse"],"correctAnswer":["Performancekennzahlen ins Modell integrieren","Engpassvisualisierung","Zeitliche SLA-Analyse"],"explanation":"Enhancement reichert Modell um Zeit/Performanceinformationen an.","points":2,"category":"Enhancement"},
+    {"id":"q9","type":"single-choice","question":"Welches Feld ist notwendig zur Berechnung der Aktivitätsdauer einzelner Schritte?","options":["Separater Start- und End-Timestamp oder Ableitungslogik","Nur Case ID","Nur Activity","Nur Resource"],"correctAnswer":"Separater Start- und End-Timestamp oder Ableitungslogik","explanation":"Ohne Start/Ende oder rekonstruierbare Paare kann Dauer nicht bestimmt werden.","points":1,"category":"Zeit"},
+    {"id":"q10","type":"single-choice","question":"Welches Anti-Pattern bei Process Mining führt zu Fehlschlüssen?","options":["Vor Datenbereinigung modellieren","Datenprofilierung vorab","Median statt Mittelwert nutzen","Varianzbetrachtung"],"correctAnswer":"Vor Datenbereinigung modellieren","explanation":"Unbereinigte Logs verfälschen Discovery-Ergebnisse.","points":1,"category":"Fehler"},
+    {"id":"q11","type":"multiple-choice","question":"Welche Kennzahlen unterstützen Engpassidentifikation?","options":["Wartezeit","Durchlaufzeit","Aktivitätswarte-Queue-Länge","Dateigröße des Logs"],"correctAnswer":["Wartezeit","Durchlaufzeit","Aktivitätswarte-Queue-Länge"],"explanation":"Warte- und Durchlaufzeit plus Queue-Indikatoren deuten Engpässe an.","points":2,"category":"Engpass"},
+    {"id":"q12","type":"single-choice","question":"Warum ist der Median oft aussagekräftiger als der Mittelwert bei Durchlaufzeiten?","options":["Median reagiert stärker auf Ausreißer","Median ignoriert alle Werte","Median ist robuster gegen Ausreißer","Median ist immer kleiner"],"correctAnswer":"Median ist robuster gegen Ausreißer","explanation":"Der Median reduziert Verzerrung durch extreme Laufzeiten.","points":1,"category":"Statistik"},
+    {"id":"q13","type":"single-choice","question":"Welche Phase folgt in einem PDCA-integrierten Mining-Ansatz nach Implementierung einer Maßnahme?","options":["Plan","Check","Act","Discovery"],"correctAnswer":"Check","explanation":"Nach Umsetzung (Do) erfolgt Prüfung (Check) zur Wirksamkeit.","points":1,"category":"Kontinuierliche Verbesserung"}
+  ],
+  "tags": ["process-mining","event-log","discovery","conformance","enhancement","kpi","prozessanalyse"],
+  "lastUpdated": "2025-10-07T00:00:00Z",
+  "tracks": ["DPA"]
+}

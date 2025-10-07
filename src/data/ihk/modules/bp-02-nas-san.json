@@ -42,7 +42,9 @@
       "explanation": "Python-Tool zur NAS-Performance-Überwachung. Misst Durchsatz, Latenz und Speicherauslastung."
     }
   ],
-  "relatedQuizzes": ["bp-02-nas-san-quiz"],
+  "relatedQuizzes": [
+    "bp-02-nas-san-quiz"
+  ],
   "resources": [
     {
       "title": "NFS Protocol Specification (RFC 5661)",
@@ -61,5 +63,12 @@
     }
   ],
   "lastUpdated": "2025-01-05T10:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand nas",
+    "Understand san",
+    "Understand storage",
+    "Understand netzwerkspeicher",
+    "Understand iscsi"
+  ]
 }

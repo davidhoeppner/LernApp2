@@ -71,7 +71,8 @@ class Router {
 
     // Add specialization context if available and requested
     if (preserveSpecialization && this.specializationService) {
-      const currentSpecialization = this.specializationService.getCurrentSpecialization();
+      const currentSpecialization =
+        this.specializationService.getCurrentSpecialization();
       if (currentSpecialization && !params.specialization) {
         params.specialization = currentSpecialization;
       }
@@ -148,26 +149,32 @@ class Router {
 
     // If URL contains specialization parameter, validate and apply it
     if (params.specialization) {
-      const availableSpecializations = this.specializationService.getAvailableSpecializations();
+      const availableSpecializations =
+        this.specializationService.getAvailableSpecializations();
       const isValidSpecialization = availableSpecializations.some(
         spec => spec.id === params.specialization
       );
 
       if (isValidSpecialization) {
-        const currentSpecialization = this.specializationService.getCurrentSpecialization();
-        
+        const currentSpecialization =
+          this.specializationService.getCurrentSpecialization();
+
         // Only update if different from current specialization
         if (currentSpecialization !== params.specialization) {
-          console.log(`🔄 Switching specialization from URL: ${params.specialization}`);
+          console.log(
+            `🔄 Switching specialization from URL: ${params.specialization}`
+          );
           this.specializationService.setSpecialization(params.specialization, {
-            preserveProgress: true
+            preserveProgress: true,
           });
         }
       } else {
         // Invalid specialization in URL - remove it but don't break navigation
-        console.warn(`⚠️ Invalid specialization in URL: ${params.specialization}`);
+        console.warn(
+          `⚠️ Invalid specialization in URL: ${params.specialization}`
+        );
         delete params.specialization;
-        
+
         // Optionally redirect to clean URL (without invalid specialization)
         this._cleanupInvalidSpecializationUrl();
       }
@@ -185,14 +192,16 @@ class Router {
     try {
       const currentHash = window.location.hash;
       const [path, queryString] = currentHash.slice(1).split('?');
-      
+
       if (queryString) {
         const searchParams = new URLSearchParams(queryString);
         searchParams.delete('specialization');
-        
+
         const cleanQueryString = searchParams.toString();
-        const cleanHash = cleanQueryString ? `#${path}?${cleanQueryString}` : `#${path}`;
-        
+        const cleanHash = cleanQueryString
+          ? `#${path}?${cleanQueryString}`
+          : `#${path}`;
+
         // Replace current URL without triggering navigation
         window.history.replaceState(null, '', cleanHash);
       }
@@ -445,7 +454,8 @@ class Router {
 
     // Add current specialization if requested and available
     if (includeSpecialization && this.specializationService) {
-      const currentSpecialization = this.specializationService.getCurrentSpecialization();
+      const currentSpecialization =
+        this.specializationService.getCurrentSpecialization();
       if (currentSpecialization && !urlParams.specialization) {
         urlParams.specialization = currentSpecialization;
       }

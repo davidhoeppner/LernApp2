@@ -10,7 +10,9 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 50,
-  "prerequisites": ["fue-02-development"],
+  "prerequisites": [
+    "fue-02-development"
+  ],
   "tags": [
     "datenbank",
     "anomalien",
@@ -46,7 +48,9 @@
       "explanation": "Realistisches Beispiel eines Bibliothekssystems. Zeigt Problemanalyse und vollständige Normalisierung mit praktischen Queries."
     }
   ],
-  "relatedQuizzes": ["fue-02-anomalies-redundancies-quiz"],
+  "relatedQuizzes": [
+    "fue-02-anomalies-redundancies-quiz"
+  ],
   "resources": [
     {
       "title": "Database Normalization Explained",
@@ -60,5 +64,12 @@
     }
   ],
   "lastUpdated": "2025-01-05T10:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand datenbank",
+    "Understand anomalien",
+    "Understand redundanzen",
+    "Understand normalisierung",
+    "Understand normalformen"
+  ]
 }

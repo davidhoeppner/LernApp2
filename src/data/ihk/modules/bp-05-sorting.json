@@ -47,7 +47,9 @@
       "explanation": "Dieser Code vergleicht die Performance aller drei Algorithmen. Insertion Sort ist in der Praxis oft am schnellsten, gefolgt von Selection Sort und Bubble Sort."
     }
   ],
-  "relatedQuizzes": ["sorting-algorithms-quiz-2025"],
+  "relatedQuizzes": [
+    "sorting-algorithms-quiz-2025"
+  ],
   "resources": [
     {
       "title": "Visualgo - Sortieralgorithmen visualisiert",
@@ -61,5 +63,12 @@
     }
   ],
   "lastUpdated": "2025-01-10T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "learningObjectives": [
+    "Understand Sortieralgorithmen",
+    "Understand Bubble Sort",
+    "Understand Selection Sort",
+    "Understand Insertion Sort",
+    "Understand Zeitkomplexität"
+  ]
 }

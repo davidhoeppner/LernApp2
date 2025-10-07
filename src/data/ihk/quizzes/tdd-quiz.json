@@ -1,6 +1,6 @@
 {
   "id": "tdd-quiz-2025",
-  "moduleId": "bp-03-tdd-2025",
+  "moduleId": "bp-03-tdd",
   "title": "Test Driven Development (TDD) Quiz",
   "description": "Umfassendes Quiz zu Test Driven Development mit 18 Fragen zu TDD-Konzepten, Red-Green-Refactor Zyklus und praktischen Code-Beispielen.",
   "category": "BP-03",
@@ -151,7 +151,12 @@
       "id": "tdd-q10",
       "type": "single-choice",
       "question": "Welches Test-Framework wird häufig für Java verwendet?",
-      "options": ["JUnit", "PyTest", "Mocha", "NUnit"],
+      "options": [
+        "JUnit",
+        "PyTest",
+        "Mocha",
+        "NUnit"
+      ],
       "correctAnswer": "JUnit",
       "explanation": "JUnit ist das Standard-Test-Framework für Java. Andere: PyTest (Python), Mocha (JavaScript), NUnit (C#).",
       "points": 1,

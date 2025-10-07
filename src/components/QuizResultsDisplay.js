@@ -16,42 +16,42 @@ class QuizResultsDisplay {
    */
   getPerformanceBadge() {
     if (this.percentage >= 90) {
-      return { 
-        icon: '🏆', 
-        text: 'Excellent', 
+      return {
+        icon: '🏆',
+        text: 'Excellent',
         class: 'excellent',
-        message: 'Outstanding performance!'
+        message: 'Outstanding performance!',
       };
     }
     if (this.percentage >= 80) {
-      return { 
-        icon: '🥇', 
-        text: 'Very Good', 
+      return {
+        icon: '🥇',
+        text: 'Very Good',
         class: 'very-good',
-        message: 'Great job!'
+        message: 'Great job!',
       };
     }
     if (this.percentage >= 70) {
-      return { 
-        icon: '🥈', 
-        text: 'Good', 
+      return {
+        icon: '🥈',
+        text: 'Good',
         class: 'good',
-        message: 'Well done!'
+        message: 'Well done!',
       };
     }
     if (this.percentage >= 60) {
-      return { 
-        icon: '🥉', 
-        text: 'Pass', 
+      return {
+        icon: '🥉',
+        text: 'Pass',
         class: 'pass',
-        message: 'You passed!'
+        message: 'You passed!',
       };
     }
-    return { 
-      icon: '📚', 
-      text: 'Needs Review', 
+    return {
+      icon: '📚',
+      text: 'Needs Review',
       class: 'needs-review',
-      message: 'Keep studying!'
+      message: 'Keep studying!',
     };
   }
 
@@ -60,10 +60,10 @@ class QuizResultsDisplay {
    */
   render() {
     const badge = this.getPerformanceBadge();
-    
+
     const container = document.createElement('div');
     container.className = 'quiz-results-display';
-    
+
     container.innerHTML = `
       <div class="score-display">
         <div class="score-circle ${badge.class}">
@@ -116,7 +116,7 @@ class QuizResultsDisplay {
   animateProgressBar(container) {
     const progressFill = container.querySelector('.progress-fill');
     const targetWidth = progressFill.getAttribute('data-target');
-    
+
     // Animate to target width
     progressFill.style.transition = 'width 1.5s ease-in-out';
     progressFill.style.width = `${targetWidth}%`;

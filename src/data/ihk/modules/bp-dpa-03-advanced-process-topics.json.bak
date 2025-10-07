@@ -1,0 +1,204 @@
+{
+  "modules": [
+    {
+      "id": "bp-dpa-03-process-mining",
+      "title": "Process Mining: Discovery, Conformance & Enhancement",
+      "description": "Grundlagen und Anwendung von Process Mining zur datengetriebenen Analyse, Übereinstimmungsprüfung und Optimierung von Geschäftsprozessen",
+      "category": "BP-DPA-03",
+      "subcategory": "Geschäftsprozesse analysieren und optimieren",
+      "difficulty": "intermediate",
+      "examRelevance": "high",
+      "newIn2025": true,
+      "removedIn2025": false,
+      "important": true,
+      "estimatedTime": 65,
+      "prerequisites": ["bp-dpa-03-bpmn-fundamentals"],
+    "tags": ["process-mining", "event-log", "discovery", "conformance", "enhancement", "prozessanalyse", "kpi", "BPMN"],
+      "content": "# Process Mining: Discovery, Conformance & Enhancement\n\n## Einführung\nProcess Mining verbindet Geschäftsprozessmodellierung (z.B. BPMN) mit datenbasierter Analyse realer Ausführungen. Aus Event Logs (Ereignisprotokollen) werden Prozesse automatisch rekonstruiert (Discovery), mit Soll-Modellen verglichen (Conformance) und gezielt verbessert (Enhancement). Es schließt Lücken zwischen modelliertem und gelebtem Prozess und liefert belastbare Kennzahlen (KPIs) wie Durchlaufzeit, Variantenvielfalt und Engpässe.\n\n## Event Logs & Datenqualität\nEin Event Log besteht typischerweise aus:\n- Case ID (Prozessinstanz)\n- Activity (Schritt)\n- Timestamp (Zeitpunkt)\n- Optional: Resource, Cost, Status\n\nTypische Qualitätsprobleme: fehlende Timestamps, doppelte Events, falsche Reihenfolge, uneinheitliche Aktivitätsbezeichnungen.\n\n| Problem | Risiko | Gegenmaßnahme |\n|---------|--------|---------------|\n| Fehlende Timestamps | Unvollständige Zeit-KPIs | Datenbereinigung / Imputation dokumentieren |\n| Inkonsistente Labels | Falsche Varianten | Normalisierung, Mapping-Tabelle |\n| Doppelte Events | Verzerrte Häufigkeiten | Duplikaterkennung (Case+Activity+Timestamp) |\n| Zeitzonen-Differenzen | Negative Durchlaufzeiten | Normalisierung auf UTC |\n\nHäufige Fehler: (1) Aktivitäten granularity zu fein; (2) Vermischung technischer und fachlicher Events; (3) Ignorieren von Rework-Schleifen.\n\n## Discovery (Prozessentdeckung)\nZiel: Automatische Ableitung eines Prozessmodells aus Logdaten.\nWichtige Algorithmen (konzeptionell):\n- Alpha-Miner (historisch, sensitiv für Rauschen)\n- Heuristics Miner (Häufigkeits- / Abhängigkeitsbasierend)\n- Inductive Miner (balanciert Präzision & Generalisierung)\n\nBewertungskriterien: Fitness (passt das Modell zu Log?), Präzision (vermeidet es nicht beobachtete Pfade?), Generalisierung, Einfachheit.\n\n## Conformance Checking\nVergleich tatsächlicher Ausführung mit Soll-Modell (z.B. BPMN). Kennzahlen:\n- Fitness-Abweichungen (fehlende / zusätzliche Aktivitäten)\n- Nicht zugelassene Pfade (Regelverletzungen)\n- Zeitabweichungen (SLA-Verstöße)\n\nNutzen: Compliance, Risikoreduktion, Identifikation von Workarounds.\n\n## Enhancement (Optimierung)\nAnreicherung des Modells um Performance-Information:\n- Aktivitäts-Durchlaufzeiten (Median vs. Ausreißer)\n- Engpässe (Wartende Queues vor Ressourcen)\n- Variantenanalyse (Pareto: wenige Varianten decken Großteil ab)\n\nKombination mit kontinuierlicher Verbesserung (PDCA): regelmäßige Re-Discovery zur Wirksamkeitsprüfung von Maßnahmen.\n\n## KPI-Analyse & Varianten\nWichtige KPIs: Durchlaufzeit (Start→Ende), Aktivitätsdauer, Anzahl Aktivitäten pro Case, Anzahl Varianten, Rework-Quote.\n\n| KPI | Aussage | Typischer Optimierungshebel |\n|-----|--------|------------------------------|\n| Durchlaufzeit | Gesamtprozessgeschwindigkeit | Engpässe entlasten, Parallelisierung |\n| Aktivitätsdauer | Effizienz einzelner Schritte | Schulung, Automatisierung |\n| Variantenanzahl | Prozessstabilität | Standardisierung / Regelklarheit |\n| Rework-Quote | Qualitäts-/Datenprobleme | Root-Cause Analyse, Fehlerprävention |\n\n## Prüfungsrelevante Aspekte\n- Bestandteile eines Event Logs (Case, Activity, Timestamp)\n- Unterschied Discovery vs. Conformance vs. Enhancement\n- Rolle von KPIs im Process Mining\n- Typische Datenqualitätsprobleme und Gegenmaßnahmen\n- Nutzen von Varianten- und Engpassanalyse für Optimierung\n- Verbindung BPMN-Modell ↔ Logdaten\n",
+      "codeExamples": [
+        {
+          "language": "python",
+          "title": "Durchlaufzeitberechnung mit pandas",
+            "code": "import pandas as pd\n# Event Log Beispiel\nlog = pd.DataFrame([\n  {'case':'C1','activity':'Start','ts':'2025-10-01T08:00:00'},\n  {'case':'C1','activity':'Prüfung','ts':'2025-10-01T09:15:00'},\n  {'case':'C1','activity':'Genehmigung','ts':'2025-10-01T10:00:00'},\n  {'case':'C1','activity':'Ende','ts':'2025-10-01T11:05:00'},\n  {'case':'C2','activity':'Start','ts':'2025-10-01T08:05:00'},\n  {'case':'C2','activity':'Prüfung','ts':'2025-10-01T13:00:00'},\n  {'case':'C2','activity':'Ende','ts':'2025-10-01T14:10:00'}\n])\nlog['ts']=pd.to_datetime(log['ts'])\n\n# Durchlaufzeit pro Case (Ende - Start)\nagg = log.groupby('case').agg(start=('ts','min'), end=('ts','max'))\nagg['durchlaufzeit_min'] = (agg['end']-agg['start']).dt.total_seconds()/60\nprint(agg)\n\n# Median als robuster KPI\nmedian_cycle = agg['durchlaufzeit_min'].median()\nprint('Median Durchlaufzeit (Minuten):', median_cycle)",
+          "explanation": "Einfaches Beispiel zur Aggregation von Durchlaufzeiten aus einem Event Log."
+        },
+        {
+          "language": "sql",
+          "title": "SQL Aggregation Durchlaufzeit",
+          "code": "SELECT case_id,\n       TIMESTAMPDIFF(MINUTE, MIN(ts), MAX(ts)) AS durchlaufzeit_min\nFROM event_log\nGROUP BY case_id;",
+          "explanation": "Berechnung der Durchlaufzeit je Prozessinstanz (Case) in SQL."
+        }
+      ],
+      "relatedQuizzes": ["bp-dpa-03-process-mining-quiz"],
+      "resources": [
+        {"title": "BPMN 2.0 Specification", "url": "https://www.omg.org/spec/BPMN/2.0/", "type": "documentation"},
+        {"title": "Process Mining Portal (University) ", "url": "https://www.processmining.org/", "type": "article"},
+        {"title": "Einführung Process Mining (Tutorial)", "url": "https://camunda.com/resource/process-mining/", "type": "tutorial"}
+      ],
+      "learningObjectives": [
+        "Event Log Struktur und Qualitätsprobleme erkennen",
+        "Phasen Discovery, Conformance, Enhancement erklären",
+        "Zentrale KPIs (Durchlaufzeit, Varianten) aus Logs herleiten",
+        "Engpässe und Rework datenbasiert identifizieren",
+        "BPMN-Modelle mit Logdaten zur Übereinstimmungsanalyse verknüpfen"
+      ],
+      "keyTakeaways": [
+        "Process Mining liefert faktische Prozessrealität",
+        "Discovery rekonstruiert Modelle automatisch",
+        "Conformance deckt Abweichungen und Compliance-Risiken auf",
+        "Enhancement fügt Performance-Kennzahlen dem Modell hinzu"
+      ],
+      "lastUpdated": "2025-10-07T00:00:00Z",
+      "version": "1.0"
+      ,"tracks": ["DPA"]
+    },
+    {
+      "id": "bp-dpa-03-kpi-measurement",
+      "title": "Prozess-KPI Messung & Auswertung",
+      "description": "Systematische Definition, Erhebung und Interpretation von Prozess-KPIs zur Steuerung kontinuierlicher Optimierung",
+      "category": "BP-DPA-03",
+      "subcategory": "Geschäftsprozesse analysieren und optimieren",
+      "difficulty": "intermediate",
+      "examRelevance": "high",
+      "newIn2025": true,
+      "removedIn2025": false,
+      "important": true,
+      "estimatedTime": 60,
+      "prerequisites": ["bp-dpa-03-bpmn-fundamentals", "bp-dpa-03-process-mining"],
+      "tags": ["kpi", "prozesskennzahlen", "durchlaufzeit", "varianz", "performance", "prozessanalyse", "governance"],
+      "content": "# Prozess-KPI Messung & Auswertung\n\n## Einführung\nKennzahlen (Key Performance Indicators) übersetzen Prozessleistung in objektiv messbare Größen. Aussagekräftige KPIs sind klar definiert (Formel, Datendomäne, Zeitbezug), valide (vertrauenswürdige Quelle) und steuerungsrelevant (beeinflussbar).\n\n## KPI-Rahmenwerk\nPrinzipien: Relevanz > Quantität, Klarheit der Definition, Vergleichbarkeit (Trend, Benchmark), Visualisierung (Kontext), Verantwortlichkeit (Owner).\nKlassifikation: Zeit (Durchlaufzeit, Wartezeit), Qualität (Fehlerrate, Rework), Menge (Durchsatz), Kosten (Kosten je Case), Stabilität (Varianz, Variantenanzahl).\n\n## Definition & Operationalisierung\nStruktur einer KPI-Definition: Name, Ziel (Intent), Formel, Datengrundlage, Erhebungsfrequenz, Grenzwerte (SLA), Verantwortlich.\nBeispiel (Durchlaufzeit): Formel = End-Timestamp − Start-Timestamp (Median statt Mittelwert bei Ausreißern).\n\n| KPI | Formel (vereinfacht) | Interpretation | Risiko falscher Nutzung |\n|-----|----------------------|---------------|------------------------|\n| Durchlaufzeit | Ende - Start | Geschwindigkeit Gesamtprozess | Verzerrung durch Ausreißer |\n| Bearbeitungszeit | Sum(Activity-Dauern) | Arbeitsintensität | Ignoriert Wartezeiten |\n| Wartezeit | Durchlaufzeit - Bearbeitungszeit | Puffer / Stau | Datenlücken |\n| Rework-Quote | Rework-Aktivitäten / Gesamtaktivitäten | Qualitäts-/Datenprobleme | Falsche Aktivitätsklassifikation |\n\n## Datenerhebung & Plattformaspekte\nData Lakehouse Relevanz: Vereinheitlichte Speicherung (ACID für Integrität), Time Travel für Audit / Revisionssicherheit historischer KPI-Stände, Schema Evolution für neue Aktivitäten.\nGovernance: Versionierung von KPI-Definitionen, Auditierbarkeit von Transformationen, Zugriffskontrolle (Least Privilege).\n\n## Auswertung & Interpretation\nVerteilungsanalyse: Median, Quartile, 95. Perzentil statt nur Durchschnitt.\nTrend: Rolling-Windows (z.B. 4 Wochen) zur Glättung.\nVergleich: Vor/Nach Maßnahme (A/B) mit identischer Datengrundlage.\nFehlinterpretationen: Korrelation ≠ Kausalität, Simpson-Paradox bei Segment-Durchschnitt.\n\n## Steuerung & Visualisierung\nDashboard-Prinzipien: Fokus (max 7 Hauptkennzahlen), Drill-Down, Kontextlinien (SLA), Farbkonvention (Grün/Gelb/Rot).\nAmpel-Schwellen sollen datenbasiert kalibriert (Historie) und regelmäßig überprüft werden.\n\n## Prüfungsrelevante Aspekte\n- Bestandteile einer KPI-Definition (Formel, Quelle, Frequenz)\n- Unterschied Durchlaufzeit vs. Bearbeitungszeit\n- Umgang mit Ausreißern (Median)\n- Rolle von Data Lakehouse (ACID, Time Travel) für KPI-Verlässlichkeit\n- Rework-Quote als Qualitätsindikator\n- Governance & Versionierung von KPIs\n",
+      "codeExamples": [
+        {
+          "language": "sql",
+          "title": "Median Durchlaufzeit (Approximation)",
+          "code": "-- Beispiel mit Window-Funktion (vereinfachte Approximation)\nWITH per_case AS (\n  SELECT case_id, TIMESTAMPDIFF(MINUTE, MIN(ts), MAX(ts)) AS cycle_min\n  FROM event_log\n  GROUP BY case_id\n)\nSELECT PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY cycle_min) AS median_cycle_min\nFROM per_case;",
+          "explanation": "Berechnung einer robusteren Kennzahl (Median) zur Minimierung von Ausreißereinfluss."
+        },
+        {
+          "language": "python",
+          "title": "Rework-Erkennung (vereinfachtes Pattern)",
+          "code": "import pandas as pd\nlog = pd.read_csv('event_log.csv')\nrework = (log.groupby(['case','activity']).size()>1).reset_index()\nrework_cases = rework[0].sum()\nprint('Rework-Fälle:', rework_cases)",
+          "explanation": "Identifiziert Aktivitäten, die innerhalb eines Cases mehrfach auftreten (potenzielles Rework)."
+        }
+      ],
+      "relatedQuizzes": ["bp-dpa-03-kpi-measurement-quiz"],
+      "resources": [
+        {"title": "BPMN 2.0 Specification", "url": "https://www.omg.org/spec/BPMN/2.0/", "type": "documentation"},
+        {"title": "Process Mining Portal", "url": "https://www.processmining.org/", "type": "article"},
+        {"title": "KPI Grundlagen", "url": "https://www.investopedia.com/terms/k/kpi.asp", "type": "article"}
+      ],
+      "learningObjectives": [
+        "KPI-Definition strukturiert dokumentieren",
+        "Durchlaufzeit, Bearbeitungszeit und Wartezeit abgrenzen",
+        "Median und Perzentile zur Robustheit einsetzen",
+        "Rework-Quote und Varianten als Qualitätsindikatoren interpretieren",
+        "Lakehouse-Konzepte (ACID, Time Travel) für KPI-Verlässlichkeit einordnen"
+      ],
+      "keyTakeaways": [
+        "Klare Definition verhindert KPI-Missinterpretation",
+        "Median reduziert Ausreißereffekt",
+        "Rework signalisiert Qualitäts-/Datenprobleme",
+        "Governance & Versionierung sichern Vergleichbarkeit"
+      ],
+      "lastUpdated": "2025-10-07T00:00:00Z",
+      "version": "1.0"
+      ,"tracks": ["DPA"]
+    },
+    {
+      "id": "bp-dpa-03-lean-six-sigma",
+      "title": "Lean & Six Sigma integrierte Prozessverbesserung",
+      "description": "Kombination von Lean-Verschwendungsreduktion und Six Sigma-Variabilitätskontrolle für nachhaltige Prozessoptimierung",
+      "category": "BP-DPA-03",
+      "subcategory": "Geschäftsprozesse analysieren und optimieren",
+      "difficulty": "intermediate",
+      "examRelevance": "high",
+      "newIn2025": true,
+      "removedIn2025": false,
+      "important": false,
+      "estimatedTime": 55,
+      "prerequisites": ["bp-dpa-03-bpmn-fundamentals"],
+      "tags": ["lean", "six-sigma", "dmaic", "verschwendung", "kaizen", "pdca", "prozessoptimierung"],
+      "content": "# Lean & Six Sigma integrierte Prozessverbesserung\n\n## Einführung\nLean fokussiert auf Fluss & Verschwendungsreduktion, Six Sigma auf Variabilität & Fehlerreduktion. Kombiniert ermöglichen sie schnell wirksame (Lean) und nachhaltig stabile (Six Sigma) Verbesserungen.\n\n## Lean Grundlagen\n8 Verschwendungsarten (TIMWOODS): Transport, Inventory (Bestände), Motion (Bewegung), Waiting, Overproduction, Overprocessing (Überbearbeitung), Defects (Fehler), Skills (ungenutztes Potenzial).\nValue Stream Mapping (VSM) visualisiert Material- & Informationsfluss zur Identifikation nicht-wertschöpfender Schritte.\n\n## Six Sigma Überblick\nDMAIC-Phasen: Define (Problem & CTQ), Measure (Ist-Leistung), Analyze (Ursachen), Improve (Lösungen), Control (Verankerung). Fokus im Kontext BP-DPA: Strukturierter, datengetriebener Problemlösungsrahmen ohne tiefgehende Statistik.\n\n## Integration Lean + Six Sigma\n| Lean Fokus | Six Sigma Fokus | Synergie |\n|-----------|----------------|---------|\n| Verschwendung minimieren | Varianz reduzieren | Stabiler, schneller Prozess |\n| Fluss & Pull | Statistische Ursachenanalyse | Nachhaltige Fehlervermeidung |\n| Schnelle Kaizen-Workshops | Strukturierte DMAIC-Projekte | Priorisierung & Nachhaltigkeit |\n\nTypische Reihenfolge: 1) Lean scoping (Verschwendung sichtbar), 2) Kurze Quick Wins, 3) Six Sigma tiefergehende Ursachenanalyse.\n\n## Werkzeuge & Auswahl\nLean: 5S, Kanban, VSM, Poka-Yoke.\nSix Sigma (vereinfachte Auswahl): SIPOC (Scope), CTQ-Matrix (Kundenanforderung), Ursache-Wirkungs-Diagramm.\nFehler: Verwechselung von Variation (Varianz) und Verschwendung (Muda); isolierte Einzelmaßnahmen ohne Control-Phase.\n\n## Kontinuierliche Verbesserung\nPDCA-Zyklus unterstützt kulturelle Verankerung. Kaizen Events: klarer Zeitrahmen, definierter Zielzustand, messbare Nachverfolgung (Baseline vs. Nachher).\nKPIs zur Wirksamkeitsprüfung: Durchlaufzeit ↓, Fehlerrate ↓, Variantenstabilität ↑.\n\n## Prüfungsrelevante Aspekte\n- 8 Verschwendungsarten (inkl. Skills)\n- Grundidee DMAIC-Phasen\n- Unterschied Variation vs. Verschwendung\n- Rolle von VSM und SIPOC\n- Kombination schneller Lean-Wins + nachhaltiger Six Sigma-Stabilisierung\n- PDCA als Verstetigungsmechanismus\n",
+      "codeExamples": [
+        {
+          "language": "python",
+          "title": "Pareto Analyse (vereinfachtes Beispiel)",
+          "code": "from collections import Counter\nfehler = ['TypA','TypB','TypA','TypC','TypA','TypB']\ncounts = Counter(fehler)\ngesamt = sum(counts.values())\npareto = []\nkum = 0\nfor k,v in counts.most_common():\n    kum += v\n    pareto.append({'fehler': k, 'anteil_prozent': round(v/gesamt*100,1), 'kumuliert_prozent': round(kum/gesamt*100,1)})\nprint(pareto)",
+          "explanation": "Pareto zeigt Fokus auf wenige Fehlerklassen mit größtem Einfluss (80/20 Heuristik)."
+        }
+      ],
+      "relatedQuizzes": ["bp-dpa-03-lean-six-sigma-quiz"],
+      "resources": [
+        {"title": "Lean Waste Übersicht", "url": "https://lean.org", "type": "article"},
+        {"title": "DMAIC Überblick", "url": "https://asq.org/quality-resources/dmaic", "type": "article"}
+      ],
+      "learningObjectives": [
+        "8 Verschwendungsarten identifizieren",
+        "DMAIC-Phasen in Grundzügen erläutern",
+        "Lean- und Six-Sigma-Ziele abgrenzen",
+        "Value Stream Mapping als Analysewerkzeug einordnen",
+        "PDCA zur Verstetigung anwenden"
+      ],
+      "keyTakeaways": [
+        "Lean eliminiert Verschwendung, Six Sigma stabilisiert Qualität",
+        "DMAIC liefert strukturierten Verbesserungsrahmen",
+        "Kombination vermeidet Strohfeuer-Effekte",
+        "Kontinuierliche Verbesserung benötigt Metriken"
+      ],
+      "lastUpdated": "2025-10-07T00:00:00Z",
+      "version": "1.0"
+      ,"tracks": ["DPA"]
+    },
+    {
+      "id": "bp-dpa-03-automation-orchestration",
+      "title": "Prozessautomatisierung & Orchestrierung",
+      "description": "Identifikation, Bewertung und Umsetzung von Automatisierungspotenzialen (RPA, Workflow Engines, Orchestrierung vs. Choreographie)",
+      "category": "BP-DPA-03",
+      "subcategory": "Geschäftsprozesse analysieren und optimieren",
+      "difficulty": "advanced",
+      "examRelevance": "high",
+      "newIn2025": true,
+      "removedIn2025": false,
+      "important": true,
+      "estimatedTime": 70,
+      "prerequisites": ["bp-dpa-03-bpmn-fundamentals", "bp-dpa-03-process-mining"],
+    "tags": ["automatisierung", "rpa", "workflow-engine", "orchestrierung", "choreographie", "governance", "prozessoptimierung"],
+    "content": "# Prozessautomatisierung & Orchestrierung\n\n## Einführung\nAutomatisierung steigert Geschwindigkeit, Konsistenz und Skalierbarkeit. Ziel ist nicht blindes Ersetzen menschlicher Arbeit, sondern Eliminierung repetitiver, regelbasierter Tätigkeiten und verbesserte End-to-End-Steuerbarkeit.\n\n## Identifikation von Automatisierungspotenzialen\nKriterien: Hohe Volumen, Regelbasiertheit, Niedrige Ausnahmenquote, Strukturierte Daten, Stabiler Prozess. Ausschluss: Häufige Regeländerungen, Hoher Interpretationsbedarf, Unklare Datenqualität.\nScoring (vereinfachtes Schema 1–5): Volumen, Stabilität, Datenqualität, Komplexität (invertiert), Ausnahmequote (invertiert).\n\n## Technologien & Abgrenzung\n| Technologie | Fokus | Stärken | Grenzen |\n|------------|-------|--------|---------|\n| RPA | UI-Interaktion | Schnelle Umsetzung | Fragil bei UI-Änderungen |\n| Workflow Engine | Ausführbare Modelle (BPMN/CMMN) | Transparenz, Skalierung | Modellierungskompetenz nötig |\n| Scripting | Ad-hoc Automatisierung | Flexibel | Wartung / Governance |\n| API-Orchestrierung | Service-Kopplung | Robust, Wiederverwendbar | Abhängigkeit API-Reife |\n\n## Orchestrierung vs. Choreographie\nOrchestrierung: Zentrale Steuerinstanz (Engine) koordiniert Abläufe (BPMN-Prozess).\nChoreographie: Teilnehmer koordinieren sich durch Nachrichten (dezentral), Fokus Kollaboration.\nAuswahl: Hohe zentrale Kontrollanforderung → Orchestrierung; Multi-Organisation & loser Kopplungsgrad → Choreographie.\n\n## Governance & Betriebsaspekte\nVersionierung von Prozessdefinitionen, Deployment-Workflows (Test → Staging → Produktion), Monitoring (SLA, Fehlerrate, Retries), Audit Logs. Security: Least Privilege für Service-Accounts, Geheimnisverwaltung (Secrets).\nMetriken Post-Go-Live: Automatisierungsquote, Fehlerrate, MTTR (Mean Time To Recovery).\n\n## Kontinuierliche Verbesserung & Feedback-Loops\nProcess Mining auf automatisierten Prozessen zur Validierung geplanter Zeiteinsparung. KPI-Vergleich Vor/Nach Automation. Regressionen früh erkennen (Alerting).\nAnti-Pattern: \"Automate the chaos\" – instabile Prozesse nicht vor Re-Design automatisieren.\n\n## Prüfungsrelevante Aspekte\n- Kriterien zur Auswahl von Automatisierungskandidaten\n- Unterschied RPA vs. Workflow Engine\n- Orchestrierung vs. Choreographie\n- Bedeutung von Governance (Versionierung, Monitoring)\n- Risiko fragiler UI-Skripte\n- Rolle Process Mining zur Erfolgsmessung\n",
+      "codeExamples": [
+        {
+          "language": "xml",
+          "title": "BPMN Ausschnitt Service Task + User Task",
+          "code": "<process id=\"loanProc\" isExecutable=\"true\">\n  <startEvent id=\"start\"/>\n  <serviceTask id=\"checkCredit\" name=\"Bonität prüfen\" camunda:topic=\"creditCheck\"/>\n  <userTask id=\"approve\" name=\"Genehmigen\"/>\n  <endEvent id=\"end\"/>\n  <sequenceFlow id=\"f1\" sourceRef=\"start\" targetRef=\"checkCredit\"/>\n  <sequenceFlow id=\"f2\" sourceRef=\"checkCredit\" targetRef=\"approve\"/>\n  <sequenceFlow id=\"f3\" sourceRef=\"approve\" targetRef=\"end\"/>\n</process>",
+          "explanation": "Einfaches Beispiel für Kombination automatisierter (Service Task) und menschlicher (User Task) Arbeitsschritte."
+        },
+        {
+          "language": "python",
+          "title": "RPA Kandidatenscoring (Pseudocode)",
+          "code": "def score(volumen, stabilitaet, datenqual, komplexitaet, ausnahmequote):\n    # komplexitaet & ausnahmequote wirken negativ\n    return volumen + stabilitaet + datenqual + (6-komplexitaet) + (6-ausnahmequote)\n\nprint(score(5,4,4,2,2))  # Beispielscore",
+          "explanation": "Heuristisches Scoring für Priorisierung von Automatisierungskandidaten."
+        }
+      ],
+      "relatedQuizzes": ["bp-dpa-03-automation-orchestration-quiz"],
+      "resources": [
+        {"title": "BPMN 2.0 Specification", "url": "https://www.omg.org/spec/BPMN/2.0/", "type": "documentation"},
+        {"title": "Orchestrierung vs Choreographie Überblick", "url": "https://camunda.com/bpmn/reference/", "type": "tutorial"}
+      ],
+      "learningObjectives": [
+        "Automatisierungskandidaten systematisch bewerten",
+        "RPA und Workflow Engine unterscheiden",
+        "Orchestrierung und Choreographie abgrenzen",
+        "Governance-Anforderungen für Prozessautomation definieren",
+        "Metriken zur Erfolgskontrolle auswählen"
+      ],
+      "keyTakeaways": [
+        "Automatisierung braucht stabiles Prozessfundament",
+        "RPA schnell – aber fragiler bei UI-Änderungen",
+        "Workflow Engines bieten Transparenz & Governance",
+        "Conformance & KPIs sichern nachhaltigen Nutzen"
+      ],
+      "lastUpdated": "2025-10-07T00:00:00Z",
+      "version": "1.0"
+      ,"tracks": ["DPA"]
+    }
+  ]
+}

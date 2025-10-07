@@ -1,0 +1,21 @@
+{
+  "id": "demo-mq1",
+  "moduleId": "module-1",
+  "title": "Demo Micro-Quiz: JS Basics",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Which keyword declares a constant in JavaScript?",
+      "options": ["var", "let", "const", "static"],
+      "answer": "const"
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "question": "Select primitive data types:",
+      "options": ["String", "Number", "Function", "Boolean"],
+      "correct": ["String", "Number", "Boolean"]
+    }
+  ]
+}

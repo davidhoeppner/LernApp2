@@ -1,6 +1,6 @@
 {
   "id": "bp-01-conception-quiz",
-  "moduleId": "bp-01-conception",
+  "moduleId": "bp-01-networks-basics",
   "title": "Netzwerktopologien und Protokolle",
   "description": "Umfassendes Quiz zu Netzwerkgrundlagen, Topologien, OSI-Modell, TCP/IP-Protokollen und wichtigen Netzwerkdiensten",
   "category": "BP-01",
@@ -59,7 +59,12 @@
       "id": "q4",
       "type": "single-choice",
       "question": "Wie viele Schichten hat das OSI-Modell?",
-      "options": ["4 Schichten", "5 Schichten", "7 Schichten", "9 Schichten"],
+      "options": [
+        "4 Schichten",
+        "5 Schichten",
+        "7 Schichten",
+        "9 Schichten"
+      ],
       "correctAnswer": "7 Schichten",
       "explanation": "Das OSI-Modell (Open Systems Interconnection) hat 7 Schichten: Anwendungsschicht, Darstellungsschicht, Sitzungsschicht, Transportschicht, Vermittlungsschicht, Sicherungsschicht und Bitübertragungsschicht. Das TCP/IP-Modell hat dagegen nur 4 Schichten.",
       "points": 1,
@@ -136,7 +141,12 @@
       "id": "q9",
       "type": "single-choice",
       "question": "Welche HTTP-Methode wird verwendet, um Daten vom Server abzurufen?",
-      "options": ["POST", "GET", "PUT", "DELETE"],
+      "options": [
+        "POST",
+        "GET",
+        "PUT",
+        "DELETE"
+      ],
       "correctAnswer": "GET",
       "explanation": "GET wird verwendet, um Daten vom Server abzurufen (z.B. Webseiten, Bilder). POST sendet Daten an den Server, PUT aktualisiert bestehende Ressourcen, und DELETE löscht Ressourcen. GET-Anfragen sollten keine Seiteneffekte haben (idempotent).",
       "points": 1,
@@ -225,7 +235,12 @@
       "id": "q15",
       "type": "single-choice",
       "question": "Welcher Port wird standardmäßig für HTTPS verwendet?",
-      "options": ["Port 80", "Port 443", "Port 8080", "Port 22"],
+      "options": [
+        "Port 80",
+        "Port 443",
+        "Port 8080",
+        "Port 22"
+      ],
       "correctAnswer": "Port 443",
       "explanation": "HTTPS verwendet standardmäßig Port 443. HTTP verwendet Port 80, SSH Port 22, und Port 8080 wird oft als alternativer HTTP-Port für Entwicklung oder Proxy-Server verwendet. Well-Known Ports (0-1023) sind für Standarddienste reserviert.",
       "points": 1,
@@ -254,7 +269,12 @@
       "id": "q17",
       "type": "single-choice",
       "question": "Welcher Port wird für DNS-Abfragen verwendet?",
-      "options": ["Port 25", "Port 53", "Port 67", "Port 110"],
+      "options": [
+        "Port 25",
+        "Port 53",
+        "Port 67",
+        "Port 110"
+      ],
       "correctAnswer": "Port 53",
       "explanation": "DNS verwendet Port 53 für Namensauflösungen, sowohl über UDP (für normale Abfragen) als auch TCP (für Zonentransfers). Port 25 ist SMTP (E-Mail), Port 67 ist DHCP-Server, und Port 110 ist POP3 (E-Mail-Abruf).",
       "points": 1,

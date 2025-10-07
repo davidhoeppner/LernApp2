@@ -11,26 +11,26 @@ class PerformanceIntegrationService {
   constructor(ihkContentService, categoryMappingService) {
     this.ihkContentService = ihkContentService;
     this.categoryMappingService = categoryMappingService;
-    
+
     // Initialize performance services
     this.advancedCachingService = new AdvancedCachingService(
-      ihkContentService, 
+      ihkContentService,
       categoryMappingService
     );
-    
+
     this.performanceOptimizationService = new PerformanceOptimizationService(
       ihkContentService,
       categoryMappingService,
       this.advancedCachingService
     );
-    
+
     this.performanceMonitoringService = new PerformanceMonitoringService();
-    
+
     this.performanceDashboard = new PerformanceDashboard(
       this.performanceMonitoringService,
       this.performanceOptimizationService
     );
-    
+
     // Configuration
     this.config = {
       enableOptimization: true,
@@ -38,17 +38,17 @@ class PerformanceIntegrationService {
       enableDashboard: false,
       autoTuning: true,
       alertThresholds: {
-        responseTime: 100,    // ms
-        cacheHitRate: 80,     // percentage
-        memoryUsage: 100,     // MB
-        errorRate: 5          // percentage
-      }
+        responseTime: 100, // ms
+        cacheHitRate: 80, // percentage
+        memoryUsage: 100, // MB
+        errorRate: 5, // percentage
+      },
     };
-    
+
     // Performance state
     this.isInitialized = false;
     this.autoTuningInterval = null;
-    
+
     this._initialize();
   }
 
@@ -63,17 +63,16 @@ class PerformanceIntegrationService {
         categoryFilter: this.config.alertThresholds.responseTime,
         categorySearch: this.config.alertThresholds.responseTime * 1.5,
         cacheHitRate: this.config.alertThresholds.cacheHitRate,
-        memoryUsage: this.config.alertThresholds.memoryUsage
+        memoryUsage: this.config.alertThresholds.memoryUsage,
       });
-      
+
       // Start auto-tuning if enabled
       if (this.config.autoTuning) {
         this._startAutoTuning();
       }
-      
+
       this.isInitialized = true;
-      console.log('Performance integration initialized successfully');
-      
+  console.warn('Performance integration initialized successfully');
     } catch (error) {
       console.error('Error initializing performance integration:', error);
     }
@@ -87,29 +86,38 @@ class PerformanceIntegrationService {
    */
   async getContentByCategory(categoryId, options = {}) {
     const startTime = performance.now();
-    
+
     try {
       let result;
-      
-      if (this.config.enableOptimization && this.performanceOptimizationService) {
-        result = await this.performanceOptimizationService.getContentByThreeTierCategory(categoryId, options);
+
+      if (
+        this.config.enableOptimization &&
+        this.performanceOptimizationService
+      ) {
+        result =
+          await this.performanceOptimizationService.getContentByThreeTierCategory(
+            categoryId,
+            options
+          );
       } else {
         // Fallback to basic service
-        result = await this.ihkContentService.getContentByThreeTierCategory(categoryId, options);
+        result = await this.ihkContentService.getContentByThreeTierCategory(
+          categoryId,
+          options
+        );
       }
-      
+
       // Record metrics
       if (this.config.enableMonitoring) {
         this.performanceMonitoringService.recordMetric('categoryFilter', {
           duration: performance.now() - startTime,
           parameters: { categoryId, ...options },
           resultCount: result.length,
-          optimized: this.config.enableOptimization
+          optimized: this.config.enableOptimization,
         });
       }
-      
+
       return result;
-      
     } catch (error) {
       // Record error metrics
       if (this.config.enableMonitoring) {
@@ -118,10 +126,10 @@ class PerformanceIntegrationService {
           parameters: { categoryId, ...options },
           resultCount: 0,
           error: true,
-          errorMessage: error.message
+          errorMessage: error.message,
         });
       }
-      
+
       throw error;
     }
   }
@@ -135,41 +143,59 @@ class PerformanceIntegrationService {
    */
   async searchInCategory(query, categoryId, options = {}) {
     const startTime = performance.now();
-    
+
     try {
       let result;
-      
-      if (this.config.enableOptimization && this.performanceOptimizationService) {
-        result = await this.performanceOptimizationService.searchInCategory(query, categoryId, options);
+
+      if (
+        this.config.enableOptimization &&
+        this.performanceOptimizationService
+      ) {
+        result = await this.performanceOptimizationService.searchInCategory(
+          query,
+          categoryId,
+          options
+        );
       } else {
         // Fallback to basic service
-        result = await this.ihkContentService.searchInCategory(query, categoryId, options);
+        result = await this.ihkContentService.searchInCategory(
+          query,
+          categoryId,
+          options
+        );
       }
-      
+
       // Record metrics
       if (this.config.enableMonitoring) {
         this.performanceMonitoringService.recordMetric('categorySearch', {
           duration: performance.now() - startTime,
-          parameters: { query: query?.substring(0, 50), categoryId, ...options },
+          parameters: {
+            query: query?.substring(0, 50),
+            categoryId,
+            ...options,
+          },
           resultCount: result.length,
-          optimized: this.config.enableOptimization
+          optimized: this.config.enableOptimization,
         });
       }
-      
+
       return result;
-      
     } catch (error) {
       // Record error metrics
       if (this.config.enableMonitoring) {
         this.performanceMonitoringService.recordMetric('categorySearch', {
           duration: performance.now() - startTime,
-          parameters: { query: query?.substring(0, 50), categoryId, ...options },
+          parameters: {
+            query: query?.substring(0, 50),
+            categoryId,
+            ...options,
+          },
           resultCount: 0,
           error: true,
-          errorMessage: error.message
+          errorMessage: error.message,
         });
       }
-      
+
       throw error;
     }
   }
@@ -186,29 +212,31 @@ class PerformanceIntegrationService {
         optimization: !!this.performanceOptimizationService,
         monitoring: !!this.performanceMonitoringService,
         caching: !!this.advancedCachingService,
-        dashboard: !!this.performanceDashboard
+        dashboard: !!this.performanceDashboard,
       },
-      configuration: this.config
+      configuration: this.config,
     };
-    
+
     // Add monitoring data
     if (this.performanceMonitoringService) {
-      report.monitoring = this.performanceMonitoringService.getPerformanceReport(options);
+      report.monitoring =
+        this.performanceMonitoringService.getPerformanceReport(options);
     }
-    
+
     // Add optimization metrics
     if (this.performanceOptimizationService) {
-      report.optimization = this.performanceOptimizationService.getPerformanceMetrics();
+      report.optimization =
+        this.performanceOptimizationService.getPerformanceMetrics();
     }
-    
+
     // Add caching statistics
     if (this.advancedCachingService) {
       report.caching = this.advancedCachingService.getStatistics();
     }
-    
+
     // Generate overall health score
     report.healthScore = this._calculateHealthScore(report);
-    
+
     return report;
   }
 
@@ -221,7 +249,7 @@ class PerformanceIntegrationService {
   _calculateHealthScore(report) {
     let score = 100;
     const factors = [];
-    
+
     // Check response time
     const avgResponseTime = report.optimization?.summary?.avgDurationMs;
     if (avgResponseTime > this.config.alertThresholds.responseTime * 2) {
@@ -231,7 +259,7 @@ class PerformanceIntegrationService {
       score -= 15;
       factors.push('Elevated response time');
     }
-    
+
     // Check cache hit rate
     const cacheHitRate = report.optimization?.summary?.cacheHitRate;
     if (cacheHitRate < this.config.alertThresholds.cacheHitRate - 20) {
@@ -241,36 +269,37 @@ class PerformanceIntegrationService {
       score -= 10;
       factors.push('Below target cache hit rate');
     }
-    
+
     // Check for active alerts
-    const activeAlerts = report.monitoring?.alerts?.filter(a => !a.acknowledged) || [];
+    const activeAlerts =
+      report.monitoring?.alerts?.filter(a => !a.acknowledged) || [];
     const criticalAlerts = activeAlerts.filter(a => a.severity === 'high');
     const warningAlerts = activeAlerts.filter(a => a.severity === 'medium');
-    
+
     score -= criticalAlerts.length * 20;
     score -= warningAlerts.length * 10;
-    
+
     if (criticalAlerts.length > 0) {
       factors.push(`${criticalAlerts.length} critical alerts`);
     }
     if (warningAlerts.length > 0) {
       factors.push(`${warningAlerts.length} warning alerts`);
     }
-    
+
     // Ensure score doesn't go below 0
     score = Math.max(0, score);
-    
+
     // Determine health status
     let status = 'excellent';
     if (score < 50) status = 'poor';
     else if (score < 70) status = 'fair';
     else if (score < 85) status = 'good';
-    
+
     return {
       score,
       status,
       factors,
-      recommendation: this._getHealthRecommendation(score, factors)
+      recommendation: this._getHealthRecommendation(score, factors),
     };
   }
 
@@ -281,19 +310,19 @@ class PerformanceIntegrationService {
    * @param {Array} factors - Factors affecting health
    * @returns {string} Recommendation text
    */
-  _getHealthRecommendation(score, factors) {
+  _getHealthRecommendation(score, _factors) {
     if (score >= 85) {
       return 'System performance is excellent. Continue monitoring.';
     }
-    
+
     if (score >= 70) {
       return 'System performance is good. Consider minor optimizations.';
     }
-    
+
     if (score >= 50) {
       return 'System performance needs attention. Review and address the identified issues.';
     }
-    
+
     return 'System performance is poor. Immediate action required to address critical issues.';
   }
 
@@ -344,46 +373,67 @@ class PerformanceIntegrationService {
   async _performAutoTuning() {
     try {
       const report = this.getPerformanceReport({ timeWindow: 600000 }); // Last 10 minutes
-      
+
       // Auto-tune cache sizes based on hit rates
       if (this.advancedCachingService && report.caching) {
         const hitRate = parseFloat(report.caching.summary.hitRate);
-        
+
         if (hitRate < 70) {
           // Increase cache sizes
           this.advancedCachingService.configure({
             maxSizes: {
-              hot: Math.min(200, Math.floor(this.advancedCachingService.config.maxSizes.hot * 1.2)),
-              warm: Math.min(800, Math.floor(this.advancedCachingService.config.maxSizes.warm * 1.2)),
-              cold: Math.min(3000, Math.floor(this.advancedCachingService.config.maxSizes.cold * 1.2))
-            }
+              hot: Math.min(
+                200,
+                Math.floor(
+                  this.advancedCachingService.config.maxSizes.hot * 1.2
+                )
+              ),
+              warm: Math.min(
+                800,
+                Math.floor(
+                  this.advancedCachingService.config.maxSizes.warm * 1.2
+                )
+              ),
+              cold: Math.min(
+                3000,
+                Math.floor(
+                  this.advancedCachingService.config.maxSizes.cold * 1.2
+                )
+              ),
+            },
           });
-          
-          console.log('Auto-tuning: Increased cache sizes due to low hit rate');
+
+          console.warn('Auto-tuning: Increased cache sizes due to low hit rate');
         }
       }
-      
+
       // Auto-tune performance thresholds based on recent performance
       if (report.optimization?.summary) {
         const avgResponseTime = report.optimization.summary.avgDurationMs;
-        
+
         if (avgResponseTime > this.config.alertThresholds.responseTime * 1.5) {
           // Relax thresholds temporarily to reduce alert noise
           this.performanceMonitoringService.updateThresholds({
             categoryFilter: Math.min(200, avgResponseTime * 1.2),
-            categorySearch: Math.min(300, avgResponseTime * 1.5)
+            categorySearch: Math.min(300, avgResponseTime * 1.5),
           });
-          
-          console.log('Auto-tuning: Adjusted alert thresholds due to elevated response times');
+
+          console.warn(
+            'Auto-tuning: Adjusted alert thresholds due to elevated response times'
+          );
         }
       }
-      
+
       // Trigger cache cleanup if memory usage is high
-      if (report.monitoring?.summary?.avgMemoryUsage > this.config.alertThresholds.memoryUsage) {
+      if (
+        report.monitoring?.summary?.avgMemoryUsage >
+        this.config.alertThresholds.memoryUsage
+      ) {
         await this.invalidateCache();
-        console.log('Auto-tuning: Performed cache cleanup due to high memory usage');
+        console.warn(
+          'Auto-tuning: Performed cache cleanup due to high memory usage'
+        );
       }
-      
     } catch (error) {
       console.error('Error during auto-tuning:', error);
     }
@@ -397,12 +447,12 @@ class PerformanceIntegrationService {
       if (this.performanceOptimizationService) {
         await this.performanceOptimizationService.invalidateCache();
       }
-      
+
       if (this.advancedCachingService) {
         this.advancedCachingService.invalidateAll();
       }
-      
-      console.log('All performance caches invalidated');
+
+  console.warn('All performance caches invalidated');
     } catch (error) {
       console.error('Error invalidating caches:', error);
     }
@@ -414,41 +464,43 @@ class PerformanceIntegrationService {
    */
   configure(newConfig) {
     this.config = { ...this.config, ...newConfig };
-    
+
     // Apply configuration to services
     if (this.performanceOptimizationService && newConfig.optimization) {
       this.performanceOptimizationService.configure(newConfig.optimization);
     }
-    
+
     if (this.performanceMonitoringService && newConfig.monitoring) {
-      this.performanceMonitoringService.configureMonitoring(newConfig.monitoring);
+      this.performanceMonitoringService.configureMonitoring(
+        newConfig.monitoring
+      );
     }
-    
+
     if (this.advancedCachingService && newConfig.caching) {
       this.advancedCachingService.configure(newConfig.caching);
     }
-    
+
     if (this.performanceDashboard && newConfig.dashboard) {
       this.performanceDashboard.configure(newConfig.dashboard);
     }
-    
+
     // Update alert thresholds
     if (newConfig.alertThresholds) {
       this.performanceMonitoringService.updateThresholds({
         categoryFilter: newConfig.alertThresholds.responseTime,
         categorySearch: newConfig.alertThresholds.responseTime * 1.5,
         cacheHitRate: newConfig.alertThresholds.cacheHitRate,
-        memoryUsage: newConfig.alertThresholds.memoryUsage
+        memoryUsage: newConfig.alertThresholds.memoryUsage,
       });
     }
-    
+
     // Restart auto-tuning if setting changed
     if (newConfig.autoTuning !== undefined) {
       if (this.autoTuningInterval) {
         clearInterval(this.autoTuningInterval);
         this.autoTuningInterval = null;
       }
-      
+
       if (newConfig.autoTuning) {
         this._startAutoTuning();
       }
@@ -478,20 +530,20 @@ class PerformanceIntegrationService {
     if (this.autoTuningInterval) {
       clearInterval(this.autoTuningInterval);
     }
-    
+
     if (this.performanceDashboard) {
       this.performanceDashboard.destroy();
     }
-    
+
     if (this.performanceMonitoringService) {
       this.performanceMonitoringService.destroy();
     }
-    
+
     if (this.advancedCachingService) {
       this.advancedCachingService.destroy();
     }
-    
-    console.log('Performance integration destroyed');
+
+  console.warn('Performance integration destroyed');
   }
 }
 
