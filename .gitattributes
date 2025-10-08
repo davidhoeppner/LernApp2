@@ -1,0 +1,22 @@
+# Auto-normalize text files to LF in the repo
+* text=auto
+
+# Force LF for these source file types
+*.js     text eol=lf
+*.cjs    text eol=lf
+*.mjs    text eol=lf
+*.json   text eol=lf
+*.md     text eol=lf
+*.html   text eol=lf
+*.css    text eol=lf
+
+# Keep binary files as-is
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+
+# Ensure Windows batch files keep CRLF
+*.ps1    text eol=crlf
+*.bat    text eol=crlf
