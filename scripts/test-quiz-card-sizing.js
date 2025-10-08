@@ -2,7 +2,6 @@
 // @ts-nocheck
 /* eslint-env node */
 
-
 /**
  * Test script to verify quiz card sizing fixes
  * Tests that quiz grid uses minmax() approach consistently across all media queries

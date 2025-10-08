@@ -2,7 +2,6 @@
 // @ts-nocheck
 /* eslint-env node */
 
-
 /**
  * Test script to verify the nested grid fix
  * Tests that quiz grid refresh doesn't create nested grids

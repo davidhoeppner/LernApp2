@@ -2,7 +2,6 @@
 // @ts-nocheck
 /* eslint-env node */
 
-
 /**
  * Simple test for filter state management logic
  */

@@ -2,7 +2,6 @@
 // @ts-nocheck
 /* eslint-env node */
 
-
 /**
  * Simple verification script for empty state and feedback implementation
  * Verifies that the new methods exist and have correct signatures

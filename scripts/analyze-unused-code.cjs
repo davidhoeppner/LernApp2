@@ -1,11 +1,8 @@
 // @ts-nocheck
 /* eslint-env node */
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const process.cwd() = path.dirname(__filename);
+const fs = require('fs');
+const path = require('path');
+const __dirname = process.cwd();
 
 class UnusedCodeAnalyzer {
   constructor() {
@@ -59,7 +56,10 @@ class UnusedCodeAnalyzer {
 
   async analyzeFile(filePath) {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const relativePath = path.relative(path.join(process.cwd(), '..'), filePath);
+    const relativePath = path.relative(
+      path.join(process.cwd(), '..'),
+      filePath
+    );
 
     // Extract imports
     const importMatches = content.matchAll(
@@ -291,16 +291,24 @@ class UnusedCodeAnalyzer {
 
 // Run analysis
 const analyzer = new UnusedCodeAnalyzer();
-const results = await analyzer.analyzeProject();
 
-console.log('✅ Analysis complete!\n');
-console.log(`📊 Summary:`);
-console.log(`   - Files analyzed: ${analyzer.files.length}`);
-console.log(`   - Unused imports: ${results.unusedImports.length}`);
-console.log(`   - Unused exports: ${results.unusedExports.length}`);
-console.log(`   - Unused components: ${results.unusedComponents.length}`);
-console.log(`   - Unused services: ${results.unusedServices.length}`);
-console.log(`   - Dynamic imports found: ${results.dynamicImports.length}`);
+(async () => {
+  try {
+    const results = await analyzer.analyzeProject();
 
-// Export results for report generation
-export { analyzer, results };
+    console.log('✅ Analysis complete!\n');
+    console.log(`📊 Summary:`);
+    console.log(`   - Files analyzed: ${analyzer.files.length}`);
+    console.log(`   - Unused imports: ${results.unusedImports.length}`);
+    console.log(`   - Unused exports: ${results.unusedExports.length}`);
+    console.log(`   - Unused components: ${results.unusedComponents.length}`);
+    console.log(`   - Unused services: ${results.unusedServices.length}`);
+    console.log(`   - Dynamic imports found: ${results.dynamicImports.length}`);
+
+    // Export results for report generation (available after run)
+    module.exports = { analyzer, results };
+  } catch (err) {
+    console.error('Analysis failed:', err);
+    process.exit(1);
+  }
+})();

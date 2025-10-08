@@ -4,7 +4,14 @@
 
 const fs = require('fs');
 const path = require('path');
-const MODULES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'modules');
+const MODULES_DIR = path.join(
+  process.cwd(),
+  '..',
+  'src',
+  'data',
+  'ihk',
+  'modules'
+);
 
 const files = fs.readdirSync(MODULES_DIR).filter(f => f.endsWith('.json'));
 let changed = 0;
@@ -35,16 +42,27 @@ files.forEach(f => {
   const p = path.join(MODULES_DIR, f);
   const raw = fs.readFileSync(p, 'utf8');
   let json;
-  try { json = JSON.parse(raw); } catch { return; }
+  try {
+    json = JSON.parse(raw);
+  } catch {
+    return;
+  }
 
-  if (json.hasOwnProperty('estimatedTime') && typeof json.estimatedTime === 'string') {
+  if (
+    json.hasOwnProperty('estimatedTime') &&
+    typeof json.estimatedTime === 'string'
+  ) {
     const parsed = parseEstimatedTimeString(json.estimatedTime);
     if (parsed !== null) {
       // Backup original
-      try { fs.writeFileSync(p + '.bak', raw, 'utf8'); } catch {}
+      try {
+        fs.writeFileSync(p + '.bak', raw, 'utf8');
+      } catch {}
       json.estimatedTime = parsed;
       fs.writeFileSync(p, JSON.stringify(json, null, 2) + '\n', 'utf8');
-      console.log(`Fixed estimatedTime in ${f}: "${json.estimatedTime}" -> ${parsed}`);
+      console.log(
+        `Fixed estimatedTime in ${f}: "${json.estimatedTime}" -> ${parsed}`
+      );
       changed++;
     }
   }

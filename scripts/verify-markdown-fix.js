@@ -2,7 +2,6 @@
 // @ts-nocheck
 /* eslint-env node */
 
-
 /**
  * Verify Markdown Fix is Applied
  * Checks if the IHKModuleView.js file has the correct markdown rendering fix
@@ -10,11 +9,7 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const process.cwd() = path.dirname(__filename);
-const rootDir = path.join(process.cwd(), '..');
+const rootDir = process.cwd();
 
 console.log('🔍 Verifying Markdown Rendering Fix...\n');
 

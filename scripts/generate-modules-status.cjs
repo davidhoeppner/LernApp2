@@ -8,13 +8,21 @@
 const fs = require('fs');
 const path = require('path');
 
-const MODULES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'modules');
+const MODULES_DIR = path.join(
+  process.cwd(),
+  '..',
+  'src',
+  'data',
+  'ihk',
+  'modules'
+);
 const OUTPUT_FILE = path.join(process.cwd(), '..', 'modules.md');
 
 function slugify(str) {
   if (!str) return '';
   return str
-    .normalize('NFD').replace(/\p{Diacritic}/gu, '')
+    .normalize('NFD')
+    .replace(/\p{Diacritic}/gu, '')
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, '')
     .trim()
@@ -24,7 +32,9 @@ function slugify(str) {
 function analyzeModule(modPath) {
   const raw = fs.readFileSync(modPath, 'utf8');
   let json;
-  try { json = JSON.parse(raw); } catch {
+  try {
+    json = JSON.parse(raw);
+  } catch {
     return { file: modPath, error: 'Invalid JSON: ' + e.message };
   }
   const id = json.id || path.basename(modPath, '.json');
@@ -38,7 +48,9 @@ function analyzeModule(modPath) {
       h2s.push({ title: m[1].trim(), index: i });
     }
   }
-  const markers = [...content.matchAll(/<!--\s*micro-quiz:([^>]+?)\s*-->/g)].map(m => m[1].trim());
+  const markers = [
+    ...content.matchAll(/<!--\s*micro-quiz:([^>]+?)\s*-->/g),
+  ].map(m => m[1].trim());
   const malformedMarkers = markers.filter(m => m === '[object Object]');
 
   const missingSections = [];
@@ -51,7 +63,10 @@ function analyzeModule(modPath) {
     sectionStatus.push({ section: sec.title, expectedId, has });
   });
 
-  const complete = missingSections.length === 0 && malformedMarkers.length === 0 && h2s.length > 0;
+  const complete =
+    missingSections.length === 0 &&
+    malformedMarkers.length === 0 &&
+    h2s.length > 0;
   return {
     file: modPath,
     moduleId: id,
@@ -61,7 +76,7 @@ function analyzeModule(modPath) {
     malformed: malformedMarkers.length,
     missing: missingSections.length,
     status: complete ? 'Complete' : 'Pending',
-    sectionStatus
+    sectionStatus,
   };
 }
 
@@ -72,19 +87,36 @@ function generate() {
   const header = `# Module Micro-Quiz Integration Status\n\n_Last update: ${new Date().toISOString()}_\n\n`;
   const legend = `Legend: Complete = All H2 sections have a correctly named micro-quiz marker and no malformed markers remain. Pending = Needs integration or cleanup.\n\n`;
   const tableHeader = `| Module ID | Title | H2 Sections | Markers | Malformed | Missing | Status |\n|-----------|-------|-------------|---------|-----------|---------|--------|`;
-  const tableBody = rows.map(r => {
-    if (r.error) {
-      return `| ${path.basename(r.file)} | ERROR: ${r.error.replace(/\|/g,' ')} | - | - | - | - | Error |`;
-    }
-    return `| ${r.moduleId} | ${r.title.replace(/\|/g,' ')} | ${r.sections} | ${r.markers} | ${r.malformed} | ${r.missing} | ${r.status} |`;
-  }).join('\n');
+  const tableBody = rows
+    .map(r => {
+      if (r.error) {
+        return `| ${path.basename(r.file)} | ERROR: ${r.error.replace(/\|/g, ' ')} | - | - | - | - | Error |`;
+      }
+      return `| ${r.moduleId} | ${r.title.replace(/\|/g, ' ')} | ${r.sections} | ${r.markers} | ${r.malformed} | ${r.missing} | ${r.status} |`;
+    })
+    .join('\n');
 
-  const details = `\n\n## Details Per Module\n\n` + rows.map(r => {
-    if (r.error) return `### ${r.file}\nError: ${r.error}\n`;
-    return `### ${r.moduleId} (${r.title})\nSections (${r.sections}):\n` + r.sectionStatus.map(s => `- ${s.section} => ${s.has ? '✅' : '❌'} (${s.expectedId})`).join('\n') + '\n';
-  }).join('\n');
+  const details =
+    `\n\n## Details Per Module\n\n` +
+    rows
+      .map(r => {
+        if (r.error) return `### ${r.file}\nError: ${r.error}\n`;
+        return (
+          `### ${r.moduleId} (${r.title})\nSections (${r.sections}):\n` +
+          r.sectionStatus
+            .map(
+              s => `- ${s.section} => ${s.has ? '✅' : '❌'} (${s.expectedId})`
+            )
+            .join('\n') +
+          '\n'
+        );
+      })
+      .join('\n');
 
-  fs.writeFileSync(OUTPUT_FILE, header + legend + tableHeader + '\n' + tableBody + details + '\n');
+  fs.writeFileSync(
+    OUTPUT_FILE,
+    header + legend + tableHeader + '\n' + tableBody + details + '\n'
+  );
   return rows;
 }
 

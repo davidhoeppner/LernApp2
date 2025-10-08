@@ -2,7 +2,6 @@
 // @ts-nocheck
 /* eslint-env node */
 
-
 /**
  * Test script to verify the category filter fix
  * Tests that category filter changes are handled gracefully when no specialization is selected

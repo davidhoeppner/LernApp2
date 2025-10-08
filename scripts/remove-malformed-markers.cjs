@@ -5,8 +5,22 @@
 const fs = require('fs');
 const path = require('path');
 
-const MODULES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'modules');
-const QUIZZES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'quizzes');
+const MODULES_DIR = path.join(
+  process.cwd(),
+  '..',
+  'src',
+  'data',
+  'ihk',
+  'modules'
+);
+const QUIZZES_DIR = path.join(
+  process.cwd(),
+  '..',
+  'src',
+  'data',
+  'ihk',
+  'quizzes'
+);
 
 let changed = 0;
 
@@ -15,7 +29,9 @@ function removeMarkerFromFile(p) {
   const marker = '<!-- micro-quiz:[object Object] -->';
   if (raw.includes(marker)) {
     const updated = raw.split(marker).join('');
-    try { fs.writeFileSync(p + '.bak', raw, 'utf8'); } catch {}
+    try {
+      fs.writeFileSync(p + '.bak', raw, 'utf8');
+    } catch {}
     fs.writeFileSync(p, updated, 'utf8');
     console.log(`Cleaned marker in ${path.basename(p)}`);
     changed++;

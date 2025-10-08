@@ -2,7 +2,6 @@
 // @ts-nocheck
 /* eslint-env node */
 
-
 /**
  * Test script to verify the event handler fix
  * Tests that event handlers use currentTarget instead of target

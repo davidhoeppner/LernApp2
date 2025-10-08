@@ -32,5 +32,7 @@ for (const f of files) {
   }
 }
 
-console.log(`Normalized line endings for ${normalized} files, renamed ${renamed} files.`);
+console.log(
+  `Normalized line endings for ${normalized} files, renamed ${renamed} files.`
+);
 process.exit(0);

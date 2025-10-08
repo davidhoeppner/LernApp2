@@ -2,7 +2,6 @@
 // @ts-nocheck
 /* eslint-env node */
 
-
 /**
  * Test Markdown Rendering
  * Demonstrates the before/after of the markdown rendering fix

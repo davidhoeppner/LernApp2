@@ -5,7 +5,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const process.cwd() = path.dirname(__filename);
 
 class IntegrationAnalyzer {
   constructor() {

@@ -38,7 +38,10 @@ try {
   const hostCount = (replaced.match(/micro-quiz-inline/g) || []).length;
   console.log('Total hosts converted:', hostCount);
   // Optionally write to temp html file
-  const outPath = path.resolve(process.cwd(), '../tmp/debug-module-content.html');
+  const outPath = path.resolve(
+    process.cwd(),
+    '../tmp/debug-module-content.html'
+  );
   fs.writeFileSync(outPath, replaced, 'utf8');
   console.log('Wrote debug HTML to', outPath);
 } catch {

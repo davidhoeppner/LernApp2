@@ -13,8 +13,11 @@ for (const f of files) {
   let raw = fs.readFileSync(p, 'utf8');
   let out = raw;
   // Prepend ts check and eslint env for editor
-  const header = "// @ts-nocheck\n/* eslint-env node */\n";
-  if (!raw.startsWith('// @ts-nocheck') && !raw.startsWith('/* eslint-env node */')) {
+  const header = '// @ts-nocheck\n/* eslint-env node */\n';
+  if (
+    !raw.startsWith('// @ts-nocheck') &&
+    !raw.startsWith('/* eslint-env node */')
+  ) {
     out = header + raw;
   }
   // Replace catch with catch to avoid unused-catch-variable

@@ -8,7 +8,14 @@
 const fs = require('fs');
 const path = require('path');
 
-const MODULES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'modules');
+const MODULES_DIR = path.join(
+  process.cwd(),
+  '..',
+  'src',
+  'data',
+  'ihk',
+  'modules'
+);
 const OUTPUT_FILE = path.join(process.cwd(), '..', 'modules.md');
 
 function slugify(str) {
