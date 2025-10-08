@@ -1,13 +1,13 @@
 {
-  "timestamp": "2025-10-08T19:50:06.601Z",
+  "timestamp": "2025-10-08T19:53:10.545Z",
   "summary": {
     "totalFiles": 52,
-    "validFiles": 7,
-    "filesWithErrors": 45,
+    "validFiles": 52,
+    "filesWithErrors": 0,
     "filesWithWarnings": 51,
-    "totalIssues": 2057,
+    "totalIssues": 2012,
     "issuesByCategory": {
-      "structure": 45,
+      "structure": 0,
       "markdown": 2012,
       "encoding": 0,
       "code-examples": 0,
@@ -16,7 +16,7 @@
       "references": 0
     },
     "issuesBySeverity": {
-      "error": 45,
+      "error": 0,
       "warning": 2012
     },
     "invalidReferences": 0
@@ -566,14 +566,8 @@
     {
       "file": "bp-01-documentation.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-documentation.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -1079,20 +1073,14 @@
           "line": 340
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 72
     },
     {
       "file": "bp-01-kerberos.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-kerberos.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -1402,20 +1390,14 @@
           "line": 282
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 44
     },
     {
       "file": "bp-01-monitoring.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-monitoring.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -1816,20 +1798,14 @@
           "line": 342
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 57
     },
     {
       "file": "bp-01-network-protocols.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-network-protocols.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -2027,7 +2003,7 @@
           "line": 129
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 28
     },
     {
@@ -2210,14 +2186,8 @@
     {
       "file": "bp-01-odbc.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-odbc.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -2436,20 +2406,14 @@
           "line": 209
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 31
     },
     {
       "file": "bp-02-cloud-models.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-02-cloud-models.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -2913,20 +2877,14 @@
           "line": 305
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 66
     },
     {
       "file": "bp-02-data-formats.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-02-data-formats.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -3222,20 +3180,14 @@
           "line": 258
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 42
     },
     {
       "file": "bp-02-nas-san.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-02-nas-san.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -3566,20 +3518,14 @@
           "line": 354
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 47
     },
     {
       "file": "bp-03-cps.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-cps.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -4008,20 +3954,14 @@
           "line": 271
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 61
     },
     {
       "file": "bp-03-rest-api.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-rest-api.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -4338,20 +4278,14 @@
           "line": 237
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 45
     },
     {
       "file": "bp-03-software-quality.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-software-quality.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -4850,20 +4784,14 @@
           "line": 317
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 71
     },
     {
       "file": "bp-03-tdd.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-tdd.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -4991,20 +4919,14 @@
           "line": 35
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 18
     },
     {
       "file": "bp-04-architecture-patterns.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-architecture-patterns.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -5034,20 +4956,14 @@
           "line": 19
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 4
     },
     {
       "file": "bp-04-design-patterns.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-design-patterns.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -5308,20 +5224,14 @@
           "line": 457
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 37
     },
     {
       "file": "bp-04-programming-paradigms.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-programming-paradigms.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -5414,20 +5324,14 @@
           "line": 74
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 13
     },
     {
       "file": "bp-04-scrum.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-scrum.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -5807,20 +5711,14 @@
           "line": 238
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 54
     },
     {
       "file": "bp-05-data-structures.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-data-structures.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -6095,20 +5993,14 @@
           "line": 429
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 39
     },
     {
       "file": "bp-05-encapsulation.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-encapsulation.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -6124,20 +6016,14 @@
           "line": 8
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 2
     },
     {
       "file": "bp-05-sorting.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-sorting.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -6454,20 +6340,14 @@
           "line": 307
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 45
     },
     {
       "file": "bp-05-sql-reference.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-sql-reference.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -6784,7 +6664,7 @@
           "line": 158
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 45
     },
     {
@@ -6841,14 +6721,8 @@
     {
       "file": "bp-dpa-01-er-modeling.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-01-er-modeling.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -7214,20 +7088,14 @@
           "line": 96
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 52
     },
     {
       "file": "bp-dpa-01-normalization.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-01-normalization.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -7586,20 +7454,14 @@
           "line": 152
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 51
     },
     {
       "file": "bp-dpa-02-etl-fundamentals.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-02-etl-fundamentals.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -8119,7 +7981,7 @@
           "line": 362
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 74
     },
     {
@@ -8199,14 +8061,8 @@
     {
       "file": "bp-dpa-03-automation-orchestration.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-automation-orchestration.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -8257,20 +8113,14 @@
           "line": 38
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 7
     },
     {
       "file": "bp-dpa-03-bpmn-fundamentals.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-bpmn-fundamentals.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -8811,7 +8661,7 @@
           "line": 316
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 77
     },
     {
@@ -8952,14 +8802,8 @@
     {
       "file": "bp-dpa-03-kpi-measurement.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-kpi-measurement.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9010,20 +8854,14 @@
           "line": 42
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 7
     },
     {
       "file": "bp-dpa-03-lean-six-sigma.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-lean-six-sigma.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9074,20 +8912,14 @@
           "line": 38
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 7
     },
     {
       "file": "bp-dpa-03-process-mining.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-process-mining.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9138,20 +8970,14 @@
           "line": 66
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 7
     },
     {
       "file": "bp-dpa-04-bi-fundamentals.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-04-bi-fundamentals.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9748,7 +9574,7 @@
           "line": 403
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 85
     },
     {
@@ -9770,14 +9596,8 @@
     {
       "file": "bp-dpa-05-data-warehousing.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-05-data-warehousing.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9835,20 +9655,14 @@
           "line": 50
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 8
     },
     {
       "file": "bp-dpa-06-data-quality.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-06-data-quality.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9885,20 +9699,14 @@
           "line": 28
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 5
     },
     {
       "file": "bp-dpa-07-statistical-analysis.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-07-statistical-analysis.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9935,20 +9743,14 @@
           "line": 26
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 5
     },
     {
       "file": "bp-dpa-08-process-optimization.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-08-process-optimization.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9985,20 +9787,14 @@
           "line": 23
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 5
     },
     {
       "file": "bp-dpa-09-advanced-bi.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-09-advanced-bi.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -10028,20 +9824,14 @@
           "line": 19
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 4
     },
     {
       "file": "fue-01-planning.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-01-planning.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -10400,20 +10190,14 @@
           "line": 282
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 51
     },
     {
       "file": "fue-02-anomalies-redundancies.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-02-anomalies-redundancies.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -10828,20 +10612,14 @@
           "line": 369
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 59
     },
     {
       "file": "fue-02-control-structures.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-02-control-structures.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -11284,20 +11062,14 @@
           "line": 565
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 63
     },
     {
       "file": "fue-02-development.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-02-development.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -12006,20 +11778,14 @@
           "line": 394
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 101
     },
     {
       "file": "fue-03-load-performance-tests.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-03-load-performance-tests.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -12847,20 +12613,14 @@
           "line": 554
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 118
     },
     {
       "file": "fue-03-quality.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-03-quality.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -13401,20 +13161,14 @@
           "line": 545
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 77
     },
     {
       "file": "fue-04-security-threats.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-04-security-threats.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -13444,35 +13198,22 @@
           "line": 14
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 4
     },
     {
       "file": "fue-04-security.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-04-security.json",
-      "valid": false,
-      "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        }
-      ],
-      "errorCount": 1,
+      "valid": true,
+      "issues": [],
+      "errorCount": 0,
       "warningCount": 0
     },
     {
       "file": "sql-ddl.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\sql-ddl.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -13705,20 +13446,14 @@
           "line": 192
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 33
     },
     {
       "file": "sql-dml.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\sql-dml.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -14203,20 +13938,14 @@
           "line": 333
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 69
     },
     {
       "file": "sql-dql.json",
       "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\sql-dql.json",
-      "valid": false,
+      "valid": true,
       "issues": [
-        {
-          "category": "structure",
-          "severity": "error",
-          "field": "estimatedTime",
-          "message": "Invalid type for estimatedTime: expected number, got string"
-        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -14841,10 +14570,10 @@
           "line": 477
         }
       ],
-      "errorCount": 1,
+      "errorCount": 0,
       "warningCount": 89
     }
   ],
   "invalidReferences": [],
-  "executionTime": 94
+  "executionTime": 93
 }
