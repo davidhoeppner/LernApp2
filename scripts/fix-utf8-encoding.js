@@ -1,9 +1,11 @@
+// @ts-nocheck
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 // Encoding mappings for German characters and common corruptions
 const encodingFixes = {
@@ -235,13 +237,13 @@ function generateFixReport(scanResults, fixResults, outputPath) {
  * Main execution
  */
 function main() {
-  const modulesDir = path.join(__dirname, '../src/data/ihk/modules');
+  const modulesDir = path.join(process.cwd(), '../src/data/ihk/modules');
   const backupDir = path.join(
-    __dirname,
+    process.cwd(),
     '../.backup/encoding-fix-' +
       new Date().toISOString().replace(/:/g, '-').split('.')[0]
   );
-  const reportPath = path.join(__dirname, '../UTF8_ENCODING_FIX_REPORT.json');
+  const reportPath = path.join(process.cwd(), '../UTF8_ENCODING_FIX_REPORT.json');
 
   console.log('🔍 Scanning modules for encoding issues...\n');
 

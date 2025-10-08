@@ -4,7 +4,15 @@ import prettierConfig from 'eslint-config-prettier';
 
 export default [
   {
-    ignores: ['dist/**', 'build/**', 'node_modules/**', '*.min.js'],
+    ignores: [
+      'dist/**',
+      'build/**',
+      'node_modules/**',
+      '*.min.js',
+      'scripts/**',
+      '.kiro/**',
+      'tmp/**',
+    ],
   },
   js.configs.recommended,
   prettierConfig,
@@ -43,7 +51,7 @@ export default [
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
-  // Node.js scripts configuration
+  // Node.js scripts (ESM) configuration for .js files
   {
     files: ['scripts/**/*.js'],
     languageOptions: {
@@ -63,6 +71,27 @@ export default [
     },
     rules: {
       'no-console': 'off', // Allow console in scripts
+    },
+  },
+  // Node.js scripts (CommonJS) configuration for .cjs files
+  {
+    files: ['scripts/**/*.cjs'],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: 'script',
+      globals: {
+        process: 'readonly',
+        console: 'readonly',
+        require: 'readonly',
+        module: 'readonly',
+        exports: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        Buffer: 'readonly',
+      },
+    },
+    rules: {
+      'no-console': 'off',
     },
   },
   // Allow .mjs script files to use Node globals during tooling

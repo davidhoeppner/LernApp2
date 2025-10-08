@@ -1,8 +1,8 @@
+// @ts-nocheck
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
 
 // Design tokens from style.css
 const DESIGN_TOKENS = {

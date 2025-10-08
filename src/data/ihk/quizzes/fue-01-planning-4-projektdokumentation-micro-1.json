@@ -1,0 +1,59 @@
+{
+  "id": "fue-01-planning-4-projektdokumentation-micro-1",
+  "moduleId": "fue-01-planning",
+  "title": "4. Projektdokumentation — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welches Ziel technischer Softwaredokumentation ist zentral?",
+      "options": [
+        "Wartbarkeit erhöhen",
+        "Quellcode verschleiern",
+        "Deployment erschweren",
+        "Team-Kommunikation reduzieren"
+      ],
+      "correctAnswer": "Wartbarkeit erhöhen",
+      "explanation": "Dokumentation unterstützt Verständnis & Wartung.",
+      "points": 1,
+      "category": "Dokumentation"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Architekturdokumentation beschreibt übergreifende Struktur und Entscheidungen.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Architektur = Struktur + rationale Entscheidung.",
+      "points": 1,
+      "category": "Dokumentation"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche sind typische Dokumentationsarten?",
+      "options": [
+        "Benutzerdoku",
+        "Architekturdoku",
+        "Log-Datei",
+        "API-Referenz"
+      ],
+      "correctAnswer": [
+        "Benutzerdoku",
+        "Architekturdoku",
+        "API-Referenz"
+      ],
+      "explanation": "Logs sind keine strukturierte Dokumentationsart.",
+      "points": 1,
+      "category": "Dokumentation"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"4. Projektdokumentation\" (automatische Domänen-Heuristik).",
+  "category": "FÜ-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

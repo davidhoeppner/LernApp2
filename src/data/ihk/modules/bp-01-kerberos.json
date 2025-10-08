@@ -10,7 +10,9 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 45,
-  "prerequisites": ["fue-04-security"],
+  "prerequisites": [
+    "fue-04-security"
+  ],
   "tags": [
     "kerberos",
     "authentifizierung",
@@ -21,7 +23,7 @@
     "zugriffskontrolle",
     "netzwerksicherheit"
   ],
-  "content": "# Kerberos-Authentifizierung und Zugriffskontrolle\n\n## Was ist Kerberos?\n\nKerberos ist ein Netzwerk-Authentifizierungsprotokoll, das entwickelt wurde, um sichere Authentifizierung über unsichere Netzwerke zu ermöglichen. Es basiert auf dem Prinzip der **Ticket-basierten Authentifizierung** und verwendet symmetrische Kryptographie.\n\n### Hauptmerkmale\n\n- **Mutual Authentication**: Sowohl Client als auch Server authentifizieren sich gegenseitig\n- **Single Sign-On (SSO)**: Einmalige Anmeldung für Zugriff auf mehrere Dienste\n- **Ticket-basiert**: Verwendet zeitlich begrenzte Tickets statt Passwörter\n- **Zentrale Verwaltung**: Key Distribution Center (KDC) als zentrale Instanz\n\n## Kernkomponenten von Kerberos\n\n### 1. Key Distribution Center (KDC)\n\nDas KDC ist die zentrale Vertrauensinstanz in Kerberos und besteht aus zwei Teilen:\n\n#### Authentication Server (AS)\n- Verifiziert die Identität des Benutzers\n- Stellt **Ticket Granting Tickets (TGT)** aus\n- Erster Kontaktpunkt bei der Anmeldung\n\n#### Ticket Granting Server (TGS)\n- Stellt **Service Tickets** für spezifische Dienste aus\n- Validiert TGTs\n- Vermittelt zwischen Client und Service\n\n### 2. Principals\n\nEin **Principal** ist eine eindeutige Identität in Kerberos:\n\n```\nusername@REALM.EXAMPLE.COM\nservice/hostname@REALM.EXAMPLE.COM\n```\n\n**Typen von Principals:**\n- **User Principal**: Repräsentiert einen Benutzer (z.B. `alice@COMPANY.COM`)\n- **Service Principal**: Repräsentiert einen Dienst (z.B. `http/webserver.company.com@COMPANY.COM`)\n\n### 3. Tickets\n\nTickets sind verschlüsselte Datenpakete, die Authentifizierungsinformationen enthalten:\n\n#### Ticket Granting Ticket (TGT)\n- Wird nach erfolgreicher Anmeldung ausgestellt\n- Gültig für eine Session (typisch 8-10 Stunden)\n- Wird verwendet, um Service Tickets anzufordern\n- Verschlüsselt mit dem Secret Key des TGS\n\n#### Service Ticket (ST)\n- Berechtigt zum Zugriff auf einen spezifischen Dienst\n- Kürzere Gültigkeitsdauer (typisch 5 Minuten bis 1 Stunde)\n- Verschlüsselt mit dem Secret Key des Zieldienstes\n\n### 4. Realm\n\nEin **Realm** ist eine administrative Domäne in Kerberos:\n- Definiert den Gültigkeitsbereich von Principals\n- Wird in GROSSBUCHSTABEN geschrieben (z.B. `COMPANY.COM`)\n- Kann mit anderen Realms vertrauensbeziehungen haben\n\n## Kerberos-Authentifizierungsprozess\n\n### Schritt 1: Initial Authentication (AS Exchange)\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant AS (KDC)\n    \n    Client->>AS: 1. Authentication Request (Username)\n    AS->>AS: 2. Verifiziert Benutzer in Datenbank\n    AS->>Client: 3. TGT + Session Key (verschlüsselt)\n    Client->>Client: 4. Entschlüsselt mit Passwort-Hash\n```\n\n**Was passiert:**\n1. Client sendet Benutzernamen an AS\n2. AS prüft, ob Benutzer existiert\n3. AS sendet TGT (verschlüsselt mit TGS-Key) und Session Key (verschlüsselt mit User-Password-Hash)\n4. Client entschlüsselt Session Key mit seinem Passwort\n\n### Schritt 2: Service Ticket Request (TGS Exchange)\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant TGS (KDC)\n    \n    Client->>TGS: 1. TGT + Service Request + Authenticator\n    TGS->>TGS: 2. Validiert TGT und Authenticator\n    TGS->>Client: 3. Service Ticket + Service Session Key\n    Client->>Client: 4. Speichert Service Ticket\n```\n\n**Was passiert:**\n1. Client sendet TGT, gewünschten Service und Authenticator (Zeitstempel)\n2. TGS validiert TGT und prüft Zeitstempel\n3. TGS sendet Service Ticket und Service Session Key\n4. Client speichert Ticket für Zugriff auf Service\n\n### Schritt 3: Service Access (Client-Server Exchange)\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant Service\n    \n    Client->>Service: 1. Service Ticket + Authenticator\n    Service->>Service: 2. Entschlüsselt und validiert Ticket\n    Service->>Client: 3. Service Authenticator (optional)\n    Service->>Client: 4. Gewährt Zugriff\n```\n\n**Was passiert:**\n1. Client sendet Service Ticket und neuen Authenticator\n2. Service entschlüsselt Ticket mit seinem Secret Key\n3. Service sendet optional eigenen Authenticator (Mutual Authentication)\n4. Service gewährt Zugriff auf angeforderte Ressource\n\n## Sicherheitsmechanismen\n\n### 1. Zeitstempel und Replay-Schutz\n\n- Alle Nachrichten enthalten Zeitstempel\n- Zeitfenster (typisch 5 Minuten) verhindert Replay-Attacken\n- Erfordert synchronisierte Uhren (NTP)\n\n### 2. Verschlüsselung\n\n- **Symmetrische Verschlüsselung**: AES, DES, 3DES\n- Jeder Principal hat einen Secret Key\n- Session Keys werden für jede Session neu generiert\n\n### 3. Ticket-Lebensdauer\n\n- TGT: Lange Gültigkeitsdauer (8-10 Stunden)\n- Service Tickets: Kurze Gültigkeitsdauer (5-60 Minuten)\n- Renewable Tickets: Können verlängert werden ohne erneute Anmeldung\n\n## Vorteile von Kerberos\n\n✅ **Single Sign-On**: Einmalige Anmeldung für alle Dienste\n✅ **Mutual Authentication**: Beide Seiten authentifizieren sich\n✅ **Keine Passwort-Übertragung**: Passwörter werden nie über Netzwerk gesendet\n✅ **Zentrale Verwaltung**: Einfache Administration über KDC\n✅ **Skalierbar**: Funktioniert in großen Netzwerken\n✅ **Standardisiert**: RFC 4120, weit verbreitet\n\n## Nachteile und Herausforderungen\n\n❌ **Single Point of Failure**: KDC muss hochverfügbar sein\n❌ **Zeitsynchronisation**: Erfordert synchronisierte Uhren\n❌ **Komplexität**: Konfiguration und Troubleshooting können komplex sein\n❌ **Initial Authentication**: Kompromittierung des KDC gefährdet gesamtes System\n❌ **Keine Passwort-Änderung**: Passwortänderung erfordert neue Tickets\n\n## Praktische Anwendungsfälle\n\n### 1. Active Directory (Windows)\n\nMicrosoft Active Directory verwendet Kerberos als primäres Authentifizierungsprotokol:\n\n```\nUser meldet sich an Windows-PC an\n  ↓\nWindows kontaktiert Domain Controller (KDC)\n  ↓\nErhält TGT für die Domain\n  ↓\nZugriff auf Fileserver, Drucker, Webservices ohne erneute Anmeldung\n```\n\n### 2. Linux/Unix mit Kerberos\n\n```bash\n# Kerberos-Ticket anfordern\nkinit username@REALM.COM\n\n# Aktuelle Tickets anzeigen\nklist\n\n# Ticket löschen (Logout)\nkdestroy\n\n# SSH mit Kerberos\nssh -K server.example.com\n```\n\n### 3. Web-Anwendungen\n\n**SPNEGO (Simple and Protected GSSAPI Negotiation Mechanism)**:\n- Browser-basierte Kerberos-Authentifizierung\n- Transparent für Benutzer (SSO)\n- Verwendet in Intranet-Anwendungen\n\n## Kerberos vs. andere Authentifizierungsmethoden\n\n| Merkmal | Kerberos | LDAP | OAuth 2.0 | SAML |\n|---------|----------|------|-----------|------|\n| **Typ** | Ticket-basiert | Directory-basiert | Token-basiert | Assertion-basiert |\n| **Hauptzweck** | Netzwerk-Auth | Verzeichnisdienst | API-Zugriff | Web-SSO |\n| **Verschlüsselung** | Symmetrisch | Optional | Asymmetrisch | Asymmetrisch |\n| **SSO** | Ja | Nein | Ja | Ja |\n| **Mutual Auth** | Ja | Nein | Nein | Optional |\n| **Komplexität** | Hoch | Mittel | Mittel | Hoch |\n\n## Konfigurationsbeispiel\n\n### krb5.conf (Client-Konfiguration)\n\n```ini\n[libdefaults]\n    default_realm = COMPANY.COM\n    dns_lookup_realm = false\n    dns_lookup_kdc = true\n    ticket_lifetime = 24h\n    renew_lifetime = 7d\n    forwardable = true\n\n[realms]\n    COMPANY.COM = {\n        kdc = kdc1.company.com\n        kdc = kdc2.company.com\n        admin_server = kdc1.company.com\n    }\n\n[domain_realm]\n    .company.com = COMPANY.COM\n    company.com = COMPANY.COM\n```\n\n### Service Principal erstellen\n\n```bash\n# Auf dem KDC\nkadmin.local\n\n# Principal für Webserver erstellen\naddprinc -randkey HTTP/webserver.company.com@COMPANY.COM\n\n# Keytab-Datei exportieren\nktadd -k /etc/krb5.keytab HTTP/webserver.company.com@COMPANY.COM\n```\n\n## Troubleshooting\n\n### Häufige Probleme\n\n**1. Clock Skew Error**\n```\nkinit: Clock skew too great while getting initial credentials\n```\n**Lösung**: Uhren synchronisieren mit NTP\n\n**2. Cannot find KDC**\n```\nkinit: Cannot find KDC for realm\n```\n**Lösung**: DNS-Einträge oder krb5.conf prüfen\n\n**3. Ticket Expired**\n```\nServer not found in Kerberos database\n```\n**Lösung**: Neues Ticket mit `kinit` anfordern\n\n## Best Practices\n\n1. **Hochverfügbarkeit**: Mehrere KDCs für Redundanz\n2. **Zeitsynchronisation**: NTP auf allen Systemen\n3. **Sichere Passwörter**: Starke Passwort-Policies\n4. **Regelmäßige Key-Rotation**: Service-Keys regelmäßig ändern\n5. **Monitoring**: KDC-Logs überwachen\n6. **Backup**: Kerberos-Datenbank regelmäßig sichern\n7. **Netzwerksicherheit**: KDC-Traffic verschlüsseln\n\n## Zusammenfassung\n\nKerberos ist ein robustes Authentifizierungsprotokoll, das:\n- **Ticket-basierte Authentifizierung** für sichere Netzwerkzugriffe bietet\n- **Single Sign-On** ermöglicht\n- **Mutual Authentication** zwischen Client und Server gewährleistet\n- In vielen Enterprise-Umgebungen (Active Directory) eingesetzt wird\n- Zeitsynchronisation und zentrale KDC-Verwaltung erfordert\n\nFür die IHK-Prüfung wichtig:\n- Verstehe die drei Authentifizierungsschritte (AS, TGS, Service)\n- Kenne die Komponenten (KDC, Principals, Tickets, Realm)\n- Verstehe Vor- und Nachteile\n- Kenne praktische Anwendungsfälle (Active Directory)",
+  "content": "# Kerberos-Authentifizierung und Zugriffskontrolle\n\n## Was ist Kerberos?\n\nKerberos ist ein Netzwerk-Authentifizierungsprotokoll, das entwickelt wurde, um sichere Authentifizierung über unsichere Netzwerke zu ermöglichen. Es basiert auf dem Prinzip der **Ticket-basierten Authentifizierung** und verwendet symmetrische Kryptographie.\n\n### Hauptmerkmale\n\n- **Mutual Authentication**: Sowohl Client als auch Server authentifizieren sich gegenseitig\n- **Single Sign-On (SSO)**: Einmalige Anmeldung für Zugriff auf mehrere Dienste\n- **Ticket-basiert**: Verwendet zeitlich begrenzte Tickets statt Passwörter\n- **Zentrale Verwaltung**: Key Distribution Center (KDC) als zentrale Instanz\n\n<!-- micro-quiz:bp-01-kerberos-was-ist-kerberos-micro-1 -->\n## Kernkomponenten von Kerberos\n\n### 1. Key Distribution Center (KDC)\n\nDas KDC ist die zentrale Vertrauensinstanz in Kerberos und besteht aus zwei Teilen:\n\n#### Authentication Server (AS)\n- Verifiziert die Identität des Benutzers\n- Stellt **Ticket Granting Tickets (TGT)** aus\n- Erster Kontaktpunkt bei der Anmeldung\n\n#### Ticket Granting Server (TGS)\n- Stellt **Service Tickets** für spezifische Dienste aus\n- Validiert TGTs\n- Vermittelt zwischen Client und Service\n\n### 2. Principals\n\nEin **Principal** ist eine eindeutige Identität in Kerberos:\n\n```\nusername@REALM.EXAMPLE.COM\nservice/hostname@REALM.EXAMPLE.COM\n```\n\n**Typen von Principals:**\n- **User Principal**: Repräsentiert einen Benutzer (z.B. `alice@COMPANY.COM`)\n- **Service Principal**: Repräsentiert einen Dienst (z.B. `http/webserver.company.com@COMPANY.COM`)\n\n### 3. Tickets\n\nTickets sind verschlüsselte Datenpakete, die Authentifizierungsinformationen enthalten:\n\n#### Ticket Granting Ticket (TGT)\n- Wird nach erfolgreicher Anmeldung ausgestellt\n- Gültig für eine Session (typisch 8-10 Stunden)\n- Wird verwendet, um Service Tickets anzufordern\n- Verschlüsselt mit dem Secret Key des TGS\n\n#### Service Ticket (ST)\n- Berechtigt zum Zugriff auf einen spezifischen Dienst\n- Kürzere Gültigkeitsdauer (typisch 5 Minuten bis 1 Stunde)\n- Verschlüsselt mit dem Secret Key des Zieldienstes\n\n### 4. Realm\n\nEin **Realm** ist eine administrative Domäne in Kerberos:\n- Definiert den Gültigkeitsbereich von Principals\n- Wird in GROSSBUCHSTABEN geschrieben (z.B. `COMPANY.COM`)\n- Kann mit anderen Realms vertrauensbeziehungen haben\n\n## Kerberos-Authentifizierungsprozess\n<!-- micro-quiz:bp-01-kerberos-kernkomponenten-von-kerberos-micro-1 -->\n\n\n### Schritt 1: Initial Authentication (AS Exchange)\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant AS (KDC)\n    \n    Client->>AS: 1. Authentication Request (Username)\n    AS->>AS: 2. Verifiziert Benutzer in Datenbank\n    AS->>Client: 3. TGT + Session Key (verschlüsselt)\n    Client->>Client: 4. Entschlüsselt mit Passwort-Hash\n```\n\n**Was passiert:**\n1. Client sendet Benutzernamen an AS\n2. AS prüft, ob Benutzer existiert\n3. AS sendet TGT (verschlüsselt mit TGS-Key) und Session Key (verschlüsselt mit User-Password-Hash)\n4. Client entschlüsselt Session Key mit seinem Passwort\n\n### Schritt 2: Service Ticket Request (TGS Exchange)\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant TGS (KDC)\n    \n    Client->>TGS: 1. TGT + Service Request + Authenticator\n    TGS->>TGS: 2. Validiert TGT und Authenticator\n    TGS->>Client: 3. Service Ticket + Service Session Key\n    Client->>Client: 4. Speichert Service Ticket\n```\n\n**Was passiert:**\n1. Client sendet TGT, gewünschten Service und Authenticator (Zeitstempel)\n2. TGS validiert TGT und prüft Zeitstempel\n3. TGS sendet Service Ticket und Service Session Key\n4. Client speichert Ticket für Zugriff auf Service\n\n### Schritt 3: Service Access (Client-Server Exchange)\n\n```mermaid\nsequenceDiagram\n    participant Client\n    participant Service\n    \n    Client->>Service: 1. Service Ticket + Authenticator\n    Service->>Service: 2. Entschlüsselt und validiert Ticket\n    Service->>Client: 3. Service Authenticator (optional)\n    Service->>Client: 4. Gewährt Zugriff\n```\n\n**Was passiert:**\n1. Client sendet Service Ticket und neuen Authenticator\n2. Service entschlüsselt Ticket mit seinem Secret Key\n3. Service sendet optional eigenen Authenticator (Mutual Authentication)\n4. Service gewährt Zugriff auf angeforderte Ressource\n\n<!-- micro-quiz:bp-01-kerberos-kerberos-authentifizierungsprozess-micro-1 -->\n## Sicherheitsmechanismen\n\n### 1. Zeitstempel und Replay-Schutz\n\n- Alle Nachrichten enthalten Zeitstempel\n- Zeitfenster (typisch 5 Minuten) verhindert Replay-Attacken\n- Erfordert synchronisierte Uhren (NTP)\n\n### 2. Verschlüsselung\n\n- **Symmetrische Verschlüsselung**: AES, DES, 3DES\n- Jeder Principal hat einen Secret Key\n- Session Keys werden für jede Session neu generiert\n\n### 3. Ticket-Lebensdauer\n\n- TGT: Lange Gültigkeitsdauer (8-10 Stunden)\n- Service Tickets: Kurze Gültigkeitsdauer (5-60 Minuten)\n- Renewable Tickets: Können verlängert werden ohne erneute Anmeldung\n\n## Vorteile von Kerberos\n<!-- micro-quiz:bp-01-kerberos-sicherheitsmechanismen-micro-1 -->\n\n\n✅ **Single Sign-On**: Einmalige Anmeldung für alle Dienste\n✅ **Mutual Authentication**: Beide Seiten authentifizieren sich\n✅ **Keine Passwort-Übertragung**: Passwörter werden nie über Netzwerk gesendet\n✅ **Zentrale Verwaltung**: Einfache Administration über KDC\n✅ **Skalierbar**: Funktioniert in großen Netzwerken\n✅ **Standardisiert**: RFC 4120, weit verbreitet\n\n<!-- micro-quiz:bp-01-kerberos-vorteile-von-kerberos-micro-1 -->\n## Nachteile und Herausforderungen\n\n❌ **Single Point of Failure**: KDC muss hochverfügbar sein\n❌ **Zeitsynchronisation**: Erfordert synchronisierte Uhren\n❌ **Komplexität**: Konfiguration und Troubleshooting können komplex sein\n❌ **Initial Authentication**: Kompromittierung des KDC gefährdet gesamtes System\n❌ **Keine Passwort-Änderung**: Passwortänderung erfordert neue Tickets\n\n## Praktische Anwendungsfälle\n<!-- micro-quiz:bp-01-kerberos-nachteile-und-herausforderungen-micro-1 -->\n\n\n### 1. Active Directory (Windows)\n\nMicrosoft Active Directory verwendet Kerberos als primäres Authentifizierungsprotokol:\n\n```\nUser meldet sich an Windows-PC an\n  ↓\nWindows kontaktiert Domain Controller (KDC)\n  ↓\nErhält TGT für die Domain\n  ↓\nZugriff auf Fileserver, Drucker, Webservices ohne erneute Anmeldung\n```\n\n### 2. Linux/Unix mit Kerberos\n\n```bash\n# Kerberos-Ticket anfordern\nkinit username@REALM.COM\n\n# Aktuelle Tickets anzeigen\nklist\n\n# Ticket löschen (Logout)\nkdestroy\n\n# SSH mit Kerberos\nssh -K server.example.com\n```\n\n### 3. Web-Anwendungen\n\n**SPNEGO (Simple and Protected GSSAPI Negotiation Mechanism)**:\n- Browser-basierte Kerberos-Authentifizierung\n- Transparent für Benutzer (SSO)\n- Verwendet in Intranet-Anwendungen\n\n<!-- micro-quiz:bp-01-kerberos-praktische-anwendungsfalle-micro-1 -->\n## Kerberos vs. andere Authentifizierungsmethoden\n\n| Merkmal | Kerberos | LDAP | OAuth 2.0 | SAML |\n|---------|----------|------|-----------|------|\n| **Typ** | Ticket-basiert | Directory-basiert | Token-basiert | Assertion-basiert |\n| **Hauptzweck** | Netzwerk-Auth | Verzeichnisdienst | API-Zugriff | Web-SSO |\n| **Verschlüsselung** | Symmetrisch | Optional | Asymmetrisch | Asymmetrisch |\n| **SSO** | Ja | Nein | Ja | Ja |\n| **Mutual Auth** | Ja | Nein | Nein | Optional |\n| **Komplexität** | Hoch | Mittel | Mittel | Hoch |\n\n## Konfigurationsbeispiel\n<!-- micro-quiz:bp-01-kerberos-kerberos-vs-andere-authentifizierungsmethoden-micro-1 -->\n\n\n### krb5.conf (Client-Konfiguration)\n\n```ini\n[libdefaults]\n    default_realm = COMPANY.COM\n    dns_lookup_realm = false\n    dns_lookup_kdc = true\n    ticket_lifetime = 24h\n    renew_lifetime = 7d\n    forwardable = true\n\n[realms]\n    COMPANY.COM = {\n        kdc = kdc1.company.com\n        kdc = kdc2.company.com\n        admin_server = kdc1.company.com\n    }\n\n[domain_realm]\n    .company.com = COMPANY.COM\n    company.com = COMPANY.COM\n```\n\n### Service Principal erstellen\n\n```bash\n# Auf dem KDC\nkadmin.local\n\n# Principal für Webserver erstellen\naddprinc -randkey HTTP/webserver.company.com@COMPANY.COM\n\n# Keytab-Datei exportieren\nktadd -k /etc/krb5.keytab HTTP/webserver.company.com@COMPANY.COM\n```\n\n<!-- micro-quiz:bp-01-kerberos-konfigurationsbeispiel-micro-1 -->\n## Troubleshooting\n\n### Häufige Probleme\n\n**1. Clock Skew Error**\n```\nkinit: Clock skew too great while getting initial credentials\n```\n**Lösung**: Uhren synchronisieren mit NTP\n\n**2. Cannot find KDC**\n```\nkinit: Cannot find KDC for realm\n```\n**Lösung**: DNS-Einträge oder krb5.conf prüfen\n\n**3. Ticket Expired**\n```\nServer not found in Kerberos database\n```\n**Lösung**: Neues Ticket mit `kinit` anfordern\n\n## Best Practices\n<!-- micro-quiz:bp-01-kerberos-troubleshooting-micro-1 -->\n\n\n1. **Hochverfügbarkeit**: Mehrere KDCs für Redundanz\n2. **Zeitsynchronisation**: NTP auf allen Systemen\n3. **Sichere Passwörter**: Starke Passwort-Policies\n4. **Regelmäßige Key-Rotation**: Service-Keys regelmäßig ändern\n5. **Monitoring**: KDC-Logs überwachen\n6. **Backup**: Kerberos-Datenbank regelmäßig sichern\n7. **Netzwerksicherheit**: KDC-Traffic verschlüsseln\n\n<!-- micro-quiz:bp-01-kerberos-best-practices-micro-1 -->\n## Zusammenfassung\n\nKerberos ist ein robustes Authentifizierungsprotokoll, das:\n- **Ticket-basierte Authentifizierung** für sichere Netzwerkzugriffe bietet\n- **Single Sign-On** ermöglicht\n- **Mutual Authentication** zwischen Client und Server gewährleistet\n- In vielen Enterprise-Umgebungen (Active Directory) eingesetzt wird\n- Zeitsynchronisation und zentrale KDC-Verwaltung erfordert\n\nFür die IHK-Prüfung wichtig:\n- Verstehe die drei Authentifizierungsschritte (AS, TGS, Service)\n- Kenne die Komponenten (KDC, Principals, Tickets, Realm)\n- Verstehe Vor- und Nachteile\n- Kenne praktische Anwendungsfälle (Active Directory)\n\n\n\n<!-- micro-quiz:kerberos-quiz -->\n<!-- micro-quiz:bp-01-kerberos-zusammenfassung-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "bash",
@@ -42,7 +44,9 @@
       "explanation": "Java-Implementierung für Kerberos-Authentifizierung mit JAAS und GSS-API. Zeigt Login, Service-Ticket-Anforderung und Ticket-Validierung."
     }
   ],
-  "relatedQuizzes": ["kerberos-quiz"],
+  "relatedQuizzes": [
+    "kerberos-quiz"
+  ],
   "resources": [
     {
       "title": "RFC 4120 - The Kerberos Network Authentication Service (V5)",
@@ -63,10 +67,129 @@
   "lastUpdated": "2025-01-05T10:00:00Z",
   "version": "1.0",
   "learningObjectives": [
-    "Understand kerberos",
-    "Understand authentifizierung",
-    "Understand sicherheit",
-    "Understand tickets",
-    "Understand kdc"
+    "Du kannst kerberos erklären",
+    "Du kannst authentifizierung erklären",
+    "Du kannst sicherheit erklären",
+    "Du kannst tickets erklären",
+    "Du kannst kdc erklären"
+  ],
+  "summary": "Verstehe das Kerberos-Protokoll für sichere Authentifizierung in Netzwerken und lerne, wie Tickets, KDC und Principals zusammenarbeiten.",
+  "contentOutline": [
+    {
+      "id": "kerberos-authentifizierung-und-zugriffskontrolle",
+      "title": "Kerberos-Authentifizierung und Zugriffskontrolle",
+      "summary": "Kernaspekt: Kerberos-Authentifizierung und Zugriffskontrolle"
+    },
+    {
+      "id": "was-ist-kerberos",
+      "title": "Was ist Kerberos?",
+      "summary": "Kernaspekt: Was ist Kerberos?"
+    },
+    {
+      "id": "kernkomponenten-von-kerberos",
+      "title": "Kernkomponenten von Kerberos",
+      "summary": "Kernaspekt: Kernkomponenten von Kerberos"
+    },
+    {
+      "id": "kerberos-authentifizierungsprozess",
+      "title": "Kerberos-Authentifizierungsprozess",
+      "summary": "Kernaspekt: Kerberos-Authentifizierungsprozess"
+    },
+    {
+      "id": "sicherheitsmechanismen",
+      "title": "Sicherheitsmechanismen",
+      "summary": "Kernaspekt: Sicherheitsmechanismen"
+    },
+    {
+      "id": "vorteile-von-kerberos",
+      "title": "Vorteile von Kerberos",
+      "summary": "Kernaspekt: Vorteile von Kerberos"
+    },
+    {
+      "id": "nachteile-und-herausforderungen",
+      "title": "Nachteile und Herausforderungen",
+      "summary": "Kernaspekt: Nachteile und Herausforderungen"
+    },
+    {
+      "id": "praktische-anwendungsfalle",
+      "title": "Praktische Anwendungsfälle",
+      "summary": "Kernaspekt: Praktische Anwendungsfälle"
+    },
+    {
+      "id": "kerberos-ticket-anfordern",
+      "title": "Kerberos-Ticket anfordern",
+      "summary": "Kernaspekt: Kerberos-Ticket anfordern"
+    },
+    {
+      "id": "aktuelle-tickets-anzeigen",
+      "title": "Aktuelle Tickets anzeigen",
+      "summary": "Kernaspekt: Aktuelle Tickets anzeigen"
+    },
+    {
+      "id": "ticket-loschen-logout",
+      "title": "Ticket löschen (Logout)",
+      "summary": "Kernaspekt: Ticket löschen (Logout)"
+    },
+    {
+      "id": "ssh-mit-kerberos",
+      "title": "SSH mit Kerberos",
+      "summary": "Kernaspekt: SSH mit Kerberos"
+    },
+    {
+      "id": "kerberos-vs-andere-authentifizierungsmethoden",
+      "title": "Kerberos vs. andere Authentifizierungsmethoden",
+      "summary": "Kernaspekt: Kerberos vs. andere Authentifizierungsmethoden"
+    },
+    {
+      "id": "konfigurationsbeispiel",
+      "title": "Konfigurationsbeispiel",
+      "summary": "Kernaspekt: Konfigurationsbeispiel"
+    },
+    {
+      "id": "auf-dem-kdc",
+      "title": "Auf dem KDC",
+      "summary": "Kernaspekt: Auf dem KDC"
+    },
+    {
+      "id": "principal-fur-webserver-erstellen",
+      "title": "Principal für Webserver erstellen",
+      "summary": "Kernaspekt: Principal für Webserver erstellen"
+    },
+    {
+      "id": "keytab-datei-exportieren",
+      "title": "Keytab-Datei exportieren",
+      "summary": "Kernaspekt: Keytab-Datei exportieren"
+    },
+    {
+      "id": "troubleshooting",
+      "title": "Troubleshooting",
+      "summary": "Kernaspekt: Troubleshooting"
+    },
+    {
+      "id": "best-practices",
+      "title": "Best Practices",
+      "summary": "Kernaspekt: Best Practices"
+    },
+    {
+      "id": "zusammenfassung",
+      "title": "Zusammenfassung",
+      "summary": "Kernaspekt: Zusammenfassung"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-01-kerberos-was-ist-kerberos-micro-1",
+    "bp-01-kerberos-kernkomponenten-von-kerberos-micro-1",
+    "bp-01-kerberos-kerberos-authentifizierungsprozess-micro-1",
+    "bp-01-kerberos-sicherheitsmechanismen-micro-1",
+    "bp-01-kerberos-vorteile-von-kerberos-micro-1",
+    "bp-01-kerberos-nachteile-und-herausforderungen-micro-1",
+    "bp-01-kerberos-praktische-anwendungsfalle-micro-1",
+    "bp-01-kerberos-kerberos-vs-andere-authentifizierungsmethoden-micro-1",
+    "bp-01-kerberos-konfigurationsbeispiel-micro-1",
+    "bp-01-kerberos-troubleshooting-micro-1",
+    "bp-01-kerberos-best-practices-micro-1",
+    "bp-01-kerberos-zusammenfassung-micro-1"
   ]
 }

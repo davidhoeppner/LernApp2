@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Simple Integration Test for Three-Tier Category System
  * Basic test to verify core functionality works

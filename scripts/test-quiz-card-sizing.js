@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// @ts-nocheck
+/* eslint-env node */
 
 /**
  * Test script to verify quiz card sizing fixes

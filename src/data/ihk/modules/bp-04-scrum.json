@@ -20,7 +20,7 @@
     "Scrum Master",
     "Neu 2025"
   ],
-  "content": "# Scrum - Agiles Projektmanagement\n\n## Was ist Scrum?\n\nScrum ist ein **agiles Framework** für die Entwicklung, Lieferung und Wartung komplexer Produkte. Es basiert auf empirischer Prozesssteuerung und setzt auf Transparenz, Überprüfung und Anpassung.\n\n### Scrum-Werte\n\n- **Commitment** (Selbstverpflichtung): Das Team verpflichtet sich, die Sprint-Ziele zu erreichen\n- **Focus** (Fokus): Konzentration auf die Sprint-Arbeit\n- **Openness** (Offenheit): Transparenz über Fortschritt und Probleme\n- **Respect** (Respekt): Gegenseitiger Respekt im Team\n- **Courage** (Mut): Mut, schwierige Probleme anzugehen\n\n## Die drei Scrum-Rollen\n\n### 1. Product Owner (PO)\n\n**Verantwortlichkeiten:**\n- Maximierung des Produktwerts\n- Verwaltung des Product Backlogs\n- Priorisierung der Anforderungen\n- Kommunikation mit Stakeholdern\n- Akzeptanz der Arbeitsergebnisse\n\n**Wichtig:** Der Product Owner ist **eine Person**, kein Komitee!\n\n### 2. Scrum Master (SM)\n\n**Verantwortlichkeiten:**\n- Sicherstellen, dass Scrum verstanden und gelebt wird\n- Beseitigung von Hindernissen (Impediments)\n- Moderation der Scrum-Events\n- Coaching des Teams und der Organisation\n- Schutz des Teams vor externen Störungen\n\n**Wichtig:** Der Scrum Master ist **kein Projektleiter**, sondern ein Servant Leader!\n\n### 3. Development Team (Entwicklungsteam)\n\n**Eigenschaften:**\n- Selbstorganisierend und cross-funktional\n- 3-9 Mitglieder (optimal)\n- Gemeinsam verantwortlich für das Increment\n- Keine Sub-Teams oder Hierarchien\n- Alle Fähigkeiten zur Produkterstellung vorhanden\n\n## Die fünf Scrum-Events\n\n### 1. Sprint\n\n- **Dauer:** 1-4 Wochen (meist 2 Wochen)\n- **Ziel:** Erstellung eines nutzbaren Increments\n- **Regel:** Keine Änderungen, die das Sprint-Ziel gefährden\n\n```\n[Sprint 1] â†’ [Sprint 2] â†’ [Sprint 3] â†’ ...\n  2 Wochen    2 Wochen    2 Wochen\n```\n\n### 2. Sprint Planning\n\n- **Dauer:** Max. 8 Stunden für 4-Wochen-Sprint\n- **Teilnehmer:** Gesamtes Scrum Team\n- **Ergebnis:** Sprint Goal und Sprint Backlog\n\n**Zwei Hauptfragen:**\n1. **Was** kann in diesem Sprint geliefert werden?\n2. **Wie** wird die Arbeit erledigt?\n\n### 3. Daily Scrum (Daily Standup)\n\n- **Dauer:** Max. 15 Minuten\n- **Zeitpunkt:** Täglich zur gleichen Zeit\n- **Teilnehmer:** Development Team (PO und SM optional)\n\n**Drei Fragen:**\n1. Was habe ich gestern erreicht?\n2. Was werde ich heute tun?\n3. Welche Hindernisse gibt es?\n\n### 4. Sprint Review\n\n- **Dauer:** Max. 4 Stunden für 4-Wochen-Sprint\n- **Teilnehmer:** Scrum Team + Stakeholder\n- **Ziel:** Increment präsentieren und Feedback einholen\n\n**Aktivitäten:**\n- Demonstration des Increments\n- Diskussion über erreichte Ziele\n- Anpassung des Product Backlogs\n\n### 5. Sprint Retrospective\n\n- **Dauer:** Max. 3 Stunden für 4-Wochen-Sprint\n- **Teilnehmer:** Scrum Team\n- **Ziel:** Prozessverbesserung\n\n**Drei Fragen:**\n1. Was lief gut?\n2. Was kann verbessert werden?\n3. Was werden wir im nächsten Sprint anders machen?\n\n## Die drei Scrum-Artefakte\n\n### 1. Product Backlog\n\n- **Inhalt:** Geordnete Liste aller Anforderungen\n- **Verantwortlich:** Product Owner\n- **Eigenschaften:** Dynamisch, priorisiert, verfeinert\n\n**Beispiel-Einträge:**\n- User Stories\n- Bugfixes\n- Technische Verbesserungen\n- Wissensaufbau\n\n### 2. Sprint Backlog\n\n- **Inhalt:** Ausgewählte Product Backlog Items + Plan\n- **Verantwortlich:** Development Team\n- **Eigenschaften:** Für den aktuellen Sprint, detailliert\n\n**Besteht aus:**\n- Sprint Goal\n- Ausgewählte Product Backlog Items\n- Aufgaben zur Umsetzung\n\n### 3. Increment\n\n- **Definition:** Summe aller abgeschlossenen Product Backlog Items\n- **Zustand:** Potenziell auslieferbar\n- **Qualität:** Erfüllt die Definition of Done\n\n## Definition of Done (DoD)\n\n Die **Definition of Done** ist eine gemeinsame Vereinbarung darüber, wann ein Product Backlog Item als \"fertig\" gilt.\n\n**Beispiel DoD:**\n- âœ… Code geschrieben und reviewed\n- âœ… Unit Tests geschrieben und bestanden\n- âœ… Integration Tests erfolgreich\n- âœ… Dokumentation aktualisiert\n- âœ… Code in Main-Branch gemerged\n- âœ… Von Product Owner akzeptiert\n\n## User Stories\n\nUser Stories sind eine gängige Form, Anforderungen im Product Backlog zu beschreiben.\n\n**Format:**\n```\nAls [Rolle]\nmöchte ich [Funktionalität]\ndamit [Nutzen]\n```\n\n**Beispiel:**\n```\nAls Kunde\nmöchte ich meine Bestellhistorie einsehen\ndamit ich frühere Käufe nachvollziehen kann\n```\n\n**Akzeptanzkriterien:**\n- Liste der Bedingungen, die erfüllt sein müssen\n- Testbar und messbar\n- Vom Product Owner definiert\n\n## Story Points\n\nStory Points sind eine relative Schätzeinheit für den Aufwand von User Stories.\n\n**Fibonacci-Skala:** 1, 2, 3, 5, 8, 13, 21, ...\n\n- **1-2 Punkte:** Sehr kleine Aufgabe\n- **3-5 Punkte:** Kleine bis mittlere Aufgabe\n- **8-13 Punkte:** Große Aufgabe\n- **21+ Punkte:** Zu groß, sollte aufgeteilt werden\n\n## Scrum-Ablauf Visualisierung\n\n```\nProduct Backlog\n     â†“\n[Sprint Planning] â†’ Sprint Goal + Sprint Backlog\n     â†“\n[Sprint (2 Wochen)]\n  â”œâ”€ Daily Scrum (täglich 15 min)\n  â”œâ”€ Entwicklung\n  â””â”€ Testing\n     â†“\n[Sprint Review] â†’ Increment präsentieren\n     â†“\n[Sprint Retrospective] â†’ Prozess verbessern\n     â†“\n[Nächster Sprint]\n```\n\n## Praktische Szenarien\n\n### Szenario 1: Impediment im Sprint\n\n**Situation:** Das Development Team kann nicht weiterarbeiten, weil der Zugang zur Testumgebung fehlt.\n\n**Lösung:**\n- Team meldet Impediment im Daily Scrum\n- Scrum Master übernimmt die Beseitigung\n- Scrum Master koordiniert mit IT-Abteilung\n- Team arbeitet an anderen Sprint Backlog Items\n\n### Szenario 2: Neue dringende Anforderung\n\n**Situation:** Ein wichtiger Kunde fordert ein neues Feature während des Sprints.\n\n**Lösung:**\n- Product Owner nimmt Anforderung auf\n- Priorisierung im Product Backlog\n- **Nicht** in den laufenden Sprint aufnehmen\n- Im nächsten Sprint Planning berücksichtigen\n- Bei echter Notwendigkeit: Sprint abbrechen (selten!)\n\n### Szenario 3: Team erreicht Sprint Goal nicht\n\n**Situation:** Am Ende des Sprints sind nicht alle Sprint Backlog Items fertig.\n\n**Lösung:**\n- Fertige Items werden im Sprint Review präsentiert\n- Unfertige Items gehen zurück ins Product Backlog\n- In der Retrospective analysieren: Warum?\n- Verbesserungsmaßnahmen definieren\n- Velocity für nächste Planung anpassen\n\n## Vorteile von Scrum\n\nâœ… **Flexibilität:** Schnelle Anpassung an Änderungen\n\nâœ… **Transparenz:** Alle wissen, woran gearbeitet wird\n\nâœ… **Frühe Lieferung:** Regelmäßige Increments\n\nâœ… **Risikominimierung:** Frühe Problemerkennung\n\nâœ… **Kundenzufriedenheit:** Kontinuierliches Feedback\n\n## Häufige Fehler (Anti-Patterns)\n\nâŒ **Scrum-But:** \"Wir machen Scrum, aber...\"\n\nâŒ **Scrum Master als Projektleiter:** Falsche Rolleninterpretation\n\nâŒ **Kein echtes Increment:** Nichts ist wirklich fertig\n\nâŒ **Sprint Planning ohne Vorbereitung:** Product Backlog nicht refined\n\nâŒ **Daily Scrum als Status-Meeting:** Berichtet an Scrum Master statt Team-Synchronisation\n\n## Übungsaufgaben\n\n### Aufgabe 1: Rollen zuordnen\n\nOrdne die folgenden Aufgaben der richtigen Rolle zu:\n- Product Backlog priorisieren\n- Impediments beseitigen\n- Code schreiben und testen\n- Sprint Review moderieren\n- Definition of Done erstellen\n\n### Aufgabe 2: Event-Reihenfolge\n\nBringe die Scrum-Events in die richtige Reihenfolge für einen Sprint.\n\n### Aufgabe 3: Szenario-Analyse\n\nEin Stakeholder möchte im Daily Scrum teilnehmen und dem Team Aufgaben zuweisen. Was ist falsch daran und wie sollte es richtig sein?\n\n### Aufgabe 4: User Story schreiben\n\nSchreibe eine User Story für ein Login-Feature mit mindestens 3 Akzeptanzkriterien.\n\n## Zusammenfassung\n\nScrum ist ein leichtgewichtiges Framework für agile Produktentwicklung. Mit seinen klar definierten Rollen (Product Owner, Scrum Master, Development Team), Events (Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective) und Artefakten (Product Backlog, Sprint Backlog, Increment) ermöglicht es Teams, komplexe Produkte iterativ und inkrementell zu entwickeln.",
+  "content": "# Scrum - Agiles Projektmanagement\n\n## Was ist Scrum?\n\nScrum ist ein **agiles Framework** für die Entwicklung, Lieferung und Wartung komplexer Produkte. Es basiert auf empirischer Prozesssteuerung und setzt auf Transparenz, Überprüfung und Anpassung.\n\n### Scrum-Werte\n\n- **Commitment** (Selbstverpflichtung): Das Team verpflichtet sich, die Sprint-Ziele zu erreichen\n- **Focus** (Fokus): Konzentration auf die Sprint-Arbeit\n- **Openness** (Offenheit): Transparenz über Fortschritt und Probleme\n- **Respect** (Respekt): Gegenseitiger Respekt im Team\n- **Courage** (Mut): Mut, schwierige Probleme anzugehen\n\n<!-- micro-quiz:bp-04-scrum-was-ist-scrum-micro-1 -->\n## Die drei Scrum-Rollen\n\n### 1. Product Owner (PO)\n\n**Verantwortlichkeiten:**\n- Maximierung des Produktwerts\n- Verwaltung des Product Backlogs\n- Priorisierung der Anforderungen\n- Kommunikation mit Stakeholdern\n- Akzeptanz der Arbeitsergebnisse\n\n**Wichtig:** Der Product Owner ist **eine Person**, kein Komitee!\n\n### 2. Scrum Master (SM)\n\n**Verantwortlichkeiten:**\n- Sicherstellen, dass Scrum verstanden und gelebt wird\n- Beseitigung von Hindernissen (Impediments)\n- Moderation der Scrum-Events\n- Coaching des Teams und der Organisation\n- Schutz des Teams vor externen Störungen\n\n**Wichtig:** Der Scrum Master ist **kein Projektleiter**, sondern ein Servant Leader!\n\n### 3. Development Team (Entwicklungsteam)\n\n**Eigenschaften:**\n- Selbstorganisierend und cross-funktional\n- 3-9 Mitglieder (optimal)\n- Gemeinsam verantwortlich für das Increment\n- Keine Sub-Teams oder Hierarchien\n- Alle Fähigkeiten zur Produkterstellung vorhanden\n\n## Die fünf Scrum-Events\n<!-- micro-quiz:bp-04-scrum-die-drei-scrum-rollen-micro-1 -->\n\n\n### 1. Sprint\n\n- **Dauer:** 1-4 Wochen (meist 2 Wochen)\n- **Ziel:** Erstellung eines nutzbaren Increments\n- **Regel:** Keine Änderungen, die das Sprint-Ziel gefährden\n\n```\n[Sprint 1] â†’ [Sprint 2] â†’ [Sprint 3] â†’ ...\n  2 Wochen    2 Wochen    2 Wochen\n```\n\n### 2. Sprint Planning\n\n- **Dauer:** Max. 8 Stunden für 4-Wochen-Sprint\n- **Teilnehmer:** Gesamtes Scrum Team\n- **Ergebnis:** Sprint Goal und Sprint Backlog\n\n**Zwei Hauptfragen:**\n1. **Was** kann in diesem Sprint geliefert werden?\n2. **Wie** wird die Arbeit erledigt?\n\n### 3. Daily Scrum (Daily Standup)\n\n- **Dauer:** Max. 15 Minuten\n- **Zeitpunkt:** Täglich zur gleichen Zeit\n- **Teilnehmer:** Development Team (PO und SM optional)\n\n**Drei Fragen:**\n1. Was habe ich gestern erreicht?\n2. Was werde ich heute tun?\n3. Welche Hindernisse gibt es?\n\n### 4. Sprint Review\n\n- **Dauer:** Max. 4 Stunden für 4-Wochen-Sprint\n- **Teilnehmer:** Scrum Team + Stakeholder\n- **Ziel:** Increment präsentieren und Feedback einholen\n\n**Aktivitäten:**\n- Demonstration des Increments\n- Diskussion über erreichte Ziele\n- Anpassung des Product Backlogs\n\n### 5. Sprint Retrospective\n\n- **Dauer:** Max. 3 Stunden für 4-Wochen-Sprint\n- **Teilnehmer:** Scrum Team\n- **Ziel:** Prozessverbesserung\n\n**Drei Fragen:**\n1. Was lief gut?\n2. Was kann verbessert werden?\n3. Was werden wir im nächsten Sprint anders machen?\n\n<!-- micro-quiz:bp-04-scrum-die-funf-scrum-events-micro-1 -->\n## Die drei Scrum-Artefakte\n\n### 1. Product Backlog\n\n- **Inhalt:** Geordnete Liste aller Anforderungen\n- **Verantwortlich:** Product Owner\n- **Eigenschaften:** Dynamisch, priorisiert, verfeinert\n\n**Beispiel-Einträge:**\n- User Stories\n- Bugfixes\n- Technische Verbesserungen\n- Wissensaufbau\n\n### 2. Sprint Backlog\n\n- **Inhalt:** Ausgewählte Product Backlog Items + Plan\n- **Verantwortlich:** Development Team\n- **Eigenschaften:** Für den aktuellen Sprint, detailliert\n\n**Besteht aus:**\n- Sprint Goal\n- Ausgewählte Product Backlog Items\n- Aufgaben zur Umsetzung\n\n### 3. Increment\n\n- **Definition:** Summe aller abgeschlossenen Product Backlog Items\n- **Zustand:** Potenziell auslieferbar\n- **Qualität:** Erfüllt die Definition of Done\n\n## Definition of Done (DoD)\n<!-- micro-quiz:bp-04-scrum-die-drei-scrum-artefakte-micro-1 -->\n\n\n Die **Definition of Done** ist eine gemeinsame Vereinbarung darüber, wann ein Product Backlog Item als \"fertig\" gilt.\n\n**Beispiel DoD:**\n- âœ… Code geschrieben und reviewed\n- âœ… Unit Tests geschrieben und bestanden\n- âœ… Integration Tests erfolgreich\n- âœ… Dokumentation aktualisiert\n- âœ… Code in Main-Branch gemerged\n- âœ… Von Product Owner akzeptiert\n\n<!-- micro-quiz:bp-04-scrum-definition-of-done-dod-micro-1 -->\n## User Stories\n\nUser Stories sind eine gängige Form, Anforderungen im Product Backlog zu beschreiben.\n\n**Format:**\n```\nAls [Rolle]\nmöchte ich [Funktionalität]\ndamit [Nutzen]\n```\n\n**Beispiel:**\n```\nAls Kunde\nmöchte ich meine Bestellhistorie einsehen\ndamit ich frühere Käufe nachvollziehen kann\n```\n\n**Akzeptanzkriterien:**\n- Liste der Bedingungen, die erfüllt sein müssen\n- Testbar und messbar\n- Vom Product Owner definiert\n\n## Story Points\n<!-- micro-quiz:bp-04-scrum-user-stories-micro-1 -->\n\n\nStory Points sind eine relative Schätzeinheit für den Aufwand von User Stories.\n\n**Fibonacci-Skala:** 1, 2, 3, 5, 8, 13, 21, ...\n\n- **1-2 Punkte:** Sehr kleine Aufgabe\n- **3-5 Punkte:** Kleine bis mittlere Aufgabe\n- **8-13 Punkte:** Große Aufgabe\n- **21+ Punkte:** Zu groß, sollte aufgeteilt werden\n\n<!-- micro-quiz:bp-04-scrum-story-points-micro-1 -->\n## Scrum-Ablauf Visualisierung\n\n```\nProduct Backlog\n     â†“\n[Sprint Planning] â†’ Sprint Goal + Sprint Backlog\n     â†“\n[Sprint (2 Wochen)]\n  â”œâ”€ Daily Scrum (täglich 15 min)\n  â”œâ”€ Entwicklung\n  â””â”€ Testing\n     â†“\n[Sprint Review] â†’ Increment präsentieren\n     â†“\n[Sprint Retrospective] â†’ Prozess verbessern\n     â†“\n[Nächster Sprint]\n```\n\n## Praktische Szenarien\n<!-- micro-quiz:bp-04-scrum-scrum-ablauf-visualisierung-micro-1 -->\n\n\n### Szenario 1: Impediment im Sprint\n\n**Situation:** Das Development Team kann nicht weiterarbeiten, weil der Zugang zur Testumgebung fehlt.\n\n**Lösung:**\n- Team meldet Impediment im Daily Scrum\n- Scrum Master übernimmt die Beseitigung\n- Scrum Master koordiniert mit IT-Abteilung\n- Team arbeitet an anderen Sprint Backlog Items\n\n### Szenario 2: Neue dringende Anforderung\n\n**Situation:** Ein wichtiger Kunde fordert ein neues Feature während des Sprints.\n\n**Lösung:**\n- Product Owner nimmt Anforderung auf\n- Priorisierung im Product Backlog\n- **Nicht** in den laufenden Sprint aufnehmen\n- Im nächsten Sprint Planning berücksichtigen\n- Bei echter Notwendigkeit: Sprint abbrechen (selten!)\n\n### Szenario 3: Team erreicht Sprint Goal nicht\n\n**Situation:** Am Ende des Sprints sind nicht alle Sprint Backlog Items fertig.\n\n**Lösung:**\n- Fertige Items werden im Sprint Review präsentiert\n- Unfertige Items gehen zurück ins Product Backlog\n- In der Retrospective analysieren: Warum?\n- Verbesserungsmaßnahmen definieren\n- Velocity für nächste Planung anpassen\n\n<!-- micro-quiz:bp-04-scrum-praktische-szenarien-micro-1 -->\n## Vorteile von Scrum\n\nâœ… **Flexibilität:** Schnelle Anpassung an Änderungen\n\nâœ… **Transparenz:** Alle wissen, woran gearbeitet wird\n\nâœ… **Frühe Lieferung:** Regelmäßige Increments\n\nâœ… **Risikominimierung:** Frühe Problemerkennung\n\nâœ… **Kundenzufriedenheit:** Kontinuierliches Feedback\n\n## Häufige Fehler (Anti-Patterns)\n<!-- micro-quiz:bp-04-scrum-vorteile-von-scrum-micro-1 -->\n\n\nâŒ **Scrum-But:** \"Wir machen Scrum, aber...\"\n\nâŒ **Scrum Master als Projektleiter:** Falsche Rolleninterpretation\n\nâŒ **Kein echtes Increment:** Nichts ist wirklich fertig\n\nâŒ **Sprint Planning ohne Vorbereitung:** Product Backlog nicht refined\n\nâŒ **Daily Scrum als Status-Meeting:** Berichtet an Scrum Master statt Team-Synchronisation\n\n<!-- micro-quiz:bp-04-scrum-haufige-fehler-anti-patterns-micro-1 -->\n## Übungsaufgaben\n\n### Aufgabe 1: Rollen zuordnen\n\nOrdne die folgenden Aufgaben der richtigen Rolle zu:\n- Product Backlog priorisieren\n- Impediments beseitigen\n- Code schreiben und testen\n- Sprint Review moderieren\n- Definition of Done erstellen\n\n### Aufgabe 2: Event-Reihenfolge\n\nBringe die Scrum-Events in die richtige Reihenfolge für einen Sprint.\n\n### Aufgabe 3: Szenario-Analyse\n\nEin Stakeholder möchte im Daily Scrum teilnehmen und dem Team Aufgaben zuweisen. Was ist falsch daran und wie sollte es richtig sein?\n\n### Aufgabe 4: User Story schreiben\n\nSchreibe eine User Story für ein Login-Feature mit mindestens 3 Akzeptanzkriterien.\n\n## Zusammenfassung\n<!-- micro-quiz:bp-04-scrum-ubungsaufgaben-micro-1 -->\n\n\nScrum ist ein leichtgewichtiges Framework für agile Produktentwicklung. Mit seinen klar definierten Rollen (Product Owner, Scrum Master, Development Team), Events (Sprint, Sprint Planning, Daily Scrum, Sprint Review, Sprint Retrospective) und Artefakten (Product Backlog, Sprint Backlog, Increment) ermöglicht es Teams, komplexe Produkte iterativ und inkrementell zu entwickeln.\n\n\n\n<!-- micro-quiz:scrum-quiz-2025 -->\n<!-- micro-quiz:bp-04-scrum-zusammenfassung-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "markdown",
@@ -41,7 +41,9 @@
       "explanation": "Eine Sprint Retrospective dokumentiert, was gut lief, was verbessert werden kann und definiert konkrete Action Items mit Verantwortlichkeiten für den nächsten Sprint."
     }
   ],
-  "relatedQuizzes": ["scrum-quiz-2025"],
+  "relatedQuizzes": [
+    "scrum-quiz-2025"
+  ],
   "resources": [
     {
       "title": "Scrum Guide (offiziell)",
@@ -57,10 +59,100 @@
   "lastUpdated": "2025-01-10T00:00:00Z",
   "version": "1.0",
   "learningObjectives": [
-    "Understand Scrum",
-    "Understand Agile",
-    "Understand Projektmanagement",
-    "Understand Sprint",
-    "Understand Product Owner"
+    "Du kannst scrum erklären",
+    "Du kannst agile erklären",
+    "Du kannst projektmanagement erklären",
+    "Du kannst sprint erklären",
+    "Du kannst product Owner erklären"
+  ],
+  "summary": "Verstehe das Scrum-Framework mit seinen Rollen, Events und Artefakten für agile Softwareentwicklung.",
+  "contentOutline": [
+    {
+      "id": "scrum---agiles-projektmanagement",
+      "title": "Scrum - Agiles Projektmanagement",
+      "summary": "Kernaspekt: Scrum - Agiles Projektmanagement"
+    },
+    {
+      "id": "was-ist-scrum",
+      "title": "Was ist Scrum?",
+      "summary": "Kernaspekt: Was ist Scrum?"
+    },
+    {
+      "id": "die-drei-scrum-rollen",
+      "title": "Die drei Scrum-Rollen",
+      "summary": "Kernaspekt: Die drei Scrum-Rollen"
+    },
+    {
+      "id": "die-funf-scrum-events",
+      "title": "Die fünf Scrum-Events",
+      "summary": "Kernaspekt: Die fünf Scrum-Events"
+    },
+    {
+      "id": "die-drei-scrum-artefakte",
+      "title": "Die drei Scrum-Artefakte",
+      "summary": "Kernaspekt: Die drei Scrum-Artefakte"
+    },
+    {
+      "id": "definition-of-done-dod",
+      "title": "Definition of Done (DoD)",
+      "summary": "Kernaspekt: Definition of Done (DoD)"
+    },
+    {
+      "id": "user-stories",
+      "title": "User Stories",
+      "summary": "Kernaspekt: User Stories"
+    },
+    {
+      "id": "story-points",
+      "title": "Story Points",
+      "summary": "Kernaspekt: Story Points"
+    },
+    {
+      "id": "scrum-ablauf-visualisierung",
+      "title": "Scrum-Ablauf Visualisierung",
+      "summary": "Kernaspekt: Scrum-Ablauf Visualisierung"
+    },
+    {
+      "id": "praktische-szenarien",
+      "title": "Praktische Szenarien",
+      "summary": "Kernaspekt: Praktische Szenarien"
+    },
+    {
+      "id": "vorteile-von-scrum",
+      "title": "Vorteile von Scrum",
+      "summary": "Kernaspekt: Vorteile von Scrum"
+    },
+    {
+      "id": "haufige-fehler-anti-patterns",
+      "title": "Häufige Fehler (Anti-Patterns)",
+      "summary": "Kernaspekt: Häufige Fehler (Anti-Patterns)"
+    },
+    {
+      "id": "ubungsaufgaben",
+      "title": "Übungsaufgaben",
+      "summary": "Kernaspekt: Übungsaufgaben"
+    },
+    {
+      "id": "zusammenfassung",
+      "title": "Zusammenfassung",
+      "summary": "Kernaspekt: Zusammenfassung"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-04-scrum-was-ist-scrum-micro-1",
+    "bp-04-scrum-die-drei-scrum-rollen-micro-1",
+    "bp-04-scrum-die-funf-scrum-events-micro-1",
+    "bp-04-scrum-die-drei-scrum-artefakte-micro-1",
+    "bp-04-scrum-definition-of-done-dod-micro-1",
+    "bp-04-scrum-user-stories-micro-1",
+    "bp-04-scrum-story-points-micro-1",
+    "bp-04-scrum-scrum-ablauf-visualisierung-micro-1",
+    "bp-04-scrum-praktische-szenarien-micro-1",
+    "bp-04-scrum-vorteile-von-scrum-micro-1",
+    "bp-04-scrum-haufige-fehler-anti-patterns-micro-1",
+    "bp-04-scrum-ubungsaufgaben-micro-1",
+    "bp-04-scrum-zusammenfassung-micro-1"
   ]
 }

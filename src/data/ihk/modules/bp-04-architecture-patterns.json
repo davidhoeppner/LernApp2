@@ -20,17 +20,53 @@
     "Software-Design",
     "Neu 2025"
   ],
-  "content": "# Architektur-Pattern\n\n## Einführung\n\nArchitektur-Pattern sind bewährte Lösungen für die Strukturierung von Software-Systemen.\n\n## 1. Model-View-Controller (MVC)\n\nMVC trennt eine Anwendung in drei Hauptkomponenten: Model, View und Controller.\n\n## 2. Layered Architecture\n\nDie Anwendung wird in horizontale Schichten aufgeteilt.\n\n## 3. Microservices Architecture\n\nDie Anwendung wird in kleine, unabhängige Services aufgeteilt.",
+  "content": "# Architektur-Pattern\n\n## Einführung\n\nArchitektur-Pattern sind bewährte Lösungen für die Strukturierung von Software-Systemen.\n\n<!-- micro-quiz:bp-04-architecture-patterns-einfuhrung-micro-1 -->\n## 1. Model-View-Controller (MVC)\n\nMVC trennt eine Anwendung in drei Hauptkomponenten: Model, View und Controller.\n\n## 2. Layered Architecture\n<!-- micro-quiz:bp-04-architecture-patterns-1-model-view-controller-mvc-micro-1 -->\n\n\nDie Anwendung wird in horizontale Schichten aufgeteilt.\n\n<!-- micro-quiz:bp-04-architecture-patterns-2-layered-architecture-micro-1 -->\n## 3. Microservices Architecture\n\nDie Anwendung wird in kleine, unabhängige Services aufgeteilt.\n\n\n<!-- micro-quiz:bp-04-architecture-patterns-3-microservices-architecture-micro-1 -->",
   "codeExamples": [],
   "relatedQuizzes": [],
   "resources": [],
   "lastUpdated": "2025-01-10T00:00:00Z",
   "version": "1.0",
   "learningObjectives": [
-    "Understand Architektur",
-    "Understand MVC",
-    "Understand Layered Architecture",
-    "Understand Microservices",
-    "Understand Design Patterns"
+    "Du kannst architektur erklären",
+    "Du kannst mVC erklären",
+    "Du kannst layered Architecture erklären",
+    "Du kannst microservices erklären",
+    "Du kannst design Patterns erklären"
+  ],
+  "summary": "Verstehe wichtige Software-Architektur-Pattern wie MVC, Layered Architecture und Microservices für strukturierte Softwareentwicklung.",
+  "contentOutline": [
+    {
+      "id": "architektur-pattern",
+      "title": "Architektur-Pattern",
+      "summary": "Kernaspekt: Architektur-Pattern"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "1-model-view-controller-mvc",
+      "title": "1. Model-View-Controller (MVC)",
+      "summary": "Kernaspekt: 1. Model-View-Controller (MVC)"
+    },
+    {
+      "id": "2-layered-architecture",
+      "title": "2. Layered Architecture",
+      "summary": "Kernaspekt: 2. Layered Architecture"
+    },
+    {
+      "id": "3-microservices-architecture",
+      "title": "3. Microservices Architecture",
+      "summary": "Kernaspekt: 3. Microservices Architecture"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-04-architecture-patterns-einfuhrung-micro-1",
+    "bp-04-architecture-patterns-1-model-view-controller-mvc-micro-1",
+    "bp-04-architecture-patterns-2-layered-architecture-micro-1",
+    "bp-04-architecture-patterns-3-microservices-architecture-micro-1"
   ]
 }

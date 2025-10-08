@@ -1,0 +1,75 @@
+{
+  "id": "bp-03-rest-api-http-status-codes-micro-1",
+  "moduleId": "bp-03-rest-api",
+  "title": "HTTP-Status-Codes — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welcher Status-Code signalisiert erfolgreiche Erstellung?",
+      "options": [
+        "200 OK",
+        "201 Created",
+        "204 No Content",
+        "409 Conflict"
+      ],
+      "correctAnswer": "201 Created",
+      "explanation": "201 wird bei erfolgreichem Anlegen einer Ressource verwendet.",
+      "points": 1,
+      "category": "HTTP-Status"
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "question": "Welche 4xx Codes deuten auf Client-Fehler hin?",
+      "options": [
+        "200",
+        "400",
+        "401",
+        "404",
+        "500"
+      ],
+      "correctAnswer": [
+        "400",
+        "401",
+        "404"
+      ],
+      "explanation": "4xx = Clientfehler, 5xx = Serverfehler.",
+      "points": 1,
+      "category": "HTTP-Status"
+    },
+    {
+      "id": "q3",
+      "type": "true-false",
+      "question": "404 Not Found kann für nicht existente Ressourcen genutzt werden.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "404 ist Standard bei unbekannter Ressource.",
+      "points": 1,
+      "category": "HTTP-Status"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Welcher Code ist geeignet bei zu vielen Anfragen?",
+      "options": [
+        "422 Unprocessable Entity",
+        "301 Moved Permanently",
+        "429 Too Many Requests",
+        "503 Service Unavailable"
+      ],
+      "correctAnswer": "429 Too Many Requests",
+      "explanation": "429 kennzeichnet Rate Limit Überschreitung.",
+      "points": 1,
+      "category": "HTTP-Status"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"HTTP-Status-Codes\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

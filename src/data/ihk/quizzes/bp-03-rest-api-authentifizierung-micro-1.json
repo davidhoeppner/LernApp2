@@ -1,0 +1,59 @@
+{
+  "id": "bp-03-rest-api-authentifizierung-micro-1",
+  "moduleId": "bp-03-rest-api",
+  "title": "Authentifizierung — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was enthält typischerweise ein JWT im Payload (Claims)?",
+      "options": [
+        "Signatur Algorithmus",
+        "Benutzer- und Gültigkeitsinformationen",
+        "SSL-Zertifikat",
+        "HTTP-Status-Code"
+      ],
+      "correctAnswer": "Benutzer- und Gültigkeitsinformationen",
+      "explanation": "Claims transportieren Identität & Ablauf.",
+      "points": 1,
+      "category": "Auth"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Ein API Key identifiziert meist nur das aufrufende System, nicht zwingend einen Endnutzer.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "API Keys sind oft system-/anwendungsbasiert.",
+      "points": 1,
+      "category": "Auth"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Schritte gehören typischerweise zum OAuth 2.0 Authorization Code Flow?",
+      "options": [
+        "Authorization Request",
+        "Token Exchange",
+        "Direkte Passwortübertragung an Resource Server",
+        "Verwendung eines Authorization Codes"
+      ],
+      "correctAnswer": [
+        "Authorization Request",
+        "Token Exchange",
+        "Verwendung eines Authorization Codes"
+      ],
+      "explanation": "Passwörter werden nicht direkt an Resource Server weitergereicht.",
+      "points": 1,
+      "category": "Auth"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"Authentifizierung\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

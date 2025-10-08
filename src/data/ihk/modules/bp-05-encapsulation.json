@@ -11,17 +11,46 @@
   "important": true,
   "estimatedTime": 30,
   "prerequisites": [],
-  "tags": ["OOP", "Kapselung", "Encapsulation", "Information Hiding"],
-  "content": "# Kapselung (Encapsulation)\n\n## Einführung\n\nKapselung ist ein grundlegendes Prinzip der objektorientierten Programmierung.\n\n## Konzept\n\nKapselung bedeutet, dass Daten und Methoden in einer Klasse zusammengefasst werden und der Zugriff kontrolliert wird.",
+  "tags": [
+    "OOP",
+    "Kapselung",
+    "Encapsulation",
+    "Information Hiding"
+  ],
+  "content": "# Kapselung (Encapsulation)\n\n## Einführung\n\nKapselung ist ein grundlegendes Prinzip der objektorientierten Programmierung.\n\n<!-- micro-quiz:bp-05-encapsulation-einfuhrung-micro-1 -->\n## Konzept\n\nKapselung bedeutet, dass Daten und Methoden in einer Klasse zusammengefasst werden und der Zugriff kontrolliert wird.\n\n\n<!-- micro-quiz:bp-05-encapsulation-konzept-micro-1 -->",
   "codeExamples": [],
   "relatedQuizzes": [],
   "resources": [],
   "lastUpdated": "2025-01-10T00:00:00Z",
   "version": "1.0",
   "learningObjectives": [
-    "Understand OOP",
-    "Understand Kapselung",
-    "Understand Encapsulation",
-    "Understand Information Hiding"
+    "Du kannst oOP erklären",
+    "Du kannst kapselung erklären",
+    "Du kannst encapsulation erklären",
+    "Du kannst information Hiding erklären"
+  ],
+  "summary": "Verstehe das Prinzip der Kapselung in der objektorientierten Programmierung.",
+  "contentOutline": [
+    {
+      "id": "kapselung-encapsulation",
+      "title": "Kapselung (Encapsulation)",
+      "summary": "Kernaspekt: Kapselung (Encapsulation)"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "konzept",
+      "title": "Konzept",
+      "summary": "Kernaspekt: Konzept"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-05-encapsulation-einfuhrung-micro-1",
+    "bp-05-encapsulation-konzept-micro-1"
   ]
 }

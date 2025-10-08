@@ -10,7 +10,9 @@
   "removedIn2025": false,
   "important": false,
   "estimatedTime": 55,
-  "prerequisites": ["bp-dpa-03-bpmn-fundamentals"],
+  "prerequisites": [
+    "bp-dpa-03-bpmn-fundamentals"
+  ],
   "tags": [
     "lean",
     "six-sigma",
@@ -20,7 +22,7 @@
     "pdca",
     "prozessoptimierung"
   ],
-  "content": "# Lean & Six Sigma integrierte Prozessverbesserung\n\n## Einführung\nLean fokussiert auf Fluss & Verschwendungsreduktion, Six Sigma auf Variabilität & Fehlerreduktion. Kombiniert ermöglichen sie schnell wirksame (Lean) und nachhaltig stabile (Six Sigma) Verbesserungen.\n\n## Lean Grundlagen\n8 Verschwendungsarten (TIMWOODS): Transport, Inventory (Bestände), Motion (Bewegung), Waiting, Overproduction, Overprocessing (Überbearbeitung), Defects (Fehler), Skills (ungenutztes Potenzial).\nValue Stream Mapping (VSM) visualisiert Material- & Informationsfluss zur Identifikation nicht-wertschöpfender Schritte.\n\n## Six Sigma Überblick\nDMAIC-Phasen: Define (Problem & CTQ), Measure (Ist-Leistung), Analyze (Ursachen), Improve (Lösungen), Control (Verankerung). Fokus im Kontext BP-DPA: Strukturierter, datengetriebener Problemlösungsrahmen ohne tiefgehende Statistik.\n\n## Integration Lean + Six Sigma\n| Lean Fokus | Six Sigma Fokus | Synergie |\n|-----------|----------------|---------|\n| Verschwendung minimieren | Varianz reduzieren | Stabiler, schneller Prozess |\n| Fluss & Pull | Statistische Ursachenanalyse | Nachhaltige Fehlervermeidung |\n| Schnelle Kaizen-Workshops | Strukturierte DMAIC-Projekte | Priorisierung & Nachhaltigkeit |\n\nTypische Reihenfolge: 1) Lean scoping (Verschwendung sichtbar), 2) Kurze Quick Wins, 3) Six Sigma tiefergehende Ursachenanalyse.\n\n## Werkzeuge & Auswahl\nLean: 5S, Kanban, VSM, Poka-Yoke.\nSix Sigma (vereinfachte Auswahl): SIPOC (Scope), CTQ-Matrix (Kundenanforderung), Ursache-Wirkungs-Diagramm.\nFehler: Verwechselung von Variation (Varianz) und Verschwendung (Muda); isolierte Einzelmaßnahmen ohne Control-Phase.\n\n## Kontinuierliche Verbesserung\nPDCA-Zyklus unterstützt kulturelle Verankerung. Kaizen Events: klarer Zeitrahmen, definierter Zielzustand, messbare Nachverfolgung (Baseline vs. Nachher).\nKPIs zur Wirksamkeitsprüfung: Durchlaufzeit ↓, Fehlerrate ↓, Variantenstabilität ↑.\n\n## Prüfungsrelevante Aspekte\n- 8 Verschwendungsarten (inkl. Skills)\n- Grundidee DMAIC-Phasen\n- Unterschied Variation vs. Verschwendung\n- Rolle von VSM und SIPOC\n- Kombination schneller Lean-Wins + nachhaltiger Six Sigma-Stabilisierung\n- PDCA als Verstetigungsmechanismus\n",
+  "content": "# Lean & Six Sigma integrierte Prozessverbesserung\n\n## Einführung\nLean fokussiert auf Fluss & Verschwendungsreduktion, Six Sigma auf Variabilität & Fehlerreduktion. Kombiniert ermöglichen sie schnell wirksame (Lean) und nachhaltig stabile (Six Sigma) Verbesserungen.\n\n<!-- micro-quiz:bp-dpa-03-lean-six-sigma-einfuhrung-micro-1 -->\n## Lean Grundlagen\n8 Verschwendungsarten (TIMWOODS): Transport, Inventory (Bestände), Motion (Bewegung), Waiting, Overproduction, Overprocessing (Überbearbeitung), Defects (Fehler), Skills (ungenutztes Potenzial).\nValue Stream Mapping (VSM) visualisiert Material- & Informationsfluss zur Identifikation nicht-wertschöpfender Schritte.\n\n## Six Sigma Überblick\n<!-- micro-quiz:bp-dpa-03-lean-six-sigma-lean-grundlagen-micro-1 -->\n\nDMAIC-Phasen: Define (Problem & CTQ), Measure (Ist-Leistung), Analyze (Ursachen), Improve (Lösungen), Control (Verankerung). Fokus im Kontext BP-DPA: Strukturierter, datengetriebener Problemlösungsrahmen ohne tiefgehende Statistik.\n\n<!-- micro-quiz:bp-dpa-03-lean-six-sigma-six-sigma-uberblick-micro-1 -->\n## Integration Lean + Six Sigma\n| Lean Fokus | Six Sigma Fokus | Synergie |\n|-----------|----------------|---------|\n| Verschwendung minimieren | Varianz reduzieren | Stabiler, schneller Prozess |\n| Fluss & Pull | Statistische Ursachenanalyse | Nachhaltige Fehlervermeidung |\n| Schnelle Kaizen-Workshops | Strukturierte DMAIC-Projekte | Priorisierung & Nachhaltigkeit |\n\nTypische Reihenfolge: 1) Lean scoping (Verschwendung sichtbar), 2) Kurze Quick Wins, 3) Six Sigma tiefergehende Ursachenanalyse.\n\n## Werkzeuge & Auswahl\n<!-- micro-quiz:bp-dpa-03-lean-six-sigma-integration-lean-six-sigma-micro-1 -->\n\nLean: 5S, Kanban, VSM, Poka-Yoke.\nSix Sigma (vereinfachte Auswahl): SIPOC (Scope), CTQ-Matrix (Kundenanforderung), Ursache-Wirkungs-Diagramm.\nFehler: Verwechselung von Variation (Varianz) und Verschwendung (Muda); isolierte Einzelmaßnahmen ohne Control-Phase.\n\n<!-- micro-quiz:bp-dpa-03-lean-six-sigma-werkzeuge-auswahl-micro-1 -->\n## Kontinuierliche Verbesserung\nPDCA-Zyklus unterstützt kulturelle Verankerung. Kaizen Events: klarer Zeitrahmen, definierter Zielzustand, messbare Nachverfolgung (Baseline vs. Nachher).\nKPIs zur Wirksamkeitsprüfung: Durchlaufzeit ↓, Fehlerrate ↓, Variantenstabilität ↑.\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-dpa-03-lean-six-sigma-kontinuierliche-verbesserung-micro-1 -->\n\n- 8 Verschwendungsarten (inkl. Skills)\n- Grundidee DMAIC-Phasen\n- Unterschied Variation vs. Verschwendung\n- Rolle von VSM und SIPOC\n- Kombination schneller Lean-Wins + nachhaltiger Six Sigma-Stabilisierung\n- PDCA als Verstetigungsmechanismus\n\n\n\n\n<!-- micro-quiz:bp-dpa-03-lean-six-sigma-quiz -->\n<!-- micro-quiz:bp-dpa-03-lean-six-sigma-prufungsrelevante-aspekte-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "python",
@@ -29,7 +31,9 @@
       "explanation": "Pareto zeigt Fokus auf wenige Fehlerklassen mit größtem Einfluss (80/20 Heuristik)."
     }
   ],
-  "relatedQuizzes": ["bp-dpa-03-lean-six-sigma-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-03-lean-six-sigma-quiz"
+  ],
   "resources": [
     {
       "title": "Lean Waste Übersicht",
@@ -43,11 +47,11 @@
     }
   ],
   "learningObjectives": [
-    "8 Verschwendungsarten identifizieren",
-    "DMAIC-Phasen in Grundzügen erläutern",
-    "Lean- und Six-Sigma-Ziele abgrenzen",
-    "Value Stream Mapping als Analysewerkzeug einordnen",
-    "PDCA zur Verstetigung anwenden"
+    "Du kannst 8 Verschwendungsarten identifizieren erklären",
+    "Du kannst dMAIC-Phasen in Grundzügen erläutern erklären",
+    "Du kannst lean- und Six-Sigma-Ziele abgrenzen erklären",
+    "Du kannst value Stream Mapping als Analysewerkzeug einordnen erklären",
+    "Du kannst pDCA zur Verstetigung anwenden erklären"
   ],
   "keyTakeaways": [
     "Lean eliminiert Verschwendung, Six Sigma stabilisiert Qualität",
@@ -57,5 +61,62 @@
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
   "version": "1.0",
-  "tracks": ["DPA"]
+  "tracks": [
+    "DPA"
+  ],
+  "summary": "Kombination von Lean-Verschwendungsreduktion und Six Sigma-Variabilitätskontrolle für nachhaltige Prozessoptimierung",
+  "contentOutline": [
+    {
+      "id": "lean-six-sigma-integrierte-prozessverbesserung",
+      "title": "Lean & Six Sigma integrierte Prozessverbesserung",
+      "summary": "Kernaspekt: Lean & Six Sigma integrierte Prozessverbesserung"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "lean-grundlagen",
+      "title": "Lean Grundlagen",
+      "summary": "Kernaspekt: Lean Grundlagen"
+    },
+    {
+      "id": "six-sigma-uberblick",
+      "title": "Six Sigma Überblick",
+      "summary": "Kernaspekt: Six Sigma Überblick"
+    },
+    {
+      "id": "integration-lean-six-sigma",
+      "title": "Integration Lean + Six Sigma",
+      "summary": "Kernaspekt: Integration Lean + Six Sigma"
+    },
+    {
+      "id": "werkzeuge-auswahl",
+      "title": "Werkzeuge & Auswahl",
+      "summary": "Kernaspekt: Werkzeuge & Auswahl"
+    },
+    {
+      "id": "kontinuierliche-verbesserung",
+      "title": "Kontinuierliche Verbesserung",
+      "summary": "Kernaspekt: Kontinuierliche Verbesserung"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-03-lean-six-sigma-einfuhrung-micro-1",
+    "bp-dpa-03-lean-six-sigma-lean-grundlagen-micro-1",
+    "bp-dpa-03-lean-six-sigma-six-sigma-uberblick-micro-1",
+    "bp-dpa-03-lean-six-sigma-integration-lean-six-sigma-micro-1",
+    "bp-dpa-03-lean-six-sigma-werkzeuge-auswahl-micro-1",
+    "bp-dpa-03-lean-six-sigma-kontinuierliche-verbesserung-micro-1",
+    "bp-dpa-03-lean-six-sigma-quiz",
+    "bp-dpa-03-lean-six-sigma-prufungsrelevante-aspekte-micro-1"
+  ]
 }

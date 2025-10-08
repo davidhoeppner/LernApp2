@@ -1,0 +1,59 @@
+{
+  "id": "bp-03-rest-api-cors-cross-origin-resource-sharing-micro-1",
+  "moduleId": "bp-03-rest-api",
+  "title": "CORS (Cross-Origin Resource Sharing) — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welcher Header legt erlaubte Ursprünge fest?",
+      "options": [
+        "Access-Control-Allow-Origin",
+        "Access-Control-Allow-Methods",
+        "Access-Control-Allow-Headers",
+        "Origin-CORS-Policy"
+      ],
+      "correctAnswer": "Access-Control-Allow-Origin",
+      "explanation": "Der Header bestimmt zugelassene Ursprünge.",
+      "points": 1,
+      "category": "CORS"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Ein Wert * für Access-Control-Allow-Origin erlaubt alle Ursprünge.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Wildcard erlaubt jeden Ursprung (Ausnahmen bei Credentials).",
+      "points": 1,
+      "category": "CORS"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche gehören zu Preflight-Response-Headern?",
+      "options": [
+        "Access-Control-Allow-Methods",
+        "Access-Control-Request-Method",
+        "Access-Control-Allow-Headers",
+        "Access-Control-Max-Age"
+      ],
+      "correctAnswer": [
+        "Access-Control-Allow-Methods",
+        "Access-Control-Allow-Headers",
+        "Access-Control-Max-Age"
+      ],
+      "explanation": "Request-Method ist ein Request-Header.",
+      "points": 1,
+      "category": "CORS"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"CORS (Cross-Origin Resource Sharing)\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

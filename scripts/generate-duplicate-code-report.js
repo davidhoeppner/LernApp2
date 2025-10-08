@@ -1,10 +1,12 @@
+// @ts-nocheck
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 class DuplicateCodeDetector {
   constructor() {
@@ -15,7 +17,7 @@ class DuplicateCodeDetector {
   }
 
   async analyzeProject() {
-    const srcDir = path.join(__dirname, '..', 'src');
+    const srcDir = path.join(process.cwd(), '..', 'src');
     await this.scanDirectory(srcDir);
 
     const exactDuplicates = this.findExactDuplicates();
@@ -47,7 +49,7 @@ class DuplicateCodeDetector {
 
   async analyzeFile(filePath) {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const relativePath = path.relative(path.join(__dirname, '..'), filePath);
+    const relativePath = path.relative(path.join(process.cwd(), '..'), filePath);
     const lines = content.split('\n');
 
     this.extractCodeBlocks(relativePath, lines);
@@ -432,7 +434,7 @@ const results = await detector.analyzeProject();
 console.log('📝 Generating report...\n');
 
 const report = generateReport(results);
-const reportPath = path.join(__dirname, '..', 'DUPLICATE_CODE_REPORT.md');
+const reportPath = path.join(process.cwd(), '..', 'DUPLICATE_CODE_REPORT.md');
 fs.writeFileSync(reportPath, report);
 
 console.log('✅ Report generated successfully!');

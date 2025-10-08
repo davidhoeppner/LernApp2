@@ -1,0 +1,61 @@
+{
+  "id": "bp-dpa-06-data-quality-wichtige-metriken-und-checks-micro-1",
+  "moduleId": "bp-dpa-06-data-quality",
+  "title": "Wichtige Metriken und Checks — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welche Metrik misst durchschnittliche Antwortzeit?",
+      "options": [
+        "Latency",
+        "Throughput",
+        "Error Rate",
+        "Saturation"
+      ],
+      "correctAnswer": "Latency",
+      "explanation": "Latenz = Verzögerung einer Anfrage.",
+      "points": 1,
+      "category": "Monitoring"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Dashboards dienen auch zur Trendanalyse.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Visualisierung historischer Werte.",
+      "points": 1,
+      "category": "Monitoring"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche gehören zu den „Golden Signals“?",
+      "options": [
+        "Latency",
+        "Traffic",
+        "Errors",
+        "Saturation",
+        "Color"
+      ],
+      "correctAnswer": [
+        "Latency",
+        "Traffic",
+        "Errors",
+        "Saturation"
+      ],
+      "explanation": "Color ist kein Golden Signal.",
+      "points": 1,
+      "category": "Monitoring"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"Wichtige Metriken und Checks\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

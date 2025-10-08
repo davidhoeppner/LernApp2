@@ -10,20 +10,31 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 70,
-  "prerequisites": ["bp-dpa-04-bi-fundamentals", "bp-dpa-06-data-quality"],
-  "tags": ["BI", "Dashboard", "Self-Service", "Governance", "Datenschutz"],
-  "content": "# Advanced BI: Dashboards, Self-Service Analytics und Governance\n\n## Dashboard-Design\n- Klarheit und Zielgruppenorientierung: KPI-Fokus, passende Visualisierungen\n- Gestaltungsprinzipien: Hervorhebung wichtiger Kennzahlen, Vermeidung von Chartjunk\n\n## Self-Service Analytics\n- Datenbereitstellung, semantische Layer, Datensicherheit und Rollenmanagement\n- Vorteile: schnellere Erkenntnisse; Risiken: falsche Interpretation ohne Training\n\n## Data Governance und Datenschutz\n- Daten-Ownership, Metadatenmanagement, Zugriffskontrollen\n- DSGVO-relevante Gesichtspunkte: Minimierung personenbezogener Daten, Verarbeitungssicherheit\n\n## Prüfungsrelevante Aspekte\n- Gestaltung einfacher Dashboards nach Best-Practices erklären\n- Vor- und Nachteile von Self-Service Analytics benennen\n- Grundprinzipien von Data Governance und Datenschutz im BI-Kontext beschreiben",
+  "prerequisites": [
+    "bp-dpa-04-bi-fundamentals",
+    "bp-dpa-06-data-quality"
+  ],
+  "tags": [
+    "BI",
+    "Dashboard",
+    "Self-Service",
+    "Governance",
+    "Datenschutz"
+  ],
+  "content": "# Advanced BI: Dashboards, Self-Service Analytics und Governance\n\n## Dashboard-Design\n- Klarheit und Zielgruppenorientierung: KPI-Fokus, passende Visualisierungen\n- Gestaltungsprinzipien: Hervorhebung wichtiger Kennzahlen, Vermeidung von Chartjunk\n\n<!-- micro-quiz:bp-dpa-09-advanced-bi-dashboard-design-micro-1 -->\n## Self-Service Analytics\n- Datenbereitstellung, semantische Layer, Datensicherheit und Rollenmanagement\n- Vorteile: schnellere Erkenntnisse; Risiken: falsche Interpretation ohne Training\n\n## Data Governance und Datenschutz\n<!-- micro-quiz:bp-dpa-09-advanced-bi-self-service-analytics-micro-1 -->\n\n- Daten-Ownership, Metadatenmanagement, Zugriffskontrollen\n- DSGVO-relevante Gesichtspunkte: Minimierung personenbezogener Daten, Verarbeitungssicherheit\n\n<!-- micro-quiz:bp-dpa-09-advanced-bi-data-governance-und-datenschutz-micro-1 -->\n## Prüfungsrelevante Aspekte\n- Gestaltung einfacher Dashboards nach Best-Practices erklären\n- Vor- und Nachteile von Self-Service Analytics benennen\n- Grundprinzipien von Data Governance und Datenschutz im BI-Kontext beschreiben\n\n\n\n<!-- micro-quiz:bp-dpa-09-advanced-bi-quiz -->\n<!-- micro-quiz:bp-dpa-09-advanced-bi-prufungsrelevante-aspekte-micro-1 -->\n",
   "learningObjectives": [
-    "Grundsätze des Dashboard-Designs anwenden",
-    "Chancen und Risiken von Self-Service-Analytics einschätzen",
-    "Grundzüge von Data Governance und Datenschutz im Reporting erklären"
+    "Du kannst grundsätze des Dashboard-Designs anwenden erklären",
+    "Du kannst chancen und Risiken von Self-Service-Analytics einschätzen erklären",
+    "Du kannst grundzüge von Data Governance und Datenschutz im Reporting erklären erklären"
   ],
   "keyTakeaways": [
     "Gutes Dashboard-Design fokussiert auf relevante KPIs und die Zielgruppe",
     "Self-Service Analytics beschleunigt Entscheidungen, braucht Governance",
     "Datenschutz und Governance sind zentrale Voraussetzungen für verlässliches Reporting"
   ],
-  "relatedQuizzes": ["bp-dpa-09-advanced-bi-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-09-advanced-bi-quiz"
+  ],
   "resources": [
     {
       "title": "Dashboard Design best practices",
@@ -32,5 +43,42 @@
     }
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "summary": "Fortgeschrittene Themen der Business Intelligence: Dashboard-Design, Self-Service-Analytics, Rollen und Governance, sowie ethische und datenschutzbezogene Aspekte beim Reporting.",
+  "contentOutline": [
+    {
+      "id": "advanced-bi-dashboards-self-service-analytics-und-",
+      "title": "Advanced BI: Dashboards, Self-Service Analytics und Governance",
+      "summary": "Kernaspekt: Advanced BI: Dashboards, Self-Service Analytics und Governance"
+    },
+    {
+      "id": "dashboard-design",
+      "title": "Dashboard-Design",
+      "summary": "Kernaspekt: Dashboard-Design"
+    },
+    {
+      "id": "self-service-analytics",
+      "title": "Self-Service Analytics",
+      "summary": "Kernaspekt: Self-Service Analytics"
+    },
+    {
+      "id": "data-governance-und-datenschutz",
+      "title": "Data Governance und Datenschutz",
+      "summary": "Kernaspekt: Data Governance und Datenschutz"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-09-advanced-bi-dashboard-design-micro-1",
+    "bp-dpa-09-advanced-bi-self-service-analytics-micro-1",
+    "bp-dpa-09-advanced-bi-data-governance-und-datenschutz-micro-1",
+    "bp-dpa-09-advanced-bi-quiz",
+    "bp-dpa-09-advanced-bi-prufungsrelevante-aspekte-micro-1"
+  ]
 }

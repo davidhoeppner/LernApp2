@@ -1,0 +1,61 @@
+{
+  "id": "bp-05-data-structures-hash-table-hash-map-micro-1",
+  "moduleId": "bp-05-data-structures",
+  "title": "Hash Table (Hash Map) — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welche Operation hat bei einer Queue FIFO-Semantik?",
+      "options": [
+        "push",
+        "enqueue",
+        "random access",
+        "hash"
+      ],
+      "correctAnswer": "enqueue",
+      "explanation": "Queue: enqueue hinten, dequeue vorne.",
+      "points": 1,
+      "category": "Datenstrukturen"
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "question": "Welche Strukturen sind linear?",
+      "options": [
+        "Array",
+        "Liste",
+        "Baum",
+        "Queue",
+        "Stack"
+      ],
+      "correctAnswer": [
+        "Array",
+        "Liste",
+        "Queue",
+        "Stack"
+      ],
+      "explanation": "Bäume sind nicht linear.",
+      "points": 1,
+      "category": "Datenstrukturen"
+    },
+    {
+      "id": "q3",
+      "type": "true-false",
+      "question": "Ein Hash Table ermöglicht durchschnittlich O(1) Zugriff.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Durch Hashing amortisiert konstanter Zugriff.",
+      "points": 1,
+      "category": "Datenstrukturen"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"Hash Table (Hash Map)\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

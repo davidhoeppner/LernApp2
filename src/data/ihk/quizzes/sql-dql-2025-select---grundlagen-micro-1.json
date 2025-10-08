@@ -1,0 +1,74 @@
+{
+  "id": "sql-dql-2025-select---grundlagen-micro-1",
+  "moduleId": "sql-dql-2025",
+  "title": "SELECT - Grundlagen — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welche Klausel filtert Zeilen vor der Gruppierung?",
+      "options": [
+        "WHERE",
+        "HAVING",
+        "ORDER BY",
+        "LIMIT"
+      ],
+      "correctAnswer": "WHERE",
+      "explanation": "WHERE wirkt vor Aggregation, HAVING nach GROUP BY.",
+      "points": 1,
+      "category": "SQL"
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "question": "Welche Aussagen zu SELECT sind korrekt?",
+      "options": [
+        "DISTINCT entfernt Duplikate",
+        "ORDER BY kommt vor GROUP BY",
+        "LIMIT kann Anzahl begrenzen",
+        "HAVING filtert Aggregatgruppen"
+      ],
+      "correctAnswer": [
+        "DISTINCT entfernt Duplikate",
+        "LIMIT kann Anzahl begrenzen",
+        "HAVING filtert Aggregatgruppen"
+      ],
+      "explanation": "ORDER BY folgt nach GROUP BY.",
+      "points": 1,
+      "category": "SQL"
+    },
+    {
+      "id": "q3",
+      "type": "true-false",
+      "question": "ORDER BY 2 verweist auf die zweite Spalte der Ergebnismenge.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Positionsangaben sind erlaubt (wenn auch weniger lesbar).",
+      "points": 1,
+      "category": "SQL"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Welche JOIN-Art liefert nur übereinstimmende Zeilen beider Tabellen?",
+      "options": [
+        "INNER JOIN",
+        "LEFT JOIN",
+        "RIGHT JOIN",
+        "FULL OUTER JOIN"
+      ],
+      "correctAnswer": "INNER JOIN",
+      "explanation": "INNER liefert Schnittmenge.",
+      "points": 1,
+      "category": "SQL"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"SELECT - Grundlagen\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

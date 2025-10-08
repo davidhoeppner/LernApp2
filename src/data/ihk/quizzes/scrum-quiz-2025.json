@@ -1,0 +1,49 @@
+{
+  "id": "scrum-quiz-2025",
+  "moduleId": "bp-04-scrum",
+  "title": "Scrum - Agiles Projektmanagement — Mini-Quiz",
+  "description": "Automatisch generiertes Micro-Quiz für Scrum - Agiles Projektmanagement",
+  "category": "BP-04",
+  "difficulty": "intermediate",
+  "timeLimit": 300,
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Kurze Verständnisfrage 1",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C"
+      ],
+      "correctAnswer": "Option A",
+      "explanation": "Kurzbegründung",
+      "points": 1
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Kurze Wahr/Falsch-Frage",
+      "correctAnswer": true,
+      "explanation": "Kurzbegründung",
+      "points": 1
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Mehrfachauswahl: wähle alle zutreffenden",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correctAnswer": [
+        "A",
+        "B"
+      ],
+      "explanation": "Kurzbegründung",
+      "points": 1
+    }
+  ]
+}

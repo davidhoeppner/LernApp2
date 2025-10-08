@@ -11,19 +11,26 @@
   "important": true,
   "estimatedTime": 70,
   "prerequisites": [],
-  "tags": ["Statistik", "Deskriptive Statistik", "Hypothesentests", "Metriken"],
-  "content": "# Statistische Grundlagen für Daten- und Prozessanalyse\n\n## Deskriptive Statistik\n- Lageparameter: Mittelwert, Median, Modus\n- Streuungsmaße: Varianz, Standardabweichung, Interquartilsabstand (IQR)\n- Verteilungen: Normalverteilung, Schiefe, Kurtosis\n\n## Wahrscheinlichkeitsbegriffe\n- Zufallsvariablen, Erwartungswert, Varianz\n- Diskrete vs. kontinuierliche Verteilungen\n\n## Hypothesentests (Grundprinzipien)\n- Nullhypothese und Alternativhypothese\n- p-Wert und Signifikanzniveau (z. B. 5%)\n- t-Test (Mittelwertvergleich), Chi-Quadrat-Test (Korrelation kategorialer Daten)\n\n## Praktische Anwendung in Prozessen\n- KPI-Analyse und Trendbewertung\n- Signifikanz von Prozessänderungen prüfen (Before/After-Tests)\n- Stichprobenplanung und Fehlerabschätzung\n\n## Prüfungsrelevante Aspekte\n- Grundbegriffe der deskriptiven Statistik benennen\n- Einfache Hypothesentests erklären und Ergebnisinterpretation\n- Relevanz von Streuungsmaßen und Konfidenzintervallen erläutern",
+  "tags": [
+    "Statistik",
+    "Deskriptive Statistik",
+    "Hypothesentests",
+    "Metriken"
+  ],
+  "content": "# Statistische Grundlagen für Daten- und Prozessanalyse\n\n## Deskriptive Statistik\n- Lageparameter: Mittelwert, Median, Modus\n- Streuungsmaße: Varianz, Standardabweichung, Interquartilsabstand (IQR)\n- Verteilungen: Normalverteilung, Schiefe, Kurtosis\n\n<!-- micro-quiz:bp-dpa-07-statistical-analysis-deskriptive-statistik-micro-1 -->\n## Wahrscheinlichkeitsbegriffe\n- Zufallsvariablen, Erwartungswert, Varianz\n- Diskrete vs. kontinuierliche Verteilungen\n\n## Hypothesentests (Grundprinzipien)\n<!-- micro-quiz:bp-dpa-07-statistical-analysis-wahrscheinlichkeitsbegriffe-micro-1 -->\n\n- Nullhypothese und Alternativhypothese\n- p-Wert und Signifikanzniveau (z. B. 5%)\n- t-Test (Mittelwertvergleich), Chi-Quadrat-Test (Korrelation kategorialer Daten)\n\n<!-- micro-quiz:bp-dpa-07-statistical-analysis-hypothesentests-grundprinzipien-micro-1 -->\n## Praktische Anwendung in Prozessen\n- KPI-Analyse und Trendbewertung\n- Signifikanz von Prozessänderungen prüfen (Before/After-Tests)\n- Stichprobenplanung und Fehlerabschätzung\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-dpa-07-statistical-analysis-praktische-anwendung-in-prozessen-micro-1 -->\n\n- Grundbegriffe der deskriptiven Statistik benennen\n- Einfache Hypothesentests erklären und Ergebnisinterpretation\n- Relevanz von Streuungsmaßen und Konfidenzintervallen erläutern\n\n\n\n<!-- micro-quiz:bp-dpa-07-statistical-analysis-quiz -->\n<!-- micro-quiz:bp-dpa-07-statistical-analysis-prufungsrelevante-aspekte-micro-1 -->\n",
   "learningObjectives": [
-    "Mittelwert, Median und Streuungsmaße berechnen und interpretieren",
-    "Grundprinzipien von Hypothesentests und p-Werten erklären",
-    "Einfache statistische Tests auf Prozessdaten anwenden (t-Test, Chi-Quadrat)"
+    "Du kannst mittelwert, Median und Streuungsmaße berechnen und interpretieren erklären",
+    "Du kannst grundprinzipien von Hypothesentests und p-Werten erklären erklären",
+    "Du kannst einfache statistische Tests auf Prozessdaten anwenden (t-Test, Chi-Quadrat) erklären"
   ],
   "keyTakeaways": [
     "Deskriptive Statistik liefert erste Einblicke in Daten und Prozesse",
     "Hypothesentests helfen zu entscheiden, ob beobachtete Effekte signifikant sind",
     "KPI-Analysen benötigen Kenntnis von Streuungsmaßen und Fehlergrenzen"
   ],
-  "relatedQuizzes": ["bp-dpa-07-statistical-analysis-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-07-statistical-analysis-quiz"
+  ],
   "resources": [
     {
       "title": "Basic Statistics (tutorial)",
@@ -32,5 +39,48 @@
     }
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "summary": "Einführung in grundlegende Statistik für Datenanalysten: deskriptive Statistik, Kennzahlen, Wahrscheinlichkeitsbegriffe, Hypothesentests und einfache Auswertungsverfahren für Geschäftsprozesse.",
+  "contentOutline": [
+    {
+      "id": "statistische-grundlagen-fur-daten--und-prozessanal",
+      "title": "Statistische Grundlagen für Daten- und Prozessanalyse",
+      "summary": "Kernaspekt: Statistische Grundlagen für Daten- und Prozessanalyse"
+    },
+    {
+      "id": "deskriptive-statistik",
+      "title": "Deskriptive Statistik",
+      "summary": "Kernaspekt: Deskriptive Statistik"
+    },
+    {
+      "id": "wahrscheinlichkeitsbegriffe",
+      "title": "Wahrscheinlichkeitsbegriffe",
+      "summary": "Kernaspekt: Wahrscheinlichkeitsbegriffe"
+    },
+    {
+      "id": "hypothesentests-grundprinzipien",
+      "title": "Hypothesentests (Grundprinzipien)",
+      "summary": "Kernaspekt: Hypothesentests (Grundprinzipien)"
+    },
+    {
+      "id": "praktische-anwendung-in-prozessen",
+      "title": "Praktische Anwendung in Prozessen",
+      "summary": "Kernaspekt: Praktische Anwendung in Prozessen"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-07-statistical-analysis-deskriptive-statistik-micro-1",
+    "bp-dpa-07-statistical-analysis-wahrscheinlichkeitsbegriffe-micro-1",
+    "bp-dpa-07-statistical-analysis-hypothesentests-grundprinzipien-micro-1",
+    "bp-dpa-07-statistical-analysis-praktische-anwendung-in-prozessen-micro-1",
+    "bp-dpa-07-statistical-analysis-quiz",
+    "bp-dpa-07-statistical-analysis-prufungsrelevante-aspekte-micro-1"
+  ]
 }

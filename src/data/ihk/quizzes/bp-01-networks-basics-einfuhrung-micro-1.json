@@ -1,0 +1,41 @@
+{
+  "id": "bp-01-networks-basics-einfuhrung-micro-1",
+  "moduleId": "bp-01-networks-basics",
+  "title": "Einführung — Mini-Quiz",
+  "description": "Kurzes Verständnisquiz zur Einführung in Netzwerktopologien.",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 300,
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was beschreibt eine Netzwerktopologie am besten?",
+      "options": [
+        "Physische oder logische Anordnung von Netzwerkkomponenten",
+        "Programmiersprache eines Netzwerkgeräts",
+        "Liste der Benutzer in einem Netzwerk"
+      ],
+      "correctAnswer": "Physische oder logische Anordnung von Netzwerkkomponenten",
+      "explanation": "Topologien beschreiben, wie Geräte verbunden sind und wie Daten fließen.",
+      "points": 1
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Die Wahl der Topologie hat keinen Einfluss auf die Ausfallsicherheit.",
+      "correctAnswer": false,
+      "explanation": "Topologie bestimmt redundante Pfade und Single-Point-of-Failure Risiken.",
+      "points": 1
+    },
+    {
+      "id": "q3",
+      "type": "code",
+      "question": "Nenne ein praktisches Beispiel für eine Topologie in einem kleinen Büro.",
+      "correctAnswer": "Stern-Topologie mit zentralem Switch",
+      "explanation": "Eine Stern-Topologie mit einem zentralen Switch ist typisch für kleine Büros.",
+      "points": 1
+    }
+  ]
+}

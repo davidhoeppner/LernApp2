@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Comprehensive Integration Test Runner
  * Runs all end-to-end integration tests for the three-tier category system

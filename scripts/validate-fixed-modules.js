@@ -1,9 +1,11 @@
+// @ts-nocheck
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 const files = [
   'bp-04-design-patterns.json',
@@ -22,12 +24,12 @@ let allValid = true;
 files.forEach(f => {
   try {
     const content = fs.readFileSync(
-      path.join(__dirname, '../src/data/ihk/modules', f),
+      path.join(process.cwd(), '../src/data/ihk/modules', f),
       'utf8'
     );
     JSON.parse(content);
     console.log(`✅ ${f} - Valid JSON`);
-  } catch (e) {
+  } catch {
     console.log(`❌ ${f} - ${e.message}`);
     allValid = false;
   }

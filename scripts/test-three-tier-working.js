@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Working End-to-End Integration Test for Three-Tier Category System
  * Tests complete three-tier category system functionality

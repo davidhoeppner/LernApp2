@@ -1,0 +1,56 @@
+{
+  "id": "bp-dpa-02-etl-fundamentals-load-datenladen-micro-1",
+  "moduleId": "bp-dpa-02-etl-fundamentals",
+  "title": "Load (Datenladen) — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was beschreibt am besten den Schwerpunkt des Abschnitts \"Load (Datenladen)\"?",
+      "options": [
+        "Zentrales Konzept / Definition",
+        "Unzusammenhängendes Randthema",
+        "Reine Formatierungsanweisung"
+      ],
+      "correctAnswer": "Zentrales Konzept / Definition",
+      "explanation": "Abschnitt dient dem inhaltlichen Verständnis.",
+      "points": 1,
+      "category": "Allgemein"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Der Abschnitt \"Load (Datenladen)\" ist Teil des Modulthemas.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Struktur folgt den H2 Überschriften.",
+      "points": 1,
+      "category": "Allgemein"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Was trifft typischerweise auf den Abschnitt \"Load (Datenladen)\" zu?",
+      "options": [
+        "Lernrelevanter Inhalt",
+        "Hilft bei Prüfungsvorbereitung",
+        "Nur dekorativ"
+      ],
+      "correctAnswer": [
+        "Lernrelevanter Inhalt",
+        "Hilft bei Prüfungsvorbereitung"
+      ],
+      "explanation": "Dekorative Abschnitte werden selten als H2 geführt.",
+      "points": 1,
+      "category": "Allgemein"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"Load (Datenladen)\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

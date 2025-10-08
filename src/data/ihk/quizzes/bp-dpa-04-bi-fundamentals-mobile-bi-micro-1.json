@@ -1,0 +1,56 @@
+{
+  "id": "bp-dpa-04-bi-fundamentals-mobile-bi-micro-1",
+  "moduleId": "bp-dpa-04-bi-fundamentals",
+  "title": "Mobile BI — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was beschreibt am besten den Schwerpunkt des Abschnitts \"Mobile BI\"?",
+      "options": [
+        "Zentrales Konzept / Definition",
+        "Unzusammenhängendes Randthema",
+        "Reine Formatierungsanweisung"
+      ],
+      "correctAnswer": "Zentrales Konzept / Definition",
+      "explanation": "Abschnitt dient dem inhaltlichen Verständnis.",
+      "points": 1,
+      "category": "Allgemein"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Der Abschnitt \"Mobile BI\" ist Teil des Modulthemas.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Struktur folgt den H2 Überschriften.",
+      "points": 1,
+      "category": "Allgemein"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Was trifft typischerweise auf den Abschnitt \"Mobile BI\" zu?",
+      "options": [
+        "Lernrelevanter Inhalt",
+        "Hilft bei Prüfungsvorbereitung",
+        "Nur dekorativ"
+      ],
+      "correctAnswer": [
+        "Lernrelevanter Inhalt",
+        "Hilft bei Prüfungsvorbereitung"
+      ],
+      "explanation": "Dekorative Abschnitte werden selten als H2 geführt.",
+      "points": 1,
+      "category": "Allgemein"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"Mobile BI\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

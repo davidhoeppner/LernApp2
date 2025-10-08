@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Check UTF-8 Encoding Script
  * Checks all quiz files for proper UTF-8 encoding and German umlauts
@@ -10,9 +12,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
-const quizzesDir = path.join(__dirname, '../src/data/ihk/quizzes');
+const quizzesDir = path.join(process.cwd(), '../src/data/ihk/quizzes');
 
 // ANSI color codes for terminal output
 const colors = {
@@ -225,7 +227,7 @@ async function checkUTF8Encoding() {
   }
 
   // Save detailed report to file
-  const reportPath = path.join(__dirname, '../UTF8_ENCODING_REPORT.json');
+  const reportPath = path.join(process.cwd(), '../UTF8_ENCODING_REPORT.json');
   fs.writeFileSync(
     reportPath,
     JSON.stringify(

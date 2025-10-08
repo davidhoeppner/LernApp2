@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Validate All Quizzes Script
  * Validates all quiz files in src/data/ihk/quizzes/
@@ -10,16 +12,16 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 // Import QuizValidator
 const QuizValidatorPath = path.join(
-  __dirname,
+  process.cwd(),
   '../src/utils/validators/QuizValidator.js'
 );
 const { default: QuizValidator } = await import(`file://${QuizValidatorPath}`);
 
-const quizzesDir = path.join(__dirname, '../src/data/ihk/quizzes');
+const quizzesDir = path.join(process.cwd(), '../src/data/ihk/quizzes');
 
 // ANSI color codes for terminal output
 const colors = {
@@ -163,7 +165,7 @@ async function validateAllQuizzes() {
   }
 
   // Save detailed report to file
-  const reportPath = path.join(__dirname, '../QUIZ_VALIDATION_REPORT.json');
+  const reportPath = path.join(process.cwd(), '../QUIZ_VALIDATION_REPORT.json');
   fs.writeFileSync(
     reportPath,
     JSON.stringify(

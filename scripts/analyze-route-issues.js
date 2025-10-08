@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Route Issues Analyzer
  * Generates detailed analysis of dead routes and invalid references

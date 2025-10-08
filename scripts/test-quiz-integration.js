@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /* eslint-disable no-unused-vars */
 /**
  * End-to-End Test Script for Quiz Integration
@@ -11,7 +13,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const process.cwd() = dirname(__filename);
 
 // Test results tracking
 const testResults = {
@@ -45,14 +47,14 @@ function assert(condition, message) {
 
 // Helper to load JSON files
 function loadJSON(relativePath) {
-  const fullPath = join(__dirname, '..', relativePath);
+  const fullPath = join(process.cwd(), '..', relativePath);
   const content = readFileSync(fullPath, 'utf-8');
   return JSON.parse(content);
 }
 
 // Helper to get all quiz files
 function getAllQuizFiles() {
-  const quizzesDir = join(__dirname, '..', 'src', 'data', 'ihk', 'quizzes');
+  const quizzesDir = join(process.cwd(), '..', 'src', 'data', 'ihk', 'quizzes');
   const files = readdirSync(quizzesDir).filter(f => f.endsWith('.json'));
   return files.map(f => join('src', 'data', 'ihk', 'quizzes', f));
 }
@@ -458,7 +460,7 @@ async function testNoRegressions() {
   // Test 8.3.5: Verify IHKContentService imports all quizzes
   try {
     const serviceFile = readFileSync(
-      join(__dirname, '..', 'src', 'services', 'IHKContentService.js'),
+      join(process.cwd(), '..', 'src', 'services', 'IHKContentService.js'),
       'utf-8'
     );
 

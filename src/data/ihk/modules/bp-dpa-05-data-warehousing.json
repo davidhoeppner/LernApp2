@@ -10,7 +10,10 @@
   "removedIn2025": false,
   "important": true,
   "estimatedTime": 75,
-  "prerequisites": ["bp-dpa-01-er-modeling", "bp-dpa-01-normalization"],
+  "prerequisites": [
+    "bp-dpa-01-er-modeling",
+    "bp-dpa-01-normalization"
+  ],
   "tags": [
     "Data Warehouse",
     "ETL",
@@ -18,19 +21,21 @@
     "Star Schema",
     "Snowflake"
   ],
-  "content": "# Data Warehousing: Architektur, Modellierung und ETL\n\n## Einf\u00fchrung\nEin Data Warehouse ist eine zentrale, tematenspezifische, integrierte und zeitvariable Sammlung von Daten, die f\u00fcr Analyse- und Reportingzwecke optimiert ist. Data Warehouses unterst\u00fctzen Business Intelligence (BI) und Entscheidungsprozesse.\n\n## Kernkomponenten einer Data-Warehouse-Architektur\n- **Datenquellen:** Operative Systeme, Logdaten, externe Daten\n- **ETL/ELT-Schicht:** Extract, Transform, Load (oder ELT)\n- **Staging Area:** Tempor\u00e4rer Speicher f\u00fcr Rohdaten\n- **Datenmodell (Fakten & Dimensionen):** Star/Snowflake Schemas\n- **OLAP/Analyse-Schicht:** Aggregationen, Cubes, Materialized Views\n- **Reporting/Visualisierung:** Dashboards, Berichte, Self-Service BI\n\n## Dimensionale Modellierung\n- **Fakten (Facts):** Messwerte wie Umsatz, Anzahl, Dauer\n- **Dimensionen (Dimensions):** Kontext (Zeit, Kunde, Produkt)\n- **Star Schema:** Fakten-Tabelle im Zentrum, umgeben von Denormalisierten Dimensionstabellen (schnelle Abfragen)\n- **Snowflake Schema:** Normalisierte Dimensionstabellen (mehr Joins, weniger Redundanz)\n\n### Beispiel Star Schema\n- Fact_Sales (sale_id, date_key, product_key, store_key, sales_amount)\n- Dim_Date (date_key, date, month, quarter, year)\n- Dim_Product (product_key, name, category)\n\n## ETL-Prozesse und Qualit\u00e4tssicherung\n- **Extract:** Daten aus Quellsystemen extrahieren (Batch/Streaming)\n- **Transform:** Daten bereinigen, anreichern, konsolidieren, Datenqualit\u00e4tschecks (NULLs, Duplicates, Typen)\n- **Load:** In Staging/ODS oder direkt in Data Warehouse laden (Full/Incremental loads)\n- **Idempotenz & Fehlerbehandlung:** Wiederholbare Loads, Checkpoints, Dead-letter-Queues\n\n## Performance- und Architekturentscheidungen\n- **Partitionierung:** Zeitbasierte Partitionen f\u00fcr schnelle Abfragen\n- **Indexing & Materialized Views:** \n- **Inkrementelle Verarbeitung vs. Full Reloads**\n- **Nearline / Cold Storage:** Historische Daten kosteng\u00fcnstig archivieren\n\n## Pr\u00fcfungsrelevante Aspekte\n- Dimensionales Modell (Star vs Snowflake) erkennen und unterscheiden\n- Zweck und Ablauf eines ETL-Prozesses beschreiben\n- Datenqualit\u00e4t:\u00fcberpr\u00fcfungen (Einheitlichkeit, Vollst\u00e4ndigkeit, Konsistenz)\n- Vor- und Nachteile von Partitionierung und Materialized Views\n\n## \u00dcbungen\n1. Erstellen Sie ein einfaches Star Schema f\u00fcr einen Online-Shop (Fakten und Dimensionen).\n2. Beschreiben Sie eine ETL-Pipeline, die Bestelldaten aus einem Shop in ein Data Warehouse \u00fcberf\u00fchrt (inkl. Fehlerfallbehandlung).",
+  "content": "# Data Warehousing: Architektur, Modellierung und ETL\n\n## Einführung\nEin Data Warehouse ist eine zentrale, tematenspezifische, integrierte und zeitvariable Sammlung von Daten, die für Analyse- und Reportingzwecke optimiert ist. Data Warehouses unterstützen Business Intelligence (BI) und Entscheidungsprozesse.\n\n<!-- micro-quiz:bp-dpa-05-data-warehousing-einfuhrung-micro-1 -->\n## Kernkomponenten einer Data-Warehouse-Architektur\n- **Datenquellen:** Operative Systeme, Logdaten, externe Daten\n- **ETL/ELT-Schicht:** Extract, Transform, Load (oder ELT)\n- **Staging Area:** Temporärer Speicher für Rohdaten\n- **Datenmodell (Fakten & Dimensionen):** Star/Snowflake Schemas\n- **OLAP/Analyse-Schicht:** Aggregationen, Cubes, Materialized Views\n- **Reporting/Visualisierung:** Dashboards, Berichte, Self-Service BI\n\n## Dimensionale Modellierung\n<!-- micro-quiz:bp-dpa-05-data-warehousing-kernkomponenten-einer-data-warehouse-architektur-micro-1 -->\n\n- **Fakten (Facts):** Messwerte wie Umsatz, Anzahl, Dauer\n- **Dimensionen (Dimensions):** Kontext (Zeit, Kunde, Produkt)\n- **Star Schema:** Fakten-Tabelle im Zentrum, umgeben von Denormalisierten Dimensionstabellen (schnelle Abfragen)\n- **Snowflake Schema:** Normalisierte Dimensionstabellen (mehr Joins, weniger Redundanz)\n\n### Beispiel Star Schema\n- Fact_Sales (sale_id, date_key, product_key, store_key, sales_amount)\n- Dim_Date (date_key, date, month, quarter, year)\n- Dim_Product (product_key, name, category)\n\n<!-- micro-quiz:bp-dpa-05-data-warehousing-dimensionale-modellierung-micro-1 -->\n## ETL-Prozesse und Qualitätssicherung\n- **Extract:** Daten aus Quellsystemen extrahieren (Batch/Streaming)\n- **Transform:** Daten bereinigen, anreichern, konsolidieren, Datenqualitätschecks (NULLs, Duplicates, Typen)\n- **Load:** In Staging/ODS oder direkt in Data Warehouse laden (Full/Incremental loads)\n- **Idempotenz & Fehlerbehandlung:** Wiederholbare Loads, Checkpoints, Dead-letter-Queues\n\n## Performance- und Architekturentscheidungen\n<!-- micro-quiz:bp-dpa-05-data-warehousing-etl-prozesse-und-qualitatssicherung-micro-1 -->\n\n- **Partitionierung:** Zeitbasierte Partitionen für schnelle Abfragen\n- **Indexing & Materialized Views:** \n- **Inkrementelle Verarbeitung vs. Full Reloads**\n- **Nearline / Cold Storage:** Historische Daten kostengünstig archivieren\n\n<!-- micro-quiz:bp-dpa-05-data-warehousing-performance--und-architekturentscheidungen-micro-1 -->\n## Prüfungsrelevante Aspekte\n- Dimensionales Modell (Star vs Snowflake) erkennen und unterscheiden\n- Zweck und Ablauf eines ETL-Prozesses beschreiben\n- Datenqualität:überprüfungen (Einheitlichkeit, Vollständigkeit, Konsistenz)\n- Vor- und Nachteile von Partitionierung und Materialized Views\n\n## Übungen\n<!-- micro-quiz:bp-dpa-05-data-warehousing-prufungsrelevante-aspekte-micro-1 -->\n\n1. Erstellen Sie ein einfaches Star Schema für einen Online-Shop (Fakten und Dimensionen).\n2. Beschreiben Sie eine ETL-Pipeline, die Bestelldaten aus einem Shop in ein Data Warehouse überführt (inkl. Fehlerfallbehandlung).\n\n\n\n<!-- micro-quiz:bp-dpa-05-data-warehousing-quiz -->\n<!-- micro-quiz:bp-dpa-05-data-warehousing-ubungen-micro-1 -->\n",
   "learningObjectives": [
-    "Fakten- und Dimensionstabellen unterscheiden und ein Star Schema entwerfen",
-    "ETL-Prozessschritte (Extract, Transform, Load) beschreiben und Fehlerbehandlung benennen",
-    "Partitionierung und Performance-Ma\u00dfnahmen f\u00fcr Data Warehouses erkl\u00e4ren",
-    "Datenqualit\u00e4tschecks und idempotente Load-Strategien anwenden"
+    "Du kannst fakten- und Dimensionstabellen unterscheiden und ein Star Schema entwerfen erklären",
+    "Du kannst eTL-Prozessschritte (Extract, Transform, Load) beschreiben und Fehlerbehandlung benennen erklären",
+    "Du kannst partitionierung und Performance-Maßnahmen für Data Warehouses erklären erklären",
+    "Du kannst datenqualitätschecks und idempotente Load-Strategien anwenden erklären"
   ],
   "keyTakeaways": [
-    "Data Warehouses optimieren Daten f\u00fcr Analysezwecke (themenorientiert, historisch)",
+    "Data Warehouses optimieren Daten für Analysezwecke (themenorientiert, historisch)",
     "Dimensionale Modellierung (Star) vereinfacht Analyseabfragen",
-    "ETL ist zentral f\u00fcr Datenintegration und Qualit\u00e4tssicherung"
+    "ETL ist zentral für Datenintegration und Qualitätssicherung"
   ],
-  "relatedQuizzes": ["bp-dpa-05-data-warehousing-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-05-data-warehousing-quiz"
+  ],
   "resources": [
     {
       "title": "Kimball - The Data Warehouse Toolkit (concepts)",
@@ -44,5 +49,60 @@
     }
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "summary": "Grundlagen und Architektur von Data Warehouses, dimensionale Modellierung (Star/Snowflake), ETL-Prozesse und Best Practices für Reporting und BI-Systeme.",
+  "contentOutline": [
+    {
+      "id": "data-warehousing-architektur-modellierung-und-etl",
+      "title": "Data Warehousing: Architektur, Modellierung und ETL",
+      "summary": "Kernaspekt: Data Warehousing: Architektur, Modellierung und ETL"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "kernkomponenten-einer-data-warehouse-architektur",
+      "title": "Kernkomponenten einer Data-Warehouse-Architektur",
+      "summary": "Kernaspekt: Kernkomponenten einer Data-Warehouse-Architektur"
+    },
+    {
+      "id": "dimensionale-modellierung",
+      "title": "Dimensionale Modellierung",
+      "summary": "Kernaspekt: Dimensionale Modellierung"
+    },
+    {
+      "id": "etl-prozesse-und-qualitatssicherung",
+      "title": "ETL-Prozesse und Qualitätssicherung",
+      "summary": "Kernaspekt: ETL-Prozesse und Qualitätssicherung"
+    },
+    {
+      "id": "performance--und-architekturentscheidungen",
+      "title": "Performance- und Architekturentscheidungen",
+      "summary": "Kernaspekt: Performance- und Architekturentscheidungen"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    },
+    {
+      "id": "ubungen",
+      "title": "Übungen",
+      "summary": "Kernaspekt: Übungen"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-05-data-warehousing-einfuhrung-micro-1",
+    "bp-dpa-05-data-warehousing-kernkomponenten-einer-data-warehouse-architektur-micro-1",
+    "bp-dpa-05-data-warehousing-dimensionale-modellierung-micro-1",
+    "bp-dpa-05-data-warehousing-etl-prozesse-und-qualitatssicherung-micro-1",
+    "bp-dpa-05-data-warehousing-performance--und-architekturentscheidungen-micro-1",
+    "bp-dpa-05-data-warehousing-prufungsrelevante-aspekte-micro-1",
+    "bp-dpa-05-data-warehousing-quiz",
+    "bp-dpa-05-data-warehousing-ubungen-micro-1"
+  ]
 }

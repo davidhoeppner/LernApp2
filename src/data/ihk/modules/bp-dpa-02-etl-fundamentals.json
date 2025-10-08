@@ -19,7 +19,7 @@
     "Load",
     "Data Pipeline"
   ],
-  "content": "# ETL-Prozesse und Datenintegration\n\n## Einführung\n\nETL (Extract, Transform, Load) ist ein fundamentaler Prozess in der Datenverarbeitung, der es ermöglicht, Daten aus verschiedenen Quellen zu extrahieren, zu transformieren und in Zielsysteme zu laden. Für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse ist das Verständnis von ETL-Prozessen essentiell für effektive Datenintegration.\n\n## ETL-Grundlagen\n\n### Definition\n\nETL ist ein dreistufiger Prozess zur Datenintegration:\n\n**Extract (Extrahieren):**\n- Daten aus verschiedenen Quellsystemen abrufen\n- Strukturierte und unstrukturierte Daten\n- Batch- oder Real-time-Extraktion\n\n**Transform (Transformieren):**\n- Datenbereinigung und -validierung\n- Formatkonvertierung und Standardisierung\n- Geschäftslogik anwenden\n\n**Load (Laden):**\n- Transformierte Daten in Zielsystem laden\n- Data Warehouse, Data Lake oder operative Systeme\n- Vollständige oder inkrementelle Ladung\n\n### ETL vs. ELT\n\n**ETL (Extract, Transform, Load):**\n- Transformation vor dem Laden\n- Traditioneller Ansatz\n- Optimiert für strukturierte Daten\n- Geringere Speicheranforderungen im Zielsystem\n\n**ELT (Extract, Load, Transform):**\n- Transformation nach dem Laden\n- Moderner Ansatz für Big Data\n- Nutzt Rechenpower des Zielsystems\n- Flexiblere Datenexploration\n\n## Extract (Datenextraktion)\n\n### Datenquellen\n\n**Relationale Datenbanken:**\n- SQL-basierte Extraktion\n- JDBC/ODBC-Verbindungen\n- Inkrementelle Extraktion über Timestamps\n- Change Data Capture (CDC)\n\n**Dateisysteme:**\n- CSV, Excel, XML, JSON\n- FTP/SFTP-Übertragung\n- Datei-Monitoring und -Verarbeitung\n- Komprimierte Archive\n\n**APIs und Web Services:**\n- REST/SOAP APIs\n- JSON/XML-Responses\n- Authentifizierung und Rate Limiting\n- Pagination bei großen Datenmengen\n\n**NoSQL-Datenbanken:**\n- MongoDB, Cassandra, Redis\n- Dokumentenbasierte Extraktion\n- Spezielle Konnektoren erforderlich\n\n**Streaming-Daten:**\n- Apache Kafka, RabbitMQ\n- Real-time Datenströme\n- Event-basierte Architektur\n\n### Extraktionsstrategien\n\n**Full Extraction:**\n- Komplette Datenextraktion\n- Einfach zu implementieren\n- Hoher Ressourcenverbrauch\n- Geeignet für kleine Datenmengen\n\n**Incremental Extraction:**\n- Nur geänderte/neue Daten\n- Timestamp-basiert oder Change Tracking\n- Effizient bei großen Datenmengen\n- Komplexere Logik erforderlich\n\n**Delta Extraction:**\n- Identifikation von Änderungen\n- Insert, Update, Delete-Operationen\n- Trigger-basiert oder Log-Mining\n- Hohe Datenaktualität\n\n## Transform (Datentransformation)\n\n### Datenbereinigung\n\n**Datenqualitätsprobleme:**\n- Fehlende Werte (NULL, leer)\n- Duplikate und Inkonsistenzen\n- Formatfehler und Tippfehler\n- Ausreißer und ungültige Werte\n\n**Bereinigungsstrategien:**\n```sql\n-- Beispiel: Datenbereinigung in SQL\n-- Fehlende Werte behandeln\nSELECT \n    customer_id,\n    COALESCE(phone, 'Nicht verfügbar') as phone,\n    CASE \n        WHEN email IS NULL OR email = '' THEN 'noemail@company.com'\n        ELSE LOWER(TRIM(email))\n    END as email\nFROM customers;\n\n-- Duplikate entfernen\nWITH ranked_customers AS (\n    SELECT *,\n           ROW_NUMBER() OVER (PARTITION BY email ORDER BY created_date DESC) as rn\n    FROM customers\n)\nSELECT * FROM ranked_customers WHERE rn = 1;\n```\n\n### Datenvalidierung\n\n**Validierungsregeln:**\n- Datentyp-Validierung\n- Wertebereich-Prüfung\n- Format-Validierung (E-Mail, Telefon)\n- Referentielle Integrität\n- Geschäftsregeln\n\n**Fehlerbehandlung:**\n- Reject-Records in Fehler-Tabelle\n- Logging und Monitoring\n- Automatische Korrektur wo möglich\n- Benachrichtigung bei kritischen Fehlern\n\n### Datentransformation\n\n**Strukturelle Transformationen:**\n- Normalisierung/Denormalisierung\n- Pivotierung von Daten\n- Aggregation und Gruppierung\n- Join-Operationen\n\n**Inhaltliche Transformationen:**\n- Datentyp-Konvertierung\n- Formatstandardisierung\n- Kodierung und Dekodierung\n- Berechnung abgeleiteter Werte\n\n**Beispiel-Transformationen:**\n```python\n# Python-Beispiel für Datentransformation\nimport pandas as pd\nfrom datetime import datetime\n\ndef transform_customer_data(df):\n    # Datentypen konvertieren\n    df['birth_date'] = pd.to_datetime(df['birth_date'])\n    df['customer_id'] = df['customer_id'].astype(int)\n    \n    # Alter berechnen\n    df['age'] = (datetime.now() - df['birth_date']).dt.days // 365\n    \n    # Kategorisierung\n    df['age_group'] = pd.cut(df['age'], \n                            bins=[0, 25, 45, 65, 100], \n                            labels=['Jung', 'Erwachsen', 'Mittel', 'Senior'])\n    \n    # Standardisierung\n    df['email'] = df['email'].str.lower().str.strip()\n    df['phone'] = df['phone'].str.replace(r'[^0-9+]', '', regex=True)\n    \n    return df\n```\n\n## Load (Datenladen)\n\n### Ladestrategien\n\n**Full Load:**\n- Komplette Neuerstellung der Zieltabelle\n- Einfach zu implementieren\n- Hoher Ressourcenverbrauch\n- Downtime während des Ladens\n\n**Incremental Load:**\n- Nur neue/geänderte Daten laden\n- Append-Only oder Upsert-Operationen\n- Effizient bei großen Datenmengen\n- Komplexere Logik für Änderungserkennung\n\n**Delta Load:**\n- Insert, Update, Delete-Operationen\n- Slowly Changing Dimensions (SCD)\n- Historisierung von Änderungen\n- Merge/Upsert-Statements\n\n### Slowly Changing Dimensions (SCD)\n\n**SCD Type 1 - Überschreiben:**\n```sql\n-- Aktuelle Werte überschreiben\nUPDATE dim_customer \nSET address = 'Neue Adresse',\n    last_updated = CURRENT_TIMESTAMP\nWHERE customer_id = 123;\n```\n\n**SCD Type 2 - Historisierung:**\n```sql\n-- Alte Version als historisch markieren\nUPDATE dim_customer \nSET valid_to = CURRENT_DATE - 1,\n    is_current = FALSE\nWHERE customer_id = 123 AND is_current = TRUE;\n\n-- Neue Version einfügen\nINSERT INTO dim_customer (\n    customer_id, address, valid_from, valid_to, is_current\n) VALUES (\n    123, 'Neue Adresse', CURRENT_DATE, '9999-12-31', TRUE\n);\n```\n\n**SCD Type 3 - Zusätzliche Spalte:**\n```sql\n-- Vorherigen Wert in separater Spalte speichern\nUPDATE dim_customer \nSET previous_address = current_address,\n    current_address = 'Neue Adresse',\n    address_change_date = CURRENT_DATE\nWHERE customer_id = 123;\n```\n\n## ETL-Tools und Technologien\n\n### Open Source ETL-Tools\n\n**Apache Airflow:**\n- Workflow-Orchestrierung\n- Python-basierte DAGs\n- Umfangreiches Ökosystem\n- Web-basierte UI\n\n**Talend Open Studio:**\n- Grafische ETL-Entwicklung\n- Code-Generierung\n- Umfangreiche Konnektoren\n- Community Edition verfügbar\n\n**Pentaho Data Integration (Kettle):**\n- Drag-and-Drop Interface\n- Transformations und Jobs\n- Scheduler integriert\n- Metadaten-Repository\n\n### Cloud ETL-Services\n\n**AWS Glue:**\n- Serverless ETL-Service\n- Automatische Schema-Erkennung\n- Integration mit AWS-Ökosystem\n- Spark-basierte Verarbeitung\n\n**Azure Data Factory:**\n- Cloud-basierte Datenintegration\n- Visuelle Entwicklungsumgebung\n- Hybrid-Konnektivität\n- Monitoring und Alerting\n\n**Google Cloud Dataflow:**\n- Apache Beam-basiert\n- Stream- und Batch-Verarbeitung\n- Automatische Skalierung\n- Integration mit GCP-Services\n\n### Big Data ETL\n\n**Apache Spark:**\n- In-Memory-Verarbeitung\n- Scala, Python, Java APIs\n- Batch- und Stream-Processing\n- MLlib für Machine Learning\n\n**Apache NiFi:**\n- Datenfluss-Automatisierung\n- Web-basierte UI\n- Provenance-Tracking\n- Sicherheit und Governance\n\n## ETL-Pipeline Design\n\n### Architektur-Patterns\n\n**Lambda-Architektur:**\n```\nDatenquellen → Batch Layer (Hadoop/Spark)\n            → Speed Layer (Storm/Kafka) → Serving Layer\n            → Serving Layer (HBase/Cassandra)\n```\n\n**Kappa-Architektur:**\n```\nDatenquellen → Stream Processing (Kafka/Spark) → Serving Layer\n```\n\n**Medallion-Architektur:**\n```\nBronze Layer (Raw Data) → Silver Layer (Cleaned) → Gold Layer (Aggregated)\n```\n\n### Pipeline-Monitoring\n\n**Metriken:**\n- Durchsatz (Records/Sekunde)\n- Latenz (Ende-zu-Ende Zeit)\n- Fehlerrate (Failed Records %)\n- Datenqualität (Completeness, Accuracy)\n\n**Alerting:**\n- Pipeline-Ausfälle\n- Datenqualitätsprobleme\n- Performance-Degradation\n- SLA-Verletzungen\n\n## Datenqualität in ETL\n\n### Data Quality Framework\n\n**Dimensionen:**\n- **Vollständigkeit**: Keine fehlenden Werte\n- **Genauigkeit**: Korrekte Werte\n- **Konsistenz**: Einheitliche Formate\n- **Aktualität**: Zeitnahe Daten\n- **Eindeutigkeit**: Keine Duplikate\n- **Gültigkeit**: Wertebereich eingehalten\n\n**Qualitätsprüfungen:**\n```sql\n-- Vollständigkeitsprüfung\nSELECT \n    COUNT(*) as total_records,\n    COUNT(customer_id) as non_null_customer_id,\n    COUNT(email) as non_null_email,\n    (COUNT(email) * 100.0 / COUNT(*)) as email_completeness_pct\nFROM customers;\n\n-- Eindeutigkeitsprüfung\nSELECT \n    email,\n    COUNT(*) as duplicate_count\nFROM customers\nGROUP BY email\nHAVING COUNT(*) > 1;\n```\n\n## Prüfungsrelevante Aspekte\n\n- ETL vs. ELT Unterschiede verstehen\n- Extraktionsstrategien (Full, Incremental, Delta)\n- Datentransformationstypen kennen\n- Ladestrategien und SCD-Typen anwenden\n- Datenqualitätsdimensionen benennen\n- ETL-Tools und deren Einsatzgebiete\n- Pipeline-Monitoring und Fehlerbehandlung\n- Big Data ETL-Konzepte verstehen",
+  "content": "# ETL-Prozesse und Datenintegration\n\n## Einführung\n\nETL (Extract, Transform, Load) ist ein fundamentaler Prozess in der Datenverarbeitung, der es ermöglicht, Daten aus verschiedenen Quellen zu extrahieren, zu transformieren und in Zielsysteme zu laden. Für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse ist das Verständnis von ETL-Prozessen essentiell für effektive Datenintegration.\n\n<!-- micro-quiz:bp-dpa-02-etl-fundamentals-einfuhrung-micro-1 -->\n## ETL-Grundlagen\n\n### Definition\n\nETL ist ein dreistufiger Prozess zur Datenintegration:\n\n**Extract (Extrahieren):**\n- Daten aus verschiedenen Quellsystemen abrufen\n- Strukturierte und unstrukturierte Daten\n- Batch- oder Real-time-Extraktion\n\n**Transform (Transformieren):**\n- Datenbereinigung und -validierung\n- Formatkonvertierung und Standardisierung\n- Geschäftslogik anwenden\n\n**Load (Laden):**\n- Transformierte Daten in Zielsystem laden\n- Data Warehouse, Data Lake oder operative Systeme\n- Vollständige oder inkrementelle Ladung\n\n### ETL vs. ELT\n\n**ETL (Extract, Transform, Load):**\n- Transformation vor dem Laden\n- Traditioneller Ansatz\n- Optimiert für strukturierte Daten\n- Geringere Speicheranforderungen im Zielsystem\n\n**ELT (Extract, Load, Transform):**\n- Transformation nach dem Laden\n- Moderner Ansatz für Big Data\n- Nutzt Rechenpower des Zielsystems\n- Flexiblere Datenexploration\n\n## Extract (Datenextraktion)\n<!-- micro-quiz:bp-dpa-02-etl-fundamentals-etl-grundlagen-micro-1 -->\n\n\n### Datenquellen\n\n**Relationale Datenbanken:**\n- SQL-basierte Extraktion\n- JDBC/ODBC-Verbindungen\n- Inkrementelle Extraktion über Timestamps\n- Change Data Capture (CDC)\n\n**Dateisysteme:**\n- CSV, Excel, XML, JSON\n- FTP/SFTP-Übertragung\n- Datei-Monitoring und -Verarbeitung\n- Komprimierte Archive\n\n**APIs und Web Services:**\n- REST/SOAP APIs\n- JSON/XML-Responses\n- Authentifizierung und Rate Limiting\n- Pagination bei großen Datenmengen\n\n**NoSQL-Datenbanken:**\n- MongoDB, Cassandra, Redis\n- Dokumentenbasierte Extraktion\n- Spezielle Konnektoren erforderlich\n\n**Streaming-Daten:**\n- Apache Kafka, RabbitMQ\n- Real-time Datenströme\n- Event-basierte Architektur\n\n### Extraktionsstrategien\n\n**Full Extraction:**\n- Komplette Datenextraktion\n- Einfach zu implementieren\n- Hoher Ressourcenverbrauch\n- Geeignet für kleine Datenmengen\n\n**Incremental Extraction:**\n- Nur geänderte/neue Daten\n- Timestamp-basiert oder Change Tracking\n- Effizient bei großen Datenmengen\n- Komplexere Logik erforderlich\n\n**Delta Extraction:**\n- Identifikation von Änderungen\n- Insert, Update, Delete-Operationen\n- Trigger-basiert oder Log-Mining\n- Hohe Datenaktualität\n\n<!-- micro-quiz:bp-dpa-02-etl-fundamentals-extract-datenextraktion-micro-1 -->\n## Transform (Datentransformation)\n\n### Datenbereinigung\n\n**Datenqualitätsprobleme:**\n- Fehlende Werte (NULL, leer)\n- Duplikate und Inkonsistenzen\n- Formatfehler und Tippfehler\n- Ausreißer und ungültige Werte\n\n**Bereinigungsstrategien:**\n```sql\n-- Beispiel: Datenbereinigung in SQL\n-- Fehlende Werte behandeln\nSELECT \n    customer_id,\n    COALESCE(phone, 'Nicht verfügbar') as phone,\n    CASE \n        WHEN email IS NULL OR email = '' THEN 'noemail@company.com'\n        ELSE LOWER(TRIM(email))\n    END as email\nFROM customers;\n\n-- Duplikate entfernen\nWITH ranked_customers AS (\n    SELECT *,\n           ROW_NUMBER() OVER (PARTITION BY email ORDER BY created_date DESC) as rn\n    FROM customers\n)\nSELECT * FROM ranked_customers WHERE rn = 1;\n```\n\n### Datenvalidierung\n\n**Validierungsregeln:**\n- Datentyp-Validierung\n- Wertebereich-Prüfung\n- Format-Validierung (E-Mail, Telefon)\n- Referentielle Integrität\n- Geschäftsregeln\n\n**Fehlerbehandlung:**\n- Reject-Records in Fehler-Tabelle\n- Logging und Monitoring\n- Automatische Korrektur wo möglich\n- Benachrichtigung bei kritischen Fehlern\n\n### Datentransformation\n\n**Strukturelle Transformationen:**\n- Normalisierung/Denormalisierung\n- Pivotierung von Daten\n- Aggregation und Gruppierung\n- Join-Operationen\n\n**Inhaltliche Transformationen:**\n- Datentyp-Konvertierung\n- Formatstandardisierung\n- Kodierung und Dekodierung\n- Berechnung abgeleiteter Werte\n\n**Beispiel-Transformationen:**\n```python\n# Python-Beispiel für Datentransformation\nimport pandas as pd\nfrom datetime import datetime\n\ndef transform_customer_data(df):\n    # Datentypen konvertieren\n    df['birth_date'] = pd.to_datetime(df['birth_date'])\n    df['customer_id'] = df['customer_id'].astype(int)\n    \n    # Alter berechnen\n    df['age'] = (datetime.now() - df['birth_date']).dt.days // 365\n    \n    # Kategorisierung\n    df['age_group'] = pd.cut(df['age'], \n                            bins=[0, 25, 45, 65, 100], \n                            labels=['Jung', 'Erwachsen', 'Mittel', 'Senior'])\n    \n    # Standardisierung\n    df['email'] = df['email'].str.lower().str.strip()\n    df['phone'] = df['phone'].str.replace(r'[^0-9+]', '', regex=True)\n    \n    return df\n```\n\n## Load (Datenladen)\n<!-- micro-quiz:bp-dpa-02-etl-fundamentals-transform-datentransformation-micro-1 -->\n\n\n### Ladestrategien\n\n**Full Load:**\n- Komplette Neuerstellung der Zieltabelle\n- Einfach zu implementieren\n- Hoher Ressourcenverbrauch\n- Downtime während des Ladens\n\n**Incremental Load:**\n- Nur neue/geänderte Daten laden\n- Append-Only oder Upsert-Operationen\n- Effizient bei großen Datenmengen\n- Komplexere Logik für Änderungserkennung\n\n**Delta Load:**\n- Insert, Update, Delete-Operationen\n- Slowly Changing Dimensions (SCD)\n- Historisierung von Änderungen\n- Merge/Upsert-Statements\n\n### Slowly Changing Dimensions (SCD)\n\n**SCD Type 1 - Überschreiben:**\n```sql\n-- Aktuelle Werte überschreiben\nUPDATE dim_customer \nSET address = 'Neue Adresse',\n    last_updated = CURRENT_TIMESTAMP\nWHERE customer_id = 123;\n```\n\n**SCD Type 2 - Historisierung:**\n```sql\n-- Alte Version als historisch markieren\nUPDATE dim_customer \nSET valid_to = CURRENT_DATE - 1,\n    is_current = FALSE\nWHERE customer_id = 123 AND is_current = TRUE;\n\n-- Neue Version einfügen\nINSERT INTO dim_customer (\n    customer_id, address, valid_from, valid_to, is_current\n) VALUES (\n    123, 'Neue Adresse', CURRENT_DATE, '9999-12-31', TRUE\n);\n```\n\n**SCD Type 3 - Zusätzliche Spalte:**\n```sql\n-- Vorherigen Wert in separater Spalte speichern\nUPDATE dim_customer \nSET previous_address = current_address,\n    current_address = 'Neue Adresse',\n    address_change_date = CURRENT_DATE\nWHERE customer_id = 123;\n```\n\n<!-- micro-quiz:bp-dpa-02-etl-fundamentals-load-datenladen-micro-1 -->\n## ETL-Tools und Technologien\n\n### Open Source ETL-Tools\n\n**Apache Airflow:**\n- Workflow-Orchestrierung\n- Python-basierte DAGs\n- Umfangreiches Ökosystem\n- Web-basierte UI\n\n**Talend Open Studio:**\n- Grafische ETL-Entwicklung\n- Code-Generierung\n- Umfangreiche Konnektoren\n- Community Edition verfügbar\n\n**Pentaho Data Integration (Kettle):**\n- Drag-and-Drop Interface\n- Transformations und Jobs\n- Scheduler integriert\n- Metadaten-Repository\n\n### Cloud ETL-Services\n\n**AWS Glue:**\n- Serverless ETL-Service\n- Automatische Schema-Erkennung\n- Integration mit AWS-Ökosystem\n- Spark-basierte Verarbeitung\n\n**Azure Data Factory:**\n- Cloud-basierte Datenintegration\n- Visuelle Entwicklungsumgebung\n- Hybrid-Konnektivität\n- Monitoring und Alerting\n\n**Google Cloud Dataflow:**\n- Apache Beam-basiert\n- Stream- und Batch-Verarbeitung\n- Automatische Skalierung\n- Integration mit GCP-Services\n\n### Big Data ETL\n\n**Apache Spark:**\n- In-Memory-Verarbeitung\n- Scala, Python, Java APIs\n- Batch- und Stream-Processing\n- MLlib für Machine Learning\n\n**Apache NiFi:**\n- Datenfluss-Automatisierung\n- Web-basierte UI\n- Provenance-Tracking\n- Sicherheit und Governance\n\n## ETL-Pipeline Design\n<!-- micro-quiz:bp-dpa-02-etl-fundamentals-etl-tools-und-technologien-micro-1 -->\n\n\n### Architektur-Patterns\n\n**Lambda-Architektur:**\n```\nDatenquellen → Batch Layer (Hadoop/Spark)\n            → Speed Layer (Storm/Kafka) → Serving Layer\n            → Serving Layer (HBase/Cassandra)\n```\n\n**Kappa-Architektur:**\n```\nDatenquellen → Stream Processing (Kafka/Spark) → Serving Layer\n```\n\n**Medallion-Architektur:**\n```\nBronze Layer (Raw Data) → Silver Layer (Cleaned) → Gold Layer (Aggregated)\n```\n\n### Pipeline-Monitoring\n\n**Metriken:**\n- Durchsatz (Records/Sekunde)\n- Latenz (Ende-zu-Ende Zeit)\n- Fehlerrate (Failed Records %)\n- Datenqualität (Completeness, Accuracy)\n\n**Alerting:**\n- Pipeline-Ausfälle\n- Datenqualitätsprobleme\n- Performance-Degradation\n- SLA-Verletzungen\n\n<!-- micro-quiz:bp-dpa-02-etl-fundamentals-etl-pipeline-design-micro-1 -->\n## Datenqualität in ETL\n\n### Data Quality Framework\n\n**Dimensionen:**\n- **Vollständigkeit**: Keine fehlenden Werte\n- **Genauigkeit**: Korrekte Werte\n- **Konsistenz**: Einheitliche Formate\n- **Aktualität**: Zeitnahe Daten\n- **Eindeutigkeit**: Keine Duplikate\n- **Gültigkeit**: Wertebereich eingehalten\n\n**Qualitätsprüfungen:**\n```sql\n-- Vollständigkeitsprüfung\nSELECT \n    COUNT(*) as total_records,\n    COUNT(customer_id) as non_null_customer_id,\n    COUNT(email) as non_null_email,\n    (COUNT(email) * 100.0 / COUNT(*)) as email_completeness_pct\nFROM customers;\n\n-- Eindeutigkeitsprüfung\nSELECT \n    email,\n    COUNT(*) as duplicate_count\nFROM customers\nGROUP BY email\nHAVING COUNT(*) > 1;\n```\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-dpa-02-etl-fundamentals-datenqualitat-in-etl-micro-1 -->\n\n\n- ETL vs. ELT Unterschiede verstehen\n- Extraktionsstrategien (Full, Incremental, Delta)\n- Datentransformationstypen kennen\n- Ladestrategien und SCD-Typen anwenden\n- Datenqualitätsdimensionen benennen\n- ETL-Tools und deren Einsatzgebiete\n- Pipeline-Monitoring und Fehlerbehandlung\n- Big Data ETL-Konzepte verstehen\n\n\n\n<!-- micro-quiz:bp-dpa-02-etl-quiz -->\n<!-- micro-quiz:bp-dpa-02-etl-fundamentals-prufungsrelevante-aspekte-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "python",
@@ -28,7 +28,9 @@
       "title": "ETL Pipeline in Python"
     }
   ],
-  "relatedQuizzes": ["bp-dpa-02-etl-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-02-etl-quiz"
+  ],
   "resources": [
     {
       "title": "Apache Airflow Documentation",
@@ -42,11 +44,11 @@
     }
   ],
   "learningObjectives": [
-    "ETL-Prozess verstehen und implementieren",
-    "Extraktionsstrategien auswählen und anwenden",
-    "Datentransformation und -bereinigung durchführen",
-    "Ladestrategien und SCD-Typen implementieren",
-    "Datenqualität in ETL-Pipelines sicherstellen"
+    "Du kannst eTL-Prozess verstehen und implementieren erklären",
+    "Du kannst extraktionsstrategien auswählen und anwenden erklären",
+    "Du kannst datentransformation und -bereinigung durchführen erklären",
+    "Du kannst ladestrategien und SCD-Typen implementieren erklären",
+    "Du kannst datenqualität in ETL-Pipelines sicherstellen erklären"
   ],
   "keyTakeaways": [
     "ETL ist fundamental für Datenintegration und -qualität",
@@ -56,5 +58,78 @@
   ],
   "lastUpdated": "2025-01-20T00:00:00Z",
   "version": "1.0",
-  "tracks": ["DPA"]
+  "tracks": [
+    "DPA"
+  ],
+  "summary": "Extract, Transform, Load - Grundlagen der Datenintegration und ETL-Pipeline-Design",
+  "contentOutline": [
+    {
+      "id": "etl-prozesse-und-datenintegration",
+      "title": "ETL-Prozesse und Datenintegration",
+      "summary": "Kernaspekt: ETL-Prozesse und Datenintegration"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "etl-grundlagen",
+      "title": "ETL-Grundlagen",
+      "summary": "Kernaspekt: ETL-Grundlagen"
+    },
+    {
+      "id": "extract-datenextraktion",
+      "title": "Extract (Datenextraktion)",
+      "summary": "Kernaspekt: Extract (Datenextraktion)"
+    },
+    {
+      "id": "transform-datentransformation",
+      "title": "Transform (Datentransformation)",
+      "summary": "Kernaspekt: Transform (Datentransformation)"
+    },
+    {
+      "id": "python-beispiel-fur-datentransformation",
+      "title": "Python-Beispiel für Datentransformation",
+      "summary": "Kernaspekt: Python-Beispiel für Datentransformation"
+    },
+    {
+      "id": "load-datenladen",
+      "title": "Load (Datenladen)",
+      "summary": "Kernaspekt: Load (Datenladen)"
+    },
+    {
+      "id": "etl-tools-und-technologien",
+      "title": "ETL-Tools und Technologien",
+      "summary": "Kernaspekt: ETL-Tools und Technologien"
+    },
+    {
+      "id": "etl-pipeline-design",
+      "title": "ETL-Pipeline Design",
+      "summary": "Kernaspekt: ETL-Pipeline Design"
+    },
+    {
+      "id": "datenqualitat-in-etl",
+      "title": "Datenqualität in ETL",
+      "summary": "Kernaspekt: Datenqualität in ETL"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-02-etl-fundamentals-einfuhrung-micro-1",
+    "bp-dpa-02-etl-fundamentals-etl-grundlagen-micro-1",
+    "bp-dpa-02-etl-fundamentals-extract-datenextraktion-micro-1",
+    "bp-dpa-02-etl-fundamentals-transform-datentransformation-micro-1",
+    "bp-dpa-02-etl-fundamentals-load-datenladen-micro-1",
+    "bp-dpa-02-etl-fundamentals-etl-tools-und-technologien-micro-1",
+    "bp-dpa-02-etl-fundamentals-etl-pipeline-design-micro-1",
+    "bp-dpa-02-etl-fundamentals-datenqualitat-in-etl-micro-1",
+    "bp-dpa-02-etl-fundamentals-prufungsrelevante-aspekte-micro-1"
+  ]
 }

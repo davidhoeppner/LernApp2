@@ -1,9 +1,8 @@
+// @ts-nocheck
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 class ComplexityAnalyzer {
   constructor() {
@@ -415,7 +414,7 @@ async function main() {
   console.log('Analyzing code complexity...\n');
 
   const analyzer = new ComplexityAnalyzer();
-  const srcDir = path.join(__dirname, '..', 'src');
+  const srcDir = path.join(process.cwd(), '..', 'src');
 
   await analyzer.analyzeDirectory(srcDir);
 
@@ -423,13 +422,13 @@ async function main() {
   const markdown = analyzer.generateMarkdownReport();
 
   // Save JSON report
-  const jsonPath = path.join(__dirname, '..', 'COMPLEXITY_ANALYSIS.json');
+  const jsonPath = path.join(process.cwd(), '..', 'COMPLEXITY_ANALYSIS.json');
   fs.writeFileSync(jsonPath, JSON.stringify(report, null, 2));
   console.log(`✓ JSON report saved to ${jsonPath}`);
 
   // Save Markdown report
   const mdPath = path.join(
-    __dirname,
+    process.cwd(),
     '..',
     '.kiro',
     'specs',

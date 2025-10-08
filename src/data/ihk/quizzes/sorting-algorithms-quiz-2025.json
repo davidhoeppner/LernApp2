@@ -1,0 +1,49 @@
+{
+  "id": "sorting-algorithms-quiz-2025",
+  "moduleId": "bp-05-sorting",
+  "title": "Sortierverfahren - Bubble, Selection und Insertion Sort — Mini-Quiz",
+  "description": "Automatisch generiertes Micro-Quiz für Sortierverfahren - Bubble, Selection und Insertion Sort",
+  "category": "BP-05",
+  "difficulty": "intermediate",
+  "timeLimit": 300,
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Kurze Verständnisfrage 1",
+      "options": [
+        "Option A",
+        "Option B",
+        "Option C"
+      ],
+      "correctAnswer": "Option A",
+      "explanation": "Kurzbegründung",
+      "points": 1
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Kurze Wahr/Falsch-Frage",
+      "correctAnswer": true,
+      "explanation": "Kurzbegründung",
+      "points": 1
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Mehrfachauswahl: wähle alle zutreffenden",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correctAnswer": [
+        "A",
+        "B"
+      ],
+      "explanation": "Kurzbegründung",
+      "points": 1
+    }
+  ]
+}

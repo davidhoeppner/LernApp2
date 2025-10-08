@@ -1,0 +1,59 @@
+{
+  "id": "bp-05-sorting-warum-sortieren-wichtig-ist-micro-1",
+  "moduleId": "bp-05-sorting",
+  "title": "Warum Sortieren wichtig ist — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welche durchschnittliche Zeitkomplexität hat Insertion Sort?",
+      "options": [
+        "O(n)",
+        "O(n log n)",
+        "O(n^2)",
+        "O(log n)"
+      ],
+      "correctAnswer": "O(n^2)",
+      "explanation": "Best Case O(n), durchschnittlich O(n^2).",
+      "points": 1,
+      "category": "Sortierung"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Bubble Sort ist stabil.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Relative Reihenfolge gleicher Elemente bleibt erhalten.",
+      "points": 1,
+      "category": "Sortierung"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Algorithmen sind in-place?",
+      "options": [
+        "Bubble Sort",
+        "Selection Sort",
+        "Insertion Sort",
+        "Merge Sort"
+      ],
+      "correctAnswer": [
+        "Bubble Sort",
+        "Selection Sort",
+        "Insertion Sort"
+      ],
+      "explanation": "Merge Sort benötigt zusätzlichen Speicher.",
+      "points": 1,
+      "category": "Sortierung"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"Warum Sortieren wichtig ist\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

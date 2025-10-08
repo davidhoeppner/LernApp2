@@ -1,0 +1,59 @@
+{
+  "id": "bp-03-rest-api-pagination-micro-1",
+  "moduleId": "bp-03-rest-api",
+  "title": "Pagination — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Was ist ein Vorteil von Cursor-basierter Pagination gegenüber Offset?",
+      "options": [
+        "Einfachere Implementierung in jeder SQL-Version",
+        "Stabile Performance bei großen Datensätzen",
+        "Automatische Sortierung nach Primärschlüssel",
+        "Keine Zusatzlogik nötig"
+      ],
+      "correctAnswer": "Stabile Performance bei großen Datensätzen",
+      "explanation": "Cursor vermeidet lineares Überspringen vieler Zeilen.",
+      "points": 1,
+      "category": "Pagination"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Offset-basierte Pagination kann bei großen Offsets Performance-Probleme verursachen.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "OFFSET n zwingt Datenbank viele Zeilen zu zählen/überspringen.",
+      "points": 1,
+      "category": "Pagination"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Metadaten sind bei Pagination hilfreich?",
+      "options": [
+        "total",
+        "limit",
+        "offset oder cursor",
+        "hash der gesamten Tabelle"
+      ],
+      "correctAnswer": [
+        "total",
+        "limit",
+        "offset oder cursor"
+      ],
+      "explanation": "Hash der Tabelle ist unüblich und teuer.",
+      "points": 1,
+      "category": "Pagination"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"Pagination\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

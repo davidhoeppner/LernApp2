@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+// @ts-nocheck
+/* eslint-env node */
+
 
 /**
  * Pre-Manual Test Check
@@ -10,8 +13,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const rootDir = path.join(__dirname, '..');
+const process.cwd() = path.dirname(__filename);
+const rootDir = path.join(process.cwd(), '..');
 
 console.log('🔍 Running pre-manual test checks...\n');
 

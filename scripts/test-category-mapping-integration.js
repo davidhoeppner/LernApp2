@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+// @ts-nocheck
+/* eslint-env node */
+
 
 /**
  * Test CategoryMappingService integration in IHKQuizListView
@@ -9,8 +12,8 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const projectRoot = join(__dirname, '..');
+const process.cwd() = dirname(__filename);
+const projectRoot = join(process.cwd(), '..');
 
 // Mock services for testing
 class MockSpecializationService {

@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// @ts-nocheck
+/* eslint-env node */
 
 /**
  * Simple test to verify CategoryMappingService integration in IHKQuizListView

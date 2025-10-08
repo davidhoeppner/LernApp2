@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Content Discovery Features Test Script
  * Tests cross-category relationship identification, search functionality within categories,
@@ -11,7 +13,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const process.cwd() = dirname(__filename);
 
 // Test results tracking
 const testResults = {

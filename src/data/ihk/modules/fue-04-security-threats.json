@@ -11,18 +11,48 @@
   "important": true,
   "estimatedTime": 45,
   "prerequisites": [],
-  "tags": ["Sicherheit", "Security", "Threats", "Angriffe", "Neu 2025"],
-  "content": "# Sicherheitsbedrohungen\n\n## Einführung\n\nSicherheitsbedrohungen sind potenzielle Risiken für IT-Systeme.\n\n## Häufige Bedrohungen\n\n### SQL Injection\n\nAngreifer fügen schädlichen SQL-Code in Eingabefelder ein.\n\n### Cross-Site Scripting (XSS)\n\nAngreifer injizieren schädliche Skripte in Webseiten.",
+  "tags": [
+    "Sicherheit",
+    "Security",
+    "Threats",
+    "Angriffe",
+    "Neu 2025"
+  ],
+  "content": "# Sicherheitsbedrohungen\n\n## Einführung\n\nSicherheitsbedrohungen sind potenzielle Risiken für IT-Systeme.\n\n<!-- micro-quiz:fue-04-security-threats-einfuhrung-micro-1 -->\n## Häufige Bedrohungen\n\n### SQL Injection\n\nAngreifer fügen schädlichen SQL-Code in Eingabefelder ein.\n\n### Cross-Site Scripting (XSS)\n\nAngreifer injizieren schädliche Skripte in Webseiten.\n\n\n<!-- micro-quiz:fue-04-security-threats-haufige-bedrohungen-micro-1 -->",
   "codeExamples": [],
   "relatedQuizzes": [],
   "resources": [],
   "lastUpdated": "2025-01-10T00:00:00Z",
   "version": "1.0",
   "learningObjectives": [
-    "Understand Sicherheit",
-    "Understand Security",
-    "Understand Threats",
-    "Understand Angriffe",
-    "Understand Neu 2025"
+    "Du kannst sicherheit erklären",
+    "Du kannst security erklären",
+    "Du kannst threats erklären",
+    "Du kannst angriffe erklären",
+    "Du kannst neu 2025 erklären"
+  ],
+  "summary": "Lerne die wichtigsten Sicherheitsbedrohungen und Angriffsvektoren kennen.",
+  "contentOutline": [
+    {
+      "id": "sicherheitsbedrohungen",
+      "title": "Sicherheitsbedrohungen",
+      "summary": "Kernaspekt: Sicherheitsbedrohungen"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "haufige-bedrohungen",
+      "title": "Häufige Bedrohungen",
+      "summary": "Kernaspekt: Häufige Bedrohungen"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "fue-04-security-threats-einfuhrung-micro-1",
+    "fue-04-security-threats-haufige-bedrohungen-micro-1"
   ]
 }

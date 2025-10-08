@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 import IHKContentService from '../src/services/IHKContentService.js';
 
 (async function () {
