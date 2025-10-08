@@ -9,7 +9,7 @@
   "newIn2025": false,
   "removedIn2025": true,
   "important": false,
-  "estimatedTime": "30 Minuten",
+  "estimatedTime": 30,
   "prerequisites": [],
   "tags": [
     "Programmierparadigmen",

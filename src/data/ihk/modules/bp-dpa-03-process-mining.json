@@ -9,7 +9,7 @@
   "newIn2025": true,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "65 Minuten",
+  "estimatedTime": 65,
   "prerequisites": [
     "bp-dpa-03-bpmn-fundamentals"
   ],

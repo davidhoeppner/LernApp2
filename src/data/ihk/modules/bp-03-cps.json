@@ -9,7 +9,7 @@
   "newIn2025": true,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "40 Minuten",
+  "estimatedTime": 40,
   "prerequisites": [],
   "tags": [
     "CPS",

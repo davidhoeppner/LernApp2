@@ -9,7 +9,7 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "55 Minuten",
+  "estimatedTime": 55,
   "prerequisites": [],
   "tags": [
     "ETL",

@@ -9,7 +9,7 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "100 Minuten",
+  "estimatedTime": 100,
   "prerequisites": [],
   "tags": [
     "Software-Tests",

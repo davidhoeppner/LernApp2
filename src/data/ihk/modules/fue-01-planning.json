@@ -9,7 +9,7 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "90 Minuten",
+  "estimatedTime": 90,
   "prerequisites": [],
   "tags": [
     "Projektplanung",

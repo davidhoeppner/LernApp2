@@ -9,7 +9,7 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "70 Minuten",
+  "estimatedTime": 70,
   "prerequisites": [],
   "tags": [
     "Statistik",

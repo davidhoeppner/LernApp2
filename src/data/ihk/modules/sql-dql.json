@@ -9,7 +9,7 @@
   "newIn2025": true,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "60 Minuten",
+  "estimatedTime": 60,
   "prerequisites": [
     "sql-ddl-2025",
     "sql-dml-2025"

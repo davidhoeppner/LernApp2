@@ -9,7 +9,7 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "120 Minuten",
+  "estimatedTime": 120,
   "prerequisites": [],
   "tags": [
     "Kontrollstrukturen",

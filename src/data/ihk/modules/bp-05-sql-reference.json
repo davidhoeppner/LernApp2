@@ -9,7 +9,7 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "15 Minuten",
+  "estimatedTime": 15,
   "prerequisites": [],
   "tags": [
     "SQL",

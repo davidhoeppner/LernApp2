@@ -9,7 +9,7 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "60 Minuten",
+  "estimatedTime": 60,
   "prerequisites": [
     "bp-dpa-01-normalization"
   ],

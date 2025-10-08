@@ -9,7 +9,7 @@
   "newIn2025": true,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": "50 Minuten",
+  "estimatedTime": 50,
   "prerequisites": [],
   "tags": [
     "Scrum",
