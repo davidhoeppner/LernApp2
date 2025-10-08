@@ -1,6 +1,7 @@
+#!/usr/bin/env node
 // @ts-nocheck
 /* eslint-env node */
-#!/usr/bin/env node
+
 /**
  * Enrich automatically generated placeholder micro-quiz JSON files with
  * domain-relevant questions derived heuristically from the section title.

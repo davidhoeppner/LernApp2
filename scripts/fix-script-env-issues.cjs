@@ -1,7 +1,4 @@
 #!/usr/bin/env node
-// @ts-nocheck
-/* eslint-env node */
-
 const fs = require('fs');
 const path = require('path');
 
@@ -12,13 +9,19 @@ for (const f of files) {
   const p = path.join(DIR, f);
   let raw = fs.readFileSync(p, 'utf8');
   let out = raw;
-  // Prepend ts check and eslint env for editor
-  const header = "// @ts-nocheck\n/* eslint-env node */\n";
-  if (!raw.startsWith('// @ts-nocheck') && !raw.startsWith('/* eslint-env node */')) {
-    out = header + raw;
+  // Move shebang to be first line if it's present but not at top
+  const shebang = '#!/usr/bin/env node';
+  if (out.includes(shebang) && !out.startsWith(shebang)) {
+    // remove existing shebang
+    out = out.split(shebang).join('');
+    out = shebang + '\n' + out.trimStart();
   }
-  // Replace catch with catch to avoid unused-catch-variable
-  out = out.replace(/catch\s*\(\s*e\s*\)/g, 'catch');
+
+  // Replace occurrences of process.cwd() with process.cwd()
+  if (out.includes('process.cwd()')) {
+    out = out.replace(/process.cwd()/g, 'process.cwd()');
+  }
+
   if (out !== raw) {
     fs.writeFileSync(p, out, 'utf8');
     console.log('Patched', f);

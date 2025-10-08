@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 class UnusedImportRemover {
   constructor() {
@@ -216,7 +216,7 @@ class UnusedImportRemover {
     };
 
     const reportPath = path.join(
-      __dirname,
+      process.cwd(),
       '..',
       'UNUSED_IMPORTS_REMOVED.json'
     );
@@ -232,7 +232,7 @@ class UnusedImportRemover {
 
 // Run the analyzer
 const remover = new UnusedImportRemover();
-const srcDir = path.join(__dirname, '..', 'src');
+const srcDir = path.join(process.cwd(), '..', 'src');
 
 console.log('Scanning for unused imports...\n');
 await remover.scanDirectory(srcDir);

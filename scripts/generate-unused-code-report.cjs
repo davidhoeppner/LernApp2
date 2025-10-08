@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 class UnusedCodeAnalyzer {
   constructor() {
@@ -18,7 +18,7 @@ class UnusedCodeAnalyzer {
   }
 
   async analyzeProject() {
-    const srcDir = path.join(__dirname, '..', 'src');
+    const srcDir = path.join(process.cwd(), '..', 'src');
     await this.scanDirectory(srcDir);
     this.buildDependencyGraph();
 
@@ -54,7 +54,7 @@ class UnusedCodeAnalyzer {
 
   async analyzeFile(filePath) {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const relativePath = path.relative(path.join(__dirname, '..'), filePath);
+    const relativePath = path.relative(path.join(process.cwd(), '..'), filePath);
 
     const importMatches = content.matchAll(
       /import\s+(?:{([^}]+)}|(\w+))\s+from\s+['"]([^'"]+)['"]/g
@@ -134,7 +134,7 @@ class UnusedCodeAnalyzer {
         resolved += '.js';
       }
       return path
-        .relative(path.join(__dirname, '..'), resolved)
+        .relative(path.join(process.cwd(), '..'), resolved)
         .replace(/\\/g, '/');
     }
     return null;
@@ -145,7 +145,7 @@ class UnusedCodeAnalyzer {
 
     for (const [file, imports] of this.imports.entries()) {
       const content = fs.readFileSync(
-        path.join(__dirname, '..', file),
+        path.join(process.cwd(), '..', file),
         'utf-8'
       );
 
@@ -408,7 +408,7 @@ const results = await analyzer.analyzeProject();
 console.log('📝 Generating report...\n');
 
 const report = generateReport(results, analyzer);
-const reportPath = path.join(__dirname, '..', 'UNUSED_CODE_REPORT.md');
+const reportPath = path.join(process.cwd(), '..', 'UNUSED_CODE_REPORT.md');
 fs.writeFileSync(reportPath, report);
 
 console.log('✅ Report generated successfully!');

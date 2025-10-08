@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 class IntegrationAnalyzer {
   constructor() {
@@ -32,7 +32,7 @@ class IntegrationAnalyzer {
   }
 
   async scanComponents() {
-    const componentsDir = path.join(__dirname, '..', 'src', 'components');
+    const componentsDir = path.join(process.cwd(), '..', 'src', 'components');
     const files = fs.readdirSync(componentsDir);
 
     for (const file of files) {
@@ -54,7 +54,7 @@ class IntegrationAnalyzer {
   }
 
   async scanServices() {
-    const servicesDir = path.join(__dirname, '..', 'src', 'services');
+    const servicesDir = path.join(process.cwd(), '..', 'src', 'services');
     const files = fs.readdirSync(servicesDir);
 
     for (const file of files) {
@@ -74,7 +74,7 @@ class IntegrationAnalyzer {
   }
 
   async analyzeAppUsage() {
-    const appPath = path.join(__dirname, '..', 'src', 'app.js');
+    const appPath = path.join(process.cwd(), '..', 'src', 'app.js');
     const content = fs.readFileSync(appPath, 'utf-8');
 
     // Find imports
@@ -401,7 +401,7 @@ console.log('📝 Generating report...\n');
 
 const report = generateReport(opportunities);
 const reportPath = path.join(
-  __dirname,
+  process.cwd(),
   '..',
   'INTEGRATION_OPPORTUNITIES_REPORT.md'
 );

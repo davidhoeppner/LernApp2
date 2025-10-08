@@ -7,8 +7,8 @@ const fs = require('fs');
 const path = require('path');
 const { generateStatus } = require('./generate-modules-status.cjs');
 
-const MODULES_DIR = path.join(__dirname, '..', 'src', 'data', 'ihk', 'modules');
-const QUIZZES_DIR = path.join(__dirname, '..', 'src', 'data', 'ihk', 'quizzes');
+const MODULES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'modules');
+const QUIZZES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'quizzes');
 
 function slugify(str) {
   if (!str) return '';

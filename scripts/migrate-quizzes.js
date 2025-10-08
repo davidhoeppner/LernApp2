@@ -12,7 +12,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 // Simple migration tool (inline version)
 class QuizMigrationTool {
@@ -109,7 +109,7 @@ async function migrateQuizzes() {
 
   try {
     // Read original quizzes
-    const quizzesPath = path.join(__dirname, '../src/data/quizzes.json');
+    const quizzesPath = path.join(process.cwd(), '../src/data/quizzes.json');
     const quizzesData = fs.readFileSync(quizzesPath, 'utf8');
     const originalQuizzes = JSON.parse(quizzesData);
 
@@ -120,7 +120,7 @@ async function migrateQuizzes() {
 
     // Migrate each quiz
     const migratedQuizzes = [];
-    const outputDir = path.join(__dirname, '../src/data/ihk/quizzes');
+    const outputDir = path.join(process.cwd(), '../src/data/ihk/quizzes');
 
     // Ensure output directory exists
     if (!fs.existsSync(outputDir)) {
@@ -167,7 +167,7 @@ async function migrateQuizzes() {
     };
 
     // Save migration report
-    const reportPath = path.join(__dirname, '../QUIZ_MIGRATION_REPORT.json');
+    const reportPath = path.join(process.cwd(), '../QUIZ_MIGRATION_REPORT.json');
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
 
     console.log('✨ Migration complete!\n');

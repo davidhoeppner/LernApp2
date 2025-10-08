@@ -1,6 +1,7 @@
+#!/usr/bin/env node
 // @ts-nocheck
 /* eslint-env node */
-#!/usr/bin/env node
+
 
 /**
  * Verify Markdown Fix is Applied
@@ -12,8 +13,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const rootDir = path.join(__dirname, '..');
+const process.cwd() = path.dirname(__filename);
+const rootDir = path.join(process.cwd(), '..');
 
 console.log('🔍 Verifying Markdown Rendering Fix...\n');
 

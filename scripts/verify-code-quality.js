@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 class CodeQualityVerifier {
   constructor() {
@@ -27,7 +27,7 @@ class CodeQualityVerifier {
 
     try {
       execSync('npm run lint', {
-        cwd: path.join(__dirname, '..'),
+        cwd: path.join(process.cwd(), '..'),
         stdio: 'pipe',
         encoding: 'utf-8',
       });
@@ -63,7 +63,7 @@ class CodeQualityVerifier {
   checkImports() {
     console.log('🔗 Checking for broken imports...\n');
 
-    const srcPath = path.join(__dirname, '..', 'src');
+    const srcPath = path.join(process.cwd(), '..', 'src');
     const brokenImports = [];
 
     const checkFile = filePath => {
@@ -90,7 +90,7 @@ class CodeQualityVerifier {
 
           if (!fs.existsSync(resolvedPath)) {
             brokenImports.push({
-              file: path.relative(path.join(__dirname, '..'), filePath),
+              file: path.relative(path.join(process.cwd(), '..'), filePath),
               line: index + 1,
               import: importPath,
             });
@@ -134,7 +134,7 @@ class CodeQualityVerifier {
   checkConsoleStatements() {
     console.log('🖥️  Checking for console statements...\n');
 
-    const srcPath = path.join(__dirname, '..', 'src');
+    const srcPath = path.join(process.cwd(), '..', 'src');
     const consoleStatements = [];
 
     const checkFile = filePath => {
@@ -151,7 +151,7 @@ class CodeQualityVerifier {
           !line.trim().startsWith('//')
         ) {
           consoleStatements.push({
-            file: path.relative(path.join(__dirname, '..'), filePath),
+            file: path.relative(path.join(process.cwd(), '..'), filePath),
             line: index + 1,
             code: line.trim(),
           });
@@ -198,7 +198,7 @@ class CodeQualityVerifier {
   checkTodoComments() {
     console.log('📝 Checking for TODO/FIXME comments...\n');
 
-    const srcPath = path.join(__dirname, '..', 'src');
+    const srcPath = path.join(process.cwd(), '..', 'src');
     const todos = [];
 
     const checkFile = filePath => {
@@ -208,7 +208,7 @@ class CodeQualityVerifier {
       lines.forEach((line, index) => {
         if (/TODO|FIXME/i.test(line)) {
           todos.push({
-            file: path.relative(path.join(__dirname, '..'), filePath),
+            file: path.relative(path.join(process.cwd(), '..'), filePath),
             line: index + 1,
             comment: line.trim(),
           });
@@ -248,7 +248,7 @@ class CodeQualityVerifier {
 
     try {
       execSync('npm run build', {
-        cwd: path.join(__dirname, '..'),
+        cwd: path.join(process.cwd(), '..'),
         stdio: 'pipe',
         encoding: 'utf-8',
       });
@@ -322,7 +322,7 @@ class CodeQualityVerifier {
   // Save results
   saveResults() {
     const reportPath = path.join(
-      __dirname,
+      process.cwd(),
       '..',
       'CODE_QUALITY_VERIFICATION.json'
     );

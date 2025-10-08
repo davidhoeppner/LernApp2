@@ -8,8 +8,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const MODULES_DIR = path.join(__dirname, '..', 'src', 'data', 'ihk', 'modules');
-const OUTPUT_FILE = path.join(__dirname, '..', 'modules.md');
+const MODULES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'modules');
+const OUTPUT_FILE = path.join(process.cwd(), '..', 'modules.md');
 
 function slugify(str) {
   if (!str) return '';

@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 class DependencyAuditor {
   constructor() {
@@ -23,12 +23,12 @@ class DependencyAuditor {
 
   async audit() {
     // Read package.json
-    const packagePath = path.join(__dirname, '..', 'package.json');
+    const packagePath = path.join(process.cwd(), '..', 'package.json');
     this.packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf-8'));
 
     // Scan codebase for imports
-    await this.scanForImports(path.join(__dirname, '..', 'src'));
-    await this.scanForImports(path.join(__dirname, '..', 'scripts'));
+    await this.scanForImports(path.join(process.cwd(), '..', 'src'));
+    await this.scanForImports(path.join(process.cwd(), '..', 'scripts'));
 
     // Check configuration files
     this.checkConfigFiles();
@@ -110,13 +110,13 @@ class DependencyAuditor {
 
   checkConfigFiles() {
     // Check vite.config.js
-    const viteConfigPath = path.join(__dirname, '..', 'vite.config.js');
+    const viteConfigPath = path.join(process.cwd(), '..', 'vite.config.js');
     if (fs.existsSync(viteConfigPath)) {
       this.usedPackages.add('vite');
     }
 
     // Check eslint.config.js
-    const eslintConfigPath = path.join(__dirname, '..', 'eslint.config.js');
+    const eslintConfigPath = path.join(process.cwd(), '..', 'eslint.config.js');
     if (fs.existsSync(eslintConfigPath)) {
       this.usedPackages.add('eslint');
       const content = fs.readFileSync(eslintConfigPath, 'utf-8');
@@ -127,7 +127,7 @@ class DependencyAuditor {
     }
 
     // Check .prettierrc
-    const prettierConfigPath = path.join(__dirname, '..', '.prettierrc');
+    const prettierConfigPath = path.join(process.cwd(), '..', '.prettierrc');
     if (fs.existsSync(prettierConfigPath)) {
       this.usedPackages.add('prettier');
     }
@@ -218,7 +218,7 @@ class DependencyAuditor {
     }
 
     // Save detailed report
-    const reportPath = path.join(__dirname, '..', 'DEPENDENCY_AUDIT.json');
+    const reportPath = path.join(process.cwd(), '..', 'DEPENDENCY_AUDIT.json');
     fs.writeFileSync(reportPath, JSON.stringify(this.results, null, 2));
 
     console.log('\n📄 Detailed report saved to: DEPENDENCY_AUDIT.json');

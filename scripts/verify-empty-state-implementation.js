@@ -1,6 +1,7 @@
+#!/usr/bin/env node
 // @ts-nocheck
 /* eslint-env node */
-#!/usr/bin/env node
+
 
 /**
  * Simple verification script for empty state and feedback implementation

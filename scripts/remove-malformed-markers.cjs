@@ -1,11 +1,12 @@
+#!/usr/bin/env node
 // @ts-nocheck
 /* eslint-env node */
-#!/usr/bin/env node
+
 const fs = require('fs');
 const path = require('path');
 
-const MODULES_DIR = path.join(__dirname, '..', 'src', 'data', 'ihk', 'modules');
-const QUIZZES_DIR = path.join(__dirname, '..', 'src', 'data', 'ihk', 'quizzes');
+const MODULES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'modules');
+const QUIZZES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'quizzes');
 
 let changed = 0;
 

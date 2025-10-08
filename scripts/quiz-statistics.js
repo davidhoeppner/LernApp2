@@ -12,9 +12,9 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
-const quizzesDir = path.join(__dirname, '../src/data/ihk/quizzes');
+const quizzesDir = path.join(process.cwd(), '../src/data/ihk/quizzes');
 
 // ANSI color codes for terminal output
 const colors = {
@@ -293,7 +293,7 @@ async function generateQuizStatistics() {
     });
 
   // Save detailed report to file
-  const reportPath = path.join(__dirname, '../QUIZ_STATISTICS_REPORT.json');
+  const reportPath = path.join(process.cwd(), '../QUIZ_STATISTICS_REPORT.json');
   fs.writeFileSync(
     reportPath,
     JSON.stringify(

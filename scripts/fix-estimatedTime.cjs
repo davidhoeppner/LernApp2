@@ -1,9 +1,10 @@
+#!/usr/bin/env node
 // @ts-nocheck
 /* eslint-env node */
-#!/usr/bin/env node
+
 const fs = require('fs');
 const path = require('path');
-const MODULES_DIR = path.join(__dirname, '..', 'src', 'data', 'ihk', 'modules');
+const MODULES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'modules');
 
 const files = fs.readdirSync(MODULES_DIR).filter(f => f.endsWith('.json'));
 let changed = 0;

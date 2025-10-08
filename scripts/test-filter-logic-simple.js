@@ -1,6 +1,7 @@
+#!/usr/bin/env node
 // @ts-nocheck
 /* eslint-env node */
-#!/usr/bin/env node
+
 
 /**
  * Simple test for filter state management logic

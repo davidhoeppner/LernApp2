@@ -7,7 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const QUIZZES_DIR = path.join(__dirname, '..', 'src', 'data', 'ihk', 'quizzes');
+const QUIZZES_DIR = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'quizzes');
 
 function listQuizFiles() {
   return fs.readdirSync(QUIZZES_DIR).filter(f => f.endsWith('.json'));

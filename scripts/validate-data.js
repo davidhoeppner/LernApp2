@@ -12,7 +12,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 // Import validators (inline versions for script)
 class QuizValidator {
@@ -173,7 +173,7 @@ async function validateAllData() {
   try {
     // Validate Quizzes
     console.log('📝 Validating quizzes...');
-    const quizzesDir = path.join(__dirname, '../src/data/ihk/quizzes');
+    const quizzesDir = path.join(process.cwd(), '../src/data/ihk/quizzes');
     const quizValidator = new QuizValidator();
 
     if (fs.existsSync(quizzesDir)) {
@@ -208,7 +208,7 @@ async function validateAllData() {
 
     // Validate Modules
     console.log('\n📚 Validating modules...');
-    const modulesDir = path.join(__dirname, '../src/data/ihk/modules');
+    const modulesDir = path.join(process.cwd(), '../src/data/ihk/modules');
     const moduleValidator = new ModuleValidator();
     const allModules = new Map();
 
@@ -245,7 +245,7 @@ async function validateAllData() {
 
     // Validate Learning Paths
     console.log('\n🛤️  Validating learning paths...');
-    const pathsDir = path.join(__dirname, '../src/data/ihk/learning-paths');
+    const pathsDir = path.join(process.cwd(), '../src/data/ihk/learning-paths');
     const pathValidator = new LearningPathValidator(allModules);
 
     if (fs.existsSync(pathsDir)) {
@@ -279,7 +279,7 @@ async function validateAllData() {
     }
 
     // Save report
-    const reportPath = path.join(__dirname, '../DATA_VALIDATION_REPORT.json');
+    const reportPath = path.join(process.cwd(), '../DATA_VALIDATION_REPORT.json');
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
 
     // Print summary

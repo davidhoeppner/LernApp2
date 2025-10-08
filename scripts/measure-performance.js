@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 import { formatBytes } from '../src/utils/formatUtils.js';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 class PerformanceAnalyzer {
   constructor() {
@@ -47,7 +47,7 @@ class PerformanceAnalyzer {
   measureBundleSize() {
     console.log('📦 Measuring bundle size...\n');
 
-    const distPath = path.join(__dirname, '..', 'dist');
+    const distPath = path.join(process.cwd(), '..', 'dist');
 
     if (!fs.existsSync(distPath)) {
       console.log('⚠️  Dist folder not found. Run "npm run build" first.');
@@ -84,7 +84,7 @@ class PerformanceAnalyzer {
   countSourceFiles() {
     console.log('📁 Counting source files...\n');
 
-    const srcPath = path.join(__dirname, '..', 'src');
+    const srcPath = path.join(process.cwd(), '..', 'src');
     const srcResult = this.getDirectorySize(srcPath);
 
     this.results.fileCount.source = {
@@ -208,7 +208,7 @@ class PerformanceAnalyzer {
       return { totalLines, codeLines, commentLines, blankLines };
     };
 
-    const srcPath = path.join(__dirname, '..', 'src');
+    const srcPath = path.join(process.cwd(), '..', 'src');
     const jsResult = countLines(srcPath, ['.js']);
 
     this.results.codeMetrics.javascript = jsResult;
@@ -222,7 +222,7 @@ class PerformanceAnalyzer {
 
   // Load previous results for comparison
   loadPreviousResults() {
-    const reportPath = path.join(__dirname, '..', 'PERFORMANCE_METRICS.json');
+    const reportPath = path.join(process.cwd(), '..', 'PERFORMANCE_METRICS.json');
 
     if (fs.existsSync(reportPath)) {
       try {
@@ -329,7 +329,7 @@ class PerformanceAnalyzer {
 
   // Generate report
   generateReport() {
-    const reportPath = path.join(__dirname, '..', 'PERFORMANCE_METRICS.json');
+    const reportPath = path.join(process.cwd(), '..', 'PERFORMANCE_METRICS.json');
     fs.writeFileSync(reportPath, JSON.stringify(this.results, null, 2));
 
     console.log('✅ Performance metrics saved to PERFORMANCE_METRICS.json\n');

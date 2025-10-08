@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 class ImportOrganizer {
   constructor() {
@@ -239,7 +239,7 @@ class ImportOrganizer {
       details: this.results.details,
     };
 
-    const reportPath = path.join(__dirname, '..', 'IMPORTS_ORGANIZED.json');
+    const reportPath = path.join(process.cwd(), '..', 'IMPORTS_ORGANIZED.json');
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
 
     console.log('\n=== Import Organization Summary ===');
@@ -251,7 +251,7 @@ class ImportOrganizer {
 
 // Run the organizer
 const organizer = new ImportOrganizer();
-const srcDir = path.join(__dirname, '..', 'src');
+const srcDir = path.join(process.cwd(), '..', 'src');
 
 await organizer.scanDirectory(srcDir);
 organizer.generateReport();

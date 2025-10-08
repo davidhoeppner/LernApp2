@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 function validateMarkdownContent(content, context = '') {
   const issues = [];
@@ -298,13 +298,13 @@ function generateReport(results) {
 }
 
 // Main execution
-const modulesDir = path.join(__dirname, '..', 'src', 'data', 'ihk', 'modules');
+const modulesDir = path.join(process.cwd(), '..', 'src', 'data', 'ihk', 'modules');
 const results = validateAllModules(modulesDir);
 const report = generateReport(results);
 
 // Save report to JSON
 const reportPath = path.join(
-  __dirname,
+  process.cwd(),
   '..',
   'MARKDOWN_CONTENT_VALIDATION_REPORT.json'
 );

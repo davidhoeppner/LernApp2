@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const modulePath = path.resolve(
-  __dirname,
+  process.cwd(),
   '../src/data/ihk/modules/bp-01-networks-basics.json'
 );
 const raw = fs.readFileSync(modulePath, 'utf8');
@@ -38,7 +38,7 @@ try {
   const hostCount = (replaced.match(/micro-quiz-inline/g) || []).length;
   console.log('Total hosts converted:', hostCount);
   // Optionally write to temp html file
-  const outPath = path.resolve(__dirname, '../tmp/debug-module-content.html');
+  const outPath = path.resolve(process.cwd(), '../tmp/debug-module-content.html');
   fs.writeFileSync(outPath, replaced, 'utf8');
   console.log('Wrote debug HTML to', outPath);
 } catch {

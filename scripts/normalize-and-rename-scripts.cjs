@@ -1,10 +1,11 @@
+#!/usr/bin/env node
 // @ts-nocheck
 /* eslint-env node */
-#!/usr/bin/env node
+
 const fs = require('fs');
 const path = require('path');
 
-const SCRIPTS_DIR = path.join(__dirname);
+const SCRIPTS_DIR = path.join(process.cwd());
 const files = fs.readdirSync(SCRIPTS_DIR).filter(f => f.endsWith('.js'));
 let renamed = 0;
 let normalized = 0;

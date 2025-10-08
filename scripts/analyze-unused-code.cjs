@@ -5,7 +5,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const process.cwd() = path.dirname(__filename);
 
 class UnusedCodeAnalyzer {
   constructor() {
@@ -20,7 +20,7 @@ class UnusedCodeAnalyzer {
   async analyzeProject() {
     console.log('🔍 Starting unused code analysis...\n');
 
-    const srcDir = path.join(__dirname, '..', 'src');
+    const srcDir = path.join(process.cwd(), '..', 'src');
     await this.scanDirectory(srcDir);
 
     // Build dependency graph
@@ -59,7 +59,7 @@ class UnusedCodeAnalyzer {
 
   async analyzeFile(filePath) {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const relativePath = path.relative(path.join(__dirname, '..'), filePath);
+    const relativePath = path.relative(path.join(process.cwd(), '..'), filePath);
 
     // Extract imports
     const importMatches = content.matchAll(
@@ -155,7 +155,7 @@ class UnusedCodeAnalyzer {
         resolved += '.js';
       }
 
-      return path.relative(path.join(__dirname, '..'), resolved);
+      return path.relative(path.join(process.cwd(), '..'), resolved);
     }
     return null;
   }
@@ -165,7 +165,7 @@ class UnusedCodeAnalyzer {
 
     for (const [file, imports] of this.imports.entries()) {
       const content = fs.readFileSync(
-        path.join(__dirname, '..', file),
+        path.join(process.cwd(), '..', file),
         'utf-8'
       );
 

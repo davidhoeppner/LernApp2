@@ -14,7 +14,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const process.cwd() = dirname(__filename);
 
 // Test results tracking
 const testResults = {
@@ -61,7 +61,7 @@ function assert(condition, message) {
 
 // Helper to load JSON files
 function loadJSON(relativePath) {
-  const fullPath = join(__dirname, '..', relativePath);
+  const fullPath = join(process.cwd(), '..', relativePath);
   const content = readFileSync(fullPath, 'utf-8');
   return JSON.parse(content);
 }

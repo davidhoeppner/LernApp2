@@ -1,6 +1,7 @@
+#!/usr/bin/env node
 // @ts-nocheck
 /* eslint-env node */
-#!/usr/bin/env node
+
 
 /**
  * Test script to verify the nested grid fix
