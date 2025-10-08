@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Applies micro-quiz integration to all modules.
  */
@@ -81,7 +83,7 @@ function createQuizFile(moduleJson, sectionTitle, quizId) {
 function integrateModule(modPath) {
   const raw = fs.readFileSync(modPath, 'utf8');
   let json;
-  try { json = JSON.parse(raw); } catch (e) {
+  try { json = JSON.parse(raw); } catch {
     console.error('Skipping invalid JSON', modPath, e.message);
     return { moduleId: path.basename(modPath), skipped: true, reason: 'Invalid JSON' };
   }

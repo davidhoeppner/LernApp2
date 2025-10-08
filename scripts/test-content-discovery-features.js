@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Content Discovery Features Test Script
  * Tests cross-category relationship identification, search functionality within categories,

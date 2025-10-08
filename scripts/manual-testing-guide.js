@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Manual Testing Guide for Simple Learning App
  *

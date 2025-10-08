@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Check UTF-8 Encoding Script
  * Checks all quiz files for proper UTF-8 encoding and German umlauts

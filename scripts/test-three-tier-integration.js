@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /* eslint-disable no-unused-vars */
 /**
  * End-to-End Integration Test Script for Three-Tier Category System

@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Repairs automatically generated placeholder microquiz files that are missing required fields
  * (description, category, difficulty, question ids/types, etc.).

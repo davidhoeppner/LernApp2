@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Manual Testing Script for Wheel Feature
  * This script helps verify all manual testing requirements for Task 9

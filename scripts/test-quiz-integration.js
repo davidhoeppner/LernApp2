@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /* eslint-disable no-unused-vars */
 /**
  * End-to-End Test Script for Quiz Integration

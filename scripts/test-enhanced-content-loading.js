@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /* eslint-disable no-unused-vars */
 /**
  * Enhanced Content Loading Integration Test Script

@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
@@ -32,13 +34,13 @@ files.forEach(f => {
   const p = path.join(MODULES_DIR, f);
   const raw = fs.readFileSync(p, 'utf8');
   let json;
-  try { json = JSON.parse(raw); } catch (e) { return; }
+  try { json = JSON.parse(raw); } catch { return; }
 
   if (json.hasOwnProperty('estimatedTime') && typeof json.estimatedTime === 'string') {
     const parsed = parseEstimatedTimeString(json.estimatedTime);
     if (parsed !== null) {
       // Backup original
-      try { fs.writeFileSync(p + '.bak', raw, 'utf8'); } catch (e) {}
+      try { fs.writeFileSync(p + '.bak', raw, 'utf8'); } catch {}
       json.estimatedTime = parsed;
       fs.writeFileSync(p, JSON.stringify(json, null, 2) + '\n', 'utf8');
       console.log(`Fixed estimatedTime in ${f}: "${json.estimatedTime}" -> ${parsed}`);

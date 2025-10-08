@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Route Auditor Script
  * Extracts and catalogs all routes, module IDs, quiz IDs, and identifies dead routes

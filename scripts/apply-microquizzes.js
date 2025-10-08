@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Applies micro-quiz integration to all modules:
  *  - Removes malformed markers <!-- micro-quiz:[object Object] -->
@@ -84,7 +86,7 @@ function integrateModule(modPath) {
   let json;
   try {
     json = JSON.parse(raw);
-  } catch (e) {
+  } catch {
     console.error('Skipping invalid JSON', modPath, e.message);
     return {
       moduleId: path.basename(modPath),

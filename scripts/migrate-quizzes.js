@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Quiz Migration Script
  * Migrates regular quizzes to IHK format

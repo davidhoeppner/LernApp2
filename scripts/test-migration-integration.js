@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /* eslint-disable no-unused-vars */
 /**
  * Migration and Validation Integration Test Script

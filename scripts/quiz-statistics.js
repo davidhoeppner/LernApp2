@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Quiz Statistics Script
  * Generates statistics about all quizzes (question count, difficulty, etc.)

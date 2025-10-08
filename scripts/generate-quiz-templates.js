@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Quiz Template Generator
  * Generates quiz templates for modules that don't have quizzes yet

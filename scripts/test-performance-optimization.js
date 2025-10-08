@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Test script for performance optimization and monitoring implementation
  * Verifies that all performance services work correctly together

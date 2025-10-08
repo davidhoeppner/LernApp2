@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 #!/usr/bin/env node
 
 /**

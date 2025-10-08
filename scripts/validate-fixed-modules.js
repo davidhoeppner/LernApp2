@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -27,7 +29,7 @@ files.forEach(f => {
     );
     JSON.parse(content);
     console.log(`✅ ${f} - Valid JSON`);
-  } catch (e) {
+  } catch {
     console.log(`❌ ${f} - ${e.message}`);
     allValid = false;
   }

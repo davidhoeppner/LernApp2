@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Validate All Quizzes Script
  * Validates all quiz files in src/data/ihk/quizzes/

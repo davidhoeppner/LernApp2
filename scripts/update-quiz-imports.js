@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Update IHKContentService with all quiz imports
  * Automatically adds import statements for all quizzes

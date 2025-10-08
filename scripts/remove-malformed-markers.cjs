@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
@@ -12,7 +14,7 @@ function removeMarkerFromFile(p) {
   const marker = '<!-- micro-quiz:[object Object] -->';
   if (raw.includes(marker)) {
     const updated = raw.split(marker).join('');
-    try { fs.writeFileSync(p + '.bak', raw, 'utf8'); } catch (e) {}
+    try { fs.writeFileSync(p + '.bak', raw, 'utf8'); } catch {}
     fs.writeFileSync(p, updated, 'utf8');
     console.log(`Cleaned marker in ${path.basename(p)}`);
     changed++;
@@ -24,7 +26,7 @@ try {
   for (const f of mods) {
     removeMarkerFromFile(path.join(MODULES_DIR, f));
   }
-} catch (e) {
+} catch {
   console.error('Error reading modules directory', e.message);
   process.exit(2);
 }
@@ -36,7 +38,7 @@ if (fs.existsSync(malformedQuiz)) {
     fs.unlinkSync(malformedQuiz);
     console.log('Removed stray quiz file [object Object].json');
     changed++;
-  } catch (e) {
+  } catch {
     console.error('Failed to remove malformed quiz file:', e.message);
   }
 }

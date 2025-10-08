@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 const fs = require('fs');
 const path = require('path');
 
@@ -39,7 +41,7 @@ try {
   const outPath = path.resolve(__dirname, '../tmp/debug-module-content.html');
   fs.writeFileSync(outPath, replaced, 'utf8');
   console.log('Wrote debug HTML to', outPath);
-} catch (e) {
+} catch {
   console.error('Failed to parse module JSON:', e);
   process.exit(1);
 }

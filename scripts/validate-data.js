@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Data Validation Script
  * Validates all IHK quiz, module, and learning path data

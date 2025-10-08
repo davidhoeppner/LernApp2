@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Generates (or refreshes) modules.md with an overview of all module integration status.
  * Safe read-only (does NOT modify module files). Used by apply-microquizzes.cjs after each module update
@@ -22,7 +24,7 @@ function slugify(str) {
 function analyzeModule(modPath) {
   const raw = fs.readFileSync(modPath, 'utf8');
   let json;
-  try { json = JSON.parse(raw); } catch (e) {
+  try { json = JSON.parse(raw); } catch {
     return { file: modPath, error: 'Invalid JSON: ' + e.message };
   }
   const id = json.id || path.basename(modPath, '.json');

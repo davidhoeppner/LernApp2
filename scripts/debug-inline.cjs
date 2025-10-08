@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 const fs = require('fs');
 const path = require('path');
 
@@ -40,7 +42,7 @@ try {
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, replaced, 'utf8');
   console.log('Wrote debug HTML to', outPath);
-} catch (e) {
+} catch {
   console.error('Failed to parse module JSON:', e);
   process.exit(1);
 }

@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Verify Wheel Feature Setup
  * Automated checks to ensure all components are in place before manual testing

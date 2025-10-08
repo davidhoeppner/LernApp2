@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 #!/usr/bin/env node
 /**
  * Enrich automatically generated placeholder micro-quiz JSON files with

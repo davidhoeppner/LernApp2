@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Test script to verify quiz filtering fix
  * Tests that quizzes get proper three-tier category mapping

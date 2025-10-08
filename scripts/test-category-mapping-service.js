@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Unit Test Script for CategoryMappingService
  * Tests mapping rules with sample content, priority-based rule resolution,

@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Final Validation Report Generator
  * Generates a comprehensive final report with summary statistics and historical context

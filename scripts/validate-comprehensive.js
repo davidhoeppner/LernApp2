@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Comprehensive Validation Orchestrator
  * Runs all validators and generates a comprehensive validation report

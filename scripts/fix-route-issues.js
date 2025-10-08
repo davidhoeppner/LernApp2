@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-env node */
 /**
  * Route Issues Fixer
  * Automatically fixes dead routes and invalid references
