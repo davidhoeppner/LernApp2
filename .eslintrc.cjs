@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  ignores: ['scripts/**', 'dist/**', 'public/**'],
   env: {
     browser: true,
     node: true,
@@ -16,9 +17,27 @@ module.exports = {
     'no-console': 'off',
     'no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }]
   },
+  globals: {
+    process: 'readonly',
+    console: 'readonly',
+    __dirname: 'readonly',
+    __filename: 'readonly'
+  },
   overrides: [
     {
-      files: ['scripts/**/*.js', 'scripts/**/*.cjs'],
+      files: ['scripts/**/*.js'],
+      env: { node: true },
+      parserOptions: {
+        sourceType: 'module'
+      },
+      rules: {
+        'linebreak-style': 'off',
+        'no-console': 'off',
+        'no-process-exit': 'off'
+      }
+    },
+    {
+      files: ['scripts/**/*.cjs'],
       env: { node: true },
       parserOptions: {
         sourceType: 'script'
@@ -28,8 +47,7 @@ module.exports = {
         'no-console': 'off',
         'no-process-exit': 'off'
       }
-    }
-    ,
+    },
     {
       // relax module parsing for .mjs and ESM test files
       files: ['scripts/**/*.mjs', 'src/**/*.mjs'],
