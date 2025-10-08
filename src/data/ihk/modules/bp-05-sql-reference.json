@@ -9,10 +9,15 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": 15,
+  "estimatedTime": "15 Minuten",
   "prerequisites": [],
-  "tags": ["SQL", "Datenbank", "Beiblatt", "Prüfung"],
-  "content": "# SQL-Referenz mit Verweis auf Beiblatt\n\n## Wichtiger Hinweis zur Prüfung\n\n**In der IHK Abschlussprüfung Teil 2 wird ein 2-seitiges SQL-Beiblatt bereitgestellt**, das alle wichtigen SQL-Befehle und Syntax enthält. Sie müssen die SQL-Syntax nicht auswendig lernen!\n\n## Was Sie können sollten\n\n### 1. SQL-Befehle verstehen und anwenden\n\n- **DDL (Data Definition Language)**: Tabellenstruktur erstellen und ändern\n- **DML (Data Manipulation Language)**: Daten einfügen, ändern, löschen\n- **DQL (Data Query Language)**: Daten abfragen\n\n### 2. Abfragen lesen und interpretieren\n\n- SELECT-Statements verstehen\n- WHERE-Bedingungen interpretieren\n- JOINs nachvollziehen\n- Aggregatfunktionen anwenden\n\n### 3. Abfragen schreiben\n\n- Einfache SELECT-Abfragen\n- Filterung mit WHERE\n- Sortierung mit ORDER BY\n- Gruppierung mit GROUP BY\n- Verknüpfung mit JOINs\n\n## Verfügbare SQL-Module\n\nFür detailliertes Lernen stehen folgende Module zur Verfügung:\n\n### 1. SQL DDL (Data Definition Language)\n**Modul-ID**: `sql-ddl`\n\n**Inhalte:**\n- CREATE TABLE\n- ALTER TABLE\n- DROP TABLE\n- CREATE INDEX\n- Datentypen\n- Constraints (PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL)\n\n### 2. SQL DML (Data Manipulation Language)\n**Modul-ID**: `sql-dml`\n\n**Inhalte:**\n- INSERT INTO\n- UPDATE\n- DELETE\n- Transaktionen (BEGIN, COMMIT, ROLLBACK)\n\n### 3. SQL DQL (Data Query Language)\n**Modul-ID**: `sql-dql`\n\n**Inhalte:**\n- SELECT\n- WHERE\n- ORDER BY\n- GROUP BY\n- HAVING\n- JOINs (INNER, LEFT, RIGHT, FULL)\n- Subqueries\n- Aggregatfunktionen (COUNT, SUM, AVG, MIN, MAX)\n\n## Prüfungsstrategie\n\n### Vor der Prüfung\n\n1. **Konzepte verstehen**: Wann verwendet man welchen Befehl?\n2. **Beispiele üben**: Verschiedene Abfragen schreiben\n3. **Beiblatt kennenlernen**: Struktur und Inhalt vertraut machen\n\n### In der Prüfung\n\n1. **Beiblatt nutzen**: Syntax nachschlagen\n2. **Schritt für Schritt**: Komplexe Abfragen in Teile zerlegen\n3. **Testen**: Abfrage gedanklich durchgehen\n\n## Typische Prüfungsaufgaben\n\n### Aufgabe 1: Einfache Abfrage\n\n**Gegeben**: Tabelle `employees` mit Spalten `id`, `name`, `department`, `salary`\n\n**Aufgabe**: Alle Mitarbeiter aus der IT-Abteilung mit Gehalt über 50.000â‚¬\n\n**Lösung**:\n```sql\nSELECT name, salary\nFROM employees\nWHERE department = 'IT' AND salary > 50000;\n```\n\n### Aufgabe 2: JOIN\n\n**Gegeben**: \n- Tabelle `orders` mit `id`, `customer_id`, `total`\n- Tabelle `customers` mit `id`, `name`, `email`\n\n**Aufgabe**: Alle Bestellungen mit Kundennamen\n\n**Lösung**:\n```sql\nSELECT o.id, c.name, o.total\nFROM orders o\nINNER JOIN customers c ON o.customer_id = c.id;\n```\n\n### Aufgabe 3: Aggregation\n\n**Gegeben**: Tabelle `sales` mit `product_id`, `quantity`, `price`\n\n**Aufgabe**: Gesamtumsatz pro Produkt\n\n**Lösung**:\n```sql\nSELECT product_id, SUM(quantity * price) AS total_revenue\nFROM sales\nGROUP BY product_id;\n```\n\n## Häufige Fehler vermeiden\n\n### 1. Vergessene WHERE-Klausel\n```sql\n-- Falsch: Löscht ALLE Datensätze!\nDELETE FROM users;\n\n-- Richtig: Löscht nur bestimmte Datensätze\nDELETE FROM users WHERE id = 123;\n```\n\n### 2. Falsche JOIN-Syntax\n```sql\n-- Falsch: Kartesisches Produkt\nSELECT * FROM orders, customers;\n\n-- Richtig: Expliziter JOIN\nSELECT * FROM orders o\nINNER JOIN customers c ON o.customer_id = c.id;\n```\n\n### 3. GROUP BY ohne Aggregatfunktion\n```sql\n-- Falsch: name nicht in GROUP BY\nSELECT department, name, COUNT(*)\nFROM employees\nGROUP BY department;\n\n-- Richtig: Nur aggregierte Spalten\nSELECT department, COUNT(*) AS employee_count\nFROM employees\nGROUP BY department;\n```\n\n## Checkliste für die Prüfung\n\n- [ ] SQL-Module durchgearbeitet\n- [ ] Verschiedene Abfragen geübt\n- [ ] JOINs verstanden\n- [ ] Aggregatfunktionen angewendet\n- [ ] Subqueries geübt\n- [ ] Häufige Fehler bekannt\n- [ ] Beiblatt-Struktur vertraut\n\n## Weiterführende Module\n\nFür tieferes Verständnis:\n\n1. **SQL DDL Modul**: Detaillierte Erklärungen zu Tabellenstrukturen\n2. **SQL DML Modul**: Datenmanipulation mit Beispielen\n3. **SQL DQL Modul**: Komplexe Abfragen und Optimierung\n4. **SQL Quiz**: Prüfungssimulation mit 30+ Fragen\n\n## Prüfungsrelevante Aspekte\n\n- SQL-Befehle kennen und anwenden\n- Beiblatt effektiv nutzen\n- Abfragen lesen und verstehen\n- Einfache bis mittlere Abfragen schreiben\n- JOINs korrekt verwenden\n- Aggregatfunktionen anwenden\n- Häufige Fehler vermeiden",
+  "tags": [
+    "SQL",
+    "Datenbank",
+    "Beiblatt",
+    "Prüfung"
+  ],
+  "content": "# SQL-Referenz mit Verweis auf Beiblatt\n\n## Wichtiger Hinweis zur Prüfung\n\n**In der IHK Abschlussprüfung Teil 2 wird ein 2-seitiges SQL-Beiblatt bereitgestellt**, das alle wichtigen SQL-Befehle und Syntax enthält. Sie müssen die SQL-Syntax nicht auswendig lernen!\n\n<!-- micro-quiz:bp-05-sql-reference-wichtiger-hinweis-zur-prufung-micro-1 -->\n## Was Sie können sollten\n\n### 1. SQL-Befehle verstehen und anwenden\n\n- **DDL (Data Definition Language)**: Tabellenstruktur erstellen und ändern\n- **DML (Data Manipulation Language)**: Daten einfügen, ändern, löschen\n- **DQL (Data Query Language)**: Daten abfragen\n\n### 2. Abfragen lesen und interpretieren\n\n- SELECT-Statements verstehen\n- WHERE-Bedingungen interpretieren\n- JOINs nachvollziehen\n- Aggregatfunktionen anwenden\n\n### 3. Abfragen schreiben\n\n- Einfache SELECT-Abfragen\n- Filterung mit WHERE\n- Sortierung mit ORDER BY\n- Gruppierung mit GROUP BY\n- Verknüpfung mit JOINs\n\n## Verfügbare SQL-Module\n<!-- micro-quiz:bp-05-sql-reference-was-sie-konnen-sollten-micro-1 -->\n\n\nFür detailliertes Lernen stehen folgende Module zur Verfügung:\n\n### 1. SQL DDL (Data Definition Language)\n**Modul-ID**: `sql-ddl`\n\n**Inhalte:**\n- CREATE TABLE\n- ALTER TABLE\n- DROP TABLE\n- CREATE INDEX\n- Datentypen\n- Constraints (PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL)\n\n### 2. SQL DML (Data Manipulation Language)\n**Modul-ID**: `sql-dml`\n\n**Inhalte:**\n- INSERT INTO\n- UPDATE\n- DELETE\n- Transaktionen (BEGIN, COMMIT, ROLLBACK)\n\n### 3. SQL DQL (Data Query Language)\n**Modul-ID**: `sql-dql`\n\n**Inhalte:**\n- SELECT\n- WHERE\n- ORDER BY\n- GROUP BY\n- HAVING\n- JOINs (INNER, LEFT, RIGHT, FULL)\n- Subqueries\n- Aggregatfunktionen (COUNT, SUM, AVG, MIN, MAX)\n\n<!-- micro-quiz:bp-05-sql-reference-verfugbare-sql-module-micro-1 -->\n## Prüfungsstrategie\n\n### Vor der Prüfung\n\n1. **Konzepte verstehen**: Wann verwendet man welchen Befehl?\n2. **Beispiele üben**: Verschiedene Abfragen schreiben\n3. **Beiblatt kennenlernen**: Struktur und Inhalt vertraut machen\n\n### In der Prüfung\n\n1. **Beiblatt nutzen**: Syntax nachschlagen\n2. **Schritt für Schritt**: Komplexe Abfragen in Teile zerlegen\n3. **Testen**: Abfrage gedanklich durchgehen\n\n## Typische Prüfungsaufgaben\n<!-- micro-quiz:bp-05-sql-reference-prufungsstrategie-micro-1 -->\n\n\n### Aufgabe 1: Einfache Abfrage\n\n**Gegeben**: Tabelle `employees` mit Spalten `id`, `name`, `department`, `salary`\n\n**Aufgabe**: Alle Mitarbeiter aus der IT-Abteilung mit Gehalt über 50.000â‚¬\n\n**Lösung**:\n```sql\nSELECT name, salary\nFROM employees\nWHERE department = 'IT' AND salary > 50000;\n```\n\n### Aufgabe 2: JOIN\n\n**Gegeben**: \n- Tabelle `orders` mit `id`, `customer_id`, `total`\n- Tabelle `customers` mit `id`, `name`, `email`\n\n**Aufgabe**: Alle Bestellungen mit Kundennamen\n\n**Lösung**:\n```sql\nSELECT o.id, c.name, o.total\nFROM orders o\nINNER JOIN customers c ON o.customer_id = c.id;\n```\n\n### Aufgabe 3: Aggregation\n\n**Gegeben**: Tabelle `sales` mit `product_id`, `quantity`, `price`\n\n**Aufgabe**: Gesamtumsatz pro Produkt\n\n**Lösung**:\n```sql\nSELECT product_id, SUM(quantity * price) AS total_revenue\nFROM sales\nGROUP BY product_id;\n```\n\n<!-- micro-quiz:bp-05-sql-reference-typische-prufungsaufgaben-micro-1 -->\n## Häufige Fehler vermeiden\n\n### 1. Vergessene WHERE-Klausel\n```sql\n-- Falsch: Löscht ALLE Datensätze!\nDELETE FROM users;\n\n-- Richtig: Löscht nur bestimmte Datensätze\nDELETE FROM users WHERE id = 123;\n```\n\n### 2. Falsche JOIN-Syntax\n```sql\n-- Falsch: Kartesisches Produkt\nSELECT * FROM orders, customers;\n\n-- Richtig: Expliziter JOIN\nSELECT * FROM orders o\nINNER JOIN customers c ON o.customer_id = c.id;\n```\n\n### 3. GROUP BY ohne Aggregatfunktion\n```sql\n-- Falsch: name nicht in GROUP BY\nSELECT department, name, COUNT(*)\nFROM employees\nGROUP BY department;\n\n-- Richtig: Nur aggregierte Spalten\nSELECT department, COUNT(*) AS employee_count\nFROM employees\nGROUP BY department;\n```\n\n## Checkliste für die Prüfung\n<!-- micro-quiz:bp-05-sql-reference-haufige-fehler-vermeiden-micro-1 -->\n\n\n- [ ] SQL-Module durchgearbeitet\n- [ ] Verschiedene Abfragen geübt\n- [ ] JOINs verstanden\n- [ ] Aggregatfunktionen angewendet\n- [ ] Subqueries geübt\n- [ ] Häufige Fehler bekannt\n- [ ] Beiblatt-Struktur vertraut\n\n<!-- micro-quiz:bp-05-sql-reference-checkliste-fur-die-prufung-micro-1 -->\n## Weiterführende Module\n\nFür tieferes Verständnis:\n\n1. **SQL DDL Modul**: Detaillierte Erklärungen zu Tabellenstrukturen\n2. **SQL DML Modul**: Datenmanipulation mit Beispielen\n3. **SQL DQL Modul**: Komplexe Abfragen und Optimierung\n4. **SQL Quiz**: Prüfungssimulation mit 30+ Fragen\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-05-sql-reference-weiterfuhrende-module-micro-1 -->\n\n\n- SQL-Befehle kennen und anwenden\n- Beiblatt effektiv nutzen\n- Abfragen lesen und verstehen\n- Einfache bis mittlere Abfragen schreiben\n- JOINs korrekt verwenden\n- Aggregatfunktionen anwenden\n- Häufige Fehler vermeiden\n\n\n\n<!-- micro-quiz:sql-comprehensive-quiz-2025 -->\n<!-- micro-quiz:bp-05-sql-reference-prufungsrelevante-aspekte-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "sql",
@@ -21,7 +26,9 @@
       "title": "Prüfungsbeispiel: Komplexe Abfrage"
     }
   ],
-  "relatedQuizzes": ["sql-comprehensive-quiz-2025"],
+  "relatedQuizzes": [
+    "sql-comprehensive-quiz-2025"
+  ],
   "resources": [
     {
       "title": "SQL DDL Modul",
@@ -42,9 +49,75 @@
   "lastUpdated": "2025-01-10T00:00:00Z",
   "version": "1.0",
   "learningObjectives": [
-    "Understand SQL",
-    "Understand Datenbank",
-    "Understand Beiblatt",
-    "Understand Prüfung"
+    "Du kannst sQL erklären",
+    "Du kannst datenbank erklären",
+    "Du kannst beiblatt erklären",
+    "Du kannst prüfung erklären"
+  ],
+  "summary": "Übersicht über SQL-Themen mit Verweis auf das offizielle Prüfungsbeiblatt",
+  "contentOutline": [
+    {
+      "id": "sql-referenz-mit-verweis-auf-beiblatt",
+      "title": "SQL-Referenz mit Verweis auf Beiblatt",
+      "summary": "Kernaspekt: SQL-Referenz mit Verweis auf Beiblatt"
+    },
+    {
+      "id": "wichtiger-hinweis-zur-prufung",
+      "title": "Wichtiger Hinweis zur Prüfung",
+      "summary": "Kernaspekt: Wichtiger Hinweis zur Prüfung"
+    },
+    {
+      "id": "was-sie-konnen-sollten",
+      "title": "Was Sie können sollten",
+      "summary": "Kernaspekt: Was Sie können sollten"
+    },
+    {
+      "id": "verfugbare-sql-module",
+      "title": "Verfügbare SQL-Module",
+      "summary": "Kernaspekt: Verfügbare SQL-Module"
+    },
+    {
+      "id": "prufungsstrategie",
+      "title": "Prüfungsstrategie",
+      "summary": "Kernaspekt: Prüfungsstrategie"
+    },
+    {
+      "id": "typische-prufungsaufgaben",
+      "title": "Typische Prüfungsaufgaben",
+      "summary": "Kernaspekt: Typische Prüfungsaufgaben"
+    },
+    {
+      "id": "haufige-fehler-vermeiden",
+      "title": "Häufige Fehler vermeiden",
+      "summary": "Kernaspekt: Häufige Fehler vermeiden"
+    },
+    {
+      "id": "checkliste-fur-die-prufung",
+      "title": "Checkliste für die Prüfung",
+      "summary": "Kernaspekt: Checkliste für die Prüfung"
+    },
+    {
+      "id": "weiterfuhrende-module",
+      "title": "Weiterführende Module",
+      "summary": "Kernaspekt: Weiterführende Module"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-05-sql-reference-wichtiger-hinweis-zur-prufung-micro-1",
+    "bp-05-sql-reference-was-sie-konnen-sollten-micro-1",
+    "bp-05-sql-reference-verfugbare-sql-module-micro-1",
+    "bp-05-sql-reference-prufungsstrategie-micro-1",
+    "bp-05-sql-reference-typische-prufungsaufgaben-micro-1",
+    "bp-05-sql-reference-haufige-fehler-vermeiden-micro-1",
+    "bp-05-sql-reference-checkliste-fur-die-prufung-micro-1",
+    "bp-05-sql-reference-weiterfuhrende-module-micro-1",
+    "bp-05-sql-reference-prufungsrelevante-aspekte-micro-1"
   ]
 }

@@ -9,8 +9,11 @@
   "newIn2025": true,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": 60,
-  "prerequisites": ["sql-ddl-2025", "sql-dml-2025"],
+  "estimatedTime": "60 Minuten",
+  "prerequisites": [
+    "sql-ddl-2025",
+    "sql-dml-2025"
+  ],
   "tags": [
     "SQL",
     "DQL",
@@ -22,7 +25,7 @@
     "Datenbank",
     "Prüfungsbeiblatt"
   ],
-  "content": "# SQL DQL - Data Query Language\n\n## Einführung\n\nDie **Data Query Language (DQL)** ist der wichtigste Teil von SQL für die Prüfung! Mit DQL-Befehlen fragst du Daten aus Datenbanken ab. Der Hauptbefehl ist **SELECT**.\n\n**Wichtig:** Diese Befehle sind im SQL-Beiblatt enthalten und machen den Großteil der SQL-Aufgaben in der Prüfung aus!\n\n## SELECT - Grundlagen\n\n### Alle Spalten auswählen\n\n```sql\nSELECT *\nFROM mitarbeiter;\n```\n\n**Hinweis:** `*` bedeutet \"alle Spalten\". In der Praxis solltest du nur die benötigten Spalten auswählen!\n\n### Bestimmte Spalten auswählen (Projektion)\n\n```sql\nSELECT vorname, nachname, email\nFROM mitarbeiter;\n```\n\n### Spalten umbenennen (Alias)\n\n```sql\nSELECT \n    vorname AS \"Vorname\",\n    nachname AS \"Nachname\",\n    gehalt AS \"Monatsgehalt\"\nFROM mitarbeiter;\n```\n\n### Berechnungen in SELECT\n\n```sql\nSELECT \n    vorname,\n    nachname,\n    gehalt,\n    gehalt * 12 AS jahresgehalt,\n    gehalt * 0.19 AS steuern\nFROM mitarbeiter;\n```\n\n## WHERE - Daten filtern (Selektion)\n\n### Einfache Bedingungen\n\n```sql\n-- Gleichheit\nSELECT * FROM mitarbeiter\nWHERE abteilung_id = 1;\n\n-- Ungleichheit\nSELECT * FROM mitarbeiter\nWHERE abteilung_id != 2;\n-- oder\nSELECT * FROM mitarbeiter\nWHERE abteilung_id <> 2;\n\n-- Vergleiche\nSELECT * FROM mitarbeiter\nWHERE gehalt > 50000;\n\nSELECT * FROM mitarbeiter\nWHERE gehalt >= 40000;\n\nSELECT * FROM mitarbeiter\nWHERE einstellungsdatum < '2020-01-01';\n```\n\n### Logische Operatoren (AND, OR, NOT)\n\n```sql\n-- AND: Beide Bedingungen müssen erfüllt sein\nSELECT * FROM mitarbeiter\nWHERE gehalt > 40000 AND abteilung_id = 1;\n\n-- OR: Mindestens eine Bedingung muss erfüllt sein\nSELECT * FROM mitarbeiter\nWHERE abteilung_id = 1 OR abteilung_id = 2;\n\n-- NOT: Negation\nSELECT * FROM mitarbeiter\nWHERE NOT abteilung_id = 3;\n\n-- Kombination mit Klammern\nSELECT * FROM mitarbeiter\nWHERE (abteilung_id = 1 OR abteilung_id = 2)\n  AND gehalt > 45000;\n```\n\n### BETWEEN - Bereichsabfragen\n\n```sql\nSELECT * FROM mitarbeiter\nWHERE gehalt BETWEEN 40000 AND 60000;\n\n-- Entspricht:\nSELECT * FROM mitarbeiter\nWHERE gehalt >= 40000 AND gehalt <= 60000;\n```\n\n### IN - Mehrere Werte\n\n```sql\nSELECT * FROM mitarbeiter\nWHERE abteilung_id IN (1, 2, 3);\n\n-- Entspricht:\nSELECT * FROM mitarbeiter\nWHERE abteilung_id = 1 \n   OR abteilung_id = 2 \n   OR abteilung_id = 3;\n```\n\n### LIKE - Mustersuche\n\n```sql\n-- % = beliebig viele Zeichen\nSELECT * FROM mitarbeiter\nWHERE nachname LIKE 'M%';  -- Beginnt mit M\n\nSELECT * FROM mitarbeiter\nWHERE nachname LIKE '%er';  -- Endet mit er\n\nSELECT * FROM mitarbeiter\nWHERE email LIKE '%@gmail.com';  -- Gmail-Adressen\n\n-- _ = genau ein Zeichen\nSELECT * FROM mitarbeiter\nWHERE vorname LIKE 'T_m';  -- Tom, Tim, etc.\n```\n\n### IS NULL / IS NOT NULL\n\n```sql\n-- Mitarbeiter ohne Telefonnummer\nSELECT * FROM mitarbeiter\nWHERE telefon IS NULL;\n\n-- Mitarbeiter mit Telefonnummer\nSELECT * FROM mitarbeiter\nWHERE telefon IS NOT NULL;\n```\n\n**Wichtig:** Verwende niemals `= NULL`, sondern immer `IS NULL`!\n\n## ORDER BY - Sortieren\n\n### Aufsteigend sortieren (ASC)\n\n```sql\nSELECT * FROM mitarbeiter\nORDER BY nachname ASC;\n\n-- ASC ist Standard und kann weggelassen werden\nSELECT * FROM mitarbeiter\nORDER BY nachname;\n```\n\n### Absteigend sortieren (DESC)\n\n```sql\nSELECT * FROM mitarbeiter\nORDER BY gehalt DESC;\n```\n\n### Nach mehreren Spalten sortieren\n\n```sql\nSELECT * FROM mitarbeiter\nORDER BY abteilung_id ASC, gehalt DESC;\n-- Erst nach Abteilung aufsteigend, dann nach Gehalt absteigend\n```\n\n## Aggregatfunktionen\n\n### COUNT - Anzahl zählen\n\n```sql\n-- Alle Zeilen zählen\nSELECT COUNT(*) FROM mitarbeiter;\n\n-- Nicht-NULL Werte zählen\nSELECT COUNT(telefon) FROM mitarbeiter;\n\n-- Eindeutige Werte zählen\nSELECT COUNT(DISTINCT abteilung_id) FROM mitarbeiter;\n```\n\n### SUM - Summe berechnen\n\n```sql\nSELECT SUM(gehalt) AS gesamtgehalt\nFROM mitarbeiter;\n```\n\n### AVG - Durchschnitt berechnen\n\n```sql\nSELECT AVG(gehalt) AS durchschnittsgehalt\nFROM mitarbeiter;\n```\n\n### MIN und MAX - Minimum und Maximum\n\n```sql\nSELECT \n    MIN(gehalt) AS niedrigstes_gehalt,\n    MAX(gehalt) AS hoechstes_gehalt\nFROM mitarbeiter;\n```\n\n## GROUP BY - Gruppieren\n\n### Grundlegendes Gruppieren\n\n```sql\n-- Anzahl Mitarbeiter pro Abteilung\nSELECT abteilung_id, COUNT(*) AS anzahl_mitarbeiter\nFROM mitarbeiter\nGROUP BY abteilung_id;\n```\n\n### Mehrere Aggregatfunktionen\n\n```sql\nSELECT \n    abteilung_id,\n    COUNT(*) AS anzahl,\n    AVG(gehalt) AS durchschnitt,\n    MIN(gehalt) AS minimum,\n    MAX(gehalt) AS maximum\nFROM mitarbeiter\nGROUP BY abteilung_id;\n```\n\n### HAVING - Gruppen filtern\n\n```sql\n-- Nur Abteilungen mit mehr als 5 Mitarbeitern\nSELECT abteilung_id, COUNT(*) AS anzahl\nFROM mitarbeiter\nGROUP BY abteilung_id\nHAVING COUNT(*) > 5;\n```\n\n**Wichtig:** \n- WHERE filtert VOR dem Gruppieren\n- HAVING filtert NACH dem Gruppieren\n\n```sql\n-- Abteilungen mit mehr als 3 Mitarbeitern, die mehr als 40000 verdienen\nSELECT abteilung_id, COUNT(*) AS anzahl\nFROM mitarbeiter\nWHERE gehalt > 40000\nGROUP BY abteilung_id\nHAVING COUNT(*) > 3;\n```\n\n## JOIN - Tabellen verknüpfen\n\n### INNER JOIN - Nur übereinstimmende Zeilen\n\n```sql\nSELECT \n    m.vorname,\n    m.nachname,\n    a.name AS abteilung\nFROM mitarbeiter m\nINNER JOIN abteilung a ON m.abteilung_id = a.abteilung_id;\n```\n\n### LEFT JOIN - Alle Zeilen aus linker Tabelle\n\n```sql\n-- Alle Mitarbeiter, auch ohne Abteilung\nSELECT \n    m.vorname,\n    m.nachname,\n    a.name AS abteilung\nFROM mitarbeiter m\nLEFT JOIN abteilung a ON m.abteilung_id = a.abteilung_id;\n```\n\n### RIGHT JOIN - Alle Zeilen aus rechter Tabelle\n\n```sql\n-- Alle Abteilungen, auch ohne Mitarbeiter\nSELECT \n    a.name AS abteilung,\n    m.vorname,\n    m.nachname\nFROM mitarbeiter m\nRIGHT JOIN abteilung a ON m.abteilung_id = a.abteilung_id;\n```\n\n### Mehrere JOINs\n\n```sql\nSELECT \n    m.vorname,\n    m.nachname,\n    a.name AS abteilung,\n    p.name AS projekt\nFROM mitarbeiter m\nINNER JOIN abteilung a ON m.abteilung_id = a.abteilung_id\nINNER JOIN mitarbeiter_projekt mp ON m.mitarbeiter_id = mp.mitarbeiter_id\nINNER JOIN projekt p ON mp.projekt_id = p.projekt_id;\n```\n\n## Subqueries (Unterabfragen)\n\n### Subquery in WHERE\n\n```sql\n-- Mitarbeiter mit überdurchschnittlichem Gehalt\nSELECT vorname, nachname, gehalt\nFROM mitarbeiter\nWHERE gehalt > (\n    SELECT AVG(gehalt)\n    FROM mitarbeiter\n);\n```\n\n### Subquery mit IN\n\n```sql\n-- Mitarbeiter aus Abteilungen in Berlin\nSELECT vorname, nachname\nFROM mitarbeiter\nWHERE abteilung_id IN (\n    SELECT abteilung_id\n    FROM abteilung\n    WHERE standort = 'Berlin'\n);\n```\n\n### Subquery in SELECT\n\n```sql\nSELECT \n    vorname,\n    nachname,\n    gehalt,\n    (SELECT AVG(gehalt) FROM mitarbeiter) AS durchschnitt,\n    gehalt - (SELECT AVG(gehalt) FROM mitarbeiter) AS differenz\nFROM mitarbeiter;\n```\n\n## DISTINCT - Duplikate entfernen\n\n```sql\n-- Alle verschiedenen Abteilungs-IDs\nSELECT DISTINCT abteilung_id\nFROM mitarbeiter;\n\n-- Alle verschiedenen Kombinationen\nSELECT DISTINCT abteilung_id, standort\nFROM abteilung;\n```\n\n## LIMIT - Anzahl begrenzen\n\n```sql\n-- Die 5 bestbezahlten Mitarbeiter\nSELECT vorname, nachname, gehalt\nFROM mitarbeiter\nORDER BY gehalt DESC\nLIMIT 5;\n\n-- Mit OFFSET (überspringt erste 10 Zeilen)\nSELECT vorname, nachname\nFROM mitarbeiter\nORDER BY nachname\nLIMIT 10 OFFSET 10;\n```\n\n## Komplexes Praxisbeispiel\n\n```sql\n-- Finde alle Abteilungen mit:\n-- - Mehr als 3 Mitarbeitern\n-- - Durchschnittsgehalt über 45000\n-- - Standort in Berlin oder München\n-- Zeige: Abteilungsname, Anzahl Mitarbeiter, Durchschnittsgehalt\n-- Sortiert nach Durchschnittsgehalt absteigend\n\nSELECT \n    a.name AS abteilung,\n    a.standort,\n    COUNT(m.mitarbeiter_id) AS anzahl_mitarbeiter,\n    ROUND(AVG(m.gehalt), 2) AS durchschnittsgehalt,\n    MIN(m.gehalt) AS min_gehalt,\n    MAX(m.gehalt) AS max_gehalt\nFROM abteilung a\nINNER JOIN mitarbeiter m ON a.abteilung_id = m.abteilung_id\nWHERE a.standort IN ('Berlin', 'München')\nGROUP BY a.abteilung_id, a.name, a.standort\nHAVING COUNT(m.mitarbeiter_id) > 3\n   AND AVG(m.gehalt) > 45000\nORDER BY durchschnittsgehalt DESC;\n```\n\n## Wichtige Hinweise für die Prüfung\n\n### 1. SELECT-Reihenfolge (Schreibweise)\n\n```sql\nSELECT      -- 1. Was soll ausgegeben werden?\n    spalten\nFROM        -- 2. Aus welcher Tabelle?\n    tabelle\nWHERE       -- 3. Welche Zeilen? (vor Gruppierung)\n    bedingung\nGROUP BY    -- 4. Gruppieren?\n    spalten\nHAVING      -- 5. Welche Gruppen? (nach Gruppierung)\n    bedingung\nORDER BY    -- 6. Sortierung?\n    spalten\nLIMIT       -- 7. Anzahl begrenzen?\n    anzahl;\n```\n\n### 2. Ausführungsreihenfolge (intern)\n\n1. FROM (Tabellen laden)\n2. WHERE (Zeilen filtern)\n3. GROUP BY (Gruppieren)\n4. HAVING (Gruppen filtern)\n5. SELECT (Spalten auswählen)\n6. ORDER BY (Sortieren)\n7. LIMIT (Begrenzen)\n\n### 3. Häufige Fehler\n\n```sql\n-- FALSCH: Spalte nicht in GROUP BY\nSELECT abteilung_id, vorname, COUNT(*)\nFROM mitarbeiter\nGROUP BY abteilung_id;\n-- vorname muss auch in GROUP BY oder eine Aggregatfunktion sein!\n\n-- RICHTIG:\nSELECT abteilung_id, COUNT(*)\nFROM mitarbeiter\nGROUP BY abteilung_id;\n\n-- FALSCH: WHERE mit Aggregatfunktion\nSELECT abteilung_id, COUNT(*)\nFROM mitarbeiter\nWHERE COUNT(*) > 5\nGROUP BY abteilung_id;\n-- Verwende HAVING statt WHERE!\n\n-- RICHTIG:\nSELECT abteilung_id, COUNT(*)\nFROM mitarbeiter\nGROUP BY abteilung_id\nHAVING COUNT(*) > 5;\n```\n\n## Zusammenfassung\n\n- **SELECT**: Spalten auswählen (Projektion)\n- **FROM**: Tabelle(n) angeben\n- **WHERE**: Zeilen filtern (Selektion)\n- **JOIN**: Tabellen verknüpfen\n- **GROUP BY**: Zeilen gruppieren\n- **HAVING**: Gruppen filtern\n- **ORDER BY**: Ergebnis sortieren\n- **LIMIT**: Anzahl begrenzen\n- **Aggregatfunktionen**: COUNT, SUM, AVG, MIN, MAX\n- **Subqueries**: Abfragen in Abfragen\n- **DISTINCT**: Duplikate entfernen",
+  "content": "# SQL DQL - Data Query Language\n\n## Einführung\n\nDie **Data Query Language (DQL)** ist der wichtigste Teil von SQL für die Prüfung! Mit DQL-Befehlen fragst du Daten aus Datenbanken ab. Der Hauptbefehl ist **SELECT**.\n\n**Wichtig:** Diese Befehle sind im SQL-Beiblatt enthalten und machen den Großteil der SQL-Aufgaben in der Prüfung aus!\n\n<!-- micro-quiz:sql-dql-2025-einfuhrung-micro-1 -->\n## SELECT - Grundlagen\n\n### Alle Spalten auswählen\n\n```sql\nSELECT *\nFROM mitarbeiter;\n```\n\n**Hinweis:** `*` bedeutet \"alle Spalten\". In der Praxis solltest du nur die benötigten Spalten auswählen!\n\n### Bestimmte Spalten auswählen (Projektion)\n\n```sql\nSELECT vorname, nachname, email\nFROM mitarbeiter;\n```\n\n### Spalten umbenennen (Alias)\n\n```sql\nSELECT \n    vorname AS \"Vorname\",\n    nachname AS \"Nachname\",\n    gehalt AS \"Monatsgehalt\"\nFROM mitarbeiter;\n```\n\n### Berechnungen in SELECT\n\n```sql\nSELECT \n    vorname,\n    nachname,\n    gehalt,\n    gehalt * 12 AS jahresgehalt,\n    gehalt * 0.19 AS steuern\nFROM mitarbeiter;\n```\n\n## WHERE - Daten filtern (Selektion)\n<!-- micro-quiz:sql-dql-2025-select---grundlagen-micro-1 -->\n\n\n### Einfache Bedingungen\n\n```sql\n-- Gleichheit\nSELECT * FROM mitarbeiter\nWHERE abteilung_id = 1;\n\n-- Ungleichheit\nSELECT * FROM mitarbeiter\nWHERE abteilung_id != 2;\n-- oder\nSELECT * FROM mitarbeiter\nWHERE abteilung_id <> 2;\n\n-- Vergleiche\nSELECT * FROM mitarbeiter\nWHERE gehalt > 50000;\n\nSELECT * FROM mitarbeiter\nWHERE gehalt >= 40000;\n\nSELECT * FROM mitarbeiter\nWHERE einstellungsdatum < '2020-01-01';\n```\n\n### Logische Operatoren (AND, OR, NOT)\n\n```sql\n-- AND: Beide Bedingungen müssen erfüllt sein\nSELECT * FROM mitarbeiter\nWHERE gehalt > 40000 AND abteilung_id = 1;\n\n-- OR: Mindestens eine Bedingung muss erfüllt sein\nSELECT * FROM mitarbeiter\nWHERE abteilung_id = 1 OR abteilung_id = 2;\n\n-- NOT: Negation\nSELECT * FROM mitarbeiter\nWHERE NOT abteilung_id = 3;\n\n-- Kombination mit Klammern\nSELECT * FROM mitarbeiter\nWHERE (abteilung_id = 1 OR abteilung_id = 2)\n  AND gehalt > 45000;\n```\n\n### BETWEEN - Bereichsabfragen\n\n```sql\nSELECT * FROM mitarbeiter\nWHERE gehalt BETWEEN 40000 AND 60000;\n\n-- Entspricht:\nSELECT * FROM mitarbeiter\nWHERE gehalt >= 40000 AND gehalt <= 60000;\n```\n\n### IN - Mehrere Werte\n\n```sql\nSELECT * FROM mitarbeiter\nWHERE abteilung_id IN (1, 2, 3);\n\n-- Entspricht:\nSELECT * FROM mitarbeiter\nWHERE abteilung_id = 1 \n   OR abteilung_id = 2 \n   OR abteilung_id = 3;\n```\n\n### LIKE - Mustersuche\n\n```sql\n-- % = beliebig viele Zeichen\nSELECT * FROM mitarbeiter\nWHERE nachname LIKE 'M%';  -- Beginnt mit M\n\nSELECT * FROM mitarbeiter\nWHERE nachname LIKE '%er';  -- Endet mit er\n\nSELECT * FROM mitarbeiter\nWHERE email LIKE '%@gmail.com';  -- Gmail-Adressen\n\n-- _ = genau ein Zeichen\nSELECT * FROM mitarbeiter\nWHERE vorname LIKE 'T_m';  -- Tom, Tim, etc.\n```\n\n### IS NULL / IS NOT NULL\n\n```sql\n-- Mitarbeiter ohne Telefonnummer\nSELECT * FROM mitarbeiter\nWHERE telefon IS NULL;\n\n-- Mitarbeiter mit Telefonnummer\nSELECT * FROM mitarbeiter\nWHERE telefon IS NOT NULL;\n```\n\n**Wichtig:** Verwende niemals `= NULL`, sondern immer `IS NULL`!\n\n<!-- micro-quiz:sql-dql-2025-where---daten-filtern-selektion-micro-1 -->\n## ORDER BY - Sortieren\n\n### Aufsteigend sortieren (ASC)\n\n```sql\nSELECT * FROM mitarbeiter\nORDER BY nachname ASC;\n\n-- ASC ist Standard und kann weggelassen werden\nSELECT * FROM mitarbeiter\nORDER BY nachname;\n```\n\n### Absteigend sortieren (DESC)\n\n```sql\nSELECT * FROM mitarbeiter\nORDER BY gehalt DESC;\n```\n\n### Nach mehreren Spalten sortieren\n\n```sql\nSELECT * FROM mitarbeiter\nORDER BY abteilung_id ASC, gehalt DESC;\n-- Erst nach Abteilung aufsteigend, dann nach Gehalt absteigend\n```\n\n## Aggregatfunktionen\n<!-- micro-quiz:sql-dql-2025-order-by---sortieren-micro-1 -->\n\n\n### COUNT - Anzahl zählen\n\n```sql\n-- Alle Zeilen zählen\nSELECT COUNT(*) FROM mitarbeiter;\n\n-- Nicht-NULL Werte zählen\nSELECT COUNT(telefon) FROM mitarbeiter;\n\n-- Eindeutige Werte zählen\nSELECT COUNT(DISTINCT abteilung_id) FROM mitarbeiter;\n```\n\n### SUM - Summe berechnen\n\n```sql\nSELECT SUM(gehalt) AS gesamtgehalt\nFROM mitarbeiter;\n```\n\n### AVG - Durchschnitt berechnen\n\n```sql\nSELECT AVG(gehalt) AS durchschnittsgehalt\nFROM mitarbeiter;\n```\n\n### MIN und MAX - Minimum und Maximum\n\n```sql\nSELECT \n    MIN(gehalt) AS niedrigstes_gehalt,\n    MAX(gehalt) AS hoechstes_gehalt\nFROM mitarbeiter;\n```\n\n<!-- micro-quiz:sql-dql-2025-aggregatfunktionen-micro-1 -->\n## GROUP BY - Gruppieren\n\n### Grundlegendes Gruppieren\n\n```sql\n-- Anzahl Mitarbeiter pro Abteilung\nSELECT abteilung_id, COUNT(*) AS anzahl_mitarbeiter\nFROM mitarbeiter\nGROUP BY abteilung_id;\n```\n\n### Mehrere Aggregatfunktionen\n\n```sql\nSELECT \n    abteilung_id,\n    COUNT(*) AS anzahl,\n    AVG(gehalt) AS durchschnitt,\n    MIN(gehalt) AS minimum,\n    MAX(gehalt) AS maximum\nFROM mitarbeiter\nGROUP BY abteilung_id;\n```\n\n### HAVING - Gruppen filtern\n\n```sql\n-- Nur Abteilungen mit mehr als 5 Mitarbeitern\nSELECT abteilung_id, COUNT(*) AS anzahl\nFROM mitarbeiter\nGROUP BY abteilung_id\nHAVING COUNT(*) > 5;\n```\n\n**Wichtig:** \n- WHERE filtert VOR dem Gruppieren\n- HAVING filtert NACH dem Gruppieren\n\n```sql\n-- Abteilungen mit mehr als 3 Mitarbeitern, die mehr als 40000 verdienen\nSELECT abteilung_id, COUNT(*) AS anzahl\nFROM mitarbeiter\nWHERE gehalt > 40000\nGROUP BY abteilung_id\nHAVING COUNT(*) > 3;\n```\n\n## JOIN - Tabellen verknüpfen\n<!-- micro-quiz:sql-dql-2025-group-by---gruppieren-micro-1 -->\n\n\n### INNER JOIN - Nur übereinstimmende Zeilen\n\n```sql\nSELECT \n    m.vorname,\n    m.nachname,\n    a.name AS abteilung\nFROM mitarbeiter m\nINNER JOIN abteilung a ON m.abteilung_id = a.abteilung_id;\n```\n\n### LEFT JOIN - Alle Zeilen aus linker Tabelle\n\n```sql\n-- Alle Mitarbeiter, auch ohne Abteilung\nSELECT \n    m.vorname,\n    m.nachname,\n    a.name AS abteilung\nFROM mitarbeiter m\nLEFT JOIN abteilung a ON m.abteilung_id = a.abteilung_id;\n```\n\n### RIGHT JOIN - Alle Zeilen aus rechter Tabelle\n\n```sql\n-- Alle Abteilungen, auch ohne Mitarbeiter\nSELECT \n    a.name AS abteilung,\n    m.vorname,\n    m.nachname\nFROM mitarbeiter m\nRIGHT JOIN abteilung a ON m.abteilung_id = a.abteilung_id;\n```\n\n### Mehrere JOINs\n\n```sql\nSELECT \n    m.vorname,\n    m.nachname,\n    a.name AS abteilung,\n    p.name AS projekt\nFROM mitarbeiter m\nINNER JOIN abteilung a ON m.abteilung_id = a.abteilung_id\nINNER JOIN mitarbeiter_projekt mp ON m.mitarbeiter_id = mp.mitarbeiter_id\nINNER JOIN projekt p ON mp.projekt_id = p.projekt_id;\n```\n\n<!-- micro-quiz:sql-dql-2025-join---tabellen-verknupfen-micro-1 -->\n## Subqueries (Unterabfragen)\n\n### Subquery in WHERE\n\n```sql\n-- Mitarbeiter mit überdurchschnittlichem Gehalt\nSELECT vorname, nachname, gehalt\nFROM mitarbeiter\nWHERE gehalt > (\n    SELECT AVG(gehalt)\n    FROM mitarbeiter\n);\n```\n\n### Subquery mit IN\n\n```sql\n-- Mitarbeiter aus Abteilungen in Berlin\nSELECT vorname, nachname\nFROM mitarbeiter\nWHERE abteilung_id IN (\n    SELECT abteilung_id\n    FROM abteilung\n    WHERE standort = 'Berlin'\n);\n```\n\n### Subquery in SELECT\n\n```sql\nSELECT \n    vorname,\n    nachname,\n    gehalt,\n    (SELECT AVG(gehalt) FROM mitarbeiter) AS durchschnitt,\n    gehalt - (SELECT AVG(gehalt) FROM mitarbeiter) AS differenz\nFROM mitarbeiter;\n```\n\n## DISTINCT - Duplikate entfernen\n<!-- micro-quiz:sql-dql-2025-subqueries-unterabfragen-micro-1 -->\n\n\n```sql\n-- Alle verschiedenen Abteilungs-IDs\nSELECT DISTINCT abteilung_id\nFROM mitarbeiter;\n\n-- Alle verschiedenen Kombinationen\nSELECT DISTINCT abteilung_id, standort\nFROM abteilung;\n```\n\n<!-- micro-quiz:sql-dql-2025-distinct---duplikate-entfernen-micro-1 -->\n## LIMIT - Anzahl begrenzen\n\n```sql\n-- Die 5 bestbezahlten Mitarbeiter\nSELECT vorname, nachname, gehalt\nFROM mitarbeiter\nORDER BY gehalt DESC\nLIMIT 5;\n\n-- Mit OFFSET (überspringt erste 10 Zeilen)\nSELECT vorname, nachname\nFROM mitarbeiter\nORDER BY nachname\nLIMIT 10 OFFSET 10;\n```\n\n## Komplexes Praxisbeispiel\n<!-- micro-quiz:sql-dql-2025-limit---anzahl-begrenzen-micro-1 -->\n\n\n```sql\n-- Finde alle Abteilungen mit:\n-- - Mehr als 3 Mitarbeitern\n-- - Durchschnittsgehalt über 45000\n-- - Standort in Berlin oder München\n-- Zeige: Abteilungsname, Anzahl Mitarbeiter, Durchschnittsgehalt\n-- Sortiert nach Durchschnittsgehalt absteigend\n\nSELECT \n    a.name AS abteilung,\n    a.standort,\n    COUNT(m.mitarbeiter_id) AS anzahl_mitarbeiter,\n    ROUND(AVG(m.gehalt), 2) AS durchschnittsgehalt,\n    MIN(m.gehalt) AS min_gehalt,\n    MAX(m.gehalt) AS max_gehalt\nFROM abteilung a\nINNER JOIN mitarbeiter m ON a.abteilung_id = m.abteilung_id\nWHERE a.standort IN ('Berlin', 'München')\nGROUP BY a.abteilung_id, a.name, a.standort\nHAVING COUNT(m.mitarbeiter_id) > 3\n   AND AVG(m.gehalt) > 45000\nORDER BY durchschnittsgehalt DESC;\n```\n\n<!-- micro-quiz:sql-dql-2025-komplexes-praxisbeispiel-micro-1 -->\n## Wichtige Hinweise für die Prüfung\n\n### 1. SELECT-Reihenfolge (Schreibweise)\n\n```sql\nSELECT      -- 1. Was soll ausgegeben werden?\n    spalten\nFROM        -- 2. Aus welcher Tabelle?\n    tabelle\nWHERE       -- 3. Welche Zeilen? (vor Gruppierung)\n    bedingung\nGROUP BY    -- 4. Gruppieren?\n    spalten\nHAVING      -- 5. Welche Gruppen? (nach Gruppierung)\n    bedingung\nORDER BY    -- 6. Sortierung?\n    spalten\nLIMIT       -- 7. Anzahl begrenzen?\n    anzahl;\n```\n\n### 2. Ausführungsreihenfolge (intern)\n\n1. FROM (Tabellen laden)\n2. WHERE (Zeilen filtern)\n3. GROUP BY (Gruppieren)\n4. HAVING (Gruppen filtern)\n5. SELECT (Spalten auswählen)\n6. ORDER BY (Sortieren)\n7. LIMIT (Begrenzen)\n\n### 3. Häufige Fehler\n\n```sql\n-- FALSCH: Spalte nicht in GROUP BY\nSELECT abteilung_id, vorname, COUNT(*)\nFROM mitarbeiter\nGROUP BY abteilung_id;\n-- vorname muss auch in GROUP BY oder eine Aggregatfunktion sein!\n\n-- RICHTIG:\nSELECT abteilung_id, COUNT(*)\nFROM mitarbeiter\nGROUP BY abteilung_id;\n\n-- FALSCH: WHERE mit Aggregatfunktion\nSELECT abteilung_id, COUNT(*)\nFROM mitarbeiter\nWHERE COUNT(*) > 5\nGROUP BY abteilung_id;\n-- Verwende HAVING statt WHERE!\n\n-- RICHTIG:\nSELECT abteilung_id, COUNT(*)\nFROM mitarbeiter\nGROUP BY abteilung_id\nHAVING COUNT(*) > 5;\n```\n\n## Zusammenfassung\n<!-- micro-quiz:sql-dql-2025-wichtige-hinweise-fur-die-prufung-micro-1 -->\n\n\n- **SELECT**: Spalten auswählen (Projektion)\n- **FROM**: Tabelle(n) angeben\n- **WHERE**: Zeilen filtern (Selektion)\n- **JOIN**: Tabellen verknüpfen\n- **GROUP BY**: Zeilen gruppieren\n- **HAVING**: Gruppen filtern\n- **ORDER BY**: Ergebnis sortieren\n- **LIMIT**: Anzahl begrenzen\n- **Aggregatfunktionen**: COUNT, SUM, AVG, MIN, MAX\n- **Subqueries**: Abfragen in Abfragen\n- **DISTINCT**: Duplikate entfernen\n\n\n\n<!-- micro-quiz:sql-comprehensive-quiz-2025 -->\n<!-- micro-quiz:sql-dql-2025-zusammenfassung-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "sql",
@@ -111,7 +114,9 @@
       "solution": "SELECT DISTINCT m.vorname, m.nachname, m.email\nFROM mitarbeiter m\nINNER JOIN mitarbeiter_projekt mp ON m.mitarbeiter_id = mp.mitarbeiter_id\nWHERE mp.projekt_id IN (\n    SELECT projekt_id\n    FROM projekt\n    WHERE budget > 100000\n)\nORDER BY m.nachname;"
     }
   ],
-  "relatedQuizzes": ["sql-comprehensive-quiz-2025"],
+  "relatedQuizzes": [
+    "sql-comprehensive-quiz-2025"
+  ],
   "resources": [
     {
       "title": "SQL Tutorial - SELECT",
@@ -127,10 +132,100 @@
   "lastUpdated": "2025-01-10T00:00:00Z",
   "version": "1.0",
   "learningObjectives": [
-    "Understand SQL",
-    "Understand DQL",
-    "Understand SELECT",
-    "Understand WHERE",
-    "Understand JOIN"
+    "Du kannst sQL erklären",
+    "Du kannst dQL erklären",
+    "Du kannst sELECT erklären",
+    "Du kannst wHERE erklären",
+    "Du kannst jOIN erklären"
+  ],
+  "summary": "Lerne die Data Query Language (DQL) mit SELECT, WHERE, JOIN, GROUP BY und mehr aus dem IHK Prüfungsbeiblatt.",
+  "contentOutline": [
+    {
+      "id": "sql-dql---data-query-language",
+      "title": "SQL DQL - Data Query Language",
+      "summary": "Kernaspekt: SQL DQL - Data Query Language"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "select---grundlagen",
+      "title": "SELECT - Grundlagen",
+      "summary": "Kernaspekt: SELECT - Grundlagen"
+    },
+    {
+      "id": "where---daten-filtern-selektion",
+      "title": "WHERE - Daten filtern (Selektion)",
+      "summary": "Kernaspekt: WHERE - Daten filtern (Selektion)"
+    },
+    {
+      "id": "order-by---sortieren",
+      "title": "ORDER BY - Sortieren",
+      "summary": "Kernaspekt: ORDER BY - Sortieren"
+    },
+    {
+      "id": "aggregatfunktionen",
+      "title": "Aggregatfunktionen",
+      "summary": "Kernaspekt: Aggregatfunktionen"
+    },
+    {
+      "id": "group-by---gruppieren",
+      "title": "GROUP BY - Gruppieren",
+      "summary": "Kernaspekt: GROUP BY - Gruppieren"
+    },
+    {
+      "id": "join---tabellen-verknupfen",
+      "title": "JOIN - Tabellen verknüpfen",
+      "summary": "Kernaspekt: JOIN - Tabellen verknüpfen"
+    },
+    {
+      "id": "subqueries-unterabfragen",
+      "title": "Subqueries (Unterabfragen)",
+      "summary": "Kernaspekt: Subqueries (Unterabfragen)"
+    },
+    {
+      "id": "distinct---duplikate-entfernen",
+      "title": "DISTINCT - Duplikate entfernen",
+      "summary": "Kernaspekt: DISTINCT - Duplikate entfernen"
+    },
+    {
+      "id": "limit---anzahl-begrenzen",
+      "title": "LIMIT - Anzahl begrenzen",
+      "summary": "Kernaspekt: LIMIT - Anzahl begrenzen"
+    },
+    {
+      "id": "komplexes-praxisbeispiel",
+      "title": "Komplexes Praxisbeispiel",
+      "summary": "Kernaspekt: Komplexes Praxisbeispiel"
+    },
+    {
+      "id": "wichtige-hinweise-fur-die-prufung",
+      "title": "Wichtige Hinweise für die Prüfung",
+      "summary": "Kernaspekt: Wichtige Hinweise für die Prüfung"
+    },
+    {
+      "id": "zusammenfassung",
+      "title": "Zusammenfassung",
+      "summary": "Kernaspekt: Zusammenfassung"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "sql-dql-2025-einfuhrung-micro-1",
+    "sql-dql-2025-select---grundlagen-micro-1",
+    "sql-dql-2025-where---daten-filtern-selektion-micro-1",
+    "sql-dql-2025-order-by---sortieren-micro-1",
+    "sql-dql-2025-aggregatfunktionen-micro-1",
+    "sql-dql-2025-group-by---gruppieren-micro-1",
+    "sql-dql-2025-join---tabellen-verknupfen-micro-1",
+    "sql-dql-2025-subqueries-unterabfragen-micro-1",
+    "sql-dql-2025-distinct---duplikate-entfernen-micro-1",
+    "sql-dql-2025-limit---anzahl-begrenzen-micro-1",
+    "sql-dql-2025-komplexes-praxisbeispiel-micro-1",
+    "sql-dql-2025-wichtige-hinweise-fur-die-prufung-micro-1",
+    "sql-dql-2025-zusammenfassung-micro-1"
   ]
 }

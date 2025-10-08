@@ -39,7 +39,7 @@ for (const f of files) {
   if (!objectives && typeof mod.content === 'string') {
     const content = mod.content;
     // try to find Prüfunsgrelevante section (German)
-  // const _re = /Pr\w*fungsrelevante[\s\S]{0,1000}?\n([\s\S]*)/i; // retained for potential future refinement
+    // const _re = /Pr\w*fungsrelevante[\s\S]{0,1000}?\n([\s\S]*)/i; // retained for potential future refinement
     const match = content.match(/Pr\w*fungsrelevante[^\n]*\n([\s\S]+)/i);
     if (match) {
       // take first few lines that look like bullets

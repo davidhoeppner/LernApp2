@@ -9,21 +9,31 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": 60,
-  "prerequisites": ["bp-dpa-01-normalization"],
-  "tags": ["Datenqualität", "ETL", "Bereinigung", "Validierung", "Profiling"],
-  "content": "# Datenqualität: Methoden, Metriken und Bereinigung\n\n## Einführung\nDatenqualität beschreibt, wie gut Daten die Anforderungen der jeweiligen Nutzung erfüllen. Wichtige Dimensionen: Vollständigkeit, Genauigkeit, Konsistenz, Aktualität, Einzigartigkeit und Validität.\n\n## Wichtige Metriken und Checks\n- **Vollständigkeit:** Anteil nicht-leerer Pflichtfelder\n- **Genauigkeit:** Abgleich mit externen Referenzen (z. B. Postleitzahlen)\n- **Konsistenz:** Keine widersprüchlichen Werte in verknüpften Datensätzen\n- **Duplikate:** Erkennung und Zusammenführung (Record Linkage)\n- **Integrität:** Fremdschlüssel-Verweise intakt\n\n## Strategien der Datenbereinigung\n- **Standardisierung:** Formate vereinheitlichen (Datum, Telefonnummern)\n- **Validierung:** Regeln (Regex, Typchecks), Lookup-Tabellen\n- **Imputation:** Fehlende Werte sinnvoll ersetzen (z. B. Median oder Domänenwerte)\n- **Fuzzy Matching & Deduplication:** Abstandsmessungen (Levenshtein) und heuristische Regeln\n\n## Operationalisierung von Data Quality\n- **Data Profiling:** Statistische Analyse zur Erkennung von Anomalien\n- **Data Quality Dashboards:** Metriken & Alerts zur Beobachtung\n- **Governance & Owners:** Zuständigkeiten und SLAs definieren\n\n## Prüfungsrelevante Aspekte\n- Nennen und beschreiben Sie die Hauptdimensionen der Datenqualität\n- Erläutern Sie typische Schritte eines Data Profilings\n- Grundlegende Methoden zur Duplikaterkennung beschreiben (Levenshtein, Fingerprints)",
+  "estimatedTime": "60 Minuten",
+  "prerequisites": [
+    "bp-dpa-01-normalization"
+  ],
+  "tags": [
+    "Datenqualität",
+    "ETL",
+    "Bereinigung",
+    "Validierung",
+    "Profiling"
+  ],
+  "content": "# Datenqualität: Methoden, Metriken und Bereinigung\n\n## Einführung\nDatenqualität beschreibt, wie gut Daten die Anforderungen der jeweiligen Nutzung erfüllen. Wichtige Dimensionen: Vollständigkeit, Genauigkeit, Konsistenz, Aktualität, Einzigartigkeit und Validität.\n\n<!-- micro-quiz:bp-dpa-06-data-quality-einfuhrung-micro-1 -->\n## Wichtige Metriken und Checks\n- **Vollständigkeit:** Anteil nicht-leerer Pflichtfelder\n- **Genauigkeit:** Abgleich mit externen Referenzen (z. B. Postleitzahlen)\n- **Konsistenz:** Keine widersprüchlichen Werte in verknüpften Datensätzen\n- **Duplikate:** Erkennung und Zusammenführung (Record Linkage)\n- **Integrität:** Fremdschlüssel-Verweise intakt\n\n## Strategien der Datenbereinigung\n<!-- micro-quiz:bp-dpa-06-data-quality-wichtige-metriken-und-checks-micro-1 -->\n\n- **Standardisierung:** Formate vereinheitlichen (Datum, Telefonnummern)\n- **Validierung:** Regeln (Regex, Typchecks), Lookup-Tabellen\n- **Imputation:** Fehlende Werte sinnvoll ersetzen (z. B. Median oder Domänenwerte)\n- **Fuzzy Matching & Deduplication:** Abstandsmessungen (Levenshtein) und heuristische Regeln\n\n<!-- micro-quiz:bp-dpa-06-data-quality-strategien-der-datenbereinigung-micro-1 -->\n## Operationalisierung von Data Quality\n- **Data Profiling:** Statistische Analyse zur Erkennung von Anomalien\n- **Data Quality Dashboards:** Metriken & Alerts zur Beobachtung\n- **Governance & Owners:** Zuständigkeiten und SLAs definieren\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-dpa-06-data-quality-operationalisierung-von-data-quality-micro-1 -->\n\n- Nennen und beschreiben Sie die Hauptdimensionen der Datenqualität\n- Erläutern Sie typische Schritte eines Data Profilings\n- Grundlegende Methoden zur Duplikaterkennung beschreiben (Levenshtein, Fingerprints)\n\n\n\n<!-- micro-quiz:bp-dpa-06-data-quality-quiz -->\n<!-- micro-quiz:bp-dpa-06-data-quality-prufungsrelevante-aspekte-micro-1 -->\n",
   "learningObjectives": [
-    "Die Dimensionen der Datenqualität (Vollständigkeit, Genauigkeit, Konsistenz etc.) definieren",
-    "Grundlegende Data-Profiling-Techniken anwenden",
-    "Methoden zur Duplikaterkennung und Standardisierung beschreiben"
+    "Du kannst die Dimensionen der Datenqualität (Vollständigkeit, Genauigkeit, Konsistenz etc.) definieren erklären",
+    "Du kannst grundlegende Data-Profiling-Techniken anwenden erklären",
+    "Du kannst methoden zur Duplikaterkennung und Standardisierung beschreiben erklären"
   ],
   "keyTakeaways": [
     "Data Quality ist eine Grundlage für verlässliche Analysen",
     "Profiling und Dashboards helfen, Qualitätsprobleme frühzeitig zu erkennen",
     "Deduplication und Standardisierung verbessern Konsistenz"
   ],
-  "relatedQuizzes": ["bp-dpa-06-data-quality-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-06-data-quality-quiz"
+  ],
   "resources": [
     {
       "title": "Data Quality Fundamentals",
@@ -32,5 +42,48 @@
     }
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "summary": "Prinzipien der Datenqualität, gängige Metriken, Strategien zur Datenbereinigung und Tools zur Sicherstellung qualitativ hochwertiger Daten in Analysesystemen.",
+  "contentOutline": [
+    {
+      "id": "datenqualitat-methoden-metriken-und-bereinigung",
+      "title": "Datenqualität: Methoden, Metriken und Bereinigung",
+      "summary": "Kernaspekt: Datenqualität: Methoden, Metriken und Bereinigung"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "wichtige-metriken-und-checks",
+      "title": "Wichtige Metriken und Checks",
+      "summary": "Kernaspekt: Wichtige Metriken und Checks"
+    },
+    {
+      "id": "strategien-der-datenbereinigung",
+      "title": "Strategien der Datenbereinigung",
+      "summary": "Kernaspekt: Strategien der Datenbereinigung"
+    },
+    {
+      "id": "operationalisierung-von-data-quality",
+      "title": "Operationalisierung von Data Quality",
+      "summary": "Kernaspekt: Operationalisierung von Data Quality"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-06-data-quality-einfuhrung-micro-1",
+    "bp-dpa-06-data-quality-wichtige-metriken-und-checks-micro-1",
+    "bp-dpa-06-data-quality-strategien-der-datenbereinigung-micro-1",
+    "bp-dpa-06-data-quality-operationalisierung-von-data-quality-micro-1",
+    "bp-dpa-06-data-quality-quiz",
+    "bp-dpa-06-data-quality-prufungsrelevante-aspekte-micro-1"
+  ]
 }

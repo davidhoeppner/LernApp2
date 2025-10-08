@@ -11,7 +11,7 @@
   "passingScore": 70,
   "questions": [
     {
-      "id": "scrum-q1",
+      "id": "q1",
       "type": "single-choice",
       "question": "Was ist Scrum?",
       "options": [
@@ -26,17 +26,22 @@
       "category": "Grundlagen"
     },
     {
-      "id": "scrum-q2",
+      "id": "q2",
       "type": "single-choice",
       "question": "Wie viele Rollen gibt es in Scrum?",
-      "options": ["3 Rollen", "5 Rollen", "2 Rollen", "4 Rollen"],
+      "options": [
+        "3 Rollen",
+        "5 Rollen",
+        "2 Rollen",
+        "4 Rollen"
+      ],
       "correctAnswer": "3 Rollen",
       "explanation": "Scrum definiert genau 3 Rollen: Product Owner, Scrum Master und Development Team. Alle anderen Personen sind Stakeholder.",
       "points": 1,
       "category": "Rollen"
     },
     {
-      "id": "scrum-q3",
+      "id": "q3",
       "type": "single-choice",
       "question": "Wer ist für die Maximierung des Produktwerts verantwortlich?",
       "options": [
@@ -49,256 +54,6 @@
       "explanation": "Der Product Owner ist verantwortlich für die Maximierung des Produktwerts und das Management des Product Backlogs. Er vertritt die Interessen der Stakeholder.",
       "points": 1,
       "category": "Rollen"
-    },
-    {
-      "id": "scrum-q4",
-      "type": "single-choice",
-      "question": "Was ist die Hauptaufgabe des Scrum Masters?",
-      "options": [
-        "Das Scrum-Framework fördern und Hindernisse beseitigen",
-        "Code schreiben",
-        "Anforderungen definieren",
-        "Das Team managen"
-      ],
-      "correctAnswer": "Das Scrum-Framework fördern und Hindernisse beseitigen",
-      "explanation": "Der Scrum Master ist ein Servant Leader, der das Team unterstützt, Hindernisse beseitigt und sicherstellt, dass Scrum richtig angewendet wird. Er ist kein Manager.",
-      "points": 1,
-      "category": "Rollen"
-    },
-    {
-      "id": "scrum-q5",
-      "type": "single-choice",
-      "question": "Wie groß sollte ein Development Team idealerweise sein?",
-      "options": [
-        "3-9 Personen",
-        "1-3 Personen",
-        "10-15 Personen",
-        "Beliebig groß"
-      ],
-      "correctAnswer": "3-9 Personen",
-      "explanation": "Das Development Team sollte 3-9 Personen umfassen. Kleinere Teams haben zu wenig Interaktion, größere Teams zu viel Koordinationsaufwand.",
-      "points": 1,
-      "category": "Rollen"
-    },
-    {
-      "id": "scrum-q6",
-      "type": "single-choice",
-      "question": "Was ist ein Sprint?",
-      "options": [
-        "Eine Zeitbox von maximal einem Monat für die Entwicklung",
-        "Ein schnelles Meeting",
-        "Eine Testphase",
-        "Ein Deployment"
-      ],
-      "correctAnswer": "Eine Zeitbox von maximal einem Monat für die Entwicklung",
-      "explanation": "Ein Sprint ist eine Zeitbox von maximal einem Monat, in der ein nutzbares Produktinkrement erstellt wird. Die Länge bleibt während des Projekts konstant.",
-      "points": 1,
-      "category": "Events"
-    },
-    {
-      "id": "scrum-q7",
-      "type": "single-choice",
-      "question": "Welches Event findet am Anfang eines Sprints statt?",
-      "options": [
-        "Sprint Planning",
-        "Daily Scrum",
-        "Sprint Review",
-        "Sprint Retrospective"
-      ],
-      "correctAnswer": "Sprint Planning",
-      "explanation": "Das Sprint Planning findet am Anfang jedes Sprints statt. Hier plant das Team, was im Sprint umgesetzt wird und wie die Arbeit erledigt wird.",
-      "points": 1,
-      "category": "Events"
-    },
-    {
-      "id": "scrum-q8",
-      "type": "single-choice",
-      "question": "Wie lange dauert das Daily Scrum maximal?",
-      "options": ["15 Minuten", "30 Minuten", "1 Stunde", "5 Minuten"],
-      "correctAnswer": "15 Minuten",
-      "explanation": "Das Daily Scrum ist ein 15-minütiges Event für das Development Team, um den Fortschritt zu synchronisieren und den Plan für die nächsten 24 Stunden zu erstellen.",
-      "points": 1,
-      "category": "Events"
-    },
-    {
-      "id": "scrum-q9",
-      "type": "single-choice",
-      "question": "Was sind die drei Fragen im Daily Scrum?",
-      "options": [
-        "Was habe ich gestern gemacht? Was mache ich heute? Welche Hindernisse gibt es?",
-        "Wann bin ich fertig? Was kostet es? Wer hilft mir?",
-        "Was ist mein Ziel? Wie geht es mir? Was brauche ich?",
-        "Was fehlt noch? Wer ist schuld? Was machen wir jetzt?"
-      ],
-      "correctAnswer": "Was habe ich gestern gemacht? Was mache ich heute? Welche Hindernisse gibt es?",
-      "explanation": "Die drei klassischen Fragen: 1) Was habe ich seit dem letzten Daily Scrum getan? 2) Was werde ich bis zum nächsten Daily Scrum tun? 3) Welche Hindernisse blockieren mich?",
-      "points": 2,
-      "category": "Events"
-    },
-    {
-      "id": "scrum-q10",
-      "type": "single-choice",
-      "question": "Was passiert im Sprint Review?",
-      "options": [
-        "Das Team präsentiert das Inkrement und holt Feedback ein",
-        "Das Team plant den nächsten Sprint",
-        "Das Team reflektiert über den Prozess",
-        "Das Team schreibt Code"
-      ],
-      "correctAnswer": "Das Team präsentiert das Inkrement und holt Feedback ein",
-      "explanation": "Im Sprint Review präsentiert das Team das fertige Inkrement den Stakeholdern und holt Feedback ein. Das Product Backlog kann basierend auf dem Feedback angepasst werden.",
-      "points": 1,
-      "category": "Events"
-    },
-    {
-      "id": "scrum-q11",
-      "type": "single-choice",
-      "question": "Was ist der Zweck der Sprint Retrospective?",
-      "options": [
-        "Den Prozess und die Zusammenarbeit zu verbessern",
-        "Das Produkt zu testen",
-        "Den nächsten Sprint zu planen",
-        "Bugs zu fixen"
-      ],
-      "correctAnswer": "Den Prozess und die Zusammenarbeit zu verbessern",
-      "explanation": "Die Sprint Retrospective dient der kontinuierlichen Verbesserung. Das Team reflektiert über den letzten Sprint und identifiziert Verbesserungsmaßnahmen für den nächsten Sprint.",
-      "points": 1,
-      "category": "Events"
-    },
-    {
-      "id": "scrum-q12",
-      "type": "single-choice",
-      "question": "Was ist das Product Backlog?",
-      "options": [
-        "Eine geordnete Liste aller Anforderungen für das Produkt",
-        "Eine Liste erledigter Aufgaben",
-        "Eine Liste von Bugs",
-        "Ein Projektplan"
-      ],
-      "correctAnswer": "Eine geordnete Liste aller Anforderungen für das Produkt",
-      "explanation": "Das Product Backlog ist eine priorisierte Liste aller bekannten Anforderungen. Der Product Owner ist für Inhalt, Priorisierung und Verfügbarkeit verantwortlich.",
-      "points": 1,
-      "category": "Artefakte"
-    },
-    {
-      "id": "scrum-q13",
-      "type": "single-choice",
-      "question": "Was ist das Sprint Backlog?",
-      "options": [
-        "Die für den Sprint ausgewählten Product Backlog Items plus der Plan zur Umsetzung",
-        "Alle Aufgaben des Projekts",
-        "Die Liste der Bugs",
-        "Der Projektplan"
-      ],
-      "correctAnswer": "Die für den Sprint ausgewählten Product Backlog Items plus der Plan zur Umsetzung",
-      "explanation": "Das Sprint Backlog enthält die im Sprint Planning ausgewählten Product Backlog Items und den Plan, wie das Sprint-Ziel erreicht wird. Es gehört dem Development Team.",
-      "points": 2,
-      "category": "Artefakte"
-    },
-    {
-      "id": "scrum-q14",
-      "type": "single-choice",
-      "question": "Was ist ein Inkrement?",
-      "options": [
-        "Die Summe aller im Sprint fertiggestellten Product Backlog Items",
-        "Ein einzelnes Feature",
-        "Ein Dokument",
-        "Ein Meeting"
-      ],
-      "correctAnswer": "Die Summe aller im Sprint fertiggestellten Product Backlog Items",
-      "explanation": "Das Inkrement ist die Summe aller im Sprint fertiggestellten Product Backlog Items plus aller Inkremente vorheriger Sprints. Es muss die Definition of Done erfüllen.",
-      "points": 1,
-      "category": "Artefakte"
-    },
-    {
-      "id": "scrum-q15",
-      "type": "single-choice",
-      "question": "Was ist die Definition of Done (DoD)?",
-      "options": [
-        "Eine gemeinsame Definition, wann ein Product Backlog Item als fertig gilt",
-        "Das Ende des Sprints",
-        "Wenn der Product Owner zufrieden ist",
-        "Wenn keine Bugs mehr da sind"
-      ],
-      "correctAnswer": "Eine gemeinsame Definition, wann ein Product Backlog Item als fertig gilt",
-      "explanation": "Die Definition of Done ist ein gemeinsames Verständnis darüber, was 'fertig' bedeutet. Sie stellt sicher, dass das Inkrement potenziell auslieferbar ist.",
-      "points": 2,
-      "category": "Artefakte"
-    },
-    {
-      "id": "scrum-q16",
-      "type": "single-choice",
-      "question": "Was ist eine User Story?",
-      "options": [
-        "Eine Anforderung aus Nutzersicht: Als [Rolle] möchte ich [Funktion], damit [Nutzen]",
-        "Eine Geschichte über den Nutzer",
-        "Ein Testfall",
-        "Ein Bug-Report"
-      ],
-      "correctAnswer": "Eine Anforderung aus Nutzersicht: Als [Rolle] möchte ich [Funktion], damit [Nutzen]",
-      "explanation": "User Stories beschreiben Anforderungen aus Nutzersicht im Format: 'Als [Rolle] möchte ich [Funktion], damit [Nutzen]'. Sie sind ein gängiges Format für Product Backlog Items.",
-      "points": 1,
-      "category": "Praktiken"
-    },
-    {
-      "id": "scrum-q17",
-      "type": "single-choice",
-      "question": "Kann ein Sprint vorzeitig abgebrochen werden?",
-      "options": [
-        "Ja, aber nur der Product Owner kann einen Sprint abbrechen",
-        "Nein, niemals",
-        "Ja, jedes Teammitglied kann abbrechen",
-        "Ja, aber nur der Scrum Master"
-      ],
-      "correctAnswer": "Ja, aber nur der Product Owner kann einen Sprint abbrechen",
-      "explanation": "Nur der Product Owner kann einen Sprint abbrechen, wenn das Sprint-Ziel obsolet wird. Dies sollte sehr selten vorkommen, da es Ressourcen verschwendet.",
-      "points": 2,
-      "category": "Sprint-Management"
-    },
-    {
-      "id": "scrum-q18",
-      "type": "single-choice",
-      "question": "Szenario: Das Development Team schafft nicht alle Sprint Backlog Items. Was passiert?",
-      "options": [
-        "Unfertige Items gehen zurück ins Product Backlog",
-        "Der Sprint wird verlängert",
-        "Das Team muss Überstunden machen",
-        "Der Scrum Master wird bestraft"
-      ],
-      "correctAnswer": "Unfertige Items gehen zurück ins Product Backlog",
-      "explanation": "Unfertige Items werden zurück ins Product Backlog verschoben und neu priorisiert. Der Sprint endet trotzdem zum geplanten Zeitpunkt. Das Team lernt daraus für die nächste Planung.",
-      "points": 2,
-      "category": "Szenarien"
-    },
-    {
-      "id": "scrum-q19",
-      "type": "single-choice",
-      "question": "Szenario: Ein Stakeholder möchte während des Sprints neue Anforderungen hinzufügen. Was tun?",
-      "options": [
-        "Anforderungen ins Product Backlog aufnehmen, im nächsten Sprint berücksichtigen",
-        "Sofort umsetzen",
-        "Ablehnen",
-        "Sprint abbrechen und neu planen"
-      ],
-      "correctAnswer": "Anforderungen ins Product Backlog aufnehmen, im nächsten Sprint berücksichtigen",
-      "explanation": "Das Sprint Backlog ist während des Sprints geschützt. Neue Anforderungen kommen ins Product Backlog und werden vom Product Owner priorisiert. Im nächsten Sprint Planning können sie berücksichtigt werden.",
-      "points": 2,
-      "category": "Szenarien"
-    },
-    {
-      "id": "scrum-q20",
-      "type": "single-choice",
-      "question": "Szenario: Das Team hat ein technisches Problem, das es nicht lösen kann. Was tut der Scrum Master?",
-      "options": [
-        "Hilft, das Hindernis zu beseitigen, z.B. durch Vermittlung eines Experten",
-        "Löst das Problem selbst",
-        "Ignoriert es",
-        "Bestraft das Team"
-      ],
-      "correctAnswer": "Hilft, das Hindernis zu beseitigen, z.B. durch Vermittlung eines Experten",
-      "explanation": "Der Scrum Master ist ein Servant Leader, der Hindernisse beseitigt. Er löst nicht selbst technische Probleme, sondern hilft dem Team, Lösungen zu finden (z.B. durch Vermittlung von Experten).",
-      "points": 2,
-      "category": "Szenarien"
     }
   ],
   "tags": [

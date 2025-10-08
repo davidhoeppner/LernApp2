@@ -1,0 +1,59 @@
+{
+  "id": "bp-03-rest-api-rate-limiting-micro-1",
+  "moduleId": "bp-03-rest-api",
+  "title": "Rate Limiting — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welcher Header zeigt verbleibende Requests?",
+      "options": [
+        "X-RateLimit-Limit",
+        "X-RateLimit-Remaining",
+        "Retry-After",
+        "ETag"
+      ],
+      "correctAnswer": "X-RateLimit-Remaining",
+      "explanation": "Remaining zeigt Restkontingent.",
+      "points": 1,
+      "category": "Rate-Limit"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Bei Überschreitung des Limits ist 429 ein üblicher Status-Code.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "HTTP 429 Too Many Requests.",
+      "points": 1,
+      "category": "Rate-Limit"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Strategien sind legitime Rate-Limiting Ansätze?",
+      "options": [
+        "Token Bucket",
+        "Leaky Bucket",
+        "MD5 Hash Flood",
+        "Fixed Window"
+      ],
+      "correctAnswer": [
+        "Token Bucket",
+        "Leaky Bucket",
+        "Fixed Window"
+      ],
+      "explanation": "MD5 Hash Flood ist kein Rate-Limiting-Algorithmus.",
+      "points": 1,
+      "category": "Rate-Limit"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"Rate Limiting\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

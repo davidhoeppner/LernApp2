@@ -9,8 +9,11 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": 70,
-  "prerequisites": ["bp-dpa-01-er-modeling", "bp-dpa-02-etl-fundamentals"],
+  "estimatedTime": "70 Minuten",
+  "prerequisites": [
+    "bp-dpa-01-er-modeling",
+    "bp-dpa-02-etl-fundamentals"
+  ],
   "tags": [
     "Business Intelligence",
     "BI",
@@ -19,7 +22,7 @@
     "KPIs",
     "Reporting"
   ],
-  "content": "# Business Intelligence und Dashboards\n\n## Einführung\n\nBusiness Intelligence (BI) umfasst Technologien, Anwendungen und Praktiken zur Sammlung, Integration, Analyse und Präsentation von Geschäftsinformationen. Für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse ist BI essentiell, um aus Daten verwertbare Erkenntnisse zu gewinnen und datengetriebene Entscheidungen zu ermöglichen.\n\n## Business Intelligence Grundlagen\n\n### Definition und Ziele\n\n**Business Intelligence (BI):**\n- Sammlung von Strategien und Technologien\n- Analyse von Geschäftsdaten\n- Unterstützung bei Entscheidungsfindung\n- Transformation von Daten in Wissen\n\n**Hauptziele:**\n- Verbesserte Entscheidungsfindung\n- Erhöhte operative Effizienz\n- Wettbewerbsvorteile schaffen\n- Risiken identifizieren und minimieren\n- Neue Geschäftsmöglichkeiten erkennen\n\n### BI-Architektur\n\n**Schichtenmodell:**\n```\n┌─────────────────────────────────────┐\n│        Präsentationsschicht         │\n│    (Dashboards, Reports, Apps)      │\n├─────────────────────────────────────┤\n│         Analyseschicht              │\n│    (OLAP, Data Mining, Analytics)   │\n├─────────────────────────────────────┤\n│        Datenschicht                 │\n│  (Data Warehouse, Data Marts)       │\n├─────────────────────────────────────┤\n│      Integrationsschicht            │\n│        (ETL-Prozesse)               │\n├─────────────────────────────────────┤\n│        Datenquellen                 │\n│  (ERP, CRM, Dateien, APIs)          │\n└─────────────────────────────────────┘\n```\n\n## Data Warehouse Konzepte\n\n### Data Warehouse vs. Data Lake\n\n**Data Warehouse:**\n- Strukturierte, bereinigte Daten\n- Schema-on-Write\n- Optimiert für Abfragen und Reporting\n- Hohe Datenqualität\n- Relationale Datenbanken\n\n**Data Lake:**\n- Rohdaten in verschiedenen Formaten\n- Schema-on-Read\n- Flexible Datenexploration\n- Kostengünstige Speicherung\n- Big Data Technologien\n\n### Dimensionale Modellierung\n\n**Star Schema:**\n```\n        Dimension Zeit\n             │\n             │\nDimension ──── Faktentabelle ──── Dimension\nProdukt       (Verkäufe)         Kunde\n             │\n             │\n        Dimension Filiale\n```\n\n**Snowflake Schema:**\n- Normalisierte Dimensionstabellen\n- Reduzierte Redundanz\n- Komplexere Abfragen\n\n**Faktentabellen:**\n- Enthalten Kennzahlen (Measures)\n- Fremdschlüssel zu Dimensionen\n- Große Datenmengen\n- Optimiert für Aggregationen\n\n**Dimensionstabellen:**\n- Beschreibende Attribute\n- Hierarchien (Jahr → Quartal → Monat)\n- Slowly Changing Dimensions (SCD)\n\n## OLAP (Online Analytical Processing)\n\n### OLAP-Operationen\n\n**Drill-Down:**\n- Von aggregierten zu detaillierten Daten\n- Beispiel: Jahr → Quartal → Monat\n\n**Roll-Up:**\n- Von detaillierten zu aggregierten Daten\n- Beispiel: Produkt → Produktkategorie\n\n**Slice:**\n- Auswahl einer Dimension\n- Beispiel: Nur Daten für 2024\n\n**Dice:**\n- Auswahl mehrerer Dimensionen\n- Beispiel: Produkt A in Region Nord für Q1\n\n**Pivot:**\n- Rotation der Datenansicht\n- Zeilen und Spalten vertauschen\n\n### OLAP-Implementierungen\n\n**MOLAP (Multidimensional OLAP):**\n- Vorgenerierte Würfel (Cubes)\n- Schnelle Abfragen\n- Hoher Speicherbedarf\n\n**ROLAP (Relational OLAP):**\n- Relationale Datenbank\n- Flexible Datenmodelle\n- Langsamere Abfragen\n\n**HOLAP (Hybrid OLAP):**\n- Kombination aus MOLAP und ROLAP\n- Aggregierte Daten in Cubes\n- Detaildaten in relationaler DB\n\n## Key Performance Indicators (KPIs)\n\n### KPI-Design\n\n**SMART-Kriterien:**\n- **Specific**: Spezifisch und eindeutig\n- **Measurable**: Messbar und quantifizierbar\n- **Achievable**: Erreichbar und realistisch\n- **Relevant**: Relevant für Geschäftsziele\n- **Time-bound**: Zeitlich definiert\n\n**KPI-Kategorien:**\n\n**Finanz-KPIs:**\n- Umsatz, Gewinn, ROI\n- Kosten pro Akquisition (CPA)\n- Customer Lifetime Value (CLV)\n\n**Operative KPIs:**\n- Durchlaufzeit, Qualitätsrate\n- Kapazitätsauslastung\n- Lagerumschlag\n\n**Kunden-KPIs:**\n- Kundenzufriedenheit (NPS)\n- Churn Rate\n- Conversion Rate\n\n**Mitarbeiter-KPIs:**\n- Produktivität\n- Fluktuation\n- Schulungsstunden\n\n### KPI-Hierarchien\n\n```\nStrategische KPIs (CEO-Level)\n    │\n    ├── Taktische KPIs (Management-Level)\n    │       │\n    │       └── Operative KPIs (Team-Level)\n    │\n    └── Balanced Scorecard Perspektiven:\n        ├── Finanzperspektive\n        ├── Kundenperspektive\n        ├── Prozessperspektive\n        └── Lern-/Entwicklungsperspektive\n```\n\n## Dashboard-Design\n\n### Design-Prinzipien\n\n**Klarheit und Einfachheit:**\n- Fokus auf wesentliche Informationen\n- Vermeidung von Informationsüberladung\n- Intuitive Navigation\n\n**Visuelle Hierarchie:**\n- Wichtigste KPIs prominent platzieren\n- Konsistente Farbgebung\n- Logische Anordnung\n\n**Interaktivität:**\n- Filter und Drill-Down-Funktionen\n- Responsive Design\n- Real-time Updates\n\n### Dashboard-Typen\n\n**Strategische Dashboards:**\n- Langfristige Trends\n- High-Level KPIs\n- Für Führungskräfte\n- Monatliche/quartalsweise Updates\n\n**Operative Dashboards:**\n- Tagesgeschäft\n- Real-time Monitoring\n- Für operative Teams\n- Kontinuierliche Updates\n\n**Analytische Dashboards:**\n- Detailanalysen\n- Explorative Funktionen\n- Für Analysten\n- Ad-hoc Abfragen\n\n### Visualisierungstypen\n\n**Numerische Anzeigen:**\n- KPI-Karten\n- Gauge-Charts\n- Sparklines\n\n**Vergleiche:**\n- Balkendiagramme\n- Säulendiagramme\n- Wasserfalldiagramme\n\n**Trends:**\n- Liniendiagramme\n- Flächendiagramme\n- Trendlinien\n\n**Zusammensetzung:**\n- Kreisdiagramme\n- Donut-Charts\n- Treemaps\n\n**Verteilung:**\n- Histogramme\n- Box-Plots\n- Scatter-Plots\n\n**Geografische Daten:**\n- Karten\n- Heatmaps\n- Choropleth-Karten\n\n## Self-Service BI\n\n### Konzept und Vorteile\n\n**Self-Service BI:**\n- Endbenutzer erstellen eigene Berichte\n- Reduzierte IT-Abhängigkeit\n- Schnellere Erkenntnisgewinnung\n- Demokratisierung von Daten\n\n**Vorteile:**\n- Agilität und Flexibilität\n- Entlastung der IT-Abteilung\n- Bessere Datenakzeptanz\n- Schnellere Entscheidungen\n\n**Herausforderungen:**\n- Datenqualität und -konsistenz\n- Governance und Compliance\n- Schulungsbedarf\n- Sicherheit und Zugriffskontrolle\n\n### Governance-Framework\n\n**Data Governance:**\n- Datenqualitätsstandards\n- Metadatenmanagement\n- Datenlineage\n- Zugriffskontrolle\n\n**BI Governance:**\n- Berichtsstandards\n- KPI-Definitionen\n- Dashboard-Guidelines\n- Schulungsprogramme\n\n## BI-Tools und Technologien\n\n### Enterprise BI-Plattformen\n\n**Microsoft Power BI:**\n- Integration mit Microsoft-Ökosystem\n- Self-Service Funktionen\n- Cloud und On-Premises\n- Power Query für Datenaufbereitung\n\n**Tableau:**\n- Starke Visualisierungsfähigkeiten\n- Drag-and-Drop Interface\n- Große Community\n- Tableau Prep für Datenaufbereitung\n\n**QlikView/QlikSense:**\n- Assoziative Datenmodellierung\n- In-Memory-Technologie\n- Flexible Datenexploration\n- Responsive Design\n\n**SAP BusinessObjects:**\n- Enterprise-Funktionen\n- Integration mit SAP-Systemen\n- Umfassende Reporting-Suite\n- Web Intelligence\n\n### Open Source BI\n\n**Apache Superset:**\n- Moderne Web-Anwendung\n- Vielfältige Visualisierungen\n- SQL Lab für Ad-hoc Abfragen\n- Python-basiert\n\n**Metabase:**\n- Einfache Installation\n- Benutzerfreundlich\n- Automatische Dashboards\n- Fragen in natürlicher Sprache\n\n**Grafana:**\n- Fokus auf Monitoring\n- Time-Series Daten\n- Alerting-Funktionen\n- Plugin-Ökosystem\n\n## Mobile BI\n\n### Mobile-First Design\n\n**Responsive Dashboards:**\n- Anpassung an Bildschirmgrößen\n- Touch-optimierte Bedienung\n- Offline-Funktionalität\n- Push-Benachrichtigungen\n\n**Mobile-spezifische Features:**\n- Standortbasierte Analysen\n- Kamera-Integration\n- Sprachsteuerung\n- Augmented Reality\n\n## Datenqualität und -governance\n\n### Datenqualitätsdimensionen\n\n**Vollständigkeit:**\n- Alle erforderlichen Daten vorhanden\n- Keine fehlenden Werte\n- Vollständige Datensätze\n\n**Genauigkeit:**\n- Korrekte Werte\n- Validierung gegen Referenzdaten\n- Fehlerfreie Datenerfassung\n\n**Konsistenz:**\n- Einheitliche Formate\n- Standardisierte Werte\n- Konsistente Beziehungen\n\n**Aktualität:**\n- Zeitnahe Datenaktualisierung\n- Relevante Zeiträume\n- Historische Genauigkeit\n\n**Eindeutigkeit:**\n- Keine Duplikate\n- Eindeutige Identifikatoren\n- Bereinigung von Dubletten\n\n### Data Lineage\n\n**Datenherkunft:**\n- Ursprung der Daten\n- Transformationsschritte\n- Datenfluss dokumentieren\n\n**Impact Analysis:**\n- Auswirkungen von Änderungen\n- Abhängigkeiten identifizieren\n- Risikobewertung\n\n## Prüfungsrelevante Aspekte\n\n- BI-Architektur und Komponenten verstehen\n- Data Warehouse vs. Data Lake unterscheiden\n- Dimensionale Modellierung (Star/Snowflake Schema)\n- OLAP-Operationen kennen und anwenden\n- KPIs definieren und kategorisieren\n- Dashboard-Design-Prinzipien anwenden\n- Visualisierungstypen richtig auswählen\n- Self-Service BI Konzepte verstehen\n- Datenqualitätsdimensionen benennen\n- BI-Tools und deren Einsatzgebiete kennen",
+  "content": "# Business Intelligence und Dashboards\n\n## Einführung\n\nBusiness Intelligence (BI) umfasst Technologien, Anwendungen und Praktiken zur Sammlung, Integration, Analyse und Präsentation von Geschäftsinformationen. Für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse ist BI essentiell, um aus Daten verwertbare Erkenntnisse zu gewinnen und datengetriebene Entscheidungen zu ermöglichen.\n\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-einfuhrung-micro-1 -->\n## Business Intelligence Grundlagen\n\n### Definition und Ziele\n\n**Business Intelligence (BI):**\n- Sammlung von Strategien und Technologien\n- Analyse von Geschäftsdaten\n- Unterstützung bei Entscheidungsfindung\n- Transformation von Daten in Wissen\n\n**Hauptziele:**\n- Verbesserte Entscheidungsfindung\n- Erhöhte operative Effizienz\n- Wettbewerbsvorteile schaffen\n- Risiken identifizieren und minimieren\n- Neue Geschäftsmöglichkeiten erkennen\n\n### BI-Architektur\n\n**Schichtenmodell:**\n```\n┌─────────────────────────────────────┐\n│        Präsentationsschicht         │\n│    (Dashboards, Reports, Apps)      │\n├─────────────────────────────────────┤\n│         Analyseschicht              │\n│    (OLAP, Data Mining, Analytics)   │\n├─────────────────────────────────────┤\n│        Datenschicht                 │\n│  (Data Warehouse, Data Marts)       │\n├─────────────────────────────────────┤\n│      Integrationsschicht            │\n│        (ETL-Prozesse)               │\n├─────────────────────────────────────┤\n│        Datenquellen                 │\n│  (ERP, CRM, Dateien, APIs)          │\n└─────────────────────────────────────┘\n```\n\n## Data Warehouse Konzepte\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-business-intelligence-grundlagen-micro-1 -->\n\n\n### Data Warehouse vs. Data Lake\n\n**Data Warehouse:**\n- Strukturierte, bereinigte Daten\n- Schema-on-Write\n- Optimiert für Abfragen und Reporting\n- Hohe Datenqualität\n- Relationale Datenbanken\n\n**Data Lake:**\n- Rohdaten in verschiedenen Formaten\n- Schema-on-Read\n- Flexible Datenexploration\n- Kostengünstige Speicherung\n- Big Data Technologien\n\n### Dimensionale Modellierung\n\n**Star Schema:**\n```\n        Dimension Zeit\n             │\n             │\nDimension ──── Faktentabelle ──── Dimension\nProdukt       (Verkäufe)         Kunde\n             │\n             │\n        Dimension Filiale\n```\n\n**Snowflake Schema:**\n- Normalisierte Dimensionstabellen\n- Reduzierte Redundanz\n- Komplexere Abfragen\n\n**Faktentabellen:**\n- Enthalten Kennzahlen (Measures)\n- Fremdschlüssel zu Dimensionen\n- Große Datenmengen\n- Optimiert für Aggregationen\n\n**Dimensionstabellen:**\n- Beschreibende Attribute\n- Hierarchien (Jahr → Quartal → Monat)\n- Slowly Changing Dimensions (SCD)\n\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-data-warehouse-konzepte-micro-1 -->\n## OLAP (Online Analytical Processing)\n\n### OLAP-Operationen\n\n**Drill-Down:**\n- Von aggregierten zu detaillierten Daten\n- Beispiel: Jahr → Quartal → Monat\n\n**Roll-Up:**\n- Von detaillierten zu aggregierten Daten\n- Beispiel: Produkt → Produktkategorie\n\n**Slice:**\n- Auswahl einer Dimension\n- Beispiel: Nur Daten für 2024\n\n**Dice:**\n- Auswahl mehrerer Dimensionen\n- Beispiel: Produkt A in Region Nord für Q1\n\n**Pivot:**\n- Rotation der Datenansicht\n- Zeilen und Spalten vertauschen\n\n### OLAP-Implementierungen\n\n**MOLAP (Multidimensional OLAP):**\n- Vorgenerierte Würfel (Cubes)\n- Schnelle Abfragen\n- Hoher Speicherbedarf\n\n**ROLAP (Relational OLAP):**\n- Relationale Datenbank\n- Flexible Datenmodelle\n- Langsamere Abfragen\n\n**HOLAP (Hybrid OLAP):**\n- Kombination aus MOLAP und ROLAP\n- Aggregierte Daten in Cubes\n- Detaildaten in relationaler DB\n\n## Key Performance Indicators (KPIs)\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-olap-online-analytical-processing-micro-1 -->\n\n\n### KPI-Design\n\n**SMART-Kriterien:**\n- **Specific**: Spezifisch und eindeutig\n- **Measurable**: Messbar und quantifizierbar\n- **Achievable**: Erreichbar und realistisch\n- **Relevant**: Relevant für Geschäftsziele\n- **Time-bound**: Zeitlich definiert\n\n**KPI-Kategorien:**\n\n**Finanz-KPIs:**\n- Umsatz, Gewinn, ROI\n- Kosten pro Akquisition (CPA)\n- Customer Lifetime Value (CLV)\n\n**Operative KPIs:**\n- Durchlaufzeit, Qualitätsrate\n- Kapazitätsauslastung\n- Lagerumschlag\n\n**Kunden-KPIs:**\n- Kundenzufriedenheit (NPS)\n- Churn Rate\n- Conversion Rate\n\n**Mitarbeiter-KPIs:**\n- Produktivität\n- Fluktuation\n- Schulungsstunden\n\n### KPI-Hierarchien\n\n```\nStrategische KPIs (CEO-Level)\n    │\n    ├── Taktische KPIs (Management-Level)\n    │       │\n    │       └── Operative KPIs (Team-Level)\n    │\n    └── Balanced Scorecard Perspektiven:\n        ├── Finanzperspektive\n        ├── Kundenperspektive\n        ├── Prozessperspektive\n        └── Lern-/Entwicklungsperspektive\n```\n\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-key-performance-indicators-kpis-micro-1 -->\n## Dashboard-Design\n\n### Design-Prinzipien\n\n**Klarheit und Einfachheit:**\n- Fokus auf wesentliche Informationen\n- Vermeidung von Informationsüberladung\n- Intuitive Navigation\n\n**Visuelle Hierarchie:**\n- Wichtigste KPIs prominent platzieren\n- Konsistente Farbgebung\n- Logische Anordnung\n\n**Interaktivität:**\n- Filter und Drill-Down-Funktionen\n- Responsive Design\n- Real-time Updates\n\n### Dashboard-Typen\n\n**Strategische Dashboards:**\n- Langfristige Trends\n- High-Level KPIs\n- Für Führungskräfte\n- Monatliche/quartalsweise Updates\n\n**Operative Dashboards:**\n- Tagesgeschäft\n- Real-time Monitoring\n- Für operative Teams\n- Kontinuierliche Updates\n\n**Analytische Dashboards:**\n- Detailanalysen\n- Explorative Funktionen\n- Für Analysten\n- Ad-hoc Abfragen\n\n### Visualisierungstypen\n\n**Numerische Anzeigen:**\n- KPI-Karten\n- Gauge-Charts\n- Sparklines\n\n**Vergleiche:**\n- Balkendiagramme\n- Säulendiagramme\n- Wasserfalldiagramme\n\n**Trends:**\n- Liniendiagramme\n- Flächendiagramme\n- Trendlinien\n\n**Zusammensetzung:**\n- Kreisdiagramme\n- Donut-Charts\n- Treemaps\n\n**Verteilung:**\n- Histogramme\n- Box-Plots\n- Scatter-Plots\n\n**Geografische Daten:**\n- Karten\n- Heatmaps\n- Choropleth-Karten\n\n## Self-Service BI\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-dashboard-design-micro-1 -->\n\n\n### Konzept und Vorteile\n\n**Self-Service BI:**\n- Endbenutzer erstellen eigene Berichte\n- Reduzierte IT-Abhängigkeit\n- Schnellere Erkenntnisgewinnung\n- Demokratisierung von Daten\n\n**Vorteile:**\n- Agilität und Flexibilität\n- Entlastung der IT-Abteilung\n- Bessere Datenakzeptanz\n- Schnellere Entscheidungen\n\n**Herausforderungen:**\n- Datenqualität und -konsistenz\n- Governance und Compliance\n- Schulungsbedarf\n- Sicherheit und Zugriffskontrolle\n\n### Governance-Framework\n\n**Data Governance:**\n- Datenqualitätsstandards\n- Metadatenmanagement\n- Datenlineage\n- Zugriffskontrolle\n\n**BI Governance:**\n- Berichtsstandards\n- KPI-Definitionen\n- Dashboard-Guidelines\n- Schulungsprogramme\n\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-self-service-bi-micro-1 -->\n## BI-Tools und Technologien\n\n### Enterprise BI-Plattformen\n\n**Microsoft Power BI:**\n- Integration mit Microsoft-Ökosystem\n- Self-Service Funktionen\n- Cloud und On-Premises\n- Power Query für Datenaufbereitung\n\n**Tableau:**\n- Starke Visualisierungsfähigkeiten\n- Drag-and-Drop Interface\n- Große Community\n- Tableau Prep für Datenaufbereitung\n\n**QlikView/QlikSense:**\n- Assoziative Datenmodellierung\n- In-Memory-Technologie\n- Flexible Datenexploration\n- Responsive Design\n\n**SAP BusinessObjects:**\n- Enterprise-Funktionen\n- Integration mit SAP-Systemen\n- Umfassende Reporting-Suite\n- Web Intelligence\n\n### Open Source BI\n\n**Apache Superset:**\n- Moderne Web-Anwendung\n- Vielfältige Visualisierungen\n- SQL Lab für Ad-hoc Abfragen\n- Python-basiert\n\n**Metabase:**\n- Einfache Installation\n- Benutzerfreundlich\n- Automatische Dashboards\n- Fragen in natürlicher Sprache\n\n**Grafana:**\n- Fokus auf Monitoring\n- Time-Series Daten\n- Alerting-Funktionen\n- Plugin-Ökosystem\n\n## Mobile BI\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-bi-tools-und-technologien-micro-1 -->\n\n\n### Mobile-First Design\n\n**Responsive Dashboards:**\n- Anpassung an Bildschirmgrößen\n- Touch-optimierte Bedienung\n- Offline-Funktionalität\n- Push-Benachrichtigungen\n\n**Mobile-spezifische Features:**\n- Standortbasierte Analysen\n- Kamera-Integration\n- Sprachsteuerung\n- Augmented Reality\n\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-mobile-bi-micro-1 -->\n## Datenqualität und -governance\n\n### Datenqualitätsdimensionen\n\n**Vollständigkeit:**\n- Alle erforderlichen Daten vorhanden\n- Keine fehlenden Werte\n- Vollständige Datensätze\n\n**Genauigkeit:**\n- Korrekte Werte\n- Validierung gegen Referenzdaten\n- Fehlerfreie Datenerfassung\n\n**Konsistenz:**\n- Einheitliche Formate\n- Standardisierte Werte\n- Konsistente Beziehungen\n\n**Aktualität:**\n- Zeitnahe Datenaktualisierung\n- Relevante Zeiträume\n- Historische Genauigkeit\n\n**Eindeutigkeit:**\n- Keine Duplikate\n- Eindeutige Identifikatoren\n- Bereinigung von Dubletten\n\n### Data Lineage\n\n**Datenherkunft:**\n- Ursprung der Daten\n- Transformationsschritte\n- Datenfluss dokumentieren\n\n**Impact Analysis:**\n- Auswirkungen von Änderungen\n- Abhängigkeiten identifizieren\n- Risikobewertung\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-datenqualitat-und--governance-micro-1 -->\n\n\n- BI-Architektur und Komponenten verstehen\n- Data Warehouse vs. Data Lake unterscheiden\n- Dimensionale Modellierung (Star/Snowflake Schema)\n- OLAP-Operationen kennen und anwenden\n- KPIs definieren und kategorisieren\n- Dashboard-Design-Prinzipien anwenden\n- Visualisierungstypen richtig auswählen\n- Self-Service BI Konzepte verstehen\n- Datenqualitätsdimensionen benennen\n- BI-Tools und deren Einsatzgebiete kennen\n\n\n\n<!-- micro-quiz:bp-dpa-04-bi-quiz -->\n<!-- micro-quiz:bp-dpa-04-bi-fundamentals-prufungsrelevante-aspekte-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "sql",
@@ -34,7 +37,9 @@
       "title": "KPI Dashboard mit Python"
     }
   ],
-  "relatedQuizzes": ["bp-dpa-04-bi-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-04-bi-quiz"
+  ],
   "resources": [
     {
       "title": "Microsoft Power BI Documentation",
@@ -53,11 +58,11 @@
     }
   ],
   "learningObjectives": [
-    "BI-Architektur und Komponenten verstehen",
-    "Data Warehouse Design mit dimensionaler Modellierung",
-    "KPIs definieren und Dashboard-Design anwenden",
-    "OLAP-Operationen für Datenanalyse nutzen",
-    "Datenqualität und Governance implementieren"
+    "Du kannst bI-Architektur und Komponenten verstehen erklären",
+    "Du kannst data Warehouse Design mit dimensionaler Modellierung erklären",
+    "Du kannst kPIs definieren und Dashboard-Design anwenden erklären",
+    "Du kannst oLAP-Operationen für Datenanalyse nutzen erklären",
+    "Du kannst datenqualität und Governance implementieren erklären"
   ],
   "keyTakeaways": [
     "BI transformiert Daten in verwertbare Geschäftserkenntnisse",
@@ -66,5 +71,83 @@
     "Self-Service BI erfordert starke Governance-Strukturen"
   ],
   "lastUpdated": "2025-01-20T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "summary": "Business Intelligence Systeme, Datenvisualisierung und Dashboard-Design für datengetriebene Entscheidungen",
+  "contentOutline": [
+    {
+      "id": "business-intelligence-und-dashboards",
+      "title": "Business Intelligence und Dashboards",
+      "summary": "Kernaspekt: Business Intelligence und Dashboards"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "business-intelligence-grundlagen",
+      "title": "Business Intelligence Grundlagen",
+      "summary": "Kernaspekt: Business Intelligence Grundlagen"
+    },
+    {
+      "id": "data-warehouse-konzepte",
+      "title": "Data Warehouse Konzepte",
+      "summary": "Kernaspekt: Data Warehouse Konzepte"
+    },
+    {
+      "id": "olap-online-analytical-processing",
+      "title": "OLAP (Online Analytical Processing)",
+      "summary": "Kernaspekt: OLAP (Online Analytical Processing)"
+    },
+    {
+      "id": "key-performance-indicators-kpis",
+      "title": "Key Performance Indicators (KPIs)",
+      "summary": "Kernaspekt: Key Performance Indicators (KPIs)"
+    },
+    {
+      "id": "dashboard-design",
+      "title": "Dashboard-Design",
+      "summary": "Kernaspekt: Dashboard-Design"
+    },
+    {
+      "id": "self-service-bi",
+      "title": "Self-Service BI",
+      "summary": "Kernaspekt: Self-Service BI"
+    },
+    {
+      "id": "bi-tools-und-technologien",
+      "title": "BI-Tools und Technologien",
+      "summary": "Kernaspekt: BI-Tools und Technologien"
+    },
+    {
+      "id": "mobile-bi",
+      "title": "Mobile BI",
+      "summary": "Kernaspekt: Mobile BI"
+    },
+    {
+      "id": "datenqualitat-und--governance",
+      "title": "Datenqualität und -governance",
+      "summary": "Kernaspekt: Datenqualität und -governance"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-04-bi-fundamentals-einfuhrung-micro-1",
+    "bp-dpa-04-bi-fundamentals-business-intelligence-grundlagen-micro-1",
+    "bp-dpa-04-bi-fundamentals-data-warehouse-konzepte-micro-1",
+    "bp-dpa-04-bi-fundamentals-olap-online-analytical-processing-micro-1",
+    "bp-dpa-04-bi-fundamentals-key-performance-indicators-kpis-micro-1",
+    "bp-dpa-04-bi-fundamentals-dashboard-design-micro-1",
+    "bp-dpa-04-bi-fundamentals-self-service-bi-micro-1",
+    "bp-dpa-04-bi-fundamentals-bi-tools-und-technologien-micro-1",
+    "bp-dpa-04-bi-fundamentals-mobile-bi-micro-1",
+    "bp-dpa-04-bi-fundamentals-datenqualitat-und--governance-micro-1",
+    "bp-dpa-04-bi-fundamentals-prufungsrelevante-aspekte-micro-1"
+  ]
 }

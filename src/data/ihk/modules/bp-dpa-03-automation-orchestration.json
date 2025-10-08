@@ -9,8 +9,11 @@
   "newIn2025": true,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": 70,
-  "prerequisites": ["bp-dpa-03-bpmn-fundamentals", "bp-dpa-03-process-mining"],
+  "estimatedTime": "70 Minuten",
+  "prerequisites": [
+    "bp-dpa-03-bpmn-fundamentals",
+    "bp-dpa-03-process-mining"
+  ],
   "tags": [
     "automatisierung",
     "rpa",
@@ -20,7 +23,7 @@
     "governance",
     "prozessoptimierung"
   ],
-  "content": "# Prozessautomatisierung & Orchestrierung\n\n## Einführung\nAutomatisierung steigert Geschwindigkeit, Konsistenz und Skalierbarkeit. Ziel ist nicht blindes Ersetzen menschlicher Arbeit, sondern Eliminierung repetitiver, regelbasierter Tätigkeiten und verbesserte End-to-End-Steuerbarkeit.\n\n## Identifikation von Automatisierungspotenzialen\nKriterien: Hohe Volumen, Regelbasiertheit, Niedrige Ausnahmenquote, Strukturierte Daten, Stabiler Prozess. Ausschluss: Häufige Regeländerungen, Hoher Interpretationsbedarf, Unklare Datenqualität.\nScoring (vereinfachtes Schema 1–5): Volumen, Stabilität, Datenqualität, Komplexität (invertiert), Ausnahmequote (invertiert).\n\n## Technologien & Abgrenzung\n| Technologie | Fokus | Stärken | Grenzen |\n|------------|-------|--------|---------|\n| RPA | UI-Interaktion | Schnelle Umsetzung | Fragil bei UI-Änderungen |\n| Workflow Engine | Ausführbare Modelle (BPMN/CMMN) | Transparenz, Skalierung | Modellierungskompetenz nötig |\n| Scripting | Ad-hoc Automatisierung | Flexibel | Wartung / Governance |\n| API-Orchestrierung | Service-Kopplung | Robust, Wiederverwendbar | Abhängigkeit API-Reife |\n\n## Orchestrierung vs. Choreographie\nOrchestrierung: Zentrale Steuerinstanz (Engine) koordiniert Abläufe (BPMN-Prozess).\nChoreographie: Teilnehmer koordinieren sich durch Nachrichten (dezentral), Fokus Kollaboration.\nAuswahl: Hohe zentrale Kontrollanforderung → Orchestrierung; Multi-Organisation & loser Kopplungsgrad → Choreographie.\n\n## Governance & Betriebsaspekte\nVersionierung von Prozessdefinitionen, Deployment-Workflows (Test → Staging → Produktion), Monitoring (SLA, Fehlerrate, Retries), Audit Logs. Security: Least Privilege für Service-Accounts, Geheimnisverwaltung (Secrets).\nMetriken Post-Go-Live: Automatisierungsquote, Fehlerrate, MTTR (Mean Time To Recovery).\n\n## Kontinuierliche Verbesserung & Feedback-Loops\nProcess Mining auf automatisierten Prozessen zur Validierung geplanter Zeiteinsparung. KPI-Vergleich Vor/Nach Automation. Regressionen früh erkennen (Alerting).\nAnti-Pattern: \"Automate the chaos\" – instabile Prozesse nicht vor Re-Design automatisieren.\n\n## Prüfungsrelevante Aspekte\n- Kriterien zur Auswahl von Automatisierungskandidaten\n- Unterschied RPA vs. Workflow Engine\n- Orchestrierung vs. Choreographie\n- Bedeutung von Governance (Versionierung, Monitoring)\n- Risiko fragiler UI-Skripte\n- Rolle Process Mining zur Erfolgsmessung\n",
+  "content": "# Prozessautomatisierung & Orchestrierung\n\n## Einführung\nAutomatisierung steigert Geschwindigkeit, Konsistenz und Skalierbarkeit. Ziel ist nicht blindes Ersetzen menschlicher Arbeit, sondern Eliminierung repetitiver, regelbasierter Tätigkeiten und verbesserte End-to-End-Steuerbarkeit.\n\n<!-- micro-quiz:bp-dpa-03-automation-orchestration-einfuhrung-micro-1 -->\n## Identifikation von Automatisierungspotenzialen\nKriterien: Hohe Volumen, Regelbasiertheit, Niedrige Ausnahmenquote, Strukturierte Daten, Stabiler Prozess. Ausschluss: Häufige Regeländerungen, Hoher Interpretationsbedarf, Unklare Datenqualität.\nScoring (vereinfachtes Schema 1–5): Volumen, Stabilität, Datenqualität, Komplexität (invertiert), Ausnahmequote (invertiert).\n\n## Technologien & Abgrenzung\n<!-- micro-quiz:bp-dpa-03-automation-orchestration-identifikation-von-automatisierungspotenzialen-micro-1 -->\n\n| Technologie | Fokus | Stärken | Grenzen |\n|------------|-------|--------|---------|\n| RPA | UI-Interaktion | Schnelle Umsetzung | Fragil bei UI-Änderungen |\n| Workflow Engine | Ausführbare Modelle (BPMN/CMMN) | Transparenz, Skalierung | Modellierungskompetenz nötig |\n| Scripting | Ad-hoc Automatisierung | Flexibel | Wartung / Governance |\n| API-Orchestrierung | Service-Kopplung | Robust, Wiederverwendbar | Abhängigkeit API-Reife |\n\n<!-- micro-quiz:bp-dpa-03-automation-orchestration-technologien-abgrenzung-micro-1 -->\n## Orchestrierung vs. Choreographie\nOrchestrierung: Zentrale Steuerinstanz (Engine) koordiniert Abläufe (BPMN-Prozess).\nChoreographie: Teilnehmer koordinieren sich durch Nachrichten (dezentral), Fokus Kollaboration.\nAuswahl: Hohe zentrale Kontrollanforderung → Orchestrierung; Multi-Organisation & loser Kopplungsgrad → Choreographie.\n\n## Governance & Betriebsaspekte\n<!-- micro-quiz:bp-dpa-03-automation-orchestration-orchestrierung-vs-choreographie-micro-1 -->\n\nVersionierung von Prozessdefinitionen, Deployment-Workflows (Test → Staging → Produktion), Monitoring (SLA, Fehlerrate, Retries), Audit Logs. Security: Least Privilege für Service-Accounts, Geheimnisverwaltung (Secrets).\nMetriken Post-Go-Live: Automatisierungsquote, Fehlerrate, MTTR (Mean Time To Recovery).\n\n<!-- micro-quiz:bp-dpa-03-automation-orchestration-governance-betriebsaspekte-micro-1 -->\n## Kontinuierliche Verbesserung & Feedback-Loops\nProcess Mining auf automatisierten Prozessen zur Validierung geplanter Zeiteinsparung. KPI-Vergleich Vor/Nach Automation. Regressionen früh erkennen (Alerting).\nAnti-Pattern: \"Automate the chaos\" – instabile Prozesse nicht vor Re-Design automatisieren.\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-dpa-03-automation-orchestration-kontinuierliche-verbesserung-feedback-loops-micro-1 -->\n\n- Kriterien zur Auswahl von Automatisierungskandidaten\n- Unterschied RPA vs. Workflow Engine\n- Orchestrierung vs. Choreographie\n- Bedeutung von Governance (Versionierung, Monitoring)\n- Risiko fragiler UI-Skripte\n- Rolle Process Mining zur Erfolgsmessung\n\n\n\n\n<!-- micro-quiz:bp-dpa-03-automation-orchestration-quiz -->\n<!-- micro-quiz:bp-dpa-03-automation-orchestration-prufungsrelevante-aspekte-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "xml",
@@ -35,7 +38,9 @@
       "explanation": "Heuristisches Scoring für Priorisierung von Automatisierungskandidaten."
     }
   ],
-  "relatedQuizzes": ["bp-dpa-03-automation-orchestration-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-03-automation-orchestration-quiz"
+  ],
   "resources": [
     {
       "title": "BPMN 2.0 Specification",
@@ -49,11 +54,11 @@
     }
   ],
   "learningObjectives": [
-    "Automatisierungskandidaten systematisch bewerten",
-    "RPA und Workflow Engine unterscheiden",
-    "Orchestrierung und Choreographie abgrenzen",
-    "Governance-Anforderungen für Prozessautomation definieren",
-    "Metriken zur Erfolgskontrolle auswählen"
+    "Du kannst automatisierungskandidaten systematisch bewerten erklären",
+    "Du kannst rPA und Workflow Engine unterscheiden erklären",
+    "Du kannst orchestrierung und Choreographie abgrenzen erklären",
+    "Du kannst governance-Anforderungen für Prozessautomation definieren erklären",
+    "Du kannst metriken zur Erfolgskontrolle auswählen erklären"
   ],
   "keyTakeaways": [
     "Automatisierung braucht stabiles Prozessfundament",
@@ -63,5 +68,62 @@
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
   "version": "1.0",
-  "tracks": ["DPA"]
+  "tracks": [
+    "DPA"
+  ],
+  "summary": "Identifikation, Bewertung und Umsetzung von Automatisierungspotenzialen (RPA, Workflow Engines, Orchestrierung vs.",
+  "contentOutline": [
+    {
+      "id": "prozessautomatisierung-orchestrierung",
+      "title": "Prozessautomatisierung & Orchestrierung",
+      "summary": "Kernaspekt: Prozessautomatisierung & Orchestrierung"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "identifikation-von-automatisierungspotenzialen",
+      "title": "Identifikation von Automatisierungspotenzialen",
+      "summary": "Kernaspekt: Identifikation von Automatisierungspotenzialen"
+    },
+    {
+      "id": "technologien-abgrenzung",
+      "title": "Technologien & Abgrenzung",
+      "summary": "Kernaspekt: Technologien & Abgrenzung"
+    },
+    {
+      "id": "orchestrierung-vs-choreographie",
+      "title": "Orchestrierung vs. Choreographie",
+      "summary": "Kernaspekt: Orchestrierung vs. Choreographie"
+    },
+    {
+      "id": "governance-betriebsaspekte",
+      "title": "Governance & Betriebsaspekte",
+      "summary": "Kernaspekt: Governance & Betriebsaspekte"
+    },
+    {
+      "id": "kontinuierliche-verbesserung-feedback-loops",
+      "title": "Kontinuierliche Verbesserung & Feedback-Loops",
+      "summary": "Kernaspekt: Kontinuierliche Verbesserung & Feedback-Loops"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-03-automation-orchestration-einfuhrung-micro-1",
+    "bp-dpa-03-automation-orchestration-identifikation-von-automatisierungspotenzialen-micro-1",
+    "bp-dpa-03-automation-orchestration-technologien-abgrenzung-micro-1",
+    "bp-dpa-03-automation-orchestration-orchestrierung-vs-choreographie-micro-1",
+    "bp-dpa-03-automation-orchestration-governance-betriebsaspekte-micro-1",
+    "bp-dpa-03-automation-orchestration-kontinuierliche-verbesserung-feedback-loops-micro-1",
+    "bp-dpa-03-automation-orchestration-quiz",
+    "bp-dpa-03-automation-orchestration-prufungsrelevante-aspekte-micro-1"
+  ]
 }

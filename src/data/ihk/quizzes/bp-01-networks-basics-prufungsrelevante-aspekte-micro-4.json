@@ -1,0 +1,37 @@
+{
+  "id": "bp-01-networks-basics-prufungsrelevante-aspekte-micro-4",
+  "moduleId": "bp-01-networks-basics",
+  "title": "Prüfungsrelevante Aspekte — Mini-Quiz",
+  "description": "Kurzquiz zu prüfungsrelevanten Inhalten dieses Moduls.",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 300,
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welcher Aspekt ist prüfungsrelevant?",
+      "options": ["Vor- und Nachteile von Topologien", "Farbe des Switch-Gehäuses", "Markenname eines Herstellers"],
+      "correctAnswer": "Vor- und Nachteile von Topologien",
+      "explanation": "Prüfungen fragen häufig nach Vor- und Nachteilen sowie Einsatzszenarien.",
+      "points": 1
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Man muss Topologien nur theoretisch kennen, nicht in praktischen Szenarien anwenden.",
+      "correctAnswer": false,
+      "explanation": "Prüfungen verlangen oft die Anwendung von Wissen auf Szenarien.",
+      "points": 1
+    },
+    {
+      "id": "q3",
+      "type": "code",
+      "question": "Nenne eine Prüfungsvorbereitungsstrategie für dieses Modul.",
+      "correctAnswer": "Karten mit Topologien und Merklisten erstellen; Praxisfälle durchgehen.",
+      "explanation": "Karteikarten und Praxisfälle helfen bei der Verankerung von Wissen.",
+      "points": 1
+    }
+  ]
+}

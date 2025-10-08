@@ -9,7 +9,7 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": 65,
+  "estimatedTime": "65 Minuten",
   "prerequisites": [],
   "tags": [
     "BPMN",
@@ -18,7 +18,7 @@
     "Workflow",
     "Prozessoptimierung"
   ],
-  "content": "# Geschäftsprozessmodellierung mit BPMN\n\n## Einführung\n\nBusiness Process Model and Notation (BPMN) ist ein internationaler Standard zur grafischen Darstellung von Geschäftsprozessen. Für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse ist BPMN ein essentielles Werkzeug zur Analyse, Dokumentation und Optimierung von Geschäftsprozessen.\n\n## BPMN-Grundlagen\n\n### Definition und Zweck\n\n**BPMN (Business Process Model and Notation):**\n- Standardisierte grafische Notation für Geschäftsprozesse\n- Entwickelt von der Object Management Group (OMG)\n- Aktuelle Version: BPMN 2.0\n- Brücke zwischen Geschäftsanalysten und IT-Entwicklern\n\n**Ziele von BPMN:**\n- Einheitliche Darstellung von Geschäftsprozessen\n- Verbesserung der Kommunikation zwischen Stakeholdern\n- Basis für Prozessautomatisierung\n- Dokumentation und Compliance\n\n### BPMN-Diagrammtypen\n\n**1. Prozessdiagramm (Process Diagram)**\n- Zeigt Aktivitäten und deren Reihenfolge\n- Häufigster Diagrammtyp\n- Fokus auf Ablauf und Entscheidungen\n\n**2. Kollaborationsdiagramm (Collaboration Diagram)**\n- Zeigt Interaktion zwischen verschiedenen Teilnehmern\n- Pools und Lanes für verschiedene Organisationen/Rollen\n- Nachrichtenaustausch zwischen Prozessen\n\n**3. Choreografie-Diagramm (Choreography Diagram)**\n- Fokus auf Nachrichtenaustausch\n- Keine internen Aktivitäten der Teilnehmer\n- Koordination zwischen Organisationen\n\n## BPMN-Grundelemente\n\n### 1. Flussobjekte (Flow Objects)\n\n#### Ereignisse (Events)\n**Start-Ereignisse:**\n- Kreis mit dünnem Rand\n- Auslöser für Prozessbeginn\n- Typen: Nachrichten-, Zeit-, Signal-, Regel-Start\n\n**Zwischen-Ereignisse (Intermediate Events):**\n- Kreis mit doppeltem Rand\n- Auftreten während des Prozesses\n- Fangend (Catch) oder Werfend (Throw)\n\n**End-Ereignisse:**\n- Kreis mit dickem Rand\n- Prozessende\n- Typen: Standard, Nachrichten-, Fehler-, Abbruch-Ende\n\n#### Aktivitäten (Activities)\n**Aufgaben (Tasks):**\n- Abgerundetes Rechteck\n- Atomare Arbeitsschritte\n- Typen: Benutzer-, Service-, Skript-, Geschäftsregel-Aufgabe\n\n**Teilprozesse (Sub-Processes):**\n- Abgerundetes Rechteck mit Plus-Symbol\n- Zusammenfassung mehrerer Aktivitäten\n- Kollabiert oder erweitert darstellbar\n\n#### Gateways (Entscheidungen)\n**Exklusives Gateway (XOR):**\n- Raute mit X\n- Entweder-oder-Entscheidung\n- Nur ein ausgehender Pfad wird gewählt\n\n**Inklusives Gateway (OR):**\n- Raute mit Kreis\n- Ein oder mehrere Pfade möglich\n- Mindestens ein Pfad muss gewählt werden\n\n**Paralleles Gateway (AND):**\n- Raute mit Plus\n- Alle ausgehenden Pfade werden parallel ausgeführt\n- Synchronisation bei Zusammenführung\n\n### 2. Verbindungsobjekte (Connecting Objects)\n\n**Sequenzfluss (Sequence Flow):**\n- Durchgezogener Pfeil\n- Reihenfolge der Aktivitäten\n- Innerhalb eines Pools\n\n**Nachrichtenfluss (Message Flow):**\n- Gestrichelter Pfeil\n- Kommunikation zwischen verschiedenen Pools\n- Nachrichten zwischen Organisationen\n\n**Assoziation (Association):**\n- Gepunktete Linie\n- Verbindung zu Datenobjekten oder Kommentaren\n- Keine Ausführungsreihenfolge\n\n### 3. Schwimmbahnen (Swimlanes)\n\n**Pools:**\n- Rechteckiger Container\n- Repräsentiert Organisation oder Teilnehmer\n- Kann mehrere Lanes enthalten\n\n**Lanes:**\n- Unterteilung von Pools\n- Repräsentiert Rollen oder Abteilungen\n- Zeigt Verantwortlichkeiten\n\n### 4. Artefakte (Artifacts)\n\n**Datenobjekte (Data Objects):**\n- Dokument-Symbol\n- Eingabe oder Ausgabe von Aktivitäten\n- Zeigt Informationsfluss\n\n**Gruppen (Groups):**\n- Gestricheltes Rechteck\n- Visuelle Gruppierung\n- Keine Ausführungssemantik\n\n**Kommentare (Annotations):**\n- Eckiges Klammer-Symbol\n- Zusätzliche Informationen\n- Erklärungen und Hinweise\n\n## Prozessmodellierung in der Praxis\n\n### Modellierungsprozess\n\n**Schritt 1: Prozessidentifikation**\n- Prozessgrenzen definieren\n- Start- und Endpunkte bestimmen\n- Stakeholder identifizieren\n\n**Schritt 2: Ist-Analyse**\n- Aktuellen Prozess dokumentieren\n- Interviews mit Prozessbeteiligten\n- Beobachtung und Datensammlung\n\n**Schritt 3: Modellierung**\n- BPMN-Diagramm erstellen\n- Aktivitäten und Entscheidungen modellieren\n- Verantwortlichkeiten zuordnen\n\n**Schritt 4: Validierung**\n- Modell mit Stakeholdern prüfen\n- Vollständigkeit und Korrektheit sicherstellen\n- Feedback einarbeiten\n\n**Schritt 5: Optimierung**\n- Schwachstellen identifizieren\n- Verbesserungsvorschläge entwickeln\n- Soll-Prozess modellieren\n\n### Beispiel: Bestellprozess\n\n```\nKunde                    Vertrieb                 Lager                   Buchhaltung\n  |                         |                        |                         |\n[Start] ──→ [Bestellung] ──→ [Prüfung] ──→ [Verfügbar?] ──→ [Kommissionierung] ──→ [Rechnung]\n              aufgeben       durchführen      ◊           durchführen         erstellen\n                                              │                                    |\n                                              ↓ Nein                             ↓\n                                         [Nachbestellung]                    [Ende]\n                                           auslösen\n```\n\n## Erweiterte BPMN-Konzepte\n\n### Fehlerbehandlung\n\n**Fehler-Ereignisse:**\n- Blitz-Symbol in Ereignissen\n- Behandlung von Ausnahmesituationen\n- Fehler-Start, -Zwischen und -End-Ereignisse\n\n**Kompensation:**\n- Rückgängigmachen von Aktivitäten\n- Kompensations-Handler\n- Wichtig für Transaktionen\n\n### Zeitbasierte Ereignisse\n\n**Timer-Ereignisse:**\n- Uhr-Symbol\n- Zeitgesteuerte Prozessauslösung\n- Timeouts und Fristen\n\n**Zyklen und Wiederholungen:**\n- Schleifenmarkierungen\n- Standard-, Multi-Instanz- und sequenzielle Schleifen\n\n### Datenmodellierung\n\n**Datenobjekte:**\n- Eingabe- und Ausgabedaten\n- Datenstatus und -transformationen\n- Datenfluss zwischen Aktivitäten\n\n**Datenspeicher:**\n- Persistente Datenhaltung\n- Datenbanken und Repositories\n- Zugriff durch mehrere Prozesse\n\n## Prozessanalyse und -optimierung\n\n### Kennzahlen (KPIs)\n\n**Durchlaufzeit:**\n- Zeit vom Start bis zum Ende\n- Identifikation von Engpässen\n- Basis für Optimierung\n\n**Bearbeitungszeit:**\n- Reine Arbeitszeit ohne Wartezeiten\n- Effizienz der Aktivitäten\n- Automatisierungspotential\n\n**Kosten pro Prozessinstanz:**\n- Ressourcenverbrauch\n- Personal- und Systemkosten\n- ROI-Berechnung für Optimierungen\n\n**Fehlerrate:**\n- Qualität der Prozessausführung\n- Nacharbeitsaufwand\n- Kundenzufriedenheit\n\n### Optimierungsstrategien\n\n**Eliminierung:**\n- Überflüssige Aktivitäten entfernen\n- Redundanzen beseitigen\n- Wertschöpfung fokussieren\n\n**Automatisierung:**\n- Manuelle Tätigkeiten automatisieren\n- Systemintegration verbessern\n- Robotische Prozessautomatisierung (RPA)\n\n**Parallelisierung:**\n- Sequenzielle Aktivitäten parallel ausführen\n- Durchlaufzeit reduzieren\n- Ressourcenauslastung optimieren\n\n**Standardisierung:**\n- Einheitliche Prozessausführung\n- Best Practices etablieren\n- Schulungsaufwand reduzieren\n\n## BPMN-Tools und Software\n\n### Modellierungstools\n\n**Open Source:**\n- Camunda Modeler\n- bpmn.io\n- Eclipse BPMN2 Modeler\n\n**Kommerzielle Tools:**\n- Signavio\n- ARIS\n- Bizagi\n- Microsoft Visio\n\n### Workflow-Engines\n\n**Ausführbare BPMN:**\n- Camunda BPM\n- Activiti\n- jBPM\n- Zeebe\n\n**Integration:**\n- Service-orientierte Architektur (SOA)\n- Microservices\n- API-Integration\n\n## Compliance und Governance\n\n### Regulatorische Anforderungen\n\n**Dokumentationspflicht:**\n- Nachvollziehbarkeit von Geschäftsprozessen\n- Audit-Trails\n- Compliance-Berichte\n\n**Risikomanagement:**\n- Identifikation von Risiken\n- Kontrollmechanismen\n- Notfallpläne\n\n### Process Governance\n\n**Prozessverantwortung:**\n- Process Owner definieren\n- Verantwortlichkeiten klären\n- Eskalationswege festlegen\n\n**Kontinuierliche Verbesserung:**\n- Regelmäßige Prozessreviews\n- Feedback-Schleifen\n- Anpassung an Änderungen\n\n## Prüfungsrelevante Aspekte\n\n- BPMN-Grundelemente erkennen und verwenden\n- Prozessdiagramme lesen und erstellen\n- Gateways korrekt einsetzen\n- Schwimmbahnen für Verantwortlichkeiten nutzen\n- Prozessoptimierung durch BPMN-Analyse\n- Unterschied zwischen Sequenz- und Nachrichtenfluss\n- Ereignistypen und deren Verwendung\n- KPIs für Prozessmessung definieren",
+  "content": "# Geschäftsprozessmodellierung mit BPMN\n\n## Einführung\n\nBusiness Process Model and Notation (BPMN) ist ein internationaler Standard zur grafischen Darstellung von Geschäftsprozessen. Für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse ist BPMN ein essentielles Werkzeug zur Analyse, Dokumentation und Optimierung von Geschäftsprozessen.\n\n<!-- micro-quiz:bp-dpa-03-bpmn-fundamentals-einfuhrung-micro-1 -->\n## BPMN-Grundlagen\n\n### Definition und Zweck\n\n**BPMN (Business Process Model and Notation):**\n- Standardisierte grafische Notation für Geschäftsprozesse\n- Entwickelt von der Object Management Group (OMG)\n- Aktuelle Version: BPMN 2.0\n- Brücke zwischen Geschäftsanalysten und IT-Entwicklern\n\n**Ziele von BPMN:**\n- Einheitliche Darstellung von Geschäftsprozessen\n- Verbesserung der Kommunikation zwischen Stakeholdern\n- Basis für Prozessautomatisierung\n- Dokumentation und Compliance\n\n### BPMN-Diagrammtypen\n\n**1. Prozessdiagramm (Process Diagram)**\n- Zeigt Aktivitäten und deren Reihenfolge\n- Häufigster Diagrammtyp\n- Fokus auf Ablauf und Entscheidungen\n\n**2. Kollaborationsdiagramm (Collaboration Diagram)**\n- Zeigt Interaktion zwischen verschiedenen Teilnehmern\n- Pools und Lanes für verschiedene Organisationen/Rollen\n- Nachrichtenaustausch zwischen Prozessen\n\n**3. Choreografie-Diagramm (Choreography Diagram)**\n- Fokus auf Nachrichtenaustausch\n- Keine internen Aktivitäten der Teilnehmer\n- Koordination zwischen Organisationen\n\n## BPMN-Grundelemente\n<!-- micro-quiz:bp-dpa-03-bpmn-fundamentals-bpmn-grundlagen-micro-1 -->\n\n\n### 1. Flussobjekte (Flow Objects)\n\n#### Ereignisse (Events)\n**Start-Ereignisse:**\n- Kreis mit dünnem Rand\n- Auslöser für Prozessbeginn\n- Typen: Nachrichten-, Zeit-, Signal-, Regel-Start\n\n**Zwischen-Ereignisse (Intermediate Events):**\n- Kreis mit doppeltem Rand\n- Auftreten während des Prozesses\n- Fangend (Catch) oder Werfend (Throw)\n\n**End-Ereignisse:**\n- Kreis mit dickem Rand\n- Prozessende\n- Typen: Standard, Nachrichten-, Fehler-, Abbruch-Ende\n\n#### Aktivitäten (Activities)\n**Aufgaben (Tasks):**\n- Abgerundetes Rechteck\n- Atomare Arbeitsschritte\n- Typen: Benutzer-, Service-, Skript-, Geschäftsregel-Aufgabe\n\n**Teilprozesse (Sub-Processes):**\n- Abgerundetes Rechteck mit Plus-Symbol\n- Zusammenfassung mehrerer Aktivitäten\n- Kollabiert oder erweitert darstellbar\n\n#### Gateways (Entscheidungen)\n**Exklusives Gateway (XOR):**\n- Raute mit X\n- Entweder-oder-Entscheidung\n- Nur ein ausgehender Pfad wird gewählt\n\n**Inklusives Gateway (OR):**\n- Raute mit Kreis\n- Ein oder mehrere Pfade möglich\n- Mindestens ein Pfad muss gewählt werden\n\n**Paralleles Gateway (AND):**\n- Raute mit Plus\n- Alle ausgehenden Pfade werden parallel ausgeführt\n- Synchronisation bei Zusammenführung\n\n### 2. Verbindungsobjekte (Connecting Objects)\n\n**Sequenzfluss (Sequence Flow):**\n- Durchgezogener Pfeil\n- Reihenfolge der Aktivitäten\n- Innerhalb eines Pools\n\n**Nachrichtenfluss (Message Flow):**\n- Gestrichelter Pfeil\n- Kommunikation zwischen verschiedenen Pools\n- Nachrichten zwischen Organisationen\n\n**Assoziation (Association):**\n- Gepunktete Linie\n- Verbindung zu Datenobjekten oder Kommentaren\n- Keine Ausführungsreihenfolge\n\n### 3. Schwimmbahnen (Swimlanes)\n\n**Pools:**\n- Rechteckiger Container\n- Repräsentiert Organisation oder Teilnehmer\n- Kann mehrere Lanes enthalten\n\n**Lanes:**\n- Unterteilung von Pools\n- Repräsentiert Rollen oder Abteilungen\n- Zeigt Verantwortlichkeiten\n\n### 4. Artefakte (Artifacts)\n\n**Datenobjekte (Data Objects):**\n- Dokument-Symbol\n- Eingabe oder Ausgabe von Aktivitäten\n- Zeigt Informationsfluss\n\n**Gruppen (Groups):**\n- Gestricheltes Rechteck\n- Visuelle Gruppierung\n- Keine Ausführungssemantik\n\n**Kommentare (Annotations):**\n- Eckiges Klammer-Symbol\n- Zusätzliche Informationen\n- Erklärungen und Hinweise\n\n<!-- micro-quiz:bp-dpa-03-bpmn-fundamentals-bpmn-grundelemente-micro-1 -->\n## Prozessmodellierung in der Praxis\n\n### Modellierungsprozess\n\n**Schritt 1: Prozessidentifikation**\n- Prozessgrenzen definieren\n- Start- und Endpunkte bestimmen\n- Stakeholder identifizieren\n\n**Schritt 2: Ist-Analyse**\n- Aktuellen Prozess dokumentieren\n- Interviews mit Prozessbeteiligten\n- Beobachtung und Datensammlung\n\n**Schritt 3: Modellierung**\n- BPMN-Diagramm erstellen\n- Aktivitäten und Entscheidungen modellieren\n- Verantwortlichkeiten zuordnen\n\n**Schritt 4: Validierung**\n- Modell mit Stakeholdern prüfen\n- Vollständigkeit und Korrektheit sicherstellen\n- Feedback einarbeiten\n\n**Schritt 5: Optimierung**\n- Schwachstellen identifizieren\n- Verbesserungsvorschläge entwickeln\n- Soll-Prozess modellieren\n\n### Beispiel: Bestellprozess\n\n```\nKunde                    Vertrieb                 Lager                   Buchhaltung\n  |                         |                        |                         |\n[Start] ──→ [Bestellung] ──→ [Prüfung] ──→ [Verfügbar?] ──→ [Kommissionierung] ──→ [Rechnung]\n              aufgeben       durchführen      ◊           durchführen         erstellen\n                                              │                                    |\n                                              ↓ Nein                             ↓\n                                         [Nachbestellung]                    [Ende]\n                                           auslösen\n```\n\n## Erweiterte BPMN-Konzepte\n<!-- micro-quiz:bp-dpa-03-bpmn-fundamentals-prozessmodellierung-in-der-praxis-micro-1 -->\n\n\n### Fehlerbehandlung\n\n**Fehler-Ereignisse:**\n- Blitz-Symbol in Ereignissen\n- Behandlung von Ausnahmesituationen\n- Fehler-Start, -Zwischen und -End-Ereignisse\n\n**Kompensation:**\n- Rückgängigmachen von Aktivitäten\n- Kompensations-Handler\n- Wichtig für Transaktionen\n\n### Zeitbasierte Ereignisse\n\n**Timer-Ereignisse:**\n- Uhr-Symbol\n- Zeitgesteuerte Prozessauslösung\n- Timeouts und Fristen\n\n**Zyklen und Wiederholungen:**\n- Schleifenmarkierungen\n- Standard-, Multi-Instanz- und sequenzielle Schleifen\n\n### Datenmodellierung\n\n**Datenobjekte:**\n- Eingabe- und Ausgabedaten\n- Datenstatus und -transformationen\n- Datenfluss zwischen Aktivitäten\n\n**Datenspeicher:**\n- Persistente Datenhaltung\n- Datenbanken und Repositories\n- Zugriff durch mehrere Prozesse\n\n<!-- micro-quiz:bp-dpa-03-bpmn-fundamentals-erweiterte-bpmn-konzepte-micro-1 -->\n## Prozessanalyse und -optimierung\n\n### Kennzahlen (KPIs)\n\n**Durchlaufzeit:**\n- Zeit vom Start bis zum Ende\n- Identifikation von Engpässen\n- Basis für Optimierung\n\n**Bearbeitungszeit:**\n- Reine Arbeitszeit ohne Wartezeiten\n- Effizienz der Aktivitäten\n- Automatisierungspotential\n\n**Kosten pro Prozessinstanz:**\n- Ressourcenverbrauch\n- Personal- und Systemkosten\n- ROI-Berechnung für Optimierungen\n\n**Fehlerrate:**\n- Qualität der Prozessausführung\n- Nacharbeitsaufwand\n- Kundenzufriedenheit\n\n### Optimierungsstrategien\n\n**Eliminierung:**\n- Überflüssige Aktivitäten entfernen\n- Redundanzen beseitigen\n- Wertschöpfung fokussieren\n\n**Automatisierung:**\n- Manuelle Tätigkeiten automatisieren\n- Systemintegration verbessern\n- Robotische Prozessautomatisierung (RPA)\n\n**Parallelisierung:**\n- Sequenzielle Aktivitäten parallel ausführen\n- Durchlaufzeit reduzieren\n- Ressourcenauslastung optimieren\n\n**Standardisierung:**\n- Einheitliche Prozessausführung\n- Best Practices etablieren\n- Schulungsaufwand reduzieren\n\n## BPMN-Tools und Software\n<!-- micro-quiz:bp-dpa-03-bpmn-fundamentals-prozessanalyse-und--optimierung-micro-1 -->\n\n\n### Modellierungstools\n\n**Open Source:**\n- Camunda Modeler\n- bpmn.io\n- Eclipse BPMN2 Modeler\n\n**Kommerzielle Tools:**\n- Signavio\n- ARIS\n- Bizagi\n- Microsoft Visio\n\n### Workflow-Engines\n\n**Ausführbare BPMN:**\n- Camunda BPM\n- Activiti\n- jBPM\n- Zeebe\n\n**Integration:**\n- Service-orientierte Architektur (SOA)\n- Microservices\n- API-Integration\n\n<!-- micro-quiz:bp-dpa-03-bpmn-fundamentals-bpmn-tools-und-software-micro-1 -->\n## Compliance und Governance\n\n### Regulatorische Anforderungen\n\n**Dokumentationspflicht:**\n- Nachvollziehbarkeit von Geschäftsprozessen\n- Audit-Trails\n- Compliance-Berichte\n\n**Risikomanagement:**\n- Identifikation von Risiken\n- Kontrollmechanismen\n- Notfallpläne\n\n### Process Governance\n\n**Prozessverantwortung:**\n- Process Owner definieren\n- Verantwortlichkeiten klären\n- Eskalationswege festlegen\n\n**Kontinuierliche Verbesserung:**\n- Regelmäßige Prozessreviews\n- Feedback-Schleifen\n- Anpassung an Änderungen\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-dpa-03-bpmn-fundamentals-compliance-und-governance-micro-1 -->\n\n\n- BPMN-Grundelemente erkennen und verwenden\n- Prozessdiagramme lesen und erstellen\n- Gateways korrekt einsetzen\n- Schwimmbahnen für Verantwortlichkeiten nutzen\n- Prozessoptimierung durch BPMN-Analyse\n- Unterschied zwischen Sequenz- und Nachrichtenfluss\n- Ereignistypen und deren Verwendung\n- KPIs für Prozessmessung definieren\n\n\n\n<!-- micro-quiz:bp-dpa-03-bpmn-quiz -->\n<!-- micro-quiz:bp-dpa-03-bpmn-fundamentals-prufungsrelevante-aspekte-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "xml",
@@ -27,7 +27,9 @@
       "title": "BPMN XML-Definition"
     }
   ],
-  "relatedQuizzes": ["bp-dpa-03-bpmn-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-03-bpmn-quiz"
+  ],
   "resources": [
     {
       "title": "BPMN 2.0 Specification",
@@ -41,11 +43,11 @@
     }
   ],
   "learningObjectives": [
-    "BPMN-Grundelemente verstehen und anwenden",
-    "Geschäftsprozesse grafisch modellieren",
-    "Prozessoptimierung durch BPMN-Analyse",
-    "Verantwortlichkeiten mit Schwimmbahnen darstellen",
-    "KPIs für Prozessmessung definieren"
+    "Du kannst bPMN-Grundelemente verstehen und anwenden erklären",
+    "Du kannst geschäftsprozesse grafisch modellieren erklären",
+    "Du kannst prozessoptimierung durch BPMN-Analyse erklären",
+    "Du kannst verantwortlichkeiten mit Schwimmbahnen darstellen erklären",
+    "Du kannst kPIs für Prozessmessung definieren erklären"
   ],
   "keyTakeaways": [
     "BPMN ist der Standard für Geschäftsprozessmodellierung",
@@ -55,5 +57,73 @@
   ],
   "lastUpdated": "2025-01-20T00:00:00Z",
   "version": "1.0",
-  "tracks": ["DPA"]
+  "tracks": [
+    "DPA"
+  ],
+  "summary": "Business Process Model and Notation (BPMN) für die Modellierung und Optimierung von Geschäftsprozessen",
+  "contentOutline": [
+    {
+      "id": "geschaftsprozessmodellierung-mit-bpmn",
+      "title": "Geschäftsprozessmodellierung mit BPMN",
+      "summary": "Kernaspekt: Geschäftsprozessmodellierung mit BPMN"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "bpmn-grundlagen",
+      "title": "BPMN-Grundlagen",
+      "summary": "Kernaspekt: BPMN-Grundlagen"
+    },
+    {
+      "id": "bpmn-grundelemente",
+      "title": "BPMN-Grundelemente",
+      "summary": "Kernaspekt: BPMN-Grundelemente"
+    },
+    {
+      "id": "prozessmodellierung-in-der-praxis",
+      "title": "Prozessmodellierung in der Praxis",
+      "summary": "Kernaspekt: Prozessmodellierung in der Praxis"
+    },
+    {
+      "id": "erweiterte-bpmn-konzepte",
+      "title": "Erweiterte BPMN-Konzepte",
+      "summary": "Kernaspekt: Erweiterte BPMN-Konzepte"
+    },
+    {
+      "id": "prozessanalyse-und--optimierung",
+      "title": "Prozessanalyse und -optimierung",
+      "summary": "Kernaspekt: Prozessanalyse und -optimierung"
+    },
+    {
+      "id": "bpmn-tools-und-software",
+      "title": "BPMN-Tools und Software",
+      "summary": "Kernaspekt: BPMN-Tools und Software"
+    },
+    {
+      "id": "compliance-und-governance",
+      "title": "Compliance und Governance",
+      "summary": "Kernaspekt: Compliance und Governance"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-03-bpmn-fundamentals-einfuhrung-micro-1",
+    "bp-dpa-03-bpmn-fundamentals-bpmn-grundlagen-micro-1",
+    "bp-dpa-03-bpmn-fundamentals-bpmn-grundelemente-micro-1",
+    "bp-dpa-03-bpmn-fundamentals-prozessmodellierung-in-der-praxis-micro-1",
+    "bp-dpa-03-bpmn-fundamentals-erweiterte-bpmn-konzepte-micro-1",
+    "bp-dpa-03-bpmn-fundamentals-prozessanalyse-und--optimierung-micro-1",
+    "bp-dpa-03-bpmn-fundamentals-bpmn-tools-und-software-micro-1",
+    "bp-dpa-03-bpmn-fundamentals-compliance-und-governance-micro-1",
+    "bp-dpa-03-bpmn-fundamentals-prufungsrelevante-aspekte-micro-1"
+  ]
 }

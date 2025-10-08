@@ -9,7 +9,7 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": 60,
+  "estimatedTime": "60 Minuten",
   "prerequisites": [],
   "tags": [
     "ER-Modell",
@@ -18,9 +18,11 @@
     "Beziehungen",
     "Kardinalitäten"
   ],
-  "content": "# ER-Modellierung und Datenmodellierung\n\n## Einführung\n\nDie Entity-Relationship-Modellierung (ER-Modellierung) ist eine grundlegende Methode zur konzeptionellen Darstellung von Datenstrukturen. Sie bildet die Basis für die Entwicklung relationaler Datenbanken und ist essentiell für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse.\n\n## Grundkonzepte der ER-Modellierung\n\n### 1. Entitäten (Entities)\n\n**Definition:**\n- Objekte oder Konzepte der realen Welt\n- Eindeutig identifizierbar\n- Haben Eigenschaften (Attribute)\n\n**Beispiele:**\n- Kunde, Produkt, Bestellung, Mitarbeiter\n- Darstellung: Rechteck\n\n**Entitätstyp vs. Entitätsausprägung:**\n- Entitätstyp: Allgemeine Beschreibung (z.B. \"Kunde\")\n- Entitätsausprägung: Konkrete Instanz (z.B. \"Max Mustermann\")\n\n### 2. Attribute\n\n**Arten von Attributen:**\n\n**Einfache Attribute:**\n- Nicht weiter zerlegbar\n- Beispiel: Nachname, Geburtsdatum\n\n**Zusammengesetzte Attribute:**\n- Aus mehreren Teilattributen bestehend\n- Beispiel: Adresse (Straße, PLZ, Ort)\n\n**Einwertige vs. Mehrwertige Attribute:**\n- Einwertig: Ein Wert pro Entität (z.B. Geburtsdatum)\n- Mehrwertig: Mehrere Werte möglich (z.B. Telefonnummern)\n\n**Abgeleitete Attribute:**\n- Aus anderen Attributen berechenbar\n- Beispiel: Alter (aus Geburtsdatum)\n- Darstellung: Gestrichelte Ellipse\n\n### 3. Schlüssel\n\n**Primärschlüssel (Primary Key):**\n- Eindeutige Identifikation einer Entität\n- Darf nicht NULL sein\n- Sollte unveränderlich sein\n- Beispiel: Kundennummer, Produktcode\n\n**Fremdschlüssel (Foreign Key):**\n- Verweis auf Primärschlüssel einer anderen Tabelle\n- Stellt Beziehungen zwischen Entitäten her\n\n**Kandidatenschlüssel:**\n- Alle möglichen Schlüssel einer Entität\n- Einer wird als Primärschlüssel gewählt\n\n**Superschlüssel:**\n- Attributkombination, die Entitäten eindeutig identifiziert\n- Kann redundante Attribute enthalten\n\n### 4. Beziehungen (Relationships)\n\n**Definition:**\n- Verbindungen zwischen Entitäten\n- Beschreiben Zusammenhänge\n- Darstellung: Raute\n\n**Beziehungstypen nach Kardinalität:**\n\n**1:1 (Eins-zu-Eins):**\n- Eine Entität steht mit maximal einer anderen in Beziehung\n- Beispiel: Person - Personalausweis\n- Seltener Fall, oft zusammenfassbar\n\n**1:N (Eins-zu-Viele):**\n- Eine Entität steht mit mehreren anderen in Beziehung\n- Beispiel: Kunde - Bestellungen\n- Häufigster Fall\n\n**N:M (Viele-zu-Viele):**\n- Mehrere Entitäten stehen mit mehreren anderen in Beziehung\n- Beispiel: Studenten - Kurse\n- Erfordert Zwischentabelle bei Umsetzung\n\n### 5. Kardinalitäten\n\n**Min-Max-Notation:**\n- (min, max) an jeder Seite der Beziehung\n- min: Mindestanzahl der Beziehungen\n- max: Höchstanzahl der Beziehungen\n\n**Beispiele:**\n- (0,1): Optional, maximal eine Beziehung\n- (1,1): Genau eine Beziehung (Pflicht)\n- (0,*): Beliebig viele Beziehungen\n- (1,*): Mindestens eine Beziehung\n\n## ER-Diagramm Notation\n\n### Chen-Notation (Original)\n- Entitäten: Rechtecke\n- Attribute: Ellipsen\n- Beziehungen: Rauten\n- Verbindungslinien zwischen Elementen\n\n### Crow's Foot Notation\n- Kompakter und übersichtlicher\n- Kardinalitäten durch Symbole an Linienenden\n- Weit verbreitet in der Praxis\n\n### UML-Klassendiagramm\n- Moderne Alternative\n- Integriert in UML-Standard\n- Zeigt auch Methoden und Operationen\n\n## Modellierungsprozess\n\n### Schritt 1: Anforderungsanalyse\n- Geschäftsregeln verstehen\n- Datenquellen identifizieren\n- Stakeholder befragen\n\n### Schritt 2: Entitäten identifizieren\n- Substantive in Anforderungen finden\n- Relevante Objekte bestimmen\n- Entitätstypen definieren\n\n### Schritt 3: Attribute bestimmen\n- Eigenschaften der Entitäten\n- Datentypen festlegen\n- Schlüssel identifizieren\n\n### Schritt 4: Beziehungen modellieren\n- Zusammenhänge zwischen Entitäten\n- Kardinalitäten bestimmen\n- Geschäftsregeln berücksichtigen\n\n### Schritt 5: Validierung\n- Modell mit Stakeholdern prüfen\n- Vollständigkeit sicherstellen\n- Konsistenz überprüfen\n\n## Erweiterte Konzepte\n\n### Schwache Entitäten\n- Können nicht allein durch eigene Attribute identifiziert werden\n- Benötigen Beziehung zu starker Entität\n- Beispiel: Zimmer (abhängig von Hotel)\n- Darstellung: Doppeltes Rechteck\n\n### Spezialisierung/Generalisierung\n- ISA-Beziehungen (\"ist ein\")\n- Vererbung von Attributen\n- Beispiel: Person → Kunde, Mitarbeiter\n\n### Aggregation\n- \"Teil-von\"-Beziehungen\n- Zusammensetzung komplexer Objekte\n- Beispiel: Auto besteht aus Motor, Rädern\n\n## Praktisches Beispiel: Online-Shop\n\n### Entitäten:\n- Kunde (KundenID, Name, Email, Adresse)\n- Produkt (ProduktID, Name, Preis, Beschreibung)\n- Bestellung (BestellID, Datum, Status)\n- Kategorie (KategorieID, Name)\n\n### Beziehungen:\n- Kunde (1) - (N) Bestellung\n- Bestellung (N) - (M) Produkt (über Bestellposition)\n- Produkt (N) - (1) Kategorie\n\n### Kardinalitäten:\n- Ein Kunde kann mehrere Bestellungen haben (1:N)\n- Eine Bestellung kann mehrere Produkte enthalten (N:M)\n- Ein Produkt gehört zu einer Kategorie (N:1)\n\n## Häufige Modellierungsfehler\n\n### 1. Falsche Kardinalitäten\n- Geschäftsregeln nicht richtig verstanden\n- Ausnahmen nicht berücksichtigt\n\n### 2. Fehlende Entitäten\n- Wichtige Objekte übersehen\n- Zwischentabellen vergessen\n\n### 3. Übermodellierung\n- Zu viele Details im konzeptionellen Modell\n- Implementierungsdetails zu früh berücksichtigt\n\n### 4. Attribut vs. Entität\n- Falsche Entscheidung zwischen Attribut und eigener Entität\n- Regel: Wenn weitere Attribute möglich → eigene Entität\n\n## Übergang zum relationalen Modell\n\n### Transformationsregeln:\n1. Jede Entität wird zu einer Tabelle\n2. Attribute werden zu Spalten\n3. 1:N-Beziehungen: Fremdschlüssel in N-Seite\n4. N:M-Beziehungen: Separate Zwischentabelle\n5. 1:1-Beziehungen: Fremdschlüssel oder Zusammenfassung\n\n## Prüfungsrelevante Aspekte\n\n- ER-Diagramme lesen und erstellen\n- Kardinalitäten korrekt bestimmen\n- Entitäten und Attribute unterscheiden\n- Schlüssel identifizieren\n- Beziehungstypen erkennen\n- Transformationsregeln anwenden\n- Modellierungsfehler erkennen",
+  "content": "# ER-Modellierung und Datenmodellierung\n\n## Einführung\n\nDie Entity-Relationship-Modellierung (ER-Modellierung) ist eine grundlegende Methode zur konzeptionellen Darstellung von Datenstrukturen. Sie bildet die Basis für die Entwicklung relationaler Datenbanken und ist essentiell für Fachinformatiker der Fachrichtung Daten- und Prozessanalyse.\n\n<!-- micro-quiz:bp-dpa-01-er-modeling-einfuhrung-micro-1 -->\n## Grundkonzepte der ER-Modellierung\n\n### 1. Entitäten (Entities)\n\n**Definition:**\n- Objekte oder Konzepte der realen Welt\n- Eindeutig identifizierbar\n- Haben Eigenschaften (Attribute)\n\n**Beispiele:**\n- Kunde, Produkt, Bestellung, Mitarbeiter\n- Darstellung: Rechteck\n\n**Entitätstyp vs. Entitätsausprägung:**\n- Entitätstyp: Allgemeine Beschreibung (z.B. \"Kunde\")\n- Entitätsausprägung: Konkrete Instanz (z.B. \"Max Mustermann\")\n\n### 2. Attribute\n\n**Arten von Attributen:**\n\n**Einfache Attribute:**\n- Nicht weiter zerlegbar\n- Beispiel: Nachname, Geburtsdatum\n\n**Zusammengesetzte Attribute:**\n- Aus mehreren Teilattributen bestehend\n- Beispiel: Adresse (Straße, PLZ, Ort)\n\n**Einwertige vs. Mehrwertige Attribute:**\n- Einwertig: Ein Wert pro Entität (z.B. Geburtsdatum)\n- Mehrwertig: Mehrere Werte möglich (z.B. Telefonnummern)\n\n**Abgeleitete Attribute:**\n- Aus anderen Attributen berechenbar\n- Beispiel: Alter (aus Geburtsdatum)\n- Darstellung: Gestrichelte Ellipse\n\n### 3. Schlüssel\n\n**Primärschlüssel (Primary Key):**\n- Eindeutige Identifikation einer Entität\n- Darf nicht NULL sein\n- Sollte unveränderlich sein\n- Beispiel: Kundennummer, Produktcode\n\n**Fremdschlüssel (Foreign Key):**\n- Verweis auf Primärschlüssel einer anderen Tabelle\n- Stellt Beziehungen zwischen Entitäten her\n\n**Kandidatenschlüssel:**\n- Alle möglichen Schlüssel einer Entität\n- Einer wird als Primärschlüssel gewählt\n\n**Superschlüssel:**\n- Attributkombination, die Entitäten eindeutig identifiziert\n- Kann redundante Attribute enthalten\n\n### 4. Beziehungen (Relationships)\n\n**Definition:**\n- Verbindungen zwischen Entitäten\n- Beschreiben Zusammenhänge\n- Darstellung: Raute\n\n**Beziehungstypen nach Kardinalität:**\n\n**1:1 (Eins-zu-Eins):**\n- Eine Entität steht mit maximal einer anderen in Beziehung\n- Beispiel: Person - Personalausweis\n- Seltener Fall, oft zusammenfassbar\n\n**1:N (Eins-zu-Viele):**\n- Eine Entität steht mit mehreren anderen in Beziehung\n- Beispiel: Kunde - Bestellungen\n- Häufigster Fall\n\n**N:M (Viele-zu-Viele):**\n- Mehrere Entitäten stehen mit mehreren anderen in Beziehung\n- Beispiel: Studenten - Kurse\n- Erfordert Zwischentabelle bei Umsetzung\n\n### 5. Kardinalitäten\n\n**Min-Max-Notation:**\n- (min, max) an jeder Seite der Beziehung\n- min: Mindestanzahl der Beziehungen\n- max: Höchstanzahl der Beziehungen\n\n**Beispiele:**\n- (0,1): Optional, maximal eine Beziehung\n- (1,1): Genau eine Beziehung (Pflicht)\n- (0,*): Beliebig viele Beziehungen\n- (1,*): Mindestens eine Beziehung\n\n## ER-Diagramm Notation\n<!-- micro-quiz:bp-dpa-01-er-modeling-grundkonzepte-der-er-modellierung-micro-1 -->\n\n\n### Chen-Notation (Original)\n- Entitäten: Rechtecke\n- Attribute: Ellipsen\n- Beziehungen: Rauten\n- Verbindungslinien zwischen Elementen\n\n### Crow's Foot Notation\n- Kompakter und übersichtlicher\n- Kardinalitäten durch Symbole an Linienenden\n- Weit verbreitet in der Praxis\n\n### UML-Klassendiagramm\n- Moderne Alternative\n- Integriert in UML-Standard\n- Zeigt auch Methoden und Operationen\n\n<!-- micro-quiz:bp-dpa-01-er-modeling-er-diagramm-notation-micro-1 -->\n## Modellierungsprozess\n\n### Schritt 1: Anforderungsanalyse\n- Geschäftsregeln verstehen\n- Datenquellen identifizieren\n- Stakeholder befragen\n\n### Schritt 2: Entitäten identifizieren\n- Substantive in Anforderungen finden\n- Relevante Objekte bestimmen\n- Entitätstypen definieren\n\n### Schritt 3: Attribute bestimmen\n- Eigenschaften der Entitäten\n- Datentypen festlegen\n- Schlüssel identifizieren\n\n### Schritt 4: Beziehungen modellieren\n- Zusammenhänge zwischen Entitäten\n- Kardinalitäten bestimmen\n- Geschäftsregeln berücksichtigen\n\n### Schritt 5: Validierung\n- Modell mit Stakeholdern prüfen\n- Vollständigkeit sicherstellen\n- Konsistenz überprüfen\n\n## Erweiterte Konzepte\n<!-- micro-quiz:bp-dpa-01-er-modeling-modellierungsprozess-micro-1 -->\n\n\n### Schwache Entitäten\n- Können nicht allein durch eigene Attribute identifiziert werden\n- Benötigen Beziehung zu starker Entität\n- Beispiel: Zimmer (abhängig von Hotel)\n- Darstellung: Doppeltes Rechteck\n\n### Spezialisierung/Generalisierung\n- ISA-Beziehungen (\"ist ein\")\n- Vererbung von Attributen\n- Beispiel: Person → Kunde, Mitarbeiter\n\n### Aggregation\n- \"Teil-von\"-Beziehungen\n- Zusammensetzung komplexer Objekte\n- Beispiel: Auto besteht aus Motor, Rädern\n\n<!-- micro-quiz:bp-dpa-01-er-modeling-erweiterte-konzepte-micro-1 -->\n## Praktisches Beispiel: Online-Shop\n\n### Entitäten:\n- Kunde (KundenID, Name, Email, Adresse)\n- Produkt (ProduktID, Name, Preis, Beschreibung)\n- Bestellung (BestellID, Datum, Status)\n- Kategorie (KategorieID, Name)\n\n### Beziehungen:\n- Kunde (1) - (N) Bestellung\n- Bestellung (N) - (M) Produkt (über Bestellposition)\n- Produkt (N) - (1) Kategorie\n\n### Kardinalitäten:\n- Ein Kunde kann mehrere Bestellungen haben (1:N)\n- Eine Bestellung kann mehrere Produkte enthalten (N:M)\n- Ein Produkt gehört zu einer Kategorie (N:1)\n\n## Häufige Modellierungsfehler\n<!-- micro-quiz:bp-dpa-01-er-modeling-praktisches-beispiel-online-shop-micro-1 -->\n\n\n### 1. Falsche Kardinalitäten\n- Geschäftsregeln nicht richtig verstanden\n- Ausnahmen nicht berücksichtigt\n\n### 2. Fehlende Entitäten\n- Wichtige Objekte übersehen\n- Zwischentabellen vergessen\n\n### 3. Übermodellierung\n- Zu viele Details im konzeptionellen Modell\n- Implementierungsdetails zu früh berücksichtigt\n\n### 4. Attribut vs. Entität\n- Falsche Entscheidung zwischen Attribut und eigener Entität\n- Regel: Wenn weitere Attribute möglich → eigene Entität\n\n<!-- micro-quiz:bp-dpa-01-er-modeling-haufige-modellierungsfehler-micro-1 -->\n## Übergang zum relationalen Modell\n\n### Transformationsregeln:\n1. Jede Entität wird zu einer Tabelle\n2. Attribute werden zu Spalten\n3. 1:N-Beziehungen: Fremdschlüssel in N-Seite\n4. N:M-Beziehungen: Separate Zwischentabelle\n5. 1:1-Beziehungen: Fremdschlüssel oder Zusammenfassung\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-dpa-01-er-modeling-ubergang-zum-relationalen-modell-micro-1 -->\n\n\n- ER-Diagramme lesen und erstellen\n- Kardinalitäten korrekt bestimmen\n- Entitäten und Attribute unterscheiden\n- Schlüssel identifizieren\n- Beziehungstypen erkennen\n- Transformationsregeln anwenden\n- Modellierungsfehler erkennen\n\n\n\n<!-- micro-quiz:bp-dpa-01-er-modeling-quiz -->\n<!-- micro-quiz:bp-dpa-01-er-modeling-prufungsrelevante-aspekte-micro-1 -->\n",
   "codeExamples": [],
-  "relatedQuizzes": ["bp-dpa-01-er-modeling-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-01-er-modeling-quiz"
+  ],
   "resources": [
     {
       "title": "ER-Modellierung Tutorial",
@@ -29,11 +31,11 @@
     }
   ],
   "learningObjectives": [
-    "ER-Diagramme erstellen und interpretieren",
-    "Entitäten, Attribute und Beziehungen identifizieren",
-    "Kardinalitäten korrekt bestimmen",
-    "Schlüssel definieren und verwenden",
-    "Modellierungsfehler erkennen und vermeiden"
+    "Du kannst eR-Diagramme erstellen und interpretieren erklären",
+    "Du kannst entitäten, Attribute und Beziehungen identifizieren erklären",
+    "Du kannst kardinalitäten korrekt bestimmen erklären",
+    "Du kannst schlüssel definieren und verwenden erklären",
+    "Du kannst modellierungsfehler erkennen und vermeiden erklären"
   ],
   "keyTakeaways": [
     "ER-Modellierung ist die Basis für Datenbankdesign",
@@ -42,5 +44,72 @@
     "N:M-Beziehungen erfordern Zwischentabellen"
   ],
   "lastUpdated": "2025-01-20T00:00:00Z",
-  "version": "1.0"
+  "version": "1.0",
+  "summary": "Grundlagen der Entity-Relationship-Modellierung und konzeptionelle Datenmodellierung",
+  "contentOutline": [
+    {
+      "id": "er-modellierung-und-datenmodellierung",
+      "title": "ER-Modellierung und Datenmodellierung",
+      "summary": "Kernaspekt: ER-Modellierung und Datenmodellierung"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "grundkonzepte-der-er-modellierung",
+      "title": "Grundkonzepte der ER-Modellierung",
+      "summary": "Kernaspekt: Grundkonzepte der ER-Modellierung"
+    },
+    {
+      "id": "er-diagramm-notation",
+      "title": "ER-Diagramm Notation",
+      "summary": "Kernaspekt: ER-Diagramm Notation"
+    },
+    {
+      "id": "modellierungsprozess",
+      "title": "Modellierungsprozess",
+      "summary": "Kernaspekt: Modellierungsprozess"
+    },
+    {
+      "id": "erweiterte-konzepte",
+      "title": "Erweiterte Konzepte",
+      "summary": "Kernaspekt: Erweiterte Konzepte"
+    },
+    {
+      "id": "praktisches-beispiel-online-shop",
+      "title": "Praktisches Beispiel: Online-Shop",
+      "summary": "Kernaspekt: Praktisches Beispiel: Online-Shop"
+    },
+    {
+      "id": "haufige-modellierungsfehler",
+      "title": "Häufige Modellierungsfehler",
+      "summary": "Kernaspekt: Häufige Modellierungsfehler"
+    },
+    {
+      "id": "ubergang-zum-relationalen-modell",
+      "title": "Übergang zum relationalen Modell",
+      "summary": "Kernaspekt: Übergang zum relationalen Modell"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-01-er-modeling-einfuhrung-micro-1",
+    "bp-dpa-01-er-modeling-grundkonzepte-der-er-modellierung-micro-1",
+    "bp-dpa-01-er-modeling-er-diagramm-notation-micro-1",
+    "bp-dpa-01-er-modeling-modellierungsprozess-micro-1",
+    "bp-dpa-01-er-modeling-erweiterte-konzepte-micro-1",
+    "bp-dpa-01-er-modeling-praktisches-beispiel-online-shop-micro-1",
+    "bp-dpa-01-er-modeling-haufige-modellierungsfehler-micro-1",
+    "bp-dpa-01-er-modeling-ubergang-zum-relationalen-modell-micro-1",
+    "bp-dpa-01-er-modeling-quiz",
+    "bp-dpa-01-er-modeling-prufungsrelevante-aspekte-micro-1"
+  ]
 }

@@ -9,7 +9,7 @@
   "newIn2025": true,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": 45,
+  "estimatedTime": "45 Minuten",
   "prerequisites": [],
   "tags": [
     "TDD",
@@ -19,7 +19,7 @@
     "Softwarequalität",
     "Neu 2025"
   ],
-  "content": "# Test Driven Development (TDD)\n\n## Was ist Test Driven Development?\n\nTest Driven Development (TDD) ist eine Softwareentwicklungsmethode, bei der **Tests vor dem eigentlichen Code** geschrieben werden. Dieser Ansatz führt zu besser strukturiertem, wartbarem und fehlerfreiem Code.\n\n### Kernprinzipien von TDD\n\n1. **Test First**: Schreibe zuerst einen Test für die gewünschte Funktionalität\n2. **Minimal Implementation**: Implementiere nur so viel Code, wie nötig ist, um den Test zu bestehen\n3. **Refactoring**: Verbessere den Code, während alle Tests weiterhin bestehen\n\n## Der Red-Green-Refactor Zyklus\n\nTDD folgt einem iterativen Zyklus mit drei Phasen:\n\n### 🔴 Red (Rot) - Test schreiben, der fehlschlägt\n\n- Schreibe einen Test für eine neue Funktionalität\n- Der Test schlägt fehl, weil die Funktionalität noch nicht existiert\n- Dies bestätigt, dass der Test tatsächlich etwas prüft\n\n### 🟢 Green (Grün) - Minimalen Code schreiben\n\n- Implementiere gerade genug Code, um den Test zu bestehen\n- Fokus liegt auf Funktionalität, nicht auf Perfektion\n- Der Test sollte nun erfolgreich durchlaufen\n\n### 🔵 Refactor (Refaktorieren) - Code verbessern\n\n- Verbessere die Code-Qualität ohne das Verhalten zu ändern\n- Entferne Duplikate und optimiere die Struktur\n- Alle Tests müssen weiterhin bestehen\n\n**Dann beginnt der Zyklus von vorne für die nächste Funktionalität!**\n\n## Vorteile von TDD\n\n✅ **Bessere Code-Qualität**: Code ist testbar und modular aufgebaut\n\n✅ **Weniger Bugs**: Fehler werden früh erkannt und behoben\n\n✅ **Lebende Dokumentation**: Tests dokumentieren das erwartete Verhalten\n\n✅ **Refactoring-Sicherheit**: Änderungen können sicher durchgeführt werden\n\n✅ **Klares Design**: Zwingt zu durchdachtem API-Design\n\n## Nachteile von TDD\n\n❌ **Zeitaufwand**: Initial mehr Zeit für Test-Erstellung\n\n❌ **Lernkurve**: Erfordert Umdenken und Übung\n\n❌ **Overhead**: Nicht für alle Projekte gleich sinnvoll\n\n## TDD in der Praxis\n\n### Wann sollte TDD eingesetzt werden?\n\n- Bei komplexer Business-Logik\n- Bei kritischen Systemkomponenten\n- Bei langlebigen Projekten\n- Wenn hohe Code-Qualität gefordert ist\n\n### Wann ist TDD weniger geeignet?\n\n- Bei Prototypen und Proof-of-Concepts\n- Bei UI-Design und Experimenten\n- Bei sehr einfachen CRUD-Operationen\n\n## Best Practices\n\n1. **Kleine Schritte**: Schreibe kleine, fokussierte Tests\n2. **Ein Test, eine Assertion**: Halte Tests einfach und klar\n3. **Aussagekräftige Namen**: Test-Namen sollten das Verhalten beschreiben\n4. **Unabhängige Tests**: Tests sollten isoliert und in beliebiger Reihenfolge laufen\n5. **Schnelle Tests**: Tests sollten schnell ausführbar sein\n\n## Übungsaufgaben\n\n### Aufgabe 1: TDD-Zyklus verstehen\n\nOrdne die folgenden Schritte dem richtigen TDD-Zyklus zu:\n- Code optimieren und Duplikate entfernen\n- Test schreiben, der fehlschlägt\n- Minimalen Code implementieren, um Test zu bestehen\n\n### Aufgabe 2: TDD anwenden\n\nImplementiere eine `Calculator`-Klasse mit TDD:\n1. Schreibe einen Test für Addition\n2. Implementiere die Addition\n3. Refaktoriere wenn nötig\n4. Wiederhole für Subtraktion\n\n### Aufgabe 3: Vorteile erkennen\n\nNenne drei konkrete Vorteile, die TDD für die Wartbarkeit von Software bietet.\n\n## Zusammenfassung\n\nTDD ist eine bewährte Methode zur Entwicklung qualitativ hochwertiger Software. Der Red-Green-Refactor Zyklus stellt sicher, dass Code testbar, wartbar und fehlerfrei ist. Obwohl TDD initial mehr Zeit erfordert, zahlt sich die Investition durch weniger Bugs und bessere Wartbarkeit aus.",
+  "content": "# Test Driven Development (TDD)\n\n## Was ist Test Driven Development?\n\nTest Driven Development (TDD) ist eine Softwareentwicklungsmethode, bei der **Tests vor dem eigentlichen Code** geschrieben werden. Dieser Ansatz führt zu besser strukturiertem, wartbarem und fehlerfreiem Code.\n\n### Kernprinzipien von TDD\n\n1. **Test First**: Schreibe zuerst einen Test für die gewünschte Funktionalität\n2. **Minimal Implementation**: Implementiere nur so viel Code, wie nötig ist, um den Test zu bestehen\n3. **Refactoring**: Verbessere den Code, während alle Tests weiterhin bestehen\n\n<!-- micro-quiz:bp-03-tdd-was-ist-test-driven-development-micro-1 -->\n## Der Red-Green-Refactor Zyklus\n\nTDD folgt einem iterativen Zyklus mit drei Phasen:\n\n### 🔴 Red (Rot) - Test schreiben, der fehlschlägt\n\n- Schreibe einen Test für eine neue Funktionalität\n- Der Test schlägt fehl, weil die Funktionalität noch nicht existiert\n- Dies bestätigt, dass der Test tatsächlich etwas prüft\n\n### 🟢 Green (Grün) - Minimalen Code schreiben\n\n- Implementiere gerade genug Code, um den Test zu bestehen\n- Fokus liegt auf Funktionalität, nicht auf Perfektion\n- Der Test sollte nun erfolgreich durchlaufen\n\n### 🔵 Refactor (Refaktorieren) - Code verbessern\n\n- Verbessere die Code-Qualität ohne das Verhalten zu ändern\n- Entferne Duplikate und optimiere die Struktur\n- Alle Tests müssen weiterhin bestehen\n\n**Dann beginnt der Zyklus von vorne für die nächste Funktionalität!**\n\n## Vorteile von TDD\n<!-- micro-quiz:bp-03-tdd-der-red-green-refactor-zyklus-micro-1 -->\n\n\n✅ **Bessere Code-Qualität**: Code ist testbar und modular aufgebaut\n\n✅ **Weniger Bugs**: Fehler werden früh erkannt und behoben\n\n✅ **Lebende Dokumentation**: Tests dokumentieren das erwartete Verhalten\n\n✅ **Refactoring-Sicherheit**: Änderungen können sicher durchgeführt werden\n\n✅ **Klares Design**: Zwingt zu durchdachtem API-Design\n\n<!-- micro-quiz:bp-03-tdd-vorteile-von-tdd-micro-1 -->\n## Nachteile von TDD\n\n❌ **Zeitaufwand**: Initial mehr Zeit für Test-Erstellung\n\n❌ **Lernkurve**: Erfordert Umdenken und Übung\n\n❌ **Overhead**: Nicht für alle Projekte gleich sinnvoll\n\n## TDD in der Praxis\n<!-- micro-quiz:bp-03-tdd-nachteile-von-tdd-micro-1 -->\n\n\n### Wann sollte TDD eingesetzt werden?\n\n- Bei komplexer Business-Logik\n- Bei kritischen Systemkomponenten\n- Bei langlebigen Projekten\n- Wenn hohe Code-Qualität gefordert ist\n\n### Wann ist TDD weniger geeignet?\n\n- Bei Prototypen und Proof-of-Concepts\n- Bei UI-Design und Experimenten\n- Bei sehr einfachen CRUD-Operationen\n\n<!-- micro-quiz:bp-03-tdd-tdd-in-der-praxis-micro-1 -->\n## Best Practices\n\n1. **Kleine Schritte**: Schreibe kleine, fokussierte Tests\n2. **Ein Test, eine Assertion**: Halte Tests einfach und klar\n3. **Aussagekräftige Namen**: Test-Namen sollten das Verhalten beschreiben\n4. **Unabhängige Tests**: Tests sollten isoliert und in beliebiger Reihenfolge laufen\n5. **Schnelle Tests**: Tests sollten schnell ausführbar sein\n\n## Übungsaufgaben\n<!-- micro-quiz:bp-03-tdd-best-practices-micro-1 -->\n\n\n### Aufgabe 1: TDD-Zyklus verstehen\n\nOrdne die folgenden Schritte dem richtigen TDD-Zyklus zu:\n- Code optimieren und Duplikate entfernen\n- Test schreiben, der fehlschlägt\n- Minimalen Code implementieren, um Test zu bestehen\n\n### Aufgabe 2: TDD anwenden\n\nImplementiere eine `Calculator`-Klasse mit TDD:\n1. Schreibe einen Test für Addition\n2. Implementiere die Addition\n3. Refaktoriere wenn nötig\n4. Wiederhole für Subtraktion\n\n### Aufgabe 3: Vorteile erkennen\n\nNenne drei konkrete Vorteile, die TDD für die Wartbarkeit von Software bietet.\n\n<!-- micro-quiz:bp-03-tdd-ubungsaufgaben-micro-1 -->\n## Zusammenfassung\n\nTDD ist eine bewährte Methode zur Entwicklung qualitativ hochwertiger Software. Der Red-Green-Refactor Zyklus stellt sicher, dass Code testbar, wartbar und fehlerfrei ist. Obwohl TDD initial mehr Zeit erfordert, zahlt sich die Investition durch weniger Bugs und bessere Wartbarkeit aus.\n\n\n\n<!-- micro-quiz:tdd-quiz-2025 -->\n<!-- micro-quiz:bp-03-tdd-zusammenfassung-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "java",
@@ -40,7 +40,9 @@
       "explanation": "Dieses erweiterte Beispiel zeigt, wie TDD bei komplexerer Geschäftslogik angewendet wird. Jede neue Anforderung (Einzahlung, Validierung) wird durch einen Test definiert, bevor der Code implementiert wird."
     }
   ],
-  "relatedQuizzes": ["tdd-quiz-2025"],
+  "relatedQuizzes": [
+    "tdd-quiz-2025"
+  ],
   "resources": [
     {
       "title": "Test Driven Development by Example (Kent Beck)",
@@ -61,10 +63,70 @@
   "lastUpdated": "2025-01-10T00:00:00Z",
   "version": "1.0",
   "learningObjectives": [
-    "Understand TDD",
-    "Understand Testing",
-    "Understand Unit Tests",
-    "Understand Red-Green-Refactor",
-    "Understand Softwarequalität"
+    "Du kannst tDD erklären",
+    "Du kannst testing erklären",
+    "Du kannst unit Tests erklären",
+    "Du kannst red-Green-Refactor erklären",
+    "Du kannst softwarequalität erklären"
+  ],
+  "summary": "Lerne das TDD-Konzept, den Red-Green-Refactor Zyklus und wie du qualitativ hochwertigen Code durch testgetriebene Entwicklung schreibst.",
+  "contentOutline": [
+    {
+      "id": "test-driven-development-tdd",
+      "title": "Test Driven Development (TDD)",
+      "summary": "Kernaspekt: Test Driven Development (TDD)"
+    },
+    {
+      "id": "was-ist-test-driven-development",
+      "title": "Was ist Test Driven Development?",
+      "summary": "Kernaspekt: Was ist Test Driven Development?"
+    },
+    {
+      "id": "der-red-green-refactor-zyklus",
+      "title": "Der Red-Green-Refactor Zyklus",
+      "summary": "Kernaspekt: Der Red-Green-Refactor Zyklus"
+    },
+    {
+      "id": "vorteile-von-tdd",
+      "title": "Vorteile von TDD",
+      "summary": "Kernaspekt: Vorteile von TDD"
+    },
+    {
+      "id": "nachteile-von-tdd",
+      "title": "Nachteile von TDD",
+      "summary": "Kernaspekt: Nachteile von TDD"
+    },
+    {
+      "id": "tdd-in-der-praxis",
+      "title": "TDD in der Praxis",
+      "summary": "Kernaspekt: TDD in der Praxis"
+    },
+    {
+      "id": "best-practices",
+      "title": "Best Practices",
+      "summary": "Kernaspekt: Best Practices"
+    },
+    {
+      "id": "ubungsaufgaben",
+      "title": "Übungsaufgaben",
+      "summary": "Kernaspekt: Übungsaufgaben"
+    },
+    {
+      "id": "zusammenfassung",
+      "title": "Zusammenfassung",
+      "summary": "Kernaspekt: Zusammenfassung"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-03-tdd-was-ist-test-driven-development-micro-1",
+    "bp-03-tdd-der-red-green-refactor-zyklus-micro-1",
+    "bp-03-tdd-vorteile-von-tdd-micro-1",
+    "bp-03-tdd-nachteile-von-tdd-micro-1",
+    "bp-03-tdd-tdd-in-der-praxis-micro-1",
+    "bp-03-tdd-best-practices-micro-1",
+    "bp-03-tdd-ubungsaufgaben-micro-1",
+    "bp-03-tdd-zusammenfassung-micro-1"
   ]
 }

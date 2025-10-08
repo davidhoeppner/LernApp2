@@ -7,15 +7,57 @@
       "id": "q1",
       "type": "single-choice",
       "question": "Which keyword declares a constant in JavaScript?",
-      "options": ["var", "let", "const", "static"],
-      "answer": "const"
+      "options": [
+        "var",
+        "let",
+        "const",
+        "static"
+      ],
+      "answer": "const",
+      "points": 1,
+      "correctAnswer": "var",
+      "explanation": "Automatisch ergänzt."
     },
     {
       "id": "q2",
       "type": "multiple-choice",
       "question": "Select primitive data types:",
-      "options": ["String", "Number", "Function", "Boolean"],
-      "correct": ["String", "Number", "Boolean"]
+      "options": [
+        "String",
+        "Number",
+        "Function",
+        "Boolean"
+      ],
+      "correct": [
+        "String",
+        "Number",
+        "Boolean"
+      ],
+      "points": 1,
+      "correctAnswer": [
+        "String"
+      ],
+      "explanation": "Automatisch ergänzt."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Platzhalterfrage 3 für Demo Micro-Quiz: JS Basics",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correctAnswer": [
+        "A"
+      ],
+      "explanation": "Automatisch ergänzt.",
+      "points": 1
     }
-  ]
+  ],
+  "description": "Automatisch generiertes Microquiz (demo-mq1).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
 }

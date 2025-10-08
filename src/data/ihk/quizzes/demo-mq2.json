@@ -7,8 +7,16 @@
       "id": "q1",
       "type": "single-choice",
       "question": "Which method creates a new array with the results of calling a function on every element?",
-      "options": ["reduce", "filter", "map", "forEach"],
-      "answer": "map"
+      "options": [
+        "reduce",
+        "filter",
+        "map",
+        "forEach"
+      ],
+      "answer": "map",
+      "points": 1,
+      "correctAnswer": "reduce",
+      "explanation": "Automatisch ergänzt."
     },
     {
       "id": "q2",
@@ -24,7 +32,32 @@
         "Function declaration",
         "Function expression",
         "Arrow function"
-      ]
+      ],
+      "points": 1,
+      "correctAnswer": [
+        "Function declaration"
+      ],
+      "explanation": "Automatisch ergänzt."
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Platzhalterfrage 3 für Demo Micro-Quiz: Functions & Arrays",
+      "options": [
+        "A",
+        "B",
+        "C"
+      ],
+      "correctAnswer": [
+        "A"
+      ],
+      "explanation": "Automatisch ergänzt.",
+      "points": 1
     }
-  ]
+  ],
+  "description": "Automatisch generiertes Microquiz (demo-mq2).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
 }

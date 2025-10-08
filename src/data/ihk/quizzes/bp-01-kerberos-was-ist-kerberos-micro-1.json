@@ -1,0 +1,73 @@
+{
+  "id": "bp-01-kerberos-was-ist-kerberos-micro-1",
+  "moduleId": "bp-01-kerberos",
+  "title": "Was ist Kerberos? — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welches Ticket erhält der Client zuerst?",
+      "options": [
+        "Service Ticket (ST)",
+        "Ticket Granting Ticket (TGT)",
+        "Session Ticket",
+        "Access Token"
+      ],
+      "correctAnswer": "Ticket Granting Ticket (TGT)",
+      "explanation": "Das TGT erlaubt spätere Service-Ticket-Anforderungen.",
+      "points": 1,
+      "category": "Kerberos"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Kerberos setzt synchronisierte Uhren der Teilnehmer voraus.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Zeitdrift verhindert Ticket-Validierung.",
+      "points": 1,
+      "category": "Kerberos"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Komponenten gehören zum KDC?",
+      "options": [
+        "Authentication Server",
+        "Ticket Granting Server",
+        "Resource Server",
+        "DNS Server"
+      ],
+      "correctAnswer": [
+        "Authentication Server",
+        "Ticket Granting Server"
+      ],
+      "explanation": "KDC umfasst AS & TGS.",
+      "points": 1,
+      "category": "Kerberos"
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "question": "Welcher Port wird standardmäßig von Kerberos genutzt?",
+      "options": [
+        "53",
+        "80",
+        "88",
+        "443"
+      ],
+      "correctAnswer": "88",
+      "explanation": "Kerberos verwendet standardmäßig UDP/TCP 88.",
+      "points": 1,
+      "category": "Kerberos"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"Was ist Kerberos?\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

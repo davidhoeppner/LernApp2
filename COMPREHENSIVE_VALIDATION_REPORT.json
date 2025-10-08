@@ -1,30 +1,26 @@
 {
-  "timestamp": "2025-10-05T20:51:10.329Z",
-  "summary": {
-    "totalFiles": 31,
-    "validFiles": 31,
-    "filesWithErrors": 0,
-    "filesWithWarnings": 30,
-    "totalIssues": 1533,
-    "issuesByCategory": {
-      "structure": 0,
-      "markdown": 1533,
-      "encoding": 0,
-      "code-examples": 0,
-      "json": 0,
-      "file": 0,
-      "references": 0
-    },
-    "issuesBySeverity": {
-      "error": 0,
-      "warning": 1533
-    },
-    "invalidReferences": 0
+  "timestamp": "2025-10-08T19:14:16.130Z",
+  "totalFiles": 52,
+  "validFiles": 7,
+  "filesWithErrors": 45,
+  "filesWithWarnings": 51,
+  "totalIssues": 2057,
+  "issuesByCategory": {
+    "structure": 45,
+    "markdown": 2012,
+    "encoding": 0,
+    "code-examples": 0,
+    "json": 0,
+    "file": 0
+  },
+  "issuesBySeverity": {
+    "error": 45,
+    "warning": 2012
   },
   "files": [
     {
       "file": "bp-01-conception.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-01-conception.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-conception.json",
       "valid": true,
       "issues": [
         {
@@ -565,9 +561,15 @@
     },
     {
       "file": "bp-01-documentation.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-01-documentation.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-documentation.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -1073,14 +1075,20 @@
           "line": 322
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 72
     },
     {
       "file": "bp-01-kerberos.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-01-kerberos.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-kerberos.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -1390,14 +1398,20 @@
           "line": 269
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 44
     },
     {
       "file": "bp-01-monitoring.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-01-monitoring.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-monitoring.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -1798,14 +1812,408 @@
           "line": 329
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 57
     },
     {
-      "file": "bp-01-odbc.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-01-odbc.json",
+      "file": "bp-01-network-protocols.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-network-protocols.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 5: missing space after #",
+          "line": 5
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 15: missing space after #",
+          "line": 15
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 22: missing space after #",
+          "line": 22
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 24: missing space after #",
+          "line": 24
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 45: missing space after #",
+          "line": 45
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 59: missing space after #",
+          "line": 59
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 71: missing space after #",
+          "line": 71
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 91: missing space after #",
+          "line": 91
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 112: missing space after #",
+          "line": 112
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 126: missing space after #",
+          "line": 126
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 139: missing space after #",
+          "line": 139
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 25: missing space after marker",
+          "line": 25
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 31: missing space after marker",
+          "line": 31
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 37: missing space after marker",
+          "line": 37
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 46: missing space after marker",
+          "line": 46
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 52: missing space after marker",
+          "line": 52
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 60: missing space after marker",
+          "line": 60
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 65: missing space after marker",
+          "line": 65
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 72: missing space after marker",
+          "line": 72
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 79: missing space after marker",
+          "line": 79
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 85: missing space after marker",
+          "line": 85
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 92: missing space after marker",
+          "line": 92
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 96: missing space after marker",
+          "line": 96
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 103: missing space after marker",
+          "line": 103
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 113: missing space after marker",
+          "line": 113
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 117: missing space after marker",
+          "line": 117
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 127: missing space after marker",
+          "line": 127
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 28
+    },
+    {
+      "file": "bp-01-networks-basics.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-networks-basics.json",
       "valid": true,
       "issues": [
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 9: missing space after #",
+          "line": 9
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 11: missing space after #",
+          "line": 11
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 27: missing space after #",
+          "line": 27
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 42: missing space after #",
+          "line": 42
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 57: missing space after #",
+          "line": 57
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 75: missing space after #",
+          "line": 75
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 77: missing space after #",
+          "line": 77
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 82: missing space after #",
+          "line": 82
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 87: missing space after #",
+          "line": 87
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 91: missing space after #",
+          "line": 91
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 97: missing space after #",
+          "line": 97
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 12: missing space after marker",
+          "line": 12
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 17: missing space after marker",
+          "line": 17
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 22: missing space after marker",
+          "line": 22
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 28: missing space after marker",
+          "line": 28
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 32: missing space after marker",
+          "line": 32
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 36: missing space after marker",
+          "line": 36
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 43: missing space after marker",
+          "line": 43
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 48: missing space after marker",
+          "line": 48
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 52: missing space after marker",
+          "line": 52
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 58: missing space after marker",
+          "line": 58
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 63: missing space after marker",
+          "line": 63
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 68: missing space after marker",
+          "line": 68
+        }
+      ],
+      "errorCount": 0,
+      "warningCount": 24
+    },
+    {
+      "file": "bp-01-odbc.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-01-odbc.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -2024,14 +2432,20 @@
           "line": 200
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 31
     },
     {
       "file": "bp-02-cloud-models.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-02-cloud-models.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-02-cloud-models.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -2495,14 +2909,20 @@
           "line": 293
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 66
     },
     {
       "file": "bp-02-data-formats.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-02-data-formats.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-02-data-formats.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -2798,14 +3218,20 @@
           "line": 254
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 42
     },
     {
       "file": "bp-02-nas-san.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-02-nas-san.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-02-nas-san.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -3136,14 +3562,20 @@
           "line": 341
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 47
     },
     {
       "file": "bp-03-cps.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-03-cps.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-cps.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -3572,14 +4004,20 @@
           "line": 261
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 61
     },
     {
       "file": "bp-03-rest-api.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-03-rest-api.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-rest-api.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -3896,14 +4334,20 @@
           "line": 231
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 45
     },
     {
       "file": "bp-03-software-quality.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-03-software-quality.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-software-quality.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -4402,14 +4846,20 @@
           "line": 314
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 71
     },
     {
       "file": "bp-03-tdd.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-03-tdd.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-03-tdd.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -4537,14 +4987,20 @@
           "line": 34
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 18
     },
     {
       "file": "bp-04-architecture-patterns.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-04-architecture-patterns.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-architecture-patterns.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -4574,14 +5030,20 @@
           "line": 15
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 4
     },
     {
       "file": "bp-04-design-patterns.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-04-design-patterns.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-design-patterns.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -4842,14 +5304,20 @@
           "line": 451
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 37
     },
     {
       "file": "bp-04-programming-paradigms.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-04-programming-paradigms.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-programming-paradigms.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -4942,14 +5410,20 @@
           "line": 67
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 13
     },
     {
       "file": "bp-04-scrum.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-04-scrum.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-04-scrum.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -5329,14 +5803,20 @@
           "line": 226
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 54
     },
     {
       "file": "bp-05-data-structures.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-05-data-structures.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-data-structures.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -5611,14 +6091,20 @@
           "line": 419
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 39
     },
     {
       "file": "bp-05-encapsulation.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-05-encapsulation.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-encapsulation.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -5634,14 +6120,20 @@
           "line": 7
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 2
     },
     {
       "file": "bp-05-sorting.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-05-sorting.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-sorting.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -5958,14 +6450,20 @@
           "line": 292
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 45
     },
     {
       "file": "bp-05-sql-reference.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\bp-05-sql-reference.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-05-sql-reference.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -6282,14 +6780,3264 @@
           "line": 151
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 45
     },
     {
-      "file": "fue-01-planning.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\fue-01-planning.json",
+      "file": "bp-dpa-01-data-modeling.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-01-data-modeling.json",
       "valid": true,
       "issues": [
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 7: missing space after #",
+          "line": 7
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 9: missing space after #",
+          "line": 9
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 20: missing space after #",
+          "line": 20
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Module 1: Malformed list item at line 10: missing space after marker",
+          "line": 10
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Module 1: Malformed list item at line 15: missing space after marker",
+          "line": 15
+        }
+      ],
+      "errorCount": 0,
+      "warningCount": 6
+    },
+    {
+      "file": "bp-dpa-01-er-modeling.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-01-er-modeling.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 7: missing space after #",
+          "line": 7
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 9: missing space after #",
+          "line": 9
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 24: missing space after #",
+          "line": 24
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 45: missing space after #",
+          "line": 45
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 65: missing space after #",
+          "line": 65
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 89: missing space after #",
+          "line": 89
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 102: missing space after #",
+          "line": 102
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 104: missing space after #",
+          "line": 104
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 110: missing space after #",
+          "line": 110
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 115: missing space after #",
+          "line": 115
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 120: missing space after #",
+          "line": 120
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 122: missing space after #",
+          "line": 122
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 127: missing space after #",
+          "line": 127
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 132: missing space after #",
+          "line": 132
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 137: missing space after #",
+          "line": 137
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 142: missing space after #",
+          "line": 142
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 147: missing space after #",
+          "line": 147
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 149: missing space after #",
+          "line": 149
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 155: missing space after #",
+          "line": 155
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 160: missing space after #",
+          "line": 160
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 165: missing space after #",
+          "line": 165
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 167: missing space after #",
+          "line": 167
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 173: missing space after #",
+          "line": 173
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 178: missing space after #",
+          "line": 178
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 183: missing space after #",
+          "line": 183
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 185: missing space after #",
+          "line": 185
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 189: missing space after #",
+          "line": 189
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 193: missing space after #",
+          "line": 193
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 197: missing space after #",
+          "line": 197
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 201: missing space after #",
+          "line": 201
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 203: missing space after #",
+          "line": 203
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 210: missing space after #",
+          "line": 210
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 10: missing space after marker",
+          "line": 10
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 15: missing space after marker",
+          "line": 15
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 19: missing space after marker",
+          "line": 19
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 25: missing space after marker",
+          "line": 25
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 27: missing space after marker",
+          "line": 27
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 31: missing space after marker",
+          "line": 31
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 35: missing space after marker",
+          "line": 35
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 39: missing space after marker",
+          "line": 39
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 46: missing space after marker",
+          "line": 46
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 52: missing space after marker",
+          "line": 52
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 56: missing space after marker",
+          "line": 56
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 60: missing space after marker",
+          "line": 60
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 66: missing space after marker",
+          "line": 66
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 71: missing space after marker",
+          "line": 71
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 73: missing space after marker",
+          "line": 73
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 78: missing space after marker",
+          "line": 78
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 83: missing space after marker",
+          "line": 83
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 90: missing space after marker",
+          "line": 90
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 95: missing space after marker",
+          "line": 95
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 52
+    },
+    {
+      "file": "bp-dpa-01-normalization.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-01-normalization.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 7: missing space after #",
+          "line": 7
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 9: missing space after #",
+          "line": 9
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 14: missing space after #",
+          "line": 14
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 19: missing space after #",
+          "line": 19
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 24: missing space after #",
+          "line": 24
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 26: missing space after #",
+          "line": 26
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 31: missing space after #",
+          "line": 31
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 36: missing space after #",
+          "line": 36
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 51: missing space after #",
+          "line": 51
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 53: missing space after #",
+          "line": 53
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 76: missing space after #",
+          "line": 76
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 97: missing space after #",
+          "line": 97
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 117: missing space after #",
+          "line": 117
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 128: missing space after #",
+          "line": 128
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 147: missing space after #",
+          "line": 147
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 154: missing space after #",
+          "line": 154
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 156: missing space after #",
+          "line": 156
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 161: missing space after #",
+          "line": 161
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 166: missing space after #",
+          "line": 166
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 171: missing space after #",
+          "line": 171
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 176: missing space after #",
+          "line": 176
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 178: missing space after #",
+          "line": 178
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 194: missing space after #",
+          "line": 194
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 199: missing space after #",
+          "line": 199
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 206: missing space after #",
+          "line": 206
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 208: missing space after #",
+          "line": 208
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 215: missing space after #",
+          "line": 215
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 220: missing space after #",
+          "line": 220
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 222: missing space after #",
+          "line": 222
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 228: missing space after #",
+          "line": 228
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 234: missing space after #",
+          "line": 234
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 28: missing space after marker",
+          "line": 28
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 37: missing space after marker",
+          "line": 37
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 41: missing space after marker",
+          "line": 41
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 45: missing space after marker",
+          "line": 45
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 54: missing space after marker",
+          "line": 54
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 59: missing space after marker",
+          "line": 59
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 65: missing space after marker",
+          "line": 65
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 77: missing space after marker",
+          "line": 77
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 82: missing space after marker",
+          "line": 82
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 90: missing space after marker",
+          "line": 90
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 98: missing space after marker",
+          "line": 98
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 103: missing space after marker",
+          "line": 103
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 110: missing space after marker",
+          "line": 110
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 118: missing space after marker",
+          "line": 118
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 123: missing space after marker",
+          "line": 123
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 129: missing space after marker",
+          "line": 129
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 133: missing space after marker",
+          "line": 133
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 140: missing space after marker",
+          "line": 140
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 148: missing space after marker",
+          "line": 148
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 51
+    },
+    {
+      "file": "bp-dpa-02-etl-fundamentals.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-02-etl-fundamentals.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 7: missing space after #",
+          "line": 7
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 9: missing space after #",
+          "line": 9
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 28: missing space after #",
+          "line": 28
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 42: missing space after #",
+          "line": 42
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 44: missing space after #",
+          "line": 44
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 74: missing space after #",
+          "line": 74
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 94: missing space after #",
+          "line": 94
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 96: missing space after #",
+          "line": 96
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 126: missing space after #",
+          "line": 126
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 141: missing space after #",
+          "line": 141
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 181: missing space after #",
+          "line": 181
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 183: missing space after #",
+          "line": 183
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 203: missing space after #",
+          "line": 203
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 240: missing space after #",
+          "line": 240
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 242: missing space after #",
+          "line": 242
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 262: missing space after #",
+          "line": 262
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 282: missing space after #",
+          "line": 282
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 296: missing space after #",
+          "line": 296
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 298: missing space after #",
+          "line": 298
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 317: missing space after #",
+          "line": 317
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 331: missing space after #",
+          "line": 331
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 333: missing space after #",
+          "line": 333
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 362: missing space after #",
+          "line": 362
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 12: missing space after marker",
+          "line": 12
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 17: missing space after marker",
+          "line": 17
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 22: missing space after marker",
+          "line": 22
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 29: missing space after marker",
+          "line": 29
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 35: missing space after marker",
+          "line": 35
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 45: missing space after marker",
+          "line": 45
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 51: missing space after marker",
+          "line": 51
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 57: missing space after marker",
+          "line": 57
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 63: missing space after marker",
+          "line": 63
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 68: missing space after marker",
+          "line": 68
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 75: missing space after marker",
+          "line": 75
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 81: missing space after marker",
+          "line": 81
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 87: missing space after marker",
+          "line": 87
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 97: missing space after marker",
+          "line": 97
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 103: missing space after marker",
+          "line": 103
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 106: missing space after marker",
+          "line": 106
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 107: missing space after marker",
+          "line": 107
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 116: missing space after marker",
+          "line": 116
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 127: missing space after marker",
+          "line": 127
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 134: missing space after marker",
+          "line": 134
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 142: missing space after marker",
+          "line": 142
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 148: missing space after marker",
+          "line": 148
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 154: missing space after marker",
+          "line": 154
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 184: missing space after marker",
+          "line": 184
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 190: missing space after marker",
+          "line": 190
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 196: missing space after marker",
+          "line": 196
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 204: missing space after marker",
+          "line": 204
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 207: missing space after marker",
+          "line": 207
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 213: missing space after marker",
+          "line": 213
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 216: missing space after marker",
+          "line": 216
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 221: missing space after marker",
+          "line": 221
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 229: missing space after marker",
+          "line": 229
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 232: missing space after marker",
+          "line": 232
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 243: missing space after marker",
+          "line": 243
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 249: missing space after marker",
+          "line": 249
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 255: missing space after marker",
+          "line": 255
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 263: missing space after marker",
+          "line": 263
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 269: missing space after marker",
+          "line": 269
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 275: missing space after marker",
+          "line": 275
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 283: missing space after marker",
+          "line": 283
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 289: missing space after marker",
+          "line": 289
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 299: missing space after marker",
+          "line": 299
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 306: missing space after marker",
+          "line": 306
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 311: missing space after marker",
+          "line": 311
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 318: missing space after marker",
+          "line": 318
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 324: missing space after marker",
+          "line": 324
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 334: missing space after marker",
+          "line": 334
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 342: missing space after marker",
+          "line": 342
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 345: missing space after marker",
+          "line": 345
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 352: missing space after marker",
+          "line": 352
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 74
+    },
+    {
+      "file": "bp-dpa-02-etl-processes.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-02-etl-processes.json",
+      "valid": true,
+      "issues": [
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 7: missing space after #",
+          "line": 7
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 9: missing space after #",
+          "line": 9
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 13: missing space after #",
+          "line": 13
+        }
+      ],
+      "errorCount": 0,
+      "warningCount": 4
+    },
+    {
+      "file": "bp-dpa-03-advanced-process-topics.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-advanced-process-topics.json",
+      "valid": true,
+      "issues": [
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 2: Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 3: Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 4: Malformed header at line 3: missing space after #",
+          "line": 3
+        }
+      ],
+      "errorCount": 0,
+      "warningCount": 4
+    },
+    {
+      "file": "bp-dpa-03-automation-orchestration.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-automation-orchestration.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 6: missing space after #",
+          "line": 6
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 10: missing space after #",
+          "line": 10
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 18: missing space after #",
+          "line": 18
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 23: missing space after #",
+          "line": 23
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 27: missing space after #",
+          "line": 27
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 31: missing space after #",
+          "line": 31
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 7
+    },
+    {
+      "file": "bp-dpa-03-bpmn-fundamentals.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-bpmn-fundamentals.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 7: missing space after #",
+          "line": 7
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 9: missing space after #",
+          "line": 9
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 23: missing space after #",
+          "line": 23
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 40: missing space after #",
+          "line": 40
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 42: missing space after #",
+          "line": 42
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 44: missing space after #",
+          "line": 44
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 60: missing space after #",
+          "line": 60
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 71: missing space after #",
+          "line": 71
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 87: missing space after #",
+          "line": 87
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 104: missing space after #",
+          "line": 104
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 116: missing space after #",
+          "line": 116
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 133: missing space after #",
+          "line": 133
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 135: missing space after #",
+          "line": 135
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 162: missing space after #",
+          "line": 162
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 175: missing space after #",
+          "line": 175
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 177: missing space after #",
+          "line": 177
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 189: missing space after #",
+          "line": 189
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 200: missing space after #",
+          "line": 200
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 212: missing space after #",
+          "line": 212
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 214: missing space after #",
+          "line": 214
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 236: missing space after #",
+          "line": 236
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 258: missing space after #",
+          "line": 258
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 260: missing space after #",
+          "line": 260
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 273: missing space after #",
+          "line": 273
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 286: missing space after #",
+          "line": 286
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 288: missing space after #",
+          "line": 288
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 300: missing space after #",
+          "line": 300
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 312: missing space after #",
+          "line": 312
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 10: missing space after marker",
+          "line": 10
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 16: missing space after marker",
+          "line": 16
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 24: missing space after marker",
+          "line": 24
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 29: missing space after marker",
+          "line": 29
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 34: missing space after marker",
+          "line": 34
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 45: missing space after marker",
+          "line": 45
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 49: missing space after marker",
+          "line": 49
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 54: missing space after marker",
+          "line": 54
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 61: missing space after marker",
+          "line": 61
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 65: missing space after marker",
+          "line": 65
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 72: missing space after marker",
+          "line": 72
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 76: missing space after marker",
+          "line": 76
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 81: missing space after marker",
+          "line": 81
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 88: missing space after marker",
+          "line": 88
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 93: missing space after marker",
+          "line": 93
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 98: missing space after marker",
+          "line": 98
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 105: missing space after marker",
+          "line": 105
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 110: missing space after marker",
+          "line": 110
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 117: missing space after marker",
+          "line": 117
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 122: missing space after marker",
+          "line": 122
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 127: missing space after marker",
+          "line": 127
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 136: missing space after marker",
+          "line": 136
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 141: missing space after marker",
+          "line": 141
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 146: missing space after marker",
+          "line": 146
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 151: missing space after marker",
+          "line": 151
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 156: missing space after marker",
+          "line": 156
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 178: missing space after marker",
+          "line": 178
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 183: missing space after marker",
+          "line": 183
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 190: missing space after marker",
+          "line": 190
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 195: missing space after marker",
+          "line": 195
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 201: missing space after marker",
+          "line": 201
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 206: missing space after marker",
+          "line": 206
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 215: missing space after marker",
+          "line": 215
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 220: missing space after marker",
+          "line": 220
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 225: missing space after marker",
+          "line": 225
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 230: missing space after marker",
+          "line": 230
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 237: missing space after marker",
+          "line": 237
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 242: missing space after marker",
+          "line": 242
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 247: missing space after marker",
+          "line": 247
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 252: missing space after marker",
+          "line": 252
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 261: missing space after marker",
+          "line": 261
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 266: missing space after marker",
+          "line": 266
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 274: missing space after marker",
+          "line": 274
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 280: missing space after marker",
+          "line": 280
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 289: missing space after marker",
+          "line": 289
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 294: missing space after marker",
+          "line": 294
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 301: missing space after marker",
+          "line": 301
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 306: missing space after marker",
+          "line": 306
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 77
+    },
+    {
+      "file": "bp-dpa-03-bpmn-modeling.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-bpmn-modeling.json",
+      "valid": true,
+      "issues": [
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 7: missing space after #",
+          "line": 7
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 9: missing space after #",
+          "line": 9
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 23: missing space after #",
+          "line": 23
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 25: missing space after #",
+          "line": 25
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 27: missing space after #",
+          "line": 27
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 33: missing space after #",
+          "line": 33
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 39: missing space after #",
+          "line": 39
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 45: missing space after #",
+          "line": 45
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 47: missing space after #",
+          "line": 47
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 59: missing space after #",
+          "line": 59
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Module 1: Malformed list item at line 10: missing space after marker",
+          "line": 10
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Module 1: Malformed list item at line 16: missing space after marker",
+          "line": 16
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Module 1: Malformed list item at line 28: missing space after marker",
+          "line": 28
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Module 1: Malformed list item at line 34: missing space after marker",
+          "line": 34
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Module 1: Malformed list item at line 40: missing space after marker",
+          "line": 40
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Module 1: Malformed list item at line 48: missing space after marker",
+          "line": 48
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Module 1: Malformed list item at line 53: missing space after marker",
+          "line": 53
+        }
+      ],
+      "errorCount": 0,
+      "warningCount": 18
+    },
+    {
+      "file": "bp-dpa-03-kpi-measurement.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-kpi-measurement.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 6: missing space after #",
+          "line": 6
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 10: missing space after #",
+          "line": 10
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 21: missing space after #",
+          "line": 21
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 25: missing space after #",
+          "line": 25
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 31: missing space after #",
+          "line": 31
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 35: missing space after #",
+          "line": 35
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 7
+    },
+    {
+      "file": "bp-dpa-03-lean-six-sigma.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-lean-six-sigma.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 6: missing space after #",
+          "line": 6
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 10: missing space after #",
+          "line": 10
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 13: missing space after #",
+          "line": 13
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 22: missing space after #",
+          "line": 22
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 27: missing space after #",
+          "line": 27
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 31: missing space after #",
+          "line": 31
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 7
+    },
+    {
+      "file": "bp-dpa-03-process-mining.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-03-process-mining.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 6: missing space after #",
+          "line": 6
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 24: missing space after #",
+          "line": 24
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 33: missing space after #",
+          "line": 33
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 41: missing space after #",
+          "line": 41
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 49: missing space after #",
+          "line": 49
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 59: missing space after #",
+          "line": 59
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 7
+    },
+    {
+      "file": "bp-dpa-04-bi-fundamentals.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-04-bi-fundamentals.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 7: missing space after #",
+          "line": 7
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 9: missing space after #",
+          "line": 9
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 24: missing space after #",
+          "line": 24
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 46: missing space after #",
+          "line": 46
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 48: missing space after #",
+          "line": 48
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 64: missing space after #",
+          "line": 64
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 94: missing space after #",
+          "line": 94
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 96: missing space after #",
+          "line": 96
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 118: missing space after #",
+          "line": 118
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 135: missing space after #",
+          "line": 135
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 137: missing space after #",
+          "line": 137
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 168: missing space after #",
+          "line": 168
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 184: missing space after #",
+          "line": 184
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 186: missing space after #",
+          "line": 186
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 203: missing space after #",
+          "line": 203
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 223: missing space after #",
+          "line": 223
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 255: missing space after #",
+          "line": 255
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 257: missing space after #",
+          "line": 257
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 277: missing space after #",
+          "line": 277
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 291: missing space after #",
+          "line": 291
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 293: missing space after #",
+          "line": 293
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 319: missing space after #",
+          "line": 319
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 339: missing space after #",
+          "line": 339
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 341: missing space after #",
+          "line": 341
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 355: missing space after #",
+          "line": 355
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 357: missing space after #",
+          "line": 357
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 384: missing space after #",
+          "line": 384
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 396: missing space after #",
+          "line": 396
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 10: missing space after marker",
+          "line": 10
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 16: missing space after marker",
+          "line": 16
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 25: missing space after marker",
+          "line": 25
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 49: missing space after marker",
+          "line": 49
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 56: missing space after marker",
+          "line": 56
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 65: missing space after marker",
+          "line": 65
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 77: missing space after marker",
+          "line": 77
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 82: missing space after marker",
+          "line": 82
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 88: missing space after marker",
+          "line": 88
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 97: missing space after marker",
+          "line": 97
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 101: missing space after marker",
+          "line": 101
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 105: missing space after marker",
+          "line": 105
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 109: missing space after marker",
+          "line": 109
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 113: missing space after marker",
+          "line": 113
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 119: missing space after marker",
+          "line": 119
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 124: missing space after marker",
+          "line": 124
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 129: missing space after marker",
+          "line": 129
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 138: missing space after marker",
+          "line": 138
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 145: missing space after marker",
+          "line": 145
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 147: missing space after marker",
+          "line": 147
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 152: missing space after marker",
+          "line": 152
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 157: missing space after marker",
+          "line": 157
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 162: missing space after marker",
+          "line": 162
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 187: missing space after marker",
+          "line": 187
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 192: missing space after marker",
+          "line": 192
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 197: missing space after marker",
+          "line": 197
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 204: missing space after marker",
+          "line": 204
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 210: missing space after marker",
+          "line": 210
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 216: missing space after marker",
+          "line": 216
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 224: missing space after marker",
+          "line": 224
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 229: missing space after marker",
+          "line": 229
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 234: missing space after marker",
+          "line": 234
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 239: missing space after marker",
+          "line": 239
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 244: missing space after marker",
+          "line": 244
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 249: missing space after marker",
+          "line": 249
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 258: missing space after marker",
+          "line": 258
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 264: missing space after marker",
+          "line": 264
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 270: missing space after marker",
+          "line": 270
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 278: missing space after marker",
+          "line": 278
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 284: missing space after marker",
+          "line": 284
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 294: missing space after marker",
+          "line": 294
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 300: missing space after marker",
+          "line": 300
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 306: missing space after marker",
+          "line": 306
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 312: missing space after marker",
+          "line": 312
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 320: missing space after marker",
+          "line": 320
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 326: missing space after marker",
+          "line": 326
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 332: missing space after marker",
+          "line": 332
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 342: missing space after marker",
+          "line": 342
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 348: missing space after marker",
+          "line": 348
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 358: missing space after marker",
+          "line": 358
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 363: missing space after marker",
+          "line": 363
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 368: missing space after marker",
+          "line": 368
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 373: missing space after marker",
+          "line": 373
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 378: missing space after marker",
+          "line": 378
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 385: missing space after marker",
+          "line": 385
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "list",
+          "message": "Malformed list item at line 390: missing space after marker",
+          "line": 390
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 85
+    },
+    {
+      "file": "bp-dpa-04-business-intelligence.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-04-business-intelligence.json",
+      "valid": true,
+      "issues": [
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Module 1: Malformed header at line 3: missing space after #",
+          "line": 3
+        }
+      ],
+      "errorCount": 0,
+      "warningCount": 1
+    },
+    {
+      "file": "bp-dpa-05-data-warehousing.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-05-data-warehousing.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 6: missing space after #",
+          "line": 6
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 14: missing space after #",
+          "line": 14
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 20: missing space after #",
+          "line": 20
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 25: missing space after #",
+          "line": 25
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 31: missing space after #",
+          "line": 31
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 37: missing space after #",
+          "line": 37
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 43: missing space after #",
+          "line": 43
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 8
+    },
+    {
+      "file": "bp-dpa-06-data-quality.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-06-data-quality.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 6: missing space after #",
+          "line": 6
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 13: missing space after #",
+          "line": 13
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 19: missing space after #",
+          "line": 19
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 24: missing space after #",
+          "line": 24
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 5
+    },
+    {
+      "file": "bp-dpa-07-statistical-analysis.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-07-statistical-analysis.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 8: missing space after #",
+          "line": 8
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 12: missing space after #",
+          "line": 12
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 17: missing space after #",
+          "line": 17
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 22: missing space after #",
+          "line": 22
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 5
+    },
+    {
+      "file": "bp-dpa-08-process-optimization.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-08-process-optimization.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 7: missing space after #",
+          "line": 7
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 11: missing space after #",
+          "line": 11
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 15: missing space after #",
+          "line": 15
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 19: missing space after #",
+          "line": 19
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 5
+    },
+    {
+      "file": "bp-dpa-09-advanced-bi.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\bp-dpa-09-advanced-bi.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 3: missing space after #",
+          "line": 3
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 7: missing space after #",
+          "line": 7
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 11: missing space after #",
+          "line": 11
+        },
+        {
+          "category": "markdown",
+          "severity": "warning",
+          "type": "header",
+          "message": "Malformed header at line 15: missing space after #",
+          "line": 15
+        }
+      ],
+      "errorCount": 1,
+      "warningCount": 4
+    },
+    {
+      "file": "fue-01-planning.json",
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-01-planning.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -6648,14 +10396,20 @@
           "line": 275
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 51
     },
     {
       "file": "fue-02-anomalies-redundancies.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\fue-02-anomalies-redundancies.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-02-anomalies-redundancies.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -7070,14 +10824,20 @@
           "line": 362
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 59
     },
     {
       "file": "fue-02-control-structures.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\fue-02-control-structures.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-02-control-structures.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -7520,14 +11280,20 @@
           "line": 556
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 63
     },
     {
       "file": "fue-02-development.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\fue-02-development.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-02-development.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -8236,14 +12002,20 @@
           "line": 387
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 101
     },
     {
       "file": "fue-03-load-performance-tests.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\fue-03-load-performance-tests.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-03-load-performance-tests.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9071,14 +12843,20 @@
           "line": 547
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 118
     },
     {
       "file": "fue-03-quality.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\fue-03-quality.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-03-quality.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9619,14 +13397,20 @@
           "line": 532
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 77
     },
     {
       "file": "fue-04-security-threats.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\fue-04-security-threats.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-04-security-threats.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9656,22 +13440,35 @@
           "line": 13
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 4
     },
     {
       "file": "fue-04-security.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\fue-04-security.json",
-      "valid": true,
-      "issues": [],
-      "errorCount": 0,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\fue-04-security.json",
+      "valid": false,
+      "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        }
+      ],
+      "errorCount": 1,
       "warningCount": 0
     },
     {
       "file": "sql-ddl.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\sql-ddl.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\sql-ddl.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -9904,14 +13701,20 @@
           "line": 186
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 33
     },
     {
       "file": "sql-dml.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\sql-dml.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\sql-dml.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -10396,14 +14199,20 @@
           "line": 324
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 69
     },
     {
       "file": "sql-dql.json",
-      "path": "C:\\Users\\sudek\\Desktop\\LernApp2\\src\\data\\ihk\\modules\\sql-dql.json",
-      "valid": true,
+      "path": "C:\\Users\\sudek\\Lernapp2\\LernApp2\\src\\data\\ihk\\modules\\sql-dql.json",
+      "valid": false,
       "issues": [
+        {
+          "category": "structure",
+          "severity": "error",
+          "field": "estimatedTime",
+          "message": "Invalid type for estimatedTime: expected number, got string"
+        },
         {
           "category": "markdown",
           "severity": "warning",
@@ -11028,10 +14837,8 @@
           "line": 461
         }
       ],
-      "errorCount": 0,
+      "errorCount": 1,
       "warningCount": 89
     }
-  ],
-  "invalidReferences": [],
-  "executionTime": 56
+  ]
 }

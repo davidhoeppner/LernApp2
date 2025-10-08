@@ -9,8 +9,11 @@
   "newIn2025": true,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": 60,
-  "prerequisites": ["bp-dpa-03-bpmn-fundamentals", "bp-dpa-03-process-mining"],
+  "estimatedTime": "60 Minuten",
+  "prerequisites": [
+    "bp-dpa-03-bpmn-fundamentals",
+    "bp-dpa-03-process-mining"
+  ],
   "tags": [
     "kpi",
     "prozesskennzahlen",
@@ -20,7 +23,7 @@
     "prozessanalyse",
     "governance"
   ],
-  "content": "# Prozess-KPI Messung & Auswertung\n\n## Einführung\nKennzahlen (Key Performance Indicators) übersetzen Prozessleistung in objektiv messbare Größen. Aussagekräftige KPIs sind klar definiert (Formel, Datendomäne, Zeitbezug), valide (vertrauenswürdige Quelle) und steuerungsrelevant (beeinflussbar).\n\n## KPI-Rahmenwerk\nPrinzipien: Relevanz > Quantität, Klarheit der Definition, Vergleichbarkeit (Trend, Benchmark), Visualisierung (Kontext), Verantwortlichkeit (Owner).\nKlassifikation: Zeit (Durchlaufzeit, Wartezeit), Qualität (Fehlerrate, Rework), Menge (Durchsatz), Kosten (Kosten je Case), Stabilität (Varianz, Variantenanzahl).\n\n## Definition & Operationalisierung\nStruktur einer KPI-Definition: Name, Ziel (Intent), Formel, Datengrundlage, Erhebungsfrequenz, Grenzwerte (SLA), Verantwortlich.\nBeispiel (Durchlaufzeit): Formel = End-Timestamp − Start-Timestamp (Median statt Mittelwert bei Ausreißern).\n\n| KPI | Formel (vereinfacht) | Interpretation | Risiko falscher Nutzung |\n|-----|----------------------|---------------|------------------------|\n| Durchlaufzeit | Ende - Start | Geschwindigkeit Gesamtprozess | Verzerrung durch Ausreißer |\n| Bearbeitungszeit | Sum(Activity-Dauern) | Arbeitsintensität | Ignoriert Wartezeiten |\n| Wartezeit | Durchlaufzeit - Bearbeitungszeit | Puffer / Stau | Datenlücken |\n| Rework-Quote | Rework-Aktivitäten / Gesamtaktivitäten | Qualitäts-/Datenprobleme | Falsche Aktivitätsklassifikation |\n\n## Datenerhebung & Plattformaspekte\nData Lakehouse Relevanz: Vereinheitlichte Speicherung (ACID für Integrität), Time Travel für Audit / Revisionssicherheit historischer KPI-Stände, Schema Evolution für neue Aktivitäten.\nGovernance: Versionierung von KPI-Definitionen, Auditierbarkeit von Transformationen, Zugriffskontrolle (Least Privilege).\n\n## Auswertung & Interpretation\nVerteilungsanalyse: Median, Quartile, 95. Perzentil statt nur Durchschnitt.\nTrend: Rolling-Windows (z.B. 4 Wochen) zur Glättung.\nVergleich: Vor/Nach Maßnahme (A/B) mit identischer Datengrundlage.\nFehlinterpretationen: Korrelation ≠ Kausalität, Simpson-Paradox bei Segment-Durchschnitt.\n\n## Steuerung & Visualisierung\nDashboard-Prinzipien: Fokus (max 7 Hauptkennzahlen), Drill-Down, Kontextlinien (SLA), Farbkonvention (Grün/Gelb/Rot).\nAmpel-Schwellen sollen datenbasiert kalibriert (Historie) und regelmäßig überprüft werden.\n\n## Prüfungsrelevante Aspekte\n- Bestandteile einer KPI-Definition (Formel, Quelle, Frequenz)\n- Unterschied Durchlaufzeit vs. Bearbeitungszeit\n- Umgang mit Ausreißern (Median)\n- Rolle von Data Lakehouse (ACID, Time Travel) für KPI-Verlässlichkeit\n- Rework-Quote als Qualitätsindikator\n- Governance & Versionierung von KPIs\n",
+  "content": "# Prozess-KPI Messung & Auswertung\n\n## Einführung\nKennzahlen (Key Performance Indicators) übersetzen Prozessleistung in objektiv messbare Größen. Aussagekräftige KPIs sind klar definiert (Formel, Datendomäne, Zeitbezug), valide (vertrauenswürdige Quelle) und steuerungsrelevant (beeinflussbar).\n\n<!-- micro-quiz:bp-dpa-03-kpi-measurement-einfuhrung-micro-1 -->\n## KPI-Rahmenwerk\nPrinzipien: Relevanz > Quantität, Klarheit der Definition, Vergleichbarkeit (Trend, Benchmark), Visualisierung (Kontext), Verantwortlichkeit (Owner).\nKlassifikation: Zeit (Durchlaufzeit, Wartezeit), Qualität (Fehlerrate, Rework), Menge (Durchsatz), Kosten (Kosten je Case), Stabilität (Varianz, Variantenanzahl).\n\n## Definition & Operationalisierung\n<!-- micro-quiz:bp-dpa-03-kpi-measurement-kpi-rahmenwerk-micro-1 -->\n\nStruktur einer KPI-Definition: Name, Ziel (Intent), Formel, Datengrundlage, Erhebungsfrequenz, Grenzwerte (SLA), Verantwortlich.\nBeispiel (Durchlaufzeit): Formel = End-Timestamp − Start-Timestamp (Median statt Mittelwert bei Ausreißern).\n\n| KPI | Formel (vereinfacht) | Interpretation | Risiko falscher Nutzung |\n|-----|----------------------|---------------|------------------------|\n| Durchlaufzeit | Ende - Start | Geschwindigkeit Gesamtprozess | Verzerrung durch Ausreißer |\n| Bearbeitungszeit | Sum(Activity-Dauern) | Arbeitsintensität | Ignoriert Wartezeiten |\n| Wartezeit | Durchlaufzeit - Bearbeitungszeit | Puffer / Stau | Datenlücken |\n| Rework-Quote | Rework-Aktivitäten / Gesamtaktivitäten | Qualitäts-/Datenprobleme | Falsche Aktivitätsklassifikation |\n\n<!-- micro-quiz:bp-dpa-03-kpi-measurement-definition-operationalisierung-micro-1 -->\n## Datenerhebung & Plattformaspekte\nData Lakehouse Relevanz: Vereinheitlichte Speicherung (ACID für Integrität), Time Travel für Audit / Revisionssicherheit historischer KPI-Stände, Schema Evolution für neue Aktivitäten.\nGovernance: Versionierung von KPI-Definitionen, Auditierbarkeit von Transformationen, Zugriffskontrolle (Least Privilege).\n\n## Auswertung & Interpretation\n<!-- micro-quiz:bp-dpa-03-kpi-measurement-datenerhebung-plattformaspekte-micro-1 -->\n\nVerteilungsanalyse: Median, Quartile, 95. Perzentil statt nur Durchschnitt.\nTrend: Rolling-Windows (z.B. 4 Wochen) zur Glättung.\nVergleich: Vor/Nach Maßnahme (A/B) mit identischer Datengrundlage.\nFehlinterpretationen: Korrelation ≠ Kausalität, Simpson-Paradox bei Segment-Durchschnitt.\n\n<!-- micro-quiz:bp-dpa-03-kpi-measurement-auswertung-interpretation-micro-1 -->\n## Steuerung & Visualisierung\nDashboard-Prinzipien: Fokus (max 7 Hauptkennzahlen), Drill-Down, Kontextlinien (SLA), Farbkonvention (Grün/Gelb/Rot).\nAmpel-Schwellen sollen datenbasiert kalibriert (Historie) und regelmäßig überprüft werden.\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-dpa-03-kpi-measurement-steuerung-visualisierung-micro-1 -->\n\n- Bestandteile einer KPI-Definition (Formel, Quelle, Frequenz)\n- Unterschied Durchlaufzeit vs. Bearbeitungszeit\n- Umgang mit Ausreißern (Median)\n- Rolle von Data Lakehouse (ACID, Time Travel) für KPI-Verlässlichkeit\n- Rework-Quote als Qualitätsindikator\n- Governance & Versionierung von KPIs\n\n\n\n\n<!-- micro-quiz:bp-dpa-03-kpi-measurement-quiz -->\n<!-- micro-quiz:bp-dpa-03-kpi-measurement-prufungsrelevante-aspekte-micro-1 -->\n",
   "codeExamples": [
     {
       "language": "sql",
@@ -35,7 +38,9 @@
       "explanation": "Identifiziert Aktivitäten, die innerhalb eines Cases mehrfach auftreten (potenzielles Rework)."
     }
   ],
-  "relatedQuizzes": ["bp-dpa-03-kpi-measurement-quiz"],
+  "relatedQuizzes": [
+    "bp-dpa-03-kpi-measurement-quiz"
+  ],
   "resources": [
     {
       "title": "BPMN 2.0 Specification",
@@ -54,11 +59,11 @@
     }
   ],
   "learningObjectives": [
-    "KPI-Definition strukturiert dokumentieren",
-    "Durchlaufzeit, Bearbeitungszeit und Wartezeit abgrenzen",
-    "Median und Perzentile zur Robustheit einsetzen",
-    "Rework-Quote und Varianten als Qualitätsindikatoren interpretieren",
-    "Lakehouse-Konzepte (ACID, Time Travel) für KPI-Verlässlichkeit einordnen"
+    "Du kannst kPI-Definition strukturiert dokumentieren erklären",
+    "Du kannst durchlaufzeit, Bearbeitungszeit und Wartezeit abgrenzen erklären",
+    "Du kannst median und Perzentile zur Robustheit einsetzen erklären",
+    "Du kannst rework-Quote und Varianten als Qualitätsindikatoren interpretieren erklären",
+    "Du kannst lakehouse-Konzepte (ACID, Time Travel) für KPI-Verlässlichkeit einordnen erklären"
   ],
   "keyTakeaways": [
     "Klare Definition verhindert KPI-Missinterpretation",
@@ -68,5 +73,62 @@
   ],
   "lastUpdated": "2025-10-07T00:00:00Z",
   "version": "1.0",
-  "tracks": ["DPA"]
+  "tracks": [
+    "DPA"
+  ],
+  "summary": "Systematische Definition, Erhebung und Interpretation von Prozess-KPIs zur Steuerung kontinuierlicher Optimierung",
+  "contentOutline": [
+    {
+      "id": "prozess-kpi-messung-auswertung",
+      "title": "Prozess-KPI Messung & Auswertung",
+      "summary": "Kernaspekt: Prozess-KPI Messung & Auswertung"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "kpi-rahmenwerk",
+      "title": "KPI-Rahmenwerk",
+      "summary": "Kernaspekt: KPI-Rahmenwerk"
+    },
+    {
+      "id": "definition-operationalisierung",
+      "title": "Definition & Operationalisierung",
+      "summary": "Kernaspekt: Definition & Operationalisierung"
+    },
+    {
+      "id": "datenerhebung-plattformaspekte",
+      "title": "Datenerhebung & Plattformaspekte",
+      "summary": "Kernaspekt: Datenerhebung & Plattformaspekte"
+    },
+    {
+      "id": "auswertung-interpretation",
+      "title": "Auswertung & Interpretation",
+      "summary": "Kernaspekt: Auswertung & Interpretation"
+    },
+    {
+      "id": "steuerung-visualisierung",
+      "title": "Steuerung & Visualisierung",
+      "summary": "Kernaspekt: Steuerung & Visualisierung"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-dpa-03-kpi-measurement-einfuhrung-micro-1",
+    "bp-dpa-03-kpi-measurement-kpi-rahmenwerk-micro-1",
+    "bp-dpa-03-kpi-measurement-definition-operationalisierung-micro-1",
+    "bp-dpa-03-kpi-measurement-datenerhebung-plattformaspekte-micro-1",
+    "bp-dpa-03-kpi-measurement-auswertung-interpretation-micro-1",
+    "bp-dpa-03-kpi-measurement-steuerung-visualisierung-micro-1",
+    "bp-dpa-03-kpi-measurement-quiz",
+    "bp-dpa-03-kpi-measurement-prufungsrelevante-aspekte-micro-1"
+  ]
 }

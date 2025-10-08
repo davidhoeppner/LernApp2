@@ -1,0 +1,58 @@
+{
+  "id": "bp-01-odbc-odbc-in-verschiedenen-sprachen-micro-1",
+  "moduleId": "bp-01-odbc",
+  "title": "ODBC in verschiedenen Sprachen — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Wofür steht ODBC?",
+      "options": [
+        "Open Database Connectivity",
+        "Open Data Binary Channel",
+        "Organized Database Caching",
+        "Optimized Data Bus Connector"
+      ],
+      "correctAnswer": "Open Database Connectivity",
+      "explanation": "Standardisierte API für DB-Zugriff.",
+      "points": 1,
+      "category": "ODBC"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "ODBC abstrahiert den Zugriff auf unterschiedliche Datenbanken.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Treiber implementieren spezifische Protokolle.",
+      "points": 1,
+      "category": "ODBC"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Vorteile bietet ODBC?",
+      "options": [
+        "Portabilität",
+        "Leichtere Treiberverwaltung",
+        "DB-spezifische SQL-Erweiterungen entfallen vollständig",
+        "Einheitliche Verbindungs-API"
+      ],
+      "correctAnswer": [
+        "Portabilität",
+        "Einheitliche Verbindungs-API"
+      ],
+      "explanation": "Spezifische Erweiterungen bleiben teils notwendig.",
+      "points": 1,
+      "category": "ODBC"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"ODBC in verschiedenen Sprachen\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "beginner",
+  "timeLimit": 180,
+  "passingScore": 60
+}

@@ -9,19 +9,88 @@
   "newIn2025": false,
   "removedIn2025": true,
   "important": false,
-  "estimatedTime": 30,
+  "estimatedTime": "30 Minuten",
   "prerequisites": [],
-  "tags": ["Programmierparadigmen", "OOP", "Funktional", "Veraltet"],
-  "content": "# Programmierparadigmen\n\n## âš ï¸ Hinweis: Nicht mehr prüfungsrelevant ab 2025\n\nDieses Thema wurde aus dem Prüfungskatalog 2025 gestrichen. Die Inhalte dienen nur noch als Hintergrundwissen.\n\n## Übersicht\n\nProgrammierparadigmen sind grundlegende Programmierstile, die bestimmen, wie Code strukturiert und organisiert wird.\n\n### Hauptparadigmen\n\n1. **Imperativ**: Befehle, die den Programmzustand ändern\n2. **Deklarativ**: Beschreibung des gewünschten Ergebnisses\n3. **Objektorientiert**: Organisation in Objekten\n4. **Funktional**: Funktionen als zentrale Bausteine\n\n## Imperative Programmierung\n\n**Eigenschaften:**\n- Sequenz von Befehlen\n- Zustandsänderungen\n- Kontrollstrukturen (if, for, while)\n\n```python\n# Imperativ\nnumbers = [1, 2, 3, 4, 5]\nsum = 0\nfor num in numbers:\n    sum += num\nprint(sum)  # 15\n```\n\n## Deklarative Programmierung\n\n**Eigenschaften:**\n- Beschreibung des \"Was\", nicht \"Wie\"\n- Keine expliziten Zustandsänderungen\n\n```sql\n-- Deklarativ (SQL)\nSELECT SUM(price) FROM products WHERE category = 'Electronics';\n```\n\n## Objektorientierte Programmierung (OOP)\n\n**Eigenschaften:**\n- Kapselung\n- Vererbung\n- Polymorphie\n\n```java\nclass Animal {\n    void makeSound() {\n        System.out.println(\"Some sound\");\n    }\n}\n\nclass Dog extends Animal {\n    void makeSound() {\n        System.out.println(\"Woof!\");\n    }\n}\n```\n\n## Funktionale Programmierung\n\n**Eigenschaften:**\n- Funktionen als First-Class Citizens\n- Immutability\n- Pure Functions\n\n```python\n# Funktional\nnumbers = [1, 2, 3, 4, 5]\nsum = reduce(lambda x, y: x + y, numbers)\nprint(sum)  # 15\n```\n\n## Prüfungshinweis\n\nDieses Thema ist **nicht mehr prüfungsrelevant ab 2025**. Fokussieren Sie stattdessen auf:\n- Design Patterns\n- Architektur-Pattern\n- Scrum\n- TDD",
+  "tags": [
+    "Programmierparadigmen",
+    "OOP",
+    "Funktional",
+    "Veraltet"
+  ],
+  "content": "# Programmierparadigmen\n\n## âš ï¸ Hinweis: Nicht mehr prüfungsrelevant ab 2025\n\nDieses Thema wurde aus dem Prüfungskatalog 2025 gestrichen. Die Inhalte dienen nur noch als Hintergrundwissen.\n\n<!-- micro-quiz:bp-04-programming-paradigms-as-i-hinweis-nicht-mehr-prufungsrelevant-ab-2025-micro-1 -->\n## Übersicht\n\nProgrammierparadigmen sind grundlegende Programmierstile, die bestimmen, wie Code strukturiert und organisiert wird.\n\n### Hauptparadigmen\n\n1. **Imperativ**: Befehle, die den Programmzustand ändern\n2. **Deklarativ**: Beschreibung des gewünschten Ergebnisses\n3. **Objektorientiert**: Organisation in Objekten\n4. **Funktional**: Funktionen als zentrale Bausteine\n\n## Imperative Programmierung\n<!-- micro-quiz:bp-04-programming-paradigms-ubersicht-micro-1 -->\n\n\n**Eigenschaften:**\n- Sequenz von Befehlen\n- Zustandsänderungen\n- Kontrollstrukturen (if, for, while)\n\n```python\n# Imperativ\nnumbers = [1, 2, 3, 4, 5]\nsum = 0\nfor num in numbers:\n    sum += num\nprint(sum)  # 15\n```\n\n<!-- micro-quiz:bp-04-programming-paradigms-imperative-programmierung-micro-1 -->\n## Deklarative Programmierung\n\n**Eigenschaften:**\n- Beschreibung des \"Was\", nicht \"Wie\"\n- Keine expliziten Zustandsänderungen\n\n```sql\n-- Deklarativ (SQL)\nSELECT SUM(price) FROM products WHERE category = 'Electronics';\n```\n\n## Objektorientierte Programmierung (OOP)\n<!-- micro-quiz:bp-04-programming-paradigms-deklarative-programmierung-micro-1 -->\n\n\n**Eigenschaften:**\n- Kapselung\n- Vererbung\n- Polymorphie\n\n```java\nclass Animal {\n    void makeSound() {\n        System.out.println(\"Some sound\");\n    }\n}\n\nclass Dog extends Animal {\n    void makeSound() {\n        System.out.println(\"Woof!\");\n    }\n}\n```\n\n<!-- micro-quiz:bp-04-programming-paradigms-objektorientierte-programmierung-oop-micro-1 -->\n## Funktionale Programmierung\n\n**Eigenschaften:**\n- Funktionen als First-Class Citizens\n- Immutability\n- Pure Functions\n\n```python\n# Funktional\nnumbers = [1, 2, 3, 4, 5]\nsum = reduce(lambda x, y: x + y, numbers)\nprint(sum)  # 15\n```\n\n## Prüfungshinweis\n<!-- micro-quiz:bp-04-programming-paradigms-funktionale-programmierung-micro-1 -->\n\n\nDieses Thema ist **nicht mehr prüfungsrelevant ab 2025**. Fokussieren Sie stattdessen auf:\n- Design Patterns\n- Architektur-Pattern\n- Scrum\n- TDD\n\n\n<!-- micro-quiz:bp-04-programming-paradigms-prufungshinweis-micro-1 -->",
   "codeExamples": [],
   "relatedQuizzes": [],
   "resources": [],
   "lastUpdated": "2025-01-10T00:00:00Z",
   "version": "1.0",
   "learningObjectives": [
-    "Understand Programmierparadigmen",
-    "Understand OOP",
-    "Understand Funktional",
-    "Understand Veraltet"
+    "Du kannst programmierparadigmen erklären",
+    "Du kannst oOP erklären",
+    "Du kannst funktional erklären",
+    "Du kannst veraltet erklären"
+  ],
+  "summary": "Übersicht über Programmierparadigmen - Nicht mehr prüfungsrelevant ab 2025",
+  "contentOutline": [
+    {
+      "id": "programmierparadigmen",
+      "title": "Programmierparadigmen",
+      "summary": "Kernaspekt: Programmierparadigmen"
+    },
+    {
+      "id": "as-i-hinweis-nicht-mehr-prufungsrelevant-ab-2025",
+      "title": "âš ï¸ Hinweis: Nicht mehr prüfungsrelevant ab 2025",
+      "summary": "Kernaspekt: âš ï¸ Hinweis: Nicht mehr prüfungsrelevant ab 2025"
+    },
+    {
+      "id": "ubersicht",
+      "title": "Übersicht",
+      "summary": "Kernaspekt: Übersicht"
+    },
+    {
+      "id": "imperative-programmierung",
+      "title": "Imperative Programmierung",
+      "summary": "Kernaspekt: Imperative Programmierung"
+    },
+    {
+      "id": "imperativ",
+      "title": "Imperativ",
+      "summary": "Kernaspekt: Imperativ"
+    },
+    {
+      "id": "deklarative-programmierung",
+      "title": "Deklarative Programmierung",
+      "summary": "Kernaspekt: Deklarative Programmierung"
+    },
+    {
+      "id": "objektorientierte-programmierung-oop",
+      "title": "Objektorientierte Programmierung (OOP)",
+      "summary": "Kernaspekt: Objektorientierte Programmierung (OOP)"
+    },
+    {
+      "id": "funktionale-programmierung",
+      "title": "Funktionale Programmierung",
+      "summary": "Kernaspekt: Funktionale Programmierung"
+    },
+    {
+      "id": "funktional",
+      "title": "Funktional",
+      "summary": "Kernaspekt: Funktional"
+    },
+    {
+      "id": "prufungshinweis",
+      "title": "Prüfungshinweis",
+      "summary": "Kernaspekt: Prüfungshinweis"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-04-programming-paradigms-as-i-hinweis-nicht-mehr-prufungsrelevant-ab-2025-micro-1",
+    "bp-04-programming-paradigms-ubersicht-micro-1",
+    "bp-04-programming-paradigms-imperative-programmierung-micro-1",
+    "bp-04-programming-paradigms-deklarative-programmierung-micro-1",
+    "bp-04-programming-paradigms-objektorientierte-programmierung-oop-micro-1",
+    "bp-04-programming-paradigms-funktionale-programmierung-micro-1",
+    "bp-04-programming-paradigms-prufungshinweis-micro-1"
   ]
 }

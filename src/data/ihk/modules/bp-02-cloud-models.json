@@ -9,10 +9,17 @@
   "newIn2025": false,
   "removedIn2025": false,
   "important": true,
-  "estimatedTime": 45,
+  "estimatedTime": "45 Minuten",
   "prerequisites": [],
-  "tags": ["Cloud", "SaaS", "IaaS", "PaaS", "AWS", "Azure"],
-  "content": "# Cloud-Modelle (SaaS, IaaS, PaaS)\n\n## Einführung\n\nCloud Computing bietet IT-Ressourcen über das Internet als Service an. Die drei Hauptmodelle sind IaaS, PaaS und SaaS, die sich im Grad der Abstraktion und Verwaltung unterscheiden.\n\n## Cloud Service-Modelle\n\n### Verantwortlichkeiten\n\n```\nOn-Premises:  [Anwendung][Daten][Runtime][Middleware][OS][Virtualisierung][Server][Storage][Netzwerk]\n              └─────────────────────────── Kunde verwaltet ───────────────────────────┘\n\nIaaS:         [Anwendung][Daten][Runtime][Middleware][OS]\n              └────────── Kunde ──────────┘└────────── Provider ──────────┘\n\nPaaS:         [Anwendung][Daten]\n              └─ Kunde ─┘└──────────────── Provider ──────────────┘\n\nSaaS:         \n              └──────────────────── Provider ────────────────────┘\n```\n\n## IaaS (Infrastructure as a Service)\n\n### Definition\n\nBereitstellung von virtualisierter Computing-Infrastruktur über das Internet.\n\n### Komponenten\n\n- **Virtuelle Maschinen (VMs)**: Compute-Ressourcen\n- **Storage**: Speicherplatz\n- **Netzwerk**: Virtuelle Netzwerke, Load Balancer\n- **Betriebssystem**: Vom Kunden installiert und verwaltet\n\n### Beispiele\n\n**AWS (Amazon Web Services):**\n- EC2 (Elastic Compute Cloud): VMs\n- S3 (Simple Storage Service): Object Storage\n- VPC (Virtual Private Cloud): Netzwerk\n\n**Microsoft Azure:**\n- Azure Virtual Machines\n- Azure Blob Storage\n- Azure Virtual Network\n\n**Google Cloud Platform:**\n- Compute Engine\n- Cloud Storage\n- Virtual Private Cloud\n\n### Anwendungsfälle\n\n- Hosting von Webanwendungen\n- Entwicklungs- und Testumgebungen\n- Big Data Analytics\n- Disaster Recovery\n- Skalierbare Infrastruktur\n\n### Vorteile\n\n- **Skalierbarkeit**: Ressourcen nach Bedarf\n- **Kosteneffizienz**: Pay-as-you-go\n- **Flexibilität**: Volle Kontrolle über OS und Software\n- **Keine Hardware-Investition**: Kein Kauf von Servern\n\n### Nachteile\n\n- **Verwaltungsaufwand**: OS, Updates, Sicherheit\n- **Komplexität**: Konfiguration und Wartung\n- **Vendor Lock-in**: Abhängigkeit vom Anbieter\n\n### Beispiel: AWS EC2 Instance starten\n\n```bash\n# AWS CLI\naws ec2 run-instances \\\n  --image-id ami-0c55b159cbfafe1f0 \\\n  --instance-type t2.micro \\\n  --key-name my-key-pair \\\n  --security-group-ids sg-12345678 \\\n  --subnet-id subnet-12345678\n```\n\n## PaaS (Platform as a Service)\n\n### Definition\n\nBereitstellung einer Plattform für Entwicklung, Ausführung und Verwaltung von Anwendungen.\n\n### Komponenten\n\n- **Runtime-Umgebung**: Java, Python, Node.js\n- **Datenbanken**: Managed Databases\n- **Middleware**: Message Queues, Caching\n- **Entwicklungstools**: CI/CD, Monitoring\n\n### Beispiele\n\n**Heroku:**\n- Einfaches Deployment\n- Unterstützt viele Sprachen\n- Add-ons für Datenbanken, Caching\n\n**Google App Engine:**\n- Automatische Skalierung\n- Managed Services\n- Integriertes Monitoring\n\n**AWS Elastic Beanstalk:**\n- Deployment von Web-Apps\n- Automatische Skalierung\n- Load Balancing\n\n**Azure App Service:**\n- Web Apps, Mobile Apps\n- Continuous Deployment\n- Auto-Scaling\n\n### Anwendungsfälle\n\n- Web-Anwendungen\n- Mobile Backends\n- API-Entwicklung\n- Microservices\n- Rapid Prototyping\n\n### Vorteile\n\n- **Schnelles Deployment**: Fokus auf Code\n- **Automatische Skalierung**: Keine manuelle Konfiguration\n- **Managed Services**: Datenbanken, Caching automatisch verwaltet\n- **Entwicklerfreundlich**: Integrierte Tools\n\n### Nachteile\n\n- **Weniger Kontrolle**: Eingeschränkte Konfiguration\n- **Vendor Lock-in**: Plattformabhängig\n- **Kosten**: Kann teurer sein als IaaS\n\n### Beispiel: Heroku Deployment\n\n```bash\n# Heroku CLI\nheroku create my-app\ngit push heroku main\nheroku ps:scale web=1\nheroku open\n```\n\n## SaaS (Software as a Service)\n\n### Definition\n\nBereitstellung von vollständigen Softwareanwendungen über das Internet.\n\n### Eigenschaften\n\n- **Sofort nutzbar**: Keine Installation\n- **Webbasiert**: Zugriff über Browser\n- **Multi-Tenant**: Mehrere Kunden auf gleicher Infrastruktur\n- **Automatische Updates**: Vom Anbieter verwaltet\n\n### Beispiele\n\n**Produktivität:**\n- Microsoft 365 (Word, Excel, Outlook)\n- Google Workspace (Docs, Sheets, Gmail)\n- Slack (Team-Kommunikation)\n\n**CRM:**\n- Salesforce\n- HubSpot\n\n**Projektmanagement:**\n- Jira\n- Trello\n- Asana\n\n**Entwicklung:**\n- GitHub\n- GitLab\n- Figma\n\n### Anwendungsfälle\n\n- E-Mail und Collaboration\n- CRM und ERP\n- Projektmanagement\n- Buchhaltung\n- HR-Management\n\n### Vorteile\n\n- **Keine Installation**: Sofort nutzbar\n- **Keine Wartung**: Updates automatisch\n- **Zugriff überall**: Nur Internet erforderlich\n- **Skalierbar**: Lizenzen nach Bedarf\n\n### Nachteile\n\n- **Keine Kontrolle**: Keine Anpassungen\n- **Datenhoheit**: Daten beim Anbieter\n- **Internetabhängig**: Offline nicht nutzbar\n- **Kosten**: Laufende Abonnements\n\n## Weitere Cloud-Modelle\n\n### FaaS (Function as a Service) / Serverless\n\n**Eigenschaften:**\n- Code-Ausführung ohne Server-Verwaltung\n- Event-getrieben\n- Pay-per-execution\n\n**Beispiele:**\n- AWS Lambda\n- Azure Functions\n- Google Cloud Functions\n\n**Beispiel: AWS Lambda**\n```python\ndef lambda_handler(event, context):\n    name = event.get('name', 'World')\n    return {\n        'statusCode': 200,\n        'body': f'Hello {name}!'\n    }\n```\n\n### CaaS (Container as a Service)\n\n**Eigenschaften:**\n- Container-Orchestrierung\n- Docker-basiert\n- Kubernetes-kompatibel\n\n**Beispiele:**\n- AWS ECS/EKS\n- Azure Kubernetes Service (AKS)\n- Google Kubernetes Engine (GKE)\n\n## Deployment-Modelle\n\n### Public Cloud\n- Öffentlich verfügbar\n- Shared Infrastructure\n- Beispiele: AWS, Azure, GCP\n\n### Private Cloud\n- Dedizierte Infrastruktur\n- Für eine Organisation\n- On-Premises oder gehostet\n\n### Hybrid Cloud\n- Kombination aus Public und Private\n- Daten-Synchronisierung\n- Flexibilität\n\n### Multi-Cloud\n- Mehrere Cloud-Anbieter\n- Vermeidung von Vendor Lock-in\n- Best-of-Breed-Ansatz\n\n## Kostenmodelle\n\n### Pay-as-you-go\n- Bezahlung nach Nutzung\n- Keine Vorabkosten\n- Flexibel\n\n### Reserved Instances\n- Langfristige Verpflichtung (1-3 Jahre)\n- Rabatte (bis zu 75%)\n- Planbare Kosten\n\n### Spot Instances\n- Ungenutzte Kapazität\n- Sehr günstig (bis zu 90% Rabatt)\n- Kann jederzeit beendet werden\n\n## Sicherheit in der Cloud\n\n### Shared Responsibility Model\n\n**Provider verantwortlich für:**\n- Physische Sicherheit\n- Netzwerk-Infrastruktur\n- Hypervisor\n\n**Kunde verantwortlich für:**\n- Daten\n- Zugriffskontrolle\n- Anwendungssicherheit\n- Verschlüsselung\n\n### Best Practices\n\n- **Verschlüsselung**: Daten in Transit und at Rest\n- **IAM**: Identity and Access Management\n- **MFA**: Multi-Factor Authentication\n- **Monitoring**: Logging und Alerting\n- **Backups**: Regelmäßige Sicherungen\n\n## Vergleich der Service-Modelle\n\n| Merkmal | IaaS | PaaS | SaaS |\n|---------|------|------|------|\n| Kontrolle | Hoch | Mittel | Niedrig |\n| Verwaltung | Kunde | Geteilt | Provider |\n| Flexibilität | Sehr hoch | Mittel | Niedrig |\n| Komplexität | Hoch | Mittel | Niedrig |\n| Time-to-Market | Langsam | Schnell | Sofort |\n| Kosten | Variabel | Mittel | Vorhersagbar |\n| Beispiel | AWS EC2 | Heroku | Salesforce |\n\n## Prüfungsrelevante Aspekte\n\n- Service-Modelle (IaaS, PaaS, SaaS) unterscheiden\n- Verantwortlichkeiten kennen\n- Beispiele für jeden Service-Typ nennen\n- Anwendungsfälle zuordnen\n- Vor- und Nachteile benennen\n- Deployment-Modelle (Public, Private, Hybrid) kennen\n- Shared Responsibility Model verstehen",
+  "tags": [
+    "Cloud",
+    "SaaS",
+    "IaaS",
+    "PaaS",
+    "AWS",
+    "Azure"
+  ],
+  "content": "# Cloud-Modelle (SaaS, IaaS, PaaS)\n\n## Einführung\n\nCloud Computing bietet IT-Ressourcen über das Internet als Service an. Die drei Hauptmodelle sind IaaS, PaaS und SaaS, die sich im Grad der Abstraktion und Verwaltung unterscheiden.\n\n<!-- micro-quiz:bp-02-cloud-models-einfuhrung-micro-1 -->\n## Cloud Service-Modelle\n\n### Verantwortlichkeiten\n\n```\nOn-Premises:  [Anwendung][Daten][Runtime][Middleware][OS][Virtualisierung][Server][Storage][Netzwerk]\n              └─────────────────────────── Kunde verwaltet ───────────────────────────┘\n\nIaaS:         [Anwendung][Daten][Runtime][Middleware][OS]\n              └────────── Kunde ──────────┘└────────── Provider ──────────┘\n\nPaaS:         [Anwendung][Daten]\n              └─ Kunde ─┘└──────────────── Provider ──────────────┘\n\nSaaS:         \n              └──────────────────── Provider ────────────────────┘\n```\n\n## IaaS (Infrastructure as a Service)\n<!-- micro-quiz:bp-02-cloud-models-cloud-service-modelle-micro-1 -->\n\n\n### Definition\n\nBereitstellung von virtualisierter Computing-Infrastruktur über das Internet.\n\n### Komponenten\n\n- **Virtuelle Maschinen (VMs)**: Compute-Ressourcen\n- **Storage**: Speicherplatz\n- **Netzwerk**: Virtuelle Netzwerke, Load Balancer\n- **Betriebssystem**: Vom Kunden installiert und verwaltet\n\n### Beispiele\n\n**AWS (Amazon Web Services):**\n- EC2 (Elastic Compute Cloud): VMs\n- S3 (Simple Storage Service): Object Storage\n- VPC (Virtual Private Cloud): Netzwerk\n\n**Microsoft Azure:**\n- Azure Virtual Machines\n- Azure Blob Storage\n- Azure Virtual Network\n\n**Google Cloud Platform:**\n- Compute Engine\n- Cloud Storage\n- Virtual Private Cloud\n\n### Anwendungsfälle\n\n- Hosting von Webanwendungen\n- Entwicklungs- und Testumgebungen\n- Big Data Analytics\n- Disaster Recovery\n- Skalierbare Infrastruktur\n\n### Vorteile\n\n- **Skalierbarkeit**: Ressourcen nach Bedarf\n- **Kosteneffizienz**: Pay-as-you-go\n- **Flexibilität**: Volle Kontrolle über OS und Software\n- **Keine Hardware-Investition**: Kein Kauf von Servern\n\n### Nachteile\n\n- **Verwaltungsaufwand**: OS, Updates, Sicherheit\n- **Komplexität**: Konfiguration und Wartung\n- **Vendor Lock-in**: Abhängigkeit vom Anbieter\n\n### Beispiel: AWS EC2 Instance starten\n\n```bash\n# AWS CLI\naws ec2 run-instances \\\n  --image-id ami-0c55b159cbfafe1f0 \\\n  --instance-type t2.micro \\\n  --key-name my-key-pair \\\n  --security-group-ids sg-12345678 \\\n  --subnet-id subnet-12345678\n```\n\n<!-- micro-quiz:bp-02-cloud-models-iaas-infrastructure-as-a-service-micro-1 -->\n## PaaS (Platform as a Service)\n\n### Definition\n\nBereitstellung einer Plattform für Entwicklung, Ausführung und Verwaltung von Anwendungen.\n\n### Komponenten\n\n- **Runtime-Umgebung**: Java, Python, Node.js\n- **Datenbanken**: Managed Databases\n- **Middleware**: Message Queues, Caching\n- **Entwicklungstools**: CI/CD, Monitoring\n\n### Beispiele\n\n**Heroku:**\n- Einfaches Deployment\n- Unterstützt viele Sprachen\n- Add-ons für Datenbanken, Caching\n\n**Google App Engine:**\n- Automatische Skalierung\n- Managed Services\n- Integriertes Monitoring\n\n**AWS Elastic Beanstalk:**\n- Deployment von Web-Apps\n- Automatische Skalierung\n- Load Balancing\n\n**Azure App Service:**\n- Web Apps, Mobile Apps\n- Continuous Deployment\n- Auto-Scaling\n\n### Anwendungsfälle\n\n- Web-Anwendungen\n- Mobile Backends\n- API-Entwicklung\n- Microservices\n- Rapid Prototyping\n\n### Vorteile\n\n- **Schnelles Deployment**: Fokus auf Code\n- **Automatische Skalierung**: Keine manuelle Konfiguration\n- **Managed Services**: Datenbanken, Caching automatisch verwaltet\n- **Entwicklerfreundlich**: Integrierte Tools\n\n### Nachteile\n\n- **Weniger Kontrolle**: Eingeschränkte Konfiguration\n- **Vendor Lock-in**: Plattformabhängig\n- **Kosten**: Kann teurer sein als IaaS\n\n### Beispiel: Heroku Deployment\n\n```bash\n# Heroku CLI\nheroku create my-app\ngit push heroku main\nheroku ps:scale web=1\nheroku open\n```\n\n## SaaS (Software as a Service)\n<!-- micro-quiz:bp-02-cloud-models-paas-platform-as-a-service-micro-1 -->\n\n\n### Definition\n\nBereitstellung von vollständigen Softwareanwendungen über das Internet.\n\n### Eigenschaften\n\n- **Sofort nutzbar**: Keine Installation\n- **Webbasiert**: Zugriff über Browser\n- **Multi-Tenant**: Mehrere Kunden auf gleicher Infrastruktur\n- **Automatische Updates**: Vom Anbieter verwaltet\n\n### Beispiele\n\n**Produktivität:**\n- Microsoft 365 (Word, Excel, Outlook)\n- Google Workspace (Docs, Sheets, Gmail)\n- Slack (Team-Kommunikation)\n\n**CRM:**\n- Salesforce\n- HubSpot\n\n**Projektmanagement:**\n- Jira\n- Trello\n- Asana\n\n**Entwicklung:**\n- GitHub\n- GitLab\n- Figma\n\n### Anwendungsfälle\n\n- E-Mail und Collaboration\n- CRM und ERP\n- Projektmanagement\n- Buchhaltung\n- HR-Management\n\n### Vorteile\n\n- **Keine Installation**: Sofort nutzbar\n- **Keine Wartung**: Updates automatisch\n- **Zugriff überall**: Nur Internet erforderlich\n- **Skalierbar**: Lizenzen nach Bedarf\n\n### Nachteile\n\n- **Keine Kontrolle**: Keine Anpassungen\n- **Datenhoheit**: Daten beim Anbieter\n- **Internetabhängig**: Offline nicht nutzbar\n- **Kosten**: Laufende Abonnements\n\n<!-- micro-quiz:bp-02-cloud-models-saas-software-as-a-service-micro-1 -->\n## Weitere Cloud-Modelle\n\n### FaaS (Function as a Service) / Serverless\n\n**Eigenschaften:**\n- Code-Ausführung ohne Server-Verwaltung\n- Event-getrieben\n- Pay-per-execution\n\n**Beispiele:**\n- AWS Lambda\n- Azure Functions\n- Google Cloud Functions\n\n**Beispiel: AWS Lambda**\n```python\ndef lambda_handler(event, context):\n    name = event.get('name', 'World')\n    return {\n        'statusCode': 200,\n        'body': f'Hello {name}!'\n    }\n```\n\n### CaaS (Container as a Service)\n\n**Eigenschaften:**\n- Container-Orchestrierung\n- Docker-basiert\n- Kubernetes-kompatibel\n\n**Beispiele:**\n- AWS ECS/EKS\n- Azure Kubernetes Service (AKS)\n- Google Kubernetes Engine (GKE)\n\n## Deployment-Modelle\n<!-- micro-quiz:bp-02-cloud-models-weitere-cloud-modelle-micro-1 -->\n\n\n### Public Cloud\n- Öffentlich verfügbar\n- Shared Infrastructure\n- Beispiele: AWS, Azure, GCP\n\n### Private Cloud\n- Dedizierte Infrastruktur\n- Für eine Organisation\n- On-Premises oder gehostet\n\n### Hybrid Cloud\n- Kombination aus Public und Private\n- Daten-Synchronisierung\n- Flexibilität\n\n### Multi-Cloud\n- Mehrere Cloud-Anbieter\n- Vermeidung von Vendor Lock-in\n- Best-of-Breed-Ansatz\n\n<!-- micro-quiz:bp-02-cloud-models-deployment-modelle-micro-1 -->\n## Kostenmodelle\n\n### Pay-as-you-go\n- Bezahlung nach Nutzung\n- Keine Vorabkosten\n- Flexibel\n\n### Reserved Instances\n- Langfristige Verpflichtung (1-3 Jahre)\n- Rabatte (bis zu 75%)\n- Planbare Kosten\n\n### Spot Instances\n- Ungenutzte Kapazität\n- Sehr günstig (bis zu 90% Rabatt)\n- Kann jederzeit beendet werden\n\n## Sicherheit in der Cloud\n<!-- micro-quiz:bp-02-cloud-models-kostenmodelle-micro-1 -->\n\n\n### Shared Responsibility Model\n\n**Provider verantwortlich für:**\n- Physische Sicherheit\n- Netzwerk-Infrastruktur\n- Hypervisor\n\n**Kunde verantwortlich für:**\n- Daten\n- Zugriffskontrolle\n- Anwendungssicherheit\n- Verschlüsselung\n\n### Best Practices\n\n- **Verschlüsselung**: Daten in Transit und at Rest\n- **IAM**: Identity and Access Management\n- **MFA**: Multi-Factor Authentication\n- **Monitoring**: Logging und Alerting\n- **Backups**: Regelmäßige Sicherungen\n\n<!-- micro-quiz:bp-02-cloud-models-sicherheit-in-der-cloud-micro-1 -->\n## Vergleich der Service-Modelle\n\n| Merkmal | IaaS | PaaS | SaaS |\n|---------|------|------|------|\n| Kontrolle | Hoch | Mittel | Niedrig |\n| Verwaltung | Kunde | Geteilt | Provider |\n| Flexibilität | Sehr hoch | Mittel | Niedrig |\n| Komplexität | Hoch | Mittel | Niedrig |\n| Time-to-Market | Langsam | Schnell | Sofort |\n| Kosten | Variabel | Mittel | Vorhersagbar |\n| Beispiel | AWS EC2 | Heroku | Salesforce |\n\n## Prüfungsrelevante Aspekte\n<!-- micro-quiz:bp-02-cloud-models-vergleich-der-service-modelle-micro-1 -->\n\n\n- Service-Modelle (IaaS, PaaS, SaaS) unterscheiden\n- Verantwortlichkeiten kennen\n- Beispiele für jeden Service-Typ nennen\n- Anwendungsfälle zuordnen\n- Vor- und Nachteile benennen\n- Deployment-Modelle (Public, Private, Hybrid) kennen\n- Shared Responsibility Model verstehen\n\n\n<!-- micro-quiz:bp-02-cloud-models-prufungsrelevante-aspekte-micro-1 -->",
   "codeExamples": [
     {
       "language": "python",
@@ -37,10 +44,98 @@
   "lastUpdated": "2025-01-10T00:00:00Z",
   "version": "1.0",
   "learningObjectives": [
-    "Understand Cloud",
-    "Understand SaaS",
-    "Understand IaaS",
-    "Understand PaaS",
-    "Understand AWS"
+    "Du kannst cloud erklären",
+    "Du kannst saaS erklären",
+    "Du kannst iaaS erklären",
+    "Du kannst paaS erklären",
+    "Du kannst aWS erklären"
+  ],
+  "summary": "Cloud Computing Service-Modelle und ihre Anwendungsfälle",
+  "contentOutline": [
+    {
+      "id": "cloud-modelle-saas-iaas-paas",
+      "title": "Cloud-Modelle (SaaS, IaaS, PaaS)",
+      "summary": "Kernaspekt: Cloud-Modelle (SaaS, IaaS, PaaS)"
+    },
+    {
+      "id": "einfuhrung",
+      "title": "Einführung",
+      "summary": "Kernaspekt: Einführung"
+    },
+    {
+      "id": "cloud-service-modelle",
+      "title": "Cloud Service-Modelle",
+      "summary": "Kernaspekt: Cloud Service-Modelle"
+    },
+    {
+      "id": "iaas-infrastructure-as-a-service",
+      "title": "IaaS (Infrastructure as a Service)",
+      "summary": "Kernaspekt: IaaS (Infrastructure as a Service)"
+    },
+    {
+      "id": "aws-cli",
+      "title": "AWS CLI",
+      "summary": "Kernaspekt: AWS CLI"
+    },
+    {
+      "id": "paas-platform-as-a-service",
+      "title": "PaaS (Platform as a Service)",
+      "summary": "Kernaspekt: PaaS (Platform as a Service)"
+    },
+    {
+      "id": "heroku-cli",
+      "title": "Heroku CLI",
+      "summary": "Kernaspekt: Heroku CLI"
+    },
+    {
+      "id": "saas-software-as-a-service",
+      "title": "SaaS (Software as a Service)",
+      "summary": "Kernaspekt: SaaS (Software as a Service)"
+    },
+    {
+      "id": "weitere-cloud-modelle",
+      "title": "Weitere Cloud-Modelle",
+      "summary": "Kernaspekt: Weitere Cloud-Modelle"
+    },
+    {
+      "id": "deployment-modelle",
+      "title": "Deployment-Modelle",
+      "summary": "Kernaspekt: Deployment-Modelle"
+    },
+    {
+      "id": "kostenmodelle",
+      "title": "Kostenmodelle",
+      "summary": "Kernaspekt: Kostenmodelle"
+    },
+    {
+      "id": "sicherheit-in-der-cloud",
+      "title": "Sicherheit in der Cloud",
+      "summary": "Kernaspekt: Sicherheit in der Cloud"
+    },
+    {
+      "id": "vergleich-der-service-modelle",
+      "title": "Vergleich der Service-Modelle",
+      "summary": "Kernaspekt: Vergleich der Service-Modelle"
+    },
+    {
+      "id": "prufungsrelevante-aspekte",
+      "title": "Prüfungsrelevante Aspekte",
+      "summary": "Kernaspekt: Prüfungsrelevante Aspekte"
+    }
+  ],
+  "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
+  "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizzes": [
+    "bp-02-cloud-models-einfuhrung-micro-1",
+    "bp-02-cloud-models-cloud-service-modelle-micro-1",
+    "bp-02-cloud-models-iaas-infrastructure-as-a-service-micro-1",
+    "bp-02-cloud-models-paas-platform-as-a-service-micro-1",
+    "bp-02-cloud-models-saas-software-as-a-service-micro-1",
+    "bp-02-cloud-models-weitere-cloud-modelle-micro-1",
+    "bp-02-cloud-models-deployment-modelle-micro-1",
+    "bp-02-cloud-models-kostenmodelle-micro-1",
+    "bp-02-cloud-models-sicherheit-in-der-cloud-micro-1",
+    "bp-02-cloud-models-vergleich-der-service-modelle-micro-1",
+    "bp-02-cloud-models-prufungsrelevante-aspekte-micro-1"
   ]
 }

@@ -1,0 +1,59 @@
+{
+  "id": "bp-03-rest-api-url-design-micro-1",
+  "moduleId": "bp-03-rest-api",
+  "title": "URL-Design — Microquiz 1",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "question": "Welche URL entspricht REST-Best Practices?",
+      "options": [
+        "GET /api/getUsers",
+        "GET /api/users",
+        "POST /api/getCreateUser",
+        "GET /api/user"
+      ],
+      "correctAnswer": "GET /api/users",
+      "explanation": "Ressourcen plural, keine Verbpräfixe.",
+      "points": 1,
+      "category": "REST-Design"
+    },
+    {
+      "id": "q2",
+      "type": "true-false",
+      "question": "Hierarchische Beziehungen können durch Verschachtelung wie /users/123/orders dargestellt werden.",
+      "options": [
+        "Richtig",
+        "Falsch"
+      ],
+      "correctAnswer": "Richtig",
+      "explanation": "Ressourcen-Hierarchien sind üblich.",
+      "points": 1,
+      "category": "REST-Design"
+    },
+    {
+      "id": "q3",
+      "type": "multiple-choice",
+      "question": "Welche Aspekte gehören zu gutem URL-Design?",
+      "options": [
+        "Plural für Kollektionen",
+        "HTTP-Verb im Pfad",
+        "Filter via Query-Parameter",
+        "Nomen statt Verben"
+      ],
+      "correctAnswer": [
+        "Plural für Kollektionen",
+        "Filter via Query-Parameter",
+        "Nomen statt Verben"
+      ],
+      "explanation": "Verben gehören ins HTTP-Verb, nicht den Pfad.",
+      "points": 1,
+      "category": "REST-Design"
+    }
+  ],
+  "description": "Angereicherte Fragen zu \"URL-Design\" (automatische Domänen-Heuristik).",
+  "category": "BP-01",
+  "difficulty": "intermediate",
+  "timeLimit": 180,
+  "passingScore": 60
+}
