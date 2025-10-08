@@ -2,11 +2,15 @@ module.exports = {
   root: true,
   env: {
     browser: true,
+    node: true,
     es2021: true,
   },
   extends: ['eslint:recommended'],
   rules: {
     // project defaults
+    'no-undef': 'off',
+    'no-console': 'off',
+    'no-unused-vars': ['warn', { 'argsIgnorePattern': '^_' }]
   },
   overrides: [
     {
