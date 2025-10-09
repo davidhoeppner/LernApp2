@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig(({ mode }) => ({
-  // Base public path - set to repo name for GitHub Pages
-  // For custom domain or root deployment, use '/'
-  base: mode === 'production' ? '/LernApp2/' : '/',
+  // Base public path - use relative paths in production so the built site
+  // works when served from GitHub Pages or any subpath without needing
+  // the repo name. Use '/' for dev server.
+  base: mode === 'production' ? './' : '/',
 
   build: {
     // Output directory
