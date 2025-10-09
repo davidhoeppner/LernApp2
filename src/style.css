@@ -1316,6 +1316,9 @@ select {
 
 .main-content {
   animation: fadeIn var(--transition-base);
+  /* when nav is fixed, ensure main content is pushed below it
+     nav height comes from .nav-container (64px) plus the nav-progress height */
+  padding-top: calc(64px + var(--nav-progress-height));
 }
 
 @keyframes fadeIn {
@@ -1379,9 +1382,60 @@ select {
   background-color: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
-  position: sticky;
+  /* Keep the navigation always visible at the top */
+  position: fixed;
   top: 0;
-  z-index: 100;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Sticky navigation scroll progress bar (attached) */
+:root {
+  --nav-progress-height: 4px;
+  --nav-progress-color-start: #4f46e5; /* indigo-600 */
+  --nav-progress-color-end: #06b6d4;   /* cyan-500 */
+}
+
+@media (max-width: 480px) {
+  :root { --nav-progress-height: 3px; }
+}
+
+/* Ensure navigation can contain absolutely positioned progress bar */
+.navigation {
+  /* reinforce fixed positioning so nav remains visible */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000; /* elevate above content; below potential modals using higher values */
+  /* create containing block for progress element */
+  contain: paint;
+}
+
+.nav-scroll-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--nav-progress-height);
+  pointer-events: none;
+  overflow: hidden;
+  background: transparent;
+}
+
+.nav-scroll-progress .bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--nav-progress-color-start), var(--nav-progress-color-end));
+  transition: width 160ms linear;
+  will-change: width;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-scroll-progress .bar { transition: none; }
 }
 
 .nav-container {
