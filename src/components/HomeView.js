@@ -16,8 +16,7 @@ class HomeView {
    */
   async render() {
     const container = document.createElement('main');
-    container.className = 'home-view';
-    container.id = 'main-content';
+  container.className = 'home-view';
     container.setAttribute('role', 'main');
     container.setAttribute('aria-label', 'Home page');
 

@@ -1317,8 +1317,8 @@ select {
 .main-content {
   animation: fadeIn var(--transition-base);
   /* when nav is fixed, ensure main content is pushed below it
-     nav height comes from .nav-container (64px) plus the nav-progress height */
-  padding-top: calc(64px + var(--nav-progress-height));
+     nav height comes from .nav-container (var(--nav-height)) plus the nav-progress height */
+  padding-top: calc(var(--nav-height) + var(--nav-progress-height));
 }
 
 @keyframes fadeIn {
@@ -1396,6 +1396,8 @@ select {
   --nav-progress-height: 4px;
   --nav-progress-color-start: #4f46e5; /* indigo-600 */
   --nav-progress-color-end: #06b6d4;   /* cyan-500 */
+  /* Navigation sizing */
+  --nav-height: 64px;
 }
 
 @media (max-width: 480px) {
@@ -1445,7 +1447,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: var(--nav-height);
 }
 
 .nav-brand {
@@ -1686,7 +1688,7 @@ select {
 
   .nav-menu {
     position: fixed;
-    top: 64px;
+    top: var(--nav-height);
     left: 0;
     right: 0;
     bottom: 0;
@@ -2615,7 +2617,7 @@ select {
 /* Scroll Progress Bar */
 .scroll-progress-bar {
   position: fixed;
-  top: 64px;
+  top: var(--nav-height);
   left: 0;
   right: 0;
   height: 3px;
@@ -2699,7 +2701,7 @@ select {
 /* Sidebar */
 .module-sidebar {
   position: sticky;
-  top: calc(64px + var(--spacing-xl));
+  top: calc(var(--nav-height) + var(--spacing-xl));
 }
 
 .sidebar-sticky {
@@ -3096,7 +3098,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - var(--nav-height));
   padding: var(--spacing-xl) var(--spacing-md);
 }
 
@@ -3350,7 +3352,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 64px);
+  min-height: calc(100vh - var(--nav-height));
   padding: var(--spacing-xl) var(--spacing-md);
 }
 
@@ -7652,7 +7654,7 @@ table {
 @media (max-width: 768px) {
   .nav-menu.active {
     padding: var(--spacing-lg);
-    max-height: calc(100vh - 64px);
+    max-height: calc(100vh - var(--nav-height));
     overflow-y: auto;
   }
 
@@ -9517,7 +9519,7 @@ iz Mobile Enhancements */
   /* Quiz timer improvements */
   .quiz-timer {
     position: sticky;
-    top: 64px; /* Account for navigation height */
+    top: var(--nav-height); /* Account for navigation height */
     z-index: 100;
     background-color: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
@@ -9537,7 +9539,7 @@ iz Mobile Enhancements */
   /* Quiz progress indicator */
   .quiz-progress {
     position: sticky;
-    top: calc(64px + 60px); /* Navigation + timer */
+    top: calc(var(--nav-height) + 60px); /* Navigation + timer */
     z-index: 99;
     background-color: var(--color-bg);
     padding: var(--spacing-xs) var(--spacing-sm);

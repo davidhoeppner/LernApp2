@@ -23,8 +23,7 @@ class IHKProgressView {
    */
   async render() {
     const container = document.createElement('main');
-    container.className = 'ihk-progress-view';
-    container.id = 'main-content';
+  container.className = 'ihk-progress-view';
     container.setAttribute('role', 'main');
     container.setAttribute('aria-label', 'IHK exam progress page');
 
