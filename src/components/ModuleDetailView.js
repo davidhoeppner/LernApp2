@@ -138,47 +138,9 @@ class ModuleDetailView {
       `;
 
       this._attachEventListeners(container);
-      // Mount micro-quiz panel into sidebar if module defines microQuizzes and feature flag enabled
-      try {
-        const { isFeatureEnabled } = await import('../config/featureFlags.js');
-        if (
-          isFeatureEnabled &&
-          isFeatureEnabled('quizGating') &&
-          this.module.microQuizzes &&
-          this.module.microQuizzes.length > 0
-        ) {
-          const { default: MicroQuizPanel } = await import(
-            '../assessment/components/MicroQuizPanel.js'
-          );
-          const sidebarActions = container.querySelector('.sidebar-actions');
-          if (sidebarActions) {
-            // Create host for micro quiz panel
-            const mqHost = document.createElement('div');
-            mqHost.className = 'micro-quiz-host';
-            sidebarActions.insertBefore(mqHost, sidebarActions.firstChild);
-            this._microQuizPanel = new MicroQuizPanel(mqHost);
-            // Render first micro-quiz (assume array of micro quiz ids or objects)
-            const mq = this.module.microQuizzes[0];
-            // If the micro-quiz is an id, try to resolve it via ihkContentService
-            let quizObj = mq;
-            if (typeof mq === 'string') {
-              try {
-                quizObj = await this.ihkContentService.getQuizById(mq);
-              } catch (e) {
-                quizObj = null;
-              }
-            }
-            if (quizObj)
-              this._microQuizPanel.render(quizObj, {
-                requiredSections: this.module.requiredSections || [],
-              });
-          }
-        }
-      } catch (e) {
-        // Best-effort: do not fail rendering the whole view
-
-        console.warn('MicroQuizPanel mount failed', e);
-      }
+      // NOTE: Sidebar micro-quiz mounting intentionally disabled.
+      // Microquizzes should only be mounted inline within module content
+      // (see inline mounting logic further down in this file).
       this._generateTableOfContents(container);
       this._setupScrollTracking(container);
       // If no explicit inline markers are present but the module defines microQuizzes,
