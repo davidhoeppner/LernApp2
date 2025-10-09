@@ -1,0 +1,32 @@
+name: Smoke-test GitHub Pages
+
+on:
+  push:
+    branches: [ gh-pages ]
+
+jobs:
+  smoke-test-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Wait for Pages to become available
+        run: |
+          # Retry a few times because Pages may take a moment to publish
+          URL="https://davidhoeppner.github.io/LernApp2/"
+          for i in 1 2 3 4 5; do
+            status=$(curl -s -o /dev/null -w "%{http_code}" "$URL") || true
+            if [ "$status" = "200" ]; then
+              echo "Pages returned 200"
+              break
+            fi
+            echo "Attempt $i: status=$status - waiting 5s"
+            sleep 5
+          done
+
+      - name: Verify app root present
+        run: |
+          URL="https://davidhoeppner.github.io/LernApp2/"
+          content=$(curl -s "$URL")
+          echo "$content" | grep -q "<div id=\"app\"" || (echo "app root not found" && exit 1)
