@@ -21,11 +21,11 @@ This guide helps subject-matter experts (SMEs) create contextual microquizzes th
 
 ## 2. Template Overview
 
-| Template | Use Case | Key Notes |
-|----------|----------|-----------|
-| `scenario-single-choice.yaml` | Focused decision under time pressure | Ideal for reinforcing a single misconception; uses radio buttons. |
-| `scenario-multi-select.yaml` | Multiple correct actions required | Explicitly states number of correct answers; AssessmentService grants partial credit. |
-| `true-false-contextual.yaml` | Rapid myth busting | Best for quick checks tied to module reminders; include remediation links. |
+| Template                      | Use Case                             | Key Notes                                                                             |
+| ----------------------------- | ------------------------------------ | ------------------------------------------------------------------------------------- |
+| `scenario-single-choice.yaml` | Focused decision under time pressure | Ideal for reinforcing a single misconception; uses radio buttons.                     |
+| `scenario-multi-select.yaml`  | Multiple correct actions required    | Explicitly states number of correct answers; AssessmentService grants partial credit. |
+| `true-false-contextual.yaml`  | Rapid myth busting                   | Best for quick checks tied to module reminders; include remediation links.            |
 
 ## 3. Content Requirements
 

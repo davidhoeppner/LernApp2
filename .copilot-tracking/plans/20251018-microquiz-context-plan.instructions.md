@@ -28,7 +28,7 @@ Define a curated microquiz authoring pipeline and validation workflow that ancho
 
 ### Source References
 
-- src/data/ihk/modules/*.json - Module structure with microQuizzes entries needing contextual metadata (Lines 28-29, 78-82).
+- src/data/ihk/modules/\*.json - Module structure with microQuizzes entries needing contextual metadata (Lines 28-29, 78-82).
 - scripts/apply-microquizzes.js - Current placeholder generator illustrating templated content gaps (Lines 42-45, 122-145).
 
 ### Research Notes
@@ -54,10 +54,12 @@ Define a curated microquiz authoring pipeline and validation workflow that ancho
 
 - [x] Task 1.2: Draft SME-facing YAML templates for contextual questions
   - Details: .copilot-tracking/details/20251018-microquiz-context-details.md (Lines 28-43)
+
 ### [x] Phase 2: Plan Compilation and Validation Pipeline
 
 - [x] Task 2.1: Architect quiz compiler and QA automation updates
   - Details: .copilot-tracking/details/20251018-microquiz-context-details.md (Lines 47-64)
+
 ## Dependencies
 
 - Node.js 20+ with Vite tooling configured (Lines 9-10).

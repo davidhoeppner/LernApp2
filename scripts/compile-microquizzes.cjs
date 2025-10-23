@@ -46,7 +46,10 @@ function loadModuleCache() {
       const mod = JSON.parse(fs.readFileSync(filePath, 'utf8'));
       if (mod && mod.id) cache.set(mod.id, { filePath, data: mod });
     } catch (err) {
-      REPORT.errors.push({ scope: entry, message: `Failed to parse module JSON: ${err.message}` });
+      REPORT.errors.push({
+        scope: entry,
+        message: `Failed to parse module JSON: ${err.message}`,
+      });
     }
   }
   return cache;
@@ -70,15 +73,23 @@ function readYaml(file) {
   try {
     return yaml.parse(fs.readFileSync(file, 'utf8'));
   } catch (err) {
-    REPORT.errors.push({ scope: file, message: `YAML parse error: ${err.message}` });
+    REPORT.errors.push({
+      scope: file,
+      message: `YAML parse error: ${err.message}`,
+    });
     return null;
   }
 }
 
 function validateFocus(moduleData, quiz) {
-  if (!moduleData.microQuizFocus) return { valid: false, reason: 'Module missing microQuizFocus block' };
+  if (!moduleData.microQuizFocus)
+    return { valid: false, reason: 'Module missing microQuizFocus block' };
   const focus = moduleData.microQuizFocus[quiz.id];
-  if (!focus) return { valid: false, reason: `No microQuizFocus defined for quiz ${quiz.id}` };
+  if (!focus)
+    return {
+      valid: false,
+      reason: `No microQuizFocus defined for quiz ${quiz.id}`,
+    };
   return { valid: true, focus };
 }
 
@@ -102,8 +113,14 @@ function emitQuizJSON(moduleInfo, quiz) {
   fs.writeFileSync(outPath, JSON.stringify(quiz, null, 2), 'utf8');
   if (!moduleInfo.data.microQuizzes.includes(quiz.id)) {
     moduleInfo.data.microQuizzes.push(quiz.id);
-    moduleInfo.data.microQuizzes = Array.from(new Set(moduleInfo.data.microQuizzes)).sort();
-    fs.writeFileSync(moduleInfo.filePath, JSON.stringify(moduleInfo.data, null, 2), 'utf8');
+    moduleInfo.data.microQuizzes = Array.from(
+      new Set(moduleInfo.data.microQuizzes)
+    ).sort();
+    fs.writeFileSync(
+      moduleInfo.filePath,
+      JSON.stringify(moduleInfo.data, null, 2),
+      'utf8'
+    );
   }
   REPORT.processed.push({
     quizId: quiz.id,
@@ -117,7 +134,10 @@ function compileAll() {
   const modules = loadModuleCache();
   const files = loadDraftFiles();
   if (files.length === 0) {
-    REPORT.warnings.push({ scope: 'compile-microquizzes', message: 'No drafts found; skipping compilation.' });
+    REPORT.warnings.push({
+      scope: 'compile-microquizzes',
+      message: 'No drafts found; skipping compilation.',
+    });
     return;
   }
   for (const file of files) {
@@ -125,12 +145,18 @@ function compileAll() {
     if (!quizDraft || !quizDraft.quiz) continue;
     const { quiz } = quizDraft;
     if (!quiz.id || !quiz.moduleId) {
-      REPORT.errors.push({ scope: file, message: 'Missing quiz.id or quiz.moduleId' });
+      REPORT.errors.push({
+        scope: file,
+        message: 'Missing quiz.id or quiz.moduleId',
+      });
       continue;
     }
     const moduleInfo = modules.get(quiz.moduleId);
     if (!moduleInfo) {
-      REPORT.errors.push({ scope: file, message: `Module ${quiz.moduleId} not found` });
+      REPORT.errors.push({
+        scope: file,
+        message: `Module ${quiz.moduleId} not found`,
+      });
       continue;
     }
     const focusCheck = validateFocus(moduleInfo.data, quiz);

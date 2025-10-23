@@ -11,6 +11,7 @@ The microquiz pipeline transforms SME-authored YAML drafts into production-ready
 ## Compiler (`scripts/compile-microquizzes.cjs`)
 
 Responsibilities:
+
 - Discover YAML drafts recursively in the drafts directory.
 - Validate `quiz.id` and `quiz.moduleId` against module metadata.
 - Check that `microQuizFocus[quiz.id]` exists before emitting JSON.
@@ -20,6 +21,7 @@ Responsibilities:
 - Emit a report to `tmp/compile-microquizzes-report.json`, logging processed quizzes, warnings, and errors.
 
 Failure modes:
+
 - Missing module mapping → compilation aborts for that draft.
 - YAML parse errors → recorded in the report with the file path.
 - Absent `microQuizFocus` → prompts SME/engineer to add metadata before re-running.
@@ -27,10 +29,12 @@ Failure modes:
 ## Automation Hooks
 
 ### npm Scripts
+
 - `npm run compile:microquizzes` → executes the compiler and produces the report.
 - `npm run validate:microquizzes` → compiles and then runs the JSON structure validator for schema checks.
 
 ### CI Workflow
+
 - `.github/workflows/deploy.yml` now runs:
   1. `npm run compile:microquizzes`
   2. `npm run validate`
@@ -38,6 +42,7 @@ Failure modes:
   4. `npm run build`
 
 ### Local QA Checklist
+
 1. `npm run lint`
 2. `npm run test`
 3. `npm run compile:microquizzes`
