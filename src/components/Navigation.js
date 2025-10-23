@@ -20,39 +20,8 @@ class Navigation {
    * Render specialization indicator
    */
   _renderSpecializationIndicator() {
-    if (!this.specializationService) {
-      return '';
-    }
-
-    const currentSpecialization =
-      this.specializationService.getCurrentSpecialization();
-    const hasSelected = this.specializationService.hasSelectedSpecialization();
-
-    if (!hasSelected || !currentSpecialization) {
-      return `
-        <button class="specialization-selector no-selection" aria-label="Select your specialization" title="Select your specialization">
-          <span class="specialization-icon" aria-hidden="true">⚙️</span>
-          <span class="specialization-text">Select Specialization</span>
-        </button>
-      `;
-    }
-
-    const config = this.specializationService.getSpecializationConfig(
-      currentSpecialization
-    );
-    if (!config) {
-      return '';
-    }
-
-    return `
-      <div class="specialization-indicator">
-        <button class="specialization-selector" aria-label="Change specialization: ${config.name}" title="Change specialization">
-          <span class="specialization-icon" aria-hidden="true">${config.icon}</span>
-          <span class="specialization-text">${config.shortName}</span>
-          <span class="specialization-dropdown-icon" aria-hidden="true">▼</span>
-        </button>
-      </div>
-    `;
+    // Specialization indicator removed per request - keep function for compatibility
+    return '';
   }
 
   /**
@@ -99,6 +68,9 @@ class Navigation {
             </button>
           </div>
         </div>
+      </div>
+      <div class="nav-scroll-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-hidden="false">
+        <div class="bar" aria-hidden="true"></div>
       </div>
     `;
 

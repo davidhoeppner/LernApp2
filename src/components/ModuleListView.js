@@ -20,8 +20,7 @@ class ModuleListView {
    */
   async render() {
     const container = document.createElement('main');
-    container.className = 'module-list-view';
-    container.id = 'main-content';
+  container.className = 'module-list-view';
     container.setAttribute('role', 'main');
     container.setAttribute('aria-label', 'Learning modules page');
 

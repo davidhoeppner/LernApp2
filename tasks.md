@@ -260,3 +260,21 @@
   - Update notes (phases 3–10) & retrospective
   - Verify feature flag on/off paths
   - Validate all quality gates & finalize
+
+---
+
+### Deployment record (auto-appended)
+
+- Date: 2025-10-09
+- Action: Manual repair of GitHub Pages deployment and automation setup
+- Details:
+  - The production build (`dist/`) was created locally using `npm run build`.
+  - The gh-pages branch was manually replaced with the contents of `dist/` to correct a prior misplacement of files and incorrect asset paths.
+  - A GitHub Actions workflow was added at `.github/workflows/deploy.yml` to build and publish `dist/` to the `gh-pages` branch automatically on push to `main` or via workflow_dispatch. This avoids local Windows environment issues with the prior deploy script.
+  - Temporary local artifacts used for manual publishing (e.g. `.ghpages-clone`, `.publish-temp`) were removed from the workspace.
+
+Next recommended steps:
+  - Let GitHub Actions run on next push to `main` to validate automated deploys.
+  - Remove any legacy deploy scripts that attempt to run platform-specific shell commands on Windows.
+  - Optionally: set up a scheduled smoke-test workflow to verify the Pages site health after each deploy.
+

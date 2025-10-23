@@ -162,7 +162,19 @@ class ModuleService {
       }
 
       // Verify module exists
-      const module = this.modules.find(m => m.id === id);
+      let module = this.modules.find(m => m.id === id);
+
+      // If not found in local modules, try IHK content service (external content)
+      if (!module && this.ihkContentService) {
+        try {
+          // getModuleById may throw if not found
+          module = await this.ihkContentService.getModuleById(id);
+          console.warn(`Module ${id} found via IHKContentService`);
+        } catch (e) {
+          // ignore - we'll handle below
+        }
+      }
+
       if (!module) {
         throw new Error(`Module with ID "${id}" not found`);
       }
@@ -210,7 +222,18 @@ class ModuleService {
       }
 
       // Verify module exists
-      const module = this.modules.find(m => m.id === id);
+      let module = this.modules.find(m => m.id === id);
+
+      // If not found locally, check IHK content
+      if (!module && this.ihkContentService) {
+        try {
+          module = await this.ihkContentService.getModuleById(id);
+          console.warn(`Module ${id} found via IHKContentService (progress check)`);
+        } catch (e) {
+          // ignore - handled below
+        }
+      }
+
       if (!module) {
         throw new Error(`Module with ID "${id}" not found`);
       }

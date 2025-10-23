@@ -21,8 +21,7 @@ class ProgressView {
    */
   async render() {
     const container = document.createElement('main');
-    container.className = 'progress-view';
-    container.id = 'main-content';
+  container.className = 'progress-view';
     container.setAttribute('role', 'main');
     container.setAttribute('aria-label', 'Progress tracking page');
 

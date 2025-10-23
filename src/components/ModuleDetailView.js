@@ -113,7 +113,9 @@ class ModuleDetailView {
   async render() {
     const container = document.createElement('div');
     container.className = 'module-detail-view';
-    container.id = 'main-content';
+    // NOTE: the application bootstrap already creates a <main id="main-content">.
+    // Views should not create duplicate IDs. Keep this element as a plain view
+    // container so it can be appended into the existing main container.
     container.setAttribute('role', 'main');
     container.setAttribute('aria-label', 'Module content');
 
@@ -136,47 +138,9 @@ class ModuleDetailView {
       `;
 
       this._attachEventListeners(container);
-      // Mount micro-quiz panel into sidebar if module defines microQuizzes and feature flag enabled
-      try {
-        const { isFeatureEnabled } = await import('../config/featureFlags.js');
-        if (
-          isFeatureEnabled &&
-          isFeatureEnabled('quizGating') &&
-          this.module.microQuizzes &&
-          this.module.microQuizzes.length > 0
-        ) {
-          const { default: MicroQuizPanel } = await import(
-            '../assessment/components/MicroQuizPanel.js'
-          );
-          const sidebarActions = container.querySelector('.sidebar-actions');
-          if (sidebarActions) {
-            // Create host for micro quiz panel
-            const mqHost = document.createElement('div');
-            mqHost.className = 'micro-quiz-host';
-            sidebarActions.insertBefore(mqHost, sidebarActions.firstChild);
-            this._microQuizPanel = new MicroQuizPanel(mqHost);
-            // Render first micro-quiz (assume array of micro quiz ids or objects)
-            const mq = this.module.microQuizzes[0];
-            // If the micro-quiz is an id, try to resolve it via ihkContentService
-            let quizObj = mq;
-            if (typeof mq === 'string') {
-              try {
-                quizObj = await this.ihkContentService.getQuizById(mq);
-              } catch (e) {
-                quizObj = null;
-              }
-            }
-            if (quizObj)
-              this._microQuizPanel.render(quizObj, {
-                requiredSections: this.module.requiredSections || [],
-              });
-          }
-        }
-      } catch (e) {
-        // Best-effort: do not fail rendering the whole view
-
-        console.warn('MicroQuizPanel mount failed', e);
-      }
+      // NOTE: Sidebar micro-quiz mounting intentionally disabled.
+      // Microquizzes should only be mounted inline within module content
+      // (see inline mounting logic further down in this file).
       this._generateTableOfContents(container);
       this._setupScrollTracking(container);
       // If no explicit inline markers are present but the module defines microQuizzes,
@@ -485,11 +449,47 @@ class ModuleDetailView {
    * Setup scroll tracking
    */
   _setupScrollTracking(container) {
+    // Determine the appropriate scroll container. Prefer the nearest ancestor
+    // that actually scrolls (overflow:auto/scroll and scrollHeight > clientHeight).
+    const findScrollableAncestor = el => {
+      let current = el;
+      while (current && current !== document.documentElement) {
+        try {
+          const style = window.getComputedStyle(current);
+          const overflowY = style.overflowY;
+          if (
+            (overflowY === 'auto' || overflowY === 'scroll' || overflowY === 'overlay') &&
+            current.scrollHeight > current.clientHeight
+          ) {
+            return current;
+          }
+        } catch (e) {
+          // ignore cross-origin or computed style errors
+        }
+        current = current.parentElement;
+      }
+
+      // Fallback: if document.scrollingElement is available and differs from
+      // document.documentElement use window scrolling as default.
+      return window;
+    };
+
+    const scrollContainer = findScrollableAncestor(container);
+
     const updateProgress = () => {
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollTop = window.scrollY;
-      const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+      let scrollTop, scrollHeight, viewportHeight;
+      if (scrollContainer === window) {
+        viewportHeight = window.innerHeight;
+        scrollHeight = document.documentElement.scrollHeight;
+        scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+      } else {
+        viewportHeight = scrollContainer.clientHeight;
+        scrollHeight = scrollContainer.scrollHeight;
+        scrollTop = scrollContainer.scrollTop;
+      }
+
+      const denom = Math.max(scrollHeight - viewportHeight, 1);
+      const scrollPercent = (scrollTop / denom) * 100;
       const clampedPercent = Math.min(Math.max(scrollPercent, 0), 100);
 
       const progressBar = container.querySelector('.scroll-progress-bar');
@@ -502,27 +502,50 @@ class ModuleDetailView {
       }
 
       // Update active TOC item based on scroll position
-      this._updateActiveTocItemOnScroll(container);
+      this._updateActiveTocItemOnScroll(container, scrollContainer);
     };
 
-    window.addEventListener('scroll', updateProgress);
+    // Attach listener to the determined scroll container and keep references
+    if (scrollContainer === window) {
+      window.addEventListener('scroll', updateProgress);
+    } else {
+      scrollContainer.addEventListener('scroll', updateProgress);
+    }
+
     this.scrollHandler = updateProgress;
+    this._scrollContainer = scrollContainer;
   }
 
   /**
    * Update active TOC item on scroll
    */
-  _updateActiveTocItemOnScroll(container) {
+  _updateActiveTocItemOnScroll(container, scrollContainer = window) {
     const headings = container.querySelectorAll(
       '.markdown-content [id^="heading-"]'
     );
     const tocItems = container.querySelectorAll('.toc-item');
 
     let activeId = null;
-    const scrollPos = window.scrollY + 100;
+
+    // Determine scroll offset reference depending on the scroll container
+    const offsetRef = (el) => {
+      const rect = el.getBoundingClientRect();
+      if (scrollContainer === window) {
+        return rect.top + window.scrollY;
+      }
+      // For an element scroll container, compute offset relative to the container's top
+      const containerRect = scrollContainer.getBoundingClientRect();
+      return rect.top - containerRect.top + scrollContainer.scrollTop;
+    };
+
+    const currentScroll =
+      scrollContainer === window
+        ? window.scrollY + 100
+        : scrollContainer.scrollTop + 100;
 
     headings.forEach(heading => {
-      if (heading.offsetTop <= scrollPos) {
+      const top = offsetRef(heading);
+      if (top <= currentScroll) {
         activeId = heading.id;
       }
     });
@@ -630,8 +653,16 @@ class ModuleDetailView {
    * Cleanup
    */
   cleanup() {
-    if (this.scrollHandler) {
-      window.removeEventListener('scroll', this.scrollHandler);
+    try {
+      if (this.scrollHandler) {
+        if (this._scrollContainer && this._scrollContainer !== window) {
+          this._scrollContainer.removeEventListener('scroll', this.scrollHandler);
+        } else {
+          window.removeEventListener('scroll', this.scrollHandler);
+        }
+      }
+    } catch (e) {
+      // swallow cleanup errors
     }
     // cleanup micro-quiz panel if mounted
     try {
