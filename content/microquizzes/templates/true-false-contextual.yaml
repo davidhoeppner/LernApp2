@@ -1,0 +1,61 @@
+# SME Template: Contextual True/False Microquiz
+# Purpose: Provide rapid validation of misconceptions where a binary decision is backed by rationale and remediation guidance.
+
+quiz:
+  id: "<microquiz-id>"
+  moduleId: "<module-id>"
+  title: "<section-title> - Schnellcheck"
+  description: "<state the myth or assumption being tested>"
+  category: "<module-category>"
+  difficulty: "<beginner|intermediate|advanced>"
+  timeLimitSeconds: 90
+  passingScore: 0.85
+  attemptsAllowed: 3
+  feedbackMode: "after-submit"
+  localization:
+    language: "de"
+    audience: "IHK AP2"
+  focus:
+    contentOutlineId: "<content-outline-id>"
+    learningObjective: "<copy-from-module>"
+    contextCues:
+      - "<context-cue-1>"
+    misconceptions:
+      - "<misconception-1>"
+    evidence:
+      - "<module-section>"
+  accessibility:
+    readingLevel: "B1"
+    screenReaderSummary: "<short summary including the statement and response options>"
+    ariaNotes:
+      - "Pair each radio button with a descriptive label ("Wahr"/"Falsch")."
+      - "Use aria-live feedback to announce the explanation after submission."
+  qa:
+    manualChecks:
+      - "Validate that the binary statement is testable and unambiguous."
+      - "Confirm explanation links back to the cited module paragraph."
+    automation:
+      lint: true
+      validate: true
+      tests: true
+
+questions:
+  - id: "<microquiz-id>-q1"
+    type: "true-false"
+    statement: "<Write the claim learners frequently misunderstand>"
+    isTrue: false
+    explanationTrue: |
+      <Explain why the statement would be correct, referencing module evidence, or leave blank if not needed.>
+    explanationFalse: |
+      <Provide the authoritative correction with a reference back to the module content.>
+    remediation:
+      links:
+        - label: "<Module subsection title>"
+          href: "<deep-link or anchor>"
+      nextSteps:
+        - "<Action learners should take to reinforce the correct concept>"
+
+# Authoring Notes:
+# - Use true/false format for quick myth busting where nuance is covered in the explanation.
+# - Keep statements under 25 words; avoid double negatives or ambiguous phrasing.
+# - Provide actionable remediation so learners can immediately revisit the concept.

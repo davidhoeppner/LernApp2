@@ -1,0 +1,79 @@
+# SME Template: Scenario Multi-Select Microquiz
+# Purpose: Capture nuanced decision making where multiple responses are required. Supports partial credit via AssessmentService.
+
+quiz:
+  id: '<microquiz-id>'
+  moduleId: '<module-id>'
+  title: '<section-title> - Anwendung'
+  description: '<describe the learner task in one sentence>'
+  category: '<module-category>'
+  difficulty: '<beginner|intermediate|advanced>'
+  timeLimitSeconds: 150
+  passingScore: 0.75
+  attemptsAllowed: 2
+  feedbackMode: 'after-submit'
+  localization:
+    language: 'de'
+    audience: 'IHK AP2'
+  focus:
+    contentOutlineId: '<content-outline-id>'
+    learningObjective: '<copy-from-module>'
+    contextCues:
+      - '<context-cue-1>'
+      - '<context-cue-2>'
+    misconceptions:
+      - '<misconception-1>'
+      - '<misconception-2>'
+    evidence:
+      - '<module-section or checklist reference>'
+  accessibility:
+    readingLevel: 'B1'
+    screenReaderSummary: '<short summary of the scenario and selection expectation>'
+    ariaNotes:
+      - "Announce the number of correct answers required (e.g., 'Wählen Sie zwei Antworten')."
+      - 'Ensure checkbox state changes are announced via aria-live region.'
+  qa:
+    manualChecks:
+      - 'Confirm partial credit allocations match AssessmentService expectations.'
+      - 'Peer review distractors to ensure they remain plausible.'
+    automation:
+      lint: true
+      validate: true
+      tests: true
+
+questions:
+  - id: '<microquiz-id>-q1'
+    type: 'multiple-choice'
+    selectionMode: 'multi'
+    requiredCorrect: 2
+    scenario: |
+      <Frame a real-world problem where the learner must choose all practices that satisfy the requirement.>
+    stem: '<Question clarifying that more than one answer may be correct>'
+    options:
+      - label: '<correct-option-1>'
+        isCorrect: true
+        rationale: '<Explain why this step contributes to the desired outcome>'
+      - label: '<correct-option-2>'
+        isCorrect: true
+        rationale: '<Tie back to module evidence paragraph>'
+      - label: '<distractor-1>'
+        isCorrect: false
+        rationale: '<Describe the misconception this distractor addresses>'
+      - label: '<distractor-2>'
+        isCorrect: false
+        rationale: '<Illustrate why this action fails the scenario>'
+    scoring:
+      mode: 'partial'
+      fullCredit: 1.0
+      partialCredit: 0.5
+      penaltyIncorrect: 0.0
+    explanation: |
+      <Summarize why the correct combination works and how each distractor falls short.>
+    followUp:
+      prompt: "<Optional guide to try the concept in the module's practice section>"
+      visibleOnCorrect: false
+      visibleOnIncorrect: true
+# Authoring Notes:
+# - State the number of correct answers directly in the stem (e.g., "Wählen Sie zwei Optionen").
+# - Keep each answer under 120 characters for readability and to meet screen reader recommendations.
+# - Reference Requirement 7 for partial credit and ensure rationales align with logged misconceptions.

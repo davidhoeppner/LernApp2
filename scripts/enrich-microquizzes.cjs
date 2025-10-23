@@ -3,6 +3,10 @@
 /* eslint-env node */
 
 /**
+ * NOTE: This legacy enrichment script is superseded by scripts/compile-microquizzes.cjs.
+ * It remains available as a fallback for existing placeholder JSON until the
+ * YAML-based authoring pipeline fully replaces heuristic generation.
+ *
  * Enrich automatically generated placeholder micro-quiz JSON files with
  * domain-relevant questions derived heuristically from the section title.
  *

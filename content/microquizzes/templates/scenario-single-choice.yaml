@@ -1,0 +1,69 @@
+# SME Template: Scenario Single Choice Microquiz
+# Purpose: Author a one-question-per-scenario assessment that reinforces a specific learning objective.
+# Reference: Copy microQuizFocus metadata for the targeted quiz ID and align sections below accordingly.
+
+quiz:
+  id: '<microquiz-id>'
+  moduleId: '<module-id>'
+  title: '<section-title> - Szenario'
+  description: '<one-sentence learner takeaway>'
+  category: '<module-category>'
+  difficulty: '<beginner|intermediate|advanced>'
+  timeLimitSeconds: 120
+  passingScore: 0.8
+  attemptsAllowed: 2
+  feedbackMode: 'after-submit' # Requirement 7: feedback only after full submission.
+  localization:
+    language: 'de'
+    audience: 'IHK AP2'
+  focus:
+    contentOutlineId: '<content-outline-id>'
+    learningObjective: '<copy-from-module>'
+    contextCues:
+      - '<context-cue-1>'
+      - '<context-cue-2>'
+    misconceptions:
+      - '<misconception-1>'
+    evidence:
+      - '<module-section or external reference>'
+  accessibility:
+    readingLevel: 'B1'
+    screenReaderSummary: '<short summary of the scenario and expected action>'
+    ariaNotes:
+      - 'Use fieldset and legend to group options around the scenario.'
+      - 'Ensure focus returns to feedback container.'
+  qa:
+    manualChecks:
+      - 'Review scenario wording with SME for authenticity.'
+      - 'Validate distractors against recorded misconceptions.'
+    automation:
+      lint: true
+      validate: true
+      tests: true
+
+questions:
+  - id: '<microquiz-id>-q1'
+    type: 'single-choice'
+    scenario: |
+      <Write a 2-3 sentence scenario that references the learner's role and the module context.>
+    stem: '<Direct question that can be answered in under 30 seconds>'
+    options:
+      - label: '<correct-answer>'
+        rationale: '<explain why this option resolves the scenario>'
+      - label: '<distractor-1>'
+        rationale: '<reference misconception #1>'
+      - label: '<distractor-2>'
+        rationale: '<reference another misconception or tempting shortcut>'
+      - label: '<distractor-3>'
+        rationale: '<ground in real, but incorrect practice>'
+    correctOption: '<match the correct label above>'
+    explanation: |
+      <Two sentences reinforcing the key concept and pointing to the evidence reference.>
+    followUp:
+      prompt: '<Optional reflection or immediate next step>'
+      visibleOnCorrect: false
+      visibleOnIncorrect: true
+# Authoring Notes:
+# - Keep total question count <= 5 per quiz; add additional questions by cloning this block and updating IDs.
+# - Maintain consistent tense and active voice; avoid jargon unless defined in the module section.
+# - Highlight exam timing: ensure learners can solve within the specified time limit.

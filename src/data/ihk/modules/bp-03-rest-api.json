@@ -137,6 +137,76 @@
   ],
   "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
   "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizFocus": {
+    "bp-03-rest-api-rest-prinzipien-micro-1": {
+      "contentOutlineId": "rest-prinzipien",
+      "learningObjective": "Du kannst rEST erklären",
+      "contextCues": [
+        "Rahme Fragen rund um Konformität zu den sechs REST-Prinzipien anhand eines Legacy-Monolithen.",
+        "Betone Statelessness als Voraussetzung für horizontale Skalierung in Cloud-Szenarien."
+      ],
+      "questionBlueprint": {
+        "recommendedTypes": [
+          "scenario-single-choice",
+          "sequence-order"
+        ],
+        "rationaleFocus": "Führe Lernende zu einer Bewertung, welche Architekturentscheidung ein REST-Prinzip verletzt.",
+        "misconceptions": [
+          "Code on Demand sei obligatorisch in jeder REST-Implementierung",
+          "REST erfordere zwingend JSON statt Architekturstil"
+        ]
+      },
+      "evidence": [
+        "REST-Prinzipien Abschnitt: Architektur- und Statelessness-Beispiele",
+        "Requirement 7: Fokus auf begrenzte Antwortzeit durch prägnante Szenarien"
+      ]
+    },
+    "bp-03-rest-api-http-methoden-micro-1": {
+      "contentOutlineId": "http-methoden",
+      "learningObjective": "Du kannst hTTP erklären",
+      "contextCues": [
+        "Nutze eine Change-Management-API, um idempotente vs. nicht idempotente Methoden zu vergleichen.",
+        "Leite auf Prüfungsaufgaben über, in denen falsche Methodenwahl zu Datenverlust führt."
+      ],
+      "questionBlueprint": {
+        "recommendedTypes": [
+          "scenario-multi-select"
+        ],
+        "rationaleFocus": "Stelle klar, wie HTTP-Methoden mit Persistenzoperationen verknüpft sind und warum das Rückgabeverhalten relevant ist.",
+        "misconceptions": [
+          "DELETE sei niemals idempotent",
+          "PUT und POST seien austauschbar ohne semantische Folgen"
+        ]
+      },
+      "evidence": [
+        "HTTP-Methoden Abschnitt: Idempotenzdefinition",
+        "AssessmentService: Teilpunkte für Mehrfachauswahl zur Differenzierung von Methoden"
+      ]
+    },
+    "bp-03-rest-api-authentifizierung-micro-1": {
+      "contentOutlineId": "authentifizierung",
+      "learningObjective": "Du kannst aPI erklären",
+      "contextCues": [
+        "Verknüpfe Authentifizierungsszenarien mit OAuth 2.0-Flows und Token-Gültigkeit.",
+        "Hebe Sicherheitsrisiken hervor, wenn Tokens in Browser-Storage falsch gehandhabt werden."
+      ],
+      "questionBlueprint": {
+        "recommendedTypes": [
+          "scenario-single-choice",
+          "matching"
+        ],
+        "rationaleFocus": "Zeige, wie Authentication-Schemes die REST-Prinzipien ergänzen ohne Violations zu verursachen.",
+        "misconceptions": [
+          "API Keys seien gleichwertig sicher wie OAuth",
+          "Bearer Tokens müssten nicht erneuert werden"
+        ]
+      },
+      "evidence": [
+        "Authentifizierung Abschnitt: OAuth-Flow",
+        "Security Hinweise in REST API Ressourcen"
+      ]
+    }
+  },
   "microQuizzes": [
     "bp-03-rest-api-einfuhrung-micro-1",
     "bp-03-rest-api-rest-prinzipien-micro-1",

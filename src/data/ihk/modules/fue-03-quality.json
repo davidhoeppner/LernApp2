@@ -120,6 +120,77 @@
   ],
   "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
   "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizFocus": {
+    "fue-03-quality-2-black-box-testing-micro-1": {
+      "contentOutlineId": "2-black-box-testing",
+      "learningObjective": "Du kannst black Box erklären",
+      "contextCues": [
+        "Nutze ein Login-Formular mit Validierungsregeln als Ausgangspunkt für Äquivalenzklassen und Grenzwertanalyse.",
+        "Erinnere SMEs daran, auch nicht-funktionale Akzeptanzkriterien (z.B. Barrierefreiheit) in Distraktoren einzubauen."
+      ],
+      "questionBlueprint": {
+        "recommendedTypes": [
+          "scenario-multi-select",
+          "true-false"
+        ],
+        "rationaleFocus": "Betone den Unterschied zwischen Spezifikationsfehlern und Implementierungsfehlern bei Black-Box-Ansätzen.",
+        "misconceptions": [
+          "Black Box Tests decken automatisch alle Code-Pfade ab",
+          "Grenzwertanalyse ist nur für numerische Eingaben relevant"
+        ]
+      },
+      "evidence": [
+        "Beispiel zur Altersvalidierung im Abschnitt Black Box Testing",
+        "Requirement 7: Feedback erst nach vollständiger Abgabe"
+      ]
+    },
+    "fue-03-quality-3-white-box-testing-micro-1": {
+      "contentOutlineId": "3-white-box-testing",
+      "learningObjective": "Du kannst white Box erklären",
+      "contextCues": [
+        "Leite Fragen über Code Coverage aus dem Rabattrechner-Beispiel ab und fordere konkrete Pfadkombinationen.",
+        "Stelle Verbindungen zu Continuous Integration Pipelines her, die Coverage-Schwellen erzwingen."
+      ],
+      "questionBlueprint": {
+        "recommendedTypes": [
+          "code-trace",
+          "scenario-single-choice"
+        ],
+        "rationaleFocus": "Differenziere zwischen Anweisungs-, Zweig- und Pfadüberdeckung anhand konkreter Testfälle.",
+        "misconceptions": [
+          "100% Statement Coverage garantie fehlerfreie Software",
+          "White Box Testing schließe Benutzerperspektive aus"
+        ]
+      },
+      "evidence": [
+        "Java-Codebeispiel zur Rabattberechnung",
+        "Testfall-Tabelle im Abschnitt White Box Testing"
+      ]
+    },
+    "fue-03-quality-5-last--und-performancetests-micro-1": {
+      "contentOutlineId": "5-last--und-performancetests",
+      "learningObjective": "Du kannst software-Tests erklären",
+      "contextCues": [
+        "Beschreibe ein E-Commerce-Black-Friday-Szenario mit klaren KPI-Zielen für Durchsatz und Antwortzeit.",
+        "Verknüpfe Performancetests mit neuen Prüfungsanforderungen ab 2025 und K6-Skriptbeispiel."
+      ],
+      "questionBlueprint": {
+        "recommendedTypes": [
+          "scenario-single-choice",
+          "scenario-multi-select"
+        ],
+        "rationaleFocus": "Lenke auf Interpretation von Lasttest-Metriken und Eskalationsschritte bei Threshold-Verletzungen.",
+        "misconceptions": [
+          "Performancetests seien identisch mit Stresstests",
+          "Nur Antwortzeit zähle, Durchsatz und Fehlerrate seien optional"
+        ]
+      },
+      "evidence": [
+        "Lasttest-Beispiel im Abschnitt 5.2",
+        "K6-Codeausschnitt im Modul"
+      ]
+    }
+  },
   "microQuizzes": [
     "fue-03-quality-einfuhrung-micro-1",
     "fue-03-quality-1-software-tests-micro-1",

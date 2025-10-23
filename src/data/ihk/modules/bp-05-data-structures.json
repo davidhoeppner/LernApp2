@@ -100,6 +100,95 @@
   ],
   "accessibilityNotes": "Klare Überschriften, kurze Sätze, keine reine Farb-Codierung.",
   "editorNote": "Automatisch ergänzt: Review erforderlich",
+  "microQuizFocus": {
+    "bp-05-data-structures-einfuhrung-micro-1": {
+      "contentOutlineId": "einfuhrung",
+      "learningObjective": "Du kannst datenstrukturen erklären",
+      "contextCues": [
+        "Verankere die Einstiegsfrage in einer Entscheidung zwischen Array, Liste und Map für Sensordaten.",
+        "Betone Prüfungszeitdruck: kurze Definition plus Nutzen muss in unter 30 Sekunden beantwortbar sein."
+      ],
+      "questionBlueprint": {
+        "recommendedTypes": [
+          "scenario-single-choice"
+        ],
+        "rationaleFocus": "Zeige den Zusammenhang zwischen Begriffserklärung und Auswahl einer geeigneten Struktur in einem Praxisprojekt.",
+        "misconceptions": [
+          "Alle Datenstrukturen seien nur Syntaxvarianten ohne Einfluss auf Performance."
+        ]
+      },
+      "evidence": [
+        "Requirement 7: Begrenzung auf fünf Fragen mit Feedback erst nach Abgabe."
+      ]
+    },
+    "bp-05-data-structures-arrays-micro-1": {
+      "contentOutlineId": "arrays",
+      "learningObjective": "Du kannst arrays erklären",
+      "contextCues": [
+        "Frage rahmen, warum ein Array für zyklische Messwerte mit fixer Länge gewählt wird.",
+        "Hinweis auf Grenzwertfälle bei Indexzugriff und Off-by-one-Fehler."
+      ],
+      "questionBlueprint": {
+        "recommendedTypes": [
+          "code-output",
+          "scenario-multi-select"
+        ],
+        "rationaleFocus": "Erkläre, wie Speicherlayout und Indexierung direkte Auswirkungen auf Laufzeit und Fehleranfälligkeit haben.",
+        "misconceptions": [
+          "Arrays wachsen automatisch ohne Kopieroperation",
+          "Indexzählung beginnt bei 1 in allen Sprachen"
+        ]
+      },
+      "evidence": [
+        "Codebeispiel im Modulabschnitt Arrays",
+        "AssessmentService: Teilpunkte bei Multi-Select berücksichtigen"
+      ]
+    },
+    "bp-05-data-structures-listen-micro-1": {
+      "contentOutlineId": "listen",
+      "learningObjective": "Du kannst listen erklären",
+      "contextCues": [
+        "Vergleiche dynamische Arrays mit verketteten Listen anhand von Insert-Operationen.",
+        "Verweise auf Speicher-Overhead vs. konstante Zeit bei Einfügen am Listenanfang."
+      ],
+      "questionBlueprint": {
+        "recommendedTypes": [
+          "scenario-single-choice"
+        ],
+        "rationaleFocus": "Führe die Lernenden zu einer Entscheidung über die geeignete Struktur für eine Warteschlange oder History-Liste.",
+        "misconceptions": [
+          "Linked Lists seien immer schneller als Arrays",
+          "ArrayList und LinkedList hätten identische Einfügekomplexität"
+        ]
+      },
+      "evidence": [
+        "Tabellarischer Vergleich ArrayList vs. LinkedList im Abschnitt Listen"
+      ]
+    },
+    "bp-05-data-structures-queue-warteschlange-micro-1": {
+      "contentOutlineId": "queue-warteschlange",
+      "learningObjective": "Du kannst queue erklären",
+      "contextCues": [
+        "Setze das Szenario eines Drucker-Spools oder Message-Queues ein, um FIFO zu verdeutlichen.",
+        "Hebe Retry-Strategien und Rate-Limiting als Brücke zu REST-API-Modulen hervor."
+      ],
+      "questionBlueprint": {
+        "recommendedTypes": [
+          "scenario-single-choice",
+          "sequence-order"
+        ],
+        "rationaleFocus": "Lenke den Fokus auf Auswirkungen falscher FIFO-Umsetzungen auf Benutzererlebnis und Prüfungsaufgaben.",
+        "misconceptions": [
+          "Queues seien dasselbe wie Stacks",
+          "Alle Queue-Operationen seien O(1) auch bei ungeeigneter Implementierung"
+        ]
+      },
+      "evidence": [
+        "Anwendungsfälle im Abschnitt Queue",
+        "Requirement 7: Teilpunkte für mehrteilige Szenarien"
+      ]
+    }
+  },
   "microQuizzes": [
     "bp-05-data-structures-einfuhrung-micro-1",
     "bp-05-data-structures-arrays-micro-1",
