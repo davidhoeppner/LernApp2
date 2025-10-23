@@ -59,6 +59,30 @@ Legend: Complete = All H2 sections have a correctly named micro-quiz marker and 
 | sql-dml-2025 | SQL DML - Daten manipulieren | 8 | 9 | 0 | 0 | Complete |
 | sql-dql-2025 | SQL DQL - Daten abfragen | 13 | 14 | 0 | 0 | Complete |
 
+## MicroQuiz Focus Metadata (2025-10-23)
+
+### Schema Overview
+- **Key**: `microQuizFocus[quizId]` steckt direkt neben `microQuizzes` in den betroffenen Modul-JSON-Dateien.
+- **contentOutlineId**: verweist auf den Abschnitt in `contentOutline`, damit SMEs exakt wissen, welche Passage sie studieren müssen.
+- **learningObjective**: spiegelt den String aus `learningObjectives`, der vom Quiz überprüft wird.
+- **contextCues**: zwei bis drei kurze Hinweise, wie Fragen in reale Szenarien eingebettet werden sollen.
+- **questionBlueprint**: Empfehlung zu Fragetypen, Fokus der Musterlösung und typische Fehlannahmen, die adressiert werden müssen.
+- **evidence**: Quellen im Modul oder in den Projektanforderungen, die als Grundlage für das Feedback dienen.
+
+### Prioritized Modules
+| Module ID | Quiz ID | Content Outline | Learning Objective | Context Cue Summary |
+|-----------|---------|-----------------|--------------------|---------------------|
+| bp-05-data-structures | bp-05-data-structures-einfuhrung-micro-1 | einfuhrung | Du kannst datenstrukturen erklären | Wahl der passenden Struktur und Prüfungszeitdruck |
+| bp-05-data-structures | bp-05-data-structures-arrays-micro-1 | arrays | Du kannst arrays erklären | Sensorpuffer und Grenzwerte betonen |
+| bp-05-data-structures | bp-05-data-structures-listen-micro-1 | listen | Du kannst listen erklären | Insert-Operationen und Speicher-Overhead |
+| bp-05-data-structures | bp-05-data-structures-queue-warteschlange-micro-1 | queue-warteschlange | Du kannst queue erklären | FIFO-Szenarien plus Rate-Limiting |
+| bp-03-rest-api | bp-03-rest-api-rest-prinzipien-micro-1 | rest-prinzipien | Du kannst rEST erklären | Legacy-Monolith vs. REST-Konformität |
+| bp-03-rest-api | bp-03-rest-api-http-methoden-micro-1 | http-methoden | Du kannst hTTP erklären | Idempotenz und Datenintegrität |
+| bp-03-rest-api | bp-03-rest-api-authentifizierung-micro-1 | authentifizierung | Du kannst aPI erklären | OAuth-Flows und Token-Härtung |
+| fue-03-quality | fue-03-quality-2-black-box-testing-micro-1 | 2-black-box-testing | Du kannst black Box erklären | Login-Szenario mit Grenzwerten |
+| fue-03-quality | fue-03-quality-3-white-box-testing-micro-1 | 3-white-box-testing | Du kannst white Box erklären | Coverage-Nachweise und CI |
+| fue-03-quality | fue-03-quality-5-last--und-performancetests-micro-1 | 5-last--und-performancetests | Du kannst software-Tests erklären | Black-Friday-Last und KPI-Interpretation |
+
 ## Details Per Module
 
 ### bp-01-conception ((No Title))
